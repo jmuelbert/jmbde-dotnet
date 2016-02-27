@@ -1,0 +1,25 @@
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model jmbde.Models.Company
+@{
+	ViewBag.Title = "Company Details";
+}
+
+<h2>
+    Company Details
+</h2>
+
+<div>
+    <dl class="dl-horinzontal">
+        <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd>@Html.DisplayFor(model => model.Name)</dd>
+        <dt>@Html.DisplayNameFor(model => model.Name2)</dt>
+        <dd>@Html.DisplayFor(model => model.Name2)</dd>
+    </dl>
+</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</p>
