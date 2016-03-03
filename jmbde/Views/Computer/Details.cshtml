@@ -12,12 +12,16 @@
 
 <div>
     <dl class="dl-horinzontal">
+        <dt>@Html.DisplayNameFor(model => model.Employee)</dt>
+            <dd>@Html.DisplayFor(model => model.Employee.FirstName)
+            @Html.DisplayFor(model => model.Employee.Name)</dd>
+            
         <dt>@Html.DisplayNameFor(model => model.Name)</dt>
         <dd>@Html.DisplayFor(model => model.Name)</dd>
         
-        <dt>@Html.DisplayNameFor(model => model.Employee)</dt>
-        <dd>@Html.DisplayFor(model => model.Employee.FirstName)
-            @Html.DisplayFor(model => model.Employee.Name)</dd>
+        <dt>@Html.DisplayNameFor(model => model.Active)</dt>
+        <dd>@Html.DisplayFor(model => model.Active)</dd>
+ 
     </dl>
 </div>
 

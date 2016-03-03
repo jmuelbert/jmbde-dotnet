@@ -21,6 +21,17 @@
             <input asp-for="Number" class="form-control" placeholder="firstname" />
             <span asp-validation-for="Number" class="text-danger"></span>
         </div>
+        
+        <div class="form-group">
+            <label asp-for="Active"></label>
+            <input asp-for="Active" class="form-control" />
+            <span asp-validation-for="Active" class="text-danger"></span>
+        </div>
+ 
+        <div class="form-group">
+            <select asp-for="EmployeeId" asp-items="@ViewBag.Items"></select>
+        </div>     
+        
         <input type="submit" class="btn btn-default" value="Save" />
     </form>
 </div>

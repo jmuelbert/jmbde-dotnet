@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Localization;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -56,11 +57,13 @@ namespace jmbde
             //services.AddEntityFramework()
             //    .AddSqlServer()
             //    .AddDbContext<JMBDEContext>(options => 
-            //        options.UseSqlServer(Configuration["Data:MSSQLConnectionString"])); 
+            //        options.UseSqlServer(Configuration["Data:MSSQLConnectionString"]));
+             
             // Add framework services.
             // Add MVC services to the services container.
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
             services.AddMvc()
-                .AddViewLocalization()
+                .AddViewLocalization(options => options.ResourcesPath = "Resources")
                 .AddDataAnnotationsLocalization();
                 
             // Add other services
@@ -69,35 +72,14 @@ namespace jmbde
         
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, 
+                        IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             // Configure the HTTP request pipeline.
             // Add the console logger.
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-      
-      /*      
-            var requestLocalizationOptions = new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture(new CultureInfo("en-US")),
-                SupportedCultures = new List<CultureInfo>
-                {
-                    new CultureInfo("en-US"), 
-                    new CultureInfo("de-CH"), 
-                    new CultureInfo("fr-CH"), 
-                    new CultureInfo("it-CH")
-                },
-                SupportedUICultures = new List<CultureInfo>
-                {
-                    new CultureInfo("en-US"), 
-                    new CultureInfo("de-CH"), 
-                    new CultureInfo("fr-CH"), 
-                    new CultureInfo("it-CH")
-                }
-             };
- 
-            app.UseRequestLocalization(requestLocalizationOptions);
-         */   
+           
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -130,6 +112,37 @@ namespace jmbde
             // Add static files to request pipeline.
             app.UseStaticFiles();
 
+            var requestLocalizationOptions = new RequestLocalizationOptions
+            {
+                // Set options here to change middleware behavior
+                SupportedCultures = new List<CultureInfo>
+                {
+                    new CultureInfo("en-US"),
+                    new CultureInfo("de-DE"),
+                    new CultureInfo("es-ES")
+                },
+                SupportedUICultures = new List<CultureInfo>
+                {
+                    new CultureInfo("en-US"),
+                    new CultureInfo("de-DE"),
+                    new CultureInfo("es-ES")
+
+                },
+                RequestCultureProviders = new List<IRequestCultureProvider>
+                {
+                    new CookieRequestCultureProvider
+                    {
+                        CookieName = "_cultureLocalizationStackOverflow"
+                    },
+                    new AcceptLanguageHeaderRequestCultureProvider
+                    {
+
+                    }
+                    
+                }
+            };
+
+            app.UseRequestLocalization(requestLocalizationOptions, defaultRequestCulture: new RequestCulture("en-US"));  
             
             app.UseMvc(routes =>
             {

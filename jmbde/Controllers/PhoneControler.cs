@@ -30,8 +30,11 @@ namespace jmbde.Controllers
 		/// <returns></returns>
         public IActionResult Index()
         {
-            var Phones = JMBDEContext.Phone;
-            return View(Phones);
+            var phones = JMBDEContext.Phone
+             .Include(c => c.Employee);
+             
+             
+            return View(phones);
         }
         
         /// <summary>
@@ -42,12 +45,14 @@ namespace jmbde.Controllers
         /// <returns></returns>
  	    public async Task<ActionResult> Details(int id)
         {
-            Phone Phone = await FindPhoneAsync(id);
-            if (Phone == null) {
+             Phone phone = await JMBDEContext.Phone
+                .Include(c => c.Employee)
+                .SingleOrDefaultAsync(c => c.Id == id);
+            if (phone == null) {
                 Logger.LogInformation("Details: Item not found {0}", id);
                 return HttpNotFound();
             }
-            return View(Phone);    
+            return View(phone);    
         } 
         
         /// <summary>
@@ -56,7 +61,7 @@ namespace jmbde.Controllers
         /// <returns></returns>
         public ActionResult Create()
         {
-            // ViewBag.Items = GetAddressSetItems();
+            ViewBag.Items = GetEmployeeListItems();
             return View();
         }
        
@@ -67,13 +72,13 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Number")] Phone Phone) 
+        public async Task<ActionResult> Create([Bind("Number", "EmployeeId")] Phone phone) 
         {
             try
             {
                 if (ModelState.IsValid) 
                 {
-                    JMBDEContext.Phone.Add(Phone);
+                    JMBDEContext.Phone.Add(phone);
                     await JMBDEContext.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
@@ -82,7 +87,7 @@ namespace jmbde.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Unable to save changes.");
             }
-            return View(Phone);
+            return View(phone);
         }
         
         /// <summary>
@@ -97,7 +102,7 @@ namespace jmbde.Controllers
                 Logger.LogInformation("Edit: Item not found {0}", id);
                 return HttpNotFound();
             }
-            // ViewBag.Items = GetAddressSetItems(Phone.AddressSet.Id);
+            ViewBag.Items = GetEmployeeListItems(Phone.EmployeeId);
             return View(Phone);
         }
        
@@ -108,13 +113,13 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(int id, [Bind("Number")] Phone Phone)
+        public async Task<ActionResult> Update(int id, [Bind("Number", "EmployeeId")] Phone phone)
         {
             try
             {
-                Phone.Id = id;
-                JMBDEContext.Phone.Attach(Phone);
-                JMBDEContext.Entry(Phone).State = EntityState.Modified;
+                phone.Id = id;
+                JMBDEContext.Phone.Attach(phone);
+                JMBDEContext.Entry(phone).State = EntityState.Modified;
                 await JMBDEContext.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -122,7 +127,7 @@ namespace jmbde.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Unable to save changes.");
             }
-            return View(Phone);
+            return View(phone);
         }
         
         /// <summary>
@@ -135,14 +140,14 @@ namespace jmbde.Controllers
         [ActionName("Delete")]
         public async Task<ActionResult> ConfirmDelete(int id, bool? retry)
         {
-            Phone Phone = await FindPhoneAsync(id);
-            if (Phone == null)
+            Phone phone = await FindPhoneAsync(id);
+            if (phone == null)
             {
                 Logger.LogInformation("Delete: Item not found {0}", id);
                 return HttpNotFound();
             }
             ViewBag.retry = retry ?? false;
-            return View(Phone);
+            return View(phone);
         }
         
         /// <summary>
@@ -156,8 +161,8 @@ namespace jmbde.Controllers
         {
             try
             {
-                Phone Phone = await FindPhoneAsync(id);
-                JMBDEContext.Phone.Remove(Phone);
+                Phone phone = await FindPhoneAsync(id);
+                JMBDEContext.Phone.Remove(phone);
                 await JMBDEContext.SaveChangesAsync();
             }
             catch (System.Exception)
@@ -169,28 +174,27 @@ namespace jmbde.Controllers
         
         #region Helpers
             
-        /// <summary>
+       /// <summary>
         /// GetAddressSetItems
         /// </summary>
-        /* <returns>A List of AddressSets</returns>
-        private IEnumerable<SelectListItem> GetAddressSetItems(int selected = -1)
+        //// <returns>A List of AddressSets</returns>
+        private IEnumerable<SelectListItem> GetEmployeeListItems(int selected = -1)
         {
             // Workaround for https://gethub.com/aspnet/EntityFramework/issies/2246
-            var tmp = JMBDEContext.AddressSet.ToList();
+            var tmp = JMBDEContext.Employee.ToList();
             
             // Create Addresses list for <select> dropbox
             return tmp
-                .OrderBy(addr => addr.Zip)
-                .OrderBy(addr => addr.City)
-                .OrderBy(addr => addr.Street)
-                .Select(addr => new SelectListItem
+                .OrderBy(employee => employee.Name)
+                .OrderBy(employee => employee.FirstName)
+                .Select(employee => new SelectListItem
                 {
-                    Text = String.Format("{0} - {1}, {2}", addr.Zip, addr.City, addr.Street),
-                    Value = addr.Id.ToString(),
-                    Selected = addr.Id == selected
+                    Text = String.Format("{0}, {1}", employee.Name, employee.FirstName),
+                    Value = employee.Id.ToString(),
+                    Selected = employee.Id == selected
                 });
         }
-        */
+       
         
         /// <summary>
         /// FindPhoneAsync

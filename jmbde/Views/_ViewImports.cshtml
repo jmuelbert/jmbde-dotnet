@@ -1,2 +1,10 @@
 @using jmbde
+@using jmbde.Models
+@using jmbde.Resources
+@using jmbde.Controllers
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Mvc.Localization
+@using Microsoft.Extensions.Localization
 @addTagHelper "*, Microsoft.AspNet.Mvc.TagHelpers"
+@inject IStringLocalizer<jmbdeLoc> TranslateLocalizer
+@inject IViewLocalizer LocString

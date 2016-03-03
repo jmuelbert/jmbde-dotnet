@@ -12,8 +12,16 @@
 
 <div>
     <dl class="dl-horinzontal">
+        
+              <dt>@Html.DisplayNameFor(model => model.Employee)</dt>
+        <dd>@Html.DisplayFor(model => model.Employee.FirstName)
+            @Html.DisplayFor(model => model.Employee.Name)</dd>
+            
+            
         <dt>@Html.DisplayNameFor(model => model.Number)</dt>
         <dd>@Html.DisplayFor(model => model.Number)</dd>
+        
+  
     </dl>
 </div>
 

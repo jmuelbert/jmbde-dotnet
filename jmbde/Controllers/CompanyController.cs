@@ -30,8 +30,8 @@ namespace jmbde.Controllers
 		/// <returns></returns>
         public IActionResult Index()
         {
-            var Companys = JMBDEContext.Company;
-            return View(Companys);
+            var companys = JMBDEContext.Company;
+            return View(companys);
         }
         
         /// <summary>
@@ -42,12 +42,12 @@ namespace jmbde.Controllers
         /// <returns></returns>
  	    public async Task<ActionResult> Details(int id)
         {
-            Company Company = await FindCompanyAsync(id);
-            if (Company == null) {
+            Company company = await FindCompanyAsync(id);
+            if (company == null) {
                 Logger.LogInformation("Details: Item not found {0}", id);
                 return HttpNotFound();
             }
-            return View(Company);    
+            return View(company);    
         } 
         
         /// <summary>
@@ -56,7 +56,7 @@ namespace jmbde.Controllers
         /// <returns></returns>
         public ActionResult Create()
         {
-            // ViewBag.Items = GetAddressSetItems();
+            ViewBag.Items = GetEmployeeListItems();
             return View();
         }
        
@@ -67,13 +67,13 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Name", "Name2")] Company Company) 
+        public async Task<ActionResult> Create([Bind("Name", "Name2", "EmployeeId")] Company company) 
         {
             try
             {
                 if (ModelState.IsValid) 
                 {
-                    JMBDEContext.Company.Add(Company);
+                    JMBDEContext.Company.Add(company);
                     await JMBDEContext.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
@@ -82,7 +82,7 @@ namespace jmbde.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Unable to save changes.");
             }
-            return View(Company);
+            return View(company);
         }
         
         /// <summary>
@@ -91,14 +91,14 @@ namespace jmbde.Controllers
         /// <param name="id"></param>
         public async Task<ActionResult> Edit(int id)
         {
-            Company Company = await FindCompanyAsync(id);
-            if (Company == null)
+            Company company = await FindCompanyAsync(id);
+            if (company == null)
             {
                 Logger.LogInformation("Edit: Item not found {0}", id);
                 return HttpNotFound();
             }
-            // ViewBag.Items = GetAddressSetItems(Company.AddressSet.Id);
-            return View(Company);
+            ViewBag.Items = GetEmployeeListItems(company.EmployeeId);
+            return View(company);
         }
        
         /// <summary>
@@ -108,13 +108,13 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(int id, [Bind("Name", "Name2")] Company Company)
+        public async Task<ActionResult> Update(int id, [Bind("Name", "Name2", "EmployeeId")] Company company)
         {
             try
             {
-                Company.Id = id;
-                JMBDEContext.Company.Attach(Company);
-                JMBDEContext.Entry(Company).State = EntityState.Modified;
+                company.Id = id;
+                JMBDEContext.Company.Attach(company);
+                JMBDEContext.Entry(company).State = EntityState.Modified;
                 await JMBDEContext.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -122,7 +122,7 @@ namespace jmbde.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Unable to save changes.");
             }
-            return View(Company);
+            return View(company);
         }
         
         /// <summary>
@@ -135,14 +135,14 @@ namespace jmbde.Controllers
         [ActionName("Delete")]
         public async Task<ActionResult> ConfirmDelete(int id, bool? retry)
         {
-            Company Company = await FindCompanyAsync(id);
-            if (Company == null)
+            Company company = await FindCompanyAsync(id);
+            if (company == null)
             {
                 Logger.LogInformation("Delete: Item not found {0}", id);
                 return HttpNotFound();
             }
             ViewBag.retry = retry ?? false;
-            return View(Company);
+            return View(company);
         }
         
         /// <summary>
@@ -156,8 +156,8 @@ namespace jmbde.Controllers
         {
             try
             {
-                Company Company = await FindCompanyAsync(id);
-                JMBDEContext.Company.Remove(Company);
+                Company company = await FindCompanyAsync(id);
+                JMBDEContext.Company.Remove(company);
                 await JMBDEContext.SaveChangesAsync();
             }
             catch (System.Exception)
@@ -167,33 +167,32 @@ namespace jmbde.Controllers
             return RedirectToAction("Index");
         }
         
-        #region Helpers
+       #region Helpers
             
         /// <summary>
         /// GetAddressSetItems
         /// </summary>
-        /* <returns>A List of AddressSets</returns>
-        private IEnumerable<SelectListItem> GetAddressSetItems(int selected = -1)
+        //// <returns>A List of AddressSets</returns>
+        private IEnumerable<SelectListItem> GetEmployeeListItems(int selected = -1)
         {
             // Workaround for https://gethub.com/aspnet/EntityFramework/issies/2246
-            var tmp = JMBDEContext.AddressSet.ToList();
-            
+            var tmp = JMBDEContext.Employee.ToList();
+                  
             // Create Addresses list for <select> dropbox
             return tmp
-                .OrderBy(addr => addr.Zip)
-                .OrderBy(addr => addr.City)
-                .OrderBy(addr => addr.Street)
-                .Select(addr => new SelectListItem
+                .OrderBy(employee => employee.Name)
+                .OrderBy(employee => employee.FirstName)
+                .Select(employee => new SelectListItem
                 {
-                    Text = String.Format("{0} - {1}, {2}", addr.Zip, addr.City, addr.Street),
-                    Value = addr.Id.ToString(),
-                    Selected = addr.Id == selected
+                    Text = String.Format("{0}, {1}", employee.Name, employee.FirstName),
+                    Value = employee.Id.ToString(),
+                    Selected = employee.Id == selected
                 });
         }
-        */
+       
         
         /// <summary>
-        /// FindCompanyAsync
+        /// FindComputerAsync
         /// </summary>
         /// <param name="id"></name>
         /// <return></returns>

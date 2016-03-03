@@ -30,7 +30,9 @@ namespace jmbde.Controllers
 		/// <returns></returns>
         public IActionResult Index()
         {
-            var employees = JMBDEContext.Employee;
+            var employees = JMBDEContext.Employee
+                .OrderBy(c => c.Name)
+                .OrderBy(c => c.FirstName);
             return View(employees);
         }
         

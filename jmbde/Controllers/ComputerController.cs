@@ -30,10 +30,11 @@ namespace jmbde.Controllers
 		/// <returns></returns>
         public IActionResult Index()
         {
-            var Computers = JMBDEContext.Computer
-                .Include(c => c.Employee);
+            var computers = JMBDEContext.Computer
+                .Include(c => c.Employee)
+                .OrderBy(c => c.Name);
                 
-            return View(Computers);
+            return View(computers);
         }
         
         /// <summary>
@@ -71,7 +72,7 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Name", "EmployeeId")] Computer computer) 
+        public async Task<ActionResult> Create([Bind("Name", "Active", "EmployeeId")] Computer computer) 
         {
             try
             {
@@ -112,7 +113,7 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(int id, [Bind("Name", "EmployeeId")] Computer computer)
+        public async Task<ActionResult> Update(int id, [Bind("Name", "Active", "EmployeeId")] Computer computer)
         {
             try
             {
@@ -181,9 +182,7 @@ namespace jmbde.Controllers
         {
             // Workaround for https://gethub.com/aspnet/EntityFramework/issies/2246
             var tmp = JMBDEContext.Employee.ToList();
-            
-            Console.Write("List: {0}", tmp.ToString());
-            
+                  
             // Create Addresses list for <select> dropbox
             return tmp
                 .OrderBy(employee => employee.Name)

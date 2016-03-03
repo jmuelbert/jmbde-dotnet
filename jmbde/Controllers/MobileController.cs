@@ -30,8 +30,10 @@ namespace jmbde.Controllers
 		/// <returns></returns>
         public IActionResult Index()
         {
-            var Mobiles = JMBDEContext.Mobile;
-            return View(Mobiles);
+            var mobiles = JMBDEContext.Mobile
+                 .Include(c => c.Employee);
+                 
+            return View(mobiles);
         }
         
         /// <summary>
@@ -42,12 +44,14 @@ namespace jmbde.Controllers
         /// <returns></returns>
  	    public async Task<ActionResult> Details(int id)
         {
-            Mobile Mobile = await FindMobileAsync(id);
-            if (Mobile == null) {
+            Mobile mobile = await JMBDEContext.Mobile
+                .Include(c => c.Employee)
+                .SingleOrDefaultAsync(c => c.Id == id);
+            if (mobile == null) {
                 Logger.LogInformation("Details: Item not found {0}", id);
                 return HttpNotFound();
             }
-            return View(Mobile);    
+            return View(mobile);    
         } 
         
         /// <summary>
@@ -56,7 +60,7 @@ namespace jmbde.Controllers
         /// <returns></returns>
         public ActionResult Create()
         {
-            // ViewBag.Items = GetAddressSetItems();
+            ViewBag.Items = GetEmployeeListItems();
             return View();
         }
        
@@ -67,13 +71,13 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Number")] Mobile Mobile) 
+        public async Task<ActionResult> Create([Bind("Number",  "EmployeeId")] Mobile mobile) 
         {
             try
             {
                 if (ModelState.IsValid) 
                 {
-                    JMBDEContext.Mobile.Add(Mobile);
+                    JMBDEContext.Mobile.Add(mobile);
                     await JMBDEContext.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
@@ -82,7 +86,7 @@ namespace jmbde.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Unable to save changes.");
             }
-            return View(Mobile);
+            return View(mobile);
         }
         
         /// <summary>
@@ -91,14 +95,14 @@ namespace jmbde.Controllers
         /// <param name="id"></param>
         public async Task<ActionResult> Edit(int id)
         {
-            Mobile Mobile = await FindMobileAsync(id);
-            if (Mobile == null)
+            Mobile mobile = await FindMobileAsync(id);
+            if (mobile == null)
             {
                 Logger.LogInformation("Edit: Item not found {0}", id);
                 return HttpNotFound();
             }
-            // ViewBag.Items = GetAddressSetItems(Mobile.AddressSet.Id);
-            return View(Mobile);
+            ViewBag.Items = GetEmployeeListItems(mobile.EmployeeId);
+            return View(mobile);
         }
        
         /// <summary>
@@ -108,13 +112,13 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(int id, [Bind("Number")] Mobile Mobile)
+        public async Task<ActionResult> Update(int id, [Bind("Number", "EmployeeId")] Mobile mobile)
         {
             try
             {
-                Mobile.Id = id;
-                JMBDEContext.Mobile.Attach(Mobile);
-                JMBDEContext.Entry(Mobile).State = EntityState.Modified;
+                mobile.Id = id;
+                JMBDEContext.Mobile.Attach(mobile);
+                JMBDEContext.Entry(mobile).State = EntityState.Modified;
                 await JMBDEContext.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -122,7 +126,7 @@ namespace jmbde.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Unable to save changes.");
             }
-            return View(Mobile);
+            return View(mobile);
         }
         
         /// <summary>
@@ -156,8 +160,8 @@ namespace jmbde.Controllers
         {
             try
             {
-                Mobile Mobile = await FindMobileAsync(id);
-                JMBDEContext.Mobile.Remove(Mobile);
+                Mobile mobile = await FindMobileAsync(id);
+                JMBDEContext.Mobile.Remove(mobile);
                 await JMBDEContext.SaveChangesAsync();
             }
             catch (System.Exception)
@@ -169,29 +173,26 @@ namespace jmbde.Controllers
         
         #region Helpers
             
-        /// <summary>
+      /// <summary>
         /// GetAddressSetItems
         /// </summary>
-        /* <returns>A List of AddressSets</returns>
-        private IEnumerable<SelectListItem> GetAddressSetItems(int selected = -1)
+        //// <returns>A List of AddressSets</returns>
+        private IEnumerable<SelectListItem> GetEmployeeListItems(int selected = -1)
         {
             // Workaround for https://gethub.com/aspnet/EntityFramework/issies/2246
-            var tmp = JMBDEContext.AddressSet.ToList();
+            var tmp = JMBDEContext.Employee.ToList();
             
             // Create Addresses list for <select> dropbox
             return tmp
-                .OrderBy(addr => addr.Zip)
-                .OrderBy(addr => addr.City)
-                .OrderBy(addr => addr.Street)
-                .Select(addr => new SelectListItem
+                .OrderBy(employee => employee.Name)
+                .OrderBy(employee => employee.FirstName)
+                .Select(employee => new SelectListItem
                 {
-                    Text = String.Format("{0} - {1}, {2}", addr.Zip, addr.City, addr.Street),
-                    Value = addr.Id.ToString(),
-                    Selected = addr.Id == selected
+                    Text = String.Format("{0}, {1}", employee.Name, employee.FirstName),
+                    Value = employee.Id.ToString(),
+                    Selected = employee.Id == selected
                 });
         }
-        */
-        
         /// <summary>
         /// FindMobileAsync
         /// </summary>
