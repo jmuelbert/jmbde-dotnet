@@ -14,15 +14,15 @@ using jmbde.Models;
 namespace jmbde.Controllers
 {
     /// <summary>
-	/// The CompanyController
+	/// The MobileController
 	/// </summary>
-    public class CompanyController : Controller
+    public class MobileController : Controller
     {
         [FromServices]
         public JMBDEContext JMBDEContext { get; set; }
         
         [FromServices]
-        public ILogger<CompanyController> Logger { get; set; }
+        public ILogger<MobileController> Logger { get; set; }
         
 		/// <summary>
 		/// GET: /<Controller>/
@@ -30,24 +30,29 @@ namespace jmbde.Controllers
 		/// <returns></returns>
         public IActionResult Index()
         {
-            var companys = JMBDEContext.Company;
-            return View(companys);
+            var mobiles = JMBDEContext.Mobile
+                .OrderBy(c => c.Number)
+                 .Include(c => c.Employee);
+                 
+            return View(mobiles);
         }
         
         /// <summary>
         /// Details
         /// </summary>
-        /// Show Company-Details
+        /// Show Mobile-Details
         /// <param name="id"></param>
         /// <returns></returns>
  	    public async Task<ActionResult> Details(int id)
         {
-            Company company = await FindCompanyAsync(id);
-            if (company == null) {
+            Mobile mobile = await JMBDEContext.Mobile
+                .Include(c => c.Employee)
+                .SingleOrDefaultAsync(c => c.Id == id);
+            if (mobile == null) {
                 Logger.LogInformation("Details: Item not found {0}", id);
                 return HttpNotFound();
             }
-            return View(company);    
+            return View(mobile);    
         } 
         
         /// <summary>
@@ -67,13 +72,13 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Name", "Name2", "EmployeeId")] Company company) 
+        public async Task<ActionResult> Create([Bind("Number",  "EmployeeId")] Mobile mobile) 
         {
             try
             {
                 if (ModelState.IsValid) 
                 {
-                    JMBDEContext.Company.Add(company);
+                    JMBDEContext.Mobile.Add(mobile);
                     await JMBDEContext.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
@@ -82,7 +87,7 @@ namespace jmbde.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Unable to save changes.");
             }
-            return View(company);
+            return View(mobile);
         }
         
         /// <summary>
@@ -91,14 +96,14 @@ namespace jmbde.Controllers
         /// <param name="id"></param>
         public async Task<ActionResult> Edit(int id)
         {
-            Company company = await FindCompanyAsync(id);
-            if (company == null)
+            Mobile mobile = await FindMobileAsync(id);
+            if (mobile == null)
             {
                 Logger.LogInformation("Edit: Item not found {0}", id);
                 return HttpNotFound();
             }
-            ViewBag.Items = GetEmployeeListItems(company.EmployeeId);
-            return View(company);
+            ViewBag.Items = GetEmployeeListItems(mobile.EmployeeId);
+            return View(mobile);
         }
        
         /// <summary>
@@ -108,13 +113,13 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(int id, [Bind("Name", "Name2", "EmployeeId")] Company company)
+        public async Task<ActionResult> Update(int id, [Bind("Number", "EmployeeId")] Mobile mobile)
         {
             try
             {
-                company.Id = id;
-                JMBDEContext.Company.Attach(company);
-                JMBDEContext.Entry(company).State = EntityState.Modified;
+                mobile.Id = id;
+                JMBDEContext.Mobile.Attach(mobile);
+                JMBDEContext.Entry(mobile).State = EntityState.Modified;
                 await JMBDEContext.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -122,7 +127,7 @@ namespace jmbde.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Unable to save changes.");
             }
-            return View(company);
+            return View(mobile);
         }
         
         /// <summary>
@@ -135,14 +140,14 @@ namespace jmbde.Controllers
         [ActionName("Delete")]
         public async Task<ActionResult> ConfirmDelete(int id, bool? retry)
         {
-            Company company = await FindCompanyAsync(id);
-            if (company == null)
+            Mobile Mobile = await FindMobileAsync(id);
+            if (Mobile == null)
             {
                 Logger.LogInformation("Delete: Item not found {0}", id);
                 return HttpNotFound();
             }
             ViewBag.retry = retry ?? false;
-            return View(company);
+            return View(Mobile);
         }
         
         /// <summary>
@@ -156,8 +161,8 @@ namespace jmbde.Controllers
         {
             try
             {
-                Company company = await FindCompanyAsync(id);
-                JMBDEContext.Company.Remove(company);
+                Mobile mobile = await FindMobileAsync(id);
+                JMBDEContext.Mobile.Remove(mobile);
                 await JMBDEContext.SaveChangesAsync();
             }
             catch (System.Exception)
@@ -167,9 +172,9 @@ namespace jmbde.Controllers
             return RedirectToAction("Index");
         }
         
-       #region Helpers
+        #region Helpers
             
-        /// <summary>
+      /// <summary>
         /// GetAddressSetItems
         /// </summary>
         //// <returns>A List of AddressSets</returns>
@@ -177,11 +182,10 @@ namespace jmbde.Controllers
         {
             // Workaround for https://gethub.com/aspnet/EntityFramework/issies/2246
             var tmp = JMBDEContext.Employee.ToList();
-                  
+            
             // Create Addresses list for <select> dropbox
             return tmp
                 .OrderBy(employee => employee.Name)
-                .OrderBy(employee => employee.FirstName)
                 .Select(employee => new SelectListItem
                 {
                     Text = String.Format("{0}, {1}", employee.Name, employee.FirstName),
@@ -189,17 +193,15 @@ namespace jmbde.Controllers
                     Selected = employee.Id == selected
                 });
         }
-       
-        
         /// <summary>
-        /// FindComputerAsync
+        /// FindMobileAsync
         /// </summary>
         /// <param name="id"></name>
         /// <return></returns>
-        private Task<Company> FindCompanyAsync(int id)
+        private Task<Mobile> FindMobileAsync(int id)
         {
-            return JMBDEContext.Company
-                .SingleOrDefaultAsync(Company => Company.Id == id);
+            return JMBDEContext.Mobile
+                .SingleOrDefaultAsync(Mobile => Mobile.Id == id);
         }
         #endregion
     }

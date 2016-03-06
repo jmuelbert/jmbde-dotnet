@@ -19,6 +19,7 @@
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -27,17 +28,42 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a asp-controller="Home" asp-action="Index" class="navbar-brand">jmbde</a>
-                </div>
-                <div class="navbar-collapse collapse">
+                </div
+                <!-- Collect the nav links, forms and other content for toggling -->
+                <div class="navbar-collapse collapse" id="bs-jmbde-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-controller="Employee" asp-action="Index">Employee</a></li>
-                        <li><a asp-controller="Computer" asp-action="Index">Computer</a></li>
-                        <li><a asp-controller="Phone" asp-action="Index">Phone</a></li>
-                        <li><a asp-controller="Mobile" asp-action="Index">Mobile</a></li>
-                        <li><a asp-controller="Company" asp-action="Index">Company</a></li>
-                        <li><a asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        <li class="active" style="border-right:2px solid silver;">
+                            <a asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+   
+                        <li class="dropdown" style="border-right: 2px solid silver;">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Data
+                                <span class="caret"></span>
+                            </a>  
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownDataMenu">                          
+                                <li><a asp-controller="Employee" asp-action="Index">Employee</a></li>
+                                <li><a asp-controller="Computer" asp-action="Index">Computer</a></li>
+                                <li><a asp-controller="Phone" asp-action="Index">Phone</a></li>
+                                <li><a asp-controller="Mobile" asp-action="Index">Mobile</a></li>
+                                <li><a asp-controller="Company" asp-action="Index">Company</a></li>
+                             </ul>
+                        </li>
+                        <li style="border-right: 2px solid silver;">
+                            <a asp-controller="Home" asp-action="Contact">Contact</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown"
+                            aria-labelledby="dropdownHelpMenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Help
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownHelpMenu">                          
+                                <li><a asp-controller="Home" asp-action="About">About</a></li>                          
+                           </ul>
+                        </li>
                     </ul>
                 </div>
             </div>

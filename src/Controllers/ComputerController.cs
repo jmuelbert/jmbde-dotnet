@@ -186,7 +186,6 @@ namespace jmbde.Controllers
             // Create Addresses list for <select> dropbox
             return tmp
                 .OrderBy(employee => employee.Name)
-                .OrderBy(employee => employee.FirstName)
                 .Select(employee => new SelectListItem
                 {
                     Text = String.Format("{0}, {1}", employee.Name, employee.FirstName),

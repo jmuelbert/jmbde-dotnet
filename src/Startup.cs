@@ -17,27 +17,46 @@ using jmbde.Models;
 
 namespace jmbde
 {
-    
     public class Startup
     {
+  
+         
+         
+        /// <summary>
+        /// Default ctor
+        /// </summary>
         public Startup(IHostingEnvironment env)
         {
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
-            
         }
 
+      /// <summary>
+        /// The configuration Object
+        /// Static property as same instance is needed to be 
+        /// returned across the project.
+        /// The instance will be generated when constructor
+         /// is called.
+         /// </summary>
         public IConfigurationRoot Configuration { get; set; }
+       
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string path;
+            path = "%AppData%/stuff";
+            path = "%aPpdAtA%/HelloWorld";
+            path = "%progRAMfiLES%/Adobe;%appdata%/FileZilla"; // collection of paths
+
+            path = Environment.ExpandEnvironmentVariables(path);
+            Console.WriteLine(path);
             
-            // services.AddLocalization(options => options.ResourcePath = "Resources");
             
             // Add framework services.
             // *********************************
