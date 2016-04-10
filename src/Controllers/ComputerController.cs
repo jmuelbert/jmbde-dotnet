@@ -1,13 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Storage;
 using Microsoft.Extensions.Logging;
+
+
 using jmbde.Models;
+using jmbde.Helper;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -35,8 +39,8 @@ namespace jmbde.Controllers
                 .OrderBy(c => c.Name);
                 
             return View(computers);
-        }
-        
+        }           
+         
         /// <summary>
         /// Details
         /// </summary>

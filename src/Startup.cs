@@ -18,10 +18,7 @@ using jmbde.Models;
 namespace jmbde
 {
     public class Startup
-    {
-  
-         
-         
+    {  
         /// <summary>
         /// Default ctor
         /// </summary>
@@ -48,16 +45,7 @@ namespace jmbde
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            string path;
-            path = "%AppData%/stuff";
-            path = "%aPpdAtA%/HelloWorld";
-            path = "%progRAMfiLES%/Adobe;%appdata%/FileZilla"; // collection of paths
-
-            path = Environment.ExpandEnvironmentVariables(path);
-            Console.WriteLine(path);
-            
-            
+        {            
             // Add framework services.
             // *********************************
             // SQlite Database
@@ -130,6 +118,8 @@ namespace jmbde
 
             // Add static files to request pipeline.
             app.UseStaticFiles();
+            
+            // app.UseDirectoryBrowser();
 
             var requestLocalizationOptions = new RequestLocalizationOptions
             {
@@ -167,7 +157,7 @@ namespace jmbde
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Employee}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
                    
             });
         }

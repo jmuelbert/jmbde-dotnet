@@ -14,15 +14,33 @@
 	<a asp-action="Create">Create a New Company</a>
 </p>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name2)
-        </th>
-    </tr>
+<table id="company" class="table table-condensed table-hover table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name2)
+            </th>
+            <th>
+                <p>Action</p>
+            </th>
+        </tr>
+    </thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name2)
+            </th>
+            <th>
+                <p>Action</p>
+            </th>
+        </tr>
+    <tfoot>
+    </tfoot>
     @foreach (var item in Model)
     {
         <tr>
@@ -35,7 +53,16 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td> 
         </tr>
     }
 </table>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#employee').DataTable();
+        } );
+    </script>
+}
