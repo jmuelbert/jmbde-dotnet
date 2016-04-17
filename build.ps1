@@ -3,7 +3,7 @@ cd $PSScriptRoot
 $repoFolder = $PSScriptRoot
 $env:REPO_FOLDER = $repoFolder
 
-$jmbdeBuildZip="https://github.com/jmuelbert/jmbde-aspnet/archive/dev.zip"
+$jmbdeBuildZip="https://github.com/jmuelbert/jmbde-aspnet/archive/master.zip"
 if ($env:JMBDEBUILD_ZIP)
 {
     $koreBuildZip=$env:JMBDEBUILD_ZIP

@@ -2,7 +2,7 @@
 repoFolder="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $repoFolder
 
-jmbdeBuildZip="https://github.com/jmuelbert/jmbde-aspnet/archive/dev.zip"
+jmbdeBuildZip="https://github.com/jmuelbert/jmbde-aspnet/archive/master.zip"
 if [ ! -z $JMBDEBUILD_ZIP ]; then
     jmbdeBuildZip=$JMBDEBUILD_ZIP
 fi
