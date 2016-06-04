@@ -1,7 +1,0 @@
-#!/env/sh
-
-rm -rf Migrations
-rm jmbde.db
-
-dnx ef migrations add init
-dnx ef database update
