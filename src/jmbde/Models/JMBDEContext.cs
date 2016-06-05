@@ -1,5 +1,4 @@
 ﻿using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Metadata;
 
 namespace jmbde.Models
 {
@@ -9,13 +8,13 @@ namespace jmbde.Models
     /// The ORM Connection to the Database
     /// </summary>
     // You may need to install the Microsoft.AspNet.Http.Abstractions package into your project
-    public partial class JMBDEContext : DbContext
+    public class JMBDEContext : DbContext
     {
-        protected override void OnModelCreating(ModelBuilder builder) 
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);    
+            base.OnModelCreating(builder);
         }
-     
+
         public virtual DbSet<Company>  Company { get; set; }
         public virtual DbSet<Computer> Computer { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }

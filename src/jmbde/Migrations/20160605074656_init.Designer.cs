@@ -8,7 +8,7 @@ using jmbde.Models;
 namespace jmbde.Migrations
 {
     [DbContext(typeof(JMBDEContext))]
-    [Migration("20160225202142_init")]
+    [Migration("20160605074656_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
