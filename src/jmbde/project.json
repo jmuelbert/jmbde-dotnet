@@ -1,6 +1,6 @@
 {
   "version": "0.0.3-*",
-  "userSecretsId": "aspnet5-jmbde-GUID",
+  "userSecretsId": "aspnet5-jmbde-54de2cff-d007-4927-81ad-db96e8e27d65",
   "description": "Application with Database for BDE",
   "compilationOptions": {
     "emitEntryPoint": true,

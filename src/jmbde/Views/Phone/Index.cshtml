@@ -14,7 +14,7 @@
 	<a asp-action="Create">Create a New Phone</a>
 </p>
 
-<table class="table">
+<table id="phone" class="table table-condensed table-hover table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
         <tr>
             <th>
@@ -71,7 +71,7 @@
 @section scripts {
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#employee').DataTable();
+            $('#phone').DataTable();
         } );
     </script>
 }

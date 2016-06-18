@@ -16,20 +16,52 @@
             class="text-danger">
         </div>
         
-        <div class="form-group">
-            <label asp-for="EmployeeNO"></label>
-            <input asp-for="EmployeeNO" class="form-control" placeholder="123456" />
-            <span asp-asp-validation-for="EmployeeNO" class="text-danger"></span>
+         <div class="form-inline">
+            <div class="form-group">
+                <label asp-for="EmployeeNO"></label>
+                <input asp-for="EmployeeNO" class="form-control" placeholder="123456" />
+                <span asp-validation-for="EmployeeNO" class="text-danger"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="FirstName"></label>
-            <input asp-for="FirstName" class="form-control" placeholder="firstname" />
-            <span asp-validation-for="FirstName" class="text-danger"></span>
+        <div class="form-inline">
+            <div class="form-group">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control" placeholder="Firstname" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" placeholder="Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Name"></label>
-            <input asp-for="Name" class="form-control" placeholder="Name" />
-            <span asp-validation-for="Name" class="text-danger"></span>
+        
+        <div class="form-inline">
+            <div class="form-group">
+                <label asp-for="BusinessMail"></label>
+                <input asp-for="BusinessMail" class="form-control" placeholder="mail@company.com" />
+                <span asp-validation-for="BusinessMail" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <div class="form-inline">
+            <div class="form-group">
+                <label asp-for="Active"></label>
+                <input asp-for="Active" class="form-control" />
+                <span asp-validation-for="Active" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="ChipCard"></label>
+                <input asp-for="ChipCard" class="form-control" placeholder="0001" />
+                <span asp-validation-for="ChipCard" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="DataCare"></label>
+                <input asp-for="DataCare" class="form-control" />
+                <span asp-validation-for="DataCare" class="text-danger"></span>
+            </div>
         </div>
         <input type="submit" class="btn btn-default" value="Save" />
     </form>
