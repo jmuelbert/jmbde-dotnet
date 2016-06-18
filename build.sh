@@ -2,23 +2,34 @@
 repoFolder="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $repoFolder
 
-jmbdeBuildZip="https://github.com/jmuelbert/jmbde-aspnet/archive/master.zip"
-if [ ! -z $JMBDEBUILD_ZIP ]; then
-    jmbdeBuildZip=$JMBDEBUILD_ZIP
+koreBuildZip="https://github.com/aspnet/KoreBuild/archive/dev.zip"
+if [ ! -z $KOREBUILD_ZIP ]; then
+    koreBuildZip=$KOREBUILD_ZIP
 fi
 
 buildFolder=".build"
-buildFile="$buildFolder/JMBDEBuild.sh"
+buildFile="$buildFolder/KoreBuild.sh"
 
 if test ! -d $buildFolder; then
-    echo "Downloading JMBDEBuild from $jmbdeBuildZip"
+    echo "Downloading KoreBuild from $koreBuildZip"
     
-    tempFolder="/tmp/JMBDEBuild-$(uuidgen)"    
+    tempFolder="/tmp/KoreBuild-$(uuidgen)"    
     mkdir $tempFolder
     
-    localZipFile="$tempFolder/jmbdebuild.zip"
+    localZipFile="$tempFolder/korebuild.zip"
     
-    wget -O $localZipFile $jmbdeBuildZip 2>/dev/null || curl -o $localZipFile --location $jmbdeBuildZip /dev/null
+    retries=6
+    until (wget -O $localZipFile $koreBuildZip 2>/dev/null || curl -o $localZipFile --location $koreBuildZip 2>/dev/null)
+    do
+        echo "Failed to download '$koreBuildZip'"
+        if [ "$retries" -le 0 ]; then
+            exit 1
+        fi
+        retries=$((retries - 1))
+        echo "Waiting 10 seconds before retrying. Retries left: $retries"
+        sleep 10s
+    done
+    
     unzip -q -d $tempFolder $localZipFile
   
     mkdir $buildFolder

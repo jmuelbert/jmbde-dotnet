@@ -1,0 +1,12 @@
+{
+"buildOptions": {
+   "warningsAsErrors": true
+},
+"dependencies": {
+    "EntityFramework.Core": "7.0.0-rc1-final",
+    "EntityFramework.SQLite": "7.0.0-rc1-final",
+    "EntityFramework.Sqlite.Design": "7.0.0-rc1-final",
+    "jmbde": "0.0.3",
+    "GenFu": "1.1.0"
+}
+}

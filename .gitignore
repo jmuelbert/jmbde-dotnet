@@ -21,6 +21,7 @@
 bld/
 [Bb]in/
 [Oo]bj/
+./build/
 
 # Visual Studio 2015 cache/options directory
 .vs/
@@ -206,6 +207,11 @@ UpgradeLog*.htm
 *.mdf
 *.ldf
 
+# SQLite File
+*.db
+*.db3
+*.sqlite
+
 # Business Intelligence projects
 *.rdl.data
 *.bim.layout
@@ -243,3 +249,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# MACOS
+.DS_Store

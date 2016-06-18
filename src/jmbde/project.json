@@ -37,8 +37,7 @@
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final",
     "SeriLog": "2.0.0-*",
     "SeriLog.Sinks.Seq": "2.0.0-*",
-    "SeriLog.Sinks.ColoredConsole": "2.0.0-*",
-    "GenFu": "1.0.4"
+    "SeriLog.Sinks.ColoredConsole": "2.0.0-*"
 
   },
 
