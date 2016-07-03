@@ -36,10 +36,14 @@ gulp.task("min:js", function () {
 });
 
 gulp.task("min:css", function () {
+    console.debug("path: " + paths.css )
+    console.debug("path.min: " + paths.minCss)
+    console.debug("concat: " + concat(paths.concatCssDest))
+
     return gulp.src([paths.css, "!" + paths.minCss])
         .pipe(concat(paths.concatCssDest))
         .pipe(cssmin())
         .pipe(gulp.dest("."));
 });
 
-gulp.task("min", ["min:js", "min:css"]);
+ gulp.task("min", ["min:js", "min:css"]); 

@@ -1,6 +1,6 @@
 {
   "name": "jmbde",
-  "version": "0.3.0",
+  "version": "0.0.3",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-concat": "2.5.2",

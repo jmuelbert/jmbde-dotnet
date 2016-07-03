@@ -43,7 +43,8 @@
 
   "commands": {
     "web": "Microsoft.AspNet.Server.Kestrel",
-    "ef": "EntityFramework.Commands"
+    "ef": "EntityFramework.Commands",
+    "createSD": "Program"
   },
 
   "frameworks": {
@@ -64,7 +65,6 @@
     "**.vspscc"
   ],
   "scripts": {
-    "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min" ]
   },
   "repository": {
     "type": "git",
