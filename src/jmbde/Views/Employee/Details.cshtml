@@ -10,20 +10,66 @@
     Employee Details
 </h2>
 
-<div>
-    <dl class="dl-vertical">
-        <dt>@Html.DisplayNameFor(model => model.EmployeeNO)</dt>
-        <dd>@Html.DisplayFor(model => model.EmployeeNO)</dd>
-        <dt>@Html.DisplayNameFor(model => model.FirstName)</dt>
-        <dd>@Html.DisplayFor(model => model.FirstName)</dd>
-        <dt>@Html.DisplayNameFor(model => model.Name)</dt>
-        <dd>@Html.DisplayFor(model => model.Name)</dd>
-        <dt>@Html.DisplayNameFor(model => model.Active)</dt>
-        <dd>@Html.DisplayFor(model => model.Active)</dd>
-    </dl>
+<div class="row">
+    <div id="id" class="col-sm-2">
+        <strong>
+        @Html.DisplayNameFor(model => model.EmployeeNO)
+        </strong>
+    </div>
+    <div id="id-value" class="col-sm-4">
+        @Html.DisplayFor(model => model.EmployeeNO)
+    </div>
+</div>
+<div class="row">
+    <div id="name" class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div id="id-value" class="col-sm-4">
+        @Html.DisplayFor(model => model.FirstName)
+        &nbsp;
+        @Html.DisplayFor(model => model.Name)
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-2">
+        <strong>
+        @Html.DisplayNameFor(model => model.BusinessMail)
+        </strong>
+    </div>
+    <div class="col-sm-4">
+        @Html.DisplayFor(model => model.BusinessMail)
+    </div>       
+</div>
+<div class="row">
+    <div class="col-sm-2">
+        <strong>
+        @Html.DisplayNameFor(model => model.ChipCard)
+        </strong>
+    </div>
+    <div class="col-sm-4">
+        @Html.DisplayFor(model => model.ChipCard)
+    </div>
+</div>
+<div class="row">
+    <label class="control-label col-sm-3 col-md-2" asp-for="Active"></label>
+    <div class="col-sm-9 col-md-10">
+        <div class="checkbox">
+            <input type="checkbox" class="check-box" name="Active" id="Active" value="true" data-val="true" />
+            <input name="Active" type="hidden" value="false" />
+        </div>
+    </div>  
+</div>
+<div class="row">
+    <label class="control-label col-sm-3 col-md-2" asp-for="DataCare"></label>
+    <div class="col-sm-9 col-md-10">
+        <div class="checkbox">
+            <input type="checkbox" class="check-box" name="DataCare" id="DataCare" value="true" data-val="true" />
+            <input name="DataCare" type="hidden" value="false" />
+        </div>
+    </div>
 </div>
 
 <p>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-default" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+    <a class="btn btn-default" asp-action="Index">Back to List</a>
 </p>
