@@ -17,6 +17,6 @@ A database tool to manage Employees, Computers, Phones and Mobiles in a Company
 
 ## To run the jmbde App on Mac/Mono or Linux:
 * Follow the instructions at the [Home](https://github.com/aspnet/Home( repository to install Mono and DNVM on the System
-* Open a command prompt and excute `cd src/jmbde'.
-* Execute `dnu restore``
-* Try run `dnx kestrel`to run the application
+* Open a command prompt and excute `cd src/jmbde`.
+* Execute `dnu restore`
+* Try run `dnx web`to run the application
