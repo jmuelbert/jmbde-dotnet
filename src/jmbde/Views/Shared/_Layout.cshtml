@@ -1,96 +1,86 @@
-<!doctype html>
-<html lang="">
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - jmbde</title>
 
     <environment names="Development">
-        <link rel="stylesheet" href="~/lib/semantic/dist/semantic.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/jquery.bootgrid/dist/css/jquery.bootgrid.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://oss.maxcdn.com/semantic-ui/2.1.8/semantic.min.css"
-              asp-fallback-href="~/lib/semantic/dist/semantic.min.css"
-              asp-fallback-test-class="ui button" asp-fallback-test-property="cursor" asp-fallback-test-value="pointer" />
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"
+                  asp-fallback-href="~/lib/jquery.dataTables/dist/css/jquery.dataTables.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />              
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
-    <!-- Following Menu -->
-    <div class="ui large top pointing fixed menu">
-        <div class="ui container">
-            <a class="toc item">
-                <i class="sidebar icon"></i>
-                <span class="sr-only">Toggle Navigation</span>
-            </a>
-            <a href="/" class="header item">jmbde</a>
-            <menulink class="blue item" asp-area="" controller-name="Home" action-name="Index" menu-text="Home"></menulink>
-            <menulink class="blue item" asp-area="" controller-name="Home" action-name="About" menu-text="About"></menulink>
-            <menulink class="blue item" asp-area="" controller-name="Home" action-name="Contact" menu-text="Contact">Contact</menulink>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+             <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a asp-controller="Home" asp-action="Index" class="navbar-brand">jmbde</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active" style="border-right:2px solid silver;">
+                            <a asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
 
-        </div>
-    </div>
-
-    <!-- Sidebar Menu -->
-    <div class="ui vertical inverted sidebar menu">
-        <menulink class="blue item" asp-area="" controller-name="Home" action-name="Index" menu-text="Home"></menulink>
-        <menulink class="blue item" asp-area="" controller-name="Home" action-name="About" menu-text="About"></menulink>
-        <menulink class="blue item" asp-area="" controller-name="Home" action-name="Contact" menu-text="Contact"></menulink>
-
-    </div>
-
-    <!-- Page Contents -->
-    <div class="pusher">
-        <div class="ui container content">
-            @RenderBody()
-        </div>
-
-        <div class="ui vertical footer segment">
-            <div class="ui container">
-                <div class="ui stackable  divided equal height stackable grid">
-                    <div class="three wide column">
-                        <h4 class="ui header">About</h4>
-                        <div class="ui  link list">
-                            <a href="#" class="item">Sitemap</a>
-                            <a href="#" class="item">Contact Us</a>
-                            <a href="#" class="item">Link</a>
-                            <a href="#" class="item">Link</a>
-                        </div>
-                    </div>
-                    <div class="three wide column">
-                        <h4 class="ui header">Services</h4>
-                        <div class="ui  link list">
-                            <a href="#" class="item">Service One</a>
-                            <a href="#" class="item">Service Two</a>
-                            <a href="#" class="item">Service Three</a>
-                            <a href="#" class="item">Service Four</a>
-                        </div>
-                    </div>
-                    <div class="ten wide column">
-                        <h4 class="ui header">Footer Header</h4>
-                        <p>Yes I know you probably disregarded the earlier boasts as non-sequitor filler content, but its really true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance.</p>
-                    </div>
+                        <li class="dropdown" style="border-right: 2px solid silver;">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Data
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownDataMenu">
+                                <li><a asp-controller="Employee" asp-action="Index">Employee</a></li>
+                                <li><a asp-controller="Computer" asp-action="Index">Computer</a></li>
+                                <li><a asp-controller="Phone" asp-action="Index">Phone</a></li>
+                                <li><a asp-controller="Mobile" asp-action="Index">Mobile</a></li>
+                            </ul>
+                        </li>
+                        <li style="border-right: 2px solid silver;">
+                            <a asp-controller="Home" asp-action="Contact">Contact</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2016 - jmbde</p>
+        </footer>
+    </div>
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/semantic/dist/semantic.js"></script>
-        <script src="~/js/site.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.3.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery">
         </script>
-        <script src="https://oss.maxcdn.com/semantic-ui/2.1.8/semantic.min.js"
-                asp-fallback-src="~/lib/semantic/dist/semantic.min.js"
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 

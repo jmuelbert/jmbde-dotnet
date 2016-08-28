@@ -15,15 +15,5 @@
       "renameLocals": true
     },
     "sourceMap": false
-  },
-  {
-    "outputFileName": "wwwroot/js/semantic.validation.min.js",
-    "inputFiles": [
-      "wwwroot/js/semantic.validation.js"
-    ],
-    "minify": {
-      "enabled": true,
-      "renameLocals": true
-    }
   }
 ]

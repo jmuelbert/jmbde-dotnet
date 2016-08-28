@@ -1,0 +1,77 @@
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<jmbde.Models.Phone>
+@{
+	ViewBag.Title = "Phone";
+}
+
+<h2>
+    Phone's
+</h2>
+
+<p>
+	<a asp-action="Create">Create a New Phone</a>
+</p>
+
+<table id="phone" class="table table-condensed table-hover table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.FirstName)
+            </th>
+            <th>
+                <p>Action</p>
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.FirstName)
+            </th>
+            <th>
+                <p>Action</p>
+            </th>
+        </tr>
+    </tfoot>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.FirstName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td> 
+        </tr>
+    }
+</table>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#phone').DataTable();
+        } );
+    </script>
+}

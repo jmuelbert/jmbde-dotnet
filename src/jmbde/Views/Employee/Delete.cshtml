@@ -1,0 +1,44 @@
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model jmbde.Models.Employee
+@{
+	ViewBag.Title = "Delete Employee";
+}
+
+<h2>
+    Delete Employee
+</h2>
+
+<h3>
+    Are you sure want to delete this ?
+</h3>
+
+@if (ViewBag.Retry)
+{
+    <p class="alert-danger">Error deleting. Retry ?</p>
+}
+
+<div>
+    <dl>
+        @Html.DisplayNameFor(model => model.Name)
+    </dl>
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.FirstName)
+    </dt>
+    <dl>
+        @Html.DisplayFor(model => model.FirstName)
+    </dl>
+    
+    <div>
+        <form asp-controller="Employee" asp-action="Delete" method="POST">
+            <div class="form-group">
+                <input type="submit" class="btn btn-default" value="Delete" />
+            </div>
+        </form>
+        <p><a asp-controller="Employee" asp-action="Index">Back to List</a></p>
+    </div>
+</div>

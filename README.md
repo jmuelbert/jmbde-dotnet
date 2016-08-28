@@ -5,18 +5,23 @@ AppVeyor: [![AppVeyor](https://ci.appveyor.com/api/projects/status/ja8a7j6jscj7k
 Travis: [![Travis](https://travis-ci.org/aspnet/MusicStore.svg?branch=dev)](https://travis-ci.org/jmuelbert/jmbde-aspnet)
 
 A database tool to manage Employees, Computers, Phones and Mobiles in a Company
-
-## Run on Windows
+## Prepare the App
+* **[Windows]**
 * Open a command prompt and cd `src\jmbde`.
-* **[WebListener:**
-    4. Run `dnx . web`(Application started at URL **http://localhost:5002/**)
-* **[Kestrel]**
-    5. Run `dnx . kestrel`(Apllication started at URL **http://localhost:5004/**)
-* **[CustomHost]**
-    6. Run `dnx . run`(This hosts the app in a console applcation - Application started at URL **http://localhost:5003/**).
+* Run `dotnet restore` - Load the Dependencies.
+* Run `dotnet ef database update`- Create a new blank database.
 
-## To run the jmbde App on Mac/Mono or Linux:
-* Follow the instructions at the [Home](https://github.com/aspnet/Home( repository to install Mono and DNVM on the System
+* **[Linux or maxOS]**
 * Open a command prompt and excute `cd src/jmbde'.
-* Execute `dnu restore``
-* Try run `dnx kestrel`to run the application
+* Run `dotnet restore` - Load the Dependencies.
+* Run `dotnet ef database update`- Create a new blank database.
+
+## Run the jmbde App
+* **[Windows]**
+* Open a command prompt and cd `src\jmbde`.
+* Run `dotnet run` (This hosts the app in a console application - Application started at URL **http://localhost:5000/**).
+
+* **[Linux or macOS]**
+* Open a command prompt and excute `cd src/jmbde'.
+* Run `dotnet restore` - Load the Dependencies.
+* Try run `dotnet run` (This hosts the app in a console application - Application started at URL **http://localhost:5000/**).

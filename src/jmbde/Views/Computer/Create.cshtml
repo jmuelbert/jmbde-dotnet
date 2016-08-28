@@ -1,0 +1,36 @@
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model jmbde.Models.Computer
+@{
+	ViewBag.Title = "Create Computer Entry";
+}
+
+<h2>
+    Create Computer Entry
+</h2>
+
+<div>
+    <form asp-controller="Computer" asp-action="Create" method="post">
+     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+        <div class="form-inline">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" placeholder="Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <select asp-for="EmployeeId" asp-items="@ViewBag.Items"></select>
+        </div>
+                   
+        <input type="submit" class="btn btn-default" value="Create" />
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
