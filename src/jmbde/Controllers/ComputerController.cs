@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿/*
-=======
 /*
->>>>>>> origin/newver
  * Copyright 2016 Jürgen Mülbert
  *
  * Licensed under the EUPL, Version 1.1 or – as soon they

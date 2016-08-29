@@ -59,12 +59,6 @@
         }
     },
 
-<<<<<<< HEAD
-  "commands": {
-    "web": "Microsoft.AspNet.Server.Kestrel",
-    "ef": "EntityFramework.Commands",
-  },
-=======
     "frameworks": {
         "netcoreapp1.0": {
             "imports": [
@@ -73,7 +67,6 @@
             ]
         }
     },
->>>>>>> origin/newver
 
     "buildOptions": {
         "emitEntryPoint": true,

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿/*
-=======
 /*
->>>>>>> origin/newver
  * Copyright 2016 Jürgen Mülbert
  *
  * Licensed under the EUPL, Version 1.1 or – as soon they
@@ -22,11 +18,6 @@
   permissions and limitations under the Licence.
 */
 
-<<<<<<< HEAD
-=======
-using System;
-using System.Collections.Generic;
->>>>>>> origin/newver
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;

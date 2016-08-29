@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿/*
+/*
  * Copyright 2016 Jürgen Mülbert
  *
  * Licensed under the EUPL, Version 1.1 or – as soon they
@@ -19,8 +18,6 @@
   permissions and limitations under the Licence.
 */
 
-=======
->>>>>>> origin/newver
 using System;
 using System.Collections.Generic;
 using System.Linq;
