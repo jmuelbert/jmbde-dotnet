@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿/*
  * Copyright 2016 Jürgen Mülbert
  *
@@ -18,11 +19,13 @@
   permissions and limitations under the Licence.
 */
 
+=======
+>>>>>>> origin/newver
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace jmbde.Controllers
 {

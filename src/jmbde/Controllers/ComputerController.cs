@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿/*
+=======
+/*
+>>>>>>> origin/newver
  * Copyright 2016 Jürgen Mülbert
  *
  * Licensed under the EUPL, Version 1.1 or – as soon they
@@ -22,37 +26,44 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Microsoft.Data.Entity;
 
+using jmbde.Data;
 using jmbde.Models;
-using Microsoft.AspNet.Mvc.Rendering;
 
-
-
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace jmbde.Controllers
 {
     /// <summary>
-    /// The ComputerController
+    /// The Computer-Controller
     /// </summary>
     public class ComputerController : Controller
     {
-        [FromServices]
-        public JMBDEContext JMBDEContext { get; set; }
-
-        [FromServices]
-        public ILogger<CompanyController> Logger { get; set; }
+        /// <summary>
+        /// The Context Variable
+        /// </summary>
+        private JMBDEContext _context;
 
         /// <summary>
-        // GET: /<controller>
+        /// ctor for the Controller
         /// </summary>
-        /// <returns></returns>
-        public IActionResult Index()
+        /// <param name="context"></param>
+        public ComputerController(JMBDEContext context) 
         {
-            var computers = JMBDEContext.Computer
+            _context = context;
+        }
+
+        /// <summary>
+        /// GET: /<controller>/
+        /// </summary>
+        /// <returns>View</returns>
+        public IActionResult Index()
+        {   
+            var computers = _context.Computer
                 .Include(c => c.Employee)
                 .OrderBy(c => c.Name);
 
@@ -62,50 +73,51 @@ namespace jmbde.Controllers
         /// <summary>
         /// Details
         /// </summary>
-        /// Show Computer-Details
+        /// Show Computer Details
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>View</returns>
         public async Task<ActionResult> Details(int id)
         {
-            Computer computers = await JMBDEContext.Computer
+            Computer computer = await _context.Computer
                 .Include(c => c.Employee)
-                .SingleOrDefaultAsync(c => c.Id == id);
-            if (computers == null)
-            {
-                Logger.LogInformation("Details: Item not found {0}", id);
-                return HttpNotFound();
-            }
-            return View(computers);
+                .SingleOrDefaultAsync( c => c.Id == id);
+
+            return View(computer);
         }
 
         /// <summary>
-        /// Create
+        /// Create Action
         /// </summary>
         /// <returns></returns>
-        public ActionResult Create()
+        public IActionResult Create()
         {
-            ViewBag.Items = GetEmployeeListItems();
+            ViewBag.Items = GetAddressSetItems();
             return View();
         }
 
         /// <summary>
         /// Create
         /// </summary>
+        /// <param name="[Bind("></param>
+        /// <param name=""Name""></param>
+        /// <param name=""Active""></param>
+        /// <param name=""EmployeeId")"></param>
+        /// <param name="computer"></param>
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Name", "Active", "EmployeeId")] Computer computer)
+        public async Task<IActionResult> Create([Bind("Name", "Active", "EmployeeId")] Computer computer)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    JMBDEContext.Computer.Add(computer);
-                    await JMBDEContext.SaveChangesAsync();
+                    _context.Computer.Add(computer);
+                    await _context.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
             }
-            catch (Exception)
+            catch (System.Exception)
             {
                 ModelState.AddModelError(string.Empty, "Unable to save changes.");
             }
@@ -116,15 +128,12 @@ namespace jmbde.Controllers
         /// Edit
         /// </summary>
         /// <param name="id"></param>
-        public async Task<ActionResult> Edit(int id)
+        /// <returns></returns>
+        public async Task<IActionResult> Edit(int id)
         {
             Computer computer = await FindComputerAsync(id);
-            if (computer == null)
-            {
-                Logger.LogInformation("Edit: Item not found {0}", id);
-                return HttpNotFound();
-            }
-            ViewBag.Items = GetEmployeeListItems(computer.EmployeeId);
+            ViewBag.Items = GetAddressSetItems(computer.EmployeeId);
+
             return View(computer);
         }
 
@@ -132,20 +141,25 @@ namespace jmbde.Controllers
         /// Update
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="[Bind("></param>
+        /// <param name=""Name""></param>
+        /// <param name=""Active""></param>
+        /// <param name=""EmployeeId")"></param>
+        /// <param name="computer"></param>
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(int id, [Bind("Name", "Active", "EmployeeId")] Computer computer)
+        public async Task<IActionResult> Update(int id, [Bind("Name", "Active", "EmployeeId")] Computer computer)
         {
             try
             {
                 computer.Id = id;
-                JMBDEContext.Computer.Attach(computer);
-                JMBDEContext.Entry(computer).State = EntityState.Modified;
-                await JMBDEContext.SaveChangesAsync();
+                _context.Computer.Attach(computer);
+                _context.Entry(computer).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (System.Exception)
             {
                 ModelState.AddModelError(string.Empty, "Unable to save changes.");
             }
@@ -155,22 +169,17 @@ namespace jmbde.Controllers
         /// <summary>
         /// ConfirmDelete
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="retry"></param>
         /// <returns></returns>
         [HttpGet]
         [ActionName("Delete")]
-        public async Task<ActionResult> ConfirmDelete(int id, bool? retry)
+        public async Task<IActionResult> ConfirmDelete(int id, bool? retry)
         {
             Computer computer = await FindComputerAsync(id);
-            if (computer == null)
-            {
-                Logger.LogInformation("Delete: Item not found {0}", id);
-                return HttpNotFound();
-            }
             ViewBag.retry = retry ?? false;
             return View(computer);
         }
+
 
         /// <summary>
         /// Delete
@@ -179,53 +188,51 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
                 Computer computer = await FindComputerAsync(id);
-                JMBDEContext.Computer.Remove(computer);
-                await JMBDEContext.SaveChangesAsync();
+                _context.Computer.Remove(computer);
+                await _context.SaveChangesAsync();
             }
-            catch (Exception)
+            catch (System.Exception)
             {
-                return RedirectToAction("Delete", new { id = id, retry = true });
+                return RedirectToAction("Delete", new { id = id, retry = true});
             }
             return RedirectToAction("Index");
         }
 
         #region Helpers
-        /// <summary>
-        /// GetAddressSetItems
-        /// </summary>
-        //// <returns>A List of AddressSets</returns>
-        private IEnumerable<SelectListItem> GetEmployeeListItems(int selected = -1)
-        {
-            // Workaround for https://gethub.com/aspnet/EntityFramework/issies/2246
-            var tmp = JMBDEContext.Employee.ToList();
+           /// <summary>
+            ///  GetAddressSetItems
+            /// </summary>
+            /// <param name="selected"></param>
+            /// <returns></returns>
+            private IEnumerable<SelectListItem> GetAddressSetItems(int selected = -1)
+            {            
+                var tmp = _context.Employee.ToList();
+                // Create Addresses list for <select> dropbox
+                return tmp
+                    .OrderBy(employee => employee.Name)
+                    .Select(employee => new SelectListItem
+                    {
+                        Text = $"{employee.Name}, {employee.FirstName}",
+                        Value = employee.Id.ToString(),
+                        Selected = employee.Id == selected
+                    });
+            }
 
-            // Create Addresses list for <select> dropbox
-            return tmp
-                .OrderBy(employee => employee.Name)
-                .Select(employee => new SelectListItem
-                {
-                    Text = String.Format("{0}, {1}", employee.Name, employee.FirstName),
-                    Value = employee.Id.ToString(),
-                    Selected = employee.Id == selected
-                });
-        }
-
-
-        /// <summary>
-        /// FindComputerAsync
-        /// </summary>
-        /// <param name="id"></name>
-        /// <return></returns>
-        private Task<Computer> FindComputerAsync(int id)
-        {
-            return JMBDEContext.Computer
-                .SingleOrDefaultAsync(Computer => Computer.Id == id);
-        }
+            /// <summary>
+            /// FindEmployeeAsync
+            /// </summary>
+            /// <param name="id"></param>
+            /// <returns></returns>
+            private Task<Computer> FindComputerAsync(int id)
+            {
+                return _context.Computer
+                    .SingleOrDefaultAsync(computer => computer.Id == id);
+            }    
         #endregion
     }
 }

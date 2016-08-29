@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿/*
+=======
+/*
+>>>>>>> origin/newver
  * Copyright 2016 Jürgen Mülbert
  *
  * Licensed under the EUPL, Version 1.1 or – as soon they
@@ -18,85 +22,97 @@
   permissions and limitations under the Licence.
 */
 
+<<<<<<< HEAD
+=======
+using System;
+using System.Collections.Generic;
+>>>>>>> origin/newver
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Microsoft.Data.Entity;
+
+using jmbde.Data;
 using jmbde.Models;
 
-
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
+// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace jmbde.Controllers
 {
     /// <summary>
-	/// The EmployeeController
-	/// </summary>
+    /// The Employee-Controller
+    /// </summary>
     public class EmployeeController : Controller
     {
-        [FromServices]
-        public JMBDEContext JMBDEContext { get; set; }
-
-        [FromServices]
-        public ILogger<EmployeeController> Logger { get; set; }
+        /// <summary>
+        /// The Context Variable
+        /// </summary>
+        private JMBDEContext _context;
 
         /// <summary>
-        /// GET: /<Controller>/
+        /// ctor for the Controller
         /// </summary>
-        /// <returns></returns>
-        public IActionResult Index()
+        /// <param name="context"></param>
+        public EmployeeController(JMBDEContext context) 
         {
-            var employees = JMBDEContext.Employee
-                .OrderBy(c => c.Name);
+            _context = context;
+        }
 
+        /// <summary>
+        /// GET: /<controller>/
+        /// </summary>
+        /// <returns>View</returns>
+        public IActionResult Index()
+        {   
+            var employees = _context.Employee
+                .OrderBy(c => c.Name);
             return View(employees);
         }
 
         /// <summary>
         /// Details
         /// </summary>
-        /// Show Employee-Details
+        /// Show Employee Details
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>View</returns>
         public async Task<ActionResult> Details(int id)
         {
             Employee employee = await FindEmployeeAsync(id);
-            if (employee == null)
-            {
-                Logger.LogInformation("Details: Item not found {0}", id);
-                return HttpNotFound();
-            }
             return View(employee);
         }
 
         /// <summary>
-        /// Create
+        /// Create Action
         /// </summary>
         /// <returns></returns>
-        public ActionResult Create()
+        public IActionResult Create()
         {
-            // ViewBag.Items = GetAddressSetItems();
             return View();
         }
-
 
         /// <summary>
         /// Create
         /// </summary>
+        /// <param name=""EmployeeNO""></param>
+        /// <param name=""FirstName""></param>
+        /// <param name=""Name""></param>
+        /// <param name=""BusinessMail""></param>
+        /// <param name=""ChipCard""></param>
+        /// <param name=""DataCare""></param>
+        /// <param name="employee"></param>
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("EmployeeNO", "FirstName", "Name", "BusinessMail",
-                         "ChipCard", "DataCare", "Active")] Employee employee)
+        public async Task<IActionResult> Create([Bind("EmployeeNO", "FirstName", "Name", "BusinessMail",
+            "ChipCard", "DataCare", "Active")] Employee employee)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    JMBDEContext.Employee.Add(employee);
-                    await JMBDEContext.SaveChangesAsync();
+                    _context.Employee.Add(employee);
+                    await _context.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
             }
@@ -111,15 +127,10 @@ namespace jmbde.Controllers
         /// Edit
         /// </summary>
         /// <param name="id"></param>
-        public async Task<ActionResult> Edit(int id)
+        /// <returns></returns>
+        public async Task<IActionResult> Edit(int id)
         {
             Employee employee = await FindEmployeeAsync(id);
-            if (employee == null)
-            {
-                Logger.LogInformation("Edit: Item not found {0}", id);
-                return HttpNotFound();
-            }
-            // ViewBag.Items = GetAddressSetItems(employee.AddressSet.Id);
             return View(employee);
         }
 
@@ -127,18 +138,25 @@ namespace jmbde.Controllers
         /// Update
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="[Bind("EmployeeNO""></param>
+        /// <param name=""FirstName""></param>
+        /// <param name=""Name""></param>
+        /// <param name=""BusinessMail""></param>
+        /// <param name=""ChipCard""></param>
+        /// <param name=""DataCare""></param>
+        /// <param name="employee"></param>
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(int id, [Bind("EmployeeNO", "FirstName", "Name", "BusinessMail",
-                         "ChipCard", "DataCare", "Active")] Employee employee)
+        public async Task<IActionResult> Update(int id, [Bind("EmployeeNO", "FirstName", "Name", "BusinessMail",
+            "ChipCard", "DataCare", "Active")] Employee employee)
         {
             try
             {
                 employee.Id = id;
-                JMBDEContext.Employee.Attach(employee);
-                JMBDEContext.Entry(employee).State = EntityState.Modified;
-                await JMBDEContext.SaveChangesAsync();
+                _context.Employee.Attach(employee);
+                _context.Entry(employee).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             catch (System.Exception)
@@ -151,22 +169,17 @@ namespace jmbde.Controllers
         /// <summary>
         /// ConfirmDelete
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="retry"></param>
         /// <returns></returns>
         [HttpGet]
         [ActionName("Delete")]
-        public async Task<ActionResult> ConfirmDelete(int id, bool? retry)
+        public async Task<IActionResult> ConfirmDelete(int id, bool? retry)
         {
             Employee employee = await FindEmployeeAsync(id);
-            if (employee == null)
-            {
-                Logger.LogInformation("Delete: Item not found {0}", id);
-                return HttpNotFound();
-            }
             ViewBag.retry = retry ?? false;
             return View(employee);
         }
+
 
         /// <summary>
         /// Delete
@@ -175,56 +188,55 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
                 Employee employee = await FindEmployeeAsync(id);
-                JMBDEContext.Employee.Remove(employee);
-                await JMBDEContext.SaveChangesAsync();
+                _context.Employee.Remove(employee);
+                await _context.SaveChangesAsync();
             }
             catch (System.Exception)
             {
-                return RedirectToAction("Delete", new { id = id, retry = true });
+                return RedirectToAction("Delete", new { id = id, retry = true});
             }
             return RedirectToAction("Index");
         }
 
         #region Helpers
+            /// <summary>
+            ///  GetAddressSetItems
+            /// </summary>
+            /// <param name="selected"></param>
+            /// <returns></returns>
+            // private IEnumerable<SelectListItem> GetAddressSetItems(int selected = -1)
+            // {
+            //    // Workaround for https://github.com/aspnet/EntityFramework/issues/2246
+            //    var tmp = _context.AddressSet.Tolist();
+            //
+            //    // Create Addresses list for <select> dropbox
+            //    return tmp
+            //        .OrderBy(addr => addr.Zip)
+            //        .OrderBy(addr => addr.City)
+            //        .OrderBy(addr => addr.Street)
+            //        .Select(addr => new SelectListItem
+            //        {
+            //            Text = $"{0} - {1}, {2}", addr.Zip, addr.City, addr.Street),
+            //            Value = addr.Id.ToString(),
+            //            Selected = addr.Id == selected
+            //        });
+            // }
 
-        /// <summary>
-        /// GetAddressSetItems
-        /// </summary>
-        /* <returns>A List of AddressSets</returns>
-        private IEnumerable<SelectListItem> GetAddressSetItems(int selected = -1)
-        {
-            // Workaround for https://gethub.com/aspnet/EntityFramework/issies/2246
-            var tmp = JMBDEContext.AddressSet.ToList();
-
-            // Create Addresses list for <select> dropbox
-            return tmp
-                .OrderBy(addr => addr.Zip)
-                .OrderBy(addr => addr.City)
-                .OrderBy(addr => addr.Street)
-                .Select(addr => new SelectListItem
-                {
-                    Text = String.Format("{0} - {1}, {2}", addr.Zip, addr.City, addr.Street),
-                    Value = addr.Id.ToString(),
-                    Selected = addr.Id == selected
-                });
-        }
-        */
-
-        /// <summary>
-        /// FindEmployeeAsync
-        /// </summary>
-        /// <param name="id"></name>
-        /// <return></returns>
-        private Task<Employee> FindEmployeeAsync(int id)
-        {
-            return JMBDEContext.Employee
-                .SingleOrDefaultAsync(employee => employee.Id == id);
-        }
+            /// <summary>
+            /// FindEmployeeAsync
+            /// </summary>
+            /// <param name="id"></param>
+            /// <returns></returns>
+            private Task<Employee> FindEmployeeAsync(int id)
+            {
+                return _context.Employee
+                    .SingleOrDefaultAsync(employee => employee.Id == id);
+            }    
         #endregion
     }
 }

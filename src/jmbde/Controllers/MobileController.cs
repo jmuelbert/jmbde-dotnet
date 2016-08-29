@@ -1,4 +1,5 @@
-﻿/*
+
+/*
  * Copyright 2016 Jürgen Mülbert
  *
  * Licensed under the EUPL, Version 1.1 or – as soon they
@@ -22,86 +23,93 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Microsoft.Data.Entity;
-using Microsoft.AspNet.Mvc.Rendering;
 
+using jmbde.Data;
 using jmbde.Models;
 
-
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace jmbde.Controllers
 {
     /// <summary>
-	/// The MobileController
-	/// </summary>
+    /// The Mobile-Controller
+    /// </summary>
     public class MobileController : Controller
     {
-        [FromServices]
-        public JMBDEContext JMBDEContext { get; set; }
-
-        [FromServices]
-        public ILogger<MobileController> Logger { get; set; }
+        /// <summary>
+        /// The Context Variable
+        /// </summary>
+        private JMBDEContext _context;
 
         /// <summary>
-        /// GET: /<Controller>/
+        /// ctor for the Controller
         /// </summary>
-        /// <returns></returns>
-        public IActionResult Index()
+        /// <param name="context"></param>
+        public MobileController(JMBDEContext context) 
         {
-            var mobiles = JMBDEContext.Mobile
-                .OrderBy(c => c.Number)
-                 .Include(c => c.Employee);
+            _context = context;
+        }
 
+        /// <summary>
+        /// GET: /<controller>/
+        /// </summary>
+        /// <returns>View</returns>
+        public IActionResult Index()
+        {   
+            var mobiles = _context.Mobile
+                .Include(m => m.Employee)
+                .OrderBy(m => m.Number);
             return View(mobiles);
         }
 
         /// <summary>
         /// Details
         /// </summary>
-        /// Show Mobile-Details
+        /// Show Employee Details
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>View</returns>
         public async Task<ActionResult> Details(int id)
         {
-            Mobile mobile = await JMBDEContext.Mobile
-                .Include(c => c.Employee)
-                .SingleOrDefaultAsync(c => c.Id == id);
-            if (mobile == null)
-            {
-                Logger.LogInformation("Details: Item not found {0}", id);
-                return HttpNotFound();
-            }
+            Mobile mobile = await _context.Mobile
+                .Include(m => m.Employee)
+                .SingleOrDefaultAsync(m => m.Id == id);
+
             return View(mobile);
         }
 
         /// <summary>
-        /// Create
+        /// Create Action
         /// </summary>
         /// <returns></returns>
-        public ActionResult Create()
+        public IActionResult Create()
         {
-            ViewBag.Items = GetEmployeeListItems();
+            ViewBag.Items = GetAddressSetItems();
             return View();
         }
-
 
         /// <summary>
         /// Create
         /// </summary>
+        /// <param name="[Bind("></param> 
+        /// <param name=""Number""></param>
+        /// <param name=""EmployeeId""></param>
+        /// <param name=""Active")"></param>
+        /// <param name="mobile"></param>
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Number", "EmployeeId")] Mobile mobile)
+        public async Task<IActionResult> Create([Bind("Number", "EmployeeId", "Active")] Mobile mobile)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    JMBDEContext.Mobile.Add(mobile);
-                    await JMBDEContext.SaveChangesAsync();
+                    _context.Mobile.Add(mobile);
+                    await _context.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
             }
@@ -116,15 +124,12 @@ namespace jmbde.Controllers
         /// Edit
         /// </summary>
         /// <param name="id"></param>
-        public async Task<ActionResult> Edit(int id)
+        /// <returns></returns>
+        public async Task<IActionResult> Edit(int id)
         {
             Mobile mobile = await FindMobileAsync(id);
-            if (mobile == null)
-            {
-                Logger.LogInformation("Edit: Item not found {0}", id);
-                return HttpNotFound();
-            }
-            ViewBag.Items = GetEmployeeListItems(mobile.EmployeeId);
+            ViewBag.Items = GetAddressSetItems(mobile.EmployeeId);
+
             return View(mobile);
         }
 
@@ -132,17 +137,22 @@ namespace jmbde.Controllers
         /// Update
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="[Bind("></param>>
+        /// <param name=""Number""></param>
+        /// <param name=""EmployeeId""></param>
+        /// <param name=""Active")"></param>
+        /// <param name="mobile"></param>
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(int id, [Bind("Number", "EmployeeId")] Mobile mobile)
+        public async Task<IActionResult> Update(int id, [Bind("Number", "EmployeeId", "Active")] Mobile mobile)
         {
             try
             {
                 mobile.Id = id;
-                JMBDEContext.Mobile.Attach(mobile);
-                JMBDEContext.Entry(mobile).State = EntityState.Modified;
-                await JMBDEContext.SaveChangesAsync();
+                _context.Mobile.Attach(mobile);
+                _context.Entry(mobile).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             catch (System.Exception)
@@ -155,22 +165,17 @@ namespace jmbde.Controllers
         /// <summary>
         /// ConfirmDelete
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="retry"></param>
         /// <returns></returns>
         [HttpGet]
         [ActionName("Delete")]
-        public async Task<ActionResult> ConfirmDelete(int id, bool? retry)
+        public async Task<IActionResult> ConfirmDelete(int id, bool? retry)
         {
-            Mobile Mobile = await FindMobileAsync(id);
-            if (Mobile == null)
-            {
-                Logger.LogInformation("Delete: Item not found {0}", id);
-                return HttpNotFound();
-            }
+            Mobile mobile = await FindMobileAsync(id);
             ViewBag.retry = retry ?? false;
-            return View(Mobile);
+            return View(mobile);
         }
+
 
         /// <summary>
         /// Delete
@@ -179,52 +184,52 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
                 Mobile mobile = await FindMobileAsync(id);
-                JMBDEContext.Mobile.Remove(mobile);
-                await JMBDEContext.SaveChangesAsync();
+                _context.Mobile.Remove(mobile);
+                await _context.SaveChangesAsync();
             }
             catch (System.Exception)
             {
-                return RedirectToAction("Delete", new { id = id, retry = true });
+                return RedirectToAction("Delete", new { id = id, retry = true});
             }
             return RedirectToAction("Index");
         }
 
-        #region Helpers
+         #region Helpers
+           /// <summary>
+            ///  GetAddressSetItems
+            /// </summary>
+            /// <param name="selected"></param>
+            /// <returns></returns>
+            private IEnumerable<SelectListItem> GetAddressSetItems(int selected = -1)
+            {            
+                var tmp = _context.Employee.ToList();
+                // Create Addresses list for <select> dropbox
+                return tmp
+                    .OrderBy(employee => employee.Name)
+                    .Select(employee => new SelectListItem
+                    {
+                        Text = $"{employee.Name}, {employee.FirstName}",
+                        Value = employee.Id.ToString(),
+                        Selected = employee.Id == selected
+                    });
+            }
 
-        /// <summary>
-        /// GetAddressSetItems
-        /// </summary>
-        //// <returns>A List of AddressSets</returns>
-        private IEnumerable<SelectListItem> GetEmployeeListItems(int selected = -1)
-        {
-            // Workaround for https://gethub.com/aspnet/EntityFramework/issies/2246
-            var tmp = JMBDEContext.Employee.ToList();
 
-            // Create Addresses list for <select> dropbox
-            return tmp
-                .OrderBy(employee => employee.Name)
-                .Select(employee => new SelectListItem
-                {
-                    Text = String.Format("{0}, {1}", employee.Name, employee.FirstName),
-                    Value = employee.Id.ToString(),
-                    Selected = employee.Id == selected
-                });
-        }
-        /// <summary>
-        /// FindMobileAsync
-        /// </summary>
-        /// <param name="id"></name>
-        /// <return></returns>
-        private Task<Mobile> FindMobileAsync(int id)
-        {
-            return JMBDEContext.Mobile
-                .SingleOrDefaultAsync(Mobile => Mobile.Id == id);
-        }
+            /// <summary>
+            /// FindEmployeeAsync
+            /// </summary>
+            /// <param name="id"></param>
+            /// <returns></returns>
+            private Task<Mobile> FindMobileAsync(int id)
+            {
+                return _context.Mobile
+                    .SingleOrDefaultAsync(mobile => mobile.Id == id);
+            }    
         #endregion
     }
 }
