@@ -50,8 +50,15 @@
                                 <li><a asp-controller="Mobile" asp-action="Index">Mobile</a></li>
                             </ul>
                         </li>
-                        <li style="border-right: 2px solid silver;">
-                            <a asp-controller="Home" asp-action="Contact">Contact</a>
+                        <li class="dropdown" style="border-right:2px solid silver;">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Help
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-aria-labelledby="dropdownHelpMenu">                                
+                                <li><a asp-controller="Home" asp-action="About">About</a></li>
+                                <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
