@@ -2,7 +2,7 @@
 
 AppVeyor: [![AppVeyor](https://ci.appveyor.com/api/projects/status/ja8a7j6jscj7k3xa/branch/master?svg=true)](https://ci.appveyor.com/project/jmuelbert/jmbde-aspnet)
 
-Travis: [![Travis](hhttps://travis-ci.org/jmuelbert/jmbde-aspnet.svg?branch=master)](https://travis-ci.org/jmuelbert/jmbde-aspnet)
+Travis: [![Build Status](https://travis-ci.org/jmuelbert/jmbde-aspnet.svg?branch=master)](https://travis-ci.org/jmuelbert/jmbde-aspnet)
 
 A database tool to manage Employees, Computers, Phones and Mobiles in a Company
 ## Prepare the App
