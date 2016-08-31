@@ -11,7 +11,7 @@ A database tool to manage Employees, Computers, Phones and Mobiles in a Company
 * Run `dotnet restore` - Load the Dependencies.
 * Run `dotnet ef database update`- Create a new blank database.
 
-* **[Linux or maxOS]**
+* **[Linux or macOS]**
 * Open a command prompt and excute `cd src/jmbde`.
 * Run `dotnet restore` - Load the Dependencies.
 * Run `dotnet ef database update`- Create a new blank database.
