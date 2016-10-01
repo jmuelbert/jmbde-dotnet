@@ -1,3 +1,4 @@
+#region Copyright 
 /*
  * Copyright 2016 Jürgen Mülbert
  *
@@ -17,11 +18,8 @@
  * See the Licence for the specific language governing
   permissions and limitations under the Licence.
 */
+#endregion 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -30,7 +28,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 using jmbde.Data;
-using jmbde.Models;
 
 
 namespace jmbde

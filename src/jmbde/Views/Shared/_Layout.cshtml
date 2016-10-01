@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Required meta tags always come first -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@ViewData["Title"] - jmbde</title>
 
     <environment names="Development">
@@ -11,7 +13,7 @@
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"
@@ -21,50 +23,33 @@
     </environment>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-             <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-controller="Home" asp-action="Index" class="navbar-brand">jmbde</a>
+    <nav class="navbar navbar-light bg-faded">
+        <a class="navbar-brand" href="#">jmbde</</a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspop="true" aria-expanded="false">Data</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" asp-controller="Employee" asp-action="Index">Employee</a>
+                    <a class="dropdown-item" asp-controller="Computer" asp-action="Index">Computer</a>
+                    <a class="dropdown-item disabled" asp-cntroller="Printer" asp-action="Index">Printer</a>
+                    <a class="dropdown-item" asp-controller="Phone" asp-action="Index">Phone</a>
+                    <a class="dropdown-item" asp-controller="Mobile" asp-action="Index">Mobile</a>
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active" style="border-right:2px solid silver;">
-                            <a asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-
-                        <li class="dropdown" style="border-right: 2px solid silver;">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Data
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownDataMenu">
-                                <li><a asp-controller="Employee" asp-action="Index">Employee</a></li>
-                                <li><a asp-controller="Computer" asp-action="Index">Computer</a></li>
-                                <li><a asp-controller="Phone" asp-action="Index">Phone</a></li>
-                                <li><a asp-controller="Mobile" asp-action="Index">Mobile</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown" style="border-right:2px solid silver;">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Help
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu" aria-aria-labelledby="dropdownHelpMenu">                                
-                                <li><a asp-controller="Home" asp-action="About">About</a></li>
-                                <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspop="true" aria-expanded="false">Help</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" asp-controller="Home" asp-action="About">About</a>
+                    <a class="dropdown-item" asp-controller="Home" asp-action="Contact">Contact</a>
                 </div>
-            </div>
-        </div>
-    </div>
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- Body -->
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -76,17 +61,14 @@
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/datatables.net/js/jquery.dataTables.js"></script>
+        <script src="~/lib/datatable.net-bs/js/dataTables.bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.3.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
