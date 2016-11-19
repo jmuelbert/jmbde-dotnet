@@ -8,6 +8,7 @@
         "jquery-validation-unobtrusive": "3.2.6",
         "jquery-bootgrid": "latest",
         "datatables.net": "latest",
-        "datatables.net-bs": "latest"
+        "datatables.net-bs": "latest",
+        "semantic": "2.1.8"
     }
 }

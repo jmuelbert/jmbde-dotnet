@@ -1,29 +1,25 @@
-FROM microsoft/dotnet:latest
+FROM microsoft/dotnet:1.0-runtime-deps
 
-RUN apt-get update && apt-get install sqlite3 libsqlite3-dev
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        curl \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY ./src/jmbde /app
+# Install .NET Core
+ENV DOTNET_VERSION 1.0.1
+ENV DOTNET_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/$DOTNET_VERSION/dotnet-debian-x64.$DOTNET_VERSION.tar.gz
 
-<<<<<<< develop
+RUN curl -SL $DOTNET_DOWNLOAD_URL --output dotnet.tar.gz \
+    && mkdir -p /usr/share/dotnet \
+    && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
+    && rm dotnet.tar.gz \
+    && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
+
+RUN apt-get update && apt-get install -y sqlite3 libsqlite3-dev && rm -rf /var/lib/apt/lists/*
+
+COPY ./out /app
+
 WORKDIR /app
 
-RUN ["dotnet", "restore"]
-
-RUN ["dotnet", "build"]
-
-RUN ["dotnet", "ef", "database", "update"]
-
-EXPOSE 5000/tcp
-
-ENTRYPOINT ["dotnet", "run", "--server.urls", "http://0.0.0.0:5000"]
-=======
-COPY ./src/jmbde /app
-
-WORKDIR /app
-
-RUN ["dnu", "restore"]
-
-EXPOSE 5000/tcp
-
-ENTRYPOINT ["dnx", "-p", "project.json", "web"]
->>>>>>> Add Excelexport. Add Useraccount
+ENTRYPOINT ["dotnet", "jmbde.dll"]

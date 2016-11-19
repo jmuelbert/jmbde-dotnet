@@ -10,14 +10,18 @@ namespace jmbde.Data
         public virtual DbSet<Mobile> Mobile { get; set; }
         public virtual DbSet<Phone> Phone { get; set; }
         
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public JMBDEContext(DbContextOptions<JMBDEContext> options)
+            : base(options)
         {
-            optionsBuilder.UseSqlite(@"Data Source=jmbdeSQLite.db3");
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            // Customize the ASP.NET Identity model and override the defaults if needed.
+            // For example, you can rename the ASP.NET Identity table names and more.
+            // Add your customizations after calling base.OnModelCreating(builder);
         }
     }
 }
