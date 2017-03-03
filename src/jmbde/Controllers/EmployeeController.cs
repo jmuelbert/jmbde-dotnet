@@ -22,10 +22,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 using jmbde.Data;
-using jmbde.Models;
+
+
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -39,13 +39,13 @@ namespace jmbde.Controllers
         /// <summary>
         /// The Context Variable
         /// </summary>
-        private JMBDEContext _context;
+        private jmbdesqliteContext _context;
 
         /// <summary>
         /// ctor for the Controller
         /// </summary>
         /// <param name="context"></param>
-        public EmployeeController(JMBDEContext context) 
+        public EmployeeController(jmbdesqliteContext context) 
         {
             _context = context;
         }
@@ -57,7 +57,7 @@ namespace jmbde.Controllers
         public IActionResult Index()
         {   
             var employees = _context.Employee
-                .OrderBy(c => c.Name);
+                .OrderBy(c => c.Lastname);
             return View(employees);
         }
 
@@ -95,8 +95,8 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeNO", "FirstName", "Name", "BusinessMail",
-            "ChipCard", "DataCare", "Active")] Employee employee)
+        public async Task<IActionResult> Create([Bind("EmployeeNr", "Firstname", "Lastname", "Businessemail",
+            "ChipcardId", "Datacare", "Active")] Employee employee)
         {
             try
             {
@@ -139,12 +139,12 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id, [Bind("EmployeeNO", "FirstName", "Name", "BusinessMail",
-            "ChipCard", "DataCare", "Active")] Employee employee)
+        public async Task<IActionResult> Update(int id, [Bind("EmployeeNr", "Firstname", "Lastname", "Businessemail",
+            "ChipcardId", "Datacare", "Active")] Employee employee)
         {
             try
             {
-                employee.Id = id;
+                employee.EmployeeId = id;
                 _context.Employee.Attach(employee);
                 _context.Entry(employee).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
@@ -226,7 +226,7 @@ namespace jmbde.Controllers
             private Task<Employee> FindEmployeeAsync(int id)
             {
                 return _context.Employee
-                    .SingleOrDefaultAsync(employee => employee.Id == id);
+                    .SingleOrDefaultAsync(employee => employee.EmployeeId == id);
             }    
         #endregion
     }

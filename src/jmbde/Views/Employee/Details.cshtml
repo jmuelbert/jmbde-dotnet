@@ -1,7 +1,7 @@
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model jmbde.Models.Employee
+@model jmbde.Data.Employee
 @{
 	ViewBag.Title = "Employee Details";
 }
@@ -13,41 +13,41 @@
 <div class="row">
     <div id="id" class="col-sm-2">
         <strong>
-        @Html.DisplayNameFor(model => model.EmployeeNO)
+        @Html.DisplayNameFor(model => model.EmployeeNr)
         </strong>
     </div>
     <div id="id-value" class="col-sm-4">
-        @Html.DisplayFor(model => model.EmployeeNO)
+        @Html.DisplayFor(model => model.EmployeeNr)
     </div>
 </div>
 <div class="row">
     <div id="name" class="col-sm-2">
-        @Html.DisplayNameFor(model => model.Name)
+        @Html.DisplayNameFor(model => model.Lastname)
     </div>
     <div id="id-value" class="col-sm-4">
-        @Html.DisplayFor(model => model.FirstName)
+        @Html.DisplayFor(model => model.Firstname)
         &nbsp;
-        @Html.DisplayFor(model => model.Name)
+        @Html.DisplayFor(model => model.Lastname)
     </div>
 </div>
 <div class="row">
     <div class="col-sm-2">
         <strong>
-        @Html.DisplayNameFor(model => model.BusinessMail)
+        @Html.DisplayNameFor(model => model.Businessemail)
         </strong>
     </div>
     <div class="col-sm-4">
-        @Html.DisplayFor(model => model.BusinessMail)
+        @Html.DisplayFor(model => model.Businessemail)
     </div>       
 </div>
 <div class="row">
     <div class="col-sm-2">
         <strong>
-        @Html.DisplayNameFor(model => model.ChipCard)
+        @Html.DisplayNameFor(model => model.ChipcardId)
         </strong>
     </div>
     <div class="col-sm-4">
-        @Html.DisplayFor(model => model.ChipCard)
+        @Html.DisplayFor(model => model.ChipcardId)
     </div>
 </div>
 <div class="row">
@@ -60,16 +60,16 @@
     </div>  
 </div>
 <div class="row">
-    <label class="control-label col-sm-3 col-md-2" asp-for="DataCare"></label>
+    <label class="control-label col-sm-3 col-md-2" asp-for="Datacare"></label>
     <div class="col-sm-9 col-md-10">
         <div class="checkbox">
-            <input type="checkbox" class="check-box" name="DataCare" id="DataCare" value="true" data-val="true" />
-            <input name="DataCare" type="hidden" value="false" />
+            <input type="checkbox" class="check-box" name="Datacare" id="Datacare" value="true" data-val="true" />
+            <input name="Datacare" type="hidden" value="false" />
         </div>
     </div>
 </div>
 
 <p>
-    <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>  
+    <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.EmployeeId">Edit</a>  
     <a class="btn btn-primary" asp-action="Index">Back to List</a> 
 </p>

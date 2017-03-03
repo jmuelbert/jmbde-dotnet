@@ -19,17 +19,15 @@
   permissions and limitations under the Licence.
 */
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 using jmbde.Data;
-using jmbde.Models;
+
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -43,13 +41,13 @@ namespace jmbde.Controllers
         /// <summary>
         /// The Context Variable
         /// </summary>
-        private JMBDEContext _context;
+        private jmbdesqliteContext _context;
 
         /// <summary>
         /// ctor for the Controller
         /// </summary>
         /// <param name="context"></param>
-        public MobileController(JMBDEContext context) 
+        public MobileController(jmbdesqliteContext context) 
         {
             _context = context;
         }
@@ -76,7 +74,7 @@ namespace jmbde.Controllers
         {
             Mobile mobile = await _context.Mobile
                 .Include(m => m.Employee)
-                .SingleOrDefaultAsync(m => m.Id == id);
+                .SingleOrDefaultAsync(m => m.MobileId == id);
 
             return View(mobile);
         }
@@ -128,7 +126,7 @@ namespace jmbde.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             Mobile mobile = await FindMobileAsync(id);
-            ViewBag.Items = GetAddressSetItems(mobile.EmployeeId);
+            ViewBag.Items = GetAddressSetItems((int ) mobile.EmployeeId);
 
             return View(mobile);
         }
@@ -149,7 +147,7 @@ namespace jmbde.Controllers
         {
             try
             {
-                mobile.Id = id;
+                mobile.MobileId = id;
                 _context.Mobile.Attach(mobile);
                 _context.Entry(mobile).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
@@ -210,12 +208,12 @@ namespace jmbde.Controllers
                 var tmp = _context.Employee.ToList();
                 // Create Addresses list for <select> dropbox
                 return tmp
-                    .OrderBy(employee => employee.Name)
+                    .OrderBy(employee => employee.Lastname)
                     .Select(employee => new SelectListItem
                     {
-                        Text = $"{employee.Name}, {employee.FirstName}",
-                        Value = employee.Id.ToString(),
-                        Selected = employee.Id == selected
+                        Text = $"{employee.Lastname}, {employee.Firstname}",
+                        Value = employee.EmployeeId.ToString(),
+                        Selected = employee.EmployeeId == selected
                     });
             }
 
@@ -228,7 +226,7 @@ namespace jmbde.Controllers
             private Task<Mobile> FindMobileAsync(int id)
             {
                 return _context.Mobile
-                    .SingleOrDefaultAsync(mobile => mobile.Id == id);
+                    .SingleOrDefaultAsync(mobile => mobile.MobileId == id);
             }    
         #endregion
     }

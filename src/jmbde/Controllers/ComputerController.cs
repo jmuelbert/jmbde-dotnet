@@ -18,17 +18,14 @@
   permissions and limitations under the Licence.
 */
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 using jmbde.Data;
-using jmbde.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -42,13 +39,13 @@ namespace jmbde.Controllers
         /// <summary>
         /// The Context Variable
         /// </summary>
-        private JMBDEContext _context;
+        private jmbdesqliteContext _context;
 
         /// <summary>
         /// ctor for the Controller
         /// </summary>
         /// <param name="context"></param>
-        public ComputerController(JMBDEContext context) 
+        public ComputerController(jmbdesqliteContext context) 
         {
             _context = context;
         }
@@ -61,7 +58,7 @@ namespace jmbde.Controllers
         {   
             var computers = _context.Computer
                 .Include(c => c.Employee)
-                .OrderBy(c => c.Name);
+                .OrderBy(c => c.NetworkName);
 
             return View(computers);
         }
@@ -76,7 +73,7 @@ namespace jmbde.Controllers
         {
             Computer computer = await _context.Computer
                 .Include(c => c.Employee)
-                .SingleOrDefaultAsync( c => c.Id == id);
+                .SingleOrDefaultAsync( c => c.EmployeeId == id);
 
             return View(computer);
         }
@@ -102,7 +99,7 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name", "Active", "EmployeeId")] Computer computer)
+        public async Task<IActionResult> Create([Bind("NetworkName", "Active", "EmployeeId")] Computer computer)
         {
             try
             {
@@ -128,7 +125,7 @@ namespace jmbde.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             Computer computer = await FindComputerAsync(id);
-            ViewBag.Items = GetAddressSetItems(computer.EmployeeId);
+            ViewBag.Items = GetAddressSetItems((int ) computer.EmployeeId);
 
             return View(computer);
         }
@@ -145,11 +142,11 @@ namespace jmbde.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id, [Bind("Name", "Active", "EmployeeId")] Computer computer)
+        public async Task<IActionResult> Update(int id, [Bind("NetworkName", "Active", "EmployeeId")] Computer computer)
         {
             try
             {
-                computer.Id = id;
+                computer.ComputerId = id;
                 _context.Computer.Attach(computer);
                 _context.Entry(computer).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
@@ -210,12 +207,12 @@ namespace jmbde.Controllers
                 var tmp = _context.Employee.ToList();
                 // Create Addresses list for <select> dropbox
                 return tmp
-                    .OrderBy(employee => employee.Name)
+                    .OrderBy(employee => employee.Lastname)
                     .Select(employee => new SelectListItem
                     {
-                        Text = $"{employee.Name}, {employee.FirstName}",
-                        Value = employee.Id.ToString(),
-                        Selected = employee.Id == selected
+                        Text = $"{employee.Lastname}, {employee.Firstname}",
+                        Value = employee.EmployeeId.ToString(),
+                        Selected = employee.EmployeeId == selected
                     });
             }
 
@@ -227,7 +224,7 @@ namespace jmbde.Controllers
             private Task<Computer> FindComputerAsync(int id)
             {
                 return _context.Computer
-                    .SingleOrDefaultAsync(computer => computer.Id == id);
+                    .SingleOrDefaultAsync(computer => computer.ComputerId == id);
             }    
         #endregion
     }

@@ -1,7 +1,7 @@
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model jmbde.Models.Employee
+@model jmbde.Data.Employee
 @{
 	ViewBag.Title = "Edit Employee";
 }
@@ -11,46 +11,46 @@
 </h2>
 
 <div>
-    <form class="form-horizontal" role="form" asp-controller="Employee" asp-action="Update" method="post" asp-route-id="@Model.Id">
+    <form class="form-horizontal" role="form" asp-controller="Employee" asp-action="Update" method="post" asp-route-id="@Model.EmployeeId">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group row ">
-            <label class="control-label col-md-4" for="EmpoyeeNO" asp-for="EmployeeNO"></label>
+            <label class="control-label col-md-4" for="EmployeeNr" asp-for="EmployeeNr"></label>
             <div class="col-md-6">
-                <input type="text" class="form-control" id="EmployeeNO" asp-for="EmployeeNO" placeholder="123456" />
+                <input type="text" class="form-control" id="EmployeeNr" asp-for="EmployeeNr" placeholder="123456" />
             </div>
-            <span asp-validation-for="EmployeeNO" class="text-danger"></span>
+            <span asp-validation-for="EmployeeNr" class="text-danger"></span>
         </div>
 
         <div class="form-group row">
-            <label class="control-label col-md-4" for="FirstName" asp-for="FirstName"></label>
+            <label class="control-label col-md-4" for="Firstname" asp-for="Firstname"></label>
             <div class="col-md-6">
-                <input type="text" class="form-control" id="FirstName" asp-for="FirstName" placeholder="First Name" />
+                <input type="text" class="form-control" id="FirstName" asp-for="Firstname" placeholder="First Name" />
             </div>
-            <span asp-validation-for="FirstName" class="text-danger"></span>
+            <span asp-validation-for="Firstname" class="text-danger"></span>
         </div>
 
         <div class="form-group row">
-            <label class="control-label col-md-4" for="Name" asp-for="Name"></label>
+            <label class="control-label col-md-4" for="Lastname" asp-for="Lastname"></label>
             <div class="col-md-6">
-                <input type="text" class="form-control" id="Name" asp-for="Name"  placeholder="Name" />
+                <input type="text" class="form-control" id="Lastname" asp-for="Lastname"  placeholder="Name" />
             </div>
-            <span asp-validation-for="Name" class="text-danger"></span>
+            <span asp-validation-for="Lastname" class="text-danger"></span>
         </div>
         
         <div class="form-group row">
-            <label class="control-label col-md-4" for="BusinessMail" asp-for="BusinessMail"></label>
+            <label class="control-label col-md-4" for="Businessemail" asp-for="Businessemail"></label>
             <div class="col-md-6">
-                <input type="email" class="form-control" id="BusinessMail" asp-for="BusinessMail"  placeholder="Email Address" />
+                <input type="email" class="form-control" id="Businessemail" asp-for="Businessemail"  placeholder="Email Address" />
             </div>
-            <span asp-validation-for="BusinessMail" class="text-danger"></span>
+            <span asp-validation-for="Businessemail" class="text-danger"></span>
         </div>
 
         <div class="form-group row">
-            <label class="control-label col-md-4" for="ChipCard" asp-for="ChipCard"></label>
+            <label class="control-label col-md-4" for="ChipcardId" asp-for="ChipcardId"></label>
             <div class="col-md-6">
-                <input type="text" class="form-control" id="ChipCard" asp-for="ChipCard"  placeholder="0001" />
+                <input type="text" class="form-control" id="ChipcardId" asp-for="ChipcardId"  placeholder="0001" />
             </div>
-            <span asp-validation-for="ChipCard" class="text-danger"></span>
+            <span asp-validation-for="ChipcardId" class="text-danger"></span>
         </div>
                 
      <fieldset class="form-group row">
@@ -67,8 +67,8 @@
             <legend class="col-form-legend col-sm-2">DataCare</legend>
             <div class="col-sm-10">
                 <label class="for-check-label">
-                    <input class="form-check-input" type="checkbox" name="DataCare" id="DataCare" value="DataCare"/>
-                    <span asp-validation-for="DataCare" class="text-danger"></span>
+                    <input class="form-check-input" type="checkbox" name="DataCare" id="Datacare" value="DataCare"/>
+                    <span asp-validation-for="Datacare" class="text-danger"></span>
                 </label>
              </div>      
         </fieldset>

@@ -1,7 +1,7 @@
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model IEnumerable<jmbde.Models.Employee>
+@model IEnumerable<jmbde.Data.Employee>
 @{
 	ViewBag.Title = "Employees";
 }
@@ -18,13 +18,13 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.EmployeeNO)
+                    @Html.DisplayNameFor(model => model.EmployeeNr)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.Firstname)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.FirstName)
+                    @Html.DisplayNameFor(model => model.Firstname)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Active)
@@ -37,13 +37,13 @@
         <tfoot>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.EmployeeNO)
+                    @Html.DisplayNameFor(model => model.EmployeeNr)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.Firstname)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.FirstName)
+                    @Html.DisplayNameFor(model => model.Firstname)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Active)
@@ -58,21 +58,21 @@
            {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.EmployeeNO)
+                        @Html.DisplayFor(modelItem => item.EmployeeNr)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Name)
+                        @Html.DisplayFor(modelItem => item.Lastname)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.FirstName)
+                        @Html.DisplayFor(modelItem => item.Firstname)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Active)
                     </td>
                     <td>
-                       <a role="button" class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>  
-                        <a role="button" class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>  
-                        <a role="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                       <a role="button" class="btn btn-primary" asp-action="Edit" asp-route-id="@item.EmployeeId">Edit</a>  
+                        <a role="button" class="btn btn-info" asp-action="Details" asp-route-id="@item.EmployeeId">Details</a>  
+                        <a role="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.EmployeeId">Delete</a>
                     </td>
                 </tr>
             }

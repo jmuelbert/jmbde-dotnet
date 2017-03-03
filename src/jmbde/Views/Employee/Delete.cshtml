@@ -1,7 +1,7 @@
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model jmbde.Models.Employee
+@model jmbde.Data.Employee
 @{
 	ViewBag.Title = "Delete Employee";
 }
@@ -21,16 +21,16 @@
 
 <div>
     <dl>
-        @Html.DisplayNameFor(model => model.Name)
+        @Html.DisplayNameFor(model => model.Lastname)
     </dl>
     <dd>
-        @Html.DisplayFor(model => model.Name)
+        @Html.DisplayFor(model => model.Lastname)
     </dd>
     <dt>
-        @Html.DisplayNameFor(model => model.FirstName)
+        @Html.DisplayNameFor(model => model.Firstname)
     </dt>
     <dl>
-        @Html.DisplayFor(model => model.FirstName)
+        @Html.DisplayFor(model => model.Firstname)
     </dl>
     
     <div>

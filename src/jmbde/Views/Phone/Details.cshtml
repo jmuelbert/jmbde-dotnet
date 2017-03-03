@@ -1,7 +1,7 @@
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model jmbde.Models.Phone
+@model jmbde.Data.Phone
 @{
 	ViewBag.Title = "Phone Details";
 }
@@ -14,8 +14,8 @@
     <dl class="dl-horinzontal">
         
               <dt>@Html.DisplayNameFor(model => model.Employee)</dt>
-        <dd>@Html.DisplayFor(model => model.Employee.FirstName)
-            @Html.DisplayFor(model => model.Employee.Name)</dd>
+        <dd>@Html.DisplayFor(model => model.Employee.Firstname)
+            @Html.DisplayFor(model => model.Employee.Lastname)</dd>
             
             
         <dt>@Html.DisplayNameFor(model => model.Number)</dt>
@@ -26,6 +26,6 @@
 </div>
 
 <p>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.PhoneId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </p>

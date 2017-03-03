@@ -56,7 +56,7 @@ namespace jmbde
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddDbContext<JMBDEContext>(options => 
+            services.AddDbContext<jmbdesqliteContext>(options => 
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();
         }
