@@ -20,5 +20,8 @@ namespace jmbde.Data
         public long InventoryId { get; set; }
         public long PrinterId { get; set; }
         public string LastUpdate { get; set; }
+
+        // Navigation Properties
+        public virtual Employee Employee { get; set; }
     }
 }

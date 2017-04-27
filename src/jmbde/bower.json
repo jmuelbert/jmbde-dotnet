@@ -2,13 +2,9 @@
     "name": "jmbde",
     "private": true,
     "dependencies": {
-        "bootstrap": "4.0.0-alpha.4",
-        "jquery": "3.1.1",
-        "jquery-validation": "1.15.1",
-        "jquery-validation-unobtrusive": "3.2.6",
-        "jquery-bootgrid": "latest",
-        "datatables.net": "latest",
-        "datatables.net-bs": "latest",
-        "semantic": "2.1.8"
+        "bootstrap": "3.3.7",
+        "jQuery": "2.2.0",
+        "jquery-validation": "1.14.0",
+        "jquery-validation-unobtrusive": "3.2.6"
     }
 }

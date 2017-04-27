@@ -5,6 +5,7 @@ namespace jmbde.Data
 {
     public partial class Zipcity
     {
+        public long ZipcityId { get; set; }
         public long CitynameId { get; set; }
         public long ZipcodeId { get; set; }
         public long CityId { get; set; }

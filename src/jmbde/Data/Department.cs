@@ -10,6 +10,11 @@ namespace jmbde.Data
         public long? Prio { get; set; }
         public long PrinterId { get; set; }
         public long FaxId { get; set; }
+
+        // Last Entry LastUpdate
         public string LastUpdate { get; set; }
+
+        // Navigation Properties
+        public virtual Employee Employee { get; set; }
     }
 }

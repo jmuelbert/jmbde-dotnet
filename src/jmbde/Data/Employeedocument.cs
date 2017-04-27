@@ -9,5 +9,8 @@ namespace jmbde.Data
         public long EmployeeId { get; set; }
         public long DocumentId { get; set; }
         public string LastUpdate { get; set; }
+
+        // Navigation Properties
+        public virtual Employee Employee { get; set; }        
     }
 }
