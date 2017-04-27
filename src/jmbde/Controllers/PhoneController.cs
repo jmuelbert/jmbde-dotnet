@@ -24,6 +24,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 using jmbde.Data;
 
@@ -41,13 +42,23 @@ namespace jmbde.Controllers
         /// </summary>
         private jmbdesqliteContext _context;
 
+
+       /// <summary>
+        /// Localization
+        /// </summary>
+        private readonly IStringLocalizer <PhoneController> _localizer;
+
         /// <summary>
         /// ctor for the Controller
         /// </summary>
         /// <param name="context"></param>
-        public PhoneController(jmbdesqliteContext context) 
+        public PhoneController(jmbdesqliteContext context, IStringLocalizer<PhoneController> localizer) 
         {
             _context = context;
+            _localizer = localizer;
+            {
+                
+            }
         }
 
         /// <summary>
@@ -113,7 +124,7 @@ namespace jmbde.Controllers
             }
             catch (System.Exception)
             {
-                ModelState.AddModelError(string.Empty, "Unable to save changes.");
+                ModelState.AddModelError(string.Empty,  _localizer["Unable to save changes."]);
             }
             return View(phone);
         }

@@ -24,6 +24,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 using jmbde.Data;
 
@@ -42,12 +43,18 @@ namespace jmbde.Controllers
         private jmbdesqliteContext _context;
 
         /// <summary>
+        /// Localization
+        /// </summary>
+        private readonly IStringLocalizer <ComputerController> _localizer;
+
+        /// <summary>
         /// ctor for the Controller
         /// </summary>
         /// <param name="context"></param>
-        public ComputerController(jmbdesqliteContext context) 
+        public ComputerController(jmbdesqliteContext context, IStringLocalizer<ComputerController> localizer) 
         {
             _context = context;
+            _localizer = localizer;
         }
 
         /// <summary>
@@ -112,7 +119,7 @@ namespace jmbde.Controllers
             }
             catch (System.Exception)
             {
-                ModelState.AddModelError(string.Empty, "Unable to save changes.");
+                ModelState.AddModelError(string.Empty, _localizer["Unable to save changes."]);
             }
             return View(computer);
         }
@@ -154,7 +161,7 @@ namespace jmbde.Controllers
             }
             catch (System.Exception)
             {
-                ModelState.AddModelError(string.Empty, "Unable to save changes.");
+                ModelState.AddModelError(string.Empty, _localizer["Unable to save changes."]);
             }
             return View(computer);
         }

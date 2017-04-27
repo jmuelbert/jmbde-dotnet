@@ -1,13 +1,17 @@
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @model jmbde.Data.Computer
+
 @{
-	ViewBag.Title = "Create Computer Entry";
+	ViewBag.Title =  @Localizer["Create Computer Entry"];
 }
 
 <h2>
-    Create Computer Entry
+    @Localizer["Create Computer Entry"];
 </h2>
 
 <div>

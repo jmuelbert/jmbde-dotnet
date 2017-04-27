@@ -1,5 +1,8 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = Localizer["About"];
 }
 <h2>@ViewData["Title"].</h2>
 <h3>@ViewData["Message"]</h3>
@@ -15,5 +18,5 @@ You can collect data in a company for:
     <li>Phones</li>
     <li>Mobiles</li>
 </ul>
-<h2>License</h2>
+<h2>@Localizer["License"]</h2>
 <p>This Application is licensed under EUPL V1.1</p>
