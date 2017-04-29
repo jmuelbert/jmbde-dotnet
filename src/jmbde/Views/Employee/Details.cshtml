@@ -1,13 +1,16 @@
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @model jmbde.Data.Employee
 @{
-	ViewBag.Title = "Employee Details";
+	ViewBag.Title = @Localizer["Employee Details"];
 }
 
 <h2>
-    Employee Details
+    @Localizer["Employee Details"]
 </h2>
 
 <div class="row">
@@ -70,6 +73,6 @@
 </div>
 
 <p>
-    <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.EmployeeId">Edit</a>  
-    <a class="btn btn-primary" asp-action="Index">Back to List</a> 
+    <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.EmployeeId">@Localizer["Edit"]</a>  
+    <a class="btn btn-primary" asp-action="Index">@Localizer["Back to List"]</a> 
 </p>

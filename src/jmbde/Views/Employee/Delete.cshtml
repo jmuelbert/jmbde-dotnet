@@ -1,22 +1,25 @@
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @model jmbde.Data.Employee
 @{
-	ViewBag.Title = "Delete Employee";
+	ViewBag.Title = @Localizer["Delete Employee"];
 }
 
 <h2>
-    Delete Employee
+    @Localizer["Delete Employee"]
 </h2>
 
 <h3>
-    Are you sure want to delete this ?
+    @Localizer[”Are you sure want to delete this ?"]
 </h3>
 
 @if (ViewBag.Retry)
 {
-    <p class="alert-danger">Error deleting. Retry ?</p>
+    <p class="alert-danger">@Localizer["Error deleting. Retry ?"]</p>
 }
 
 <div>
@@ -36,10 +39,10 @@
     <div>
         <form asp-controller="Employee" asp-action="Delete" method="POST">
             <div class="form-group">
-                <input type="submit" class="btn btn-danger" value="Delete" /> 
-                <a role="button" class="btn btn-info" asp-controller="Employee" asp-action="Index">Back to List</a>
+                <input type="submit" class="btn btn-danger" value=@Localizer["Delete"] /> 
+                <a role="button" class="btn btn-info" asp-controller="Employee" asp-action="Index">@Localizer["Back to List"]</a>
             </div>
         </form>
-        <p><a asp-controller="Employee" asp-action="Index">Back to List</a></p>
+        <p><a asp-controller="Employee" asp-action="Index">@Localizer["Back to List"]</a></p>
     </div>
 </div>

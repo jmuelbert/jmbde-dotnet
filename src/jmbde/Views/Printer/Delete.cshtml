@@ -5,13 +5,13 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
-@model jmbde.Data.Computer
+@model jmbde.Data.Printer
 @{
-	ViewBag.Title = @Localizer["Delete Computer"];
+	ViewBag.Title = @Localizer["Delete Printer"];
 }
 
 <h2>
-    @Localizer["Delete Computer"]
+    @Localizer["Delete Printer"]
 </h2>
 
 <h3>
@@ -32,11 +32,11 @@
     </dd>
 
     <div>
-        <form asp-controller="Computer" asp-action="Delete" method="POST">
+        <form asp-controller="Printer" asp-action="Delete" method="POST">
             <div class="form-group">
                 <input type="submit" class="btn btn-default" value=@Localizer[”Delete"] />
             </div>
         </form>
-        <p><a asp-controller="Computer" asp-action="Index">@Localizer["Back to List"]</a></p>
+        <p><a asp-controller="Printer" asp-action="Index">@Localizer["Back to List"]</a></p>
     </div>
 </div>

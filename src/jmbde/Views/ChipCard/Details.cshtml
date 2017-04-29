@@ -4,13 +4,13 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
-@model jmbde.Data.Computer
+@model jmbde.Data.Chipcard
 @{
-	ViewBag.Title = @Localizer["Computer Details"];
+	ViewBag.Title = @Localizer["Chipcard Details"];
 }
 
 <h2>
-    @Localizer["Computer Details"];
+    @Localizer["Chipcard Details"];
 </h2>
 
 <div>
@@ -29,6 +29,6 @@
 </div>
 
 <p>
-    <a asp-action="Edit" asp-route-id="@Model.ComputerId">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.ChipcardId">Edit</a> |
     <a asp-action="Index">@Localizer["Back to List"]</a>
 </p>

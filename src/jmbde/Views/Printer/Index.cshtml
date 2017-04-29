@@ -4,20 +4,20 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
-@model IEnumerable<jmbde.Data.Computer>
+@model IEnumerable<jmbde.Data.Printer>
 @{
-	ViewBag.Title = @Localizer["Computer"];
+	ViewBag.Title = @Localizer["Printer"];
 }
 
 <h2>
-    @Localizer["Computer"]
+    @Localizer["Printer"]
 </h2>
 
 <p>
-	<a role="button" class="btn btn-primary" asp-action="Create">Create a New Computer</a>
+	<a role="button" class="btn btn-primary" asp-action="Create">Create a New Printer</a>
 </p>
 
-<table id="computer" class="table table-condensed table-hover table-striped table-bordered" cellspacing="0" width="100%">
+<table id="Printer" class="table table-condensed table-hover table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
         <tr>
             <th>
@@ -73,9 +73,9 @@
                     @Html.DisplayFor(modelItem => item.Employee.Firstname)
                 </td>
                   <td>
-                        <a role="button" class="btn btn-primary" asp-action="Edit" asp-route-id="@item.ComputerId">Edit</a> 
-                        <a role="button" class="btn btn-info" asp-action="Details" asp-route-id="@item.ComputerId">Details</a> 
-                        <a role="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ComputerId">Delete</a> 
+                        <a role="button" class="btn btn-primary" asp-action="Edit" asp-route-id="@item.PrinterId">Edit</a> 
+                        <a role="button" class="btn btn-info" asp-action="Details" asp-route-id="@item.PrinterId">Details</a> 
+                        <a role="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PrinterId">Delete</a> 
                     </td>
             </tr>
         }        
@@ -85,7 +85,7 @@
 @section scripts {
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#computer').DataTable();
+            $('#Printer').DataTable();
         } );
     </script>
 }

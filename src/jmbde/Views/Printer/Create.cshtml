@@ -4,18 +4,18 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
-@model jmbde.Data.Computer
+@model jmbde.Data.Printer
 
 @{
-	ViewBag.Title =  @Localizer["Create Computer Entry"];
+	ViewBag.Title =  @Localizer["Create Printer Entry"];
 }
 
 <h2>
-    @Localizer["Create Computer Entry"]
+    @Localizer["Create Printer Entry"]
 </h2>
 
 <div>
-    <form asp-controller="Computer" asp-action="Create" method="post">
+    <form asp-controller="Printer" asp-action="Create" method="post">
      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         
         <div class="form-inline">

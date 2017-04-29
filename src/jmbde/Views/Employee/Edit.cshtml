@@ -1,13 +1,16 @@
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @model jmbde.Data.Employee
 @{
-	ViewBag.Title = "Edit Employee";
+	ViewBag.Title = @Localizer["Edit Employee"];
 }
 
 <h2>
-    Edit Employee
+    @Localizer["Edit Employee"];
 </h2>
 
 <div>
@@ -76,7 +79,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
                 <input type="submit" class="btn btn-primary" value="Save" />
-                <a role="button" class="btn btn-info" asp-controller="Employee" asp-action="Index">Back to List</a>
+                <a role="button" class="btn btn-info" asp-controller="Employee" asp-action="Index">@Loclizer["Back to List"]</a>
             </div>
         </div>
     </form>
