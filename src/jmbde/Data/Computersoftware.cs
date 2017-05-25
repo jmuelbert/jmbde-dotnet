@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace jmbde.Data
 {
     public partial class Computersoftware
     {
-        public long ComputersoftwareId { get; set; }
-        public long ComputerId { get; set; }
-        public long SoftwareId { get; set; }
-        public string LastUpdate { get; set; }
+        public int ComputersoftwareId { get; set; }
+        public int ComputerId { get; set; }
+        public int SoftwareId { get; set; }
+        
+        [DataType(DataType.DateTime)]
+        public string Timestamp { get; set; }
     }
 }

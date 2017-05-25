@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace jmbde.Data
 {
     public partial class Processor
     {
-        public long ProcessorId { get; set; }
+        public int ProcessorId { get; set; }
         public string Name { get; set; }
-        public string Ghz { get; set; }
-        public long? Cores { get; set; }
-        public string LastUpdate { get; set; }
+        public float Ghz { get; set; }
+        public int? Cores { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public string Timestamp { get; set; }
     }
 }

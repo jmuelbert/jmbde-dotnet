@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace jmbde.Data
 {
     public partial class Phone
     {
-        public long PhoneId { get; set; }
-        public long DevicenameId { get; set; }
+        public int PhoneId { get; set; }
+        public int DevicenameId { get; set; }
         public string Serialnumber { get; set; }
         public string Number { get; set; }
         public string Pin { get; set; }
-        public string Active { get; set; }
-        public string Replace { get; set; }
-        public long DevicetypeId { get; set; }
-        public long? EmployeeId { get; set; }
-        public long PlaceId { get; set; }
-        public long DepartmentId { get; set; }
-        public long ManufacturerId { get; set; }
-        public long InventoryId { get; set; }
-        public string LastUpdate { get; set; }
+        public bool isActive { get; set; }
+        public bool shouldReplace { get; set; }
+        public int DevicetypeId { get; set; }
+        public int? EmployeeId { get; set; }
+        public int PlaceId { get; set; }
+        public int DepartmentId { get; set; }
+        public int ManufacturerId { get; set; }
+        public int InventoryId { get; set; }
+        [DataType(DataType.DateTime)]
+        public string Timestamp { get; set; }
 
         public virtual Employee Employee { get; set; }
     }

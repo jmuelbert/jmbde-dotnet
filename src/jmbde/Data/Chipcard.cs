@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace jmbde.Data
 {
@@ -8,10 +9,14 @@ namespace jmbde.Data
         public Chipcard() {
            
         }
+        public int ChipcardId { get; set; }
 
-        public long ChipcardId { get; set; }
+        public bool isActive { get; set; }
         public string Nummer { get; set; }
-        public long? EmployeeId { get; set; }
-        public string LastUpdate { get; set; }
+        public int? EmployeeId { get; set; }  
+        
+        [DataType(DataType.DateTime)]
+        public string Timestamp { get; set; }
+
     }
 }

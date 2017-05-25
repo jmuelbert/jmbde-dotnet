@@ -55,17 +55,6 @@
     <PackageReference Include="DataTables.AspNet.AspNetCore" Version="2.0.2" />
   </ItemGroup>
 
-  <Target Name="PrecompileScript" BeforeTargets="BeforeBuild">
-    <Exec Command="dotnet bundle" />
-  </Target>
-
-  <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
-    <Exec Command="bower install" />
-    <Exec Command="npm install" />
-    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js --env.prod" />
-    <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
-  </Target>
-
   <ItemGroup>
     <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.2.301" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />

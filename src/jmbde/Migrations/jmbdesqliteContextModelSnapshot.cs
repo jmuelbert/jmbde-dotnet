@@ -17,14 +17,14 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Account", b =>
                 {
-                    b.Property<long>("AccountId")
+                    b.Property<int>("AccountId")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("LastUpdate");
 
                     b.Property<string>("Password");
 
-                    b.Property<long>("SystemdataId");
+                    b.Property<int>("SystemdataId");
+
+                    b.Property<string>("Timestamp");
 
                     b.Property<string>("Username");
 
@@ -35,14 +35,16 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Chipcard", b =>
                 {
-                    b.Property<long>("ChipcardId")
+                    b.Property<int>("ChipcardId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long?>("EmployeeId");
-
-                    b.Property<string>("LastUpdate");
+                    b.Property<int?>("EmployeeId");
 
                     b.Property<string>("Nummer");
+
+                    b.Property<string>("Timestamp");
+
+                    b.Property<bool>("isActive");
 
                     b.HasKey("ChipcardId");
 
@@ -51,12 +53,12 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Cityname", b =>
                 {
-                    b.Property<long>("CitynameId")
+                    b.Property<int>("CitynameId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("LastUpdate");
-
                     b.Property<string>("Name");
+
+                    b.Property<string>("Timestamp");
 
                     b.HasKey("CitynameId");
 
@@ -65,26 +67,22 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Computer", b =>
                 {
-                    b.Property<long>("ComputerId")
+                    b.Property<int>("ComputerId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("Active");
+                    b.Property<int>("ComputersoftwareId");
 
-                    b.Property<long>("ComputersoftwareId");
+                    b.Property<int>("DepartmentId");
 
-                    b.Property<long>("DepartmentId");
+                    b.Property<int>("DevicenameId");
 
-                    b.Property<long>("DevicenameId");
+                    b.Property<int>("DevicetypeId");
 
-                    b.Property<long>("DevicetypeId");
+                    b.Property<int?>("EmployeeId");
 
-                    b.Property<long?>("EmployeeId");
+                    b.Property<int>("InventoryId");
 
-                    b.Property<long>("InventoryId");
-
-                    b.Property<string>("LastUpdate");
-
-                    b.Property<long>("ManufacturerId");
+                    b.Property<int>("ManufacturerId");
 
                     b.Property<long?>("Memory");
 
@@ -94,23 +92,27 @@ namespace jmbde.Migrations
 
                     b.Property<string>("NetworkName");
 
-                    b.Property<long>("OsId");
+                    b.Property<int>("OsId");
 
-                    b.Property<long>("PlaceId");
+                    b.Property<int>("PlaceId");
 
-                    b.Property<long?>("PrinterId");
+                    b.Property<int?>("PrinterId");
 
-                    b.Property<long?>("PrinterId1");
+                    b.Property<int?>("PrinterId1");
 
-                    b.Property<long>("ProcessorId");
-
-                    b.Property<bool>("Replace");
+                    b.Property<int>("ProcessorId");
 
                     b.Property<string>("Serialnumber");
 
                     b.Property<string>("ServiceNumber");
 
                     b.Property<string>("ServiceTag");
+
+                    b.Property<string>("Timestamp");
+
+                    b.Property<bool>("isActive");
+
+                    b.Property<bool>("shouldReplace");
 
                     b.HasKey("ComputerId");
 
@@ -137,14 +139,14 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Computersoftware", b =>
                 {
-                    b.Property<long>("ComputersoftwareId")
+                    b.Property<int>("ComputersoftwareId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("ComputerId");
+                    b.Property<int>("ComputerId");
 
-                    b.Property<string>("LastUpdate");
+                    b.Property<int>("SoftwareId");
 
-                    b.Property<long>("SoftwareId");
+                    b.Property<string>("Timestamp");
 
                     b.HasKey("ComputersoftwareId");
 
@@ -155,14 +157,14 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Databaseversion", b =>
                 {
-                    b.Property<long>("DatabaseversionId")
+                    b.Property<int>("DatabaseversionId")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("LastUpdate");
 
                     b.Property<long?>("Patch");
 
                     b.Property<long?>("Revision");
+
+                    b.Property<string>("Timestamp");
 
                     b.Property<long?>("Version");
 
@@ -173,22 +175,22 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Department", b =>
                 {
-                    b.Property<long>("DepartmentId")
+                    b.Property<int>("DepartmentId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long?>("ComputerId");
+                    b.Property<int?>("ComputerId");
 
-                    b.Property<long?>("EmployeeId");
+                    b.Property<int?>("EmployeeId");
 
-                    b.Property<long>("FaxId");
-
-                    b.Property<string>("LastUpdate");
+                    b.Property<int>("FaxId");
 
                     b.Property<string>("Name");
 
-                    b.Property<long>("PrinterId");
+                    b.Property<int>("PrinterId");
 
-                    b.Property<long?>("Prio");
+                    b.Property<int?>("Prio");
+
+                    b.Property<string>("Timestamp");
 
                     b.HasKey("DepartmentId");
 
@@ -201,14 +203,14 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Devicename", b =>
                 {
-                    b.Property<long>("DevicenameId")
+                    b.Property<int>("DevicenameId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("LastUpdate");
-
-                    b.Property<long>("ManufacturerId");
+                    b.Property<int>("ManufacturerId");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("Timestamp");
 
                     b.HasKey("DevicenameId");
 
@@ -217,12 +219,12 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Devicetype", b =>
                 {
-                    b.Property<long>("DevicetypeId")
+                    b.Property<int>("DevicetypeId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("LastUpdate");
-
                     b.Property<string>("Name");
+
+                    b.Property<string>("Timestamp");
 
                     b.HasKey("DevicetypeId");
 
@@ -231,14 +233,14 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Documents", b =>
                 {
-                    b.Property<long>("DocumentsId")
+                    b.Property<int>("DocumentsId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<byte[]>("Document");
 
-                    b.Property<string>("LastUpdate");
-
                     b.Property<string>("Name");
+
+                    b.Property<string>("Timestamp");
 
                     b.HasKey("DocumentsId");
 
@@ -247,10 +249,8 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Employee", b =>
                 {
-                    b.Property<long>("EmployeeId")
+                    b.Property<int>("EmployeeId")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("Active");
 
                     b.Property<string>("Address")
                         .HasMaxLength(50);
@@ -259,30 +259,30 @@ namespace jmbde.Migrations
 
                     b.Property<string>("Businessemail");
 
-                    b.Property<long>("ChipcardId");
+                    b.Property<int>("ChipcardId");
 
-                    b.Property<long?>("ChipcardId1");
+                    b.Property<int?>("ChipcardId1");
 
-                    b.Property<long>("ComputerId");
+                    b.Property<int>("ComputerId");
 
                     b.Property<bool>("Datacare");
 
-                    b.Property<long>("DepartmentId");
+                    b.Property<int>("DepartmentId");
 
-                    b.Property<long>("EmployeeDocumentId");
+                    b.Property<int>("EmployeeDocumentId");
 
                     b.Property<long?>("EmployeeNr");
 
-                    b.Property<long>("EmployeeaAccountId");
+                    b.Property<int>("EmployeeaAccountId");
 
                     b.Property<string>("Enddate");
 
-                    b.Property<long>("FaxId");
+                    b.Property<int>("FaxId");
 
                     b.Property<string>("Firstname")
                         .HasMaxLength(50);
 
-                    b.Property<long>("FunctionId");
+                    b.Property<int>("FunctionId");
 
                     b.Property<int?>("Gender");
 
@@ -292,29 +292,31 @@ namespace jmbde.Migrations
 
                     b.Property<string>("Homephone");
 
-                    b.Property<string>("LastUpdate");
-
                     b.Property<string>("Lastname")
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<long>("MobileId");
+                    b.Property<int>("MobileId");
 
                     b.Property<string>("Notes");
 
-                    b.Property<long>("PhoneId");
+                    b.Property<int>("PhoneId");
 
                     b.Property<byte[]>("Photo");
 
-                    b.Property<long>("PrinterId");
+                    b.Property<int>("PrinterId");
 
                     b.Property<string>("Startdate");
 
-                    b.Property<long?>("TitleId");
+                    b.Property<string>("Timestamp");
+
+                    b.Property<int?>("TitleId");
 
                     b.Property<string>("ZipcityId");
 
-                    b.Property<long?>("ZipcityId1");
+                    b.Property<int?>("ZipcityId1");
+
+                    b.Property<bool>("isActive");
 
                     b.HasKey("EmployeeId");
 
@@ -329,14 +331,14 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Employeeaccount", b =>
                 {
-                    b.Property<long>("EmployeeaccountId")
+                    b.Property<int>("EmployeeaccountId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("AccountId");
+                    b.Property<int>("AccountId");
 
-                    b.Property<long>("EmployeeId");
+                    b.Property<int>("EmployeeId");
 
-                    b.Property<string>("LastUpdate");
+                    b.Property<string>("Timestamp");
 
                     b.HasKey("EmployeeaccountId");
 
@@ -347,14 +349,14 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Employeedocument", b =>
                 {
-                    b.Property<long>("EmployeedocumentId")
+                    b.Property<int>("EmployeedocumentId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("DocumentId");
+                    b.Property<int>("DocumentId");
 
-                    b.Property<long>("EmployeeId");
+                    b.Property<int>("EmployeeId");
 
-                    b.Property<string>("LastUpdate");
+                    b.Property<string>("Timestamp");
 
                     b.HasKey("EmployeedocumentId");
 
@@ -365,36 +367,36 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Fax", b =>
                 {
-                    b.Property<long>("FaxId")
+                    b.Property<int>("FaxId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Active");
+                    b.Property<int>("DepartmentId");
 
-                    b.Property<long>("DepartmentId");
+                    b.Property<int>("DevicenameId");
 
-                    b.Property<long>("DevicenameId");
+                    b.Property<int>("DevicetypeId");
 
-                    b.Property<long>("DevicetypeId");
+                    b.Property<int?>("EmployeeId");
 
-                    b.Property<long?>("EmployeeId");
+                    b.Property<int>("InventoryId");
 
-                    b.Property<long>("InventoryId");
-
-                    b.Property<string>("LastUpdate");
-
-                    b.Property<long>("ManufacturerId");
+                    b.Property<int>("ManufacturerId");
 
                     b.Property<string>("Number");
 
                     b.Property<string>("Pin");
 
-                    b.Property<long>("PlaceId");
+                    b.Property<int>("PlaceId");
 
-                    b.Property<long>("PrinterId");
-
-                    b.Property<string>("Replace");
+                    b.Property<int>("PrinterId");
 
                     b.Property<string>("Serialnumber");
+
+                    b.Property<string>("Timestamp");
+
+                    b.Property<bool>("isActive");
+
+                    b.Property<bool>("shouldReplace");
 
                     b.HasKey("FaxId");
 
@@ -405,16 +407,16 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Function", b =>
                 {
-                    b.Property<long>("FunctionId")
+                    b.Property<int>("FunctionId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long?>("EmployeeId");
-
-                    b.Property<string>("LastUpdate");
+                    b.Property<int?>("EmployeeId");
 
                     b.Property<string>("Name");
 
-                    b.Property<long?>("Prio");
+                    b.Property<int?>("Prio");
+
+                    b.Property<string>("Timestamp");
 
                     b.HasKey("FunctionId");
 
@@ -425,16 +427,16 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Inventory", b =>
                 {
-                    b.Property<long>("InventoryId")
+                    b.Property<int>("InventoryId")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Active");
-
-                    b.Property<string>("LastUpdate");
 
                     b.Property<string>("Number");
 
                     b.Property<string>("Text");
+
+                    b.Property<string>("Timestamp");
+
+                    b.Property<bool>("isActive");
 
                     b.HasKey("InventoryId");
 
@@ -443,7 +445,7 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Manufacturer", b =>
                 {
-                    b.Property<long>("ManufacturerId")
+                    b.Property<int>("ManufacturerId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address");
@@ -456,8 +458,6 @@ namespace jmbde.Migrations
 
                     b.Property<string>("Hotline");
 
-                    b.Property<string>("LastUpdate");
-
                     b.Property<string>("Name");
 
                     b.Property<string>("Name2");
@@ -465,6 +465,8 @@ namespace jmbde.Migrations
                     b.Property<string>("Phone");
 
                     b.Property<string>("Supporter");
+
+                    b.Property<string>("Timestamp");
 
                     b.Property<string>("ZipcityId");
 
@@ -475,38 +477,38 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Mobile", b =>
                 {
-                    b.Property<long>("MobileId")
+                    b.Property<int>("MobileId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Activatedate");
 
-                    b.Property<string>("Active");
-
                     b.Property<string>("Cardnumber");
 
-                    b.Property<long>("DepartmentId");
+                    b.Property<int>("DepartmentId");
 
-                    b.Property<long>("DevicenameId");
+                    b.Property<int>("DevicenameId");
 
-                    b.Property<long>("DevicetypeId");
+                    b.Property<int>("DevicetypeId");
 
-                    b.Property<long?>("EmployeeId");
+                    b.Property<int?>("EmployeeId");
 
-                    b.Property<long>("InventoryId");
+                    b.Property<int>("InventoryId");
 
-                    b.Property<string>("LastUpdate");
-
-                    b.Property<long>("ManufacturerId");
+                    b.Property<int>("ManufacturerId");
 
                     b.Property<string>("Number");
 
                     b.Property<string>("Pin");
 
-                    b.Property<long>("PlaceId");
-
-                    b.Property<string>("Replace");
+                    b.Property<int>("PlaceId");
 
                     b.Property<string>("Serialnumber");
+
+                    b.Property<string>("Timestamp");
+
+                    b.Property<bool>("isActive");
+
+                    b.Property<bool>("shouldReplace");
 
                     b.HasKey("MobileId");
 
@@ -517,16 +519,16 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Os", b =>
                 {
-                    b.Property<long>("OsId")
+                    b.Property<int>("OsId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Fix");
 
-                    b.Property<string>("LastUpdate");
-
                     b.Property<string>("Name");
 
                     b.Property<string>("Revision");
+
+                    b.Property<string>("Timestamp");
 
                     b.Property<string>("Version");
 
@@ -537,34 +539,34 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Phone", b =>
                 {
-                    b.Property<long>("PhoneId")
+                    b.Property<int>("PhoneId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Active");
+                    b.Property<int>("DepartmentId");
 
-                    b.Property<long>("DepartmentId");
+                    b.Property<int>("DevicenameId");
 
-                    b.Property<long>("DevicenameId");
+                    b.Property<int>("DevicetypeId");
 
-                    b.Property<long>("DevicetypeId");
+                    b.Property<int?>("EmployeeId");
 
-                    b.Property<long?>("EmployeeId");
+                    b.Property<int>("InventoryId");
 
-                    b.Property<long>("InventoryId");
-
-                    b.Property<string>("LastUpdate");
-
-                    b.Property<long>("ManufacturerId");
+                    b.Property<int>("ManufacturerId");
 
                     b.Property<string>("Number");
 
                     b.Property<string>("Pin");
 
-                    b.Property<long>("PlaceId");
-
-                    b.Property<string>("Replace");
+                    b.Property<int>("PlaceId");
 
                     b.Property<string>("Serialnumber");
+
+                    b.Property<string>("Timestamp");
+
+                    b.Property<bool>("isActive");
+
+                    b.Property<bool>("shouldReplace");
 
                     b.HasKey("PhoneId");
 
@@ -575,16 +577,16 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Place", b =>
                 {
-                    b.Property<long>("PlaceId")
+                    b.Property<int>("PlaceId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Desk");
 
-                    b.Property<string>("LastUpdate");
-
                     b.Property<string>("Name");
 
                     b.Property<string>("Room");
+
+                    b.Property<string>("Timestamp");
 
                     b.HasKey("PlaceId");
 
@@ -593,28 +595,22 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Printer", b =>
                 {
-                    b.Property<long>("PrinterId")
+                    b.Property<int>("PrinterId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Active");
+                    b.Property<int>("ComputerId");
 
-                    b.Property<string>("Color");
+                    b.Property<int>("DepartmentId");
 
-                    b.Property<long>("ComputerId");
+                    b.Property<int>("DevicenameId");
 
-                    b.Property<long>("DepartmentId");
+                    b.Property<int>("DevicetypeId");
 
-                    b.Property<long>("DevicenameId");
+                    b.Property<int?>("EmployeeId");
 
-                    b.Property<long>("DevicetypeId");
+                    b.Property<int>("InventoryId");
 
-                    b.Property<long?>("EmployeeId");
-
-                    b.Property<long>("InventoryId");
-
-                    b.Property<string>("LastUpdate");
-
-                    b.Property<long>("ManufacturerId");
+                    b.Property<int>("ManufacturerId");
 
                     b.Property<string>("Network");
 
@@ -624,13 +620,19 @@ namespace jmbde.Migrations
 
                     b.Property<string>("PapersizeMax");
 
-                    b.Property<long>("PlaceId");
-
-                    b.Property<string>("Replace");
+                    b.Property<int>("PlaceId");
 
                     b.Property<string>("Resources");
 
                     b.Property<string>("Serialnumber");
+
+                    b.Property<string>("Timestamp");
+
+                    b.Property<bool>("isActive");
+
+                    b.Property<bool>("isColor");
+
+                    b.Property<bool>("shouldReplace");
 
                     b.HasKey("PrinterId");
 
@@ -641,16 +643,16 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Processor", b =>
                 {
-                    b.Property<long>("ProcessorId")
+                    b.Property<int>("ProcessorId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long?>("Cores");
+                    b.Property<int?>("Cores");
 
-                    b.Property<string>("Ghz");
-
-                    b.Property<string>("LastUpdate");
+                    b.Property<float>("Ghz");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("Timestamp");
 
                     b.HasKey("ProcessorId");
 
@@ -659,18 +661,18 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Software", b =>
                 {
-                    b.Property<long>("SoftwareId")
+                    b.Property<int>("SoftwareId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Fix");
-
-                    b.Property<string>("LastUpdate");
+                    b.Property<int>("Fix");
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("Revision");
+                    b.Property<int>("Revision");
 
-                    b.Property<string>("Version");
+                    b.Property<string>("Timestamp");
+
+                    b.Property<int>("Version");
 
                     b.HasKey("SoftwareId");
 
@@ -679,10 +681,10 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Systemdata", b =>
                 {
-                    b.Property<long>("SystemdataId")
+                    b.Property<int>("SystemdataId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("AccountId");
+                    b.Property<int>("AccountId");
 
                     b.Property<string>("Address");
 
@@ -690,11 +692,11 @@ namespace jmbde.Migrations
 
                     b.Property<string>("Company");
 
-                    b.Property<string>("LastUpdate");
-
-                    b.Property<string>("Local");
-
                     b.Property<string>("Name");
+
+                    b.Property<string>("Timestamp");
+
+                    b.Property<bool>("isLocal");
 
                     b.HasKey("SystemdataId");
 
@@ -703,12 +705,12 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Title", b =>
                 {
-                    b.Property<long>("TitleId")
+                    b.Property<int>("TitleId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("LastUpdate");
-
                     b.Property<string>("Name");
+
+                    b.Property<string>("Timestamp");
 
                     b.HasKey("TitleId");
 
@@ -717,16 +719,16 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Zipcity", b =>
                 {
-                    b.Property<long>("ZipcityId")
+                    b.Property<int>("ZipcityId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CityId");
+                    b.Property<int>("CityId");
 
-                    b.Property<long>("CitynameId");
+                    b.Property<int>("CitynameId");
 
-                    b.Property<string>("LastUpdate");
+                    b.Property<string>("Timestamp");
 
-                    b.Property<long>("ZipcodeId");
+                    b.Property<int>("ZipcodeId");
 
                     b.HasKey("ZipcityId");
 
@@ -735,10 +737,10 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Data.Zipcode", b =>
                 {
-                    b.Property<long>("ZipcodeId")
+                    b.Property<int>("ZipcodeId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("LastUpdate");
+                    b.Property<string>("Timestamp");
 
                     b.Property<string>("Zipcode1");
 

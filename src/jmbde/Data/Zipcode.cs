@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace jmbde.Data
 {
     public partial class Zipcode
     {
-        public long ZipcodeId { get; set; }
+        public int ZipcodeId { get; set; }
         public string Zipcode1 { get; set; }
-        public string LastUpdate { get; set; }
+        
+        [DataType(DataType.DateTime)]
+        public string Timestamp { get; set; }
     }
 }

@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace jmbde.Data
 {
     public partial class Account
     {
-        public long AccountId { get; set; }
+        public int AccountId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public long SystemdataId { get; set; }
-        public string LastUpdate { get; set; }
+        public int SystemdataId { get; set; }  
+        
+        [DataType(DataType.DateTime)]
+        public string Timestamp { get; set; }
+
     }
 }

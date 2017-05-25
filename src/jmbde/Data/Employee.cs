@@ -13,10 +13,10 @@ namespace jmbde.Data
     public partial class Employee
     {
   
-        public long EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
         public long? EmployeeNr { get; set; }
         public Gender? Gender { get; set; }
-        public long? TitleId { get; set; }
+        public int? TitleId { get; set; }
 
         [StringLength(50, ErrorMessage = "First Name cannot be longer than 50 characters.")]
         public string Firstname { get; set; }
@@ -44,7 +44,7 @@ namespace jmbde.Data
         [DataType(DataType.EmailAddress)]
         public string Businessemail { get; set; }
         public bool Datacare { get; set; }
-        public bool Active { get; set; }
+        public bool isActive { get; set; }
         public byte[] Photo { get; set; }
 
         [DataType(DataType.MultilineText)]
@@ -56,19 +56,19 @@ namespace jmbde.Data
         [DataType(DataType.Date)]
         public string Enddate { get; set; }
 
-        public long DepartmentId { get; set; }
-        public long FunctionId { get; set; }
-        public long ComputerId { get; set; }
-        public long PrinterId { get; set; }
-        public long PhoneId { get; set; }
-        public long MobileId { get; set; }
-        public long FaxId { get; set; }
-        public long EmployeeaAccountId { get; set; }
-        public long EmployeeDocumentId { get; set; }
-        public long ChipcardId { get; set; }
+        public int DepartmentId { get; set; }
+        public int FunctionId { get; set; }
+        public int ComputerId { get; set; }
+        public int PrinterId { get; set; }
+        public int PhoneId { get; set; }
+        public int MobileId { get; set; }
+        public int FaxId { get; set; }
+        public int EmployeeaAccountId { get; set; }
+        public int EmployeeDocumentId { get; set; }
+        public int ChipcardId { get; set; }
 
         [DataType(DataType.DateTime)]
-        public string LastUpdate { get; set; }
+        public string Timestamp { get; set; }
 
         public Title Title { get; set; }
         public Zipcity Zipcity { get; set; }

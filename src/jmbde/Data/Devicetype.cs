@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace jmbde.Data
 {
     public partial class Devicetype
     {
-        public long DevicetypeId { get; set; }
-        public string Name { get; set; }
-        public string LastUpdate { get; set; }
+        public int DevicetypeId { get; set; }
+        public string Name { get; set; }        
+        
+        [DataType(DataType.DateTime)]
+        public string Timestamp { get; set; }
     }
 }

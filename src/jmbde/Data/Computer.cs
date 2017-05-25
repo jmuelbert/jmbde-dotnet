@@ -5,8 +5,8 @@ namespace jmbde.Data
 {
     public partial class Computer
     {
-        public long ComputerId { get; set; }
-        public long DevicenameId { get; set; }
+        public int ComputerId { get; set; }
+        public int DevicenameId { get; set; }
         public string Serialnumber { get; set; }
         public string ServiceTag { get; set; }
         public string ServiceNumber { get; set; }
@@ -14,21 +14,21 @@ namespace jmbde.Data
         public string Network { get; set; }
         public string NetworkName { get; set; }
         public string NetworkIpaddress { get; set; }
-        public bool Active { get; set; }
-        public bool Replace { get; set; }
-        public long DevicetypeId { get; set; }
-        public long? EmployeeId { get; set; }
-        public long PlaceId { get; set; }
-        public long DepartmentId { get; set; }
-        public long ManufacturerId { get; set; }
-        public long InventoryId { get; set; }
-        public long ProcessorId { get; set; }
-        public long OsId { get; set; }
-        public long ComputersoftwareId { get; set; }
-        public long? PrinterId { get; set; }
+        public bool isActive { get; set; }
+        public bool shouldReplace { get; set; }
+        public int DevicetypeId { get; set; }
+        public int? EmployeeId { get; set; }
+        public int PlaceId { get; set; }
+        public int DepartmentId { get; set; }
+        public int ManufacturerId { get; set; }
+        public int InventoryId { get; set; }
+        public int ProcessorId { get; set; }
+        public int OsId { get; set; }
+        public int ComputersoftwareId { get; set; }
+        public int? PrinterId { get; set; }
 
         [DataType(DataType.DateTime)]
-        public string LastUpdate { get; set; }
+        public string Timestamp { get; set; }
 
 
         // Navigation Properties

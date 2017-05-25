@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace jmbde.Data
 {
     public partial class Employeedocument
     {
-        public long EmployeedocumentId { get; set; }
-        public long EmployeeId { get; set; }
-        public long DocumentId { get; set; }
-        public string LastUpdate { get; set; }
+        public int EmployeedocumentId { get; set; }
+        public int EmployeeId { get; set; }
+        public int DocumentId { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public string Timestamp { get; set; }
 
         // Navigation Properties
         public virtual Employee Employee { get; set; }        
