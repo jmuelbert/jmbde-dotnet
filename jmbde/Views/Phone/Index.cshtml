@@ -1,0 +1,77 @@
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<jmbde.Data.Phone>
+@{
+	ViewBag.Title = "Phone";
+}
+
+<h2>
+    Phone's
+</h2>
+
+<p>
+  <a role="button" class="btn btn-primary" asp-action="Create">Create a New Phone</a> 
+</p>
+
+<table id="phone" class="table table-condensed table-hover table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.Firstname)
+            </th>
+            <th>
+                <p>Action</p>
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.Firstname)
+            </th>
+            <th>
+                <p>Action</p>
+            </th>
+        </tr>
+    </tfoot>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Firstname)
+            </td>
+                 <td> 
+                        <a role="button" class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>  
+                        <a role="button" class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>  
+                        <a role="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>  
+                </td> 
+        </tr>
+    }
+</table>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#phone').DataTable();
+        } );
+    </script>
+}

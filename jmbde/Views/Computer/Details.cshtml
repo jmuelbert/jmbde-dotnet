@@ -1,0 +1,40 @@
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@model jmbde.Data.Computer
+@{
+	ViewBag.Title = @Localizer["Computer Details"];
+}
+
+<h2>
+    @Localizer["Computer Details"];
+</h2>
+
+<div>
+    <dl class="dl-horinzontal">
+        <dt>@Html.DisplayNameFor(model => model.Employee)</dt>
+            <dd>@Html.DisplayFor(model => model.Employee.Firstname)
+            @Html.DisplayFor(model => model.Employee.Lastname)</dd>
+            
+            <dt>@Html.DisplayNameFor(model => model.NetworkName)</dt>
+            <dd>@Html.DisplayFor(model => model.NetworkName)</dd>
+        
+            <dt>@Html.DisplayNameFor(model => model.Active)</dt>
+            <dd>@Html.DisplayFor(model => model.Active)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Replace)</dt>
+            <dd>@Html.DisplayFor(model => model.Replace)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Devicename)</dt>
+            <dd>@Html.DisplayFor(model => model.Devicename.Name)</dd>
+ 
+    </dl>
+</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">@Localizer["Back to List"]</a>
+</p>

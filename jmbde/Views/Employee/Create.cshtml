@@ -1,0 +1,88 @@
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@model jmbde.Data.Employee
+@{
+	ViewBag.Title = @Localizer["Create Employee Entry"];
+}
+
+<h2>
+   @Localizer["Create Employee"]
+</h2>
+
+<div>
+    <form asp-controller="Employee" asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+        <div class="form-group row">
+            <label for="EmployeeNr" class="col-xs-2 col-form-label" asp-for="EmployeeNr"></label>
+            <div class="col-xs-10">
+                <input class="form-control" type="text" id="EmployeeNr" asp-for="EmployeeNr"  placeholder="123456" />
+                <span asp-validation-for="EmployeeNr" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Firstname" class="col-xs-2 col-for-label" asp-for="Firstname"></label>
+            <div class="col-xs-10">
+                <input class="form-control" type="text" id="Firstname" asp-for="Firstname" placeholder="Firstname" />
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Lastname" class="col-xs-2 col-form-label" asp-for="Lastname"></label>
+            <div class="col-xs-10">
+                <input class="form-control" type="text" id="Lastname" asp-for="Lastname" placeholder="Lastname" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <label for="Businessemail" class="col-xs-2 col-form-label" asp-for="Businessemail"></label>
+            <div class="col-xs-10">
+                <input class="form-control" type="email" id="Businessemail" asp-for="Businessemail" placeholder="mail@company.com" />
+                <span asp-validation-for="Businessemail" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="ChipcardId" class="col-xs-2 col-form-label" asp-for="ChipcardId"></label>
+            <div class="col-xs-10">
+                <input class="form-control" type="text" id="ChipcardId" asp-for="ChipcardId" placeholder="0001" />
+                <span asp-validation-for="ChipcardId" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <fieldset class="form-group row">
+           <legend class="col-form-legend col-sm-2">Active</legend>
+           <div class="col-sm-10">
+               <label class="for-check-label">
+                   <input class="form-check-input" type="checkbox" name="Active" id="Active" value="Active"/>
+               </label>
+           </div>
+        </fieldset>
+
+ 
+        <fieldset class="form-group row">
+            <legend class="col-form-legend col-sm-2">DataCare</legend>
+            <div class="col-sm-10">
+                <label class="for-check-label">
+                    <input class="form-check-input" type="checkbox" name="Datacare" id="Datacare" value="Datacare"/>
+                    <span asp-validation-for="Datacare" class="text-danger"></span>
+                </label>
+             </div>      
+        </fieldset>
+
+        <input type="submit" class="btn btn-primary" value=@Localizer["Create"] />
+        <a role="button" class="btn btn-info" asp-controller="Employee" asp-action="Index">@Localizer["Back to List"]</a>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
