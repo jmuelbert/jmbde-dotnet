@@ -30,11 +30,11 @@ namespace jmbde.Models
         public int? Prio { get; set; }
 
         [DataType(DataType.DateTime)]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
         // Navigation Properties
         // public virtual ICollection<Employee> Employee { get; set; }
-        public virtual ICollection<Computer> Computer { get; set; }
+        public virtual ICollection<Device> Device { get; set; }
         public virtual ICollection<Printer> Printer { get; set; }
         public virtual ICollection<Fax> Fax { get; set; }
     }

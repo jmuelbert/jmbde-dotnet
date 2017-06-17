@@ -3,14 +3,12 @@
     "command": "dotnet",
     "isShellCommand": true,
     "args": [],
-    "tasks": [
-        {
-            "taskName": "build",
-            "args": [
-                "${workspaceRoot}/src/jmbde/project.json"
-            ],
-            "isBuildCommand": true,
-            "problemMatcher": "$msCompile"
-        }
-    ]
+    "tasks": [{
+        "taskName": "build",
+        "args": [
+            "${workspaceRoot}/jmbde/project.json"
+        ],
+        "isBuildCommand": true,
+        "problemMatcher": "$msCompile"
+    }]
 }

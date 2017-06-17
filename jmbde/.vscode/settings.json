@@ -1,5 +1,6 @@
 {
-  "files.associations": {
-    "dockerfile.*": "dockerfile"
-  }
+    "files.associations": {
+        "dockerfile.*": "dockerfile"
+    },
+    "emmet.useNewEmmet": true
 }

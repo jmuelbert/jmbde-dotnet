@@ -50,8 +50,9 @@ namespace jmbde.Models
         /// <summary>
         /// The Gender
         /// </summary>
-        public Gender? Gender { get; set; }
-        public int TitleId { get; set; }
+        public string Gender { get; set; }
+
+        public int TitleID { get; set; }
 
         /// <summary>
         /// The Firstname
@@ -65,7 +66,7 @@ namespace jmbde.Models
         /// actual dont need dont use
         /// </summary>
         [StringLength(20), Display(Name = "Middle Name")]
-        public string MiddleName { get; set; }
+        public string Middlename { get; set; }
 
         /// <summary>
         /// The Name
@@ -80,7 +81,7 @@ namespace jmbde.Models
 
         [StringLength(50, ErrorMessage = "Address cannot be longer than 50 characters.")]
         public string Address { get; set; }
-        public string CityID { get; set; }
+        public int CityID { get; set; }
 
         [DataType(DataType.PhoneNumber)]
         public string Homephone { get; set; }
@@ -101,22 +102,25 @@ namespace jmbde.Models
         public string Notes { get; set; }
         
         [DataType(DataType.Date)]
-        public string Startdate { get; set; }
+        public DateTime Startdate { get; set; }
 
         [DataType(DataType.Date)]
-        public string Enddate { get; set; }
+        public DateTime Enddate { get; set; }
 
+        public int CompanyID { get; set; }
         public int PhoneID { get; set; }
         public int MobileID { get; set; }
         public int FaxID { get; set; }
         public int ChipcardID { get; set; }
 
         [DataType(DataType.DateTime)]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
         // Navigation Properties
-        public virtual Title Title { get; set; }
-        public virtual City City { get; set; }
+        // public virtual Title Title { get; set; }
+        // 
+        
+        // public virtual City City { get; set; }
         // public virtual Phone Phone { get; set; }
         // public virtual Mobile Mobile { get; set; }
         // public virtual Fax Fax { get; set; }
@@ -124,7 +128,7 @@ namespace jmbde.Models
 
         public virtual ICollection<Department> Department { get; set; }     
         public virtual ICollection<Function> Function { get; set; }
-        public virtual ICollection<Computer> Computer { get; set; }
+        public virtual ICollection<Device> Device { get; set; }
         public virtual ICollection<Printer> Printer { get; set; }
 
         public virtual ICollection<Account> Account { get; set; }

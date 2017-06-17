@@ -42,37 +42,33 @@ namespace jmbde.Models
         /// </summary>
         [Key]
         public int ID { get; set; }
-        public int DevicenameID { get; set; }
-        public int DevicetypeID { get; set; }
+
         public string Serialnumber { get; set; }
         public string Network { get; set; }
         public string NetworkName { get; set; }
-        public string NetworkIpaddress { get; set; }
         public bool Active { get; set; }
         public bool Replace { get; set; }
         public string Resources { get; set; }
         public string PapersizeMax { get; set; }
         public bool Color { get; set; }
+        public bool Copier { get; set; }
+        public bool Fax { get; set; }
 
         public int EmployeeID { get; set; }
+
+        public int DevicenameID { get; set; }
+        public int DevicetypeID { get; set; }
         public int PlaceID { get; set; }
         public int DepartmentID { get; set; }
-        public int ManufacturerID { get; set; }
+        public int CompanyID { get; set; }
         public int InventoryID { get; set; }
 
         [DataType(DataType.DateTime)]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
         // Navigation Properties
-        public virtual Employee Employee { get; set; }
-        public virtual Devicename Devicename { get; set; }
-        public virtual Devicetype Devicetype { get; set; }
-        public virtual Place Place { get; set; }
-        public virtual Department Department { get; set; }
-        public virtual Manufacturer Manufacturer { get; set; }
-        public virtual Inventory Inventory { get; set; }
 
 
-        public virtual ICollection<Computer> Computer { get; set; }
+        public virtual ICollection<Device> Device { get; set; }
     }
 }

@@ -30,6 +30,6 @@ namespace jmbde.Models
         public byte[] MyDocument { get; set; }
 
         [DataType(DataType.DateTime)]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
     }
 }

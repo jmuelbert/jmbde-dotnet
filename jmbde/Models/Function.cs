@@ -28,12 +28,10 @@ namespace jmbde.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public int? Prio { get; set; }
-        public int EmployeeID { get; set; }
-
+    
         [DataType(DataType.DateTime)]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
         // Navigation Properties
-        public virtual Employee Employee { get; set; }
     }
 }

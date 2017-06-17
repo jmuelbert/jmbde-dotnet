@@ -1,6 +1,6 @@
 
 /*
- * Copyright 2016 Jürgen Mülbert
+ * Copyright 2016, 2017 Jürgen Mülbert
  *
  * Licensed under the EUPL, Version 1.1 or – as soon they
    will be approved by the European Commission - subsequent
@@ -54,187 +54,19 @@ namespace jmbde.Controllers
         /// ctor for the Controller
         /// </summary>
         /// <param name="context"></param>
-        public MobileController(jmbdesqliteContext context) 
+        public MobileController(jmbdesqliteContext context, IStringLocalizer<MobileController> localizer) 
         {
             _context = context;
+            _localizer = localizer;
         }
 
         /// <summary>
         /// GET: /<controller>/
         /// </summary>
         /// <returns>View</returns>
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {   
-            var mobiles = _context.Mobile
-                .Include(m => m.Employee)
-                .OrderBy(m => m.Number);
-            return View(mobiles);
-        }
-
-        /// <summary>
-        /// Details
-        /// </summary>
-        /// Show Employee Details
-        /// <param name="id"></param>
-        /// <returns>View</returns>
-        public async Task<ActionResult> Details(int id)
-        {
-            Mobile mobile = await _context.Mobile
-                .Include(m => m.Employee)
-                .SingleOrDefaultAsync(m => m.ID == id);
-
-            return View(mobile);
-        }
-
-        /// <summary>
-        /// Create Action
-        /// </summary>
-        /// <returns></returns>
-        public IActionResult Create()
-        {
-            ViewBag.Items = GetAddressSetItems();
-            return View();
-        }
-
-        /// <summary>
-        /// Create
-        /// </summary>
-        /// <param name="[Bind("></param> 
-        /// <param name=""Number""></param>
-        /// <param name=""EmployeeID""></param>
-        /// <param name=""Active")"></param>
-        /// <param name="mobile"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Number", "EmployeeID", "Active")] Mobile mobile)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    _context.Mobile.Add(mobile);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction("Index");
-                }
-            }
-            catch (System.Exception)
-            {
-                ModelState.AddModelError(string.Empty, _localizer["Unable to save changes."]);
-            }
-            return View(mobile);
-        }
-
-        /// <summary>
-        /// Edit
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public async Task<IActionResult> Edit(int id)
-        {
-            Mobile mobile = await FindMobileAsync(id);
-            ViewBag.Items = GetAddressSetItems((int ) mobile.EmployeeID);
-
-            return View(mobile);
-        }
-
-        /// <summary>
-        /// Update
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="[Bind("></param>>
-        /// <param name=""Number""></param>
-        /// <param name=""EmployeeID""></param>
-        /// <param name=""Active")"></param>
-        /// <param name="mobile"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id, [Bind("Number", "EmployeeID", "Active")] Mobile mobile)
-        {
-            try
-            {
-                mobile.ID = id;
-                _context.Mobile.Attach(mobile);
-                _context.Entry(mobile).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            catch (System.Exception)
-            {
-                ModelState.AddModelError(string.Empty, "Unable to save changes.");
-            }
-            return View(mobile);
-        }
-
-        /// <summary>
-        /// ConfirmDelete
-        /// </summary>
-        /// <param name="retry"></param>
-        /// <returns></returns>
-        [HttpGet]
-        [ActionName("Delete")]
-        public async Task<IActionResult> ConfirmDelete(int id, bool? retry)
-        {
-            Mobile mobile = await FindMobileAsync(id);
-            ViewBag.retry = retry ?? false;
-            return View(mobile);
-        }
-
-
-        /// <summary>
-        /// Delete
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id)
-        {
-            try
-            {
-                Mobile mobile = await FindMobileAsync(id);
-                _context.Mobile.Remove(mobile);
-                await _context.SaveChangesAsync();
-            }
-            catch (System.Exception)
-            {
-                return RedirectToAction("Delete", new { id = id, retry = true});
-            }
-            return RedirectToAction("Index");
-        }
-
-         #region Helpers
-           /// <summary>
-            ///  GetAddressSetItems
-            /// </summary>
-            /// <param name="selected"></param>
-            /// <returns></returns>
-            private IEnumerable<SelectListItem> GetAddressSetItems(int selected = -1)
-            {            
-                var tmp = _context.Employee.ToList();
-                // Create Addresses list for <select> dropbox
-                return tmp
-                    .OrderBy(employee => employee.Lastname)
-                    .Select(employee => new SelectListItem
-                    {
-                        Text = $"{employee.Lastname}, {employee.Firstname}",
-                        Value = employee.ID.ToString(),
-                        Selected = employee.ID == selected
-                    });
-            }
-
-
-            /// <summary>
-            /// FindEmployeeAsync
-            /// </summary>
-            /// <param name="id"></param>
-            /// <returns></returns>
-            private Task<Mobile> FindMobileAsync(int id)
-            {
-                return _context.Mobile
-                    .SingleOrDefaultAsync(mobile => mobile.ID == id);
-            }    
-        #endregion
+           return View( await _context.Mobile.ToListAsync());
+        }        
     }
 }

@@ -13,7 +13,8 @@ namespace jmbde.Data
         public virtual DbSet<Chipcarddoor> Chipcarddoor { get; set; }
         public virtual DbSet<Chipcardprofile> Chipcardprofile { get; set; }
         public virtual DbSet<City> City { get; set; }
-        public virtual DbSet<Computer> Computer { get; set; }
+        public virtual DbSet<Device> Device { get; set; }
+        public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<Department> Department { get; set; }
         public virtual DbSet<Devicename> Devicename { get; set; }
         public virtual DbSet<Devicetype> Devicetype { get; set; }
@@ -22,7 +23,6 @@ namespace jmbde.Data
         public virtual DbSet<Fax> Fax { get; set; }
         public virtual DbSet<Function> Function { get; set; }
         public virtual DbSet<Inventory> Inventory { get; set; }
-        public virtual DbSet<Manufacturer> Manufacturer { get; set; }
         public virtual DbSet<Mobile> Mobile { get; set; }
         public virtual DbSet<Os> Os { get; set; }
         public virtual DbSet<Phone> Phone { get; set; }
@@ -30,7 +30,6 @@ namespace jmbde.Data
         public virtual DbSet<Printer> Printer { get; set; }
         public virtual DbSet<Processor> Processor { get; set; }
         public virtual DbSet<Software> Software { get; set; }
-        public virtual DbSet<Systemdata> Systemdata { get; set; }
         public virtual DbSet<Title> Title { get; set; }
 
 

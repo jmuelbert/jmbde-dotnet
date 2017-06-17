@@ -40,9 +40,6 @@ namespace jmbde.Models
         /// </summary>
         [Key]
         public int ID { get; set; }
-        public int DevicenameID { get; set; }
-        public int DevicetypeID { get; set; }
-        public string Serialnumber { get; set; }
 
         /// <summary>
         /// The Number of the Mobile
@@ -52,6 +49,8 @@ namespace jmbde.Models
         public string Cardnumber { get; set; }
         public DateTime Activatedate { get; set; }
         public string Pin { get; set; }
+
+       public string Serialnumber { get; set; }
         
         /// <summary>
         /// Is this Phone active ?
@@ -63,26 +62,24 @@ namespace jmbde.Models
         /// <summary>
         /// The foreign key for the employee
         /// </summary>
-        public int EmployeeID { get; set; }
+
+        public int EmployeeID { get; set; }
+
+        public int DevicenameID { get; set; }
+        public int DevicetypeID { get; set; }
         public int PlaceID { get; set; }
         public int DepartmentID { get; set; }
-        public int ManufacturerID { get; set; }
+        public int CompanyID { get; set; }
         public int InventoryID { get; set; }
 
         [DataType(DataType.DateTime)]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
         // Navigation Properties
 
         /// <summary>
         /// The Connection to the Employee
         /// </summary>
-        public virtual Devicename Devicename { get; set; }
-        public virtual Devicetype Devicetype { get; set; }
-        public virtual Employee Employee { get; set; }
-        public virtual Place Place { get; set; }
-        public virtual Department Department { get; set; }
-        public virtual Manufacturer Manufacturer { get; set; }
-        public virtual Inventory Inventory { get; set; }
+
     }
 }

@@ -1,0 +1,144 @@
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@model IEnumerable<jmbde.Models.Device>
+@{
+	ViewBag.Title = @Localizer["Device"];
+}
+
+<h2>
+    @Localizer["Computer"]
+</h2>
+
+<p>
+	<a role="button" asp-action="Create">Create a New Device</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Serialnumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceTag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Memory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Network)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NetworkName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Replace)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DevicetypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DevicenameID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlaceID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManufacturerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InventoryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcessorID)
+            </th>
+            <th>
+               @Html.DisplayNameFor(model => model.OsID) 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timestamp)
+            </th>
+            <th>
+                <p>Action</p>
+            </th>
+        </tr>
+    </thead>
+   
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+               <td>
+                    @Html.DisplayFor(modelItem => item.Serialnumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceTag)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Memory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Network)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NetworkName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Replace)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DevicetypeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DevicenameID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManufacturerID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InventoryID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProcessorID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OsID) 
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Timestamp)
+                </td>
+
+                <td>
+                    <a role="button" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a role="button" asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a role="button" asp-action="Delete" asp-route-id="@item.ID">Delete</a> 
+                </td>
+            </tr>
+        }        
+    </tbody>
+</table>

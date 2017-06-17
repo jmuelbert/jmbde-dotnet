@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace jmbde.Models
 {
@@ -41,12 +42,14 @@ namespace jmbde.Models
         /// </summary>  
         public int ID { get; set; }
 
-        public bool Active { get; set; }
         public string Number { get; set; }
+
+        public bool Active { get; set; }
+
         public int EmployeeID { get; set; }  
         
         [DataType(DataType.DateTime)]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
         // Navigation Properties
         // public virtual Employee Employee { get; set; }

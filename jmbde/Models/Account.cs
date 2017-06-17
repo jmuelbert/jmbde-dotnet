@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace jmbde.Models
 {
@@ -47,14 +48,17 @@ namespace jmbde.Models
         /// </summary>
         [StringLength(30, ErrorMessage = "Password cannot be longer than 30 characters.")]
         public string Password { get; set; }
-        public int SystemdataID { get; set; }  
+
+        public bool Active { get; set; }
+
+        public int CompanyID { get; set; }  
         
         [DataType(DataType.DateTime)]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
         // Navigation Properties
 
-        public virtual Systemdata Systemdata { get; set; }
+        public virtual Company Company { get; set; }
 
 
     }

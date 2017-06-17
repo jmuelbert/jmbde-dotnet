@@ -31,11 +31,11 @@ namespace jmbde.Models
         public string Version { get; set; }
         public string Revision { get; set; }
         public string Fix { get; set; }
-        public int ManufacturerID { get; set; }
+        public int CompanyID { get; set; }
 
         [DataType(DataType.DateTime)]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
-        public virtual Manufacturer Manufacturer { get; set; }
+
     }
 }

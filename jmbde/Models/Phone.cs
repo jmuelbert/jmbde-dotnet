@@ -39,16 +39,16 @@ namespace jmbde.Models
         /// The PhoneID
         /// </summary>
         public int ID { get; set; }
-        public int DevicenameID { get; set; }
-        public int DevicetypeID { get; set; }
-        public string Serialnumber { get; set; }
-
-        /// <summary>
+  
+         /// <summary>
         /// The Number of the Phone
         /// </summary>
         [Required, StringLength(30), Display(Name = "Phone Number")]
         public string Number { get; set; }
+ 
         public string Pin { get; set; }
+        public string Serialnumber { get; set; }
+
         
         /// <summary>
         /// Is this Phone active ?
@@ -61,9 +61,12 @@ namespace jmbde.Models
         /// The foreign key for the employee
         /// </summary>
         public int EmployeeID { get; set; }
+
+        public int DevicenameID { get; set; }
+        public int DevicetypeID { get; set; }
         public int PlaceID { get; set; }
         public int DepartmentID { get; set; }
-        public int ManufacturerID { get; set; }
+        public int CompanyID { get; set; }
         public int InventoryID { get; set; }
 
         
@@ -71,18 +74,11 @@ namespace jmbde.Models
         /// The Date and Time of last touch this DataSet
         /// </summary>
         [DataType(DataType.DateTime)]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
 
        /// <summary>
         /// The Connection to the Employee
         /// </summary>
-        public virtual Devicename Devicename { get; set; }
-        public virtual Devicetype Devicetype { get; set; }
-        public virtual Employee Employee { get; set; }
-        public virtual Place Place { get; set; }
-        public virtual Department Department { get; set; }
-        public virtual Manufacturer Manufacturer { get; set; }
-        public virtual Inventory Inventory { get; set; }
     }
 }

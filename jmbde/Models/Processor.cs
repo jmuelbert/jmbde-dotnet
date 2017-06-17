@@ -32,6 +32,6 @@ namespace jmbde.Models
         public int? Cores { get; set; }
 
         [DataType(DataType.DateTime)]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
     }
 }

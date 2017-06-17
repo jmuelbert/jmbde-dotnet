@@ -1,10 +1,8 @@
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
-@model IEnumerable<jmbde.Data.Chipcard>
+@model IEnumerable<jmbde.Models.Chipcard>
+
 @{
 	ViewBag.Title = @Localizer["Chipcard"];
 }
@@ -14,36 +12,23 @@
 </h2>
 
 <p>
-	<a role="button" class="btn btn-primary" asp-action="Create">Create a New Chipcard</a>
+	<a role="button" asp-action="Create">Create a New Chipcard</a>
 </p>
 
-<table id="Chipcard" class="table table-condensed table-hover table-striped table-bordered" cellspacing="0" width="100%">
+<table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Number)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee.Lastname)
+                @Html.DisplayNameFor(model => model.Active)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee.Firstname)
+                @Html.DisplayNameFor(model => model.EmployeeID)
             </th>
             <th>
-                <p>Action</p>
-            </th>
-        </tr>
-    </thead>
-    <tfoot>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Number)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee.Lastname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee.Firstname)
+                @Html.DisplayNameFor(model => model.Timestamp)
             </th>
             <th>
                 <p>Action</p>
@@ -58,25 +43,20 @@
                     @Html.DisplayFor(modelItem => item.Number)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Employee.Lastname)
+                    @Html.DisplayFor(modelItem => item.Active)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Employee.Firstname)
+                    @Html.DisplayFor(modelItem => item.EmployeeID)
                 </td>
-                  <td>
-                        <a role="button" class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
-                        <a role="button" class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a> 
-                        <a role="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
-                    </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Timestamp)
+                </td>
+                <td>
+                    <a role="button" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a role="button" asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a role="button" asp-action="Delete" asp-route-id="@item.ID">Delete</a> 
+                </td>
             </tr>
         }        
     </tbody>
 </table>
-
-@section scripts {
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#Chipcard').DataTable();
-        } );
-    </script>
-}

@@ -29,6 +29,6 @@ namespace jmbde.Models
         public string Name { get; set; }
 
         [DataType(DataType.DateTime)]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
     }
 }

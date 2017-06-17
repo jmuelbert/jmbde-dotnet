@@ -31,8 +31,9 @@ namespace jmbde.Models
         public string Room { get; set; }
         public string Desk { get; set; }
         
+        public int CompanyID { get; set; }
         [DataType(DataType.DateTime)]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
     }
 }

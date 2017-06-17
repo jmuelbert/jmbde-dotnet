@@ -3,21 +3,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - jmbde</title>
+    <title>@ViewData["Title"] - WebApplication</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,61 +28,63 @@
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">jmbde</a>
             </div>
-            <div class="navbar-collapse collapse">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse collapse" id="bs-jmbde-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Data <span class="caret"></span></a>
+                            <ul class="dropdown-menu" rol="menu">
+
+
+                                <!-- Employee and Company ------------------------------------------------------------>
+                                  
+                                <li><a asp-area="" asp-controller="Employee" asp-action="Index">Employee</a></li>  
+                                <li><a asp-area="" asp-controller="Department" asp-action="Index">Department</a></li>  
+                                <li><a asp-area="" asp-controller="Function" asp-action="Index">Function</a></li>                                                                                                                           
+                                <li><a asp-area="" asp-controller="Place" asp-action="Index">Place</a></li>                               
+                                <li><a asp-area="" asp-controller="Account" asp-action="Index">Account</a></li>
+                                <li><a asp-area="" asp-controller="Chipcard" asp-action="Index">Chipcard</a></li>
+                                <li><a asp-area="" asp-controller="Document" asp-action="Index">Document</a></li>                                
+                                <li><a asp-area="" asp-controller="Company" asp-action="Index">Company</a></li>
+                                <li><a asp-area="" asp-controller="Title" asp-action="Index">Title</a></li> 
+
+                                <!-- Devices ------------------------------------------------------------------------>                                
+                                <li><a asp-area="" asp-controller="Phone" asp-action="Index">Phone</a></li>
+                                <li><a asp-area="" asp-controller="Mobile" asp-action="Index">Mobile</a></li>
+                                <li><a asp-area="" asp-controller="Printer" asp-action="Index">Printer</a></li>                                 
+                                <li><a asp-area="" asp-controller="Fax" asp-action="Index">Fax</a></li>
+                                <li><a asp-area="" asp-controller="Device" asp-action="Index">Devices</a></li> 
+                                <li><a asp-area="" asp-controller="Os" asp-action="Index">Os</a></li>                                    
+                                <li><a asp-area="" asp-controller="Processor" asp-action="Index">Processor</a></li> 
+                                <li><a asp-area="" asp-controller="Software" asp-action="Index">Software</a></li>                                   
+                                <li><a asp-area="" asp-controller="Devicetype" asp-action="Index">Devicetype</a></li>
+                                <li><a asp-area="" asp-controller="Devicename" asp-action="Index">Devicename</a></li>
+
+                                <!-- Misc ---------------------------------------------------------------------------->
+                                <li><a asp-area="" asp-controller="City" asp-action="Index">City</a></li>
+                                <li><a asp-area="" asp-controller="Chipcarddoor" asp-action="Index">Chipcard Door</a></li>
+                                <li><a asp-area="" asp-controller="Chipcardprofile" asp-action="Index">Chipcard Profile</a></li>                            
+                                <li><a asp-area="" asp-controller="Inventory" asp-action="Index">Inventory</a></li>                                
+
+
+
+
+         
+                                                                               
+                            </ul>
+                    </li>
                 </ul>
             </div>
         </div>
-    </nav>
-    <div class="container-fluid body-content">
-        <div id="wrapper">
-            <!-- Sidebar -->
-            <div id="sidebar-wrapper">
-                <ul class="sidebar-nav">
-                    <li class="sidebar-brand">
-                        <a href="#">
-                            Start jmbde
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="Employee" asp-action="">Employee </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="Computer" asp-action="">Computer</a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="Phone" asp-action="">Phone</a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="Mobile" asp-action="">Mobile</a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="Printer" asp-action="">Printer</a>
-                    </li>
-                </ul>
-            </div>
-             <!-- /#sidebar wrapper -->
-
-             <div id="page-content-wrapper">
-                 <div class="container-fluid">
-                     <div class="row">
-                         <div class="col-lg-12">
-
-                            @RenderBody()
-
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                            <hr />
-                            <footer>
-                                <p>&copy; 2017 - jmbde</p>
-                            </footer>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2017 - jmbde</p>
+        </footer>
     </div>
 
     <environment names="Development">
@@ -91,21 +93,17 @@
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.3.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+                asp-fallback-test="window.jQuery">
         </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
-    @RenderSection("Scripts", required: false)
+    @RenderSection("scripts", required: false)
 </body>
 </html>

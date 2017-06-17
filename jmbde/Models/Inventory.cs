@@ -32,11 +32,9 @@ namespace jmbde.Models
         public int PlaceID { get; set; }
         
         [DataType(DataType.DateTime)]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
         // Navigation Properties
-        public virtual Place Place { get; set; }
-
 
     }
 }

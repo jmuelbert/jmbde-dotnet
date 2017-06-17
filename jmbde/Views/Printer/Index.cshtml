@@ -4,7 +4,7 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
-@model IEnumerable<jmbde.Data.Printer>
+@model IEnumerable<jmbde.Models.Printer>
 @{
 	ViewBag.Title = @Localizer["Printer"];
 }
@@ -14,12 +14,17 @@
 </h2>
 
 <p>
-	<a role="button" class="btn btn-primary" asp-action="Create">Create a New Printer</a>
-</p>
-dotnet 
-<table id="Printer" class="table table-condensed table-hover table-striped table-bordered" cellspacing="0" width="100%">
+	<a role="button" asp-action="Create">Create a New Printer</a>
+</p> 
+<table id="Printer" class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Serialnumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Network)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.NetworkName)
             </th>
@@ -27,39 +32,62 @@ dotnet
                 @Html.DisplayNameFor(model => model.Active)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee.Lastname)
+                @Html.DisplayNameFor(model => model.Replace)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee.Firstname)
+                @Html.DisplayNameFor(model => model.Resources)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PapersizeMax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Copier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fax)
+            </th>                       
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DevicenameID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DevicetypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlaceID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InventoryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timestamp)
             </th>
             <th>
                 <p>Action</p>
             </th>
         </tr>
     </thead>
-    <tfoot>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NetworkName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Active)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee.Lastname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee.Firstname)
-            </th>
-            <th>
-                <p>Action</p>
-            </th>
-        </tr>
-    </tfoot>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Serialnumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Network)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.NetworkName)
                 </td>
@@ -67,25 +95,53 @@ dotnet
                     @Html.DisplayFor(modelItem => item.Active)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Employee.Lastname)
+                    @Html.DisplayFor(modelItem => item.Replace)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Employee.Firstname)
+                    @Html.DisplayFor(modelItem => item.Resources)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PapersizeMax)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Copier)
+                </td>    
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fax)
+                </td>                            
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DevicenameID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DevicetypeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InventoryID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Timestamp)
                 </td>
                   <td>
-                        <a role="button" class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
-                        <a role="button" class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a> 
-                        <a role="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
+                        <a role="button" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a role="button" asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a role="button" asp-action="Delete" asp-route-id="@item.ID">Delete</a> 
                     </td>
             </tr>
         }        
     </tbody>
 </table>
-
-@section scripts {
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#Printer').DataTable();
-        } );
-    </script>
-}
