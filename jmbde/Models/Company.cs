@@ -27,18 +27,32 @@ namespace jmbde.Models
     {
         public int ID { get; set; }
         public int TitleID { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
-        public string Name { get; set; }
-        public string Name2 { get; set; }
-        public string Address { get; set; }
-        public string Address2 { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string name { get; set; }
+        public string name2 { get; set; }
+        public string address { get; set; }
+        public string address2 { get; set; }
         public int CityID { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string Fax { get; set; }
+        public string eMail { get; set; }
+        public string phone { get; set; }
+        public string fax { get; set; }
+
+      
+        [DataType(DataType.DateTime)]
+        public DateTime created { get; set; }        
 
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime timeStamp { get; set; }
+
+
+        // Navigation Properties
+
+        // public virtual ICollection<Employee> Employees { get; set; }
+        // public virtual ICollection<Device> Devices { get; set; }
+        // public virtual ICollection<Fax> Faxes { get; set; }
+        // public virtual ICollection<Mobile> Mobiles { get; set; }
+        // public virtual ICollection<Phone> Phones { get; set; }
+        // public virtual ICollection<Printer> Printers { get; set; }
     }
 }

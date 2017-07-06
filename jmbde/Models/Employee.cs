@@ -45,12 +45,12 @@ namespace jmbde.Models
         /// The EmployeeID
         /// </summary>
         public int ID { get; set; }
-        public string Nr { get; set; }
+        public string employee_ID { get; set; }
 
         /// <summary>
         /// The Gender
         /// </summary>
-        public string Gender { get; set; }
+        public string gender { get; set; }
 
         public int TitleID { get; set; }
 
@@ -58,7 +58,7 @@ namespace jmbde.Models
         /// The Firstname
         /// </summary>
         [StringLength(50, ErrorMessage = "First Name cannot be longer than 50 characters.")]
-        public string Firstname { get; set; }
+        public string firstName { get; set; }
 
         /// <summary>
         /// The Middlename
@@ -66,7 +66,7 @@ namespace jmbde.Models
         /// actual dont need dont use
         /// </summary>
         [StringLength(20), Display(Name = "Middle Name")]
-        public string Middlename { get; set; }
+        public string middleName { get; set; }
 
         /// <summary>
         /// The Name
@@ -74,38 +74,38 @@ namespace jmbde.Models
         /// </summary>
         [Required]
         [StringLength(50, ErrorMessage = "Last Name cannot be longer than 50 characters.")]
-        public string Lastname { get; set; }
+        public string lastName { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime Birthday { get; set; }
+        public DateTime birthDay { get; set; }
 
         [StringLength(50, ErrorMessage = "Address cannot be longer than 50 characters.")]
-        public string Address { get; set; }
+        public string address { get; set; }
         public int CityID { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        public string Homephone { get; set; }
+        public string homePhone { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        public string Homemobile { get; set; }
+        public string homeMobile { get; set; }
 
         [DataType(DataType.EmailAddress)]
-        public string Homeemail { get; set; }
+        public string homeeMail { get; set; }
 
         [DataType(DataType.EmailAddress)]
-        public string Businessemail { get; set; }
-        public bool Datacare { get; set; }
-        public bool Active { get; set; }
-        public byte[] Photo { get; set; }
+        public string businessEmail { get; set; }
+        public bool dataCare { get; set; }
+        public bool active { get; set; }
+        public byte[] photo { get; set; }
 
         [DataType(DataType.MultilineText)]
-        public string Notes { get; set; }
+        public string notes { get; set; }
         
         [DataType(DataType.Date)]
-        public DateTime Startdate { get; set; }
+        public DateTime startDate { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime Enddate { get; set; }
+        public DateTime endDate { get; set; }
 
         public int CompanyID { get; set; }
         public int PhoneID { get; set; }
@@ -113,21 +113,23 @@ namespace jmbde.Models
         public int FaxID { get; set; }
         public int ChipcardID { get; set; }
 
+      
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime created { get; set; }        
+
+        [DataType(DataType.DateTime)]
+        public DateTime timeStamp { get; set; }
+
 
         // Navigation Properties
         // public virtual Title Title { get; set; }
-        // 
-        
         // public virtual City City { get; set; }
         // public virtual Phone Phone { get; set; }
         // public virtual Mobile Mobile { get; set; }
         // public virtual Fax Fax { get; set; }
         // public virtual Chipcard Chipcard { get; set; }
 
-        public virtual ICollection<Department> Department { get; set; }     
-        public virtual ICollection<Function> Function { get; set; }
+        // public virtual ICollection<Department> Department { get; set; }     
         public virtual ICollection<Device> Device { get; set; }
         public virtual ICollection<Printer> Printer { get; set; }
 
@@ -135,8 +137,8 @@ namespace jmbde.Models
         public virtual ICollection<Document> Document { get; set; }
 
 
-        public string FullName {
-            get { return Lastname + ", " + Firstname; }
+        public string fullName {
+            get { return lastName + ", " + firstName; }
         }
 
     }

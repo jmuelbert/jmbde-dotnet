@@ -27,11 +27,16 @@ namespace jmbde.Models
     public partial class Processor
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public float Ghz { get; set; }
-        public int? Cores { get; set; }
+        public string name { get; set; }
+        public float ghz { get; set; }
+        public int? cores { get; set; }
+
+      
+        [DataType(DataType.DateTime)]
+        public DateTime created { get; set; }        
 
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime timeStamp { get; set; }
+
     }
 }

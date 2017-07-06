@@ -26,10 +26,15 @@ namespace jmbde.Models
     public partial class Document
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public byte[] MyDocument { get; set; }
+        public string name { get; set; }
+        public byte[] myDocument { get; set; }
+
+      
+        [DataType(DataType.DateTime)]
+        public DateTime created { get; set; }        
 
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime timeStamp { get; set; }
+
     }
 }

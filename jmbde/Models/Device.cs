@@ -42,18 +42,18 @@ namespace jmbde.Models
         [Key]
         public int ID { get; set; }
       
-        public string Serialnumber { get; set; }
-        public string ServiceTag { get; set; }
-        public string ServiceNumber { get; set; }
-        public int Memory { get; set; }
-        public string Network { get; set; }
-        public string NetworkName { get; set; }
+        public string serialNumber { get; set; }
+        public string serviceTag { get; set; }
+        public string serviceNumber { get; set; }
+        public int memory { get; set; }
+        public string netWork { get; set; }
+        public string netWorkName { get; set; }
 
         /// <summary>
         /// Is this Computer active ?
         /// </summary>
-        public bool Active { get; set; }
-        public bool Replace { get; set; }
+        public bool active { get; set; }
+        public bool replace { get; set; }
 
         public int EmployeeID { get; set; }
         public int CompanyID { get; set; }
@@ -68,11 +68,24 @@ namespace jmbde.Models
         /// <summary>
         /// The Date and Time of last touch this DataSet
         /// </summary>
+       
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime created { get; set; }        
+
+        [DataType(DataType.DateTime)]
+        public DateTime timeStamp { get; set; }
+
 
 
         // Navigation Properties
-        public virtual ICollection<Software> Software { get; set; }
+        // public virtual Employee Employee { get; set; }
+        // public virtual Company Company { get; set; }
+        // public virtual Devicetype Devicetype { get; set; }
+        // public virtual Devicename Devicename { get; set; }
+        // public virtual Place Place { get; set; }
+        // public virtual Inventory Inventory { get; set; }
+        // public virtual Processor Processor { get; set; }
+        // public virtual Os Os { get; set; }
+        // public virtual ICollection<Software> Software { get; set; }
     }
 }

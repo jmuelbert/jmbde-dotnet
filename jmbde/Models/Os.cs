@@ -32,8 +32,13 @@ namespace jmbde.Models
         public string Fix { get; set; }
         public int CompanyID { get; set; }
 
+      
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime created { get; set; }        
+
+        [DataType(DataType.DateTime)]
+        public DateTime timeStamp { get; set; }
+
 
         // Navigation Properties
  

@@ -44,17 +44,17 @@ namespace jmbde.Models
         /// The Number of the Phone
         /// </summary>
         [Required, StringLength(30), Display(Name = "Phone Number")]
-        public string Number { get; set; }
+        public string number { get; set; }
  
-        public string Pin { get; set; }
-        public string Serialnumber { get; set; }
+        public string pin { get; set; }
+        public string serialNumber { get; set; }
 
         
         /// <summary>
         /// Is this Phone active ?
         /// </summary>
-        public bool Active { get; set; }
-        public bool Replace { get; set; }
+        public bool active { get; set; }
+        public bool replace { get; set; }
 
        
         /// <summary>
@@ -73,8 +73,13 @@ namespace jmbde.Models
         /// <summary>
         /// The Date and Time of last touch this DataSet
         /// </summary>
+      
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime created { get; set; }        
+
+        [DataType(DataType.DateTime)]
+        public DateTime timeStamp { get; set; }
+}
 
 
        /// <summary>

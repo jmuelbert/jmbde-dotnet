@@ -43,16 +43,16 @@ namespace jmbde.Models
         [Key]
         public int ID { get; set; }
 
-        public string Serialnumber { get; set; }
-        public string Network { get; set; }
-        public string NetworkName { get; set; }
-        public bool Active { get; set; }
-        public bool Replace { get; set; }
-        public string Resources { get; set; }
-        public string PapersizeMax { get; set; }
-        public bool Color { get; set; }
-        public bool Copier { get; set; }
-        public bool Fax { get; set; }
+        public string serialnumber { get; set; }
+        public string netWork { get; set; }
+        public string netWorkName { get; set; }
+        public bool active { get; set; }
+        public bool replace { get; set; }
+        public string resources { get; set; }
+        public string paperSizeMax { get; set; }
+        public bool color { get; set; }
+        public bool copier { get; set; }
+        public bool fax { get; set; }
 
         public int EmployeeID { get; set; }
 
@@ -63,8 +63,13 @@ namespace jmbde.Models
         public int CompanyID { get; set; }
         public int InventoryID { get; set; }
 
+      
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime created { get; set; }        
+
+        [DataType(DataType.DateTime)]
+        public DateTime timeStamp { get; set; }
+
 
         // Navigation Properties
 

@@ -248,7 +248,7 @@ namespace jmbde.Data
                 .Fill(e => e.DevicetypeID).WithinRange(0, 10)
                 .Fill(e => e.DevicenameID).WithinRange(0, (count*2))     
                 .Fill(e => e.PlaceID).WithinRange(0, places)
-                .Fill(e => e.ManufacturerID).WithinRange(0,15)
+                .Fill(e => e.CompanyID).WithinRange(0,15)
                 .Fill(e => e.InventoryID).WithinRange(0, (count*2))
                 .Fill(e => e.ProcessorID).WithinRange(0, 10)
                 .Fill(e => e.OsID).WithinRange(0, 10)
@@ -309,6 +309,8 @@ namespace jmbde.Data
                 .Fill(e => e.Resources).WithRandom(new string[] {"TONER1", "TONER2", "TONER3", "TONER4", "TONER5", "TONER6"})
                 .Fill(e => e.PapersizeMax).WithRandom(new string[] { "A4", "A4", "A3", "LABEL"})
                 .Fill(e => e.Color).WithRandom(new bool[] { false, false, true})
+                .Fill(e => e.Copier).WithRandom(new bool[] { false, false, true})
+                .Fill(e => e.Fax).WithRandom(new bool[] { false, false, true})                                
                 .Fill(e => e.EmployeeID).WithinRange(0, (employees/7)*2)
                 .Fill(e => e.DevicetypeID).WithinRange(0, 10)
                 .Fill(e => e.DevicenameID).WithinRange(0, (count*2))     
@@ -618,18 +620,18 @@ namespace jmbde.Data
         {
             var oss = new Os[]
             {
-                new Os{Name="Windows 7", Version="7", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Os{Name="Windows 7-64", Version="7", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Os{Name="Windows 8", Version="8", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Os{Name="Windows 8-64", Version="8", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Os{Name="Windows 8.1", Version="8", Revision="1", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Os{Name="Windows 8.1-64", Version="8", Revision="1", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Os{Name="Windows 10", Version="9", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Os{Name="Windows 10-64", Version="9", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Os{Name="Windows Server 2003", Version="7", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Os{Name="Windows Server 2008R2 x64", Version="8", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Os{Name="Windows Server 2012R2 x64", Version="9", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Os{Name="iOS 10", Version="10", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") }
+                new Os{Name="Windows 7", Version="7", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Os{Name="Windows 7-64", Version="7", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Os{Name="Windows 8", Version="8", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Os{Name="Windows 8-64", Version="8", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Os{Name="Windows 8.1", Version="8", Revision="1", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Os{Name="Windows 8.1-64", Version="8", Revision="1", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Os{Name="Windows 10", Version="9", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Os{Name="Windows 10-64", Version="9", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Os{Name="Windows Server 2003", Version="7", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Os{Name="Windows Server 2008R2 x64", Version="8", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Os{Name="Windows Server 2012R2 x64", Version="9", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Os{Name="iOS 10", Version="10", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") }
             };
             foreach (Os o in oss)
             {
@@ -661,14 +663,14 @@ namespace jmbde.Data
         {
             var softwarez = new Software[]
             {
-                new Software{Name="Acrobat Reader", Version="12", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Software{Name="PDF Creator", Version="7", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Software{Name="ITunes", Version="8", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Software{Name="VLC", Version="8", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Software{Name="Office 2010", Version="8", Revision="1", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Software{Name="Office 2013", Version="8", Revision="1", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Software{Name="Office 2016", Version="9", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") },
-                new Software{Name="Java Runtime", Version="9", Revision="0", Fix="0", ManufacturerID=1, Timestamp=DateTime.Parse("11.06.2017") }
+                new Software{Name="Acrobat Reader", Version="12", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Software{Name="PDF Creator", Version="7", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Software{Name="ITunes", Version="8", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Software{Name="VLC", Version="8", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Software{Name="Office 2010", Version="8", Revision="1", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Software{Name="Office 2013", Version="8", Revision="1", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Software{Name="Office 2016", Version="9", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") },
+                new Software{Name="Java Runtime", Version="9", Revision="0", Fix="0", CompanyID=1, Timestamp=DateTime.Parse("11.06.2017") }
             };
             foreach (Software s in softwarez)
             {

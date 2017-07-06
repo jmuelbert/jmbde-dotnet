@@ -26,9 +26,13 @@ namespace jmbde.Models
     public partial class Devicename
     {
         public int ID { get; set; }
-        public string Name { get; set; }
+        public string name { get; set; }
+      
+        [DataType(DataType.DateTime)]
+        public DateTime created { get; set; }        
 
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime timeStamp { get; set; }
+
     }
 }

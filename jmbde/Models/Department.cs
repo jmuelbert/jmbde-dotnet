@@ -26,16 +26,22 @@ namespace jmbde.Models
     public partial class Department
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public int? Prio { get; set; }
+        public string name { get; set; }
+        public int? prio { get; set; }
+      
+        [DataType(DataType.DateTime)]
+        public DateTime created { get; set; }        
 
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime timeStamp { get; set; }
+
 
         // Navigation Properties
+
         // public virtual ICollection<Employee> Employee { get; set; }
-        public virtual ICollection<Device> Device { get; set; }
-        public virtual ICollection<Printer> Printer { get; set; }
-        public virtual ICollection<Fax> Fax { get; set; }
+        // public virtual ICollection<Device> Device { get; set; }
+        // public virtual ICollection<Printer> Printer { get; set; }
+        // public virtual ICollection<Phone> Phone { get; set; }
+        // public virtual ICollection<Fax> Fax { get; set; }
     }
 }

@@ -26,13 +26,18 @@ namespace jmbde.Models
     public partial class Inventory
     {
         public int ID { get; set; }
-        public string Number { get; set; }
-        public string Text { get; set; }
-        public bool Active { get; set; }
+        public string inventoryID { get; set; }
+        public string text { get; set; }
+        public bool active { get; set; }
         public int PlaceID { get; set; }
         
+      
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime created { get; set; }        
+
+        [DataType(DataType.DateTime)]
+        public DateTime timeStamp { get; set; }
+
 
         // Navigation Properties
 

@@ -45,18 +45,18 @@ namespace jmbde.Models
         /// The Number of the Mobile
         /// </summary>
         [Required, StringLength(30), Display(Name = "Mobile Number")]
-        public string Number { get; set; }
-        public string Cardnumber { get; set; }
-        public DateTime Activatedate { get; set; }
-        public string Pin { get; set; }
+        public string number { get; set; }
+        public string cardnumber { get; set; }
+        public DateTime activateDate { get; set; }
+        public string pin { get; set; }
 
        public string Serialnumber { get; set; }
         
         /// <summary>
         /// Is this Phone active ?
         /// </summary>
-        public bool Active { get; set; }
-        public bool Replace { get; set; }
+        public bool active { get; set; }
+        public bool replace { get; set; }
 
         
         /// <summary>
@@ -72,8 +72,13 @@ namespace jmbde.Models
         public int CompanyID { get; set; }
         public int InventoryID { get; set; }
 
+      
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime created { get; set; }        
+
+        [DataType(DataType.DateTime)]
+        public DateTime timeStamp { get; set; }
+
 
         // Navigation Properties
 

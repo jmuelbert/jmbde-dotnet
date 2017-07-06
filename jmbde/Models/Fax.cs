@@ -26,12 +26,12 @@ namespace jmbde.Models
     public partial class Fax
     {
         public int ID { get; set; }
-        public string Number { get; set; }
-        public string Pin { get; set; }
-        public string Serialnumber { get; set; }
+        public string number { get; set; }
+        public string pin { get; set; }
+        public string serialNumber { get; set; }
 
-        public bool Active { get; set; }
-        public bool Replace { get; set; }
+        public bool active { get; set; }
+        public bool replace { get; set; }
         public int DevicenameID { get; set; }
         public int DevicetypeID { get; set; }
         public int EmployeeID { get; set; }
@@ -41,8 +41,13 @@ namespace jmbde.Models
         public int InventoryID { get; set; }
         public int PrinterID { get; set; }
 
+      
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime created { get; set; }        
+
+        [DataType(DataType.DateTime)]
+        public DateTime timeStamp { get; set; }
+
 
         // Navigation Properties
     }

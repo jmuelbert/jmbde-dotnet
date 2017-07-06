@@ -42,19 +42,21 @@ namespace jmbde.Models
         /// </summary>  
         public int ID { get; set; }
 
-        public string Number { get; set; }
+        public string name { get; set; }
 
-        public bool Active { get; set; }
+        public bool active { get; set; }
 
         public int EmployeeID { get; set; }  
         
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime created { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime timeStamp { get; set; }
 
         // Navigation Properties
-        // public virtual Employee Employee { get; set; }
-        // http://go.microsoft.com/fwlink/?LinkId=724062
 
+        public virtual Employee Employee { get; set;  } 
         public virtual ICollection<Chipcarddoor> Chipcarddoor { get; set; }
         public virtual ICollection<Chipcardprofile> Chipcardprofile { get; set; }
 

@@ -32,14 +32,21 @@ namespace jmbde.Models
     {
       public int ID { get; set; }
 
-        public string Name { get; set; }        
+        public string name { get; set; }        
 
-        public bool Active { get; set; }
+        public bool active { get; set; }
 
         public int CompanyID { get; set; }
+      
+        [DataType(DataType.DateTime)]
+        public DateTime created { get; set; }        
 
-        public DateTime Timestamp { get; set;  }
+        [DataType(DataType.DateTime)]
+        public DateTime timeStamp { get; set; }
 
+        // Navigation Properties
+
+        public virtual Company Company { get; set; }
         public ICollection<Chipcarddoor> Chipcarddoor { get; set; }
     }
 }

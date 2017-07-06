@@ -27,13 +27,18 @@ namespace jmbde.Models
     public partial class Place
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string Room { get; set; }
-        public string Desk { get; set; }
+        public string name { get; set; }
+        public string room { get; set; }
+        public string desk { get; set; }
         
         public int CompanyID { get; set; }
+      
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime created { get; set; }        
+
+        [DataType(DataType.DateTime)]
+        public DateTime timeStamp { get; set; }
+
 
     }
 }

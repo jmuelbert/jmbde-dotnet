@@ -41,20 +41,23 @@ namespace jmbde.Models
         /// The UserName
         /// </summary>
         [StringLength(50, ErrorMessage = "Username cannot be longer than 50 characters.")]
-        public string Username { get; set; }
+        public string userName { get; set; }
 
         /// <summary>
         /// The Password
         /// </summary>
         [StringLength(30, ErrorMessage = "Password cannot be longer than 30 characters.")]
-        public string Password { get; set; }
+        public string passWord { get; set; }
 
-        public bool Active { get; set; }
+        public bool active { get; set; }
 
         public int CompanyID { get; set; }  
         
         [DataType(DataType.DateTime)]
-        public DateTime Timestamp { get; set; }
+        public DateTime created { get; set; }        
+
+        [DataType(DataType.DateTime)]
+        public DateTime timeStamp { get; set; }
 
         // Navigation Properties
 
