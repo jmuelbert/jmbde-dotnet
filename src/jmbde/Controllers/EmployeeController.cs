@@ -91,12 +91,15 @@ namespace jmbde.Controllers
         /// <param name=""BusinessMail""></param>
         /// <param name=""ChipCard""></param>
         /// <param name=""DataCare""></param>
+        /// <param name=""Active""></param>
+        /// <param name=""Gender""></param>
+        /// <param name=""Birthday""></param>        
         /// <param name="employee"></param>
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("EmployeeNO", "FirstName", "Name", "BusinessMail",
-            "ChipCard", "DataCare", "Active")] Employee employee)
+            "ChipCard", "DataCare", "Active", "Gender", "Birthday")] Employee employee)
         {
             try
             {
@@ -135,12 +138,15 @@ namespace jmbde.Controllers
         /// <param name=""BusinessMail""></param>
         /// <param name=""ChipCard""></param>
         /// <param name=""DataCare""></param>
+        /// <param name=""Active""></param>
+        /// <param name=""Gender""></param>
+        /// <param name=""Birthday""></param>
         /// <param name="employee"></param>
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, [Bind("EmployeeNO", "FirstName", "Name", "BusinessMail",
-            "ChipCard", "DataCare", "Active")] Employee employee)
+            "ChipCard", "DataCare", "Active", "Gender", "Birthday")] Employee employee)
         {
             try
             {

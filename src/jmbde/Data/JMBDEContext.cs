@@ -10,6 +10,11 @@ namespace jmbde.Data
         public virtual DbSet<Mobile> Mobile { get; set; }
         public virtual DbSet<Phone> Phone { get; set; }
         
+        public JMBDEContext(DbContextOptions<JMBDEContext> options) : base(options)
+        {
+
+        }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite(@"Data Source=jmbdeSQLite.db3");

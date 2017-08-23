@@ -43,12 +43,7 @@ namespace jmbde
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-                
-            if (env.IsDevelopment())
-            {
-                // For more details on using the use secret store see https://go.microsoft.com/fwlink/?LinkID=532709
-                builder.AddUserSecrets();
-            }
+          
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }

@@ -35,6 +35,20 @@
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         
+        <dev class="form-group">
+            <label class="control-label col-sm-2" asp-for="Birthday"></label>
+            <div class="col-sm4">
+                <input asp-for="Birthday" class="form-control" placeholder="DD.MM.YYYY" />
+            </div>
+            <span asp-validation-for="Birthday" class="text-danger"></span>
+        
+            <label class="control-label col-sm-2" asp-for="Gender"></label>
+            <div class="col-sm4">
+                <input asp-for="Gender" class="form-control" placeholder="F/M" />
+            </div>
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </dev>
+
         <div class="form-group">
             <label class="control-label col-sm-2" asp-for="BusinessMail"></label>
             <div class="col-sm-10">
