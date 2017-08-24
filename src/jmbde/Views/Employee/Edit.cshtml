@@ -27,7 +27,9 @@
                 <input asp-for="FirstName" class="form-control" placeholder="Firstname" />
             </div>
             <span asp-validation-for="FirstName" class="text-danger"></span>
-
+        </div>
+        
+        <div class="form-group">
             <label class="contrpl-label col-sm-2" asp-for="Name"></label>
             <div class="col-sm-4">
                 <input asp-for="Name" class="form-control" placeholder="Name" />
@@ -50,6 +52,20 @@
         </dev>
 
         <div class="form-group">
+            <label class="control-label col-sm-2" asp-for="StartDate"></label>
+            <div class="col-sm4">
+                <input asp-for="StartDate" class="form-control" placeholder="DD.MM.YYYY" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" asp-for="EndDate"></label>
+            <div class="col-sm4">
+                <input asp-for="EndDate" class="form-control" placeholder="DD.MM.YYYY" />
+            </div>
+        </div>
+        
+        <div class="form-group">
             <label class="control-label col-sm-2" asp-for="BusinessMail"></label>
             <div class="col-sm-10">
                 <input asp-for="BusinessMail" class="form-control" placeholder="mail@company.com" />
@@ -65,7 +81,7 @@
             <span asp-validation-for="ChipCard" class="text-danger"></span>
         </div>
                 
-        <div class="form-group">
+            <div class="form-group">
             <label class="control-label col-sm-3 col-md-2" asp-for="Active"></label>
             <div class="col-sm-9 col-md-10">
                 <div class="checkbox">
@@ -82,7 +98,7 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
                 <input type="submit" class="btn btn-default" value="Save" />
