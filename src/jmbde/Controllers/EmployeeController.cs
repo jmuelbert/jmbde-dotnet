@@ -85,7 +85,7 @@ namespace jmbde.Controllers
         /// <summary>
         /// Create
         /// </summary>
-        /// <param name=""EmployeeNO""></param>
+        /// <param name="[Bind("EmployeeNO""></param>
         /// <param name=""FirstName""></param>
         /// <param name=""Name""></param>
         /// <param name=""BusinessMail""></param>
@@ -93,13 +93,15 @@ namespace jmbde.Controllers
         /// <param name=""DataCare""></param>
         /// <param name=""Active""></param>
         /// <param name=""Gender""></param>
-        /// <param name=""Birthday""></param>        
+        /// <param name=""Birthday""></param> 
+        /// <param name=""StartDate""></param>
+        /// <param name=""EndDate""></param>       
         /// <param name="employee"></param>
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("EmployeeNO", "FirstName", "Name", "BusinessMail",
-            "ChipCard", "DataCare", "Active", "Gender", "Birthday")] Employee employee)
+            "ChipCard", "DataCare", "Active", "Gender", "Birthday", "StartDate", "EndDate")] Employee employee)
         {
             try
             {
@@ -140,13 +142,15 @@ namespace jmbde.Controllers
         /// <param name=""DataCare""></param>
         /// <param name=""Active""></param>
         /// <param name=""Gender""></param>
-        /// <param name=""Birthday""></param>
+        /// <param name=""Birthday""></param> 
+        /// <param name=""StartDate""></param>
+        /// <param name=""EndDate""></param>       
         /// <param name="employee"></param>
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, [Bind("EmployeeNO", "FirstName", "Name", "BusinessMail",
-            "ChipCard", "DataCare", "Active", "Gender", "Birthday")] Employee employee)
+            "ChipCard", "DataCare", "Active", "Gender", "Birthday", "StartDate", "EndDate")] Employee employee)
         {
             try
             {
