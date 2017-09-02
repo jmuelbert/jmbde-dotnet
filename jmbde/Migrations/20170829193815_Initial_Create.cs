@@ -4,15 +4,15 @@ using System.Collections.Generic;
 
 namespace jmbde.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial_Create : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Employees",
+                name: "Employee",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Active = table.Column<bool>(type: "INTEGER", nullable: true),
                     Birthday = table.Column<DateTime>(type: "TEXT", nullable: true),
@@ -34,7 +34,6 @@ namespace jmbde.Migrations
                     Name = table.Column<string>(type: "TEXT", maxLength: 30, nullable: false),
                     Notes = table.Column<string>(type: "TEXT", nullable: true),
                     PhoneNumber = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
-                    Photo = table.Column<byte[]>(type: "BLOB", nullable: true),
                     PlaceId = table.Column<int>(type: "INTEGER", nullable: true),
                     StartDate = table.Column<DateTime>(type: "TEXT", nullable: true),
                     Street = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
@@ -43,14 +42,14 @@ namespace jmbde.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employees", x => x.Id);
+                    table.PrimaryKey("PK_Employee", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Computers",
+                name: "Computer",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Active = table.Column<bool>(type: "INTEGER", nullable: true),
                     EmployeeId = table.Column<int>(type: "INTEGER", nullable: false),
@@ -59,20 +58,20 @@ namespace jmbde.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Computers", x => x.Id);
+                    table.PrimaryKey("PK_Computer", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Computers_Employees_EmployeeId",
+                        name: "FK_Computer_Employee_EmployeeId",
                         column: x => x.EmployeeId,
-                        principalTable: "Employees",
-                        principalColumn: "Id",
+                        principalTable: "Employee",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Mobiles",
+                name: "Mobile",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Active = table.Column<bool>(type: "INTEGER", nullable: true),
                     EmployeeId = table.Column<int>(type: "INTEGER", nullable: false),
@@ -81,20 +80,20 @@ namespace jmbde.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Mobiles", x => x.Id);
+                    table.PrimaryKey("PK_Mobile", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Mobiles_Employees_EmployeeId",
+                        name: "FK_Mobile_Employee_EmployeeId",
                         column: x => x.EmployeeId,
-                        principalTable: "Employees",
-                        principalColumn: "Id",
+                        principalTable: "Employee",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Phones",
+                name: "Phone",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Active = table.Column<bool>(type: "INTEGER", nullable: true),
                     EmployeeId = table.Column<int>(type: "INTEGER", nullable: false),
@@ -103,44 +102,46 @@ namespace jmbde.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Phones", x => x.Id);
+                    table.PrimaryKey("PK_Phone", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Phones_Employees_EmployeeId",
+                        name: "FK_Phone_Employee_EmployeeId",
                         column: x => x.EmployeeId,
-                        principalTable: "Employees",
-                        principalColumn: "Id",
+                        principalTable: "Employee",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Computers_EmployeeId",
-                table: "Computers",
+                name: "IX_Computer_EmployeeId",
+                table: "Computer",
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Mobiles_EmployeeId",
-                table: "Mobiles",
-                column: "EmployeeId");
+                name: "IX_Mobile_EmployeeId",
+                table: "Mobile",
+                column: "EmployeeId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Phones_EmployeeId",
-                table: "Phones",
-                column: "EmployeeId");
+                name: "IX_Phone_EmployeeId",
+                table: "Phone",
+                column: "EmployeeId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Computers");
+                name: "Computer");
 
             migrationBuilder.DropTable(
-                name: "Mobiles");
+                name: "Mobile");
 
             migrationBuilder.DropTable(
-                name: "Phones");
+                name: "Phone");
 
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: "Employee");
         }
     }
 }

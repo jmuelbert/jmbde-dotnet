@@ -21,7 +21,7 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("jmbde.Models.Computer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<bool?>("Active");
@@ -33,16 +33,16 @@ namespace jmbde.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Computers");
+                    b.ToTable("Computer");
                 });
 
             modelBuilder.Entity("jmbde.Models.Employee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<bool?>("Active");
@@ -98,8 +98,6 @@ namespace jmbde.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasMaxLength(20);
 
-                    b.Property<byte[]>("Photo");
-
                     b.Property<int?>("PlaceId");
 
                     b.Property<DateTime?>("StartDate");
@@ -112,14 +110,14 @@ namespace jmbde.Migrations
                     b.Property<string>("ZipCode")
                         .HasMaxLength(10);
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employee");
                 });
 
             modelBuilder.Entity("jmbde.Models.Mobile", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<bool?>("Active");
@@ -132,16 +130,17 @@ namespace jmbde.Migrations
                         .IsRequired()
                         .HasMaxLength(30);
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.HasIndex("EmployeeId");
+                    b.HasIndex("EmployeeId")
+                        .IsUnique();
 
-                    b.ToTable("Mobiles");
+                    b.ToTable("Mobile");
                 });
 
             modelBuilder.Entity("jmbde.Models.Phone", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<bool?>("Active");
@@ -154,11 +153,12 @@ namespace jmbde.Migrations
                         .IsRequired()
                         .HasMaxLength(30);
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.HasIndex("EmployeeId");
+                    b.HasIndex("EmployeeId")
+                        .IsUnique();
 
-                    b.ToTable("Phones");
+                    b.ToTable("Phone");
                 });
 
             modelBuilder.Entity("jmbde.Models.Computer", b =>
@@ -172,16 +172,16 @@ namespace jmbde.Migrations
             modelBuilder.Entity("jmbde.Models.Mobile", b =>
                 {
                     b.HasOne("jmbde.Models.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
+                        .WithOne("Mobile")
+                        .HasForeignKey("jmbde.Models.Mobile", "EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("jmbde.Models.Phone", b =>
                 {
                     b.HasOne("jmbde.Models.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
+                        .WithOne("Phone")
+                        .HasForeignKey("jmbde.Models.Phone", "EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

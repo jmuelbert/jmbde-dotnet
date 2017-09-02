@@ -43,7 +43,7 @@ namespace jmbde.Controllers
         /// <summary>
         /// The Context Variable
         /// </summary>
-        private JMBDEContext _context;
+        private readonly JMBDEContext _context;
 
         /// <summary>
         /// ctor for the Controller
@@ -56,7 +56,7 @@ namespace jmbde.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Mobiles.ToListAsync());
+            return View(await _context.Mobile.ToListAsync());
         }
     }
 }

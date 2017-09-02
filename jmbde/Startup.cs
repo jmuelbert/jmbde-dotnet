@@ -47,6 +47,10 @@ namespace jmbde
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            if (services == null)
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
             // Add framework services.
             services.AddDbContext<JMBDEContext>(options => 
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));

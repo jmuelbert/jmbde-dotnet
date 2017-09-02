@@ -36,10 +36,10 @@ namespace jmbde.Models
         // public Computer()  { }
 
         /// <summary>
-        /// The ComputerId
+        /// The ComputerIDS
         /// </summary>
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
 
         /// <summary>

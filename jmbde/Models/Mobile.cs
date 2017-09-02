@@ -39,7 +39,7 @@ namespace jmbde.Models
         /// The MobileId
         /// </summary>
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
 
         /// <summary>

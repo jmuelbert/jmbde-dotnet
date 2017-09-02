@@ -40,7 +40,7 @@ namespace jmbde.Models
         /// The EmployeeID
         /// </summary>
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// The Firstname
@@ -124,7 +124,7 @@ namespace jmbde.Models
         //// <summary>
         /// A Photo of the Employee
         /// </summary>
-        public byte[] Photo { get; set; }
+        // public byte[] Photo { get; set; }
 
         // --------------------------------------
         // Business Data
@@ -175,8 +175,11 @@ namespace jmbde.Models
         /// Evrey Employee can have many Computers
         /// </summary>
         public ICollection<Computer> Computers { get; set; }
-        
+    
+        public Phone Phone { get; set; }
 
+        public Mobile Mobile { get; set; }
+        
         /// <summary>
         /// For the Company_Id work this Employee
         /// </summary>
