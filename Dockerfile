@@ -1,6 +1,6 @@
 FROM microsoft/dotnet:latest
 
-RUN apt-get update && apt-get install sqlite3 libsqlite3-dev
+RUN apt-get update && apt-get install -y sqlite3 libsqlite3-dev
 
 COPY ./src/jmbde /app
 

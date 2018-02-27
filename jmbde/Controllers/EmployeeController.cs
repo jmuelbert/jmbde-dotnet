@@ -67,9 +67,9 @@ namespace jmbde.Controllers
             }
 
             var employee = await _context.Employee
-                .Include(e => e.Computers)
-                .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.ID == id);
+             
+                                         .AsNoTracking()
+                                         .SingleOrDefaultAsync(m => m.EmployeeId == id);
 
             if (employee == null)
             {
@@ -125,7 +125,7 @@ namespace jmbde.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee.SingleOrDefaultAsync(m => m.ID == id);
+            var employee = await _context.Employee.SingleOrDefaultAsync(m => m.EmployeeId == id);
             if (employee == null)
             {
                 return NotFound();
@@ -146,11 +146,11 @@ namespace jmbde.Controllers
             {
                 return NotFound();
             }
-            var employeeToUpdate = await _context.Employee.SingleOrDefaultAsync(e => e.ID == id);
+            var employeeToUpdate = await _context.Employee.SingleOrDefaultAsync(e => e.EmployeeId == id);
             if (await TryUpdateModelAsync<Employee>(
                 employeeToUpdate,
                 "",
-                s => s.FirstName, s => s.Name))
+                s => s.FirstName, s => s.LastName))
             {
                 try
                 {
@@ -180,7 +180,7 @@ namespace jmbde.Controllers
 
             var employee = await _context.Employee
                 .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.ID == id);
+                                         .SingleOrDefaultAsync(m => m.EmployeeId == id);
             if (employee == null)
             {
                 return NotFound();
@@ -205,7 +205,7 @@ namespace jmbde.Controllers
         {
             var employee = await _context.Employee
                 .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.ID == id);
+                                         .SingleOrDefaultAsync(m => m.EmployeeId == id);
             if (employee == null)
             {
                 RedirectToAction("Index");
@@ -226,7 +226,7 @@ namespace jmbde.Controllers
 
         private bool EmployeeExists(int id)
         {
-            return _context.Employee.Any( e => e.ID == id);
+            return _context.Employee.Any( e => e.EmployeeId == id);
         }
     }
 

@@ -4,17 +4,13 @@ using System.Collections.Generic;
 namespace jmbde.Models
 
 {
-    public partial class Computer
+    public partial class Fax
     {
-        public long ComputerId { get; set; }
+        public long FaxId { get; set; }
         public long? DeviceNameId { get; set; }
         public string SerialNumber { get; set; }
-        public string ServiceTag { get; set; }
-        public string ServiceNumber { get; set; }
-        public long? Memory { get; set; }
-        public string Network { get; set; }
-        public string NetworkName { get; set; }
-        public string NetworkIpAddress { get; set; }
+        public string Number { get; set; }
+        public string Pin { get; set; }
         public string Active { get; set; }
         public string Replace { get; set; }
         public long? DeviceTypeId { get; set; }
@@ -23,10 +19,6 @@ namespace jmbde.Models
         public long? DepartmentId { get; set; }
         public long? ManufacturerId { get; set; }
         public long? InventoryId { get; set; }
-        public long? ProcessorId { get; set; }
-        public long? OsId { get; set; }
-        public long? ComputerSoftwareId { get; set; }
-        public long? PrinterId { get; set; }
         public string LastUpdate { get; set; }
     }
 }
