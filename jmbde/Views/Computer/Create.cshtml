@@ -3,34 +3,35 @@
 *@
 @model jmbde.Models.Computer
 @{
-	ViewBag.Title = "Create Computer Entry";
+	ViewData["Title"] = "Create";
 }
 
-<h2>
-    Create Computer Entry
-</h2>
+<h2>Create</h2>
+
+<h4>Computer</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NetworkName"></label>
+                <input asp-for="NetworkName" class="form-control" placeholder="Name" />
+                <span asp-validation-for="NetworkName" class="text-danger"></span>
+            </div>
+
+            <!-- Submit -->             
+            <input type="submit" value="Create" class="btn btn-default" />
+        </form>
+    </div>
+</div>
 
 <div>
-    <form asp-controller="Computer" asp-action="Create" method="post">
-     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        
-        <div class="form-inline">
-            <div class="form-group">
-                <label asp-for="Name"></label>
-                <input asp-for="Name" class="form-control" placeholder="Name" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <select asp-for="EmployeeId" asp-items="@ViewBag.Items"></select>
-        </div>
-                   
-        <input type="submit" class="btn btn-default" value="Create" />
-    </form>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
-    <script src="~/lib/jquery-validation/jquery.validate.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

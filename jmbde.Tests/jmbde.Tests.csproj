@@ -1,15 +1,30 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
+    <Description>Tests for the jmbde Application</Description>
+    <Version>0.0.1</Version>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>jmbde-tests</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>jmbde-test</PackageId>
     <IsPackable>false</IsPackable>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/jmuelbert/jmbde-aspnet</RepositoryUrl>    
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="jmbdesqlite.db3" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0-preview-20170628-02" />
     <PackageReference Include="xunit" Version="2.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\jmbde\jmbde.csproj" />
   </ItemGroup>
 
 </Project>

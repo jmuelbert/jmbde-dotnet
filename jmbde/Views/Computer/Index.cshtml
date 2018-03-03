@@ -6,54 +6,46 @@
 	ViewBag.Title = "Computer";
 }
 
-<h2>
-    Computer's
-</h2>
+<h2>Index</h2>
 
-<p>
+<div>
+    <h4>Computer</h4>
+    <hr />
 	<a asp-action="Create">Create a New Computer</a>
-</p>
 
-<table id="computer" class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Active)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee.FirstName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Active)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Employee.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Employee.FirstName)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a> 
-                </td>
-            </tr>
-        }        
-    </tbody>
-</table>
+    <div class="row">
+        <div class="col-md-4">
+
+            <table id="computer" class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NetworkName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Active)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NetworkName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Active)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.ComputerId">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.ComputerId">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.ComputerId">Delete</a> 
+                            </td>
+                        </tr>
+                    }        
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

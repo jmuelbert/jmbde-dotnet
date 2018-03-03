@@ -9,7 +9,7 @@
     <PackageId>jmbde</PackageId>
     <UserSecretsId>aspnet5-jmbde-54de2cff-d007-4927-81ad-db96e8e27d65</UserSecretsId>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/jmuelbert/jmbde-asp-net</RepositoryUrl>
+    <RepositoryUrl>https://github.com/jmuelbert/jmbde-aspnet</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="jmbdesqlite.db3" />
@@ -38,9 +38,5 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Models\Program.cs" />
-    <Compile Remove="Data\jmbdeSQliteContext.cs" />
   </ItemGroup>
 </Project>

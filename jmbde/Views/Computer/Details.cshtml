@@ -3,29 +3,32 @@
 *@
 @model jmbde.Models.Computer
 @{
-	ViewBag.Title = "Computer Details";
+	ViewData["Title"] = "Details";
 }
 
-<h2>
-    Computer Details
-</h2>
+<h2>Computer</h2>
 
 <div>
-    <dl class="dl-horinzontal">
-        <dt>@Html.DisplayNameFor(model => model.Employee)</dt>
-            <dd>@Html.DisplayFor(model => model.Employee.FirstName)
-            @Html.DisplayFor(model => model.Employee.Name)</dd>
-            
-        <dt>@Html.DisplayNameFor(model => model.Name)</dt>
-        <dd>@Html.DisplayFor(model => model.Name)</dd>
+    <h4>Computer</h4>
+    <hr />
+    <dl class="dl-horinzontal">           
+        <dt>
+            @Html.DisplayNameFor(model => model.NetworkName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NetworkName)
+        </dd>
         
-        <dt>@Html.DisplayNameFor(model => model.Active)</dt>
-        <dd>@Html.DisplayFor(model => model.Active)</dd>
- 
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
     </dl>
 </div>
 
-<p>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ComputerId">Edit</a> |
     <a asp-action="Index">Back to List</a>
-</p>
+</div>
