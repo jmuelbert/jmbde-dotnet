@@ -1,0 +1,76 @@
+@page
+@model jmbde.Pages.Companies.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Company</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Company.Name" class="control-label"></label>
+                <input asp-for="Company.Name" class="form-control" />
+                <span asp-validation-for="Company.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.Name2" class="control-label"></label>
+                <input asp-for="Company.Name2" class="form-control" />
+                <span asp-validation-for="Company.Name2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.Street" class="control-label"></label>
+                <input asp-for="Company.Street" class="form-control" />
+                <span asp-validation-for="Company.Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.PhoneNumber" class="control-label"></label>
+                <input asp-for="Company.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Company.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.FaxNumber" class="control-label"></label>
+                <input asp-for="Company.FaxNumber" class="form-control" />
+                <span asp-validation-for="Company.FaxNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.MobileNumber" class="control-label"></label>
+                <input asp-for="Company.MobileNumber" class="form-control" />
+                <span asp-validation-for="Company.MobileNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.MailAddress" class="control-label"></label>
+                <input asp-for="Company.MailAddress" class="form-control" />
+                <span asp-validation-for="Company.MailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Company.Active" /> @Html.DisplayNameFor(model => model.Active))
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.LastUpdate" class="control-label"></label>
+                <input asp-for="Company.LastUpdate" class="form-control" />
+                <span asp-validation-for="Company.LastUpdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

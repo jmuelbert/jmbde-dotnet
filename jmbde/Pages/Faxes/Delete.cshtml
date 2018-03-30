@@ -1,0 +1,58 @@
+@page
+@model jmbde.Pages.Faxes.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Fax</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fax.Number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fax.Number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fax.SerialNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fax.SerialNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fax.Pin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fax.Pin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fax.Active)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fax.Active)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fax.Replace)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fax.Replace)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fax.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fax.LastUpdate)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Fax.FaxId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

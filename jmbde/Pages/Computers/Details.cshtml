@@ -1,0 +1,79 @@
+@page
+@model jmbde.Pages.Computers.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Computer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Computer.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Computer.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Computer.SerialNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Computer.SerialNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Computer.ServiceTag)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Computer.ServiceTag)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Computer.ServiceNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Computer.ServiceNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Computer.Memory)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Computer.Memory)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Computer.Network)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Computer.Network)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Computer.NetworkIpAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Computer.NetworkIpAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Computer.Active)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Computer.Active)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Computer.Replace)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Computer.Replace)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Computer.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Computer.LastUpdate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Computer.ComputerId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

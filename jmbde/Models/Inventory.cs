@@ -42,6 +42,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace jmbde.Models
 
@@ -49,9 +51,18 @@ namespace jmbde.Models
     public partial class Inventory
     {
         public long InventoryId { get; set; }
-        public string Number { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "Identifier cannot be longer than 50 characters.")] 
+        public string Identifier { get; set; }
+
+        [StringLength(100, ErrorMessage = "Description cannot be longer than 100 characters.")]
         public string Description { get; set; }
-        public string Active { get; set; }
-        public string LastUpdate { get; set; }
+ 
+        public bool Active { get; set; }
+
+
+        [DataType(DataType.DateTime)]
+        public DateTime LastUpdate { get; set; }
     }
 }

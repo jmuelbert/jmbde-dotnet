@@ -1,0 +1,91 @@
+@page
+@model jmbde.Pages.Printers.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Printer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Printer.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Printer.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Printer.SerialNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Printer.SerialNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Printer.ServiceTag)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Printer.ServiceTag)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Printer.ServiceNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Printer.ServiceNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Printer.Network)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Printer.Network)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Printer.NetworkIpAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Printer.NetworkIpAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Printer.Active)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Printer.Active)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Printer.Replace)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Printer.Replace)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Printer.Resources)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Printer.Resources)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Printer.PaperSize)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Printer.PaperSize)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Printer.Color)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Printer.Color)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Printer.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Printer.LastUpdate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Printer.PrinterId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

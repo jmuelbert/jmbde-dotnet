@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde", "jmbde.csproj", "{9B17E92E-05F1-475D-85EA-919893B4DA86}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde", "jmbde\jmbde.csproj", "{9B17E92E-05F1-475D-85EA-919893B4DA86}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde.Tests", "jmbde.Tests\jmbde.Tests.csproj", "{92653777-DF2F-451E-B13D-F901E0FD5C80}"
 EndProject

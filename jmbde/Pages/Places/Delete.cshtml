@@ -1,0 +1,46 @@
+@page
+@model jmbde.Pages.Places.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Place</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Place.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Place.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Place.Room)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Place.Room)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Place.Desk)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Place.Desk)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Place.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Place.LastUpdate)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Place.PlaceId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,48 @@
+@page
+@model jmbde.Pages.SystemDatas.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SystemData[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SystemData[0].Local)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SystemData[0].LastUpdate)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.SystemData) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Local)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.SystemDataId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.SystemDataId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.SystemDataId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

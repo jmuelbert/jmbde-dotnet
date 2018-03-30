@@ -48,42 +48,42 @@ using jmbde.Models;
 namespace jmbde.Data
 {
     public class JMBDEContext : DbContext {
-        public virtual DbSet<Account> Account { get; set; }
         public virtual DbSet<ChipCard> ChipCard { get; set; }
         public virtual DbSet<ChipCardDoor> ChipCardDoor { get; set; }
         public virtual DbSet<ChipCardProfile> ChipCardProfile {get; set;}
-        public virtual DbSet<ChipCardProfileDoor> ChipCardProfileDoor { get; set; }
         public virtual DbSet<CityName> CityName { get; set; }
         public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<Computer> Computer { get; set; }
-        public virtual DbSet<ComputerSoftware> ComputerSoftware { get; set; }
-        public virtual DbSet<DatabaseVersion> DatabaseVersion { get; set; }
         public virtual DbSet<Department> Department { get; set; }
         public virtual DbSet<DeviceName> DeviceName { get; set; }
         public virtual DbSet<Document> Document { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
-        public virtual DbSet<EmployeeAccount> EmployeeAccount { get; set; }
-        public virtual DbSet<EmployeeDocument> EmployeeDocument { get; set; }
         public virtual DbSet<Fax> Fax { get; set; }
         public virtual DbSet<Function> Function { get; set; }
         public virtual DbSet<Inventory> Inventory { get; set; }
         public virtual DbSet<Manufacturer> Manufacturer { get; set; }
         public virtual DbSet<Mobile> Mobile { get; set; }
-        public virtual DbSet<Os> Os { get; set; }
         public virtual DbSet<Phone> Phone { get; set; }
         public virtual DbSet<Place> Place { get; set; }
         public virtual DbSet<Printer> Printer { get; set; }
         public virtual DbSet<Processor> Processor { get; set; }
         public virtual DbSet<Software> Software { get; set; }
+        public virtual DbSet<SystemAccount> SystemAccount { get; set; }
+
         public virtual DbSet<SystemData> SystemData {get ; set; }
-        public virtual DbSet<Title> Title { get; set; }
-        public virtual DbSet<ZipCity> ZipCity {get; set; }
+        public virtual DbSet<JobTitle> JobTitle { get; set; }
         public virtual DbSet<ZipCode> ZipCode { get; set;}
         public JMBDEContext(DbContextOptions<JMBDEContext> options) : base(options)
         {
 
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) => base.OnModelCreating(modelBuilder);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Employee>().ToTable("Employee");
+            
+        }
+
+        public DbSet<jmbde.Models.DeviceType> DeviceType { get; set; }
     }
 }

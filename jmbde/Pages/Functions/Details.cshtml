@@ -1,0 +1,37 @@
+@page
+@model jmbde.Pages.Functions.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Function</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Function.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Function.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Function.Priority)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Function.Priority)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Function.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Function.LastUpdate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Function.FunctionId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

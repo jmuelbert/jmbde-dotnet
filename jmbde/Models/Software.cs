@@ -42,6 +42,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace jmbde.Models
 
@@ -49,10 +51,21 @@ namespace jmbde.Models
     public partial class Software
     {
         public long SoftwareId { get; set; }
+        
+        [Required]
+        [StringLength(50, ErrorMessage = "Name cannot be longer than 50 characters.")]
         public string Name { get; set; }
+
+        [StringLength(25, ErrorMessage = "Version cannot be longer than 25 characters.")]
         public string Version { get; set; }
+
+        [StringLength(25, ErrorMessage = "Revision cannot be longer than 25 characters.")]
         public string Revision { get; set; }
+
+        [StringLength(25, ErrorMessage = "Fix cannot be longer than 25 characters.")]
         public string Fix { get; set; }
-        public string LastUpdate { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime LastUpdate { get; set; }
     }
 }

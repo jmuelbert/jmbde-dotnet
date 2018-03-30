@@ -42,6 +42,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace jmbde.Models
 
@@ -49,8 +51,14 @@ namespace jmbde.Models
     public partial class Document
     {
         public long DocumentId { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "Document Name cannot be longer than 50 characters.")]
         public string Name { get; set; }
+      
         public byte[] DocumentData { get; set; }
-        public string LastUpdate { get; set; }
+ 
+       [DataType(DataType.DateTime)]
+        public DateTime LastUpdate { get; set; }
     }
 }

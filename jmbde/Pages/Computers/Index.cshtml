@@ -1,0 +1,90 @@
+@page
+@model jmbde.Pages.Computers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Computer[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Computer[0].SerialNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Computer[0].ServiceTag)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Computer[0].ServiceNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Computer[0].Memory)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Computer[0].Network)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Computer[0].NetworkIpAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Computer[0].Active)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Computer[0].Replace)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Computer[0].LastUpdate)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Computer) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceTag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Memory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Network)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NetworkIpAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Replace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ComputerId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ComputerId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ComputerId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -42,6 +42,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace jmbde.Models
 
@@ -49,9 +51,15 @@ namespace jmbde.Models
     public partial class SystemData
     {
         public long SystemDataId { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "Name cannot be longer than 50 characters.")]
         public string Name { get; set; }
+
         public bool Local { get; set; }
-        public long? CompanyId { get; set; }
-        public string LastUpdate { get; set; }
+        public Company Company { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime LastUpdate { get; set; }
     }
 }

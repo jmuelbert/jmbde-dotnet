@@ -42,6 +42,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace jmbde.Models
 
@@ -49,8 +51,13 @@ namespace jmbde.Models
     public partial class Function
     {
         public long FunctionId { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "Function cannot be longer than 50 characters.")]
         public string Name { get; set; }
         public long? Priority { get; set; }
-        public string LastUpdate { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime LastUpdate { get; set; }
     }
 }

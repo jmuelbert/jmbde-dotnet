@@ -42,30 +42,56 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace jmbde.Models
 
 {
+    public enum PaperSize {
+        A0, A1, A2, A3, A4, A5, LTR, LGL
+    }
+
     public partial class Printer
     {
         public long PrinterId { get; set; }
-        public long? DeviceNameId { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "Name cannot be longer than 50 characters.")]
+        public string Name { get; set; }
+
+        [StringLength(20, ErrorMessage = "Serialnumber cannot be longer than 20 characters.")]
         public string SerialNumber { get; set; }
+
+        [StringLength(20, ErrorMessage = "Service Tag cannot be longer than 20 characters.")]
+        public string ServiceTag { get; set; }
+
+        [StringLength(20, ErrorMessage = "Service Number cannot be longer than 20 characters.")]
+        public string ServiceNumber { get; set; }
+
+        [StringLength(50, ErrorMessage = "Network cannot be longer than 50 characters.")]
         public string Network { get; set; }
-        public string NetworkName { get; set; }
+
+        [StringLength(50, ErrorMessage = "IP-Address cannot be longer than 50 characters.")]
         public string NetworkIpAddress { get; set; }
-        public string Active { get; set; }
-        public string Replace { get; set; }
+
+        public bool Active { get; set; }
+
+        public bool Replace { get; set; }
         public string Resources { get; set; }
-        public string PaperSizeMax { get; set; }
-        public string Color { get; set; }
-        public long? DeviceTypeId { get; set; }
-        public long? EmployeeId { get; set; }
-        public long? PlaceId { get; set; }
-        public long? DepartmentId { get; set; }
-        public long? ManufacturerId { get; set; }
-        public long? InventoryId { get; set; }
-        public long? ComputerId { get; set; }
-        public string LastUpdate { get; set; }
+        public PaperSize PaperSize { get; set; }
+        public bool Color { get; set; }
+
+        public DeviceName DeviceName { get; set; }
+
+        public DeviceType DeviceType { get; set; }
+        public Employee Employee { get; set; }
+        public Place Place { get; set; }
+        public Department Department { get; set; }
+        public Manufacturer Manufacturer { get; set; }
+        public Inventory Inventory { get; set; }
+        public Computer Computer { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime LastUpdate { get; set; }
     }
 }

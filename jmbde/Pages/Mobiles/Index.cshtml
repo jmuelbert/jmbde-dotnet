@@ -1,0 +1,72 @@
+@page
+@model jmbde.Pages.Mobiles.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mobile[0].Number)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mobile[0].SerialNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mobile[0].Pin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mobile[0].CardNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mobile[0].Active)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mobile[0].Replace)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mobile[0].LastUpdate)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Mobile) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Replace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.MobileId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.MobileId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.MobileId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

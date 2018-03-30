@@ -1,0 +1,45 @@
+@page
+@model jmbde.Pages.Functions.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Function</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Function.FunctionId" />
+            <div class="form-group">
+                <label asp-for="Function.Name" class="control-label"></label>
+                <input asp-for="Function.Name" class="form-control" />
+                <span asp-validation-for="Function.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Function.Priority" class="control-label"></label>
+                <input asp-for="Function.Priority" class="form-control" />
+                <span asp-validation-for="Function.Priority" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Function.LastUpdate" class="control-label"></label>
+                <input asp-for="Function.LastUpdate" class="form-control" />
+                <span asp-validation-for="Function.LastUpdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -42,6 +42,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace jmbde.Models
 
@@ -49,9 +51,15 @@ namespace jmbde.Models
     public partial class Processor
     {
         public long ProcessorId { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "Name cannot be longer than 50 characters.")]
         public string Name { get; set; }
-        public string ClockRate { get; set; }
-        public long? Cores { get; set; }
-        public string LastUpdate { get; set; }
+
+        public float ClockRate { get; set; }
+        public int Cores { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime LastUpdate { get; set; }
     }
 }

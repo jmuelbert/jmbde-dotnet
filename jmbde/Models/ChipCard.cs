@@ -42,6 +42,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace jmbde.Models
 
@@ -49,12 +51,17 @@ namespace jmbde.Models
     public partial class ChipCard
     {
         public long ChipCardId { get; set; }
+
+        [Required]
+        [StringLength(25, ErrorMessage="ChipCardNumber cannot be longer than 25 characters.")]
         public string Number { get; set; }
 
-        public bool Active { get; set; }
-        public long? ChipCardDoorId { get; set; }
-        public long? ChipCardProfileId { get; set; }
-        public long? EmployeeId { get; set; }
-        public string LastUpdate { get; set; }
+        public bool Locked { get; set; }
+        public ICollection<ChipCardDoor> ChipCardDoor { get; set; }
+        public ICollection<ChipCardProfile> ChipCardProfile { get; set; }
+        public ICollection<Employee> Employee { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime LastUpdate { get; set; }
     }
 }

@@ -1,0 +1,66 @@
+@page
+@model jmbde.Pages.Faxes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fax[0].Number)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fax[0].SerialNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fax[0].Pin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fax[0].Active)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fax[0].Replace)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fax[0].LastUpdate)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Fax) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Replace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.FaxId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.FaxId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.FaxId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

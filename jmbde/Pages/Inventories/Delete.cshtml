@@ -1,0 +1,46 @@
+@page
+@model jmbde.Pages.Inventories.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Inventory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Inventory.Identifier)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Inventory.Identifier)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Inventory.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Inventory.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Inventory.Active)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Inventory.Active)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Inventory.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Inventory.LastUpdate)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Inventory.InventoryId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

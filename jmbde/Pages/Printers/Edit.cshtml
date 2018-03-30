@@ -1,0 +1,96 @@
+@page
+@model jmbde.Pages.Printers.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Printer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Printer.PrinterId" />
+            <div class="form-group">
+                <label asp-for="Printer.Name" class="control-label"></label>
+                <input asp-for="Printer.Name" class="form-control" />
+                <span asp-validation-for="Printer.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Printer.SerialNumber" class="control-label"></label>
+                <input asp-for="Printer.SerialNumber" class="form-control" />
+                <span asp-validation-for="Printer.SerialNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Printer.ServiceTag" class="control-label"></label>
+                <input asp-for="Printer.ServiceTag" class="form-control" />
+                <span asp-validation-for="Printer.ServiceTag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Printer.ServiceNumber" class="control-label"></label>
+                <input asp-for="Printer.ServiceNumber" class="form-control" />
+                <span asp-validation-for="Printer.ServiceNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Printer.Network" class="control-label"></label>
+                <input asp-for="Printer.Network" class="form-control" />
+                <span asp-validation-for="Printer.Network" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Printer.NetworkIpAddress" class="control-label"></label>
+                <input asp-for="Printer.NetworkIpAddress" class="form-control" />
+                <span asp-validation-for="Printer.NetworkIpAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Printer.Active" /> @Html.DisplayNameFor(model => model.Active)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Printer.Replace" /> @Html.DisplayNameFor(model => model.Replace)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Printer.Resources" class="control-label"></label>
+                <input asp-for="Printer.Resources" class="form-control" />
+                <span asp-validation-for="Printer.Resources" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Printer.PaperSize" class="control-label"></label>
+                <select asp-for="Printer.PaperSize" class="form-control"></select>
+                <span asp-validation-for="Printer.PaperSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Printer.Color" /> @Html.DisplayNameFor(model => model.Color)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Printer.LastUpdate" class="control-label"></label>
+                <input asp-for="Printer.LastUpdate" class="form-control" />
+                <span asp-validation-for="Printer.LastUpdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

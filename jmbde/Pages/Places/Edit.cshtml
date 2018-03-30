@@ -1,0 +1,50 @@
+@page
+@model jmbde.Pages.Places.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Place</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Place.PlaceId" />
+            <div class="form-group">
+                <label asp-for="Place.Name" class="control-label"></label>
+                <input asp-for="Place.Name" class="form-control" />
+                <span asp-validation-for="Place.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Place.Room" class="control-label"></label>
+                <input asp-for="Place.Room" class="form-control" />
+                <span asp-validation-for="Place.Room" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Place.Desk" class="control-label"></label>
+                <input asp-for="Place.Desk" class="form-control" />
+                <span asp-validation-for="Place.Desk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Place.LastUpdate" class="control-label"></label>
+                <input asp-for="Place.LastUpdate" class="form-control" />
+                <span asp-validation-for="Place.LastUpdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

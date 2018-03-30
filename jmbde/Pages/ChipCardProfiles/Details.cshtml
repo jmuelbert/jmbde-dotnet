@@ -1,0 +1,31 @@
+@page
+@model jmbde.Pages.ChipCardProfiles.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ChipCardProfile</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ChipCardProfile.Number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ChipCardProfile.Number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ChipCardProfile.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ChipCardProfile.LastUpdate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ChipCardProfile.ChipCardProfileId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
