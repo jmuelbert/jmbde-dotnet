@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceRoot}/jmbde/bin/Debug/netcoreapp2.0/jmbde.dll",
+            "program": "${workspaceRoot}/jmbde/bin/Debug/netcoreapp2.1/jmbde.dll",
             "args": [],
             "cwd": "${workspaceRoot}/jmbde",
             "stopAtEntry": false,

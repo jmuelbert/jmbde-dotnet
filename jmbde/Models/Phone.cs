@@ -68,7 +68,7 @@ namespace jmbde.Models
 
         public DeviceName DeviceName { get; set; }
         public DeviceType DeviceType { get; set; }
-        public Employee Employee { get; set; }
+        // public Employee Employee { get; set; }
         public Place Place { get; set; }
         public Department Department { get; set; }
         public Manufacturer Manufacturer { get; set; }

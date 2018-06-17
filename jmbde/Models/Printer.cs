@@ -90,7 +90,7 @@ namespace jmbde.Models
         public Department Department { get; set; }
         public Manufacturer Manufacturer { get; set; }
         public Inventory Inventory { get; set; }
-        public Computer Computer { get; set; }
+        // public Computer Computer { get; set; }
         [DataType(DataType.DateTime)]
         public DateTime LastUpdate { get; set; }
     }

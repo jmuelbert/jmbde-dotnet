@@ -87,7 +87,7 @@ namespace jmbde.Models
         public Processor Processor { get; set; }
         public Software OS { get; set; }
         public ICollection<Software> Software { get; set; }
-        public Printer Printer { get; set; }
+        // public Printer Printer { get; set; }
 
         [DataType(DataType.DateTime)]
         public DateTime LastUpdate { get; set; }

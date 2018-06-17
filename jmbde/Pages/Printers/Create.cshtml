@@ -43,19 +43,23 @@
                 <input asp-for="Printer.NetworkIpAddress" class="form-control" />
                 <span asp-validation-for="Printer.NetworkIpAddress" class="text-danger"></span>
             </div>
-            <div class="form-group">
+           <div class="form-group">
+                <label asp-for="Printer.Active" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Printer.Active" /> @Html.DisplayNameFor(model => model.Active))
+                        <input asp-for="Printer.Active" /> 
                     </label>
                 </div>
+                <span asp-validation-for="Printer.Active" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Printer.Replace" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Printer.Replace" /> @Html.DisplayNameFor(model => model.Replace))
+                        <input asp-for="Printer.Replace" /> 
                     </label>
                 </div>
+                <span asp-validation-for="Printer.Replace" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Printer.Resources" class="control-label"></label>
@@ -67,12 +71,14 @@
                 <select asp-for="Printer.PaperSize" class="form-control"></select>
                 <span asp-validation-for="Printer.PaperSize" class="text-danger"></span>
             </div>
-            <div class="form-group">
+           <div class="form-group">
+                <label asp-for="Printer.Color" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Printer.Color" /> @Html.DisplayNameFor(model => model.Color))
+                        <input asp-for="Printer.Color" /> 
                     </label>
                 </div>
+                <span asp-validation-for="Printer.Color" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Printer.LastUpdate" class="control-label"></label>

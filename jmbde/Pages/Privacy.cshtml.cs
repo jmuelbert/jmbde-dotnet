@@ -42,41 +42,17 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace jmbde.Models
-
+namespace jmbde.Pages
 {
-    public partial class Mobile
+    public class PrivacyModel : PageModel
     {
-        public long MobileId { get; set; }
-
-        [Required]
-        [StringLength(50, ErrorMessage = "Number cannot be longer than 50 characters.")]
-        public string Number { get; set; }
-
-        [StringLength(20, ErrorMessage = "Serialnumber cannot be longer than 20 characters.")]
-        public string SerialNumber { get; set; }
-
-        [StringLength(10, ErrorMessage = "PIN cannot be longer than 10 characters.")]
-        public string Pin { get; set; }
-
-        [StringLength(30, ErrorMessage = "Cardnumber cannot be longer than 30 characters.")]
-        public string CardNumber { get; set; }
-
-        public bool Active { get; set; }
-        public bool Replace { get; set; }
-
-        public DeviceName DeviceName { get; set; }
-        public DeviceType DeviceType { get; set; }
-        // public Employee Employee { get; set; }
-        public Place Place { get; set; }
-        public Department Department { get; set; }
-        public Manufacturer Manufacturer { get; set; }
-        public Inventory Inventory { get; set; }
-
-        [DataType(DataType.DateTime)]
-        public DateTime LastUpdate { get; set; }
+        public void OnGet()
+        {
+        }
     }
 }

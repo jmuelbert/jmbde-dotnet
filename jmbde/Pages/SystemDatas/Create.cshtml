@@ -19,12 +19,15 @@
                 <span asp-validation-for="SystemData.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="SystemData.Local" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="SystemData.Local" /> @Html.DisplayNameFor(model => model.Local))
+                        <input asp-for="SystemData.Local" /> 
                     </label>
                 </div>
+                <span asp-validation-for="SystemData.Local" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="SystemData.LastUpdate" class="control-label"></label>
                 <input asp-for="SystemData.LastUpdate" class="form-control" />

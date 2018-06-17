@@ -29,19 +29,23 @@
                 <input asp-for="Fax.Pin" class="form-control" />
                 <span asp-validation-for="Fax.Pin" class="text-danger"></span>
             </div>
-            <div class="form-group">
+             <div class="form-group">
+                <label asp-for="Fax.Active" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Fax.Active" /> @Html.DisplayNameFor(model => model.Active)
+                        <input asp-for="Fax.Active" /> 
                     </label>
                 </div>
+                <span asp-validation-for="Fax.Active" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Fax.Replace" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Fax.Replace" /> @Html.DisplayNameFor(model => model.Replace)
+                        <input asp-for="Fax.Replace" /> 
                     </label>
                 </div>
+                <span asp-validation-for="Fax.Replace" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Fax.LastUpdate" class="control-label"></label>

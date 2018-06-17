@@ -73,6 +73,7 @@ namespace jmbde.Data
         public virtual DbSet<SystemData> SystemData {get ; set; }
         public virtual DbSet<JobTitle> JobTitle { get; set; }
         public virtual DbSet<ZipCode> ZipCode { get; set;}
+       
         public JMBDEContext(DbContextOptions<JMBDEContext> options) : base(options)
         {
 

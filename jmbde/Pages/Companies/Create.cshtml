@@ -48,12 +48,14 @@
                 <input asp-for="Company.MailAddress" class="form-control" />
                 <span asp-validation-for="Company.MailAddress" class="text-danger"></span>
             </div>
-            <div class="form-group">
+             <div class="form-group">
+                <label asp-for="Company.Active" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Company.Active" /> @Html.DisplayNameFor(model => model.Active))
+                        <input asp-for="Company.Active" /> 
                     </label>
                 </div>
+                <span asp-validation-for="Company.Active" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Company.LastUpdate" class="control-label"></label>

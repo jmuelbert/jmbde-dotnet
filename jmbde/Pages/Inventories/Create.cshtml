@@ -23,12 +23,14 @@
                 <input asp-for="Inventory.Description" class="form-control" />
                 <span asp-validation-for="Inventory.Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
+           <div class="form-group">
+                <label asp-for="Inventory.Active" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Inventory.Active" /> @Html.DisplayNameFor(model => model.Active))
+                        <input asp-for="Inventory.Active" /> 
                     </label>
                 </div>
+                <span asp-validation-for="Inventory.Active" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Inventory.LastUpdate" class="control-label"></label>
