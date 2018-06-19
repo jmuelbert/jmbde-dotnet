@@ -1,9 +1,13 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde", "jmbde\jmbde.csproj", "{9B17E92E-05F1-475D-85EA-919893B4DA86}"
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde", "src\jmbde\jmbde.csproj", "{9B17E92E-05F1-475D-85EA-919893B4DA86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde.Tests", "jmbde.Tests\jmbde.Tests.csproj", "{92653777-DF2F-451E-B13D-F901E0FD5C80}"
+Project("{C1A94513-E29A-4BEB-A22A-FD54F7DE7132}") = "src", "src", "{35E218ED-2144-46C9-8D13-234B4286EF35}"
+EndProject
+Project("{C1A94513-E29A-4BEB-A22A-FD54F7DE7132}") = "test", "test", "{1353A008-DAEB-4728-A3C6-9F5B3A198BEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde.Tests", "test\jmbde.Tests\jmbde.Tests.csproj", "{92653777-DF2F-451E-B13D-F901E0FD5C80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,9 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9B17E92E-05F1-475D-85EA-919893B4DA86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B17E92E-05F1-475D-85EA-919893B4DA86}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B17E92E-05F1-475D-85EA-919893B4DA86}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B17E92E-05F1-475D-85EA-919893B4DA86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BF96D8F-993C-47A7-B5F7-73AB5907B06C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BF96D8F-993C-47A7-B5F7-73AB5907B06C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BF96D8F-993C-47A7-B5F7-73AB5907B06C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BF96D8F-993C-47A7-B5F7-73AB5907B06C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7816D65-7491-4E21-B3E2-C1A11A7C83E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7816D65-7491-4E21-B3E2-C1A11A7C83E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7816D65-7491-4E21-B3E2-C1A11A7C83E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7816D65-7491-4E21-B3E2-C1A11A7C83E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0969AB4-532B-48E2-AA35-2D0C1E8BD3AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0969AB4-532B-48E2-AA35-2D0C1E8BD3AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0969AB4-532B-48E2-AA35-2D0C1E8BD3AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0969AB4-532B-48E2-AA35-2D0C1E8BD3AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
+
