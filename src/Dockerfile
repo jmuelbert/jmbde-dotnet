@@ -1,6 +1,7 @@
-FROM microsoft/aspnetcore-build:latest
+FROM microsoft/dotnet:2.1-sdk
 COPY jmbde /app/jmbde
 COPY RazorUIClassLib /app/RazorUIClassLib
+COPY entrypoint.sh /app/jmbde
 WORKDIR /app/jmbde
 RUN ["dotnet", "restore"]
 RUN ["dotnet", "build"]

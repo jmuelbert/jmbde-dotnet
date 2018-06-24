@@ -1,6 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace jmbde.Migrations
 {
@@ -14,9 +13,9 @@ namespace jmbde.Migrations
                 {
                     ChipCardId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    Number = table.Column<string>(maxLength: 25, nullable: false),
                     Locked = table.Column<bool>(nullable: false),
-                    Number = table.Column<string>(maxLength: 25, nullable: false)
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,8 +28,8 @@ namespace jmbde.Migrations
                 {
                     CityNameId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false)
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -43,9 +42,9 @@ namespace jmbde.Migrations
                 {
                     DepartmentId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    Priority = table.Column<long>(nullable: true)
+                    Priority = table.Column<long>(nullable: true),
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,8 +57,8 @@ namespace jmbde.Migrations
                 {
                     DeviceNameId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false)
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -72,8 +71,8 @@ namespace jmbde.Migrations
                 {
                     DeviceTypeId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false)
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -86,9 +85,9 @@ namespace jmbde.Migrations
                 {
                     InventoryId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Active = table.Column<bool>(nullable: false),
-                    Description = table.Column<string>(maxLength: 100, nullable: true),
                     Identifier = table.Column<string>(maxLength: 50, nullable: false),
+                    Description = table.Column<string>(maxLength: 100, nullable: true),
+                    Active = table.Column<bool>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -102,9 +101,9 @@ namespace jmbde.Migrations
                 {
                     JobTitleId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     FromDate = table.Column<DateTime>(nullable: false),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false)
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -117,10 +116,10 @@ namespace jmbde.Migrations
                 {
                     PlaceId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Desk = table.Column<string>(maxLength: 50, nullable: false),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    Room = table.Column<string>(maxLength: 50, nullable: false)
+                    Room = table.Column<string>(maxLength: 50, nullable: false),
+                    Desk = table.Column<string>(maxLength: 50, nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -133,10 +132,10 @@ namespace jmbde.Migrations
                 {
                     ProcessorId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     ClockRate = table.Column<float>(nullable: false),
                     Cores = table.Column<int>(nullable: false),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false)
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -164,9 +163,9 @@ namespace jmbde.Migrations
                 {
                     ChipCardProfileId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ChipCardId = table.Column<long>(nullable: true),
+                    Number = table.Column<string>(maxLength: 25, nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
-                    Number = table.Column<string>(maxLength: 25, nullable: false)
+                    ChipCardId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -185,17 +184,17 @@ namespace jmbde.Migrations
                 {
                     ManufacturerId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FaxNumber = table.Column<string>(maxLength: 50, nullable: true),
-                    HotlineNumber = table.Column<string>(maxLength: 50, nullable: true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    MailAddress = table.Column<string>(maxLength: 50, nullable: true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Name2 = table.Column<string>(maxLength: 50, nullable: true),
-                    PhoneNumber = table.Column<string>(maxLength: 50, nullable: true),
+                    Supporter = table.Column<string>(maxLength: 50, nullable: true),
                     Street = table.Column<string>(maxLength: 50, nullable: true),
                     Street22 = table.Column<string>(maxLength: 50, nullable: true),
-                    Supporter = table.Column<string>(maxLength: 50, nullable: true),
-                    ZipCodeId = table.Column<long>(nullable: true)
+                    ZipCodeId = table.Column<long>(nullable: true),
+                    MailAddress = table.Column<string>(maxLength: 50, nullable: true),
+                    PhoneNumber = table.Column<string>(maxLength: 50, nullable: true),
+                    FaxNumber = table.Column<string>(maxLength: 50, nullable: true),
+                    HotlineNumber = table.Column<string>(maxLength: 50, nullable: true),
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -214,12 +213,12 @@ namespace jmbde.Migrations
                 {
                     ChipCardDoorId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ChipCardId = table.Column<long>(nullable: true),
-                    ChipCardProfileId = table.Column<long>(nullable: true),
+                    Number = table.Column<string>(maxLength: 25, nullable: false),
+                    PlaceId = table.Column<long>(nullable: true),
                     DepartmentId = table.Column<long>(nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false),
-                    Number = table.Column<string>(maxLength: 25, nullable: false),
-                    PlaceId = table.Column<long>(nullable: true)
+                    ChipCardId = table.Column<long>(nullable: true),
+                    ChipCardProfileId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -256,18 +255,18 @@ namespace jmbde.Migrations
                 {
                     FaxId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Number = table.Column<string>(maxLength: 50, nullable: false),
+                    SerialNumber = table.Column<string>(maxLength: 20, nullable: true),
+                    Pin = table.Column<string>(maxLength: 10, nullable: true),
                     Active = table.Column<bool>(nullable: false),
-                    DepartmentId = table.Column<long>(nullable: true),
+                    Replace = table.Column<bool>(nullable: false),
                     DeviceNameId = table.Column<long>(nullable: true),
                     DeviceTypeId = table.Column<long>(nullable: true),
-                    InventoryId = table.Column<long>(nullable: true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    ManufacturerId = table.Column<long>(nullable: true),
-                    Number = table.Column<string>(maxLength: 50, nullable: false),
-                    Pin = table.Column<string>(maxLength: 10, nullable: true),
                     PlaceId = table.Column<long>(nullable: true),
-                    Replace = table.Column<bool>(nullable: false),
-                    SerialNumber = table.Column<string>(maxLength: 20, nullable: true)
+                    DepartmentId = table.Column<long>(nullable: true),
+                    ManufacturerId = table.Column<long>(nullable: true),
+                    InventoryId = table.Column<long>(nullable: true),
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -316,19 +315,19 @@ namespace jmbde.Migrations
                 {
                     MobileId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Active = table.Column<bool>(nullable: false),
+                    Number = table.Column<string>(maxLength: 50, nullable: false),
+                    SerialNumber = table.Column<string>(maxLength: 20, nullable: true),
+                    Pin = table.Column<string>(maxLength: 10, nullable: true),
                     CardNumber = table.Column<string>(maxLength: 30, nullable: true),
-                    DepartmentId = table.Column<long>(nullable: true),
+                    Active = table.Column<bool>(nullable: false),
+                    Replace = table.Column<bool>(nullable: false),
                     DeviceNameId = table.Column<long>(nullable: true),
                     DeviceTypeId = table.Column<long>(nullable: true),
-                    InventoryId = table.Column<long>(nullable: true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    ManufacturerId = table.Column<long>(nullable: true),
-                    Number = table.Column<string>(maxLength: 50, nullable: false),
-                    Pin = table.Column<string>(maxLength: 10, nullable: true),
                     PlaceId = table.Column<long>(nullable: true),
-                    Replace = table.Column<bool>(nullable: false),
-                    SerialNumber = table.Column<string>(maxLength: 20, nullable: true)
+                    DepartmentId = table.Column<long>(nullable: true),
+                    ManufacturerId = table.Column<long>(nullable: true),
+                    InventoryId = table.Column<long>(nullable: true),
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -377,18 +376,18 @@ namespace jmbde.Migrations
                 {
                     PhoneId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Number = table.Column<string>(maxLength: 50, nullable: false),
+                    SerialNumber = table.Column<string>(maxLength: 20, nullable: true),
+                    Pin = table.Column<string>(maxLength: 10, nullable: true),
                     Active = table.Column<bool>(nullable: false),
-                    DepartmentId = table.Column<long>(nullable: true),
+                    Replace = table.Column<bool>(nullable: false),
                     DeviceNameId = table.Column<long>(nullable: true),
                     DeviceTypeId = table.Column<long>(nullable: true),
-                    InventoryId = table.Column<long>(nullable: true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    ManufacturerId = table.Column<long>(nullable: true),
-                    Number = table.Column<string>(maxLength: 50, nullable: false),
-                    Pin = table.Column<string>(maxLength: 10, nullable: true),
                     PlaceId = table.Column<long>(nullable: true),
-                    Replace = table.Column<bool>(nullable: false),
-                    SerialNumber = table.Column<string>(maxLength: 20, nullable: true)
+                    DepartmentId = table.Column<long>(nullable: true),
+                    ManufacturerId = table.Column<long>(nullable: true),
+                    InventoryId = table.Column<long>(nullable: true),
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -437,32 +436,32 @@ namespace jmbde.Migrations
                 {
                     EmployeeId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Active = table.Column<bool>(nullable: false),
-                    BirthDay = table.Column<DateTime>(nullable: false),
-                    BusinessMailAddress = table.Column<string>(maxLength: 50, nullable: true),
-                    ChipCardDoorId = table.Column<long>(nullable: true),
-                    ChipCardId = table.Column<long>(nullable: true),
-                    ChipCardProfileId = table.Column<long>(nullable: true),
-                    DataCare = table.Column<bool>(nullable: false),
-                    DepartmentId = table.Column<long>(nullable: true),
                     EmployeeIdent = table.Column<string>(nullable: true),
-                    EndDate = table.Column<DateTime>(nullable: false),
-                    FaxId = table.Column<long>(nullable: true),
-                    FirstName = table.Column<string>(maxLength: 50, nullable: true),
                     Gender = table.Column<int>(nullable: false),
-                    HireDate = table.Column<DateTime>(nullable: false),
-                    HomeMailAddress = table.Column<string>(maxLength: 50, nullable: true),
-                    HomeMobile = table.Column<string>(maxLength: 50, nullable: true),
-                    HomePhone = table.Column<string>(maxLength: 50, nullable: true),
                     JobTitleId = table.Column<long>(nullable: true),
+                    FirstName = table.Column<string>(maxLength: 50, nullable: true),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    MobileId = table.Column<long>(nullable: true),
-                    Notes = table.Column<string>(nullable: true),
-                    PhoneId = table.Column<long>(nullable: true),
-                    Photo = table.Column<byte[]>(nullable: true),
+                    BirthDay = table.Column<DateTime>(nullable: false),
                     Street = table.Column<string>(maxLength: 50, nullable: false),
-                    ZipCodeId = table.Column<long>(nullable: true)
+                    ZipCodeId = table.Column<long>(nullable: true),
+                    HomePhone = table.Column<string>(maxLength: 50, nullable: true),
+                    HomeMobile = table.Column<string>(maxLength: 50, nullable: true),
+                    HomeMailAddress = table.Column<string>(maxLength: 50, nullable: true),
+                    BusinessMailAddress = table.Column<string>(maxLength: 50, nullable: true),
+                    DataCare = table.Column<bool>(nullable: false),
+                    Active = table.Column<bool>(nullable: false),
+                    Photo = table.Column<byte[]>(nullable: true),
+                    Notes = table.Column<string>(nullable: true),
+                    HireDate = table.Column<DateTime>(nullable: false),
+                    EndDate = table.Column<DateTime>(nullable: false),
+                    DepartmentId = table.Column<long>(nullable: true),
+                    PhoneId = table.Column<long>(nullable: true),
+                    MobileId = table.Column<long>(nullable: true),
+                    FaxId = table.Column<long>(nullable: true),
+                    ChipCardId = table.Column<long>(nullable: true),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    ChipCardDoorId = table.Column<long>(nullable: true),
+                    ChipCardProfileId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -529,17 +528,17 @@ namespace jmbde.Migrations
                 {
                     CompanyId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Active = table.Column<bool>(nullable: false),
-                    EmployeeId = table.Column<long>(nullable: true),
-                    FaxNumber = table.Column<string>(maxLength: 50, nullable: true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    MailAddress = table.Column<string>(maxLength: 50, nullable: true),
-                    MobileNumber = table.Column<string>(maxLength: 50, nullable: true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Name2 = table.Column<string>(maxLength: 50, nullable: true),
-                    PhoneNumber = table.Column<string>(maxLength: 50, nullable: true),
                     Street = table.Column<string>(maxLength: 50, nullable: true),
-                    ZipCodeId = table.Column<long>(nullable: true)
+                    ZipCodeId = table.Column<long>(nullable: true),
+                    PhoneNumber = table.Column<string>(maxLength: 50, nullable: true),
+                    FaxNumber = table.Column<string>(maxLength: 50, nullable: true),
+                    MobileNumber = table.Column<string>(maxLength: 50, nullable: true),
+                    MailAddress = table.Column<string>(maxLength: 50, nullable: true),
+                    Active = table.Column<bool>(nullable: false),
+                    EmployeeId = table.Column<long>(nullable: true),
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -564,10 +563,10 @@ namespace jmbde.Migrations
                 {
                     DocumentId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     DocumentData = table.Column<byte[]>(nullable: true),
-                    EmployeeId = table.Column<long>(nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false)
+                    EmployeeId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -586,10 +585,10 @@ namespace jmbde.Migrations
                 {
                     FunctionId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    EmployeeId = table.Column<long>(nullable: true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    Priority = table.Column<long>(nullable: true)
+                    Priority = table.Column<long>(nullable: true),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    EmployeeId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -608,25 +607,25 @@ namespace jmbde.Migrations
                 {
                     PrinterId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    SerialNumber = table.Column<string>(maxLength: 20, nullable: true),
+                    ServiceTag = table.Column<string>(maxLength: 20, nullable: true),
+                    ServiceNumber = table.Column<string>(maxLength: 20, nullable: true),
+                    Network = table.Column<string>(maxLength: 50, nullable: true),
+                    NetworkIpAddress = table.Column<string>(maxLength: 50, nullable: true),
                     Active = table.Column<bool>(nullable: false),
+                    Replace = table.Column<bool>(nullable: false),
+                    Resources = table.Column<string>(nullable: true),
+                    PaperSize = table.Column<int>(nullable: false),
                     Color = table.Column<bool>(nullable: false),
-                    DepartmentId = table.Column<long>(nullable: true),
                     DeviceNameId = table.Column<long>(nullable: true),
                     DeviceTypeId = table.Column<long>(nullable: true),
                     EmployeeId = table.Column<long>(nullable: true),
-                    InventoryId = table.Column<long>(nullable: true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    ManufacturerId = table.Column<long>(nullable: true),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
-                    Network = table.Column<string>(maxLength: 50, nullable: true),
-                    NetworkIpAddress = table.Column<string>(maxLength: 50, nullable: true),
-                    PaperSize = table.Column<int>(nullable: false),
                     PlaceId = table.Column<long>(nullable: true),
-                    Replace = table.Column<bool>(nullable: false),
-                    Resources = table.Column<string>(nullable: true),
-                    SerialNumber = table.Column<string>(maxLength: 20, nullable: true),
-                    ServiceNumber = table.Column<string>(maxLength: 20, nullable: true),
-                    ServiceTag = table.Column<string>(maxLength: 20, nullable: true)
+                    DepartmentId = table.Column<long>(nullable: true),
+                    ManufacturerId = table.Column<long>(nullable: true),
+                    InventoryId = table.Column<long>(nullable: true),
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -681,10 +680,10 @@ namespace jmbde.Migrations
                 {
                     SystemDataId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CompanyId = table.Column<long>(nullable: true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     Local = table.Column<bool>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false)
+                    CompanyId = table.Column<long>(nullable: true),
+                    LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -703,11 +702,11 @@ namespace jmbde.Migrations
                 {
                     SystemAccountId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    EmployeeId = table.Column<long>(nullable: true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    UserName = table.Column<string>(maxLength: 50, nullable: false),
                     PassWord = table.Column<string>(maxLength: 25, nullable: false),
                     SystemDataId = table.Column<long>(nullable: true),
-                    UserName = table.Column<string>(maxLength: 50, nullable: false)
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    EmployeeId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -732,12 +731,12 @@ namespace jmbde.Migrations
                 {
                     SoftwareId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ComputerId = table.Column<long>(nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    Version = table.Column<string>(maxLength: 25, nullable: true),
+                    Revision = table.Column<string>(maxLength: 25, nullable: true),
                     Fix = table.Column<string>(maxLength: 25, nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
-                    Revision = table.Column<string>(maxLength: 25, nullable: true),
-                    Version = table.Column<string>(maxLength: 25, nullable: true)
+                    ComputerId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -750,26 +749,25 @@ namespace jmbde.Migrations
                 {
                     ComputerId = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Active = table.Column<bool>(nullable: false),
-                    DepartmentId = table.Column<long>(nullable: true),
-                    DeviceNameId = table.Column<long>(nullable: true),
-                    DeviceTypeId = table.Column<long>(nullable: true),
-                    EmployeeId = table.Column<long>(nullable: true),
-                    InventoryId = table.Column<long>(nullable: true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    ManufacturerId = table.Column<long>(nullable: true),
-                    Memory = table.Column<long>(nullable: true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
+                    SerialNumber = table.Column<string>(maxLength: 20, nullable: true),
+                    ServiceTag = table.Column<string>(maxLength: 20, nullable: true),
+                    ServiceNumber = table.Column<string>(maxLength: 20, nullable: true),
+                    Memory = table.Column<long>(nullable: true),
                     Network = table.Column<string>(maxLength: 50, nullable: true),
                     NetworkIpAddress = table.Column<string>(maxLength: 50, nullable: true),
-                    OSSoftwareId = table.Column<long>(nullable: true),
-                    PlaceId = table.Column<long>(nullable: true),
-                    PrinterId = table.Column<long>(nullable: true),
-                    ProcessorId = table.Column<long>(nullable: true),
+                    Active = table.Column<bool>(nullable: false),
                     Replace = table.Column<bool>(nullable: false),
-                    SerialNumber = table.Column<string>(maxLength: 20, nullable: true),
-                    ServiceNumber = table.Column<string>(maxLength: 20, nullable: true),
-                    ServiceTag = table.Column<string>(maxLength: 20, nullable: true)
+                    DeviceNameId = table.Column<long>(nullable: true),
+                    DeviceTypeId = table.Column<long>(nullable: true),
+                    PlaceId = table.Column<long>(nullable: true),
+                    DepartmentId = table.Column<long>(nullable: true),
+                    ManufacturerId = table.Column<long>(nullable: true),
+                    InventoryId = table.Column<long>(nullable: true),
+                    ProcessorId = table.Column<long>(nullable: true),
+                    OSSoftwareId = table.Column<long>(nullable: true),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    EmployeeId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -821,12 +819,6 @@ namespace jmbde.Migrations
                         column: x => x.PlaceId,
                         principalTable: "Place",
                         principalColumn: "PlaceId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Computer_Printer_PrinterId",
-                        column: x => x.PrinterId,
-                        principalTable: "Printer",
-                        principalColumn: "PrinterId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Computer_Processor_ProcessorId",
@@ -912,12 +904,6 @@ namespace jmbde.Migrations
                 column: "PlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Computer_PrinterId",
-                table: "Computer",
-                column: "PrinterId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Computer_ProcessorId",
                 table: "Computer",
                 column: "ProcessorId");
@@ -960,14 +946,12 @@ namespace jmbde.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Employee_MobileId",
                 table: "Employee",
-                column: "MobileId",
-                unique: true);
+                column: "MobileId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employee_PhoneId",
                 table: "Employee",
-                column: "PhoneId",
-                unique: true);
+                column: "PhoneId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employee_ZipCodeId",
@@ -1185,10 +1169,6 @@ namespace jmbde.Migrations
                 table: "Phone");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Printer_Department_DepartmentId",
-                table: "Printer");
-
-            migrationBuilder.DropForeignKey(
                 name: "FK_ChipCardDoor_Place_PlaceId",
                 table: "ChipCardDoor");
 
@@ -1209,16 +1189,8 @@ namespace jmbde.Migrations
                 table: "Phone");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Printer_Place_PlaceId",
-                table: "Printer");
-
-            migrationBuilder.DropForeignKey(
                 name: "FK_Computer_Employee_EmployeeId",
                 table: "Computer");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Printer_Employee_EmployeeId",
-                table: "Printer");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Manufacturer_ZipCode_ZipCodeId",
@@ -1229,32 +1201,16 @@ namespace jmbde.Migrations
                 table: "Computer");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Printer_DeviceName_DeviceNameId",
-                table: "Printer");
-
-            migrationBuilder.DropForeignKey(
                 name: "FK_Computer_DeviceType_DeviceTypeId",
                 table: "Computer");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Printer_DeviceType_DeviceTypeId",
-                table: "Printer");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Computer_Inventory_InventoryId",
                 table: "Computer");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Printer_Inventory_InventoryId",
-                table: "Printer");
-
-            migrationBuilder.DropForeignKey(
                 name: "FK_Computer_Manufacturer_ManufacturerId",
                 table: "Computer");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Printer_Manufacturer_ManufacturerId",
-                table: "Printer");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Computer_Software_OSSoftwareId",
@@ -1268,6 +1224,9 @@ namespace jmbde.Migrations
 
             migrationBuilder.DropTable(
                 name: "Function");
+
+            migrationBuilder.DropTable(
+                name: "Printer");
 
             migrationBuilder.DropTable(
                 name: "SystemAccount");
@@ -1328,9 +1287,6 @@ namespace jmbde.Migrations
 
             migrationBuilder.DropTable(
                 name: "Computer");
-
-            migrationBuilder.DropTable(
-                name: "Printer");
 
             migrationBuilder.DropTable(
                 name: "Processor");

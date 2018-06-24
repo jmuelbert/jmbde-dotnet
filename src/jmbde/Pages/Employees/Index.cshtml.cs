@@ -25,5 +25,18 @@ namespace jmbde.Pages.Employees
         {
             Employee = await _context.Employee.ToListAsync();
         }
+
+        public async Task OnGetAsync(string searchString) 
+        {
+            var employees = from m in _context.Employee
+                select m;
+            
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                employees = employees.Where(s => s.LastName.Contains(searchString));
+            }
+
+            Employee = await employees.ToListAsync();
+        }
     }
 }
