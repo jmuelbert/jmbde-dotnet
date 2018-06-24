@@ -10,31 +10,18 @@
     <UserSecretsId>aspnet5-jmbde-54de2cff-d007-4927-81ad-db96e8e27d65</UserSecretsId>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/jmuelbert/jmbde-aspnet</RepositoryUrl>
+    <ReleaseVersion>0.2</ReleaseVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="jmbde.sqlite" />
   </ItemGroup>
   <ItemGroup>
   <PackageReference Include="Microsoft.AspNetCore.App" />
-  <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1" />
-  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1" />
-  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1" />
-  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1" />
-  <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="2.1" />
-  <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.1" />
-  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1" />
-  <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.1" />
-  <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1" />
-  <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.1" />
-  <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.1" />
-  <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1" />
-  <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.1" />
-  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1" />
-  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils" Version="2.1" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.1" />
 </ItemGroup>
 
 <ItemGroup>
-  <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  <ProjectReference Include="..\RazorUIClassLib\RazorUIClassLib.csproj" />
 </ItemGroup>
 
 </Project>

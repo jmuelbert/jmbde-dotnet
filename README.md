@@ -8,12 +8,10 @@ A database tool to manage Employees, Computers, Phones and Mobiles in a Company
 ## Prepare the App
 * **[Windows]**
 * Open a command prompt and cd `src\jmbde`.
-* Run `dotnet restore` - Load the Dependencies.
 * Run `dotnet ef database update`- Create a new blank database.
 
 * **[Linux or macOS]**
 * Open a command prompt and excute `cd src/jmbde`.
-* Run `dotnet restore` - Load the Dependencies.
 * Run `dotnet ef database update`- Create a new blank database.
 
 ## Run the jmbde App
@@ -23,5 +21,4 @@ A database tool to manage Employees, Computers, Phones and Mobiles in a Company
 
 * **[Linux or macOS]**
 * Open a command prompt and excute `cd src/jmbde`.
-* Run `dotnet restore` - Load the Dependencies.
 * Try run `dotnet run` (This hosts the app in a console application - Application started at URL **http://localhost:5000/**).

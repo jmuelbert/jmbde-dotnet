@@ -1,6 +1,7 @@
 FROM microsoft/aspnetcore-build:latest
-COPY . /app
-WORKDIR /app
+COPY jmbde /app/jmbde
+COPY RazorUIClassLib /app/RazorUIClassLib
+WORKDIR /app/jmbde
 RUN ["dotnet", "restore"]
 RUN ["dotnet", "build"]
 EXPOSE 80/tcp
