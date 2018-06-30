@@ -21,9 +21,17 @@ namespace jmbde.Pages.CityNames
 
         public IList<CityName> CityName { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            CityName = await _context.CityName.ToListAsync();
+            var cities = from c in _context.CityName
+                    select c;
+            
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                cities = cities.Where(cn => cn.Name.Contains(searchString));
+            }
+
+            CityName = await cities.ToListAsync();
         }
     }
 }

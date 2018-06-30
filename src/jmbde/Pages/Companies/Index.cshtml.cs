@@ -21,9 +21,17 @@ namespace jmbde.Pages.Companies
 
         public IList<Company> Company { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Company = await _context.Company.ToListAsync();
+            var companies = from c in _context.Company
+                    select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                companies = companies.Where(com => com.Name.Contains(searchString));
+            }
+
+            Company = await companies.ToListAsync();
         }
     }
 }

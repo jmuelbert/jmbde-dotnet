@@ -21,9 +21,17 @@ namespace jmbde.Pages.Departments
 
         public IList<Department> Department { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Department = await _context.Department.ToListAsync();
+            var departments = from d in _context.Department
+                    select d;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                departments = departments.Where(dep => dep.Name.Contains(searchString));
+            }
+            
+            Department = await departments.ToListAsync();
         }
     }
 }

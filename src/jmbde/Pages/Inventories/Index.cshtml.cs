@@ -21,9 +21,17 @@ namespace jmbde.Pages.Inventories
 
         public IList<Inventory> Inventory { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Inventory = await _context.Inventory.ToListAsync();
+            var inventories = from i in _context.Inventory
+                    select i;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                inventories = inventories.Where(inv => inv.Identifier.Contains(searchString));
+            }
+
+            Inventory = await inventories.ToListAsync();
         }
     }
 }

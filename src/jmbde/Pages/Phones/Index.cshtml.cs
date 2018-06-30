@@ -21,9 +21,17 @@ namespace jmbde.Pages.Phones
 
         public IList<Phone> Phone { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Phone = await _context.Phone.ToListAsync();
+            var phones = from p in _context.Phone
+                select p;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                phones = phones.Where(ph => ph.Number.Contains(searchString));
+            }
+
+            Phone = await phones.ToListAsync();
         }
     }
 }

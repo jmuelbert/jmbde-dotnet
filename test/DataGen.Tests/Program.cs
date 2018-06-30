@@ -54,9 +54,6 @@ namespace TestDataGen
             var optionsBuilder = new DbContextOptionsBuilder<JMBDEContext>();
             var dbContext = new JMBDEContext(optionsBuilder.UseSqlite("Data Source=jmbde.db").Options);
             
-            EmployeeData empData = new EmployeeData(dbContext);
-            empData.genEmployeeData();
-
             Console.WriteLine("Hello World!");
         }
     }

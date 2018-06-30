@@ -21,9 +21,17 @@ namespace jmbde.Pages.ZipCodes
 
         public IList<ZipCode> ZipCode { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            ZipCode = await _context.ZipCode.ToListAsync();
+            var zipcodes = from z in _context.ZipCode
+                    select z;
+            
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                zipcodes = zipcodes.Where(zip => zip.Code.Contains(searchString));
+            }
+
+            ZipCode = await zipcodes.ToListAsync();
         }
     }
 }

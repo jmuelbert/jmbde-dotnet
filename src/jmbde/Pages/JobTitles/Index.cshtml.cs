@@ -21,9 +21,17 @@ namespace jmbde.Pages.JobTitles
 
         public IList<JobTitle> JobTitle { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            JobTitle = await _context.JobTitle.ToListAsync();
+            var jobtitles = from j in _context.JobTitle
+                    select j;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                jobtitles = jobtitles.Where(job => job.Name.Contains(searchString));
+            }
+
+            JobTitle = await jobtitles.ToListAsync();
         }
     }
 }

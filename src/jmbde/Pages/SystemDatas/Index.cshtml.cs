@@ -21,9 +21,17 @@ namespace jmbde.Pages.SystemDatas
 
         public IList<SystemData> SystemData { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            SystemData = await _context.SystemData.ToListAsync();
+            var systemdatas = from s in _context.SystemData
+                    select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                systemdatas = systemdatas.Where(sys => sys.Name.Contains(searchString));
+            } 
+
+            SystemData = await systemdatas.ToListAsync();
         }
     }
 }

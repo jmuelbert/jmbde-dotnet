@@ -21,9 +21,17 @@ namespace jmbde.Pages.Softwares
 
         public IList<Software> Software { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Software = await _context.Software.ToListAsync();
+            var softwares = from s in _context.Software
+                    select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                softwares = softwares.Where(soft => soft.Name.Contains(searchString));
+            }
+
+            Software = await softwares.ToListAsync();
         }
     }
 }

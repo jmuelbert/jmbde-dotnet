@@ -21,9 +21,17 @@ namespace jmbde.Pages.Computers
 
         public IList<Computer> Computer { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Computer = await _context.Computer.ToListAsync();
+            var computers = from c in _context.Computer
+                    select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                computers = computers.Where(comp => comp.Name.Contains(searchString));
+            }
+
+            Computer = await computers.ToListAsync();
         }
     }
 }

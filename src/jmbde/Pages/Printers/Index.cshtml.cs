@@ -21,9 +21,17 @@ namespace jmbde.Pages.Printers
 
         public IList<Printer> Printer { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Printer = await _context.Printer.ToListAsync();
+            var printers = from p in _context.Printer
+                    select p;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                printers = printers.Where(pr => pr.Name.Contains(searchString));
+            }
+
+            Printer = await printers.ToListAsync();
         }
     }
 }

@@ -21,9 +21,17 @@ namespace jmbde.Pages.Functions
 
         public IList<Function> Function { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Function = await _context.Function.ToListAsync();
+            var functions = from f in _context.Function
+                    select f;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                functions = functions.Where(fun => fun.Name.Contains(searchString));
+            }
+
+            Function = await functions.ToListAsync();
         }
     }
 }

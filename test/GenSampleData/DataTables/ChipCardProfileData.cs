@@ -59,7 +59,7 @@ namespace GenSampleData.DataTables
         }
 
 
-        public void genChipCardProfileData(int items) {
+        public void genData(int items) {
             var i = 1;
 
             A.Configure<ChipCardProfile>()

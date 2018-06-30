@@ -21,9 +21,17 @@ namespace jmbde.Pages.Mobiles
 
         public IList<Mobile> Mobile { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Mobile = await _context.Mobile.ToListAsync();
+            var mobiles = from m in _context.Mobile
+                    select m;
+            
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                mobiles = mobiles.Where(mob => mob.Number.Contains(searchString));
+            }
+
+            Mobile = await mobiles.ToListAsync();
         }
     }
 }

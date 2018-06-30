@@ -21,9 +21,16 @@ namespace jmbde.Pages.ChipCardDoors
 
         public IList<ChipCardDoor> ChipCardDoor { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            ChipCardDoor = await _context.ChipCardDoor.ToListAsync();
+            var doors = from d in _context.ChipCardDoor
+                    select d;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                doors = doors.Where(cd => cd.Number.Contains(searchString));
+            }
+            ChipCardDoor = await doors.ToListAsync();
         }
     }
 }

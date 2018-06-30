@@ -42,35 +42,43 @@
 
 using System;
 using GenFu;
+using Microsoft.EntityFrameworkCore;
 using jmbde.Data;
 using jmbde.Models;
 
-namespace DataGen.Tests
-{   
-    
-    public class EmployeeData {
-
+namespace GenSampleData.DataTables 
+{
+    public class DeviceTypeData {
+        
         JMBDEContext context;
 
-        public EmployeeData(JMBDEContext ctx) {
-            context = ctx;
+        public DeviceTypeData() {
             var optionsBuilder = new DbContextOptionsBuilder<JMBDEContext>();
-            var dbContext = new JMBDEContext(optionsBuilder.UseSqlite("Data Source=jmbde.db").Options);
-        }
-        public void genEmployeeData() {
-            var employee = A.ListOf<Employee>();
+            context = new JMBDEContext(optionsBuilder.UseSqlite("Data Source=jmbde.db").Options);
 
-            foreach (var person in employee) {
-                Console.WriteLine($"{person.EmployeeIdent}: {person.FirstName} {person.LastName}");
+        }
+
+
+        public void genData(int items) {
+            var i = 1;
+
+            A.Configure<DeviceType>()
+               .Fill(c => c.DeviceTypeId, () => { return i++; });
+            var devicetypes = A.ListOf<DeviceType>(items);
+
+            foreach (var item in devicetypes)
+            {
+                Console.WriteLine($"{item.Name} {item.LastUpdate}");
             }
 
             using (var ctx = context) {
-                foreach (var item in employee)
+                foreach (var item in devicetypes)
                 {
-                    ctx.Employee.Add(item);
+                    ctx.DeviceType.Add(item);
                     ctx.SaveChanges();
                 }
             }
+
         }
     }
 }

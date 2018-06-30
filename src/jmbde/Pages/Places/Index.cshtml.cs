@@ -21,9 +21,17 @@ namespace jmbde.Pages.Places
 
         public IList<Place> Place { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Place = await _context.Place.ToListAsync();
+            var places = from p in _context.Place
+                    select p;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                places = places.Where(pl => pl.Name.Contains(searchString));
+            }
+
+            Place = await places.ToListAsync();
         }
     }
 }

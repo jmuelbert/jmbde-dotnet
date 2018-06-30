@@ -21,9 +21,16 @@ namespace jmbde.Pages.ChipCardProfiles
 
         public IList<ChipCardProfile> ChipCardProfile { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            ChipCardProfile = await _context.ChipCardProfile.ToListAsync();
+            var profiles = from p in _context.ChipCardProfile
+                        select p;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                profiles = profiles.Where(cp => cp.Number.Contains(searchString));
+            }
+            ChipCardProfile = await profiles.ToListAsync();
         }
     }
 }

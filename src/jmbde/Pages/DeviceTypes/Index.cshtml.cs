@@ -21,9 +21,17 @@ namespace jmbde.Pages.DeviceTypes
 
         public IList<DeviceType> DeviceType { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            DeviceType = await _context.DeviceType.ToListAsync();
+            var devicetypes = from d in _context.DeviceType
+                    select d;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                devicetypes = devicetypes.Where(dt => dt.Name.Contains(searchString));
+            }
+
+            DeviceType = await devicetypes.ToListAsync();
         }
     }
 }

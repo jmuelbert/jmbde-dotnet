@@ -59,7 +59,7 @@ namespace GenSampleData.DataTables
         }
 
 
-        public void genChipCardDoorData(int items) {
+        public void genData(int items) {
             var i = 1;
 
             A.Configure<ChipCardDoor>()

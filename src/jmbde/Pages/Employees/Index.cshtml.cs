@@ -21,11 +21,6 @@ namespace jmbde.Pages.Employees
 
         public IList<Employee> Employee { get;set; }
 
-        public async Task OnGetAsync()
-        {
-            Employee = await _context.Employee.ToListAsync();
-        }
-
         public async Task OnGetAsync(string searchString) 
         {
             var employees = from m in _context.Employee

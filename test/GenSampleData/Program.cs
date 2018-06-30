@@ -53,24 +53,83 @@ namespace GenSampleData
     {
         static void Main(string[] args)
         {
-            
+            var count = 100;
+
             ChipCardData ccd = new ChipCardData();
-            ccd.genChipCardData(100);
+            ccd.genData(count);
 
             ChipCardDoorData ccdd = new ChipCardDoorData();
-            ccdd.genChipCardDoorData(100);
+            ccdd.genData(count);
 
             ChipCardProfileData ccdp = new ChipCardProfileData();
-            ccdp.genChipCardProfileData(100);
+            ccdp.genData(count);
 
             CityNameData cnd = new CityNameData();
-            cnd.genCityNameData(500);
+            cnd.genData(count);
 
             CompanyData cd = new CompanyData();
-            cd.genCompanyData(100);
+            cd.genData(count);
 
             ComputerData comData = new ComputerData();
-            comData.genComputerData(200);
+            comData.genData(count);
+
+            DepartmentData depData = new DepartmentData();
+            depData.genData(count);
+
+            DeviceNameData devNameData  = new DeviceNameData();
+            devNameData.genData(count);
+
+            DeviceTypeData devTypeData = new DeviceTypeData();
+            devTypeData.genData(count);
+
+            DocumentData docData = new DocumentData();
+            docData.genData(count);
+
+            EmployeeData empData = new EmployeeData();
+            empData.genData(count);
+
+            FaxData faxData = new FaxData();
+            faxData.genData(count);
+
+            FunctionData funcData = new FunctionData();
+            funcData.genData(count);
+            
+            InventoryData invData = new InventoryData();
+            invData.genData(count);
+
+            JobTitleData jobTData = new JobTitleData();
+            jobTData.genData(count);
+
+            ManufacturerData manfactData = new ManufacturerData();
+            manfactData.genData(count);
+
+            MobileData mobData = new MobileData();
+            mobData.genData(count);
+
+            PhoneData phoneData = new PhoneData();
+            phoneData.genData(count);
+
+            PlaceData placeData = new PlaceData();
+            placeData.genData(count);
+
+            PrinterData printData = new PrinterData();
+            printData.genData(count);
+
+            ProcessorData procData = new ProcessorData();
+            procData.genData(count);
+
+            SoftwareData softData = new SoftwareData();
+            softData.genData(count);
+
+            SystemAccountData systemAccData = new SystemAccountData();
+            systemAccData.genData(count);
+
+            SystemDataData systemData = new SystemDataData();
+            systemData.genData(count);
+
+            ZipCodeData zipcodeData = new ZipCodeData();
+            zipcodeData.genData(count);
+
 
             Console.WriteLine("Finish!");
         }

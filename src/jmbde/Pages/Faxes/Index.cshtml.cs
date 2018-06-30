@@ -21,9 +21,17 @@ namespace jmbde.Pages.Faxes
 
         public IList<Fax> Fax { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Fax = await _context.Fax.ToListAsync();
+            var faxes = from f in _context.Fax
+                    select f;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                faxes = faxes.Where(fax => fax.Number.Contains(searchString));
+            }
+
+            Fax = await faxes.ToListAsync();
         }
     }
 }

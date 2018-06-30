@@ -21,9 +21,17 @@ namespace jmbde.Pages.SystemAccounts
 
         public IList<SystemAccount> SystemAccount { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            SystemAccount = await _context.SystemAccount.ToListAsync();
+            var systemaccounts = from s in _context.SystemAccount
+                    select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                systemaccounts = systemaccounts.Where(sys => sys.UserName.Contains(searchString));
+            }
+
+            SystemAccount = await systemaccounts.ToListAsync();
         }
     }
 }

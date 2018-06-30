@@ -21,9 +21,17 @@ namespace jmbde.Pages.ChipCards
 
         public IList<ChipCard> ChipCard { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            ChipCard = await _context.ChipCard.ToListAsync();
+            var chipcards = from c in _context.ChipCard
+                    select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                chipcards = chipcards.Where(cc => cc.Number.Contains(searchString));
+            }
+
+            ChipCard = await chipcards.ToListAsync();
         }
     }
 }

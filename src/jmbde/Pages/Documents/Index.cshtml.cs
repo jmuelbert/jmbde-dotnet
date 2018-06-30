@@ -21,9 +21,17 @@ namespace jmbde.Pages.Documents
 
         public IList<Document> Document { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Document = await _context.Document.ToListAsync();
+            var documents = from d in _context.Document
+                    select d;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                documents = documents.Where(doc => doc.Name.Contains(searchString));
+            }
+
+            Document = await documents.ToListAsync();
         }
     }
 }

@@ -21,9 +21,17 @@ namespace jmbde.Pages.Manufacturers
 
         public IList<Manufacturer> Manufacturer { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Manufacturer = await _context.Manufacturer.ToListAsync();
+            var manufacturers = from m in _context.Manufacturer
+                    select m;
+            
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                manufacturers = manufacturers.Where(man => man.Name.Contains(searchString));
+            }
+
+            Manufacturer = await manufacturers.ToListAsync();
         }
     }
 }
