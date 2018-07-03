@@ -63,24 +63,24 @@
                 <input asp-for="Employee.BusinessMailAddress" class="form-control" />
                 <span asp-validation-for="Employee.BusinessMailAddress" class="text-danger"></span>
             </div>
-           <div class="form-group">
-                <label asp-for="Employee.Active" class="control-label"></label>
+            <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Employee.Active" /> 
+                        @*
+                        <!-- input asp-for="Employee.DataCare" /> @Html.DisplayNameFor(model => model.DataCare)) -->
+                        *@    
                     </label>
                 </div>
-                <span asp-validation-for="Employee.Active" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Employee.DataCare" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Employee.DataCare" /> 
+                        @*
+                        <!-- input asp-for="Employee.Active" /> @Html.DisplayNameFor(model => model.Active)) -->
+                        *@
                     </label>
                 </div>
-                <span asp-validation-for="Employee.DataCare" class="text-danger"></span>
-            </div>           
+            </div>
             <div class="form-group">
                 <label asp-for="Employee.Photo" class="control-label"></label>
                 <input asp-for="Employee.Photo" class="form-control" />
@@ -88,7 +88,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Employee.Notes" class="control-label"></label>
-                <input asp-for="Employee.Notes" class="form-control" />
+                <textarea asp-for="Employee.Notes" class="form-control"></textarea>
                 <span asp-validation-for="Employee.Notes" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -117,6 +117,3 @@
     <a asp-page="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

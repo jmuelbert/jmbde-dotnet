@@ -28,7 +28,10 @@ namespace jmbde.Pages.ChipCardDoors
                 return NotFound();
             }
 
-            ChipCardDoor = await _context.ChipCardDoor.SingleOrDefaultAsync(m => m.ChipCardDoorId == id);
+            ChipCardDoor = await _context.ChipCardDoor
+                        .Include(cc => cc.Employee)
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(m => m.ChipCardDoorId == id);
 
             if (ChipCardDoor == null)
             {

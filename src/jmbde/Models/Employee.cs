@@ -48,10 +48,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace jmbde.Models
 
 {
-    public enum Gender
-    {
+    public enum Gender {
         F, M
     }
+
     public partial class Employee
     {
         public long EmployeeId { get; set; }

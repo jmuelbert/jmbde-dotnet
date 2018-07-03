@@ -63,7 +63,12 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Employee>()
-               .Fill(c => c.EmployeeId, () => { return i++; });
+               .Fill(c => c.BusinessMailAddress).AsEmailAddress()
+               .Fill(e => e.HomeMailAddress).AsEmailAddress()
+               .Fill(e => e.HomePhone).AsPhoneNumber()
+               .Fill(e => e.HomeMobile).AsPhoneNumber()
+               .Fill(e => e.Notes).AsLoremIpsumSentences();
+               
             var employees = A.ListOf<Employee>(items);
 
             foreach (var item in employees)

@@ -30,7 +30,7 @@ namespace jmbde.Pages.Employees
                 return NotFound();
             }
 
-            Employee = await _context.Employee.SingleOrDefaultAsync(m => m.EmployeeId == id);
+            Employee = await _context.Employee.FirstOrDefaultAsync(m => m.EmployeeId == id);
 
             if (Employee == null)
             {

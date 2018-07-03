@@ -19,18 +19,41 @@ namespace jmbde.Pages.ChipCardDoors
             _context = context;
         }
 
+        public string NameSort { get; set; }
+        public string DateSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }   
         public IList<ChipCardDoor> ChipCardDoor { get;set; }
 
-        public async Task OnGetAsync(string searchString)
+        public async Task OnGetAsync(string searchString, string sortOrder)
         {
-            var doors = from d in _context.ChipCardDoor
-                    select d;
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+
+            IQueryable<ChipCardDoor> chipCardDoorIQ = from ccd in _context.ChipCardDoor
+                                select ccd;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                doors = doors.Where(cd => cd.Number.Contains(searchString));
+                chipCardDoorIQ = chipCardDoorIQ.Where(cd => cd.Number.Contains(searchString));
             }
-            ChipCardDoor = await doors.ToListAsync();
+
+            switch (sortOrder) 
+            {
+                case "name_desc":
+                    chipCardDoorIQ = chipCardDoorIQ.OrderByDescending(c => c.Number);
+                    break;
+                case "Date":
+                    chipCardDoorIQ = chipCardDoorIQ.OrderBy(c => c.LastUpdate);
+                    break;
+                case "date_desc":  
+                    chipCardDoorIQ = chipCardDoorIQ.OrderByDescending(c => c.LastUpdate);
+                    break;
+                default:
+                    chipCardDoorIQ = chipCardDoorIQ.OrderBy(c => c.Number);
+                    break;
+            }
+            ChipCardDoor = await chipCardDoorIQ.AsNoTracking().ToListAsync();
         }
     }
 }

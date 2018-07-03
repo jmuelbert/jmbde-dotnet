@@ -34,7 +34,7 @@ namespace jmbde.Pages.ChipCardDoors
                 return Page();
             }
 
-            _context.ChipCardDoor.Add(ChipCardDoor);
+           _context.ChipCardDoor.Add(ChipCardDoor);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
