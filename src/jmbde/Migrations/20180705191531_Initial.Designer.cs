@@ -9,7 +9,7 @@ using jmbde.Data;
 namespace jmbde.Migrations
 {
     [DbContext(typeof(JMBDEContext))]
-    [Migration("20180624112654_Initial")]
+    [Migration("20180705191531_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

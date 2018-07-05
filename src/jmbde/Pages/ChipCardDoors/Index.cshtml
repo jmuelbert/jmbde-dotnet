@@ -11,18 +11,22 @@
     <a asp-page="Create">Create New</a>
 </p>
 
-<form>
-    <p>
-        Number: <input type="text" name="SearchString">
-        <input type="submit" value="Filter" />
-    </p>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by number:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" />
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
 </form>
 
 <table class="table">
     <thead>
         <tr>
                 <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.NumberSort">
                         @Html.DisplayNameFor(model => model.ChipCardDoor[0].Number)
                     </a>
                 </th>

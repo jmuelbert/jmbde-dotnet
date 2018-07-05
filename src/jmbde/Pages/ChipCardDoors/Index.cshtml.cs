@@ -19,16 +19,17 @@ namespace jmbde.Pages.ChipCardDoors
             _context = context;
         }
 
-        public string NameSort { get; set; }
+        public string NumberSort { get; set; }
         public string DateSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }   
         public IList<ChipCardDoor> ChipCardDoor { get;set; }
 
-        public async Task OnGetAsync(string searchString, string sortOrder)
+        public async Task OnGetAsync(string sortOrder, string searchString)
         {
-            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            NumberSort = String.IsNullOrEmpty(sortOrder) ? "number_desc" : "";
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            CurrentFilter = searchString;
 
             IQueryable<ChipCardDoor> chipCardDoorIQ = from ccd in _context.ChipCardDoor
                                 select ccd;
@@ -40,7 +41,7 @@ namespace jmbde.Pages.ChipCardDoors
 
             switch (sortOrder) 
             {
-                case "name_desc":
+                case "number_desc":
                     chipCardDoorIQ = chipCardDoorIQ.OrderByDescending(c => c.Number);
                     break;
                 case "Date":
