@@ -24,13 +24,24 @@ namespace jmbde.Pages.ChipCards
         public string DateSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }   
-        public IList<ChipCard> ChipCard { get;set; }
+        public PaginatedList<ChipCard> ChipCard { get;set; }
 
-        public async Task OnGetAsync(string sortOrder, string searchString)
+        public async Task OnGetAsync(string sortOrder, 
+            string currentFilter, string searchString, int? pageIndex)
         {
+            CurrentSort = sortOrder;
             NumberSort  = String.IsNullOrEmpty(sortOrder) ? "number_desc" : "";
             LockedSort  = sortOrder == "Locked" ? "locked_desc" : "Locked";
             DateSort    = sortOrder == "Date" ? "date_desc" : "Date";
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
             CurrentFilter = searchString;
 
             IQueryable<ChipCard> chipCardIQ = from c in _context.ChipCard
@@ -63,7 +74,10 @@ namespace jmbde.Pages.ChipCards
                     break;
             }
 
-            ChipCard = await chipCardIQ.AsNoTracking().ToListAsync();
+            int pageSize = 10;
+            ChipCard = await PaginatedList<ChipCard>.CreateAsync( 
+                chipCardIQ.AsNoTracking(), pageIndex ?? 1, pageSize
+            );
         }
     }
 }

@@ -19,19 +19,80 @@ namespace jmbde.Pages.Computers
             _context = context;
         }
 
-        public IList<Computer> Computer { get;set; }
+        public string NameSort { get; set; }
+        public string ActiveSort { get; set; }
+        public string ReplaceSort { get; set; }
+        public string LastUpdateSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
+        public PaginatedList<Computer> Computer { get;set; }
 
-        public async Task OnGetAsync(string searchString)
+        public async Task OnGetAsync(string sortOrder, 
+            string currentFilter, string searchString, int? pageIndex)
         {
-            var computers = from c in _context.Computer
-                    select c;
+            CurrentSort = sortOrder;
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ActiveSort = sortOrder == "Active" ? "active_desc" : "Active";
+            ReplaceSort = sortOrder == "Replace" ? "replace_desc" : "Replace";
+            LastUpdateSort = sortOrder == "LastUpdate" ? "lastupdate_sort" : "LastUpdate";
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+
+            IQueryable<Computer> computerIQ = from c in _context.Computer
+                            select c;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                computers = computers.Where(comp => comp.Name.Contains(searchString));
+                computerIQ = computerIQ.Where(comp => comp.Name.Contains(searchString));
             }
 
-            Computer = await computers.ToListAsync();
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    computerIQ = computerIQ.OrderByDescending(c => c.Name);
+                    break;
+
+               case "Active":
+                    computerIQ = computerIQ.OrderBy(c => c.Active);
+                    break;
+
+               case "active_desc":
+                    computerIQ = computerIQ.OrderByDescending(c => c.Active);
+                    break;
+
+               case "Replace":
+                    computerIQ = computerIQ.OrderBy(c => c.Replace);
+                    break;
+
+               case "replace_desc":
+                    computerIQ = computerIQ.OrderByDescending(c => c.Replace);
+                    break;
+
+               case "LastUpdate":
+                    computerIQ = computerIQ.OrderBy(c => c.LastUpdate);
+                    break;
+
+               case "lastupdate_desc":
+                    computerIQ = computerIQ.OrderByDescending(c => c.LastUpdate);
+                    break;
+
+                default:
+                    computerIQ = computerIQ.OrderBy(c => c.Name);
+                    break;
+            }
+
+            int pageSize = 10;
+            Computer = await PaginatedList<Computer>.CreateAsync(
+                computerIQ.AsNoTracking(), pageIndex ?? 1, pageSize
+            );
         }
     }
 }

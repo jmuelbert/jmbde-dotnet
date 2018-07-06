@@ -67,7 +67,7 @@ namespace jmbde.Pages.ChipCardProfiles
                     break;
             }
 
-            int pageSize = 3;
+            int pageSize = 10;
             ChipCardProfile = await PaginatedList<ChipCardProfile>.CreateAsync(
                 chipCardProfileIQ.AsNoTracking(), pageIndex ?? 1, pageSize
             );

@@ -26,12 +26,14 @@
     <thead>
         <tr>
                 <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.NumberSort">
-                        @Html.DisplayNameFor(model => model.ChipCardDoor[0].Number)
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.NumberSort"
+                        asp-route-currentFilter="@Model.CurrentFilter">
+                            @Html.DisplayNameFor(model => model.ChipCardDoor[0].Number)
                     </a>
                 </th>
                 <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
+                        asp-route-currentFilter="@Model.CurrentFilter">
                         @Html.DisplayNameFor(model => model.ChipCardDoor[0].LastUpdate)
                     </a>
                 </th>
@@ -56,3 +58,23 @@
 }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.ChipCardDoor.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.ChipCardDoor.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.ChipCardDoor.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.ChipCardDoor.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

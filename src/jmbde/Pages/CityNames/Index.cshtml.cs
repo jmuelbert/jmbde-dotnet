@@ -18,20 +18,61 @@ namespace jmbde.Pages.CityNames
         {
             _context = context;
         }
+        public string NameSort { get; set; }
+        public string DateSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
+        public PaginatedList<CityName> CityName { get;set; }
 
-        public IList<CityName> CityName { get;set; }
-
-        public async Task OnGetAsync(string searchString)
+        public async Task OnGetAsync(string sortOrder,
+             string currentFilter, string searchString, int? pageIndex)
         {
-            var cities = from c in _context.CityName
-                    select c;
+            CurrentSort = sortOrder;
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+
+            IQueryable<CityName> cityNameIQ = from c in _context.CityName
+                                    select c;
+
             
             if (!String.IsNullOrEmpty(searchString))
             {
-                cities = cities.Where(cn => cn.Name.Contains(searchString));
+                cityNameIQ = cityNameIQ.Where(cn => cn.Name.Contains(searchString));
             }
 
-            CityName = await cities.ToListAsync();
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    cityNameIQ = cityNameIQ.OrderByDescending(c => c.Name);
+                    break;
+                
+                case "Date":
+                    cityNameIQ = cityNameIQ.OrderBy(c => c.LastUpdate);
+                    break;
+
+                case "date_desc":
+                    cityNameIQ = cityNameIQ.OrderByDescending(c => c.LastUpdate);
+                    break;
+
+                default:
+                    cityNameIQ = cityNameIQ.OrderBy(c => c.Name);
+                    break;
+            }
+
+            int pageSize = 10;
+            CityName = await PaginatedList<CityName>.CreateAsync(
+                cityNameIQ.AsNoTracking(), pageIndex ?? 1, pageSize
+            );
         }
     }
 }
