@@ -19,19 +19,68 @@ namespace jmbde.Pages.JobTitles
             _context = context;
         }
 
-        public IList<JobTitle> JobTitle { get;set; }
+        public string NameSort { get; set; }
+        public string FromDateSort { get; set; }
+        public string LastUpdateSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
+        public PaginatedList<JobTitle> JobTitle { get;set; }
 
-        public async Task OnGetAsync(string searchString)
+        public async Task OnGetAsync(string sortOrder, 
+                string currentFilter, string searchString, int? pageIndex)
         {
-            var jobtitles = from j in _context.JobTitle
-                    select j;
+            CurrentSort = sortOrder;
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            FromDateSort = sortOrder == "FromDate" ? "fromdate_desc" : "FromDate";
+            LastUpdateSort = sortOrder == "LastUpdate" ? "lastupdate_desc" : "LastUpdate";
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+
+            IQueryable<JobTitle> jobTitleIQ = from j in _context.JobTitle
+                        select j;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                jobtitles = jobtitles.Where(job => job.Name.Contains(searchString));
+                jobTitleIQ = jobTitleIQ.Where(job => job.Name.Contains(searchString));
             }
 
-            JobTitle = await jobtitles.ToListAsync();
+           switch (sortOrder)
+           {
+                case "name_desc":
+                    jobTitleIQ = jobTitleIQ.OrderByDescending(j => j.Name);
+                    break;
+
+                case "FromDate":
+                    jobTitleIQ = jobTitleIQ.OrderBy(j => j.FromDate);
+                    break;
+
+                case "fromdate_desc":
+                    jobTitleIQ = jobTitleIQ.OrderByDescending(j => j.FromDate);
+                    break; 
+                case "LastUpdate":
+                    jobTitleIQ = jobTitleIQ.OrderBy(d => d.LastUpdate);
+                    break;
+                case "lastupdate_desc":
+                    jobTitleIQ = jobTitleIQ.OrderByDescending(d => d.LastUpdate);
+                    break;
+
+                default:
+                    jobTitleIQ = jobTitleIQ.OrderBy(d => d.Name);
+                    break;
+           }
+
+           int pageSize = 10;
+           JobTitle = await PaginatedList<JobTitle>.CreateAsync(
+               jobTitleIQ.AsNoTracking(), pageIndex ?? 1, pageSize
+           );
         }
     }
 }

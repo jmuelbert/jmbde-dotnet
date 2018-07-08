@@ -10,23 +10,46 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].EmployeeIdent)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.EmployeeIdentSort"
+                    asp-route-currentFilter="@Model.CurrentFilter"> 
+                    @Html.DisplayNameFor(model => model.Employee[0].EmployeeIdent)
+                </a>    
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].Gender)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.GenderSort"
+                        asp-route-currentFilter="@Model.CurrentFilter"> 
+                    @Html.DisplayNameFor(model => model.Employee[0].Gender)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Employee[0].FirstName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].LastName)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                    asp-route-currentFilter="@Model.CurrentFilter"> 
+                    @Html.DisplayNameFor(model => model.Employee[0].LastName)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].BirthDay)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.BirthDaySort"
+                        asp-route-currentFilter="@Model.CurrentFilter"> 
+                    @Html.DisplayNameFor(model => model.Employee[0].BirthDay)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Employee[0].Street)
@@ -44,10 +67,16 @@
                 @Html.DisplayNameFor(model => model.Employee[0].BusinessMailAddress)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].DataCare)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DataCareSort"
+                    asp-route-currentFilter="@Model.CurrentFilter"> 
+                    @Html.DisplayNameFor(model => model.Employee[0].DataCare)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].Active)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ActiveSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">                 
+                    @Html.DisplayNameFor(model => model.Employee[0].Active)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Employee[0].Photo)
@@ -56,13 +85,22 @@
                 @Html.DisplayNameFor(model => model.Employee[0].Notes)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].HireDate)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.HireDateSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">                   
+                    @Html.DisplayNameFor(model => model.Employee[0].HireDate)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].EndDate)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.EndDateSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">   
+                    @Html.DisplayNameFor(model => model.Employee[0].EndDate)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].LastUpdate)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">   
+                    @Html.DisplayNameFor(model => model.Employee[0].LastUpdate)
+                </a>
             </th>
             <th></th>
         </tr>
@@ -130,3 +168,23 @@
 }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.Employee.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Employee.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Employee.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Employee.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

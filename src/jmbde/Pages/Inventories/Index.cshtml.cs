@@ -19,19 +19,81 @@ namespace jmbde.Pages.Inventories
             _context = context;
         }
 
-        public IList<Inventory> Inventory { get;set; }
+        public string IdentifierSort { get; set; }
+        public string DescriptionSort { get; set; }
 
-        public async Task OnGetAsync(string searchString)
+        public string ActiveSort { get; set; }        
+        public string LastUpdateSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
+
+        public PaginatedList<Inventory> Inventory { get;set; }
+
+        public async Task OnGetAsync(string sortOrder, 
+                string currentFilter, string searchString, int? pageIndex)
         {
-            var inventories = from i in _context.Inventory
-                    select i;
+            CurrentSort = sortOrder;
+            IdentifierSort = String.IsNullOrEmpty(sortOrder) ? "identifier_desc" : "";
+            DescriptionSort = sortOrder == "Description" ? "description_desc" : "Description";
+            ActiveSort = sortOrder == "Active" ? "active_desc" : "Active";
+            LastUpdateSort = sortOrder == "LastUpdate" ? "lastupdate_desc" : "LastUpdate";
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+
+            IQueryable<Inventory> inventoryIQ = from i in _context.Inventory
+                        select i;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                inventories = inventories.Where(inv => inv.Identifier.Contains(searchString));
+                inventoryIQ = inventoryIQ.Where(inv => inv.Identifier.Contains(searchString));
             }
 
-            Inventory = await inventories.ToListAsync();
+         switch (sortOrder)
+           {
+                case "identifier_desc":
+                    inventoryIQ = inventoryIQ.OrderByDescending(i => i.Identifier);
+                    break;
+
+                case "Description":
+                    inventoryIQ = inventoryIQ.OrderBy(i => i.Description);
+                    break;
+
+                case "description_desc":
+                    inventoryIQ = inventoryIQ.OrderByDescending(i => i.Description);
+                    break;
+
+                case "Active":
+                    inventoryIQ = inventoryIQ.OrderBy(i => i.Active);
+                    break;
+
+                case "active_desc":
+                    inventoryIQ = inventoryIQ.OrderByDescending(i => i.Active);
+                    break;
+                    
+                case "LastUpdate":
+                    inventoryIQ = inventoryIQ.OrderBy(i => i.LastUpdate);
+                    break;
+                case "lastupdate_desc":
+                    inventoryIQ = inventoryIQ.OrderByDescending(i => i.LastUpdate);
+                    break;
+
+                default:
+                    inventoryIQ = inventoryIQ.OrderBy(i => i.Identifier);
+                    break;
+           }
+ 
+           int pageSize = 10;
+           Inventory = await PaginatedList<Inventory>.CreateAsync(
+                inventoryIQ.AsNoTracking(), pageIndex ?? 1, pageSize
+           );
         }
     }
 }
