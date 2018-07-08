@@ -63,17 +63,20 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Employee>()
-               .Fill(c => c.BusinessMailAddress).AsEmailAddress()
-               .Fill(e => e.HomeMailAddress).AsEmailAddress()
-               .Fill(e => e.HomePhone).AsPhoneNumber()
-               .Fill(e => e.HomeMobile).AsPhoneNumber()
-               .Fill(e => e.Notes).AsLoremIpsumSentences();
+                .Fill(c => c.EmployeeId, () => { return i++; })
+                .Fill(c => c.EmployeeIdent, c =>  { return string.Format("EMP{0,4}", i); } )
+                .Fill(c => c.Street).AsAddress()
+                .Fill(c => c.BusinessMailAddress).AsEmailAddress()
+                .Fill(e => e.HomeMailAddress).AsEmailAddress()
+                .Fill(e => e.HomePhone).AsPhoneNumber()
+                .Fill(e => e.HomeMobile).AsPhoneNumber()
+                .Fill(e => e.Notes).AsLoremIpsumSentences();
                
             var employees = A.ListOf<Employee>(items);
 
             foreach (var item in employees)
             {
-                Console.WriteLine($"{item.LastName} {item.LastUpdate}");
+                Console.WriteLine($"{item.EmployeeIdent} {item.LastName} {item.LastUpdate}");
             }
 
             using (var ctx = context) {

@@ -19,19 +19,60 @@ namespace jmbde.Pages.DeviceTypes
             _context = context;
         }
 
-        public IList<DeviceType> DeviceType { get;set; }
+        public string NameSort { get; set; }
+        public string LastUpdateSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
 
-        public async Task OnGetAsync(string searchString)
+        public PaginatedList<DeviceType> DeviceType { get;set; }
+
+        public async Task OnGetAsync(string sortOrder, 
+                string currentFilter, string searchString, int? pageIndex)
         {
-            var devicetypes = from d in _context.DeviceType
+            CurrentSort = sortOrder;
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            LastUpdateSort = sortOrder == "LastUpdate" ? "lastupdate_desc" : "LastUpdate";
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+
+            IQueryable<DeviceType> deviceTypeIQ = from d in _context.DeviceType
                     select d;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                devicetypes = devicetypes.Where(dt => dt.Name.Contains(searchString));
+                deviceTypeIQ = deviceTypeIQ.Where(dt => dt.Name.Contains(searchString));
             }
+       switch (sortOrder)
+           {
+                case "name_desc":
+                    deviceTypeIQ = deviceTypeIQ.OrderByDescending(d => d.Name);
+                    break;
 
-            DeviceType = await devicetypes.ToListAsync();
+                case "LastUpdate":
+                    deviceTypeIQ = deviceTypeIQ.OrderBy(d => d.LastUpdate);
+                    break;
+                case "lastupdate_desc":
+                    deviceTypeIQ = deviceTypeIQ.OrderByDescending(d => d.LastUpdate);
+                    break;
+
+                default:
+                    deviceTypeIQ = deviceTypeIQ.OrderBy(d => d.Name);
+                    break;
+           }
+
+           int pageSize = 10;
+           DeviceType = await PaginatedList<DeviceType>.CreateAsync(
+               deviceTypeIQ.AsNoTracking(), pageIndex ?? 1, pageSize
+           );
+        
         }
     }
 }

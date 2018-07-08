@@ -63,7 +63,8 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Computer>()
-               .Fill(c => c.ComputerId, () => { return i++; });
+               .Fill(c => c.ComputerId, () => { return i++; })
+               .Fill(c => c.Name, c => { return string.Format("PC{0,5:d}",i); });
             var computers = A.ListOf<Computer>(items);
 
             foreach (var item in computers)
