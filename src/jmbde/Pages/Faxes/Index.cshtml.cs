@@ -29,7 +29,7 @@ namespace jmbde.Pages.Faxes
 
            public async Task OnGetAsync(string sortOrder, 
                 string currentFilter, string searchString, int? pageIndex)
-        {
+            {
             CurrentSort = sortOrder;
             NumberSort = String.IsNullOrEmpty(sortOrder) ? "number_desc" : "";
             ActiveSort = sortOrder == "Active" ? "active_desc" : "Active";
