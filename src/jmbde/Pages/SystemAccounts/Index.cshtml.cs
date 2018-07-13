@@ -19,19 +19,60 @@ namespace jmbde.Pages.SystemAccounts
             _context = context;
         }
 
-        public IList<SystemAccount> SystemAccount { get;set; }
+        public string UserNameSort { get; set; }
+        public string LastUpdateSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
 
-        public async Task OnGetAsync(string searchString)
-        {
-            var systemaccounts = from s in _context.SystemAccount
+        public PaginatedList<SystemAccount> SystemAccount { get;set; }
+
+          public async Task OnGetAsync(string sortOrder, 
+                string currentFilter, string searchString, int? pageIndex)
+            {
+            CurrentSort = sortOrder;
+            UserNameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            LastUpdateSort = sortOrder == "LastUpdate" ? "lastupdate_desc" : "LastUpdate";
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+
+            IQueryable<SystemAccount> systemaccountIQ = from s in _context.SystemAccount
                     select s;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                systemaccounts = systemaccounts.Where(sys => sys.UserName.Contains(searchString));
+                systemaccountIQ = systemaccountIQ.Where(sys => sys.UserName.Contains(searchString));
             }
 
-            SystemAccount = await systemaccounts.ToListAsync();
+          switch (sortOrder)
+           {
+                case "name_desc":
+                    systemaccountIQ = systemaccountIQ.OrderByDescending(s => s.UserName);
+                    break;
+
+                case "LastUpdate":
+                    systemaccountIQ = systemaccountIQ.OrderBy(s => s.LastUpdate);
+                    break;
+                case "lastupdate_desc":
+                    systemaccountIQ = systemaccountIQ.OrderByDescending(s => s.LastUpdate);
+                    break;
+
+                default:
+                    systemaccountIQ = systemaccountIQ.OrderBy(s => s.UserName);
+                    break;
+           }
+
+            int pageSize = 10;
+            SystemAccount = await PaginatedList<SystemAccount>.CreateAsync(
+                systemaccountIQ.AsNoTracking(), pageIndex ?? 1, pageSize
+            );
         }
     }
 }

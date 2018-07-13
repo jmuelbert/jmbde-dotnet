@@ -19,19 +19,60 @@ namespace jmbde.Pages.ZipCodes
             _context = context;
         }
 
-        public IList<ZipCode> ZipCode { get;set; }
+        public string CodeSort { get; set; }
+        public string LastUpdateSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
 
-        public async Task OnGetAsync(string searchString)
-        {
-            var zipcodes = from z in _context.ZipCode
-                    select z;
-            
-            if (!String.IsNullOrEmpty(searchString))
+        public PaginatedList<ZipCode> ZipCode { get;set; }
+
+       public async Task OnGetAsync(string sortOrder, 
+                string currentFilter, string searchString, int? pageIndex)
             {
-                zipcodes = zipcodes.Where(zip => zip.Code.Contains(searchString));
+            CurrentSort = sortOrder;
+            CodeSort = String.IsNullOrEmpty(sortOrder) ? "code_desc" : "";
+            LastUpdateSort = sortOrder == "LastUpdate" ? "lastupdate_desc" : "LastUpdate";
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
             }
 
-            ZipCode = await zipcodes.ToListAsync();
+            CurrentFilter = searchString;
+
+            IQueryable<ZipCode> zipcodeIQ = from z in _context.ZipCode
+                    select z;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                zipcodeIQ = zipcodeIQ.Where(zip => zip.Code.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "code_desc":
+                    zipcodeIQ = zipcodeIQ.OrderByDescending(z => z.Code);
+                    break;
+
+                case "LastUpdate":
+                    zipcodeIQ = zipcodeIQ.OrderBy(z => z.LastUpdate);
+                    break;
+                case "lastupdate_desc":
+                    zipcodeIQ = zipcodeIQ.OrderByDescending(z => z.LastUpdate);
+                    break;
+
+                default:
+                    zipcodeIQ = zipcodeIQ.OrderBy(z => z.Code);
+                    break;
+           }
+
+            int pageSize = 10;
+            ZipCode = await PaginatedList<ZipCode>.CreateAsync(
+                zipcodeIQ.AsNoTracking(), pageIndex ?? 1, pageSize
+            );
         }
     }
 }

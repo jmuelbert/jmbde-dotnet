@@ -34,10 +34,20 @@ namespace jmbde.Pages.Faxes
                 return Page();
             }
 
-            _context.Fax.Add(Fax);
-            await _context.SaveChangesAsync();
+            var emptyFax = new Fax();
 
-            return RedirectToPage("./Index");
+            if (await TryUpdateModelAsync<Fax>(
+                emptyFax,
+                "fax", // prefix for value
+                f => f.Number, f => f.Employee
+            ))
+            {
+                _context.Fax.Add(Fax);
+                await _context.SaveChangesAsync();
+
+                return RedirectToPage("./Index");
+            }
+            return null;
         }
     }
 }

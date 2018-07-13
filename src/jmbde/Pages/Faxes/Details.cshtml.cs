@@ -28,7 +28,10 @@ namespace jmbde.Pages.Faxes
                 return NotFound();
             }
 
-            Fax = await _context.Fax.SingleOrDefaultAsync(m => m.FaxId == id);
+            Fax = await _context.Fax
+                .Include(e => e.Employee)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.FaxId == id);
 
             if (Fax == null)
             {
@@ -36,5 +39,5 @@ namespace jmbde.Pages.Faxes
             }
             return Page();
         }
-    }
+    } 
 }

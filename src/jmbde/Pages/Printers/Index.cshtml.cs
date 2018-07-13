@@ -30,7 +30,7 @@ namespace jmbde.Pages.Printers
 
         public PaginatedList<Printer> Printer { get;set; }
 
-             public async Task OnGetAsync(string sortOrder, 
+        public async Task OnGetAsync(string sortOrder, 
                 string currentFilter, string searchString, int? pageIndex)
             {
             CurrentSort = sortOrder;
