@@ -28,7 +28,10 @@ namespace jmbde.Pages.Computers
                 return NotFound();
             }
 
-            Computer = await _context.Computer.SingleOrDefaultAsync(m => m.ComputerId == id);
+            Computer = await _context.Computer
+                        .Include(c => c.Software)
+                        .AsNoTracking()                
+                        .SingleOrDefaultAsync(m => m.ComputerId == id);
 
             if (Computer == null)
             {

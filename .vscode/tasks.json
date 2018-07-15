@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceRoot}/jmbde/jmbde.csproj"
+                "${workspaceFolder}/src/jmbde/jmbde.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

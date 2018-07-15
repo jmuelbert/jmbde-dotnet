@@ -29,6 +29,50 @@
         <dd>
             @Html.DisplayFor(model => model.Department.LastUpdate)
         </dd>
+                <dt>
+            @Html.DisplayNameFor(model => model.Department.Printer)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>PaperSize</th>
+                    <th>Color</th>
+                </tr>
+                @foreach ( var item in Model.Department.Printer)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PaperSize)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Color)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.Fax)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Number</th>
+                </tr>
+                @foreach ( var item in Model.Department.Fax)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
     </dl>
 </div>
 <div>

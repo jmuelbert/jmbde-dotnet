@@ -28,7 +28,10 @@ namespace jmbde.Pages.ChipCardProfiles
                 return NotFound();
             }
 
-            ChipCardProfile = await _context.ChipCardProfile.SingleOrDefaultAsync(m => m.ChipCardProfileId == id);
+            ChipCardProfile = await _context.ChipCardProfile
+                   .Include(c => c.Employee)
+                    .AsNoTracking()                
+                    .FirstOrDefaultAsync(m => m.ChipCardProfileId == id);
 
             if (ChipCardProfile == null)
             {

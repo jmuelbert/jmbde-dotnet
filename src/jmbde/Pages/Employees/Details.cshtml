@@ -113,6 +113,96 @@
         <dd>
             @Html.DisplayFor(model => model.Employee.LastUpdate)
         </dd>
+                <dt>
+            @Html.DisplayNameFor(model => model.Employee.Function)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                </tr>
+                @foreach ( var item in Model.Employee.Function)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.SystemAccount)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                </tr>
+                @foreach ( var item in Model.Employee.SystemAccount)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>        
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Computer)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                </tr>
+                @foreach ( var item in Model.Employee.Computer)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>        
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Printer)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                </tr>
+                @foreach ( var item in Model.Employee.Printer)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Document)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                </tr>
+                @foreach ( var item in Model.Employee.Document)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>        
     </dl>
 </div>
 <div>

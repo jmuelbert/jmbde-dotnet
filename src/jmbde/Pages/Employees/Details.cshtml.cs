@@ -28,7 +28,14 @@ namespace jmbde.Pages.Employees
                 return NotFound();
             }
 
-            Employee = await _context.Employee.FirstOrDefaultAsync(m => m.EmployeeId == id);
+            Employee = await _context.Employee
+                        .Include(e => e.Function)
+                        .Include(e => e.Computer)
+                        .Include(e => e.Printer)
+                        .Include(e => e.SystemAccount)
+                        .Include(e => e.Document)
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(m => m.EmployeeId == id);
 
             if (Employee == null)
             {

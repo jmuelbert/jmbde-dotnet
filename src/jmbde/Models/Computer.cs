@@ -46,6 +46,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
+// TODO: Software cannot be in many Computers
+
 namespace jmbde.Models
 
 {

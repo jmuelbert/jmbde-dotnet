@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceRoot}/jmbde/bin/Debug/netcoreapp2.1/jmbde.dll",
+            "program": "${workspaceFolder}/src/jmbde/bin/Debug/netcoreapp2.1/jmbde.dll",
             "args": [],
-            "cwd": "${workspaceRoot}/jmbde",
+            "cwd": "${workspaceFolder}/src/jmbde",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
@@ -33,7 +33,7 @@
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
             "sourceFileMap": {
-                "/Views": "${workspaceRoot}/Views"
+                "/Views": "${workspaceFolder}/Views"
             }
         },
         {

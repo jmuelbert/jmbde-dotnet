@@ -28,7 +28,11 @@ namespace jmbde.Pages.Departments
                 return NotFound();
             }
 
-            Department = await _context.Department.SingleOrDefaultAsync(m => m.DepartmentId == id);
+            Department = await _context.Department
+                        .Include(d => d.Printer)
+                        .Include(d => d.Fax)
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(m => m.DepartmentId == id);
 
             if (Department == null)
             {

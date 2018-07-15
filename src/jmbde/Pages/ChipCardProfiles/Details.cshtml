@@ -23,6 +23,28 @@
         <dd>
             @Html.DisplayFor(model => model.ChipCardProfile.LastUpdate)
         </dd>
+                <dt>
+            @Html.DisplayNameFor(model => model.ChipCardProfile.Employee)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                </tr>
+                @foreach ( var item in Model.ChipCardProfile.Employee)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
     </dl>
 </div>
 <div>

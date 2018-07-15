@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{29D79895-9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde.Tests", "test\jmbde.Tests\jmbde.Tests.csproj", "{A48225A0-70DE-4A27-827D-90906AD26D50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorUIClassLib", "src\RazorUIClassLib\RazorUIClassLib.csproj", "{01E6A1AD-2E3D-47C4-9BEA-B9A47EA57D10}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGen.Tests", "test\DataGen.Tests\DataGen.Tests.csproj", "{DC716741-1036-4062-B2C1-E6E5E84594B7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenSampleData", "test\GenSampleData\GenSampleData.csproj", "{365B67E6-94EB-4AD6-BCEB-E35A593E8DE6}"
