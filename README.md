@@ -67,7 +67,7 @@ The master branch represents the latest pre-release code.
 ### Run on Linux or macOS
 
 - Open a command prompt and excute `cd src/jmbde`.
-- Try run `dotnet run` (This hosts the app in a console application - Application started at URL **`http://localhost:5000/**`).
+- Try run `dotnet run` (This hosts the app in a console application - Application started at URL **`http://localhost:5000/`**).
 
 ## Publish the jmbde App
 
@@ -78,11 +78,11 @@ The master branch represents the latest pre-release code.
 
 ### Publish on Linux or macOS
 
-- Open a command prompt and excute `cd src/jmbde`.## License
+- Open a command prompt and excute `cd src/jmbde`.
 - Run `dotnet publish -c Release -o [RELEASEDIRECTORY]
 
 ## License
 
-EUPL-1.2 © [Jürgen Mülbert](https:/github.com/jmuelbert/jmbde-QT)
+EUPL-1.2 © [Jürgen Mülbert](https:/github.com/jmuelbert/jmbde-aspnet/)
 
 [Return to top](#top)
