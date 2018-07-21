@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using jmbde.Data;
+using jmbde.Models;
 
 namespace jmbde.Migrations
 {
     [DbContext(typeof(JMBDEContext))]
-    [Migration("20180705191531_Initial")]
+    [Migration("20180721135338_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

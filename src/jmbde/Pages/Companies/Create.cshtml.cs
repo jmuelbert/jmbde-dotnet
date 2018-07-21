@@ -47,16 +47,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using jmbde.Data;
 using jmbde.Models;
 
 namespace jmbde.Pages.Companies
 {
     public class CreateModel : PageModel
     {
-        private readonly jmbde.Data.JMBDEContext _context;
+        private readonly jmbde.Models.JMBDEContext _context;
 
-        public CreateModel(jmbde.Data.JMBDEContext context)
+        public CreateModel(jmbde.Models.JMBDEContext context)
         {
             _context = context;
         }

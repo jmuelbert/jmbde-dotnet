@@ -43,7 +43,6 @@
 using System;
 using GenFu;
 using Microsoft.EntityFrameworkCore;
-using jmbde.Data;
 using jmbde.Models;
 
 namespace GenSampleData.DataTables 
@@ -63,7 +62,14 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Company>()
-               .Fill(c => c.CompanyId, () => { return i++; });
+               .Fill(c => c.CompanyId, () => { return i++; })
+               .Fill(c => c.FaxNumber).AsPhoneNumber()
+               .Fill(c => c.MailAddress).AsEmailAddress()
+               .Fill(c => c.MobileNumber).AsPhoneNumber()
+               .Fill(c => c.PhoneNumber).AsPhoneNumber()
+               .Fill(c => c.Street).AsAddress()
+               .Fill(c => c.Active).WithRandom( new bool[] { true, true, false});
+
             var companies = A.ListOf<Company>(items);
 
             foreach (var item in companies)

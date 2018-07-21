@@ -1,0 +1,54 @@
+@page
+@model jmbde.Pages.Processors.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Processor[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Processor[0].ClockRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Processor[0].Cores)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Processor[0].LastUpdate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Processor) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClockRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cores)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ProcessorId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ProcessorId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ProcessorId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -52,7 +52,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;   // CreateScope
 using Microsoft.Extensions.Logging;
 
-using jmbde.Data;
 using jmbde.Models;
 
 namespace jmbde

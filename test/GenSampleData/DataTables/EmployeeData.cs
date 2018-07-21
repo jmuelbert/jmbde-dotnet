@@ -43,7 +43,6 @@
 using System;
 using GenFu;
 using Microsoft.EntityFrameworkCore;
-using jmbde.Data;
 using jmbde.Models;
 
 namespace GenSampleData.DataTables 
@@ -64,7 +63,7 @@ namespace GenSampleData.DataTables
 
             A.Configure<Employee>()
                 .Fill(c => c.EmployeeId, () => { return i++; })
-                .Fill(c => c.EmployeeIdent, c =>  { return string.Format("EMP{0,4}", i); } )
+                .Fill(c => c.EmployeeIdent, c =>  { return String.Format("EMP{0:0000}",i); })
                 .Fill(c => c.Street).AsAddress()
                 .Fill(c => c.BusinessMailAddress).AsEmailAddress()
                 .Fill(e => e.HomeMailAddress).AsEmailAddress()

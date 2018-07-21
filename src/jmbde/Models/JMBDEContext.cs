@@ -43,9 +43,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-using jmbde.Models;
-
-namespace jmbde.Data
+namespace jmbde.Models
 {
     public class JMBDEContext : DbContext {
         public virtual DbSet<ChipCard> ChipCard { get; set; }
@@ -56,6 +54,7 @@ namespace jmbde.Data
         public virtual DbSet<Computer> Computer { get; set; }
         public virtual DbSet<Department> Department { get; set; }
         public virtual DbSet<DeviceName> DeviceName { get; set; }
+        public DbSet<jmbde.Models.DeviceType> DeviceType { get; set; }
         public virtual DbSet<Document> Document { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Fax> Fax { get; set; }
@@ -76,15 +75,6 @@ namespace jmbde.Data
        
         public JMBDEContext(DbContextOptions<JMBDEContext> options) : base(options)
         {
-
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Employee>().ToTable("Employee");
-            
-        }
-
-        public DbSet<jmbde.Models.DeviceType> DeviceType { get; set; }
     }
 }

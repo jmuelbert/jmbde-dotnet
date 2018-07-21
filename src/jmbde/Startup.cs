@@ -1,4 +1,3 @@
-
 /**************************************************************************
 **
 ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
@@ -55,7 +54,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-using jmbde.Data;
 using jmbde.Models;
 
 
@@ -84,8 +82,7 @@ namespace jmbde
 
             // Add framework services.
             services.AddDbContext<JMBDEContext>(options => 
-                options.UseSqlite(Configuration.GetConnectionString("jmbdeSqliteContext")));
-
+                options.UseSqlite(Configuration.GetConnectionString("JMBDEContext")));
        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

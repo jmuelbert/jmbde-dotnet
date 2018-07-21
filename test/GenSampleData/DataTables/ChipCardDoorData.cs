@@ -43,7 +43,6 @@
 using System;
 using GenFu;
 using Microsoft.EntityFrameworkCore;
-using jmbde.Data;
 using jmbde.Models;
 
 namespace GenSampleData.DataTables 
@@ -63,7 +62,9 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<ChipCardDoor>()
-               .Fill(c => c.ChipCardDoorId, () => { return i++; });
+               .Fill(c => c.ChipCardDoorId, () => { return i++; })
+               .Fill(c => c.Number, () => { return String.Format("{0:0000}",i); } );
+
             var chipcarddoors = A.ListOf<ChipCardDoor>(items);
 
             foreach (var item in chipcarddoors)

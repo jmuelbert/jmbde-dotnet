@@ -43,7 +43,6 @@
 using System;
 using GenFu;
 using Microsoft.EntityFrameworkCore;
-using jmbde.Data;
 using jmbde.Models;
 
 namespace GenSampleData.DataTables 
@@ -62,7 +61,8 @@ namespace GenSampleData.DataTables
             var i = 1;
             
             A.Configure<CityName>()
-               .Fill(c => c.CityNameId, () => { return i++; });
+               .Fill(c => c.CityNameId, () => { return i++; })
+               .Fill(c => c.Name).AsCity();
 
             var citynames = A.ListOf<CityName>(items);
 

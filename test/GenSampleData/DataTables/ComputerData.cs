@@ -43,7 +43,6 @@
 using System;
 using GenFu;
 using Microsoft.EntityFrameworkCore;
-using jmbde.Data;
 using jmbde.Models;
 
 namespace GenSampleData.DataTables 
@@ -64,7 +63,8 @@ namespace GenSampleData.DataTables
 
             A.Configure<Computer>()
                .Fill(c => c.ComputerId, () => { return i++; })
-               .Fill(c => c.Name, c => { return string.Format("PC{0,5:d}",i); });
+               .Fill(c => c.Name, c => { return String.Format("PC{0:00000}",i); } );
+
             var computers = A.ListOf<Computer>(items);
 
             foreach (var item in computers)
