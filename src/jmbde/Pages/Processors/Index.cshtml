@@ -10,20 +10,43 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Processor[0].Name)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">                
+                    @Html.DisplayNameFor(model => model.Processor[0].Name)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Processor[0].ClockRate)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ClockRateSort"
+                    asp-route-currentFilter="@Model.CurrentFilter"></a>
+                    @Html.DisplayNameFor(model => model.Processor[0].ClockRate)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Processor[0].Cores)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.CoresSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Processor[0].Cores)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Processor[0].LastUpdate)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">                
+                    @Html.DisplayNameFor(model => model.Processor[0].LastUpdate)
+                </a>
             </th>
             <th></th>
         </tr>

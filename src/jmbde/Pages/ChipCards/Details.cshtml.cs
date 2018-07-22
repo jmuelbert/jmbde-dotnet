@@ -70,6 +70,8 @@ namespace jmbde.Pages.ChipCards
             }
 
             ChipCard = await _context.ChipCard
+                        .Include(c => c.ChipCardDoor)
+                        .Include(c => c.ChipCardProfile)
                         .Include(c => c.Employee)
                         .AsNoTracking()           
                         .FirstOrDefaultAsync(m => m.ChipCardId == id);

@@ -50,7 +50,43 @@
                     </tr>
                 }
             </table>
-        </dd>        
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ChipCard.ChipCardProfile)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Number</th>
+                </tr>
+                @foreach ( var item in Model.ChipCard.ChipCardProfile)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ChipCard.ChipCardDoor)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Number</th>
+                </tr>
+                @foreach ( var item in Model.ChipCard.ChipCardDoor)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>      
     </dl>
 </div>
 <div>

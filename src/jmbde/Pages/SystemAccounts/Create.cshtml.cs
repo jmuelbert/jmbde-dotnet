@@ -75,10 +75,22 @@ namespace jmbde.Pages.SystemAccounts
                 return Page();
             }
 
-            _context.SystemAccount.Add(SystemAccount);
-            await _context.SaveChangesAsync();
+            var emptySystemAccount = new SystemAccount();
 
-            return RedirectToPage("./Index");
+            if (await TryUpdateModelAsync<SystemAccount>(
+                emptySystemAccount,
+                "systemaccount",    // Preset for form value
+                s => s.UserName,
+                s => s.PassWord,
+                s => s.LastUpdate
+            ))
+            {
+                _context.SystemAccount.Add(SystemAccount);
+                await _context.SaveChangesAsync();
+
+                return RedirectToPage("./Index");
+            }
+            return null;
         }
     }
 }

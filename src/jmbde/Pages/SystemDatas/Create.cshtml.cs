@@ -33,10 +33,22 @@ namespace jmbde.Pages.SystemDatas
                 return Page();
             }
 
-            _context.SystemData.Add(SystemData);
-            await _context.SaveChangesAsync();
+            var emptySystemData = new SystemData();
 
-            return RedirectToPage("./Index");
+            if (await TryUpdateModelAsync<SystemData>(
+                emptySystemData,
+                "systemdata",       // Prefix for form value
+                s => s.Name,
+                s => s.Local,
+                s => s.LastUpdate
+            ))
+            {
+                _context.SystemData.Add(SystemData);
+                await _context.SaveChangesAsync();
+
+                return RedirectToPage("./Index");
+            }
+            return null;
         }
     }
 }

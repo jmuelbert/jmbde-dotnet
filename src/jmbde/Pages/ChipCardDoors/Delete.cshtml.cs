@@ -63,19 +63,27 @@ namespace jmbde.Pages.ChipCardDoors
 
         [BindProperty]
         public ChipCardDoor ChipCardDoor { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            ChipCardDoor = await _context.ChipCardDoor.SingleOrDefaultAsync(m => m.ChipCardDoorId == id);
+            ChipCardDoor = await _context.ChipCardDoor
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ChipCardDoorId == id);
 
             if (ChipCardDoor == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -87,15 +95,28 @@ namespace jmbde.Pages.ChipCardDoors
                 return NotFound();
             }
 
-            ChipCardDoor = await _context.ChipCardDoor.FindAsync(id);
+            var chipcarddoor = await _context.ChipCardDoor
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(m => m.ChipCardDoorId == id);
 
-            if (ChipCardDoor != null)
+
+            if (chipcarddoor == null)
             {
-                _context.ChipCardDoor.Remove(ChipCardDoor);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.ChipCardDoor.Remove(chipcarddoor);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

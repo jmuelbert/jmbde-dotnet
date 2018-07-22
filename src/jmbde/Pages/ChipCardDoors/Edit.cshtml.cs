@@ -71,7 +71,7 @@ namespace jmbde.Pages.ChipCardDoors
                 return NotFound();
             }
 
-            ChipCardDoor = await _context.ChipCardDoor.SingleOrDefaultAsync(m => m.ChipCardDoorId == id);
+            ChipCardDoor = await _context.ChipCardDoor.FindAsync(id);
 
             if (ChipCardDoor == null)
             {
@@ -80,37 +80,27 @@ namespace jmbde.Pages.ChipCardDoors
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(ChipCardDoor).State = EntityState.Modified;
+            var chipcarddoorToUpdate = await _context.ChipCardDoor.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<ChipCardDoor>(
+                chipcarddoorToUpdate,
+                "chipcarddoor",
+                c => c.Number,
+                c => c.Place,
+                c => c.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ChipCardDoorExists(ChipCardDoor.ChipCardDoorId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
-        }
-
-        private bool ChipCardDoorExists(long id)
-        {
-            return _context.ChipCardDoor.Any(e => e.ChipCardDoorId == id);
-        }
+            return Page();
+          }
     }
 }

@@ -75,10 +75,22 @@ namespace jmbde.Pages.ZipCodes
                 return Page();
             }
 
-            _context.ZipCode.Add(ZipCode);
-            await _context.SaveChangesAsync();
+            var emptyZipCode = new ZipCode();
 
-            return RedirectToPage("./Index");
+            if (await TryUpdateModelAsync<ZipCode>(
+                emptyZipCode,
+                "zipcode",      // Preset for form value
+                z => z.Code,
+                z => z.Country,
+                z => z.LastUpdate
+            ))
+            {
+                _context.ZipCode.Add(ZipCode);
+                await _context.SaveChangesAsync();
+
+                return RedirectToPage("./Index");
+            }
+            return null;
         }
     }
 }

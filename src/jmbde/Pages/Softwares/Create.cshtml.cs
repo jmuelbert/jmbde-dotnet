@@ -75,10 +75,24 @@ namespace jmbde.Pages.Softwares
                 return Page();
             }
 
-            _context.Software.Add(Software);
-            await _context.SaveChangesAsync();
+            var emptySoftware = new Software();
 
-            return RedirectToPage("./Index");
+            if (await TryUpdateModelAsync<Software>(
+                emptySoftware,
+                "software",     // Preset for form value
+                s => s.Name,
+                s => s.Version,
+                s => s.Revision,
+                s => s.Fix,
+                s => s.LastUpdate
+            ))
+            {
+                _context.Software.Add(Software);
+                await _context.SaveChangesAsync();
+
+                return RedirectToPage("./Index");
+            }
+            return null;
         }
     }
 }

@@ -73,7 +73,7 @@ namespace jmbde.Pages.Printers
 
         public async Task OnGetAsync(string sortOrder, 
                 string currentFilter, string searchString, int? pageIndex)
-            {
+        {
             CurrentSort = sortOrder;
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ActiveSort = sortOrder == "Active" ? "active_desc" : "Active";
