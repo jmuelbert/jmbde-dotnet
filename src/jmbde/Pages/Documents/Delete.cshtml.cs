@@ -62,19 +62,27 @@ namespace jmbde.Pages.Documents
 
         [BindProperty]
         public Document Document { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Document = await _context.Document.SingleOrDefaultAsync(m => m.DocumentId == id);
+            Document = await _context.Document
+                .AsNoTracking()
+                .FirstOrDefaultAsync(d => d.DocumentId == id);
 
             if (Document == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,28 @@ namespace jmbde.Pages.Documents
                 return NotFound();
             }
 
-            Document = await _context.Document.FindAsync(id);
-
-            if (Document != null)
+            var document = await _context.Document
+                .AsNoTracking()
+                .FirstOrDefaultAsync(d => d.DocumentId == id); 
+ 
+            if (document == null)        
             {
-                _context.Document.Remove(Document);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.Document.Remove(document);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");                
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }
+

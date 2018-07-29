@@ -62,19 +62,27 @@ namespace jmbde.Pages.Places
 
         [BindProperty]
         public Place Place { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Place = await _context.Place.SingleOrDefaultAsync(m => m.PlaceId == id);
+            Place = await _context.Place
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.PlaceId == id);
 
             if (Place == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,27 @@ namespace jmbde.Pages.Places
                 return NotFound();
             }
 
-            Place = await _context.Place.FindAsync(id);
+            var place = await _context.Place
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.PlaceId == id);
 
-            if (Place != null)
+            if (place == null)
             {
-                _context.Place.Remove(Place);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.Place.Remove(place);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");                
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

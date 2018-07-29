@@ -63,18 +63,27 @@ namespace jmbde.Pages.ChipCardProfiles
         [BindProperty]
         public ChipCardProfile ChipCardProfile { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public string ErrorMessage { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)       
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            ChipCardProfile = await _context.ChipCardProfile.SingleOrDefaultAsync(m => m.ChipCardProfileId == id);
+            ChipCardProfile = await _context.ChipCardProfile
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ChipCardProfileId == id);
 
             if (ChipCardProfile == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +95,27 @@ namespace jmbde.Pages.ChipCardProfiles
                 return NotFound();
             }
 
-            ChipCardProfile = await _context.ChipCardProfile.FindAsync(id);
+            var chipcardprofile = await _context.ChipCardProfile
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(c => c.ChipCardProfileId == id);
 
-            if (ChipCardProfile != null)
+            if (chipcardprofile == null)
             {
-                _context.ChipCardProfile.Remove(ChipCardProfile);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.ChipCardProfile.Remove(chipcardprofile);
+                await _context.SaveChangesAsync();
+                return RedirectToPage(".Index");
+            }
+            catch (DbUpdateException /* ex */)
+            {
+               //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+             }
         }
     }
 }

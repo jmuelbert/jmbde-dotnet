@@ -71,7 +71,7 @@ namespace jmbde.Pages.Faxes
                 return NotFound();
             }
 
-            Fax = await _context.Fax.SingleOrDefaultAsync(m => m.FaxId == id);
+            Fax = await _context.Fax.FindAsync(id);
 
             if (Fax == null)
             {
@@ -80,37 +80,32 @@ namespace jmbde.Pages.Faxes
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Fax).State = EntityState.Modified;
+            var faxToUpdate = await _context.Fax.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Fax>(
+                faxToUpdate,
+               "fax", // prefix for value
+                f => f.Number,
+                f => f.SerialNumber,
+                f => f.Pin,
+                f => f.Active,
+                f => f.Replace,
+                f => f.LastUpdate                
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!FaxExists(Fax.FaxId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
-        private bool FaxExists(long id)
-        {
-            return _context.Fax.Any(e => e.FaxId == id);
-        }
     }
 }

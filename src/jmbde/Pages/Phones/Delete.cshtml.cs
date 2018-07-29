@@ -62,19 +62,27 @@ namespace jmbde.Pages.Phones
 
         [BindProperty]
         public Phone Phone { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Phone = await _context.Phone.SingleOrDefaultAsync(m => m.PhoneId == id);
+            Phone = await _context.Phone
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.PhoneId == id);
 
             if (Phone == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,27 @@ namespace jmbde.Pages.Phones
                 return NotFound();
             }
 
-            Phone = await _context.Phone.FindAsync(id);
+            var phone = await _context.Phone
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.PhoneId == id);
 
-            if (Phone != null)
+            if (phone == null)
             {
-                _context.Phone.Remove(Phone);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.Phone.Remove(phone);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");                
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

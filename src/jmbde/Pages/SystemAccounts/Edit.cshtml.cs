@@ -71,7 +71,7 @@ namespace jmbde.Pages.SystemAccounts
                 return NotFound();
             }
 
-            SystemAccount = await _context.SystemAccount.SingleOrDefaultAsync(m => m.SystemAccountId == id);
+            SystemAccount = await _context.SystemAccount.FindAsync(id);
 
             if (SystemAccount == null)
             {
@@ -80,37 +80,30 @@ namespace jmbde.Pages.SystemAccounts
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(SystemAccount).State = EntityState.Modified;
+            var systemaccountToUpdate = await _context.SystemAccount.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<SystemAccount>(
+                systemaccountToUpdate,
+                "systemaccount",    // Preset for form value
+                s => s.UserName,
+                s => s.PassWord,
+                s => s.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SystemAccountExists(SystemAccount.SystemAccountId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            return Page();
+
         }
 
-        private bool SystemAccountExists(int id)
-        {
-            return _context.SystemAccount.Any(e => e.SystemAccountId == id);
-        }
     }
 }

@@ -71,7 +71,7 @@ namespace jmbde.Pages.Documents
                 return NotFound();
             }
 
-            Document = await _context.Document.SingleOrDefaultAsync(m => m.DocumentId == id);
+            Document = await _context.Document.FindAsync(id);
 
             if (Document == null)
             {
@@ -80,37 +80,29 @@ namespace jmbde.Pages.Documents
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Document).State = EntityState.Modified;
+            var documentToUpdate = await _context.Document.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Document>(
+                documentToUpdate,
+                "document", // Prefix for form value
+                d => d.Name,
+                d => d.DocumentData,
+                d => d.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DocumentExists(Document.DocumentId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
-        private bool DocumentExists(long id)
-        {
-            return _context.Document.Any(e => e.DocumentId == id);
-        }
     }
 }

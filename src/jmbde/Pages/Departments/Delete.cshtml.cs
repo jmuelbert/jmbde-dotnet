@@ -62,19 +62,27 @@ namespace jmbde.Pages.Departments
 
         [BindProperty]
         public Department Department { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Department = await _context.Department.SingleOrDefaultAsync(m => m.DepartmentId == id);
+            Department = await _context.Department
+                .AsNoTracking()
+                .FirstOrDefaultAsync(d => d.DepartmentId == id);
 
             if (Department == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,28 @@ namespace jmbde.Pages.Departments
                 return NotFound();
             }
 
-            Department = await _context.Department.FindAsync(id);
-
-            if (Department != null)
+            var department = await _context.Department
+                .AsNoTracking()
+                .FirstOrDefaultAsync(d => d.DepartmentId == id);
+                
+                
+            if (department == null)
             {
-                _context.Department.Remove(Department);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.Department.Remove(department);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");                
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

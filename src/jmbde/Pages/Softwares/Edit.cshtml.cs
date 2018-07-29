@@ -71,7 +71,7 @@ namespace jmbde.Pages.Softwares
                 return NotFound();
             }
 
-            Software = await _context.Software.SingleOrDefaultAsync(m => m.SoftwareId == id);
+            Software = await _context.Software.FindAsync(id);
 
             if (Software == null)
             {
@@ -80,37 +80,31 @@ namespace jmbde.Pages.Softwares
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Software).State = EntityState.Modified;
+            var softwareToUpdate = await _context.Software.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Software>(
+                softwareToUpdate,
+                "software",     // Preset for form value
+                s => s.Name,
+                s => s.Version,
+                s => s.Revision,
+                s => s.Fix,
+                s => s.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SoftwareExists(Software.SoftwareId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
-        private bool SoftwareExists(long id)
-        {
-            return _context.Software.Any(e => e.SoftwareId == id);
-        }
     }
 }

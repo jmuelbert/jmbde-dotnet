@@ -71,7 +71,7 @@ namespace jmbde.Pages.Printers
                 return NotFound();
             }
 
-            Printer = await _context.Printer.SingleOrDefaultAsync(m => m.PrinterId == id);
+            Printer = await _context.Printer.FindAsync(id);
 
             if (Printer == null)
             {
@@ -80,37 +80,36 @@ namespace jmbde.Pages.Printers
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Printer).State = EntityState.Modified;
-
-            try
+            var printerToUpdate = await _context.Printer.FindAsync(id);
+    
+            if (await TryUpdateModelAsync<Printer>(
+                printerToUpdate,
+                "printer",      // Preset for form value
+                p => p.Name,
+                p => p.SerialNumber,
+                p => p.ServiceTag,
+                p => p.ServiceNumber,
+                p => p.Network,
+                p => p.NetworkIpAddress,
+                p => p.Active,
+                p => p.Replace,
+                p => p.Resources,
+                p => p.Color,
+                p => p.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PrinterExists(Printer.PrinterId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool PrinterExists(long id)
-        {
-            return _context.Printer.Any(e => e.PrinterId == id);
+            return Page();
         }
     }
 }

@@ -71,7 +71,7 @@ namespace jmbde.Pages.Companies
                 return NotFound();
             }
 
-            Company = await _context.Company.SingleOrDefaultAsync(m => m.CompanyId == id);
+            Company = await _context.Company.FindAsync(id);
 
             if (Company == null)
             {
@@ -80,37 +80,34 @@ namespace jmbde.Pages.Companies
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Company).State = EntityState.Modified;
+            var companyToUpdate = await _context.Company.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Company>(
+                companyToUpdate,
+                "company", // Prefix for form value
+                c => c.Name,
+                c => c.Name2,
+                c => c.Street,
+                c => c.PhoneNumber,
+                c => c.FaxNumber,
+                c => c.MobileNumber,
+                c => c.MailAddress,
+                c => c.Active,
+                c => c.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CompanyExists(Company.CompanyId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
+            return Page();
         }
 
-        private bool CompanyExists(long id)
-        {
-            return _context.Company.Any(e => e.CompanyId == id);
-        }
     }
 }

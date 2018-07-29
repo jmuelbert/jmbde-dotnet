@@ -62,19 +62,27 @@ namespace jmbde.Pages.ZipCodes
 
         [BindProperty]
         public ZipCode ZipCode { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            ZipCode = await _context.ZipCode.SingleOrDefaultAsync(m => m.ZipCodeId == id);
+            ZipCode = await _context.ZipCode
+                .AsNoTracking()
+                .FirstOrDefaultAsync(z => z.ZipCodeId == id);
 
             if (ZipCode == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,27 @@ namespace jmbde.Pages.ZipCodes
                 return NotFound();
             }
 
-            ZipCode = await _context.ZipCode.FindAsync(id);
+            var zipcode = await _context.ZipCode
+                .AsNoTracking()
+                .FirstOrDefaultAsync(z => z.ZipCodeId == id);
 
-            if (ZipCode != null)
+            if (zipcode == null)
             {
-                _context.ZipCode.Remove(ZipCode);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.ZipCode.Remove(zipcode);
+                await _context.SaveChangesAsync(); 
+                return RedirectToPage("./Index");               
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

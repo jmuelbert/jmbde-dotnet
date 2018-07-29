@@ -62,19 +62,27 @@ namespace jmbde.Pages.Faxes
 
         [BindProperty]
         public Fax Fax { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Fax = await _context.Fax.SingleOrDefaultAsync(m => m.FaxId == id);
+            Fax = await _context.Fax
+                .AsNoTracking()
+                .FirstOrDefaultAsync(f => f.FaxId == id);
 
             if (Fax == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,27 @@ namespace jmbde.Pages.Faxes
                 return NotFound();
             }
 
-            Fax = await _context.Fax.FindAsync(id);
+            var fax = await _context.Fax
+                .AsNoTracking()
+                .FirstOrDefaultAsync(f => f.FaxId == id);
 
-            if (Fax != null)
+            if (fax == null)
             {
-                _context.Fax.Remove(Fax);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.Fax.Remove(fax);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");                
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

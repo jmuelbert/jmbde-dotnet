@@ -62,22 +62,31 @@ namespace jmbde.Pages.ChipCards
 
         [BindProperty]
         public ChipCard ChipCard { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            ChipCard = await _context.ChipCard.SingleOrDefaultAsync(m => m.ChipCardId == id);
+            ChipCard = await _context.ChipCard
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ChipCardId == id);
 
             if (ChipCard == null)
             {
                 return NotFound();
             }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
+            }
             return Page();
         }
+
 
         public async Task<IActionResult> OnPostAsync(long? id)
         {
@@ -86,15 +95,27 @@ namespace jmbde.Pages.ChipCards
                 return NotFound();
             }
 
-            ChipCard = await _context.ChipCard.FindAsync(id);
+            var chipcard = await _context.ChipCard
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.ChipCardId == id);
 
-            if (ChipCard != null)
+            if (chipcard == null)
             {
-                _context.ChipCard.Remove(ChipCard);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.ChipCard.Remove(chipcard);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

@@ -71,7 +71,7 @@ namespace jmbde.Pages.DeviceTypes
                 return NotFound();
             }
 
-            DeviceType = await _context.DeviceType.SingleOrDefaultAsync(m => m.DeviceTypeId == id);
+            DeviceType = await _context.DeviceType.FindAsync(id);
 
             if (DeviceType == null)
             {
@@ -80,37 +80,27 @@ namespace jmbde.Pages.DeviceTypes
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(DeviceType).State = EntityState.Modified;
+            var devicetypeToUpdate = await _context.DeviceType.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<DeviceType>(
+                devicetypeToUpdate,
+                "devicetype", // Prefix for form value
+                d => d.Name,
+                d => d.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DeviceTypeExists(DeviceType.DeviceTypeId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool DeviceTypeExists(long id)
-        {
-            return _context.DeviceType.Any(e => e.DeviceTypeId == id);
+            return Page();
         }
     }
 }

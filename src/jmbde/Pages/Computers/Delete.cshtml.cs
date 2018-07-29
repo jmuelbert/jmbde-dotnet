@@ -62,19 +62,27 @@ namespace jmbde.Pages.Computers
 
         [BindProperty]
         public Computer Computer { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Computer = await _context.Computer.SingleOrDefaultAsync(m => m.ComputerId == id);
+            Computer = await _context.Computer
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.ComputerId == id);
 
             if (Computer == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,28 @@ namespace jmbde.Pages.Computers
                 return NotFound();
             }
 
-            Computer = await _context.Computer.FindAsync(id);
+            var computer = await _context.Computer
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.ComputerId == id);
 
-            if (Computer != null)
+
+            if (computer == null)
             {
-                _context.Computer.Remove(Computer);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.Computer.Remove(computer);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");       
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

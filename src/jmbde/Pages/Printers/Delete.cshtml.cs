@@ -62,19 +62,27 @@ namespace jmbde.Pages.Printers
 
         [BindProperty]
         public Printer Printer { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Printer = await _context.Printer.SingleOrDefaultAsync(m => m.PrinterId == id);
+            Printer = await _context.Printer
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.PrinterId == id);
 
             if (Printer == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,27 @@ namespace jmbde.Pages.Printers
                 return NotFound();
             }
 
-            Printer = await _context.Printer.FindAsync(id);
+            var printer = await _context.Printer
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.PrinterId == id);
 
-            if (Printer != null)
+
+            if (printer == null)
             {
-                _context.Printer.Remove(Printer);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try {
+                _context.Printer.Remove(printer);
+                await _context.SaveChangesAsync();
+               return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

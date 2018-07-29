@@ -71,7 +71,7 @@ namespace jmbde.Pages.JobTitles
                 return NotFound();
             }
 
-            JobTitle = await _context.JobTitle.SingleOrDefaultAsync(m => m.JobTitleId == id);
+            JobTitle = await _context.JobTitle.FindAsync(id);
 
             if (JobTitle == null)
             {
@@ -80,37 +80,29 @@ namespace jmbde.Pages.JobTitles
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(JobTitle).State = EntityState.Modified;
+            var jobtitleToUpdate = await _context.JobTitle.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<JobTitle>(
+                jobtitleToUpdate,
+                "jobtitle",     // Prefix for form value
+                j => j.Name,
+                j => j.FromDate,
+                j => j.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!JobTitleExists(JobTitle.JobTitleId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
-        private bool JobTitleExists(long id)
-        {
-            return _context.JobTitle.Any(e => e.JobTitleId == id);
-        }
     }
 }

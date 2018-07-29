@@ -71,7 +71,7 @@ namespace jmbde.Pages.Computers
                 return NotFound();
             }
 
-            Computer = await _context.Computer.SingleOrDefaultAsync(m => m.ComputerId == id);
+            Computer = await _context.Computer.FindAsync(id);
 
             if (Computer == null)
             {
@@ -80,37 +80,34 @@ namespace jmbde.Pages.Computers
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Computer).State = EntityState.Modified;
+            var computerToUpdate = await _context.Computer.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Computer>(
+                computerToUpdate,
+                "computer", // Prefix for form value
+                c => c.Name,
+                c => c.SerialNumber,
+                c => c.ServiceTag,
+                c => c.ServiceNumber,
+                c => c.Memory,
+                c => c.Network,
+                c => c.NetworkIpAddress,
+                c => c.Active,
+                c => c.Replace,
+                c => c.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ComputerExists(Computer.ComputerId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
-        }
-
-        private bool ComputerExists(long id)
-        {
-            return _context.Computer.Any(e => e.ComputerId == id);
+            return Page();
         }
     }
 }

@@ -62,19 +62,27 @@ namespace jmbde.Pages.CityNames
 
         [BindProperty]
         public CityName CityName { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            CityName = await _context.CityName.SingleOrDefaultAsync(m => m.CityNameId == id);
+            CityName = await _context.CityName
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.CityNameId == id);
 
             if (CityName == null)
             {
                 return NotFound();
+            }
+
+           if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,27 @@ namespace jmbde.Pages.CityNames
                 return NotFound();
             }
 
-            CityName = await _context.CityName.FindAsync(id);
-
-            if (CityName != null)
+            var cityname = await _context.CityName
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.CityNameId == id);
+   
+            if (cityname == null)
             {
-                _context.CityName.Remove(CityName);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.CityName.Remove(cityname);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

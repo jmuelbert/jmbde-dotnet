@@ -71,7 +71,7 @@ namespace jmbde.Pages.Places
                 return NotFound();
             }
 
-            Place = await _context.Place.SingleOrDefaultAsync(m => m.PlaceId == id);
+            Place = await _context.Place.FindAsync(id);
 
             if (Place == null)
             {
@@ -80,37 +80,29 @@ namespace jmbde.Pages.Places
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Place).State = EntityState.Modified;
+            var placeToUpdate = await  _context.Place.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Place>(
+                placeToUpdate,
+                "place",    // Preset for form value
+                p => p.Name,
+                p => p.Room,
+                p => p.Desk,
+                p => p.LastUpdate                
+            ))
             {
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PlaceExists(Place.PlaceId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
-        }
-
-        private bool PlaceExists(long id)
-        {
-            return _context.Place.Any(e => e.PlaceId == id);
+            
+            return Page();
         }
     }
 }

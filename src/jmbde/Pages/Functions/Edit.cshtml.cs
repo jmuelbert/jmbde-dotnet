@@ -71,7 +71,7 @@ namespace jmbde.Pages.Functions
                 return NotFound();
             }
 
-            Function = await _context.Function.SingleOrDefaultAsync(m => m.FunctionId == id);
+            Function = await _context.Function.FindAsync(id);
 
             if (Function == null)
             {
@@ -80,37 +80,27 @@ namespace jmbde.Pages.Functions
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Function).State = EntityState.Modified;
+            var functionToUpdate = await _context.Function.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Function>(
+                functionToUpdate,
+                "function", // Prefix for form value
+                f => f.Name,
+                f => f.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!FunctionExists(Function.FunctionId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool FunctionExists(long id)
-        {
-            return _context.Function.Any(e => e.FunctionId == id);
+            return Page();
         }
     }
 }

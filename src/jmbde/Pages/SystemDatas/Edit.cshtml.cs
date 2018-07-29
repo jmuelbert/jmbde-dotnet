@@ -71,7 +71,7 @@ namespace jmbde.Pages.SystemDatas
                 return NotFound();
             }
 
-            SystemData = await _context.SystemData.SingleOrDefaultAsync(m => m.SystemDataId == id);
+            SystemData = await _context.SystemData.FindAsync(id);
 
             if (SystemData == null)
             {
@@ -80,37 +80,28 @@ namespace jmbde.Pages.SystemDatas
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(SystemData).State = EntityState.Modified;
+            var systemdataToUpdate = await _context.SystemData.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<SystemData>(
+                systemdataToUpdate,
+                "systemdata",       // Prefix for form value
+                s => s.Name,
+                s => s.Local,
+                s => s.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SystemDataExists(SystemData.SystemDataId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool SystemDataExists(long id)
-        {
-            return _context.SystemData.Any(e => e.SystemDataId == id);
-        }
+            return Page();
+        }       
     }
 }

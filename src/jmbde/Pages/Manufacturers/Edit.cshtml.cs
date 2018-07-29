@@ -71,7 +71,7 @@ namespace jmbde.Pages.Manufacturers
                 return NotFound();
             }
 
-            Manufacturer = await _context.Manufacturer.SingleOrDefaultAsync(m => m.ManufacturerId == id);
+            Manufacturer = await _context.Manufacturer.FindAsync(id);
 
             if (Manufacturer == null)
             {
@@ -80,37 +80,36 @@ namespace jmbde.Pages.Manufacturers
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Manufacturer).State = EntityState.Modified;
+            var manufacturerToUpdate = await _context.Manufacturer.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Manufacturer>(
+                manufacturerToUpdate,
+                "manufacturer",     // Prefix for form value
+                m => m.Name,
+                m => m.Name2,
+                m => m.Supporter,
+                m => m.Street,
+                m => m.Street22,
+                m => m.MailAddress,
+                m => m.PhoneNumber,
+                m => m.FaxNumber,
+                m => m.HotlineNumber,
+                m => m.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ManufacturerExists(Manufacturer.ManufacturerId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
-        private bool ManufacturerExists(long id)
-        {
-            return _context.Manufacturer.Any(e => e.ManufacturerId == id);
-        }
     }
 }

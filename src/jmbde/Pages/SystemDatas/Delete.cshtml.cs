@@ -62,19 +62,27 @@ namespace jmbde.Pages.SystemDatas
 
         [BindProperty]
         public SystemData SystemData { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            SystemData = await _context.SystemData.SingleOrDefaultAsync(m => m.SystemDataId == id);
+            SystemData = await _context.SystemData
+                .AsNoTracking()
+                .FirstOrDefaultAsync(s => s.SystemDataId == id);
 
             if (SystemData == null)
             {
                 return NotFound();
+            }
+
+             if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,27 @@ namespace jmbde.Pages.SystemDatas
                 return NotFound();
             }
 
-            SystemData = await _context.SystemData.FindAsync(id);
+            var systemdata = await _context.SystemData
+                .AsNoTracking()
+                .FirstOrDefaultAsync(s => s.SystemDataId == id);
 
-            if (SystemData != null)
+            if (systemdata == null)
             {
-                _context.SystemData.Remove(SystemData);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.SystemData.Remove(systemdata);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");                
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

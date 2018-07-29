@@ -71,7 +71,7 @@ namespace jmbde.Pages.Inventories
                 return NotFound();
             }
 
-            Inventory = await _context.Inventory.SingleOrDefaultAsync(m => m.InventoryId == id);
+            Inventory = await _context.Inventory.FindAsync(id);
 
             if (Inventory == null)
             {
@@ -80,37 +80,30 @@ namespace jmbde.Pages.Inventories
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Inventory).State = EntityState.Modified;
+            var inventoryToUpdate = await _context.Inventory.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Inventory>(
+                inventoryToUpdate,
+                "invetory", // Prefix for form value
+                i => i.Identifier,
+                i => i.Description,
+                i => i.Active,
+                i => i.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!InventoryExists(Inventory.InventoryId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
-        private bool InventoryExists(long id)
-        {
-            return _context.Inventory.Any(e => e.InventoryId == id);
-        }
     }
 }

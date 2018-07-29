@@ -71,7 +71,7 @@ namespace jmbde.Pages.CityNames
                 return NotFound();
             }
 
-            CityName = await _context.CityName.SingleOrDefaultAsync(m => m.CityNameId == id);
+            CityName = await _context.CityName.FindAsync(id);
 
             if (CityName == null)
             {
@@ -80,37 +80,26 @@ namespace jmbde.Pages.CityNames
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(CityName).State = EntityState.Modified;
+            var citynameToUpdate = await _context.CityName.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<CityName>(
+                citynameToUpdate,
+                "cityname", // Prefix for form value
+                c => c.Name,
+                c => c.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CityNameExists(CityName.CityNameId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
-        }
-
-        private bool CityNameExists(long id)
-        {
-            return _context.CityName.Any(e => e.CityNameId == id);
+            return Page();
         }
     }
 }

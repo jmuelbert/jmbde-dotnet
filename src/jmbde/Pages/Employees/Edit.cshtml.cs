@@ -71,7 +71,7 @@ namespace jmbde.Pages.Employees
                 return NotFound();
             }
 
-            Employee = await _context.Employee.FirstOrDefaultAsync(m => m.EmployeeId == id);
+            Employee = await _context.Employee.FindAsync(id);
 
             if (Employee == null)
             {
@@ -80,37 +80,41 @@ namespace jmbde.Pages.Employees
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Employee).State = EntityState.Modified;
+            var employeeToUpdate = await _context.Employee.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Employee>(
+                employeeToUpdate,
+               "employee", // Prefix for form value
+                e => e.EmployeeIdent,
+                e => e.FirstName,
+                e => e.LastName,
+                e => e.BirthDay,
+                e => e.Street,
+                e => e.HomePhone,
+                e => e.HomeMobile,
+                e => e.HomeMailAddress,
+                e => e.BusinessMailAddress,
+                e => e.DataCare,
+                e => e.Active,
+                e => e.Photo,
+                e => e.Notes,
+                e => e.HireDate,
+                e => e.EndDate,
+                e => e.LastUpdate                
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EmployeeExists(Employee.EmployeeId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool EmployeeExists(long id)
-        {
-            return _context.Employee.Any(e => e.EmployeeId == id);
+            return Page();
         }
     }
 }

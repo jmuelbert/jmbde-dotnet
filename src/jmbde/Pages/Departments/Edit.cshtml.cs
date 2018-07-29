@@ -71,7 +71,7 @@ namespace jmbde.Pages.Departments
                 return NotFound();
             }
 
-            Department = await _context.Department.SingleOrDefaultAsync(m => m.DepartmentId == id);
+            Department = await _context.Department.FindAsync(id);
 
             if (Department == null)
             {
@@ -80,37 +80,28 @@ namespace jmbde.Pages.Departments
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Department).State = EntityState.Modified;
+            var departmentToUpdate = await _context.Department.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Department>(
+                departmentToUpdate,
+                "department", // Prefix fpr form value
+                d => d.Name,
+                d => d.Priority,
+                d => d.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DepartmentExists(Department.DepartmentId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
+            return Page();
         }
 
-        private bool DepartmentExists(long id)
-        {
-            return _context.Department.Any(e => e.DepartmentId == id);
-        }
     }
 }

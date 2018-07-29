@@ -62,19 +62,27 @@ namespace jmbde.Pages.Manufacturers
 
         [BindProperty]
         public Manufacturer Manufacturer { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Manufacturer = await _context.Manufacturer.SingleOrDefaultAsync(m => m.ManufacturerId == id);
+            Manufacturer = await _context.Manufacturer
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ManufacturerId == id);
 
             if (Manufacturer == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,27 @@ namespace jmbde.Pages.Manufacturers
                 return NotFound();
             }
 
-            Manufacturer = await _context.Manufacturer.FindAsync(id);
-
-            if (Manufacturer != null)
+            var manufacturer = await _context.Manufacturer
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ManufacturerId == id);
+            
+            if (manufacturer == null)
             {
-                _context.Manufacturer.Remove(Manufacturer);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.Manufacturer.Remove(manufacturer);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");                
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

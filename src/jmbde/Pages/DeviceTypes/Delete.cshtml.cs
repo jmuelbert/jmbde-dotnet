@@ -63,19 +63,27 @@ namespace jmbde.Pages.DeviceTypes
 
         [BindProperty]
         public DeviceType DeviceType { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            DeviceType = await _context.DeviceType.SingleOrDefaultAsync(m => m.DeviceTypeId == id);
+            DeviceType = await _context.DeviceType
+                .AsNoTracking()
+                .FirstOrDefaultAsync(d => d.DeviceTypeId == id);
 
             if (DeviceType == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -87,15 +95,29 @@ namespace jmbde.Pages.DeviceTypes
                 return NotFound();
             }
 
-            DeviceType = await _context.DeviceType.FindAsync(id);
+            var devicetype = await _context.DeviceType
+                .AsNoTracking()
+                .FirstOrDefaultAsync(d => d.DeviceTypeId == id);
 
-            if (DeviceType != null)
+            if (devicetype == null)
             {
-                _context.DeviceType.Remove(DeviceType);
+                return NotFound();
+            }
+            
+            try
+            {
+                _context.DeviceType.Remove(devicetype);
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+                
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
             }
 
-            return RedirectToPage("./Index");
         }
     }
 }

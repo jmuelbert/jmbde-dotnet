@@ -62,19 +62,27 @@ namespace jmbde.Pages.Inventories
 
         [BindProperty]
         public Inventory Inventory { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Inventory = await _context.Inventory.SingleOrDefaultAsync(m => m.InventoryId == id);
+            Inventory = await _context.Inventory
+                .AsNoTracking()
+                .FirstOrDefaultAsync(i => i.InventoryId == id);
 
             if (Inventory == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,27 @@ namespace jmbde.Pages.Inventories
                 return NotFound();
             }
 
-            Inventory = await _context.Inventory.FindAsync(id);
+            var inventory = await _context.Inventory
+                .AsNoTracking()
+                .FirstOrDefaultAsync(i => i.InventoryId == id);
 
-            if (Inventory != null)
+            if (inventory == null)
             {
-                _context.Inventory.Remove(Inventory);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.Inventory.Remove(inventory);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

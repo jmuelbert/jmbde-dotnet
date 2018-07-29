@@ -71,7 +71,7 @@ namespace jmbde.Pages.ZipCodes
                 return NotFound();
             }
 
-            ZipCode = await _context.ZipCode.SingleOrDefaultAsync(m => m.ZipCodeId == id);
+            ZipCode = await _context.ZipCode.FindAsync(id);
 
             if (ZipCode == null)
             {
@@ -80,37 +80,28 @@ namespace jmbde.Pages.ZipCodes
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(ZipCode).State = EntityState.Modified;
+            var zipcodeToUpdate = await _context.ZipCode.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<ZipCode>(
+                zipcodeToUpdate,
+                "zipcode",      // Preset for form value
+                z => z.Code,
+                z => z.Country,
+                z => z.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ZipCodeExists(ZipCode.ZipCodeId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool ZipCodeExists(long id)
-        {
-            return _context.ZipCode.Any(e => e.ZipCodeId == id);
+            return Page();
         }
     }
 }

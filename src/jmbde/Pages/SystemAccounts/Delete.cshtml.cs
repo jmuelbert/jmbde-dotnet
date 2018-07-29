@@ -62,19 +62,27 @@ namespace jmbde.Pages.SystemAccounts
 
         [BindProperty]
         public SystemAccount SystemAccount { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            SystemAccount = await _context.SystemAccount.SingleOrDefaultAsync(m => m.SystemAccountId == id);
+            SystemAccount = await _context.SystemAccount
+                .AsNoTracking()
+                .SingleOrDefaultAsync(s => s.SystemAccountId == id);
 
             if (SystemAccount == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,28 @@ namespace jmbde.Pages.SystemAccounts
                 return NotFound();
             }
 
-            SystemAccount = await _context.SystemAccount.FindAsync(id);
+            var systemaccount = await _context.SystemAccount
+                .AsNoTracking()
+                .SingleOrDefaultAsync(s => s.SystemAccountId == id);
 
-            if (SystemAccount != null)
+
+            if (systemaccount == null)
             {
-                _context.SystemAccount.Remove(SystemAccount);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.SystemAccount.Remove(systemaccount);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");               
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

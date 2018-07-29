@@ -62,19 +62,27 @@ namespace jmbde.Pages.Mobiles
 
         [BindProperty]
         public Mobile Mobile { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Mobile = await _context.Mobile.SingleOrDefaultAsync(m => m.MobileId == id);
+            Mobile = await _context.Mobile
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.MobileId == id);
 
             if (Mobile == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,28 @@ namespace jmbde.Pages.Mobiles
                 return NotFound();
             }
 
-            Mobile = await _context.Mobile.FindAsync(id);
-
-            if (Mobile != null)
+            var mobile = await _context.Mobile
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(m => m.MobileId == id);
+            
+            
+            if (mobile == null)
             {
-                _context.Mobile.Remove(Mobile);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.Mobile.Remove(mobile);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");                
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

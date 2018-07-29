@@ -62,19 +62,27 @@ namespace jmbde.Pages.JobTitles
 
         [BindProperty]
         public JobTitle JobTitle { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            JobTitle = await _context.JobTitle.SingleOrDefaultAsync(m => m.JobTitleId == id);
+            JobTitle = await _context.JobTitle
+                .AsNoTracking()
+                .FirstOrDefaultAsync(j => j.JobTitleId == id);
 
             if (JobTitle == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -86,15 +94,27 @@ namespace jmbde.Pages.JobTitles
                 return NotFound();
             }
 
-            JobTitle = await _context.JobTitle.FindAsync(id);
+            var jobtitle = await _context.JobTitle
+                .AsNoTracking()
+                .FirstOrDefaultAsync(j => j.JobTitleId == id);
 
-            if (JobTitle != null)
+            if (jobtitle == null)
             {
-                _context.JobTitle.Remove(JobTitle);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.JobTitle.Remove(jobtitle);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");                
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                             new { id, saveChangesError = true });
+            }
         }
     }
 }

@@ -71,7 +71,7 @@ namespace jmbde.Pages.Processors
                 return NotFound();
             }
 
-            Processor = await _context.Processor.FirstOrDefaultAsync(m => m.ProcessorId == id);
+            Processor = await _context.Processor.FindAsync(id);
 
             if (Processor == null)
             {
@@ -80,37 +80,30 @@ namespace jmbde.Pages.Processors
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Processor).State = EntityState.Modified;
+            var processorToUpdate = await _context.Processor.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Processor>(
+                processorToUpdate,
+                "processor",    // Preset for form value
+                p => p.Name,
+                p => p.ClockRate,
+                p => p.Cores,
+                p => p.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProcessorExists(Processor.ProcessorId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
-        private bool ProcessorExists(long id)
-        {
-            return _context.Processor.Any(e => e.ProcessorId == id);
-        }
     }
 }

@@ -71,7 +71,7 @@ namespace jmbde.Pages.Phones
                 return NotFound();
             }
 
-            Phone = await _context.Phone.SingleOrDefaultAsync(m => m.PhoneId == id);
+            Phone = await _context.Phone.FindAsync(id);
 
             if (Phone == null)
             {
@@ -80,37 +80,32 @@ namespace jmbde.Pages.Phones
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Phone).State = EntityState.Modified;
+            var phoneToUpdate = await _context.Phone.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Phone>(
+                phoneToUpdate,
+                "phone",    // Preset for form value
+                p => p.Number,
+                p => p.SerialNumber,
+                p => p.Pin,
+                p => p.Active,
+                p => p.Replace,
+                p => p.LastUpdate
+            ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PhoneExists(Phone.PhoneId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
-        private bool PhoneExists(long id)
-        {
-            return _context.Phone.Any(e => e.PhoneId == id);
-        }
     }
 }
