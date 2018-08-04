@@ -62,7 +62,9 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<DeviceName>()
-               .Fill(c => c.DeviceNameId, () => { return i++; });
+               .Fill(c => c.DeviceNameId, () => { return i; })
+               .Fill(c => c.Name, c => { return String.Format("DEV{0:00000}",i++ ); } );
+               
             var devicenames = A.ListOf<DeviceName>(items);
 
             foreach (var item in devicenames)

@@ -62,8 +62,8 @@ namespace GenSampleData.DataTables
             var i = 1;
             
             A.Configure<ChipCard>()
-               .Fill(c => c.ChipCardId, () => { return i++; })
-               .Fill(c => c.Number, () => { return String.Format("{0:0000}",i); })
+               .Fill(c => c.ChipCardId, () => { return i; })
+               .Fill(c => c.Number, () => { return String.Format("{0:0000}",i++); })
                .Fill(c => c.Locked).WithRandom(new bool[] {true, true, false});
 
             var chipcards = A.ListOf<ChipCard>(items);

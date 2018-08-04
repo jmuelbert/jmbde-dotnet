@@ -62,7 +62,19 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<DeviceType>()
-               .Fill(c => c.DeviceTypeId, () => { return i++; });
+               .Fill(c => c.DeviceTypeId, () => { return i++; })
+               .Fill(c => c.Name).WithRandom(new string[] { "Computer",
+               "Laptop",
+               "Desktop",
+               "Server",
+               "Phone",
+               "DECT-Phone",
+               "Mobile",
+               "Tablet",
+               "Scanner",
+               "Printer",
+               "Multifunction",
+               "3D-Printer"});
             var devicetypes = A.ListOf<DeviceType>(items);
 
             foreach (var item in devicetypes)

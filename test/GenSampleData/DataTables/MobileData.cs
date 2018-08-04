@@ -62,7 +62,24 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Mobile>()
-               .Fill(c => c.MobileId, () => { return i++; });
+               .Fill(c => c.MobileId, () => { return i++; })
+               .Fill(c => c.Number).AsPhoneNumber()
+                .Fill(c => c.SerialNumber, c => { return new Guid().ToString(); } )
+                .Fill(c => c.Pin).WithRandom( new string[] {
+                    "0000",
+                    "0001",
+                    "1234",
+                    "4321",
+                    "1111",
+                    "3333",
+                    "9999",
+                    "6666"
+                })
+                .Fill(c => c.CardNumber, c => { return new Guid().ToString(); } )
+                .Fill(c => c.Active).WithRandom( new bool[] { true, true, false})
+                .Fill(c => c.Replace).WithRandom( new bool[] { true, true, false});
+
+
             var mobiles = A.ListOf<Mobile>(items);
 
             foreach (var item in mobiles)

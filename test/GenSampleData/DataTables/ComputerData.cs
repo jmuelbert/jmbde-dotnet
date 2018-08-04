@@ -62,8 +62,16 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Computer>()
-               .Fill(c => c.ComputerId, () => { return i++; })
-               .Fill(c => c.Name, c => { return String.Format("PC{0:00000}",i); } );
+               .Fill(c => c.ComputerId, () => { return i; })
+               .Fill(c => c.Name, c => { return String.Format("PC{0:00000}",i++ ); } )
+               .Fill(c => c.SerialNumber, c => { return new Guid().ToString(); } )
+               .Fill(c => c.ServiceTag, c => { return new Guid().ToString(); } )
+               .Fill(c => c.ServiceNumber, c => { return new Guid().ToString(); } )
+               .Fill(c => c.Memory, c => { return 4; } )
+               .Fill(c => c.Active).WithRandom( new bool[] { true, true, false})
+               .Fill(c => c.Replace).WithRandom( new bool[] { true, true, false});
+              
+
 
             var computers = A.ListOf<Computer>(items);
 

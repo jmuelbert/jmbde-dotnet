@@ -62,7 +62,8 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<JobTitle>()
-               .Fill(c => c.JobTitleId, () => { return i++; });
+               .Fill(c => c.JobTitleId, () => { return i++; })
+               .Fill(c => c.Name).AsPersonTitle();
             var jobtitles = A.ListOf<JobTitle>(items);
 
             foreach (var item in jobtitles)

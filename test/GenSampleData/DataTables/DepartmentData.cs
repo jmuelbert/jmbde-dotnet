@@ -62,7 +62,16 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Department>()
-               .Fill(c => c.DepartmentId, () => { return i++; });
+               .Fill(c => c.DepartmentId, () => { return i++; })
+               .Fill(c => c.Name).WithRandom( new string[] { "Managment", 
+                                                "Accounting",
+                                                "Controlling",
+                                                "Service",
+                                                "Sales",
+                                                "Workshop",
+                                                "Housekeeping",
+                                                "Facility Managment",
+                                                "Advertising"});
             var departments = A.ListOf<Department>(items);
 
             foreach (var item in departments)

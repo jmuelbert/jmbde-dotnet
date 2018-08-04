@@ -62,13 +62,15 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Employee>()
-                .Fill(c => c.EmployeeId, () => { return i++; })
-                .Fill(c => c.EmployeeIdent, c =>  { return String.Format("EMP{0:0000}",i); })
+                .Fill(c => c.EmployeeId, () => { return i; })
+                .Fill(c => c.EmployeeIdent, c =>  { return String.Format("EMP{0:0000}",i++); })
                 .Fill(c => c.Street).AsAddress()
-                .Fill(c => c.BusinessMailAddress).AsEmailAddress()
-                .Fill(e => e.HomeMailAddress).AsEmailAddress()
                 .Fill(e => e.HomePhone).AsPhoneNumber()
                 .Fill(e => e.HomeMobile).AsPhoneNumber()
+                .Fill(e => e.HomeMailAddress).AsEmailAddress()
+                .Fill(c => c.BusinessMailAddress).AsEmailAddress()
+                .Fill(c => c.DataCare).WithRandom( new bool[] { true, true, false})
+                .Fill(c => c.Active).WithRandom( new bool[] { true, true, false})
                 .Fill(e => e.Notes).AsLoremIpsumSentences();
                
             var employees = A.ListOf<Employee>(items);

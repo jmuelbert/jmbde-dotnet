@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace jmbde.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -616,7 +616,7 @@ namespace jmbde.Migrations
                     Active = table.Column<bool>(nullable: false),
                     Replace = table.Column<bool>(nullable: false),
                     Resources = table.Column<string>(nullable: true),
-                    PaperSize = table.Column<int>(nullable: false),
+                    PaperSize = table.Column<int>(nullable: true),
                     Color = table.Column<bool>(nullable: false),
                     DeviceNameId = table.Column<long>(nullable: true),
                     DeviceTypeId = table.Column<long>(nullable: true),

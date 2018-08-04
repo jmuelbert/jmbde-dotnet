@@ -62,7 +62,17 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Manufacturer>()
-               .Fill(c => c.ManufacturerId, () => { return i++; });
+               .Fill(c => c.ManufacturerId, () => { return i++; })
+               .Fill(c => c.Name).AsLastName()
+               .Fill(c => c.Name2).AsLastName()
+               .Fill(c => c.Supporter).AsLastName()
+               .Fill(c => c.Street).AsAddress()
+               .Fill(c => c.Street22).AsAddressLine2()
+               .Fill(c => c.MailAddress).AsEmailAddress()
+               .Fill(c => c.PhoneNumber).AsPhoneNumber()
+               .Fill(c => c.FaxNumber).AsPhoneNumber()
+               .Fill(c => c.HotlineNumber).AsPhoneNumber();
+               
             var manufacturers = A.ListOf<Manufacturer>(items);
 
             foreach (var item in manufacturers)

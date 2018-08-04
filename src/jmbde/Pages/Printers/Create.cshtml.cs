@@ -90,6 +90,7 @@ namespace jmbde.Pages.Printers
                 p => p.Replace,
                 p => p.Resources,
                 p => p.Color,
+                p => p.PaperSize,
                 p => p.LastUpdate
             ))
             {

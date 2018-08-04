@@ -62,7 +62,23 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Function>()
-               .Fill(c => c.FunctionId, () => { return i++; });
+               .Fill(c => c.FunctionId, () => { return i++; })
+               .Fill(c => c.Name).WithRandom( new string[] {
+                   "CEO",
+                   "CFO",
+                   "CIO",
+                   "CTO",
+                   "COO",
+                   "Managing Director",
+                   "Marketing Director",
+                   "Group Manager",
+                   "Sales Director",
+                   "Accountig Person",
+                   "Sales Person",
+                   "Service Manager",
+                   "Service Person"
+               });
+               
             var functions = A.ListOf<Function>(items);
 
             foreach (var item in functions)

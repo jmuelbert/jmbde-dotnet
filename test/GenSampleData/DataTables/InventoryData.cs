@@ -62,7 +62,11 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Inventory>()
-               .Fill(c => c.InventoryId, () => { return i++; });
+                .Fill(c => c.InventoryId, () => { return i++; })
+                .Fill(c => c.Identifier, () => { return String.Format("INV{0:0000}",i++); })
+                .Fill(c => c.Description).AsLoremIpsumWords()
+                .Fill(c => c.Active).WithRandom( new bool[] { true, true, false});
+
             var inventories = A.ListOf<Inventory>(items);
 
             foreach (var item in inventories)

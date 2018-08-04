@@ -79,7 +79,7 @@ namespace jmbde.Models
 
         public bool Replace { get; set; }
         public string Resources { get; set; }
-        public PaperSize PaperSize { get; set; }
+        public PaperSize? PaperSize { get; set; }
         public bool Color { get; set; }
 
         public DeviceName DeviceName { get; set; }

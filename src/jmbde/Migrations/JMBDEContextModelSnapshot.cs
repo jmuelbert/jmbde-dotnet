@@ -695,7 +695,7 @@ namespace jmbde.Migrations
                     b.Property<string>("NetworkIpAddress")
                         .HasMaxLength(50);
 
-                    b.Property<int>("PaperSize");
+                    b.Property<int?>("PaperSize");
 
                     b.Property<long?>("PlaceId");
 

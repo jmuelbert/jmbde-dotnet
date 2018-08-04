@@ -9,8 +9,8 @@ using jmbde.Models;
 namespace jmbde.Migrations
 {
     [DbContext(typeof(JMBDEContext))]
-    [Migration("20180721135338_Initial")]
-    partial class Initial
+    [Migration("20180804083701_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -697,7 +697,7 @@ namespace jmbde.Migrations
                     b.Property<string>("NetworkIpAddress")
                         .HasMaxLength(50);
 
-                    b.Property<int>("PaperSize");
+                    b.Property<int?>("PaperSize");
 
                     b.Property<long?>("PlaceId");
 

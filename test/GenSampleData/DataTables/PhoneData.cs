@@ -62,8 +62,22 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Phone>()
-               .Fill(c => c.PhoneId, () => { return i++; })
-               .Fill(c => c.Number,  () => { return String.Format("{0:0000}",i); });
+               .Fill(c => c.PhoneId, () => { return i; })
+               .Fill(c => c.Number,  () => { return String.Format("{0:0000}",i++); })
+                .Fill(c => c.SerialNumber, c => { return new Guid().ToString(); } )
+                .Fill(c => c.Pin).WithRandom( new string[] {
+                    "0000",
+                    "0001",
+                    "1234",
+                    "4321",
+                    "1111",
+                    "3333",
+                    "9999",
+                    "6666"
+                })
+                .Fill(c => c.Active).WithRandom( new bool[] { true, true, false})
+                .Fill(c => c.Replace).WithRandom( new bool[] { true, true, false});
+
 
             var phones = A.ListOf<Phone>(items);
 

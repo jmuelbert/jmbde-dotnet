@@ -62,7 +62,8 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<ChipCardProfile>()
-               .Fill(c => c.ChipCardProfileId, () => { return i++; });
+               .Fill(c => c.ChipCardProfileId, () => { return i; })
+               .Fill(c => c.Number, () => { return String.Format("{0:0000}",i++); } );
             var chipcardprofiles = A.ListOf<ChipCardProfile>(items);
 
             foreach (var item in chipcardprofiles)
