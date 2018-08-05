@@ -67,8 +67,10 @@ namespace GenSampleData.DataTables
                 .Fill(c => c.Street).AsAddress()
                 .Fill(e => e.HomePhone).AsPhoneNumber()
                 .Fill(e => e.HomeMobile).AsPhoneNumber()
-                .Fill(e => e.HomeMailAddress).AsEmailAddress()
-                .Fill(c => c.BusinessMailAddress).AsEmailAddress()
+                .Fill(e => e.HomeMailAddress,
+                    e => $"{e.FirstName}.{e.LastName}@home.com")            
+                .Fill(c => c.BusinessMailAddress,
+                    e => $"{e.FirstName}.{e.LastName}@company.com")            
                 .Fill(c => c.DataCare).WithRandom( new bool[] { true, true, false})
                 .Fill(c => c.Active).WithRandom( new bool[] { true, true, false})
                 .Fill(e => e.Notes).AsLoremIpsumSentences();

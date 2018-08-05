@@ -93,6 +93,7 @@ namespace jmbde.Pages.Functions
                 functionToUpdate,
                 "function", // Prefix for form value
                 f => f.Name,
+                f => f.Priority,
                 f => f.LastUpdate
             ))
             {

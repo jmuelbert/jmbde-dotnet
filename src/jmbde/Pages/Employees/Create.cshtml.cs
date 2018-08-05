@@ -98,7 +98,7 @@ namespace jmbde.Pages.Employees
                 e => e.LastUpdate
             ))
             {
-                _context.Employee.Add(Employee);
+                _context.Employee.Add(emptyEmployee);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

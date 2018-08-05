@@ -41,6 +41,7 @@
 **************************************************************************/
 
 using System;
+using System.Globalization;
 using GenFu;
 using Microsoft.EntityFrameworkCore;
 using jmbde.Models;
@@ -64,9 +65,88 @@ namespace GenSampleData.DataTables
             A.Configure<Computer>()
                .Fill(c => c.ComputerId, () => { return i; })
                .Fill(c => c.Name, c => { return String.Format("PC{0:00000}",i++ ); } )
-               .Fill(c => c.SerialNumber, c => { return new Guid().ToString(); } )
-               .Fill(c => c.ServiceTag, c => { return new Guid().ToString(); } )
-               .Fill(c => c.ServiceNumber, c => { return new Guid().ToString(); } )
+               .Fill(c => c.SerialNumber, c => { return  Guid.NewGuid().ToString(); } )
+               .Fill(c => c.ServiceTag, c => { return Guid.NewGuid().ToString(); } )
+               .Fill(c => c.ServiceNumber, c => { return Guid.NewGuid().ToString(); } )
+                .Fill(c => c.Network).WithRandom(new string[] {
+                    "LAN1",
+                    "LAN2",
+                    "LAN3",
+                    "LAN4",
+                    "LAN5",
+                    "VLAN1",
+                    "VLAN2",
+                    "VLAN3",
+                    "VLAN4",
+                    "VLAN5",
+                    "WLAN1",
+                    "WLAN2",
+                    "WLAN3",
+                    "WLAN4",
+                    "WLAN5"
+                })        
+                .Fill(c => c.NetworkIpAddress).WithRandom( new string[] {
+                    "192.168.2.1",
+                    "192.168.2.2",
+                    "192.168.2.3",
+                    "192.168.2.4",
+                    "192.168.2.5",
+                    "192.168.2.6",
+                    "192.168.2.7",
+                    "192.168.2.8",
+                    "192.168.2.9",
+                    "192.168.2.10",
+                    "192.168.2.11",
+                    "192.168.2.12",
+                    "192.168.2.13",
+                    "192.168.2.14",
+                    "192.168.2.15",
+                    "192.168.2.16",
+                    "192.168.2.17",
+                    "192.168.2.18",
+                    "192.168.2.19",
+                    "192.168.2.20",
+                    "172.3.100.1",
+                    "172.3.100.2",
+                    "172.3.100.3",
+                    "172.3.100.4",
+                    "172.3.100.5",
+                    "172.3.100.6",
+                    "172.3.100.7",
+                    "172.3.100.8",
+                    "172.3.100.9",
+                    "172.3.100.10",
+                    "172.3.100.11",
+                    "172.3.100.12",
+                    "172.3.100.13",
+                    "172.3.100.14",
+                    "172.3.100.15",
+                    "172.3.100.16",
+                    "172.3.100.17",
+                    "172.3.100.18",
+                    "172.3.100.19",
+                    "172.3.100.20",
+                    "10.1.55.1",
+                    "10.1.55.2",
+                    "10.1.55.3",
+                    "10.1.55.4",
+                    "10.1.55.5",
+                    "10.1.55.6",
+                    "10.1.55.7",
+                    "10.1.55.8",
+                    "10.1.55.9",
+                    "10.1.55.10",
+                    "10.1.55.11",
+                    "10.1.55.12",
+                    "10.1.55.13",
+                    "10.1.55.14",
+                    "10.1.55.15",
+                    "10.1.55.16",
+                    "10.1.55.17",
+                    "10.1.55.18",
+                    "10.1.55.19",
+                    "10.1.55.20"
+                }) 
                .Fill(c => c.Memory, c => { return 4; } )
                .Fill(c => c.Active).WithRandom( new bool[] { true, true, false})
                .Fill(c => c.Replace).WithRandom( new bool[] { true, true, false});

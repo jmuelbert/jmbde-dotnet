@@ -49,7 +49,7 @@ namespace jmbde.Models
 {
     public partial class SystemAccount
     {
-        public int SystemAccountId { get; set; }
+        public long SystemAccountId { get; set; }
 
         [Required]
         [StringLength(50, ErrorMessage = "UserName cannot be longer than 50 characters.")]

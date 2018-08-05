@@ -86,7 +86,7 @@ namespace jmbde.Pages.Places
                 p => p.LastUpdate
             ))
             {
-               _context.Place.Add(Place);
+               _context.Place.Add(emptyPlace);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

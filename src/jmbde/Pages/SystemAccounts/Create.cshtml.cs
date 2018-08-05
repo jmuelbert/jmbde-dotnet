@@ -85,7 +85,7 @@ namespace jmbde.Pages.SystemAccounts
                 s => s.LastUpdate
             ))
             {
-                _context.SystemAccount.Add(SystemAccount);
+                _context.SystemAccount.Add(emptySystemAccount);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

@@ -87,7 +87,7 @@ namespace jmbde.Pages.Softwares
                 s => s.LastUpdate
             ))
             {
-                _context.Software.Add(Software);
+                _context.Software.Add(emptySoftware);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

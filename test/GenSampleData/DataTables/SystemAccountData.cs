@@ -62,7 +62,10 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<SystemAccount>()
-               .Fill(c => c.SystemAccountId, () => { return i++; });
+               .Fill(c => c.SystemAccountId, () => { return i++; })
+               .Fill(c => c.UserName).AsLastName()
+               .Fill(c => c.PassWord).AsLoremIpsumWords();
+
             var systemaccounts = A.ListOf<SystemAccount>(items);
 
             foreach (var item in systemaccounts)

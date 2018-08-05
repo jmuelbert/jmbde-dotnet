@@ -63,6 +63,7 @@ namespace GenSampleData.DataTables
 
             A.Configure<Company>()
                .Fill(c => c.CompanyId, () => { return i++; })
+               .Fill(c => c.Name2).AsLastName()
                .Fill(c => c.FaxNumber).AsPhoneNumber()
                .Fill(c => c.MailAddress).AsEmailAddress()
                .Fill(c => c.MobileNumber).AsPhoneNumber()

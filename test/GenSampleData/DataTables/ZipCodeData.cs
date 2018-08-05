@@ -62,7 +62,10 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<ZipCode>()
-               .Fill(c => c.ZipCodeId, () => { return i++; });
+               .Fill(c => c.ZipCodeId, () => { return i++; })
+               .Fill(c => c.Code).AsCity()
+               .Fill(c => c.Country).AsUsaState();
+
             var zipcodes = A.ListOf<ZipCode>(items);
 
             foreach (var item in zipcodes)

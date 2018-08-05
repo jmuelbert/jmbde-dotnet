@@ -94,7 +94,7 @@ namespace jmbde.Pages.Printers
                 p => p.LastUpdate
             ))
             {
-                _context.Printer.Add(Printer);
+                _context.Printer.Add(emptyPrinter);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

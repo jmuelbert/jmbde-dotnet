@@ -86,7 +86,7 @@ namespace jmbde.Pages.Departments
                 d => d.LastUpdate
             ))
             {
-                _context.Department.Add(Department);
+                _context.Department.Add(emptyDepartment);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

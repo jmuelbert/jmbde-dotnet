@@ -93,7 +93,7 @@ namespace jmbde.Pages.Processors
                 p => p.LastUpdate
             ))
             {
-                _context.Processor.Add(Processor);
+                _context.Processor.Add(emptyProcessor);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

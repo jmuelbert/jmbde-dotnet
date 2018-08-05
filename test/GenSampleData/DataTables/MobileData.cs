@@ -64,7 +64,7 @@ namespace GenSampleData.DataTables
             A.Configure<Mobile>()
                .Fill(c => c.MobileId, () => { return i++; })
                .Fill(c => c.Number).AsPhoneNumber()
-                .Fill(c => c.SerialNumber, c => { return new Guid().ToString(); } )
+                .Fill(c => c.SerialNumber, c => { return Guid.NewGuid().ToString(); } )
                 .Fill(c => c.Pin).WithRandom( new string[] {
                     "0000",
                     "0001",

@@ -85,7 +85,7 @@ namespace jmbde.Pages.JobTitles
                 j => j.LastUpdate
             ))
             {
-                _context.JobTitle.Add(JobTitle);
+                _context.JobTitle.Add(emptyJobTitle);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

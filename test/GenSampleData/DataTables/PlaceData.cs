@@ -62,7 +62,44 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Place>()
-               .Fill(c => c.PlaceId, () => { return i++; });
+               .Fill(c => c.PlaceId, () => { return i++; })
+               .Fill(c => c.Name).AsLastName()
+               .Fill(c => c.Room).WithRandom(new string[] {
+                   "ROOM1",
+                   "ROOM2",
+                   "ROOM3",
+                   "ROOM4",
+                   "ROOM5",
+                   "ROOM6",
+                   "ROOM7",
+                   "ROOM8",
+                   "ROOM9",
+                   "ROOM10"
+               })
+               .Fill(c => c.Desk).WithRandom(new string[] {
+                    "DESK01",
+                    "DESK02",
+                    "DESK03",
+                    "DESK04",
+                    "DESK05",
+                    "DESK06",
+                    "DESK07",
+                    "DESK08",
+                    "DESK09",
+                    "DESK10",
+                    "DESK11",
+                    "DESK12",
+                    "DESK13",
+                    "DESK14",
+                    "DESK15",
+                    "DESK16",
+                    "DESK17",
+                    "DESK18",
+                    "DESK19",
+                    "DESK20"
+               });
+
+
             var places = A.ListOf<Place>(items);
 
             foreach (var item in places)

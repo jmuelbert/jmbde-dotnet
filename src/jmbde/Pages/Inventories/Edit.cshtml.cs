@@ -91,7 +91,7 @@ namespace jmbde.Pages.Inventories
 
             if (await TryUpdateModelAsync<Inventory>(
                 inventoryToUpdate,
-                "invetory", // Prefix for form value
+                "inventory", // Prefix for form value
                 i => i.Identifier,
                 i => i.Description,
                 i => i.Active,

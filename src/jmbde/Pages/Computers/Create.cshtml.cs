@@ -92,7 +92,7 @@ namespace jmbde.Pages.Computers
                 c => c.LastUpdate
             ))
             {
-                _context.Computer.Add(Computer);
+                _context.Computer.Add(emptyComputer);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

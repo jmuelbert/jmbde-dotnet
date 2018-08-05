@@ -84,7 +84,7 @@ namespace jmbde.Pages.DeviceTypes
                 d => d.LastUpdate
             ))
             {
-                _context.DeviceType.Add(DeviceType);
+                _context.DeviceType.Add(emptyDeviceType);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

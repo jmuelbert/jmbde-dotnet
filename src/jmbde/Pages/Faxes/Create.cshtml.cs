@@ -88,7 +88,7 @@ namespace jmbde.Pages.Faxes
                 f => f.LastUpdate
             ))
             {
-                _context.Fax.Add(Fax);
+                _context.Fax.Add(emptyFax);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

@@ -79,14 +79,14 @@ namespace jmbde.Pages.Inventories
 
             if (await TryUpdateModelAsync<Inventory>(
                 emptyInventory,
-                "invetory", // Prefix for form value
+                "inventory", // Prefix for form value
                 i => i.Identifier,
                 i => i.Description,
                 i => i.Active,
                 i => i.LastUpdate
             ))
             {
-                _context.Inventory.Add(Inventory);
+                _context.Inventory.Add(emptyInventory);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

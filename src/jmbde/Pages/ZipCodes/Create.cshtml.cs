@@ -85,7 +85,7 @@ namespace jmbde.Pages.ZipCodes
                 z => z.LastUpdate
             ))
             {
-                _context.ZipCode.Add(ZipCode);
+                _context.ZipCode.Add(emptyZipCode);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

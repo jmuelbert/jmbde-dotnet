@@ -62,7 +62,58 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Software>()
-               .Fill(c => c.SoftwareId, () => { return i++; });
+               .Fill(c => c.SoftwareId, () => { return i++; })
+               .Fill(c => c.Name).WithRandom( new string[] {
+                   "Windows",
+                   "Word",
+                   "Excel",
+                   "Powerpoint",
+                   "Outlook",
+                   "Pages",
+                   "Numbers",
+                   "Keynote",
+                   "calc",
+                   "writer",
+                   "impress",
+                   "pdf creator"
+               })
+               .Fill(c => c.Version).WithRandom( new string[] {
+                   "1",
+                   "2",
+                   "3",
+                   "4",
+                   "5",
+                   "6",
+                   "7",
+                   "8",
+                   "9",
+                   "10"
+               })
+                .Fill(c => c.Revision).WithRandom( new string[] {
+                   "1",
+                   "2",
+                   "3",
+                   "4",
+                   "5",
+                   "6",
+                   "7",
+                   "8",
+                   "9",
+                   "10"
+               })
+               .Fill(c => c.Fix).WithRandom( new string[] {
+                   "1",
+                   "2",
+                   "3",
+                   "4",
+                   "5",
+                   "6",
+                   "7",
+                   "8",
+                   "9",
+                   "10"
+               });
+   
             var softwares = A.ListOf<Software>(items);
 
             foreach (var item in softwares)

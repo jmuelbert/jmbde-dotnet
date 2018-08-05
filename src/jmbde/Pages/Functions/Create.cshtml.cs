@@ -81,10 +81,11 @@ namespace jmbde.Pages.Functions
                 emptyFunction,
                 "function", // Prefix for form value
                 f => f.Name,
+                f => f.Priority,
                 f => f.LastUpdate
             ))
             {
-                _context.Function.Add(Function);
+                _context.Function.Add(emptyFunction);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

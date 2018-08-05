@@ -92,7 +92,7 @@ namespace jmbde.Pages.Manufacturers
                 m => m.LastUpdate
             ))
             {
-                _context.Manufacturer.Add(Manufacturer);
+                _context.Manufacturer.Add(emptyManufacturer);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

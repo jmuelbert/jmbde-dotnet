@@ -108,7 +108,7 @@ namespace jmbde.Pages.ChipCardProfiles
             {
                 _context.ChipCardProfile.Remove(chipcardprofile);
                 await _context.SaveChangesAsync();
-                return RedirectToPage(".Index");
+                return RedirectToPage("./Index");
             }
             catch (DbUpdateException /* ex */)
             {

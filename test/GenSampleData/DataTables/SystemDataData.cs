@@ -62,7 +62,10 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<SystemData>()
-               .Fill(c => c.SystemDataId, () => { return i++; });
+                .Fill(c => c.SystemDataId, () => { return i++; })
+                .Fill(c => c.Name).AsArticleTitle()
+                .Fill(c => c.Local).WithRandom( new bool[] { true, true, false});
+
             var systemdatas = A.ListOf<SystemData>(items);
 
             foreach (var item in systemdatas)

@@ -85,7 +85,7 @@ namespace jmbde.Pages.Documents
                 d => d.LastUpdate
             ))
             {
-                _context.Document.Add(Document);
+                _context.Document.Add(emptyDocument);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

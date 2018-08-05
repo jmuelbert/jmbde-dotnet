@@ -64,7 +64,7 @@ namespace jmbde.Pages.SystemAccounts
         [BindProperty]
         public SystemAccount SystemAccount { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
             {

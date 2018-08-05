@@ -43,7 +43,7 @@ namespace jmbde.Pages.SystemDatas
                 s => s.LastUpdate
             ))
             {
-                _context.SystemData.Add(SystemData);
+                _context.SystemData.Add(emptySystemData);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

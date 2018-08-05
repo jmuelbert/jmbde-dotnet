@@ -88,7 +88,7 @@ namespace jmbde.Pages.Phones
                 p => p.LastUpdate
             ))
             {
-                _context.Phone.Add(Phone);
+                _context.Phone.Add(emptyPhone);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

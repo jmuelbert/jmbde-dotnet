@@ -62,7 +62,22 @@ namespace GenSampleData.DataTables
             var i = 1;
 
             A.Configure<Processor>()
-               .Fill(c => c.ProcessorId, () => { return i++; });
+               .Fill(c => c.ProcessorId, () => { return i++; })
+               .Fill(c => c.Name).WithRandom(new string[] {
+                    "INTEL CORE I3",
+                    "INTEL CORE I5",
+                    "INTEL CORE I7",
+                    "AMD FX8350",
+                    "AMD RYZEN"
+               })
+               .Fill(c => c.ClockRate).WithRandom( new float[] {
+                    3.2f,
+                    3.8f,
+                    4.2f,
+                    4.8f
+               })
+               .Fill(c => c.Cores).WithinRange(1,8);
+               
             var processors = A.ListOf<Processor>(items);
 
             foreach (var item in processors)

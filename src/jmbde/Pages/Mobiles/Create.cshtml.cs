@@ -89,7 +89,7 @@ namespace jmbde.Pages.Mobiles
                 m => m.LastUpdate
             ))
             {
-                _context.Mobile.Add(Mobile);
+                _context.Mobile.Add(emptyMobile);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");
