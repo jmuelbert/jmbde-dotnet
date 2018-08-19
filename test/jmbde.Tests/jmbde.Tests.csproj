@@ -10,7 +10,7 @@
     <IsPackable>false</IsPackable>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/jmuelbert/jmbde-aspnet</RepositoryUrl>    
-    <ReleaseVersion>0.2</ReleaseVersion>
+    <ReleaseVersion>0.4</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
