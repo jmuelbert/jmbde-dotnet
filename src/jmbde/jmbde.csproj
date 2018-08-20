@@ -16,10 +16,10 @@
     <None Remove="jmbde.sqlite" />
   </ItemGroup>
   <ItemGroup>
-  <PackageReference Include="Microsoft.AspNetCore.App" />
   <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.1" />
   <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils" Version="2.1.1" />
+  <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.2" />
 </ItemGroup>
 
 <ItemGroup>
