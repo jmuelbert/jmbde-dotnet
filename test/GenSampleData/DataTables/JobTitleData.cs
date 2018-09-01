@@ -43,17 +43,18 @@
 using System;
 using GenFu;
 using Microsoft.EntityFrameworkCore;
-using jmbde.Models;
+using jmbdeData.Models;
+using jmbde.Data;
 
 namespace GenSampleData.DataTables 
 {
     public class JobTitleData {
         
-        JMBDEContext context;
+       private readonly jmbde.Data.JMBDEContext  _context;
 
         public JobTitleData() {
             var optionsBuilder = new DbContextOptionsBuilder<JMBDEContext>();
-            context = new JMBDEContext(optionsBuilder.UseSqlite("Data Source=jmbde.db").Options);
+            _context = new JMBDEContext(optionsBuilder.UseSqlite("Data Source=app.db").Options);
 
         }
 
@@ -71,7 +72,7 @@ namespace GenSampleData.DataTables
                 Console.WriteLine($"{item.Name} {item.LastUpdate}");
             }
 
-            using (var ctx = context) {
+            using (var ctx = _context) {
                 foreach (var item in jobtitles)
                 {
                     ctx.JobTitle.Add(item);

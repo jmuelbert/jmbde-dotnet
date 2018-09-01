@@ -43,17 +43,18 @@
 using System;
 using GenFu;
 using Microsoft.EntityFrameworkCore;
-using jmbde.Models;
+using jmbdeData.Models;
+using jmbde.Data;
 
 namespace GenSampleData.DataTables 
 {
     public class PhoneData {
         
-        JMBDEContext context;
+        private readonly jmbde.Data.JMBDEContext  _context;
 
         public PhoneData() {
             var optionsBuilder = new DbContextOptionsBuilder<JMBDEContext>();
-            context = new JMBDEContext(optionsBuilder.UseSqlite("Data Source=jmbde.db").Options);
+            _context = new JMBDEContext(optionsBuilder.UseSqlite("Data Source=app.db").Options);
 
         }
 
@@ -86,7 +87,7 @@ namespace GenSampleData.DataTables
                 Console.WriteLine($"{item.Number} {item.LastUpdate}");
             }
 
-            using (var ctx = context) {
+            using (var ctx = _context) {
                 foreach (var item in phones)
                 {
                     ctx.Phone.Add(item);

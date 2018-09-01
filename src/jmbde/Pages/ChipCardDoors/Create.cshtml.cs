@@ -47,7 +47,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using jmbde.Models;
+using jmbdeData.Models;
 
 namespace jmbde.Pages.ChipCardDoors
 {
@@ -56,9 +56,9 @@ namespace jmbde.Pages.ChipCardDoors
     /// </summary>
     public class CreateModel : PageModel
     {
-        private readonly jmbde.Models.JMBDEContext _context;
+        private readonly jmbde.Data.JMBDEContext _context;
 
-        public CreateModel(jmbde.Models.JMBDEContext context)
+        public CreateModel(jmbde.Data.JMBDEContext context)
         {
             _context = context;
         }

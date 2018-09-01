@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using jmbde.Models;
+using jmbde.Data;
 
 namespace jmbde.Migrations
 {
@@ -14,9 +14,9 @@ namespace jmbde.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846");
+                .HasAnnotation("ProductVersion", "2.1.2-rtm-30932");
 
-            modelBuilder.Entity("jmbde.Models.ChipCard", b =>
+            modelBuilder.Entity("jmbdeData.Models.ChipCard", b =>
                 {
                     b.Property<long>("ChipCardId")
                         .ValueGeneratedOnAdd();
@@ -34,7 +34,7 @@ namespace jmbde.Migrations
                     b.ToTable("ChipCard");
                 });
 
-            modelBuilder.Entity("jmbde.Models.ChipCardDoor", b =>
+            modelBuilder.Entity("jmbdeData.Models.ChipCardDoor", b =>
                 {
                     b.Property<long>("ChipCardDoorId")
                         .ValueGeneratedOnAdd();
@@ -66,7 +66,7 @@ namespace jmbde.Migrations
                     b.ToTable("ChipCardDoor");
                 });
 
-            modelBuilder.Entity("jmbde.Models.ChipCardProfile", b =>
+            modelBuilder.Entity("jmbdeData.Models.ChipCardProfile", b =>
                 {
                     b.Property<long>("ChipCardProfileId")
                         .ValueGeneratedOnAdd();
@@ -86,7 +86,7 @@ namespace jmbde.Migrations
                     b.ToTable("ChipCardProfile");
                 });
 
-            modelBuilder.Entity("jmbde.Models.CityName", b =>
+            modelBuilder.Entity("jmbdeData.Models.CityName", b =>
                 {
                     b.Property<long>("CityNameId")
                         .ValueGeneratedOnAdd();
@@ -102,7 +102,7 @@ namespace jmbde.Migrations
                     b.ToTable("CityName");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Company", b =>
+            modelBuilder.Entity("jmbdeData.Models.Company", b =>
                 {
                     b.Property<long>("CompanyId")
                         .ValueGeneratedOnAdd();
@@ -146,7 +146,7 @@ namespace jmbde.Migrations
                     b.ToTable("Company");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Computer", b =>
+            modelBuilder.Entity("jmbdeData.Models.Computer", b =>
                 {
                     b.Property<long>("ComputerId")
                         .ValueGeneratedOnAdd();
@@ -219,7 +219,7 @@ namespace jmbde.Migrations
                     b.ToTable("Computer");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Department", b =>
+            modelBuilder.Entity("jmbdeData.Models.Department", b =>
                 {
                     b.Property<long>("DepartmentId")
                         .ValueGeneratedOnAdd();
@@ -237,7 +237,7 @@ namespace jmbde.Migrations
                     b.ToTable("Department");
                 });
 
-            modelBuilder.Entity("jmbde.Models.DeviceName", b =>
+            modelBuilder.Entity("jmbdeData.Models.DeviceName", b =>
                 {
                     b.Property<long>("DeviceNameId")
                         .ValueGeneratedOnAdd();
@@ -253,7 +253,7 @@ namespace jmbde.Migrations
                     b.ToTable("DeviceName");
                 });
 
-            modelBuilder.Entity("jmbde.Models.DeviceType", b =>
+            modelBuilder.Entity("jmbdeData.Models.DeviceType", b =>
                 {
                     b.Property<long>("DeviceTypeId")
                         .ValueGeneratedOnAdd();
@@ -269,7 +269,7 @@ namespace jmbde.Migrations
                     b.ToTable("DeviceType");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Document", b =>
+            modelBuilder.Entity("jmbdeData.Models.Document", b =>
                 {
                     b.Property<long>("DocumentId")
                         .ValueGeneratedOnAdd();
@@ -291,7 +291,7 @@ namespace jmbde.Migrations
                     b.ToTable("Document");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Employee", b =>
+            modelBuilder.Entity("jmbdeData.Models.Employee", b =>
                 {
                     b.Property<long>("EmployeeId")
                         .ValueGeneratedOnAdd();
@@ -380,7 +380,7 @@ namespace jmbde.Migrations
                     b.ToTable("Employee");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Fax", b =>
+            modelBuilder.Entity("jmbdeData.Models.Fax", b =>
                 {
                     b.Property<long>("FaxId")
                         .ValueGeneratedOnAdd();
@@ -430,7 +430,7 @@ namespace jmbde.Migrations
                     b.ToTable("Fax");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Function", b =>
+            modelBuilder.Entity("jmbdeData.Models.Function", b =>
                 {
                     b.Property<long>("FunctionId")
                         .ValueGeneratedOnAdd();
@@ -452,7 +452,7 @@ namespace jmbde.Migrations
                     b.ToTable("Function");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Inventory", b =>
+            modelBuilder.Entity("jmbdeData.Models.Inventory", b =>
                 {
                     b.Property<long>("InventoryId")
                         .ValueGeneratedOnAdd();
@@ -473,7 +473,7 @@ namespace jmbde.Migrations
                     b.ToTable("Inventory");
                 });
 
-            modelBuilder.Entity("jmbde.Models.JobTitle", b =>
+            modelBuilder.Entity("jmbdeData.Models.JobTitle", b =>
                 {
                     b.Property<long>("JobTitleId")
                         .ValueGeneratedOnAdd();
@@ -491,7 +491,7 @@ namespace jmbde.Migrations
                     b.ToTable("JobTitle");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Manufacturer", b =>
+            modelBuilder.Entity("jmbdeData.Models.Manufacturer", b =>
                 {
                     b.Property<long>("ManufacturerId")
                         .ValueGeneratedOnAdd();
@@ -535,7 +535,7 @@ namespace jmbde.Migrations
                     b.ToTable("Manufacturer");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Mobile", b =>
+            modelBuilder.Entity("jmbdeData.Models.Mobile", b =>
                 {
                     b.Property<long>("MobileId")
                         .ValueGeneratedOnAdd();
@@ -588,7 +588,7 @@ namespace jmbde.Migrations
                     b.ToTable("Mobile");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Phone", b =>
+            modelBuilder.Entity("jmbdeData.Models.Phone", b =>
                 {
                     b.Property<long>("PhoneId")
                         .ValueGeneratedOnAdd();
@@ -638,7 +638,7 @@ namespace jmbde.Migrations
                     b.ToTable("Phone");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Place", b =>
+            modelBuilder.Entity("jmbdeData.Models.Place", b =>
                 {
                     b.Property<long>("PlaceId")
                         .ValueGeneratedOnAdd();
@@ -662,7 +662,7 @@ namespace jmbde.Migrations
                     b.ToTable("Place");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Printer", b =>
+            modelBuilder.Entity("jmbdeData.Models.Printer", b =>
                 {
                     b.Property<long>("PrinterId")
                         .ValueGeneratedOnAdd();
@@ -731,7 +731,7 @@ namespace jmbde.Migrations
                     b.ToTable("Printer");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Processor", b =>
+            modelBuilder.Entity("jmbdeData.Models.Processor", b =>
                 {
                     b.Property<long>("ProcessorId")
                         .ValueGeneratedOnAdd();
@@ -751,7 +751,7 @@ namespace jmbde.Migrations
                     b.ToTable("Processor");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Software", b =>
+            modelBuilder.Entity("jmbdeData.Models.Software", b =>
                 {
                     b.Property<long>("SoftwareId")
                         .ValueGeneratedOnAdd();
@@ -780,9 +780,9 @@ namespace jmbde.Migrations
                     b.ToTable("Software");
                 });
 
-            modelBuilder.Entity("jmbde.Models.SystemAccount", b =>
+            modelBuilder.Entity("jmbdeData.Models.SystemAccount", b =>
                 {
-                    b.Property<int>("SystemAccountId")
+                    b.Property<long>("SystemAccountId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<long?>("EmployeeId");
@@ -808,7 +808,7 @@ namespace jmbde.Migrations
                     b.ToTable("SystemAccount");
                 });
 
-            modelBuilder.Entity("jmbde.Models.SystemData", b =>
+            modelBuilder.Entity("jmbdeData.Models.SystemData", b =>
                 {
                     b.Property<long>("SystemDataId")
                         .ValueGeneratedOnAdd();
@@ -830,7 +830,7 @@ namespace jmbde.Migrations
                     b.ToTable("SystemData");
                 });
 
-            modelBuilder.Entity("jmbde.Models.ZipCode", b =>
+            modelBuilder.Entity("jmbdeData.Models.ZipCode", b =>
                 {
                     b.Property<long>("ZipCodeId")
                         .ValueGeneratedOnAdd();
@@ -849,275 +849,275 @@ namespace jmbde.Migrations
                     b.ToTable("ZipCode");
                 });
 
-            modelBuilder.Entity("jmbde.Models.ChipCardDoor", b =>
+            modelBuilder.Entity("jmbdeData.Models.ChipCardDoor", b =>
                 {
-                    b.HasOne("jmbde.Models.ChipCard")
+                    b.HasOne("jmbdeData.Models.ChipCard")
                         .WithMany("ChipCardDoor")
                         .HasForeignKey("ChipCardId");
 
-                    b.HasOne("jmbde.Models.ChipCardProfile")
+                    b.HasOne("jmbdeData.Models.ChipCardProfile")
                         .WithMany("ChipCardDoor")
                         .HasForeignKey("ChipCardProfileId");
 
-                    b.HasOne("jmbde.Models.Department", "Department")
+                    b.HasOne("jmbdeData.Models.Department", "Department")
                         .WithMany()
                         .HasForeignKey("DepartmentId");
 
-                    b.HasOne("jmbde.Models.Place", "Place")
+                    b.HasOne("jmbdeData.Models.Place", "Place")
                         .WithMany()
                         .HasForeignKey("PlaceId");
                 });
 
-            modelBuilder.Entity("jmbde.Models.ChipCardProfile", b =>
+            modelBuilder.Entity("jmbdeData.Models.ChipCardProfile", b =>
                 {
-                    b.HasOne("jmbde.Models.ChipCard")
+                    b.HasOne("jmbdeData.Models.ChipCard")
                         .WithMany("ChipCardProfile")
                         .HasForeignKey("ChipCardId");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Company", b =>
+            modelBuilder.Entity("jmbdeData.Models.Company", b =>
                 {
-                    b.HasOne("jmbde.Models.Employee", "Employee")
+                    b.HasOne("jmbdeData.Models.Employee", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId");
 
-                    b.HasOne("jmbde.Models.ZipCode", "ZipCode")
+                    b.HasOne("jmbdeData.Models.ZipCode", "ZipCode")
                         .WithMany()
                         .HasForeignKey("ZipCodeId");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Computer", b =>
+            modelBuilder.Entity("jmbdeData.Models.Computer", b =>
                 {
-                    b.HasOne("jmbde.Models.Department", "Department")
+                    b.HasOne("jmbdeData.Models.Department", "Department")
                         .WithMany()
                         .HasForeignKey("DepartmentId");
 
-                    b.HasOne("jmbde.Models.DeviceName", "DeviceName")
+                    b.HasOne("jmbdeData.Models.DeviceName", "DeviceName")
                         .WithMany()
                         .HasForeignKey("DeviceNameId");
 
-                    b.HasOne("jmbde.Models.DeviceType", "DeviceType")
+                    b.HasOne("jmbdeData.Models.DeviceType", "DeviceType")
                         .WithMany()
                         .HasForeignKey("DeviceTypeId");
 
-                    b.HasOne("jmbde.Models.Employee")
+                    b.HasOne("jmbdeData.Models.Employee")
                         .WithMany("Computer")
                         .HasForeignKey("EmployeeId");
 
-                    b.HasOne("jmbde.Models.Inventory", "Inventory")
+                    b.HasOne("jmbdeData.Models.Inventory", "Inventory")
                         .WithMany()
                         .HasForeignKey("InventoryId");
 
-                    b.HasOne("jmbde.Models.Manufacturer", "Manufacturer")
+                    b.HasOne("jmbdeData.Models.Manufacturer", "Manufacturer")
                         .WithMany()
                         .HasForeignKey("ManufacturerId");
 
-                    b.HasOne("jmbde.Models.Software", "OS")
+                    b.HasOne("jmbdeData.Models.Software", "OS")
                         .WithMany()
                         .HasForeignKey("OSSoftwareId");
 
-                    b.HasOne("jmbde.Models.Place", "Place")
+                    b.HasOne("jmbdeData.Models.Place", "Place")
                         .WithMany()
                         .HasForeignKey("PlaceId");
 
-                    b.HasOne("jmbde.Models.Processor", "Processor")
+                    b.HasOne("jmbdeData.Models.Processor", "Processor")
                         .WithMany()
                         .HasForeignKey("ProcessorId");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Document", b =>
+            modelBuilder.Entity("jmbdeData.Models.Document", b =>
                 {
-                    b.HasOne("jmbde.Models.Employee")
+                    b.HasOne("jmbdeData.Models.Employee")
                         .WithMany("Document")
                         .HasForeignKey("EmployeeId");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Employee", b =>
+            modelBuilder.Entity("jmbdeData.Models.Employee", b =>
                 {
-                    b.HasOne("jmbde.Models.ChipCardDoor")
+                    b.HasOne("jmbdeData.Models.ChipCardDoor")
                         .WithMany("Employee")
                         .HasForeignKey("ChipCardDoorId");
 
-                    b.HasOne("jmbde.Models.ChipCard", "ChipCard")
+                    b.HasOne("jmbdeData.Models.ChipCard", "ChipCard")
                         .WithMany("Employee")
                         .HasForeignKey("ChipCardId");
 
-                    b.HasOne("jmbde.Models.ChipCardProfile")
+                    b.HasOne("jmbdeData.Models.ChipCardProfile")
                         .WithMany("Employee")
                         .HasForeignKey("ChipCardProfileId");
 
-                    b.HasOne("jmbde.Models.Department", "Department")
+                    b.HasOne("jmbdeData.Models.Department", "Department")
                         .WithMany()
                         .HasForeignKey("DepartmentId");
 
-                    b.HasOne("jmbde.Models.Fax", "Fax")
+                    b.HasOne("jmbdeData.Models.Fax", "Fax")
                         .WithMany("Employee")
                         .HasForeignKey("FaxId");
 
-                    b.HasOne("jmbde.Models.JobTitle", "JobTitle")
+                    b.HasOne("jmbdeData.Models.JobTitle", "JobTitle")
                         .WithMany()
                         .HasForeignKey("JobTitleId");
 
-                    b.HasOne("jmbde.Models.Mobile", "Mobile")
+                    b.HasOne("jmbdeData.Models.Mobile", "Mobile")
                         .WithMany()
                         .HasForeignKey("MobileId");
 
-                    b.HasOne("jmbde.Models.Phone", "Phone")
+                    b.HasOne("jmbdeData.Models.Phone", "Phone")
                         .WithMany()
                         .HasForeignKey("PhoneId");
 
-                    b.HasOne("jmbde.Models.ZipCode", "ZipCode")
+                    b.HasOne("jmbdeData.Models.ZipCode", "ZipCode")
                         .WithMany()
                         .HasForeignKey("ZipCodeId");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Fax", b =>
+            modelBuilder.Entity("jmbdeData.Models.Fax", b =>
                 {
-                    b.HasOne("jmbde.Models.Department", "Department")
+                    b.HasOne("jmbdeData.Models.Department", "Department")
                         .WithMany("Fax")
                         .HasForeignKey("DepartmentId");
 
-                    b.HasOne("jmbde.Models.DeviceName", "DeviceName")
+                    b.HasOne("jmbdeData.Models.DeviceName", "DeviceName")
                         .WithMany()
                         .HasForeignKey("DeviceNameId");
 
-                    b.HasOne("jmbde.Models.DeviceType", "DeviceType")
+                    b.HasOne("jmbdeData.Models.DeviceType", "DeviceType")
                         .WithMany()
                         .HasForeignKey("DeviceTypeId");
 
-                    b.HasOne("jmbde.Models.Inventory", "Inventory")
+                    b.HasOne("jmbdeData.Models.Inventory", "Inventory")
                         .WithMany()
                         .HasForeignKey("InventoryId");
 
-                    b.HasOne("jmbde.Models.Manufacturer", "Manufacturer")
+                    b.HasOne("jmbdeData.Models.Manufacturer", "Manufacturer")
                         .WithMany()
                         .HasForeignKey("ManufacturerId");
 
-                    b.HasOne("jmbde.Models.Place", "Place")
+                    b.HasOne("jmbdeData.Models.Place", "Place")
                         .WithMany()
                         .HasForeignKey("PlaceId");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Function", b =>
+            modelBuilder.Entity("jmbdeData.Models.Function", b =>
                 {
-                    b.HasOne("jmbde.Models.Employee")
+                    b.HasOne("jmbdeData.Models.Employee")
                         .WithMany("Function")
                         .HasForeignKey("EmployeeId");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Manufacturer", b =>
+            modelBuilder.Entity("jmbdeData.Models.Manufacturer", b =>
                 {
-                    b.HasOne("jmbde.Models.ZipCode", "ZipCode")
+                    b.HasOne("jmbdeData.Models.ZipCode", "ZipCode")
                         .WithMany()
                         .HasForeignKey("ZipCodeId");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Mobile", b =>
+            modelBuilder.Entity("jmbdeData.Models.Mobile", b =>
                 {
-                    b.HasOne("jmbde.Models.Department", "Department")
+                    b.HasOne("jmbdeData.Models.Department", "Department")
                         .WithMany()
                         .HasForeignKey("DepartmentId");
 
-                    b.HasOne("jmbde.Models.DeviceName", "DeviceName")
+                    b.HasOne("jmbdeData.Models.DeviceName", "DeviceName")
                         .WithMany()
                         .HasForeignKey("DeviceNameId");
 
-                    b.HasOne("jmbde.Models.DeviceType", "DeviceType")
+                    b.HasOne("jmbdeData.Models.DeviceType", "DeviceType")
                         .WithMany()
                         .HasForeignKey("DeviceTypeId");
 
-                    b.HasOne("jmbde.Models.Inventory", "Inventory")
+                    b.HasOne("jmbdeData.Models.Inventory", "Inventory")
                         .WithMany()
                         .HasForeignKey("InventoryId");
 
-                    b.HasOne("jmbde.Models.Manufacturer", "Manufacturer")
+                    b.HasOne("jmbdeData.Models.Manufacturer", "Manufacturer")
                         .WithMany()
                         .HasForeignKey("ManufacturerId");
 
-                    b.HasOne("jmbde.Models.Place", "Place")
+                    b.HasOne("jmbdeData.Models.Place", "Place")
                         .WithMany()
                         .HasForeignKey("PlaceId");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Phone", b =>
+            modelBuilder.Entity("jmbdeData.Models.Phone", b =>
                 {
-                    b.HasOne("jmbde.Models.Department", "Department")
+                    b.HasOne("jmbdeData.Models.Department", "Department")
                         .WithMany()
                         .HasForeignKey("DepartmentId");
 
-                    b.HasOne("jmbde.Models.DeviceName", "DeviceName")
+                    b.HasOne("jmbdeData.Models.DeviceName", "DeviceName")
                         .WithMany()
                         .HasForeignKey("DeviceNameId");
 
-                    b.HasOne("jmbde.Models.DeviceType", "DeviceType")
+                    b.HasOne("jmbdeData.Models.DeviceType", "DeviceType")
                         .WithMany()
                         .HasForeignKey("DeviceTypeId");
 
-                    b.HasOne("jmbde.Models.Inventory", "Inventory")
+                    b.HasOne("jmbdeData.Models.Inventory", "Inventory")
                         .WithMany()
                         .HasForeignKey("InventoryId");
 
-                    b.HasOne("jmbde.Models.Manufacturer", "Manufacturer")
+                    b.HasOne("jmbdeData.Models.Manufacturer", "Manufacturer")
                         .WithMany()
                         .HasForeignKey("ManufacturerId");
 
-                    b.HasOne("jmbde.Models.Place", "Place")
+                    b.HasOne("jmbdeData.Models.Place", "Place")
                         .WithMany()
                         .HasForeignKey("PlaceId");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Printer", b =>
+            modelBuilder.Entity("jmbdeData.Models.Printer", b =>
                 {
-                    b.HasOne("jmbde.Models.Department", "Department")
+                    b.HasOne("jmbdeData.Models.Department", "Department")
                         .WithMany("Printer")
                         .HasForeignKey("DepartmentId");
 
-                    b.HasOne("jmbde.Models.DeviceName", "DeviceName")
+                    b.HasOne("jmbdeData.Models.DeviceName", "DeviceName")
                         .WithMany()
                         .HasForeignKey("DeviceNameId");
 
-                    b.HasOne("jmbde.Models.DeviceType", "DeviceType")
+                    b.HasOne("jmbdeData.Models.DeviceType", "DeviceType")
                         .WithMany()
                         .HasForeignKey("DeviceTypeId");
 
-                    b.HasOne("jmbde.Models.Employee", "Employee")
+                    b.HasOne("jmbdeData.Models.Employee", "Employee")
                         .WithMany("Printer")
                         .HasForeignKey("EmployeeId");
 
-                    b.HasOne("jmbde.Models.Inventory", "Inventory")
+                    b.HasOne("jmbdeData.Models.Inventory", "Inventory")
                         .WithMany()
                         .HasForeignKey("InventoryId");
 
-                    b.HasOne("jmbde.Models.Manufacturer", "Manufacturer")
+                    b.HasOne("jmbdeData.Models.Manufacturer", "Manufacturer")
                         .WithMany()
                         .HasForeignKey("ManufacturerId");
 
-                    b.HasOne("jmbde.Models.Place", "Place")
+                    b.HasOne("jmbdeData.Models.Place", "Place")
                         .WithMany()
                         .HasForeignKey("PlaceId");
                 });
 
-            modelBuilder.Entity("jmbde.Models.Software", b =>
+            modelBuilder.Entity("jmbdeData.Models.Software", b =>
                 {
-                    b.HasOne("jmbde.Models.Computer")
+                    b.HasOne("jmbdeData.Models.Computer")
                         .WithMany("Software")
                         .HasForeignKey("ComputerId");
                 });
 
-            modelBuilder.Entity("jmbde.Models.SystemAccount", b =>
+            modelBuilder.Entity("jmbdeData.Models.SystemAccount", b =>
                 {
-                    b.HasOne("jmbde.Models.Employee")
+                    b.HasOne("jmbdeData.Models.Employee")
                         .WithMany("SystemAccount")
                         .HasForeignKey("EmployeeId");
 
-                    b.HasOne("jmbde.Models.SystemData", "SystemData")
+                    b.HasOne("jmbdeData.Models.SystemData", "SystemData")
                         .WithMany()
                         .HasForeignKey("SystemDataId");
                 });
 
-            modelBuilder.Entity("jmbde.Models.SystemData", b =>
+            modelBuilder.Entity("jmbdeData.Models.SystemData", b =>
                 {
-                    b.HasOne("jmbde.Models.Company", "Company")
+                    b.HasOne("jmbdeData.Models.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId");
                 });

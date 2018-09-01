@@ -54,7 +54,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-using jmbde.Models;
+using jmbde.Data;
 
 
 namespace jmbde

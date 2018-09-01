@@ -43,17 +43,19 @@
 using System;
 using GenFu;
 using Microsoft.EntityFrameworkCore;
-using jmbde.Models;
+using jmbdeData.Models;
+using jmbde.Data;
 
 namespace GenSampleData.DataTables 
 {
     public class DeviceTypeData {
         
-        JMBDEContext context;
+        private readonly jmbde.Data.JMBDEContext  _context;
+
 
         public DeviceTypeData() {
             var optionsBuilder = new DbContextOptionsBuilder<JMBDEContext>();
-            context = new JMBDEContext(optionsBuilder.UseSqlite("Data Source=jmbde.db").Options);
+            _context = new JMBDEContext(optionsBuilder.UseSqlite("Data Source=app.db").Options);
 
         }
 
@@ -82,7 +84,7 @@ namespace GenSampleData.DataTables
                 Console.WriteLine($"{item.Name} {item.LastUpdate}");
             }
 
-            using (var ctx = context) {
+            using (var ctx = _context) {
                 foreach (var item in devicetypes)
                 {
                     ctx.DeviceType.Add(item);

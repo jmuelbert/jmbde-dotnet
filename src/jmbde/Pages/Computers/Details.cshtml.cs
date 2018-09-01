@@ -48,15 +48,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using jmbde.Models;
+using jmbdeData.Models;
 
 namespace jmbde.Pages.Computers
 {
     public class DetailsModel : PageModel
     {
-        private readonly jmbde.Models.JMBDEContext _context;
+        private readonly jmbde.Data.JMBDEContext _context;
 
-        public DetailsModel(jmbde.Models.JMBDEContext context)
+        public DetailsModel(jmbde.Data.JMBDEContext context)
         {
             _context = context;
         }
