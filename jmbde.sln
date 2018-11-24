@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9A5680D0-90B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde", "src\jmbde\jmbde.csproj", "{51C80F13-0E21-4FE2-8A67-ED38F201739C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{29D79895-94FB-4B36-B57D-7B7FD9899DB0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{29D79895-94FB-4B36-B57D-7B7FD9899DB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde.Tests", "test\jmbde.Tests\jmbde.Tests.csproj", "{A48225A0-70DE-4A27-827D-90906AD26D50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde.Tests", "tests\jmbde.Tests\jmbde.Tests.csproj", "{A48225A0-70DE-4A27-827D-90906AD26D50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenSampleData", "test\GenSampleData\GenSampleData.csproj", "{365B67E6-94EB-4AD6-BCEB-E35A593E8DE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenSampleData", "tests\GenSampleData\GenSampleData.csproj", "{365B67E6-94EB-4AD6-BCEB-E35A593E8DE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
