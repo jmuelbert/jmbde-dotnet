@@ -45,7 +45,7 @@ after_build:
   - ps: dotnet pack .\src\jmbde\jmbde.csproj --no-build -c Release -o .\artifacts
 
 test_script:
-  - ps: dotnet test .\tests\jmbde.Tests\jmbde.Tests
+  - ps: dotnet test .\tests\jmbde.Tests\jmbde.Tests.csproj
 
 artifacts:
 - path: '**\*.nupkg'
