@@ -24,11 +24,7 @@ nuget:
 
 pull_requests:
   do_not_increment_build_number: true
-branches:
-  only:
-  - master
-skip_tags: true
-image: Visual Studio 2017
+
 configuration: Release
 dotnet_csproj:
   patch: true
