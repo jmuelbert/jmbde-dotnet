@@ -7,7 +7,6 @@ init:
   - cinst 7zip
   - cinst opencover.portable
   - cinst codecov
-  - cinst "msbuild-sonarqube-runner" -y
 
 skip_branch_with_pr: true
 skip_tags: true
@@ -15,7 +14,6 @@ skip_commits:
   files:
     - '**/*.md'
     - docs/*
-
 
 environment:
   Appveyor: true
