@@ -9,9 +9,6 @@ init:
   - cinst codecov
   - cinst "msbuild-sonarqube-runner" -y
 
-before_build:
-  - dotnet restore
-
 skip_branch_with_pr: true
 skip_tags: true
 skip_commits:
