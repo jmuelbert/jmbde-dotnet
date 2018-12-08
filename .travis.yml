@@ -22,8 +22,7 @@ matrix:
       before_install:
         - chmod a+x ./runtests.sh
         - ulimit -n 1024 ;
-        - brew update  
-        - brew install      
+        - brew update      
 #        - brew install mariadb
 #        - brew services start mariadb
 #        - brew install redis
