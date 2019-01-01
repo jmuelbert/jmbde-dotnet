@@ -11,12 +11,12 @@ matrix:
   include:
     - os: linux
       dist: trusty # Ubuntu 14.04
-      dotnet: 2.1.300
+      dotnet: 2.2.100
       mono: none
       env: DOTNETCORE=2
       sudo: required
     - os: osx
-      dotnet: 2.1.300
+      dotnet: 2.2.100
       mono: none
       env: DOTNETCORE=2
       before_install:
@@ -38,9 +38,6 @@ matrix:
 before_script:
   - gem install awesome_bot
 
-script:
-    - awesome_bot README.md --allow-dupe --allow-redirect
-
 before_install:
   - chmod a+x ./runtests.sh
 
@@ -50,3 +47,4 @@ install:
 
 script:
   - ./runtests.sh
+  - awesome_bot README.md --allow-dupe --allow-redirect

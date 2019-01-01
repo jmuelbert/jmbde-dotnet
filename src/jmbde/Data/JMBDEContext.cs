@@ -46,32 +46,32 @@ using Microsoft.EntityFrameworkCore;
 namespace jmbde.Data
 {
     public class JMBDEContext : DbContext {
-        public virtual DbSet<jmbdeData.Models.ChipCard> ChipCard { get; set; }
-        public virtual DbSet<jmbdeData.Models.ChipCardDoor> ChipCardDoor { get; set; }
-        public virtual DbSet<jmbdeData.Models.ChipCardProfile> ChipCardProfile {get; set;}
-        public virtual DbSet<jmbdeData.Models.CityName> CityName { get; set; }
-        public virtual DbSet<jmbdeData.Models.Company> Company { get; set; }
-        public virtual DbSet<jmbdeData.Models.Computer> Computer { get; set; }
-        public virtual DbSet<jmbdeData.Models.Department> Department { get; set; }
-        public virtual DbSet<jmbdeData.Models.DeviceName> DeviceName { get; set; }
-        public virtual DbSet<jmbdeData.Models.DeviceType> DeviceType { get; set; }
-        public virtual DbSet<jmbdeData.Models.Document> Document { get; set; }
-        public virtual DbSet<jmbdeData.Models.Employee> Employee { get; set; }
-        public virtual DbSet<jmbdeData.Models.Fax> Fax { get; set; }
-        public virtual DbSet<jmbdeData.Models.Function> Function { get; set; }
-        public virtual DbSet<jmbdeData.Models.Inventory> Inventory { get; set; }
-        public virtual DbSet<jmbdeData.Models.Manufacturer> Manufacturer { get; set; }
-        public virtual DbSet<jmbdeData.Models.Mobile> Mobile { get; set; }
-        public virtual DbSet<jmbdeData.Models.Phone> Phone { get; set; }
-        public virtual DbSet<jmbdeData.Models.Place> Place { get; set; }
-        public virtual DbSet<jmbdeData.Models.Printer> Printer { get; set; }
-        public virtual DbSet<jmbdeData.Models.Processor> Processor { get; set; }
-        public virtual DbSet<jmbdeData.Models.Software> Software { get; set; }
-        public virtual DbSet<jmbdeData.Models.SystemAccount> SystemAccount { get; set; }
+        public virtual DbSet<jmbde.Data.Models.ChipCard> ChipCard { get; set; }
+        public virtual DbSet<jmbde.Data.Models.ChipCardDoor> ChipCardDoor { get; set; }
+        public virtual DbSet<jmbde.Data.Models.ChipCardProfile> ChipCardProfile {get; set;}
+        public virtual DbSet<jmbde.Data.Models.CityName> CityName { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Company> Company { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Computer> Computer { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Department> Department { get; set; }
+        public virtual DbSet<jmbde.Data.Models.DeviceName> DeviceName { get; set; }
+        public virtual DbSet<jmbde.Data.Models.DeviceType> DeviceType { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Document> Document { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Employee> Employee { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Fax> Fax { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Function> Function { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Inventory> Inventory { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Manufacturer> Manufacturer { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Mobile> Mobile { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Phone> Phone { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Place> Place { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Printer> Printer { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Processor> Processor { get; set; }
+        public virtual DbSet<jmbde.Data.Models.Software> Software { get; set; }
+        public virtual DbSet<jmbde.Data.Models.SystemAccount> SystemAccount { get; set; }
 
-        public virtual DbSet<jmbdeData.Models.SystemData> SystemData {get ; set; }
-        public virtual DbSet<jmbdeData.Models.JobTitle> JobTitle { get; set; }
-        public virtual DbSet<jmbdeData.Models.ZipCode> ZipCode { get; set;}
+        public virtual DbSet<jmbde.Data.Models.SystemData> SystemData {get ; set; }
+        public virtual DbSet<jmbde.Data.Models.JobTitle> JobTitle { get; set; }
+        public virtual DbSet<jmbde.Data.Models.ZipCode> ZipCode { get; set;}
        
         public JMBDEContext(DbContextOptions<JMBDEContext> options) : base(options)
         {

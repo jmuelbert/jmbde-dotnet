@@ -33,15 +33,15 @@ The master branch represents the latest pre-release code.
 
 #### For Windows
 
-- [.NET Core SDK 2.1 for Windows](https://www.microsoft.com/net/download/windows)
+- [.NET Core SDK 2.2 for Windows](https://www.microsoft.com/net/download/windows)
 
 #### For Linux
 
-- [.NET Core SDK 2.1 for Linux](https://www.microsoft.com/net/download/linux)
+- [.NET Core SDK 2.2 for Linux](https://www.microsoft.com/net/download/linux)
 
 #### For Mac
 
-- [.NET Core SDK 2.1 for Linux](https://www.microsoft.com/net/download/macos)
+- [.NET Core SDK 2.2 for Linux](https://www.microsoft.com/net/download/macos)
 
 ## Prepare the App
 

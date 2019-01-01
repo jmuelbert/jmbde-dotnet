@@ -48,7 +48,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using jmbdeData.Models;
+using jmbde.Data.Models;
 
 namespace jmbde.Pages.Printers
 {
