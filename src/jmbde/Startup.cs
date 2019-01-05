@@ -1,49 +1,52 @@
 /**************************************************************************
-**
-** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
-**
-** This file is part of jmbde
-**
-** Licensed under the EUPL, Version 1.2 or – as soon they
-** will be approved by the European Commission - subsequent
-** versions of the EUPL (the "Licence");
-** You may not use this work except in compliance with the
-** Licence.
-** You may obtain a copy of the Licence at:
-**
-** https://joinup.ec.europa.eu/page/eupl-text-11-12
-**
-** Unless required by applicable law or agreed to in
-** writing, software distributed under the Licence is
-** distributed on an "AS IS" basis,
-** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-** express or implied.
-** See the Licence for the specific language governing
-** permissions and limitations under the Licence.
-**
-** Lizenziert unter der EUPL, Version 1.2 oder - sobald
-**  diese von der Europäischen Kommission genehmigt wurden -
-** Folgeversionen der EUPL ("Lizenz");
-** Sie dürfen dieses Werk ausschließlich gemäß
-** dieser Lizenz nutzen.
-** Eine Kopie der Lizenz finden Sie hier:
-**
-** https://joinup.ec.europa.eu/page/eupl-text-11-12
-**
-** Sofern nicht durch anwendbare Rechtsvorschriften
-** gefordert oder in schriftlicher Form vereinbart, wird
-** die unter der Lizenz verbreitete Software "so wie sie
-** ist", OHNE JEGLICHE GEWÄHRLEISTUNG ODER BEDINGUNGEN -
-** ausdrücklich oder stillschweigend - verbreitet.
-** Die sprachspezifischen Genehmigungen und Beschränkungen
-** unter der Lizenz sind dem Lizenztext zu entnehmen.
-**
-**************************************************************************/
+ **
+ ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ **
+ ** This file is part of jmbde
+ **
+ ** Licensed under the EUPL, Version 1.2 or – as soon they
+ ** will be approved by the European Commission - subsequent
+ ** versions of the EUPL (the "Licence");
+ ** You may not use this work except in compliance with the
+ ** Licence.
+ ** You may obtain a copy of the Licence at:
+ **
+ ** https://joinup.ec.europa.eu/page/eupl-text-11-12
+ **
+ ** Unless required by applicable law or agreed to in
+ ** writing, software distributed under the Licence is
+ ** distributed on an "AS IS" basis,
+ ** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ ** express or implied.
+ ** See the Licence for the specific language governing
+ ** permissions and limitations under the Licence.
+ **
+ ** Lizenziert unter der EUPL, Version 1.2 oder - sobald
+ **  diese von der Europäischen Kommission genehmigt wurden -
+ ** Folgeversionen der EUPL ("Lizenz");
+ ** Sie dürfen dieses Werk ausschließlich gemäß
+ ** dieser Lizenz nutzen.
+ ** Eine Kopie der Lizenz finden Sie hier:
+ **
+ ** https://joinup.ec.europa.eu/page/eupl-text-11-12
+ **
+ ** Sofern nicht durch anwendbare Rechtsvorschriften
+ ** gefordert oder in schriftlicher Form vereinbart, wird
+ ** die unter der Lizenz verbreitete Software "so wie sie
+ ** ist", OHNE JEGLICHE GEWÄHRLEISTUNG ODER BEDINGUNGEN -
+ ** ausdrücklich oder stillschweigend - verbreitet.
+ ** Die sprachspezifischen Genehmigungen und Beschränkungen
+ ** unter der Lizenz sind dem Lizenztext zu entnehmen.
+ **
+ **************************************************************************/
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using jmbde.Data;
+using jmbde.Filters;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -54,21 +57,21 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-using jmbde.Data;
-
-
 namespace jmbde
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        ILogger _logger;
+        public Startup(ILoggerFactory loggerFactory, IConfiguration configuration)
         {
+            _logger = loggerFactory.CreateLogger<GlobalFiltersLogger>();
             Configuration = configuration;
         }
 
-        public IConfiguration  Configuration { get; }
+        public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // This method gets called by the runtime. 
+        // Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<CookiePolicyOptions>(options =>
@@ -78,19 +81,21 @@ namespace jmbde
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(options => 
+            {
+                options.Filters.Add(new AsyncPageFilter(_logger));              
+            })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // Add framework services.
-            services.AddDbContext<JMBDEContext>(options => 
-                options.UseSqlServer(Configuration.GetConnectionString("JMBDEContext")));
-       }
+            services.AddDbContext<JMBDEContext>(options =>
+               options.UseInMemoryDatabase("InMemoryDb"));
+            // options.UseSqlServer (Configuration.GetConnectionString ("JMBDEContext")));
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -105,7 +110,7 @@ namespace jmbde
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            
+
             app.UseMvc();
         }
     }

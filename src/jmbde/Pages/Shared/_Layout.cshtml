@@ -5,103 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - jmbde</title>
 
-    <environment names="Development">
+    <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="/>
     </environment>
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-             <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-page="/Index" class="navbar-brand">jmbde</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-page="/Index">Home</a></li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownDataMenu">
-                                <li><a asp-page="/Employees/Index">Employee</a></li>
-                                <li><a asp-page="/Computers/Index">Computer</a></li>
-                                <li><a asp-page="/Phones/Index">Phone</a></li>
-                                <li><a asp-page="/Mobiles/Index">Mobile</a></li>
-                                <li><a asp-page="/Printers/Index">Printer</a></li>
-                                <li><a asp-page="/ChipCards/Index">Chip Card</a></li>
-                                <li><a asp-page="/ChipCardProfiles/Index">Chip Card Profile</a></li>
-                                <li><a asp-page="/ChipCardDoors/Index">Door</a></li>
-                                <li><a asp-page="/CityNames/Index">City Name</a></li>
-                                <li><a asp-page="/Companies/Index">Company</a></li>
-                                <li><a asp-page="/Departments/Index">Department</a></li>
-                                <li><a asp-page="/DeviceNames/Index">Device Name</a></li>
-                                <li><a asp-page="/DeviceTypes/Index">Device Type</a></li>
-                                <li><a asp-page="/Documents/Index">Document</a></li>
-                                <li><a asp-page="/Faxes/Index">Fax</a></li>
-                                <li><a asp-page="/Functions/Index">Function</a></li>
-                                <li><a asp-page="/Inventories/Index">Inventory</a></li>
-                                <li><a asp-page="/JobTitles/Index">Job Title</a></li>
-                                <li><a asp-page="/Manufacturers/Index">Manufacturer</a></li>
-                                <li><a asp-page="/Softwares/Index">Software</a></li>
-                                <li><a asp-page="/SystemAccounts/Index">System Account</a></li>
-                                <li><a asp-page="/SystemDatas/Index">System Data</a></li>
-                                <li><a asp-page="/ZipCodes/Index">Zip Code</a></li>
-                                <li><a asp-page="/Places/Index">Place</a></li>
-                                <li><a asp-page="/Processors/Index">Processor</a></li>
-                            </ul>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">jmbde</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Index">Home</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu" aria-aria-labelledby="dropdownHelpMenu">                                
-                                <li><a asp-page="/About">About</a></li>
-                                <li><a asp-page="/Contact">Contact</a></li>
-                            </ul>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Data</a>
+                            <div class="dropdown-menu">                      
+                                <a class="dropdown-item" asp-page="/Employees/Index">Employee</a>
+                                <a class="dropdown-item" asp-page="/Computers/Index">Computer</a>
+                                <a class="dropdown-item" asp-page="/Phones/Index">Phone</a>
+                                <a class="dropdown-item" asp-page="/Mobiles/Index">Mobile</a>
+                                <a class="dropdown-item" asp-page="/Printers/Index">Printer</a>
+                                <a class="dropdown-item" asp-page="/ChipCards/Index">Chip Card</a>
+                                <a class="dropdown-item" asp-page="/ChipCardProfiles/Index">Chip Card Profile</a>
+                                <a class="dropdown-item" asp-page="/ChipCardDoors/Index">Door</a>
+                                <a class="dropdown-item" asp-page="/CityNames/Index">City Name</a>
+                                <a class="dropdown-item" asp-page="/Companies/Index">Company</a>
+                                <a class="dropdown-item" asp-page="/Departments/Index">Department</a>
+                                <a class="dropdown-item" asp-page="/DeviceNames/Index">Device Name</a>
+                                <a class="dropdown-item" asp-page="/DeviceTypes/Index">Device Type</a>
+                                <a class="dropdown-item" asp-page="/Documents/Index">Document</a>
+                                <a class="dropdown-item" asp-page="/Faxes/Index">Fax</a>
+                                <a class="dropdown-item" asp-page="/Functions/Index">Function</a>
+                                <a class="dropdown-item" asp-page="/Inventories/Index">Inventory</a>
+                                <a class="dropdown-item" asp-page="/JobTitles/Index">Job Title</a>
+                                <a class="dropdown-item" asp-page="/Manufacturers/Index">Manufacturer</a>
+                                <a class="dropdown-item" asp-page="/Softwares/Index">Software</a>
+                                <a class="dropdown-item" asp-page="/SystemAccounts/Index">System Account</a>
+                                <a class="dropdown-item" asp-page="/SystemDatas/Index">System Data</a>
+                                <a class="dropdown-item" asp-page="/ZipCodes/Index">Zip Code</a>
+                                <a class="dropdown-item" asp-page="/Places/Index">Place</a>
+                                <a class="dropdown-item" asp-page="/Processors/Index">Processor</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Help</a>
+                            <div class="dropdown-menu">                               
+                                <a class="dropdown-item" asp-page="/About">About</a>
+                                <a class="dropdown-item" asp-page="/Contact">Contact</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <partial name="_CookieConsentPartial" />
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2016-2018 - Jürgen Mülbert</p>
-        </footer>
+    <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
-    <environment include="Development">
+
+      <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2016-2019 - J&uuml;rgen M&uuml;lbert <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+      <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
     </environment>
     <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery"
                 crossorigin="anonymous"
-                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
         </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
                 crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+                integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
         </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
