@@ -10,16 +10,15 @@
     <PackageId>jmbde</PackageId>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/jmuelbert/jmbde-aspnet</RepositoryUrl>
-    <ReleaseVersion>0.5</ReleaseVersion>
+    <ReleaseVersion>0.5.0</ReleaseVersion>
   </PropertyGroup>
+
   <ItemGroup>
-    <None Remove="app.db" />
-  </ItemGroup>
-  <ItemGroup>
-  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlserver" Version="2.2.0" />
   <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
   <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils" Version="2.2.0" />
   <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.0" /> 
+  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.0" />
 </ItemGroup>
 
 <ItemGroup>

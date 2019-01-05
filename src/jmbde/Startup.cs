@@ -82,12 +82,15 @@ namespace jmbde
 
             // Add framework services.
             services.AddDbContext<JMBDEContext>(options => 
-                options.UseSqlite(Configuration.GetConnectionString("JMBDEContext")));
+                options.UseSqlServer(Configuration.GetConnectionString("JMBDEContext")));
        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
