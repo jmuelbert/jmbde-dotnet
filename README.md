@@ -41,7 +41,7 @@ The master branch represents the latest pre-release code.
 
 #### For Mac
 
-- [.NET Core SDK 2.2 for Linux](https://www.microsoft.com/net/download/macos)
+- [.NET Core SDK 2.2 for MacOS](https://www.microsoft.com/net/download/macos)
 
 ## Prepare the App
 
