@@ -1,0 +1,85 @@
+@page
+@model jmbde.Pages.ZipCodes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by code: <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.CodeSort"
+                        asp-route-currentFilter="@Model.CurrentFilter">                
+                        @Html.DisplayNameFor(model => model.ZipCode[0].Code)
+                    </a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ZipCode[0].Country)
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
+                        asp-route-currentFilter="@Model.CurrentFilter">                                    
+                        @Html.DisplayNameFor(model => model.ZipCode[0].LastUpdate)
+                    </a>
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ZipCode) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ZipCodeId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ZipCodeId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ZipCodeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.ZipCode.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.ZipCode.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.ZipCode.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.ZipCode.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

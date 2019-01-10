@@ -1,0 +1,152 @@
+@page
+@model jmbde.Pages.Printers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                        asp-route-currentFilter="@Model.CurrentFilter">                
+                        @Html.DisplayNameFor(model => model.Printer[0].Name)
+                    </a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Printer[0].SerialNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Printer[0].ServiceTag)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Printer[0].ServiceNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Printer[0].Network)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Printer[0].NetworkIpAddress)
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.ActiveSort"
+                        asp-route-currentFilter="@Model.CurrentFilter">                
+                        @Html.DisplayNameFor(model => model.Printer[0].Active)
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.ReplaceSort"
+                        asp-route-currentFilter="@Model.CurrentFilter">                
+                        @Html.DisplayNameFor(model => model.Printer[0].Replace)
+                    </a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Printer[0].Resources)
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.PaperSizeSort"
+                        asp-route-currentFilter="@Model.CurrentFilter">                
+                        @Html.DisplayNameFor(model => model.Printer[0].PaperSize)
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.ColorSort"
+                        asp-route-currentFilter="@Model.CurrentFilter">                                    
+                        @Html.DisplayNameFor(model => model.Printer[0].Color)
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
+                        asp-route-currentFilter="@Model.CurrentFilter">                
+                        @Html.DisplayNameFor(model => model.Printer[0].LastUpdate)
+                    </a>
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Printer) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceTag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Network)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NetworkIpAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Replace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resources)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaperSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PrinterId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PrinterId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PrinterId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+@{
+    var prevDisabled = !Model.Printer.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Printer.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Printer.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Printer.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

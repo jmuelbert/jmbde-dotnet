@@ -1,14 +1,15 @@
 {
-    "version": "0.1.0",
-    "command": "dotnet",
-    "isShellCommand": true,
-    "args": [],
-    "tasks": [{
-        "taskName": "build",
-        "args": [
-            "${workspaceRoot}/jmbde/project.json"
-        ],
-        "isBuildCommand": true,
-        "problemMatcher": "$msCompile"
-    }]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/jmbde/jmbde.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
 }

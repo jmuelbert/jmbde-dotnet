@@ -1,0 +1,66 @@
+@page "{id:int}"
+@model jmbde.Pages.Mobiles.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<p class="text-danger">@Model.ErrorMessage</p>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Mobile</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile.Number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mobile.Number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile.SerialNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mobile.SerialNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile.Pin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mobile.Pin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile.CardNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mobile.CardNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile.Active)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mobile.Active)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile.Replace)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mobile.Replace)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mobile.LastUpdate)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Mobile.MobileId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

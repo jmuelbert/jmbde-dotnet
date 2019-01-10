@@ -1,0 +1,42 @@
+@page "{id:int}"
+@model jmbde.Pages.Documents.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<p class="text-danger">@Model.ErrorMessage</p>
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Document</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Document.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Document.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Document.DocumentData)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Document.DocumentData)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Document.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Document.LastUpdate)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Document.DocumentId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

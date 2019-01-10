@@ -1,0 +1,84 @@
+@page "{id:int}"
+@model jmbde.Pages.Manufacturers.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<p class="text-danger">@Model.ErrorMessage</p>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Manufacturer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.Name2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.Name2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.Supporter)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.Supporter)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.Street)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.Street)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.Street22)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.Street22)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.MailAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.MailAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.FaxNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.FaxNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.HotlineNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.HotlineNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.LastUpdate)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Manufacturer.ManufacturerId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

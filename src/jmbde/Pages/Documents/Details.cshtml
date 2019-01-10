@@ -1,0 +1,37 @@
+@page "{id:int}"
+@model jmbde.Pages.Documents.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Document</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Document.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Document.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Document.DocumentData)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Document.DocumentData)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Document.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Document.LastUpdate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Document.DocumentId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

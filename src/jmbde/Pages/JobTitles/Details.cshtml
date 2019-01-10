@@ -1,0 +1,37 @@
+@page "{id:int}"
+@model jmbde.Pages.JobTitles.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>JobTitle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobTitle.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JobTitle.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.JobTitle.FromDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JobTitle.FromDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.JobTitle.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JobTitle.LastUpdate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.JobTitle.JobTitleId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

@@ -1,0 +1,79 @@
+@page
+@model jmbde.Pages.Manufacturers.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Manufacturer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Manufacturer.Name" class="control-label"></label>
+                <input asp-for="Manufacturer.Name" class="form-control" />
+                <span asp-validation-for="Manufacturer.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Manufacturer.Name2" class="control-label"></label>
+                <input asp-for="Manufacturer.Name2" class="form-control" />
+                <span asp-validation-for="Manufacturer.Name2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Manufacturer.Supporter" class="control-label"></label>
+                <input asp-for="Manufacturer.Supporter" class="form-control" />
+                <span asp-validation-for="Manufacturer.Supporter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Manufacturer.Street" class="control-label"></label>
+                <input asp-for="Manufacturer.Street" class="form-control" />
+                <span asp-validation-for="Manufacturer.Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Manufacturer.Street22" class="control-label"></label>
+                <input asp-for="Manufacturer.Street22" class="form-control" />
+                <span asp-validation-for="Manufacturer.Street22" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Manufacturer.MailAddress" class="control-label"></label>
+                <input asp-for="Manufacturer.MailAddress" class="form-control" />
+                <span asp-validation-for="Manufacturer.MailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Manufacturer.PhoneNumber" class="control-label"></label>
+                <input asp-for="Manufacturer.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Manufacturer.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Manufacturer.FaxNumber" class="control-label"></label>
+                <input asp-for="Manufacturer.FaxNumber" class="form-control" />
+                <span asp-validation-for="Manufacturer.FaxNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Manufacturer.HotlineNumber" class="control-label"></label>
+                <input asp-for="Manufacturer.HotlineNumber" class="form-control" />
+                <span asp-validation-for="Manufacturer.HotlineNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Manufacturer.LastUpdate" class="control-label"></label>
+                <input asp-for="Manufacturer.LastUpdate" class="form-control" />
+                <span asp-validation-for="Manufacturer.LastUpdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,68 @@
+@page "{id:int}"
+@model jmbde.Pages.Phones.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Phone</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Phone.PhoneId" />
+            <div class="form-group">
+                <label asp-for="Phone.Number" class="control-label"></label>
+                <input asp-for="Phone.Number" class="form-control" />
+                <span asp-validation-for="Phone.Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone.SerialNumber" class="control-label"></label>
+                <input asp-for="Phone.SerialNumber" class="form-control" />
+                <span asp-validation-for="Phone.SerialNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone.Pin" class="control-label"></label>
+                <input asp-for="Phone.Pin" class="form-control" />
+                <span asp-validation-for="Phone.Pin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone.Active" class="control-label"></label>
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Phone.Active" /> 
+                    </label>
+                </div>
+                <span asp-validation-for="Phone.Active" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone.Replace" class="control-label"></label>
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Phone.Replace" /> 
+                    </label>
+                </div>
+                <span asp-validation-for="Phone.Replace" class="text-danger"></span>
+            </div>
+           <div class="form-group">
+                <label asp-for="Phone.LastUpdate" class="control-label"></label>
+                <input asp-for="Phone.LastUpdate" class="form-control" />
+                <span asp-validation-for="Phone.LastUpdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

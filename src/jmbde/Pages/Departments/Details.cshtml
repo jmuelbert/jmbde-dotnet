@@ -1,0 +1,81 @@
+@page "{id:int}"
+@model jmbde.Pages.Departments.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Department</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.Priority)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Department.Priority)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Department.LastUpdate)
+        </dd>
+                <dt>
+            @Html.DisplayNameFor(model => model.Department.Printer)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>PaperSize</th>
+                    <th>Color</th>
+                </tr>
+                @foreach ( var item in Model.Department.Printer)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PaperSize)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Color)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.Fax)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Number</th>
+                </tr>
+                @foreach ( var item in Model.Department.Fax)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Department.DepartmentId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

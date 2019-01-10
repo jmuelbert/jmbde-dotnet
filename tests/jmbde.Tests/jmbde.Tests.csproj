@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Tests for the jmbde Application</Description>
+    <Version>0.1.0</Version>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>jmbde-tests</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>jmbde-test</PackageId>
+    <IsPackable>false</IsPackable>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/jmuelbert/jmbde-aspnet</RepositoryUrl>
+    <ReleaseVersion>0.4.2</ReleaseVersion>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\jmbde\jmbde.csproj" />
+  </ItemGroup>
+
+</Project>

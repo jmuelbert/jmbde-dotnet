@@ -1,0 +1,65 @@
+@page "{id:int}"
+@model jmbde.Pages.ChipCardDoors.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ChipCardDoor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ChipCardDoor.Number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ChipCardDoor.Number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ChipCardDoor.Department)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ChipCardDoor.Department.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ChipCardDoor.Place)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ChipCardDoor.Place.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ChipCardDoor.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ChipCardDoor.LastUpdate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ChipCardDoor.Employee)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                </tr>
+                @foreach ( var item in Model.ChipCardDoor.Employee)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ChipCardDoor.ChipCardDoorId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

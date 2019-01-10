@@ -1,0 +1,73 @@
+@page
+@model jmbde.Pages.Mobiles.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Mobile</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Mobile.Number" class="control-label"></label>
+                <input asp-for="Mobile.Number" class="form-control" />
+                <span asp-validation-for="Mobile.Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile.SerialNumber" class="control-label"></label>
+                <input asp-for="Mobile.SerialNumber" class="form-control" />
+                <span asp-validation-for="Mobile.SerialNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile.Pin" class="control-label"></label>
+                <input asp-for="Mobile.Pin" class="form-control" />
+                <span asp-validation-for="Mobile.Pin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile.CardNumber" class="control-label"></label>
+                <input asp-for="Mobile.CardNumber" class="form-control" />
+                <span asp-validation-for="Mobile.CardNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile.Active" class="control-label"></label>
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Mobile.Active" /> 
+                    </label>
+                </div>
+                <span asp-validation-for="Mobile.Active" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile.Replace" class="control-label"></label>
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Mobile.Replace" /> 
+                    </label>
+                </div>
+                <span asp-validation-for="Mobile.Replace" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Mobile.LastUpdate" class="control-label"></label>
+                <input asp-for="Mobile.LastUpdate" class="form-control" />
+                <span asp-validation-for="Mobile.LastUpdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,71 @@
+image: Visual Studio 2017
+version: 1.0.{build}
+configuration: Release
+
+init:
+  - git config --global core.autocrlf input
+  - cinst 7zip
+  - cinst opencover.portable
+  - cinst codecov
+
+skip_branch_with_pr: true
+skip_tags: true
+skip_commits:
+  files:
+    - '**/*.md'
+    - docs/*
+
+environment:
+  Appveyor: true
+
+nuget:
+  disable_publish_on_pr: true
+
+pull_requests:
+  do_not_increment_build_number: true
+
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+
+before_build:
+  - appveyor-retry dotnet restore -v Minimal
+
+build_script:
+  - ps: dotnet build -c Release
+
+after_build:
+  - ps: dotnet publish .\src\jmbde\jmbde.csproj -c Release -o .\artifacts
+
+test_script:
+  - ps: dotnet test .\tests\jmbde.Tests\jmbde.Tests.csproj
+
+artifacts:
+- path: artifacts\**\*.*
+  name: ReleaseArtifacts
+
+deploy: off
+# master deployment to release
+# - provider: NuGet
+#   release: $(APPVEYOR_REPO_TAG_NAME)
+#   api_key:
+#     secure: jNtt/O0YdM+cKFiPbqv5EXIgbXlvGzXR45WLJdEWdhIwKTUCoGr44lmUkVY9xigd
+#   artifact: jmbde
+#   draft: true 
+#   on:
+#     appveyor_repo_tag: true
+#     push_release: true    
+# - provider: GitHub
+#   release: $(APPVEYOR_REPO_TAG_NAME)
+#   auth_token:
+#     secure: dgHvp6cRuN111wnt2rANR25qfklalE+m06hxhy7XbFRkoGjW46h9mu8wxqsaTPHj
+#   artifact: jmbde
+#   draft: true
+#   on:
+#     appveyor_repo_tag: true
+#     push_release: true

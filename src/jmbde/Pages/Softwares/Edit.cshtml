@@ -1,0 +1,55 @@
+@page "{id:int}"
+@model jmbde.Pages.Softwares.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Software</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Software.SoftwareId" />
+            <div class="form-group">
+                <label asp-for="Software.Name" class="control-label"></label>
+                <input asp-for="Software.Name" class="form-control" />
+                <span asp-validation-for="Software.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Software.Version" class="control-label"></label>
+                <input asp-for="Software.Version" class="form-control" />
+                <span asp-validation-for="Software.Version" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Software.Revision" class="control-label"></label>
+                <input asp-for="Software.Revision" class="form-control" />
+                <span asp-validation-for="Software.Revision" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Software.Fix" class="control-label"></label>
+                <input asp-for="Software.Fix" class="form-control" />
+                <span asp-validation-for="Software.Fix" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Software.LastUpdate" class="control-label"></label>
+                <input asp-for="Software.LastUpdate" class="form-control" />
+                <span asp-validation-for="Software.LastUpdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

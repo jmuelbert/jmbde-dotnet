@@ -1,0 +1,31 @@
+@page "{id:int}"
+@model jmbde.Pages.DeviceTypes.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DeviceType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceType.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeviceType.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceType.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeviceType.LastUpdate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.DeviceType.DeviceTypeId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
