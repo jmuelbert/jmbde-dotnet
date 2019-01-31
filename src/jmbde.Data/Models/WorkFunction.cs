@@ -1,6 +1,6 @@
 ﻿/**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -43,16 +43,15 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace JMuelbert.BDE.Data.Models
-{
+namespace JMuelbert.BDE.Data.Models {
     /// <summary>
     /// Function.
     /// </summary>
-    public partial class Function {
+    public partial class WorkFunction {
         /// <summary>
-        /// Gets or sets the function identifier.
+        /// Gets or sets the workfunction identifier.
         /// </summary>
-        /// <value>The function identifier.</value>
+        /// <value>The workfunction identifier.</value>
         public long FunctionId { get; set; }
 
         /// <summary>
@@ -60,7 +59,7 @@ namespace JMuelbert.BDE.Data.Models
         /// </summary>
         /// <value>The name.</value>
         [Required]
-        [StringLength (50, ErrorMessage = "Function cannot be longer than 50 characters.")]
+        [StringLength (50, ErrorMessage = "WorkFunction cannot be longer than 50 characters.")]
         public string Name { get; set; }
 
         /// <summary>

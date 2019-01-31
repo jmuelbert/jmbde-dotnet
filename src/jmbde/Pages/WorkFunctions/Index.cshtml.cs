@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -48,7 +48,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.Functions {
+namespace JMuelbert.BDE.Pages.WorkFunctions {
     /// <summary>
     /// Index model.
     /// </summary>
@@ -64,7 +64,7 @@ namespace JMuelbert.BDE.Pages.Functions {
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Functions.IndexModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.WorkFunctions.IndexModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -110,11 +110,11 @@ namespace JMuelbert.BDE.Pages.Functions {
         /// Gets or sets the Function.
         /// </summary>
         /// <value>The Function.</value>
-        public PaginatedList<Function> Function { get; set; }
+        public PaginatedList<WorkFunction> WorkFunction { get; set; }
 
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
-            _logger.LogDebug ("Functions/Index/OnGetAsync");
+            _logger.LogDebug ($"Functions/Index/OnGetAsync({sortOrder}, {currentFilter}, {searchString}, {pageIndex})");
 
             CurrentSort = sortOrder;
             NameSort = String.IsNullOrEmpty (sortOrder) ? "name_desc" : "";
@@ -128,7 +128,7 @@ namespace JMuelbert.BDE.Pages.Functions {
 
             CurrentFilter = searchString;
 
-            IQueryable<Function> functionIQ = from f in _context.Function
+            IQueryable<WorkFunction> functionIQ = from f in _context.WorkFunction
             select f;
 
             if (!String.IsNullOrEmpty (searchString)) {
@@ -161,9 +161,9 @@ namespace JMuelbert.BDE.Pages.Functions {
             }
 
             int pageSize = 10;
-            Function = await PaginatedList<Function>.CreateAsync (
+            WorkFunction = await PaginatedList<WorkFunction>.CreateAsync (
                 functionIQ.AsNoTracking (), pageIndex ?? 1, pageSize
-            );
+            ).ConfigureAwait (false);
         }
     }
 }

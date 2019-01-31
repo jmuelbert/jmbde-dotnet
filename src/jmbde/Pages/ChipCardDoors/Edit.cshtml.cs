@@ -1,6 +1,6 @@
 ﻿/**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -46,8 +46,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCardDoors
-{
+namespace JMuelbert.BDE.Pages.ChipCardDoors {
 
     /// <summary>
     /// Edit model.
@@ -85,7 +84,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("ChipCardDoors/Edit/OnGetAsync");
+            _logger.LogDebug ($"ChipCardDoors/Edit/OnGetAsync({ id })");
 
             if (id == null) {
                 return NotFound ();

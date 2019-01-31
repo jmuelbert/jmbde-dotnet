@@ -1,6 +1,6 @@
 ﻿/**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -47,8 +47,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCardDoors
-{
+namespace JMuelbert.BDE.Pages.ChipCardDoors {
     /// <summary>
     /// Create model.
     /// </summary>
@@ -108,7 +107,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors
                     c => c.Number,
                     c => c.LastUpdate)) {
                 _context.ChipCardDoor.Add (emptyChipCardDoor);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
 

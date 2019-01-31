@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -44,14 +44,13 @@ using System.Threading.Tasks;
 using JMuelbert.BDE.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.Functions {
+namespace JMuelbert.BDE.Pages.WorkFunctions {
     /// <summary>
-    /// Details model.
+    /// Edit model.
     /// </summary>
-    public class DetailsModel : PageModel {
+    public class EditModel : PageModel {
         /// <summary>
         /// The context.
         /// </summary>
@@ -61,14 +60,13 @@ namespace JMuelbert.BDE.Pages.Functions {
         /// The logger.
         /// </summary>
         private readonly ILogger _logger;
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.DeviceNames.DetailsModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.WorkFunctions.EditModel"/> class.
         /// </summary>
-        /// <param name="logger"></param>
-        /// <param name="context"></param>
+        /// <param name="logger">Logger.</param>
+        /// <param name="context">Context.</param>
 
-        public DetailsModel (ILogger<DetailsModel> logger, JMuelbert.BDE.Data.ApplicationDbContext context) {
+        public EditModel (ILogger<EditModel> logger, JMuelbert.BDE.Data.ApplicationDbContext context) {
             _logger = logger;
             _context = context;
         }
@@ -76,26 +74,54 @@ namespace JMuelbert.BDE.Pages.Functions {
         /// <summary>
         /// Gets or sets the Function.
         /// </summary>
-        /// <value>The Function.</value>  
-        public Function Function { get; set; }
+        /// <value>The Function.</value>
+        [BindProperty]
+        public WorkFunction WorkFunction { get; set; }
 
         /// <summary>
         /// Ons the get async.
         /// </summary>
-        ///  <returns>The get async.</returns>
+        /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Functions/Details/OnGetAsync");
+            _logger.LogDebug ($"Functions/Edit/OnGetAsync({id})");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            Function = await _context.Function.SingleOrDefaultAsync (m => m.FunctionId == id);
+            WorkFunction = await _context.WorkFunction.FindAsync (id).ConfigureAwait (false);
 
-            if (Function == null) {
+            if (WorkFunction == null) {
                 return NotFound ();
             }
+            return Page ();
+        }
+        /// <summary>
+        /// OnPostAsync
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> OnPostAsync (long? id) {
+            _logger.LogDebug ($"Functions/Edit/OnPostAsync({id})");
+
+            if (!ModelState.IsValid) {
+                return Page ();
+            }
+
+            var functionToUpdate = await _context.WorkFunction.FindAsync (id).ConfigureAwait (false);
+
+            if (await TryUpdateModelAsync<WorkFunction> (
+                    functionToUpdate,
+                    "function", // Prefix for form value
+                    f => f.Name,
+                    f => f.Priority,
+                    f => f.LastUpdate
+                )) {
+                await _context.SaveChangesAsync ();
+                return RedirectToPage ("./Index");
+            }
+
             return Page ();
         }
     }

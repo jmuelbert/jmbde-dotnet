@@ -124,7 +124,7 @@ namespace JMuelbert.BDE.Data {
         /// Gets or sets the function.
         /// </summary>
         /// <value>The function.</value>
-        public virtual DbSet<JMuelbert.BDE.Data.Models.Function> Function { get; set; }
+        public virtual DbSet<JMuelbert.BDE.Data.Models.WorkFunction> WorkFunction { get; set; }
 
         /// <summary>
         /// Gets or sets the inventory.

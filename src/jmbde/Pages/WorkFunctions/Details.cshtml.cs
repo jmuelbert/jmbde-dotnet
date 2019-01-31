@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -47,11 +47,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.Functions {
+namespace JMuelbert.BDE.Pages.WorkFunctions {
     /// <summary>
-    /// Delete model.
+    /// Details model.
     /// </summary>
-    public class DeleteModel : PageModel {
+    public class DetailsModel : PageModel {
         /// <summary>
         /// The context.
         /// </summary>
@@ -63,12 +63,12 @@ namespace JMuelbert.BDE.Pages.Functions {
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Functions.IndexModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.WorkFunctions.DetailsModel"/> class.
         /// </summary>
-        /// <param name="logger">Logger.</param>
-        /// <param name="context">Context.</param>
+        /// <param name="logger"></param>
+        /// <param name="context"></param>
 
-        public DeleteModel (ILogger<DeleteModel> logger, JMuelbert.BDE.Data.ApplicationDbContext context) {
+        public DetailsModel (ILogger<DetailsModel> logger, JMuelbert.BDE.Data.ApplicationDbContext context) {
             _logger = logger;
             _context = context;
         }
@@ -76,74 +76,27 @@ namespace JMuelbert.BDE.Pages.Functions {
         /// <summary>
         /// Gets or sets the Function.
         /// </summary>
-        /// <value>The Function.</value>
-        [BindProperty]
-        public Function Function { get; set; }
-
-        /// <summary>
-        /// Gets or sets the error message.
-        /// </summary>
-        /// <value>The error message.</value>
-        public string ErrorMessage { get; set; }
+        /// <value>The Function.</value>  
+        public WorkFunction WorkFunction { get; set; }
 
         /// <summary>
         /// Ons the get async.
         /// </summary>
-        /// <returns>The get async.</returns>
+        ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("Functions/Delete/OnGetAsync");
+        public async Task<IActionResult> OnGetAsync (long? id) {
+            _logger.LogDebug ($"Functions/Details/OnGetAsync({id})");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            Function = await _context.Function
-                .AsNoTracking ()
-                .FirstOrDefaultAsync (f => f.FunctionId == id);
+            WorkFunction = await _context.WorkFunction.SingleOrDefaultAsync (m => m.FunctionId == id).ConfigureAwait (false);
 
-            if (Function == null) {
+            if (WorkFunction == null) {
                 return NotFound ();
-            }
-
-            if (saveChangesError.GetValueOrDefault ()) {
-                ErrorMessage = "Delete failed. Try again";
             }
             return Page ();
-        }
-
-        /// <summary>
-        /// Ons the post async.
-        /// </summary>
-        /// <returns>The post async.</returns>
-        /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Functions/Delete/OnPostAsync");
-
-            if (id == null) {
-                return NotFound ();
-            }
-
-            var function = await _context.Function
-                .AsNoTracking ()
-                .FirstOrDefaultAsync (f => f.FunctionId == id);
-
-            if (function == null) {
-                return NotFound ();
-            }
-
-            try {
-                _context.Function.Remove (function);
-                await _context.SaveChangesAsync ();
-                return RedirectToPage ("./Index");
-            } catch (DbUpdateException ex) {
-
-                _logger.LogError ("Functions/Delete {0}", ex.ToString ());
-
-                return RedirectToAction ("./Delete",
-                    new { id, saveChangesError = true });
-            }
         }
     }
 }

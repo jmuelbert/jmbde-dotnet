@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -46,7 +46,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.Functions {
+namespace JMuelbert.BDE.Pages.WorkFunctions {
     /// <summary>
     /// Create model.
     /// </summary>
@@ -62,7 +62,7 @@ namespace JMuelbert.BDE.Pages.Functions {
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Functions.IndexModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.WorkFunctions.IndexModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -86,7 +86,7 @@ namespace JMuelbert.BDE.Pages.Functions {
         /// </summary>
         /// <value>The Function.</value>
         [BindProperty]
-        public Function Function { get; set; }
+        public WorkFunction WorkFunction { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -99,17 +99,17 @@ namespace JMuelbert.BDE.Pages.Functions {
                 return Page ();
             }
 
-            var emptyFunction = new Function ();
+            var emptyFunction = new WorkFunction ();
 
-            if (await TryUpdateModelAsync<Function> (
+            if (await TryUpdateModelAsync<WorkFunction> (
                     emptyFunction,
                     "function", // Prefix for form value
                     f => f.Name,
                     f => f.Priority,
                     f => f.LastUpdate
                 )) {
-                _context.Function.Add (emptyFunction);
-                await _context.SaveChangesAsync ();
+                _context.WorkFunction.Add (emptyFunction);
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
 
                 return RedirectToPage ("./Index");
             }

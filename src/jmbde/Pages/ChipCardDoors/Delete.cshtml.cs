@@ -1,6 +1,6 @@
 ﻿/**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -93,7 +93,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("ChipCardDoors/Delete/OnGetAsync: Getting item { ID } - { saveChangesError }", id, saveChangesError);
+            _logger.LogDebug ($"ChipCardDoors/Delete/OnGetAsync: Getting item { id } - { saveChangesError }");
 
             if (id == null) {
                 return NotFound ();
@@ -120,7 +120,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("ChipCardDoors/Delete/OnPostAsync");
+            _logger.LogDebug ($"ChipCardDoors/Delete/OnPostAsync - { id }");
 
             if (id == null) {
                 return NotFound ();
@@ -136,7 +136,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
 
             try {
                 _context.ChipCardDoor.Remove (chipcarddoor);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
                 _logger.LogError ("ChipCardDoors/Delete {0}", ex.ToString ());

@@ -46,8 +46,7 @@ using System.ComponentModel.DataAnnotations;
 
 // TODO: Change the use of SystemAccount
 
-namespace JMuelbert.BDE.Data.Models
-{
+namespace JMuelbert.BDE.Data.Models {
     /// <summary>
     /// Gender.
     /// </summary>
@@ -202,7 +201,7 @@ namespace JMuelbert.BDE.Data.Models
         /// Gets or sets the function.
         /// </summary>
         /// <value>The function.</value>
-        public ICollection<Function> Function { get; set; }
+        public ICollection<WorkFunction> WorkFunction { get; set; }
 
         /// <summary>
         /// Gets or sets the computer.
