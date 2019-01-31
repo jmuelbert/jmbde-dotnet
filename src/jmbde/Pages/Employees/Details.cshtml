@@ -1,5 +1,5 @@
 @page "{id:int}"
-@model jmbde.Pages.Employees.DetailsModel
+@model JMuelbert.BDE.Pages.Employees.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
@@ -113,7 +113,7 @@
         <dd>
             @Html.DisplayFor(model => model.Employee.LastUpdate)
         </dd>
-                <dt>
+        <dt>
             @Html.DisplayNameFor(model => model.Employee.Function)
         </dt>
         <dd>
@@ -121,7 +121,7 @@
                 <tr>
                     <th>Name</th>
                 </tr>
-                @foreach ( var item in Model.Employee.Function)
+                @foreach (var item in Model.Employee.Function)
                 {
                     <tr>
                         <td>
@@ -139,7 +139,7 @@
                 <tr>
                     <th>Name</th>
                 </tr>
-                @foreach ( var item in Model.Employee.SystemAccount)
+                @foreach (var item in Model.Employee.SystemAccount)
                 {
                     <tr>
                         <td>
@@ -148,7 +148,7 @@
                     </tr>
                 }
             </table>
-        </dd>        
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Employee.Computer)
         </dt>
@@ -157,7 +157,7 @@
                 <tr>
                     <th>Name</th>
                 </tr>
-                @foreach ( var item in Model.Employee.Computer)
+                @foreach (var item in Model.Employee.Computer)
                 {
                     <tr>
                         <td>
@@ -166,7 +166,7 @@
                     </tr>
                 }
             </table>
-        </dd>        
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Employee.Printer)
         </dt>
@@ -175,7 +175,7 @@
                 <tr>
                     <th>Name</th>
                 </tr>
-                @foreach ( var item in Model.Employee.Printer)
+                @foreach (var item in Model.Employee.Printer)
                 {
                     <tr>
                         <td>
@@ -193,7 +193,7 @@
                 <tr>
                     <th>Name</th>
                 </tr>
-                @foreach ( var item in Model.Employee.Document)
+                @foreach (var item in Model.Employee.Document)
                 {
                     <tr>
                         <td>
@@ -202,7 +202,7 @@
                     </tr>
                 }
             </table>
-        </dd>        
+        </dd>
     </dl>
 </div>
 <div>

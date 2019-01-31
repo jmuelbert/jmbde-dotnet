@@ -1,5 +1,5 @@
 @page
-@model jmbde.Pages.Departments.IndexModel
+@model JMuelbert.BDE.Pages.Departments.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -25,45 +25,46 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">
-                        @Html.DisplayNameFor(model => model.Department[0].Name)
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.PrioritySort"
-                        asp-route-currentFilter="@Model.CurrentFilter">
-                        @Html.DisplayNameFor(model => model.Department[0].Priority)
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">
-                        @Html.DisplayNameFor(model => model.Department[0].LastUpdate)
-                    </a>    
-                </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Department[0].Name)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.PrioritySort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Department[0].Priority)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Department[0].LastUpdate)
+                </a>
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Department) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Priority)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.DepartmentId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.DepartmentId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.DepartmentId">Delete</a>
-            </td>
-        </tr>
+        @foreach (var item in Model.Department)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Priority)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastUpdate)
+    </td>
+    <td>
+        <a asp-page="./Edit" asp-route-id="@item.DepartmentId">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.DepartmentId">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.DepartmentId">Delete</a>
+    </td>
+</tr>
 }
     </tbody>
 </table>

@@ -1,4 +1,4 @@
-/**************************************************************************
+﻿/**************************************************************************
 **
 ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
 **
@@ -40,34 +40,60 @@
 **
 **************************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using JMuelbert.BDE.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using jmbde.Data.Models;
+using Microsoft.Extensions.Logging;
 
-namespace jmbde.Pages.ChipCardDoors
+namespace JMuelbert.BDE.Pages.ChipCardDoors
 {
+    /// <summary>
+    /// Details model.
+    /// </summary>
     public class DetailsModel : PageModel
     {
-        private readonly jmbde.Data.JMBDEContext _context;
+        /// <summary>
+        /// The context.
+        /// </summary>
+        private readonly JMuelbert.BDE.Data.ApplicationDbContext _context;
 
-        public DetailsModel(jmbde.Data.JMBDEContext context)
+        /// <summary>
+        /// The logger.
+        /// </summary>
+        private readonly ILogger _logger;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.ChipCardDoors.DetailsModel"/> class.
+        /// </summary>
+        /// <param name="context">Context.</param>
+        public DetailsModel(ILogger<DetailsModel> logger, JMuelbert.BDE.Data.ApplicationDbContext context)
         {
+            _logger = logger;
             _context = context;
         }
 
+        /// <summary>
+        /// Gets or sets the chip card door.
+        /// </summary>
+        /// <value>The chip card door.</value>
         public ChipCardDoor ChipCardDoor { get; set; }
 
+        /// <summary>
+        /// Ons the get async.
+        /// </summary>
+        /// <returns>The get async.</returns>
+        /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync(long? id)
         {
+            _logger.LogDebug("ChipCardDoors/Details/OnGetAsync");
+
             if (id == null)
             {
                 return NotFound();
             }
+
             ChipCardDoor = await _context.ChipCardDoor
                         .Include(c => c.Employee)
                         .Include(d => d.Department)
@@ -79,6 +105,7 @@ namespace jmbde.Pages.ChipCardDoors
             {
                 return NotFound();
             }
+
             return Page();
         }
     }

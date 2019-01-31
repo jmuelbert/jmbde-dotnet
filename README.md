@@ -8,7 +8,7 @@ jmbde is a program to collect data for the IT. The database contains employees, 
 
 jmbde is free software; you can redistribute ot and/or modify ir under the terms
 of the [European Public License Version 1.2](https://joinup.ec.europa.eu/page/eupl-text-11-12).
-Please read the [LICENSE](https://github.com/jmuelbert/jmbde-aspnet/blob/master/LICENSE.EUPL-1_2.txt) for additional information.
+Please read the [LICENSE](https://github.com/jmuelbert/jmbde-aspnet/blob/master/LICENSE) for additional information.
 
 The master branch represents the latest pre-release code.
 
@@ -53,7 +53,7 @@ The master branch represents the latest pre-release code.
 
 ### Linux or macOS
 
-- Open a command prompt and excute `cd src/jmbde`.
+- Open a command prompt and execute `cd src/jmbde`.
 - Run `dotnet build`
 - Run `dotnet ef database update`- Create a new blank database.
 

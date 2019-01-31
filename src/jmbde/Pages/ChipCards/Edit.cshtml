@@ -1,5 +1,5 @@
 @page "{id:int}"
-@model jmbde.Pages.ChipCards.EditModel
+@model JMuelbert.BDE.Pages.ChipCards.EditModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -19,15 +19,15 @@
                 <input asp-for="ChipCard.Number" class="form-control" />
                 <span asp-validation-for="ChipCard.Number" class="text-danger"></span>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="ChipCard.Locked" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="ChipCard.Locked" /> 
+                        <input asp-for="ChipCard.Locked" />
                     </label>
                 </div>
                 <span asp-validation-for="ChipCard.Locked" class="text-danger"></span>
-            </div>            
+            </div>
             <div class="form-group">
                 <label asp-for="ChipCard.LastUpdate" class="control-label"></label>
                 <input asp-for="ChipCard.LastUpdate" class="form-control" />

@@ -7,9 +7,10 @@
 *.userosscache
 *.sln.docstates
 *.db
-*.db3 
+*.db3
 *.sqlite
 *.DS_Store
+.mfractor/
 
 
 # User-specific files (MonoDevelop/Xamarin Studio)
@@ -26,6 +27,7 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+[Dd]oc/
 
 # Visual Studio 2015 cache/options directory
 .vs/

@@ -1,5 +1,5 @@
 @page
-@model jmbde.Pages.Inventories.IndexModel
+@model JMuelbert.BDE.Pages.Inventories.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -24,54 +24,55 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.IdentifierSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                    
-                        @Html.DisplayNameFor(model => model.Inventory[0].Identifier)
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.DescriptionSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                    
-                        @Html.DisplayNameFor(model => model.Inventory[0].Description)
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.ActiveSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                    
-                        @Html.DisplayNameFor(model => model.Inventory[0].Active)
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">
-                        @Html.DisplayNameFor(model => model.Inventory[0].LastUpdate)
-                    </a>
-                </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.IdentifierSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Inventory[0].Identifier)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DescriptionSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Inventory[0].Description)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ActiveSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Inventory[0].Active)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Inventory[0].LastUpdate)
+                </a>
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Inventory) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Identifier)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.InventoryId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.InventoryId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.InventoryId">Delete</a>
-            </td>
-        </tr>
+        @foreach (var item in Model.Inventory)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Identifier)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Active)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastUpdate)
+    </td>
+    <td>
+        <a asp-page="./Edit" asp-route-id="@item.InventoryId">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.InventoryId">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.InventoryId">Delete</a>
+    </td>
+</tr>
 }
     </tbody>
 </table>

@@ -1,5 +1,5 @@
 @page
-@model jmbde.Pages.Places.IndexModel
+@model JMuelbert.BDE.Pages.Places.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -25,54 +25,55 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                
-                        @Html.DisplayNameFor(model => model.Place[0].Name)
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.RoomSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                                    
-                        @Html.DisplayNameFor(model => model.Place[0].Room)
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.DeskSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                                                        
-                        @Html.DisplayNameFor(model => model.Place[0].Desk)
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                                    
-                        @Html.DisplayNameFor(model => model.Place[0].LastUpdate)
-                    </a>
-                </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Place[0].Name)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.RoomSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Place[0].Room)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DeskSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Place[0].Desk)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Place[0].LastUpdate)
+                </a>
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Place) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Room)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Desk)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.PlaceId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.PlaceId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.PlaceId">Delete</a>
-            </td>
-        </tr>
+        @foreach (var item in Model.Place)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Room)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Desk)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastUpdate)
+    </td>
+    <td>
+        <a asp-page="./Edit" asp-route-id="@item.PlaceId">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.PlaceId">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.PlaceId">Delete</a>
+    </td>
+</tr>
 }
     </tbody>
 </table>

@@ -1,5 +1,5 @@
 @page "{id:int}"
-@model jmbde.Pages.Mobiles.EditModel
+@model JMuelbert.BDE.Pages.Mobiles.EditModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -34,11 +34,11 @@
                 <input asp-for="Mobile.CardNumber" class="form-control" />
                 <span asp-validation-for="Mobile.CardNumber" class="text-danger"></span>
             </div>
-              <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Mobile.Active" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Mobile.Active" /> 
+                        <input asp-for="Mobile.Active" />
                     </label>
                 </div>
                 <span asp-validation-for="Mobile.Active" class="text-danger"></span>
@@ -47,7 +47,7 @@
                 <label asp-for="Mobile.Replace" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Mobile.Replace" /> 
+                        <input asp-for="Mobile.Replace" />
                     </label>
                 </div>
                 <span asp-validation-for="Mobile.Replace" class="text-danger"></span>

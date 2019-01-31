@@ -6,7 +6,7 @@ env:
   global:
     - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
     - DOTNET_CLI_TELEMETRY_OPTOUT=1
- 
+
 matrix:
   include:
     - os: linux
@@ -22,21 +22,7 @@ matrix:
       before_install:
         - chmod a+x ./runtests.sh
         - ulimit -n 1024 ;
-        - brew update      
-#        - brew install mariadb
-#        - brew services start mariadb
-#        - brew install redis
-#        - brew services start redis
-
-# services:
-#  - mysql
-#  - redis-server
-
-# before_script:
-#  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('1qazZAQ!') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
-
-before_script:
-  - gem install awesome_bot
+        - brew update
 
 before_install:
   - chmod a+x ./runtests.sh
@@ -47,4 +33,3 @@ install:
 
 script:
   - ./runtests.sh
-  - awesome_bot README.md --allow-dupe --allow-redirect

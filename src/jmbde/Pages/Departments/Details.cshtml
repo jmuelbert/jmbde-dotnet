@@ -1,5 +1,5 @@
 @page "{id:int}"
-@model jmbde.Pages.Departments.DetailsModel
+@model JMuelbert.BDE.Pages.Departments.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
@@ -29,7 +29,7 @@
         <dd>
             @Html.DisplayFor(model => model.Department.LastUpdate)
         </dd>
-                <dt>
+        <dt>
             @Html.DisplayNameFor(model => model.Department.Printer)
         </dt>
         <dd>
@@ -39,7 +39,7 @@
                     <th>PaperSize</th>
                     <th>Color</th>
                 </tr>
-                @foreach ( var item in Model.Department.Printer)
+                @foreach (var item in Model.Department.Printer)
                 {
                     <tr>
                         <td>
@@ -63,7 +63,7 @@
                 <tr>
                     <th>Number</th>
                 </tr>
-                @foreach ( var item in Model.Department.Fax)
+                @foreach (var item in Model.Department.Fax)
                 {
                     <tr>
                         <td>

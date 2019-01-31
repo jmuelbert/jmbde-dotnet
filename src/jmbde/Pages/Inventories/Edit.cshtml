@@ -1,5 +1,5 @@
 @page "{id:int}"
-@model jmbde.Pages.Inventories.EditModel
+@model JMuelbert.BDE.Pages.Inventories.EditModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -28,7 +28,7 @@
                 <label asp-for="Inventory.Active" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Inventory.Active" /> 
+                        <input asp-for="Inventory.Active" />
                     </label>
                 </div>
                 <span asp-validation-for="Inventory.Active" class="text-danger"></span>
