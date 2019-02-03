@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -76,7 +76,7 @@ namespace JMuelbert.BDE.Pages.JobTitles {
         /// <summary>
         /// Gets or sets the JobTitle.
         /// </summary>
-        /// <value>The JobTitle.</value>        
+        /// <value>The JobTitle.</value>
         public JobTitle JobTitle { get; set; }
 
         /// <summary>
@@ -85,13 +85,13 @@ namespace JMuelbert.BDE.Pages.JobTitles {
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("JobTitles/Details/OnGetAsync");
+            _logger.LogDebug ($"JobTitles/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            JobTitle = await _context.JobTitle.SingleOrDefaultAsync (m => m.JobTitleId == id);
+            JobTitle = await _context.JobTitle.SingleOrDefaultAsync (m => m.JobTitleId == id).ConfigureAwait (false);
 
             if (JobTitle == null) {
                 return NotFound ();

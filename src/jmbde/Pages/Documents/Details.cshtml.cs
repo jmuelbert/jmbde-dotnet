@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -76,7 +76,7 @@ namespace JMuelbert.BDE.Pages.Documents {
         /// <summary>
         /// Gets or sets the document.
         /// </summary>
-        /// <value>The document.</value> 
+        /// <value>The document.</value>
         public Document Document { get; set; }
 
         /// <summary>
@@ -85,13 +85,13 @@ namespace JMuelbert.BDE.Pages.Documents {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Documents/Details/OnGetAsync");
+            _logger.LogDebug ($"Documents/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            Document = await _context.Document.SingleOrDefaultAsync (m => m.DocumentId == id);
+            Document = await _context.Document.SingleOrDefaultAsync (m => m.DocumentId == id).ConfigureAwait (false);
 
             if (Document == null) {
                 return NotFound ();

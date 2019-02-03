@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -48,8 +48,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCardProfiles
-{
+namespace JMuelbert.BDE.Pages.ChipCardProfiles {
     /// <summary>
     /// Index model.
     /// </summary>
@@ -113,7 +112,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
         /// <param name="searchString">Search string.</param>
         /// <param name="pageIndex">Page index.</param>
         public async Task OnGetAsync (string sortOrder, string currentFilter, string searchString, int? pageIndex) {
-            _logger.LogDebug ("ChipCardProfile/Index/OnGetAsync");
+            _logger.LogDebug ($"ChipCardProfile/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
 
             CurrentSort = sortOrder;
             NumberSort = String.IsNullOrEmpty (sortOrder) ? "number_desc" : "";
@@ -153,7 +152,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
             int pageSize = 10;
             ChipCardProfile = await PaginatedList<ChipCardProfile>.CreateAsync (
                 chipCardProfileIQ.AsNoTracking (), pageIndex ?? 1, pageSize
-            );
+            ).ConfigureAwait (false);
         }
     }
 }

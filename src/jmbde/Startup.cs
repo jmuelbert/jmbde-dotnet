@@ -1,6 +1,6 @@
 ﻿/**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -133,7 +133,7 @@ namespace JMuelbert.BDE {
                     appDataPath = Path.Combine (appDataPath, dbPath);
                     dbString = Path.Combine (appDataPath, dbName);
                 } else {
-                    // This is for Linux    
+                    // This is for Linux
                     homePath = Environment.GetEnvironmentVariable ("HOME");
                     appDataPath = Path.Combine (homePath, "local");
                     appDataPath = Path.Combine (homePath, dbPath);

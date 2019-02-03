@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -76,7 +76,7 @@ namespace JMuelbert.BDE.Pages.Inventories {
         /// <summary>
         /// Gets or sets the Inventory.
         /// </summary>
-        /// <value>The Inventory.</value> 
+        /// <value>The Inventory.</value>
         public Inventory Inventory { get; set; }
 
         /// <summary>
@@ -85,13 +85,13 @@ namespace JMuelbert.BDE.Pages.Inventories {
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Inventories/Details/OnGetAsync");
+            _logger.LogDebug ($"Inventories/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            Inventory = await _context.Inventory.SingleOrDefaultAsync (m => m.InventoryId == id);
+            Inventory = await _context.Inventory.SingleOrDefaultAsync (m => m.InventoryId == id).ConfigureAwait (false);
 
             if (Inventory == null) {
                 return NotFound ();

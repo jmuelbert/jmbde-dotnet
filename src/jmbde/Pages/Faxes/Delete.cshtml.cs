@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -83,7 +83,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
         /// <summary>
         /// Gets or sets the error message.
         /// </summary>
-        /// <value>The error message.</value>      
+        /// <value>The error message.</value>
         public string ErrorMessage { get; set; }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("Faxes/Delete/OnGetAsync");
+            _logger.LogDebug ($"Faxes/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
                 return NotFound ();
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
 
             Fax = await _context.Fax
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (f => f.FaxId == id);
+                .FirstOrDefaultAsync (f => f.FaxId == id).ConfigureAwait (false);
 
             if (Fax == null) {
                 return NotFound ();
@@ -119,7 +119,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Faxes/Delete/OnPostAsync");
+            _logger.LogDebug ($"Faxes/Delete/OnPostAsync({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
 
             var fax = await _context.Fax
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (f => f.FaxId == id);
+                .FirstOrDefaultAsync (f => f.FaxId == id).ConfigureAwait (false);
 
             if (fax == null) {
                 return NotFound ();
@@ -135,7 +135,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
 
             try {
                 _context.Fax.Remove (fax);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

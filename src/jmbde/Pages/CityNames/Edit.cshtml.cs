@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -83,13 +83,13 @@ namespace JMuelbert.BDE.Pages.CityNames {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("CityName/Edit/OnGetAsync");
+            _logger.LogDebug ($"CityName/Edit/OnGetAsync({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            CityName = await _context.CityName.FindAsync (id);
+            CityName = await _context.CityName.FindAsync (id).ConfigureAwait (false);
 
             if (CityName == null) {
                 return NotFound ();
@@ -103,21 +103,21 @@ namespace JMuelbert.BDE.Pages.CityNames {
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("CityName/Edit/OnPostAsync");
+            _logger.LogDebug ($"CityName/Edit/OnPostAsync{ id })");
 
             if (!ModelState.IsValid) {
                 return Page ();
             }
 
-            var citynameToUpdate = await _context.CityName.FindAsync (id);
+            var citynameToUpdate = await _context.CityName.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<CityName> (
                     citynameToUpdate,
                     "cityname", // Prefix for form value
                     c => c.Name,
                     c => c.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
             return Page ();

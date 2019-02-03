@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -61,7 +61,7 @@ namespace JMuelbert.BDE.Pages.Computers {
         /// </summary>
         private readonly ILogger _logger;
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.ChipCardProfiles.EditModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Computers.EditModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -84,13 +84,13 @@ namespace JMuelbert.BDE.Pages.Computers {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Computers/Edit/OnGetAsync");
+            _logger.LogDebug ($"Computers/Edit/OnGetAsync({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            Computer = await _context.Computer.FindAsync (id);
+            Computer = await _context.Computer.FindAsync (id).ConfigureAwait (false);
 
             if (Computer == null) {
                 return NotFound ();
@@ -105,13 +105,13 @@ namespace JMuelbert.BDE.Pages.Computers {
         /// <returns></returns>
 
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Computers/Edit/OnPostAsync");
+            _logger.LogDebug ($"Computers/Edit/OnPostAsync{ id })");
 
             if (!ModelState.IsValid) {
                 return Page ();
             }
 
-            var computerToUpdate = await _context.Computer.FindAsync (id);
+            var computerToUpdate = await _context.Computer.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<Computer> (
                     computerToUpdate,
@@ -126,8 +126,8 @@ namespace JMuelbert.BDE.Pages.Computers {
                     c => c.Active,
                     c => c.Replace,
                     c => c.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
             return Page ();

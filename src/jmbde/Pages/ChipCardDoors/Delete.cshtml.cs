@@ -93,7 +93,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ($"ChipCardDoors/Delete/OnGetAsync: Getting item { id } - { saveChangesError }");
+            _logger.LogDebug ($"ChipCardDoors/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
                 return NotFound ();
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
 
             ChipCardDoor = await _context.ChipCardDoor
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.ChipCardDoorId == id);
+                .FirstOrDefaultAsync (m => m.ChipCardDoorId == id).ConfigureAwait (false);
 
             if (ChipCardDoor == null) {
                 return NotFound ();
@@ -120,7 +120,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ($"ChipCardDoors/Delete/OnPostAsync - { id }");
+            _logger.LogDebug ($"ChipCardDoors/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -128,7 +128,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
 
             var chipcarddoor = await _context.ChipCardDoor
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.ChipCardDoorId == id);
+                .FirstOrDefaultAsync (m => m.ChipCardDoorId == id).ConfigureAwait (false);
 
             if (chipcarddoor == null) {
                 return NotFound ();

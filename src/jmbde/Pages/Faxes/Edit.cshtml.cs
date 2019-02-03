@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -84,13 +84,13 @@ namespace JMuelbert.BDE.Pages.Faxes {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Faxes/Edit/OnGetAsync");
+            _logger.LogDebug ($"Faxes/Edit/OnGetAsync({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            Fax = await _context.Fax.FindAsync (id);
+            Fax = await _context.Fax.FindAsync (id).ConfigureAwait (false);
 
             if (Fax == null) {
                 return NotFound ();
@@ -104,13 +104,13 @@ namespace JMuelbert.BDE.Pages.Faxes {
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Faxes/Edit/OnPostAsync");
+            _logger.LogDebug ($"Faxes/Edit/OnPostAsync({ id })");
 
             if (!ModelState.IsValid) {
                 return Page ();
             }
 
-            var faxToUpdate = await _context.Fax.FindAsync (id);
+            var faxToUpdate = await _context.Fax.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<Fax> (
                     faxToUpdate,
@@ -121,8 +121,8 @@ namespace JMuelbert.BDE.Pages.Faxes {
                     f => f.Active,
                     f => f.Replace,
                     f => f.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
 

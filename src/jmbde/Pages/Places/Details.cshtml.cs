@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -76,7 +76,7 @@ namespace JMuelbert.BDE.Pages.Places {
         /// <summary>
         /// Gets or sets the Place.
         /// </summary>
-        /// <value>The Place.</value>  
+        /// <value>The Place.</value>
         public Place Place { get; set; }
 
         /// <summary>
@@ -85,12 +85,12 @@ namespace JMuelbert.BDE.Pages.Places {
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Places/Details/OnGetAsync");
+            _logger.LogDebug ("Places/Details/OnGetAsync ({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
-            Place = await _context.Place.SingleOrDefaultAsync (m => m.PlaceId == id);
+            Place = await _context.Place.SingleOrDefaultAsync (m => m.PlaceId == id).ConfigureAwait (false);
 
             if (Place == null) {
                 return NotFound ();

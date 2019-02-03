@@ -106,9 +106,9 @@ namespace JMuelbert.BDE.Pages.CityNames {
                     "cityname", // Prefix for form value
                     c => c.Name,
                     c => c.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.CityName.Add (emptyCityName);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
 
                 return RedirectToPage ("./Index");
             }

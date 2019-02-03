@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -62,7 +62,7 @@ namespace JMuelbert.BDE.Pages.Companies {
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.CityNames.DeleteModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Companies.DeleteModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -90,7 +90,7 @@ namespace JMuelbert.BDE.Pages.Companies {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("Companies/Delete/OnGetAsync");
+            _logger.LogDebug ($"Companies/Delete/OnGetAsync{ id } - { saveChangesError }");
 
             if (id == null) {
                 return NotFound ();
@@ -98,7 +98,7 @@ namespace JMuelbert.BDE.Pages.Companies {
 
             Company = await _context.Company
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (c => c.CompanyId == id);
+                .FirstOrDefaultAsync (c => c.CompanyId == id).ConfigureAwait (false);
 
             if (Company == null) {
                 return NotFound ();
@@ -116,7 +116,7 @@ namespace JMuelbert.BDE.Pages.Companies {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Companies/Delete/OnPostAsync");
+            _logger.LogDebug ($"Companies/Delete/OnPostAsync { id }");
 
             if (id == null) {
                 return NotFound ();
@@ -124,7 +124,7 @@ namespace JMuelbert.BDE.Pages.Companies {
 
             var company = await _context.Company
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (c => c.CompanyId == id);
+                .FirstOrDefaultAsync (c => c.CompanyId == id).ConfigureAwait (false);
 
             if (company == null) {
                 return NotFound ();
@@ -132,7 +132,7 @@ namespace JMuelbert.BDE.Pages.Companies {
 
             try {
                 _context.Company.Remove (company);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

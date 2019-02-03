@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -62,7 +62,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas {
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemData.IndexModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemDatas.IndexModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -110,7 +110,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas {
                     s => s.LastUpdate
                 )) {
                 _context.SystemData.Add (emptySystemData);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
 
                 return RedirectToPage ("./Index");
             }

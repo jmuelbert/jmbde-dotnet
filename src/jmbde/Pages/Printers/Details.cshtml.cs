@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -75,7 +75,7 @@ namespace JMuelbert.BDE.Pages.Printers { /// <summary>
         /// <summary>
         /// Gets or sets the Printer.
         /// </summary>
-        /// <value>The Printer.</value>    
+        /// <value>The Printer.</value>
         public Printer Printer { get; set; }
 
         /// <summary>
@@ -84,12 +84,12 @@ namespace JMuelbert.BDE.Pages.Printers { /// <summary>
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Printers/Details/OnGetAsync");
+            _logger.LogDebug ($"Printers/Details/OnGetAsync ({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
-            Printer = await _context.Printer.SingleOrDefaultAsync (m => m.PrinterId == id);
+            Printer = await _context.Printer.SingleOrDefaultAsync (m => m.PrinterId == id).ConfigureAwait (false);
 
             if (Printer == null) {
                 return NotFound ();

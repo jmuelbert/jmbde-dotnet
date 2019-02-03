@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -46,8 +46,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCardProfiles
-{
+namespace JMuelbert.BDE.Pages.ChipCardProfiles {
     /// <summary>
     /// Edit model.
     /// </summary>
@@ -84,13 +83,13 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("ChipCardProfile/Edit/OnGetAsync");
+            _logger.LogDebug ($"ChipCardProfile/Edit/OnGetAsync({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            ChipCardProfile = await _context.ChipCardProfile.FindAsync (id);
+            ChipCardProfile = await _context.ChipCardProfile.FindAsync (id).ConfigureAwait (false);
 
             if (ChipCardProfile == null) {
                 return NotFound ();
@@ -104,7 +103,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("ChipCardProfile/Edit/OnPostAsync");
+            _logger.LogDebug ($"ChipCardProfile/Edit/OnPostAsync{ id })");
 
             if (!ModelState.IsValid) {
                 return Page ();
@@ -117,8 +116,8 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
                     "chipcardprofile", // Prefix for form value
                     c => c.Number,
                     c => c.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
             return Page ();

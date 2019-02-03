@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -76,7 +76,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
         /// <summary>
         /// Gets or sets the ZipCode.
         /// </summary>
-        /// <value>The ZipCode.</value>        
+        /// <value>The ZipCode.</value>
         public ZipCode ZipCode { get; set; }
 
         /// <summary>
@@ -85,13 +85,13 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("ZipCodes/Details/OnGetAsync");
+            _logger.LogDebug ($"ZipCodes/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            ZipCode = await _context.ZipCode.SingleOrDefaultAsync (m => m.ZipCodeId == id);
+            ZipCode = await _context.ZipCode.SingleOrDefaultAsync (m => m.ZipCodeId == id).ConfigureAwait (false);
 
             if (ZipCode == null) {
                 return NotFound ();

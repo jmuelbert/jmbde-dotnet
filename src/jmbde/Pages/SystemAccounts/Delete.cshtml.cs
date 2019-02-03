@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -62,7 +62,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts { /// <summary>
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemAccount.IndexModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemAccounts.IndexModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts { /// <summary>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("SystemAccount/Delete/OnGetAsync");
+            _logger.LogDebug ($"SystemAccount/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
                 return NotFound ();
@@ -100,7 +100,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts { /// <summary>
 
             SystemAccount = await _context.SystemAccount
                 .AsNoTracking ()
-                .SingleOrDefaultAsync (s => s.SystemAccountId == id);
+                .SingleOrDefaultAsync (s => s.SystemAccountId == id).ConfigureAwait (false);
 
             if (SystemAccount == null) {
                 return NotFound ();
@@ -118,14 +118,14 @@ namespace JMuelbert.BDE.Pages.SystemAccounts { /// <summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (int? id) {
-            _logger.LogDebug ("SystemAccount/Delete/OnPostAsync");
+            _logger.LogDebug ($"SystemAccount/Delete/OnPostAsync({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
             var systemaccount = await _context.SystemAccount
                 .AsNoTracking ()
-                .SingleOrDefaultAsync (s => s.SystemAccountId == id);
+                .SingleOrDefaultAsync (s => s.SystemAccountId == id).ConfigureAwait (false);
 
             if (systemaccount == null) {
                 return NotFound ();
@@ -133,7 +133,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts { /// <summary>
 
             try {
                 _context.SystemAccount.Remove (systemaccount);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

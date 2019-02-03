@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -64,7 +64,7 @@ namespace JMuelbert.BDE.Pages.Companies {
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.CityNames.DetailsModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Companies.DetailsModel"/> class.
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="context"></param>
@@ -91,7 +91,7 @@ namespace JMuelbert.BDE.Pages.Companies {
                 return NotFound ();
             }
 
-            Company = await _context.Company.SingleOrDefaultAsync (m => m.CompanyId == id);
+            Company = await _context.Company.SingleOrDefaultAsync (m => m.CompanyId == id).ConfigureAwait (false);
 
             if (Company == null) {
                 return NotFound ();

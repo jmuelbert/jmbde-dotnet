@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -86,7 +86,9 @@ namespace JMuelbert.BDE.Pages.Faxes {
         /// <value>The ActiveSort.</value>
         public string ActiveSort { get; set; }
 
-        public string ReplaceSort { get; set; } // TODO: Remove LastUpdate Sort
+        public string ReplaceSort { get; set; }
+
+        // TODO: Remove LastUpdate Sort
 
         /// <summary>
         /// Gets or sets the lastupdate sort.
@@ -97,13 +99,13 @@ namespace JMuelbert.BDE.Pages.Faxes {
         /// <summary>
         /// Gets or sets the current filter.
         /// </summary>
-        /// <value>The current filter.</value>   
+        /// <value>The current filter.</value>
         public string CurrentFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the current sort.
         /// </summary>
-        /// <value>The current sort.</value>  
+        /// <value>The current sort.</value>
         public string CurrentSort { get; set; }
 
         /// <summary>
@@ -114,7 +116,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
 
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
-            _logger.LogDebug ("Fax/Index/OnGetAsync");
+            _logger.LogDebug ($"Fax/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
 
             CurrentSort = sortOrder;
             NumberSort = String.IsNullOrEmpty (sortOrder) ? "number_desc" : "";
@@ -172,7 +174,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
             int pageSize = 10;
             Fax = await PaginatedList<Fax>.CreateAsync (
                 faxIQ.AsNoTracking (), pageIndex ?? 1, pageSize
-            );
+            ).ConfigureAwait (false);
         }
     }
 }

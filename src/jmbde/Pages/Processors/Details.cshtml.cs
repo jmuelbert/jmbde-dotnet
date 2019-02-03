@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -76,7 +76,7 @@ namespace JMuelbert.BDE.Pages.Processors {
         /// <summary>
         /// Gets or sets the Processor.
         /// </summary>
-        /// <value>The Processor.</value>        
+        /// <value>The Processor.</value>
         public Processor Processor { get; set; }
 
         /// <summary>
@@ -85,12 +85,12 @@ namespace JMuelbert.BDE.Pages.Processors {
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Processors/Details/OnGetAsync");
+            _logger.LogDebug ($"Processors/Details/OnGetAsync ({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
-            Processor = await _context.Processor.FirstOrDefaultAsync (m => m.ProcessorId == id);
+            Processor = await _context.Processor.FirstOrDefaultAsync (m => m.ProcessorId == id).ConfigureAwait (false);
 
             if (Processor == null) {
                 return NotFound ();

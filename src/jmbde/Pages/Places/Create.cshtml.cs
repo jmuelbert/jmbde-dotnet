@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -109,7 +109,7 @@ namespace JMuelbert.BDE.Pages.Places {
                     p => p.LastUpdate
                 )) {
                 _context.Place.Add (emptyPlace);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
 
                 return RedirectToPage ("./Index");
             }

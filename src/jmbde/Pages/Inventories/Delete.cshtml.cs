@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -93,7 +93,7 @@ namespace JMuelbert.BDE.Pages.Inventories {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("Inventories/Delete/OnGetAsync");
+            _logger.LogDebug ($"Inventories/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
                 return NotFound ();
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.Inventories {
 
             Inventory = await _context.Inventory
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (i => i.InventoryId == id);
+                .FirstOrDefaultAsync (i => i.InventoryId == id).ConfigureAwait (false);
 
             if (Inventory == null) {
                 return NotFound ();
@@ -119,7 +119,7 @@ namespace JMuelbert.BDE.Pages.Inventories {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Inventories/Delete/OnPostAsync");
+            _logger.LogDebug ($"Inventories/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.Inventories {
 
             var inventory = await _context.Inventory
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (i => i.InventoryId == id);
+                .FirstOrDefaultAsync (i => i.InventoryId == id).ConfigureAwait (false);
 
             if (inventory == null) {
                 return NotFound ();
@@ -135,7 +135,7 @@ namespace JMuelbert.BDE.Pages.Inventories {
 
             try {
                 _context.Inventory.Remove (inventory);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

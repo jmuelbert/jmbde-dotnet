@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -95,31 +95,31 @@ namespace JMuelbert.BDE.Pages.Employees {
         /// <summary>
         /// Gets or sets the BirthDaySort.
         /// </summary>
-        /// <value>The BirthDaySort.</value>        
+        /// <value>The BirthDaySort.</value>
         public string BirthDaySort {  get; set; }
 
         /// <summary>
         /// Gets or sets the DataCareSort.
         /// </summary>
-        /// <value>The DataCareSort.</value>         
+        /// <value>The DataCareSort.</value>
         public string DataCareSort { get; set; }
 
         /// <summary>
         /// Gets or sets the ActiveSort.
         /// </summary>
-        /// <value>The ActiveSort.</value>        
+        /// <value>The ActiveSort.</value>
         public string ActiveSort { get; set; }
 
         /// <summary>
         /// Gets or sets the HireDateSort.
         /// </summary>
-        /// <value>The HireDateSort.</value>         
+        /// <value>The HireDateSort.</value>
         public string HireDateSort { get; set; }
 
         /// <summary>
         /// Gets or sets the EndDateSort.
         /// </summary>
-        /// <value>The EndDateSort.</value>        
+        /// <value>The EndDateSort.</value>
         public string EndDateSort { get; set; }
 
         // TODO: Remove LastUpdate Sort
@@ -132,7 +132,7 @@ namespace JMuelbert.BDE.Pages.Employees {
         /// <summary>
         /// Gets or sets the current filter.
         /// </summary>
-        /// <value>The current filter.</value>   
+        /// <value>The current filter.</value>
         public string CurrentFilter { get; set; }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace JMuelbert.BDE.Pages.Employees {
         /// <returns></returns>    
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
-            _logger.LogDebug ("Employees/Index/OnGetAsync");
+            _logger.LogDebug ($"Employees/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
 
             CurrentSort = sortOrder;
             NameSort = String.IsNullOrEmpty (sortOrder) ? "name_desc" : "";
@@ -260,7 +260,7 @@ namespace JMuelbert.BDE.Pages.Employees {
             int pageSize = 10;
             Employee = await PaginatedList<Employee>.CreateAsync (
                 employeeIQ.AsNoTracking (), pageIndex ?? 1, pageSize
-            );
+            ).ConfigureAwait (false);
         }
     }
 }

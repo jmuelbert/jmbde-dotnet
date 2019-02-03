@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -76,7 +76,7 @@ namespace JMuelbert.BDE.Pages.Employees {
         /// <summary>
         /// Gets or sets the employee.
         /// </summary>
-        /// <value>The employee.</value>    
+        /// <value>The employee.</value>
         public Employee Employee { get; set; }
 
         /// <summary>
@@ -85,20 +85,20 @@ namespace JMuelbert.BDE.Pages.Employees {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Employees/Details/OnGetAsync");
+            _logger.LogDebug ($"Employees/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
             Employee = await _context.Employee
-                .Include (e => e.Function)
+                .Include (e => e.WorkFunction)
                 .Include (e => e.Computer)
                 .Include (e => e.Printer)
                 .Include (e => e.SystemAccount)
                 .Include (e => e.Document)
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.EmployeeId == id);
+                .FirstOrDefaultAsync (m => m.EmployeeId == id).ConfigureAwait (false);
 
             if (Employee == null) {
                 return NotFound ();

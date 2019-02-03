@@ -76,7 +76,7 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
         /// <summary>
         /// Gets or sets the Function.
         /// </summary>
-        /// <value>The Function.</value>  
+        /// <value>The Function.</value>
         public WorkFunction WorkFunction { get; set; }
 
         /// <summary>

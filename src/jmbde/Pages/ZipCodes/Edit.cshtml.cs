@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -79,13 +79,13 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
         public ZipCode ZipCode { get; set; }
 
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("ZipCodes/Edit/OnGetAsync");
+            _logger.LogDebug ($"ZipCodes/Edit/OnGetAsync({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            ZipCode = await _context.ZipCode.FindAsync (id);
+            ZipCode = await _context.ZipCode.FindAsync (id).ConfigureAwait (false);
 
             if (ZipCode == null) {
                 return NotFound ();
@@ -99,13 +99,13 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("ZipCodes/Edit/OnPostAsync");
+            _logger.LogDebug ($"ZipCodes/Edit/OnPostAsync({ id })");
 
             if (!ModelState.IsValid) {
                 return Page ();
             }
 
-            var zipcodeToUpdate = await _context.ZipCode.FindAsync (id);
+            var zipcodeToUpdate = await _context.ZipCode.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<ZipCode> (
                     zipcodeToUpdate,
@@ -113,8 +113,8 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
                     z => z.Code,
                     z => z.Country,
                     z => z.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
 

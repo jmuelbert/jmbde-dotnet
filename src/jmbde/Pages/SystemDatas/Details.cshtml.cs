@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -63,7 +63,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas {
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemData.DetailsModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemDatas.DetailsModel"/> class.
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="context"></param>
@@ -76,7 +76,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas {
         /// <summary>
         /// Gets or sets the SystemData.
         /// </summary>
-        /// <value>The SystemData.</value>  
+        /// <value>The SystemData.</value>
         public SystemData SystemData { get; set; }
 
         /// <summary>
@@ -85,13 +85,13 @@ namespace JMuelbert.BDE.Pages.SystemDatas {
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("SystemData/Details/OnGetAsync");
+            _logger.LogDebug ($"SystemData/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            SystemData = await _context.SystemData.SingleOrDefaultAsync (m => m.SystemDataId == id);
+            SystemData = await _context.SystemData.SingleOrDefaultAsync (m => m.SystemDataId == id).ConfigureAwait (false);
 
             if (SystemData == null) {
                 return NotFound ();

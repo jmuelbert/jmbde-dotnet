@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -62,7 +62,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers {
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Manufacturer.DetailsModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Manufacturera.DetailsModel"/> class.
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="context"></param>
@@ -75,7 +75,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers {
         /// <summary>
         /// Gets or sets the Manufacturer.
         /// </summary>
-        /// <value>The Manufacturer.</value>       
+        /// <value>The Manufacturer.</value>
         public Manufacturer Manufacturer { get; set; }
 
         /// <summary>
@@ -84,12 +84,12 @@ namespace JMuelbert.BDE.Pages.Manufacturers {
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Manufacturers/Details/OnGetAsync");
+            _logger.LogDebug ($"Manufacturers/Details/OnGetAsync({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
-            Manufacturer = await _context.Manufacturer.SingleOrDefaultAsync (m => m.ManufacturerId == id);
+            Manufacturer = await _context.Manufacturer.SingleOrDefaultAsync (m => m.ManufacturerId == id).ConfigureAwait (false);
 
             if (Manufacturer == null) {
                 return NotFound ();

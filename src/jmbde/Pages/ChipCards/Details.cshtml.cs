@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -47,8 +47,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCards
-{
+namespace JMuelbert.BDE.Pages.ChipCards {
     /// <summary>
     /// Details model.
     /// </summary>
@@ -85,7 +84,7 @@ namespace JMuelbert.BDE.Pages.ChipCards
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("ChipCards/Details/OnGetAsync");
+            _logger.LogDebug ($"ChipCards/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -96,7 +95,7 @@ namespace JMuelbert.BDE.Pages.ChipCards
                 .Include (c => c.ChipCardProfile)
                 .Include (c => c.Employee)
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.ChipCardId == id);
+                .FirstOrDefaultAsync (m => m.ChipCardId == id).ConfigureAwait (false);
 
             if (ChipCard == null) {
                 return NotFound ();

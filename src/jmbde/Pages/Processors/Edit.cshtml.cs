@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -84,13 +84,13 @@ namespace JMuelbert.BDE.Pages.Processors {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Processors/Edit/OnGetAsync");
+            _logger.LogDebug ($"Processors/Edit/OnGetAsync({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            Processor = await _context.Processor.FindAsync (id);
+            Processor = await _context.Processor.FindAsync (id).ConfigureAwait (false);
 
             if (Processor == null) {
                 return NotFound ();
@@ -105,13 +105,13 @@ namespace JMuelbert.BDE.Pages.Processors {
         /// <returns></returns>
 
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Processors/Edit/OnPostAsync");
+            _logger.LogDebug ($"Processors/Edit/OnPostAsync({ id })");
 
             if (!ModelState.IsValid) {
                 return Page ();
             }
 
-            var processorToUpdate = await _context.Processor.FindAsync (id);
+            var processorToUpdate = await _context.Processor.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<Processor> (
                     processorToUpdate,
@@ -120,8 +120,8 @@ namespace JMuelbert.BDE.Pages.Processors {
                     p => p.ClockRate,
                     p => p.Cores,
                     p => p.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
 

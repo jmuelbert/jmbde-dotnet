@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -63,7 +63,7 @@ namespace JMuelbert.BDE.Pages.Mobiles { /// <summary>
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.JobTitles.IndexModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Mobiles.IndexModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -102,13 +102,13 @@ namespace JMuelbert.BDE.Pages.Mobiles { /// <summary>
         /// <summary>
         /// Gets or sets the current filter.
         /// </summary>
-        /// <value>The current filter.</value>   
+        /// <value>The current filter.</value>
         public string CurrentFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the current sort.
         /// </summary>
-        /// <value>The current sort.</value>  
+        /// <value>The current sort.</value>
         public string CurrentSort { get; set; }
 
         /// <summary>
@@ -125,10 +125,10 @@ namespace JMuelbert.BDE.Pages.Mobiles { /// <summary>
         /// <param name="currentFilter"></param>
         /// <param name="searchString"></param>
         /// <param name="pageIndex"></param>
-        /// <returns></returns>    
+        /// <returns></returns>
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
-            _logger.LogDebug ("Mobiles/Index/OnGetAsync");
+            _logger.LogDebug ($"Mobiles/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
 
             CurrentSort = sortOrder;
             NumberSort = String.IsNullOrEmpty (sortOrder) ? "number_desc" : "";
@@ -186,7 +186,7 @@ namespace JMuelbert.BDE.Pages.Mobiles { /// <summary>
             int pageSize = 10;
             Mobile = await PaginatedList<Mobile>.CreateAsync (
                 mobileIQ.AsNoTracking (), pageIndex ?? 1, pageSize
-            );
+            ).ConfigureAwait (false);
         }
     }
 }

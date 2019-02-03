@@ -97,13 +97,13 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
         /// <summary>
         /// Gets or sets the current filter.
         /// </summary>
-        /// <value>The current filter.</value>   
+        /// <value>The current filter.</value>
         public string CurrentFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the current sort.
         /// </summary>
-        /// <value>The current sort.</value>  
+        /// <value>The current sort.</value>
         public string CurrentSort { get; set; }
 
         /// <summary>

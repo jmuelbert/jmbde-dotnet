@@ -61,7 +61,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts { /// <summary>
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemAccount.IndexModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemAccounts.IndexModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -106,7 +106,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts { /// <summary>
                     s => s.LastUpdate
                 )) {
                 _context.SystemAccount.Add (emptySystemAccount);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
 
                 return RedirectToPage ("./Index");
             }

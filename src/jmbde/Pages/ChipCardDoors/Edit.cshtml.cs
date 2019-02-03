@@ -90,7 +90,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
                 return NotFound ();
             }
 
-            ChipCardDoor = await _context.ChipCardDoor.FindAsync (id);
+            ChipCardDoor = await _context.ChipCardDoor.FindAsync (id).ConfigureAwait (false);
 
             if (ChipCardDoor == null) {
                 return NotFound ();
@@ -105,21 +105,21 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("ChipCardDoors/Edit/OnPostAsync");
+            _logger.LogDebug ($"ChipCardDoors/Edit/OnPostAsync({ id })");
 
             if (!ModelState.IsValid) {
                 return Page ();
             }
 
-            var chipcarddoorToUpdate = await _context.ChipCardDoor.FindAsync (id);
+            var chipcarddoorToUpdate = await _context.ChipCardDoor.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<ChipCardDoor> (
                     chipcarddoorToUpdate,
                     "chipcarddoor",
                     c => c.Number,
                     c => c.Place,
-                    c => c.LastUpdate)) {
-                await _context.SaveChangesAsync ();
+                    c => c.LastUpdate).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
 

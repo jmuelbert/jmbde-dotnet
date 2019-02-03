@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -46,7 +46,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.Manufacturers { /// <summary>
+namespace JMuelbert.BDE.Pages.Manufacturers {
+    /// <summary>
     /// Create model.
     /// </summary>
     public class CreateModel : PageModel {
@@ -114,7 +115,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers { /// <summary>
                     m => m.LastUpdate
                 )) {
                 _context.Manufacturer.Add (emptyManufacturer);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
 
                 return RedirectToPage ("./Index");
             }

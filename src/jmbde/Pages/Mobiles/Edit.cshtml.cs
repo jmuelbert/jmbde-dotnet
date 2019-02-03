@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -83,12 +83,12 @@ namespace JMuelbert.BDE.Pages.Mobiles {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Mobiles/Edit/OnGetAsync");
+            _logger.LogDebug ($"Mobiles/Edit/OnGetAsync ({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
-            Mobile = await _context.Mobile.FindAsync (id);
+            Mobile = await _context.Mobile.FindAsync (id).ConfigureAwait (false);
 
             if (Mobile == null) {
                 return NotFound ();
@@ -102,12 +102,12 @@ namespace JMuelbert.BDE.Pages.Mobiles {
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Mobiles/Edit/OnGetAsync");
+            _logger.LogDebug ($"Mobiles/Edit/OnGetAsync({ id })");
             if (!ModelState.IsValid) {
                 return Page ();
             }
 
-            var mobileToUpdate = await _context.Mobile.FindAsync (id);
+            var mobileToUpdate = await _context.Mobile.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<Mobile> (
                     mobileToUpdate,
@@ -119,8 +119,8 @@ namespace JMuelbert.BDE.Pages.Mobiles {
                     m => m.Active,
                     m => m.Replace,
                     m => m.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
 

@@ -114,14 +114,14 @@
             @Html.DisplayFor(model => model.Employee.LastUpdate)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Employee.Function)
+            @Html.DisplayNameFor(model => model.Employee.WorkFunction)
         </dt>
         <dd>
             <table class="table">
                 <tr>
                     <th>Name</th>
                 </tr>
-                @foreach (var item in Model.Employee.Function)
+                @foreach (var item in Model.Employee.WorkFunction)
                 {
                     <tr>
                         <td>

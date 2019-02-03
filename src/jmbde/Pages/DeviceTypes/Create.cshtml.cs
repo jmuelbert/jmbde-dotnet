@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -66,7 +66,7 @@ namespace JMuelbert.BDE.Pages.DeviceTypes {
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
-/// 
+
         public CreateModel (ILogger<CreateModel> logger, JMuelbert.BDE.Data.ApplicationDbContext context) {
             _logger = logger;
             _context = context;
@@ -105,9 +105,9 @@ namespace JMuelbert.BDE.Pages.DeviceTypes {
                     "devicetype", // Prefix for form value
                     d => d.Name,
                     d => d.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.DeviceType.Add (emptyDeviceType);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
 
                 return RedirectToPage ("./Index");
             }

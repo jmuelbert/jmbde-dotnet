@@ -1,6 +1,6 @@
 ﻿/**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -107,10 +107,11 @@ namespace JMuelbert.BDE {
         /// <param name="pageSize">Page size.</param>
         public static async Task<PaginatedList<T>> CreateAsync (
             IQueryable<T> source, int pageIndex, int pageSize) {
-            var count = await source.CountAsync ();
+            var count = await source.CountAsync ().ConfigureAwait (false);
             var items = await source.Skip (
                     (pageIndex - 1) * pageSize)
-                .Take (pageSize).ToListAsync ();
+                .Take (pageSize).ToListAsync ()
+                .ConfigureAwait (false);
             return new PaginatedList<T> (items, count, pageIndex, pageSize);
         }
     }

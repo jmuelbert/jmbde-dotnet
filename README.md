@@ -83,6 +83,6 @@ The master branch represents the latest pre-release code.
 
 ## License
 
-EUPL-1.2 © [Jürgen Mülbert](https:/github.com/jmuelbert/jmbde-aspnet/)
+EUPL-1.2 © [Jürgen Mülbert](https://github.com/jmuelbert/jmbde-aspnet/blob/master/LICENSE)
 
 [Return to top](#top)

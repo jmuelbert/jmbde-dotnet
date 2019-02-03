@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -83,12 +83,12 @@ namespace JMuelbert.BDE.Pages.Phones { /// <summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Phones/Edit/OnGetAsync");
+            _logger.LogDebug ("Phones/Edit/OnGetAsync({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
-            Phone = await _context.Phone.FindAsync (id);
+            Phone = await _context.Phone.FindAsync (id).ConfigureAwait (false);
 
             if (Phone == null) {
                 return NotFound ();
@@ -102,13 +102,13 @@ namespace JMuelbert.BDE.Pages.Phones { /// <summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Phones/Edit/OnPostAsync");
+            _logger.LogDebug ($"Phones/Edit/OnPostAsync({ id })");
 
             if (!ModelState.IsValid) {
                 return Page ();
             }
 
-            var phoneToUpdate = await _context.Phone.FindAsync (id);
+            var phoneToUpdate = await _context.Phone.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<Phone> (
                     phoneToUpdate,
@@ -119,8 +119,8 @@ namespace JMuelbert.BDE.Pages.Phones { /// <summary>
                     p => p.Active,
                     p => p.Replace,
                     p => p.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
 

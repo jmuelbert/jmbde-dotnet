@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -76,7 +76,7 @@ namespace JMuelbert.BDE.Pages.DeviceNames {
         /// <summary>
         /// Gets or sets the DeviceName.
         /// </summary>
-        /// <value>The DeviceName.</value>        
+        /// <value>The DeviceName.</value>
         public DeviceName DeviceName { get; set; }
 
         /// <summary>
@@ -85,13 +85,13 @@ namespace JMuelbert.BDE.Pages.DeviceNames {
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("DeviceName/Details/OnGetAsync");
+            _logger.LogDebug ("DeviceName/Details/OnGetAsync({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            DeviceName = await _context.DeviceName.SingleOrDefaultAsync (m => m.DeviceNameId == id);
+            DeviceName = await _context.DeviceName.SingleOrDefaultAsync (m => m.DeviceNameId == id).ConfigureAwait (false);
 
             if (DeviceName == null) {
                 return NotFound ();

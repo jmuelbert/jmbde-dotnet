@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -61,7 +61,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts {
         /// </summary>
         private readonly ILogger _logger;
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemAccount.EditModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemAccounts.EditModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -79,13 +79,13 @@ namespace JMuelbert.BDE.Pages.SystemAccounts {
         public SystemAccount SystemAccount { get; set; }
 
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("SystemAccount/Edit/OnGetAsync");
+            _logger.LogDebug ($"SystemAccount/Edit/OnGetAsync({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            SystemAccount = await _context.SystemAccount.FindAsync (id);
+            SystemAccount = await _context.SystemAccount.FindAsync (id).ConfigureAwait (false);
 
             if (SystemAccount == null) {
                 return NotFound ();
@@ -99,13 +99,13 @@ namespace JMuelbert.BDE.Pages.SystemAccounts {
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("SystemAccount/Edit/OnPostAsync");
+            _logger.LogDebug ($"SystemAccount/Edit/OnPostAsync({ id })");
 
             if (!ModelState.IsValid) {
                 return Page ();
             }
 
-            var systemaccountToUpdate = await _context.SystemAccount.FindAsync (id);
+            var systemaccountToUpdate = await _context.SystemAccount.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<SystemAccount> (
                     systemaccountToUpdate,
@@ -113,8 +113,8 @@ namespace JMuelbert.BDE.Pages.SystemAccounts {
                     s => s.UserName,
                     s => s.PassWord,
                     s => s.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
 

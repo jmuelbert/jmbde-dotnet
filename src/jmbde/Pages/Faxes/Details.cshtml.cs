@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -76,7 +76,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
         /// <summary>
         /// Gets or sets the Fax.
         /// </summary>
-        /// <value>The Fax.</value>   
+        /// <value>The Fax.</value>
         public Fax Fax { get; set; }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Faxes/Details/OnGetAsync");
+            _logger.LogDebug ($"Faxes/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -94,7 +94,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
             Fax = await _context.Fax
                 .Include (e => e.Employee)
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.FaxId == id);
+                .FirstOrDefaultAsync (m => m.FaxId == id).ConfigureAwait (false);
 
             if (Fax == null) {
                 return NotFound ();

@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -91,14 +91,14 @@ namespace JMuelbert.BDE.Pages.Manufacturers { /// Delete model.
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("Manufacturers/Delete/OnGetAsync");
+            _logger.LogDebug ($"Manufacturers/Delete/OnGetAsync({ id }, { saveChangesError })");
             if (id == null) {
                 return NotFound ();
             }
 
             Manufacturer = await _context.Manufacturer
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.ManufacturerId == id);
+                .FirstOrDefaultAsync (m => m.ManufacturerId == id).ConfigureAwait (false);
 
             if (Manufacturer == null) {
                 return NotFound ();
@@ -116,7 +116,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers { /// Delete model.
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Manufacturerss/Delete/OnPostAsync");
+            _logger.LogDebug ($"Manufacturerss/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -124,7 +124,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers { /// Delete model.
 
             var manufacturer = await _context.Manufacturer
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.ManufacturerId == id);
+                .FirstOrDefaultAsync (m => m.ManufacturerId == id).ConfigureAwait (false);
 
             if (manufacturer == null) {
                 return NotFound ();
@@ -132,7 +132,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers { /// Delete model.
 
             try {
                 _context.Manufacturer.Remove (manufacturer);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

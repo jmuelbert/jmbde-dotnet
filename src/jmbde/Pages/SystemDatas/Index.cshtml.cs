@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -64,7 +64,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas {
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemData.IndexModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemDatas.IndexModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -97,13 +97,13 @@ namespace JMuelbert.BDE.Pages.SystemDatas {
         /// <summary>
         /// Gets or sets the current filter.
         /// </summary>
-        /// <value>The current filter.</value>   
+        /// <value>The current filter.</value>
         public string CurrentFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the current sort.
         /// </summary>
-        /// <value>The current sort.</value>  
+        /// <value>The current sort.</value>
         public string CurrentSort { get; set; }
 
         /// <summary>
@@ -119,10 +119,10 @@ namespace JMuelbert.BDE.Pages.SystemDatas {
         /// <param name="currentFilter"></param>
         /// <param name="searchString"></param>
         /// <param name="pageIndex"></param>
-        /// <returns></returns>    
+        /// <returns></returns>
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
-            _logger.LogDebug ("SystemData/Index/OnGetAsync");
+            _logger.LogDebug ($"SystemData/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
 
             CurrentSort = sortOrder;
             NameSort = String.IsNullOrEmpty (sortOrder) ? "name_desc" : "";
@@ -161,7 +161,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas {
             int pageSize = 10;
             SystemData = await PaginatedList<SystemData>.CreateAsync (
                 systemdataIQ.AsNoTracking (), pageIndex ?? 1, pageSize
-            );
+            ).ConfigureAwait (false);;
         }
     }
 }

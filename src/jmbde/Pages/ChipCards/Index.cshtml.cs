@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -94,19 +94,19 @@ namespace JMuelbert.BDE.Pages.ChipCards {
         /// <summary>
         /// Gets or sets the current filter.
         /// </summary>
-        /// <value>The current filter.</value>        
+        /// <value>The current filter.</value>
         public string CurrentFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the current sort.
         /// </summary>
-        /// <value>The current sort.</value>        
+        /// <value>The current sort.</value>
         public string CurrentSort { get; set; }
 
         /// <summary>
         /// Gets or sets the chip card.
         /// </summary>
-        /// <value>The chip card.</value>        
+        /// <value>The chip card.</value>
         public PaginatedList<ChipCard> ChipCard { get; set; }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace JMuelbert.BDE.Pages.ChipCards {
         /// <param name="pageIndex">Page index.</param>
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
-            _logger.LogDebug ("ChipCards/Index/OnGetAsync");
+            _logger.LogDebug ($"ChipCards/Index/OnGetAsync{currentFilter},{searchString},{pageIndex})");
 
             CurrentSort = sortOrder;
             NumberSort = String.IsNullOrEmpty (sortOrder) ? "number_desc" : "";
@@ -165,7 +165,7 @@ namespace JMuelbert.BDE.Pages.ChipCards {
 
             ChipCard = await PaginatedList<ChipCard>.CreateAsync (
                 chipCardIQ.AsNoTracking (), pageIndex ?? 1, pageSize
-            );
+            ).ConfigureAwait (false);
         }
     }
 }

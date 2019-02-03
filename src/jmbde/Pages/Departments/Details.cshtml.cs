@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -84,7 +84,7 @@ namespace JMuelbert.BDE.Pages.Departments {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Department/Details/OnGetAsync");
+            _logger.LogDebug ($"Department/Details/OnGetAsync({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -94,7 +94,7 @@ namespace JMuelbert.BDE.Pages.Departments {
                 .Include (d => d.Printer)
                 .Include (d => d.Fax)
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.DepartmentId == id);
+                .FirstOrDefaultAsync (m => m.DepartmentId == id).ConfigureAwait (false);
 
             if (Department == null) {
                 return NotFound ();

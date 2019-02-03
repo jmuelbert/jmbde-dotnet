@@ -117,8 +117,8 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
                     f => f.Name,
                     f => f.Priority,
                     f => f.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
 

@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -93,7 +93,7 @@ namespace JMuelbert.BDE.Pages.JobTitles {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("JobTitles/Delete/OnGetAsync");
+            _logger.LogDebug ("JobTitles/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
                 return NotFound ();
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.JobTitles {
 
             JobTitle = await _context.JobTitle
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (j => j.JobTitleId == id);
+                .FirstOrDefaultAsync (j => j.JobTitleId == id).ConfigureAwait (false);
 
             if (JobTitle == null) {
                 return NotFound ();
@@ -119,7 +119,7 @@ namespace JMuelbert.BDE.Pages.JobTitles {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("JobTitles/Delete/OnPostAsync");
+            _logger.LogDebug ("JobTitles/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.JobTitles {
 
             var jobtitle = await _context.JobTitle
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (j => j.JobTitleId == id);
+                .FirstOrDefaultAsync (j => j.JobTitleId == id).ConfigureAwait (false);
 
             if (jobtitle == null) {
                 return NotFound ();
@@ -135,7 +135,7 @@ namespace JMuelbert.BDE.Pages.JobTitles {
 
             try {
                 _context.JobTitle.Remove (jobtitle);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

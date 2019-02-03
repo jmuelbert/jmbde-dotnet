@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -83,13 +83,13 @@ namespace JMuelbert.BDE.Pages.Printers {
         /// <summary>
         /// Gets or sets the ActiveSort.
         /// </summary>
-        /// <value>The ActiveSort.</value>       
+        /// <value>The ActiveSort.</value>
         public string ActiveSort { get; set; }
 
         /// <summary>
         /// Gets or sets the ReplaceSort.
         /// </summary>
-        /// <value>The ReplaceSort.</value>  
+        /// <value>The ReplaceSort.</value>
         public string ReplaceSort { get; set; }
 
         /// <summary>
@@ -115,13 +115,13 @@ namespace JMuelbert.BDE.Pages.Printers {
         /// <summary>
         /// Gets or sets the current filter.
         /// </summary>
-        /// <value>The current filter.</value>   
+        /// <value>The current filter.</value>
         public string CurrentFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the current sort.
         /// </summary>
-        /// <value>The current sort.</value>  
+        /// <value>The current sort.</value>
         public string CurrentSort { get; set; }
 
         /// <summary>
@@ -137,10 +137,10 @@ namespace JMuelbert.BDE.Pages.Printers {
         /// <param name="currentFilter"></param>
         /// <param name="searchString"></param>
         /// <param name="pageIndex"></param>
-        /// <returns></returns>    
+        /// <returns></returns>
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
-            _logger.LogDebug ("Printers/Index/OnGetAsync");
+            _logger.LogDebug ($"Printers/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
 
             CurrentSort = sortOrder;
             NameSort = String.IsNullOrEmpty (sortOrder) ? "name_desc" : "";
@@ -216,7 +216,7 @@ namespace JMuelbert.BDE.Pages.Printers {
             int pageSize = 10;
             Printer = await PaginatedList<Printer>.CreateAsync (
                 printerIQ.AsNoTracking (), pageIndex ?? 1, pageSize
-            );
+            ).ConfigureAwait (false);
         }
     }
 }

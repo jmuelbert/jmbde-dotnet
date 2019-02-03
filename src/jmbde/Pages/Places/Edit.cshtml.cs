@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -83,13 +83,13 @@ namespace JMuelbert.BDE.Pages.Places { /// <summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Places/Edit/OnGetAsync");
+            _logger.LogDebug ($"Places/Edit/OnGetAsync({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            Place = await _context.Place.FindAsync (id);
+            Place = await _context.Place.FindAsync (id).ConfigureAwait (false);
 
             if (Place == null) {
                 return NotFound ();
@@ -103,12 +103,12 @@ namespace JMuelbert.BDE.Pages.Places { /// <summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Places/Edit/OnPostAsync");
+            _logger.LogDebug ($"Places/Edit/OnPostAsync({ id })");
             if (!ModelState.IsValid) {
                 return Page ();
             }
 
-            var placeToUpdate = await _context.Place.FindAsync (id);
+            var placeToUpdate = await _context.Place.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<Place> (
                     placeToUpdate,
@@ -117,8 +117,8 @@ namespace JMuelbert.BDE.Pages.Places { /// <summary>
                     p => p.Room,
                     p => p.Desk,
                     p => p.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
 

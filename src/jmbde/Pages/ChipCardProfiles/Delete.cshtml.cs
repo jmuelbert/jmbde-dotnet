@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -47,8 +47,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCardProfiles
-{
+namespace JMuelbert.BDE.Pages.ChipCardProfiles {
     /// <summary>
     /// Delete model.
     /// </summary>
@@ -93,7 +92,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("ChipCardProfile/Delete/OnGetAsync");
+            _logger.LogDebug ($"ChipCardProfile/Delete/OnGetAsync: Getting item { id } - { saveChangesError }");
 
             if (id == null) {
                 return NotFound ();
@@ -101,7 +100,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
 
             ChipCardProfile = await _context.ChipCardProfile
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.ChipCardProfileId == id);
+                .FirstOrDefaultAsync (m => m.ChipCardProfileId == id).ConfigureAwait (false);
 
             if (ChipCardProfile == null) {
                 return NotFound ();
@@ -119,7 +118,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("ChipCardProfile/Delete/OnPostAsync");
+            _logger.LogDebug ($"ChipCardProfile/Delete/OnPostAsync: Getting item { id }");
 
             if (id == null) {
                 return NotFound ();
@@ -135,7 +134,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
 
             try {
                 _context.ChipCardProfile.Remove (chipcardprofile);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
                 _logger.LogError ("ChipCardDoors/Delete {0}", ex.ToString ());

@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -63,7 +63,7 @@ namespace JMuelbert.BDE.Pages.Softwares {
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Software.DetailsModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Softwares.DetailsModel"/> class.
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="context"></param>
@@ -76,7 +76,7 @@ namespace JMuelbert.BDE.Pages.Softwares {
         /// <summary>
         /// Gets or sets the Software.
         /// </summary>
-        /// <value>The Software.</value> 
+        /// <value>The Software.</value>
         public Software Software { get; set; }
 
         /// <summary>
@@ -85,12 +85,12 @@ namespace JMuelbert.BDE.Pages.Softwares {
         ///  <returns>The get async.</returns>
         /// /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Software/Details/OnGetAsync");
+            _logger.LogDebug ($"Software/Details/OnGetAsync ({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
-            Software = await _context.Software.SingleOrDefaultAsync (m => m.SoftwareId == id);
+            Software = await _context.Software.SingleOrDefaultAsync (m => m.SoftwareId == id).ConfigureAwait (false);
 
             if (Software == null) {
                 return NotFound ();

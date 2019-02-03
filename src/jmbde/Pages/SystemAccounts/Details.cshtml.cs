@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -62,7 +62,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts { /// <summary>
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemAccount.DetailsModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemAccounts.DetailsModel"/> class.
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="context"></param>
@@ -75,16 +75,16 @@ namespace JMuelbert.BDE.Pages.SystemAccounts { /// <summary>
         /// <summary>
         /// Gets or sets the SystemAccount.
         /// </summary>
-        /// <value>The SystemAccount.</value>        
+        /// <value>The SystemAccount.</value>
         public SystemAccount SystemAccount { get; set; }
 
         public async Task<IActionResult> OnGetAsync (int? id) {
-            _logger.LogDebug ("SystemAccount/Details/OnGetAsync");
+            _logger.LogDebug ($"SystemAccount/Details/OnGetAsync ({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
-            SystemAccount = await _context.SystemAccount.SingleOrDefaultAsync (m => m.SystemAccountId == id);
+            SystemAccount = await _context.SystemAccount.SingleOrDefaultAsync (m => m.SystemAccountId == id).ConfigureAwait (false);
 
             if (SystemAccount == null) {
                 return NotFound ();

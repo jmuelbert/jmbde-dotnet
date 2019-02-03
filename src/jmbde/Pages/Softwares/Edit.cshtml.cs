@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -61,7 +61,7 @@ namespace JMuelbert.BDE.Pages.Softwares {
         /// </summary>
         private readonly ILogger _logger;
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Software.EditModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Softwares.EditModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -85,12 +85,12 @@ namespace JMuelbert.BDE.Pages.Softwares {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Software/Edit/OnGetAsync");
+            _logger.LogDebug ($"Software/Edit/OnGetAsync({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
-            Software = await _context.Software.FindAsync (id);
+            Software = await _context.Software.FindAsync (id).ConfigureAwait (false);
 
             if (Software == null) {
                 return NotFound ();
@@ -104,12 +104,12 @@ namespace JMuelbert.BDE.Pages.Softwares {
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Software/Edit/OnPostAsync");
+            _logger.LogDebug ($"Software/Edit/OnPostAsync({ id })");
             if (!ModelState.IsValid) {
                 return Page ();
             }
 
-            var softwareToUpdate = await _context.Software.FindAsync (id);
+            var softwareToUpdate = await _context.Software.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<Software> (
                     softwareToUpdate,
@@ -119,8 +119,8 @@ namespace JMuelbert.BDE.Pages.Softwares {
                     s => s.Revision,
                     s => s.Fix,
                     s => s.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
 

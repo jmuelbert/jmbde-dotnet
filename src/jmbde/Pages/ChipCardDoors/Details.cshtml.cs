@@ -94,7 +94,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
                 .Include (d => d.Department)
                 .Include (p => p.Place)
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.ChipCardDoorId == id);
+                .FirstOrDefaultAsync (m => m.ChipCardDoorId == id).ConfigureAwait (false);
 
             if (ChipCardDoor == null) {
                 return NotFound ();

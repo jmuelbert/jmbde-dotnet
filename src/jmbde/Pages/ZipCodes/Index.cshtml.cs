@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -91,13 +91,13 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
         /// <summary>
         /// Gets or sets the current filter.
         /// </summary>
-        /// <value>The current filter.</value>   
+        /// <value>The current filter.</value>
         public string CurrentFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the current sort.
         /// </summary>
-        /// <value>The current sort.</value>  
+        /// <value>The current sort.</value>
         public string CurrentSort { get; set; }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
 
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
-            _logger.LogDebug ("ZipCodes/Index/OnGetAsync");
+            _logger.LogDebug ($"ZipCodes/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
 
             CurrentSort = sortOrder;
             CodeSort = String.IsNullOrEmpty (sortOrder) ? "code_desc" : "";
@@ -148,7 +148,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
             int pageSize = 10;
             ZipCode = await PaginatedList<ZipCode>.CreateAsync (
                 zipcodeIQ.AsNoTracking (), pageIndex ?? 1, pageSize
-            );
+            ).ConfigureAwait (false);
         }
     }
 }

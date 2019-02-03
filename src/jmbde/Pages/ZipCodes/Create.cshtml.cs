@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -107,9 +107,9 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
                     z => z.Code,
                     z => z.Country,
                     z => z.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.ZipCode.Add (emptyZipCode);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
 
                 return RedirectToPage ("./Index");
             }

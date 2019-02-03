@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -83,7 +83,7 @@ namespace JMuelbert.BDE.Pages.Printers {
         /// <summary>
         /// Gets or sets the ErrorMessage.
         /// </summary>
-        /// <value>The ErrorMessage.</value>        
+        /// <value>The ErrorMessage.</value>
         public string ErrorMessage { get; set; }
 
         /// <summary>
@@ -91,9 +91,9 @@ namespace JMuelbert.BDE.Pages.Printers {
         /// </summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        /// <param name="saveChangesError">Save changes error.</param
+        /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("Printers/Delete/OnGetAsync");
+            _logger.LogDebug ($"Printers/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
                 return NotFound ();
@@ -119,7 +119,7 @@ namespace JMuelbert.BDE.Pages.Printers {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Printers/Delete/OnPostAsync");
+            _logger.LogDebug ($"Printers/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.Printers {
 
             var printer = await _context.Printer
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.PrinterId == id);
+                .FirstOrDefaultAsync (p => p.PrinterId == id).ConfigureAwait (false);
 
             if (printer == null) {
                 return NotFound ();
@@ -135,7 +135,7 @@ namespace JMuelbert.BDE.Pages.Printers {
 
             try {
                 _context.Printer.Remove (printer);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

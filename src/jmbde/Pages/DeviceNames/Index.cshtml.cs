@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -91,13 +91,13 @@ namespace JMuelbert.BDE.Pages.DeviceNames {
         /// <summary>
         /// Gets or sets the current filter.
         /// </summary>
-        /// <value>The current filter.</value>   
+        /// <value>The current filter.</value>
         public string CurrentFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the current sort.
         /// </summary>
-        /// <value>The current sort.</value>  
+        /// <value>The current sort.</value>
         public string CurrentSort { get; set; }
 
         /// <summary>
@@ -113,10 +113,10 @@ namespace JMuelbert.BDE.Pages.DeviceNames {
         /// <param name="currentFilter"></param>
         /// <param name="searchString"></param>
         /// <param name="pageIndex"></param>
-        /// <returns></returns>    
+        /// <returns></returns>
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
-            _logger.LogDebug ("DeviceName/Index/OnGetAsync");
+            _logger.LogDebug ($"DeviceName/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
 
             CurrentSort = sortOrder;
             NameSort = String.IsNullOrEmpty (sortOrder) ? "name_desc" : "";
@@ -156,7 +156,7 @@ namespace JMuelbert.BDE.Pages.DeviceNames {
             int pageSize = 10;
             DeviceName = await PaginatedList<DeviceName>.CreateAsync (
                 deviceNameIQ.AsNoTracking (), pageIndex ?? 1, pageSize
-            );
+            ).ConfigureAwait (false);
         }
     }
 }

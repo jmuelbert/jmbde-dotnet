@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -83,7 +83,7 @@ namespace JMuelbert.BDE.Pages.Documents {
         /// <summary>
         /// Gets or sets the error message.
         /// </summary>
-        /// <value>The error message.</value>  
+        /// <value>The error message.</value>
         public string ErrorMessage { get; set; }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace JMuelbert.BDE.Pages.Documents {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("Documents/Delete/OnGetAsync");
+            _logger.LogDebug ($"Documents/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
                 return NotFound ();
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.Documents {
 
             Document = await _context.Document
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (d => d.DocumentId == id);
+                .FirstOrDefaultAsync (d => d.DocumentId == id).ConfigureAwait (false);
 
             if (Document == null) {
                 return NotFound ();
@@ -119,7 +119,7 @@ namespace JMuelbert.BDE.Pages.Documents {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Documents/Delete/OnPostAsync");
+            _logger.LogDebug ($"Documents/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.Documents {
 
             var document = await _context.Document
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (d => d.DocumentId == id);
+                .FirstOrDefaultAsync (d => d.DocumentId == id).ConfigureAwait (false);
 
             if (document == null) {
                 return NotFound ();
@@ -135,7 +135,7 @@ namespace JMuelbert.BDE.Pages.Documents {
 
             try {
                 _context.Document.Remove (document);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

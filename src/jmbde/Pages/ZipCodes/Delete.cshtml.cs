@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -83,7 +83,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
         /// <summary>
         /// Gets or sets the ErrorMessage.
         /// </summary>
-        /// <value>The ErrorMessage.</value>        
+        /// <value>The ErrorMessage.</value> 
         public string ErrorMessage { get; set; }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("ZipCodes/Delete/OnGetAsync");
+            _logger.LogDebug ($"ZipCodes/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
                 return NotFound ();
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
 
             ZipCode = await _context.ZipCode
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (z => z.ZipCodeId == id);
+                .FirstOrDefaultAsync (z => z.ZipCodeId == id).ConfigureAwait (false);
 
             if (ZipCode == null) {
                 return NotFound ();
@@ -119,7 +119,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("ZipCodes/Delete/OnPostAsync");
+            _logger.LogDebug ($"ZipCodes/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
 
             var zipcode = await _context.ZipCode
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (z => z.ZipCodeId == id);
+                .FirstOrDefaultAsync (z => z.ZipCodeId == id).ConfigureAwait (false);
 
             if (zipcode == null) {
                 return NotFound ();
@@ -135,7 +135,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
 
             try {
                 _context.ZipCode.Remove (zipcode);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

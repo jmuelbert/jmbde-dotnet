@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -46,8 +46,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCardProfiles
-{
+namespace JMuelbert.BDE.Pages.ChipCardProfiles {
     /// <summary>
     /// CreateModel
     /// </summary>
@@ -108,9 +107,9 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
                     "chipcardprofile", // Prefix for form value
                     c => c.Number,
                     c => c.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.ChipCardProfile.Add (emptyChipCardProfile);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
 

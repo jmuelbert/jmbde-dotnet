@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -81,7 +81,7 @@ namespace JMuelbert.BDE.Pages.DeviceTypes {
         /// <summary>
         /// Gets or sets the error message.
         /// </summary>
-        /// <value>The error message.</value>       
+        /// <value>The error message.</value>
         public string ErrorMessage { get; set; }
 
         /// <summary>
@@ -91,14 +91,14 @@ namespace JMuelbert.BDE.Pages.DeviceTypes {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("DeviceTypes/Delete/OnGetAsync");
+            _logger.LogDebug ($"DeviceTypes/Delete/OnGetAsync({ id }, { saveChangesError })");
             if (id == null) {
                 return NotFound ();
             }
 
             DeviceType = await _context.DeviceType
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (d => d.DeviceTypeId == id);
+                .FirstOrDefaultAsync (d => d.DeviceTypeId == id).ConfigureAwait (false);
 
             if (DeviceType == null) {
                 return NotFound ();
@@ -116,13 +116,14 @@ namespace JMuelbert.BDE.Pages.DeviceTypes {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
+            _logger.LogDebug ($"DeviceTypes/Delete/OnPostAsync ({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
             var devicetype = await _context.DeviceType
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (d => d.DeviceTypeId == id);
+                .FirstOrDefaultAsync (d => d.DeviceTypeId == id).ConfigureAwait (false);
 
             if (devicetype == null) {
                 return NotFound ();
@@ -130,7 +131,7 @@ namespace JMuelbert.BDE.Pages.DeviceTypes {
 
             try {
                 _context.DeviceType.Remove (devicetype);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
 
             } catch (DbUpdateException ex) {

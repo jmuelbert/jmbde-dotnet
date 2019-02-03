@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -47,8 +47,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCards
-{
+namespace JMuelbert.BDE.Pages.ChipCards {
     public class DeleteModel : PageModel {
         /// <summary>
         /// Delete model.
@@ -79,7 +78,7 @@ namespace JMuelbert.BDE.Pages.ChipCards
         /// <summary>
         /// Gets or sets the error message.
         /// </summary>
-        /// <value>The error message.</value>        
+        /// <value>The error message.</value>
         public string ErrorMessage { get; set; }
 
         /// <summary>
@@ -89,7 +88,7 @@ namespace JMuelbert.BDE.Pages.ChipCards
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("ChipCards/Delete/OnGetAsync");
+            _logger.LogDebug ($"ChipCards/Delete/OnGetAsync { id } - { saveChangesError }");
 
             if (id == null) {
                 return NotFound ();
@@ -113,9 +112,9 @@ namespace JMuelbert.BDE.Pages.ChipCards
         /// Ons the post async.
         /// </summary>
         /// <returns>The post async.</returns>
-        /// <param name="id">Identifier.</param>
+        /// <param name="id ">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("ChipCards/Delete/OnPostAsync");
+            _logger.LogDebug ($"ChipCards/Delete/OnPostAsync  { id }");
 
             if (id == null) {
                 return NotFound ();
@@ -131,11 +130,11 @@ namespace JMuelbert.BDE.Pages.ChipCards
 
             try {
                 _context.ChipCard.Remove (chipcard);
-                await _context.SaveChangesAsync ();
-                return RedirectToPage ("./Index");
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
+                return RedirectToPage ("./Index ");
             } catch (DbUpdateException ex) {
-                _logger.LogError ("ChipCards/Delete {0}", ex.ToString ());
-                return RedirectToAction ("./Delete",
+                _logger.LogError ("ChipCards/Delete { 0 }", ex.ToString ());
+                return RedirectToAction ("./Delete ",
                     new { id, saveChangesError = true });
             }
         }

@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -64,7 +64,7 @@ namespace JMuelbert.BDE.Pages.Phones {
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.JobTitles.IndexModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Phones.IndexModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -83,13 +83,13 @@ namespace JMuelbert.BDE.Pages.Phones {
         /// <summary>
         /// Gets or sets the ActiveSort.
         /// </summary>
-        /// <value>The ActiveSort.</value>        
+        /// <value>The ActiveSort.</value>
         public string ActiveSort { get; set; }
 
         /// <summary>
         /// Gets or sets the ReplaceSort.
         /// </summary>
-        /// <value>The ReplaceSort.</value>         
+        /// <value>The ReplaceSort.</value>
         public string ReplaceSort { get; set; }
 
         // TODO: Remove LastUpdate Sort
@@ -103,13 +103,13 @@ namespace JMuelbert.BDE.Pages.Phones {
         /// <summary>
         /// Gets or sets the current filter.
         /// </summary>
-        /// <value>The current filter.</value>   
+        /// <value>The current filter.</value>
         public string CurrentFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the current sort.
         /// </summary>
-        /// <value>The current sort.</value>  
+        /// <value>The current sort.</value>
         public string CurrentSort { get; set; }
 
         /// <summary>
@@ -125,10 +125,10 @@ namespace JMuelbert.BDE.Pages.Phones {
         /// <param name="currentFilter"></param>
         /// <param name="searchString"></param>
         /// <param name="pageIndex"></param>
-        /// <returns></returns>    
+        /// <returns></returns>
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
-            _logger.LogDebug ("Phones/Index/OnGetAsync");
+            _logger.LogDebug ($"Phones/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
 
             CurrentSort = sortOrder;
             NumberSort = String.IsNullOrEmpty (sortOrder) ? "number_desc" : "";
@@ -186,7 +186,7 @@ namespace JMuelbert.BDE.Pages.Phones {
             int pageSize = 10;
             Phone = await PaginatedList<Phone>.CreateAsync (
                 phoneIQ.AsNoTracking (), pageIndex ?? 1, pageSize
-            );
+            ).ConfigureAwait (false);
         }
     }
 }

@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -46,8 +46,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCards
-{
+namespace JMuelbert.BDE.Pages.ChipCards {
     /// <summary>
     /// Edit model.
     /// </summary>
@@ -84,13 +83,13 @@ namespace JMuelbert.BDE.Pages.ChipCards
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("ChipCards/Edit/OnGetAsync");
+            _logger.LogDebug ($"ChipCards/Edit/OnGetAsync ({ id }");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            ChipCard = await _context.ChipCard.FindAsync (id);
+            ChipCard = await _context.ChipCard.FindAsync (id).ConfigureAwait (false);
 
             if (ChipCard == null) {
                 return NotFound ();
@@ -101,27 +100,26 @@ namespace JMuelbert.BDE.Pages.ChipCards
         /// <summary>
         /// OnPostAsync
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id "></param>
         /// <returns></returns>
-
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("ChipCards/Edit/OnPostAsync");
+            _logger.LogDebug ($"ChipCards/Edit/OnPostAsync { id })");
 
             if (!ModelState.IsValid) {
                 return Page ();
             }
 
-            var chipcardToUpdate = await _context.ChipCard.FindAsync (id);
+            var chipcardToUpdate = await _context.ChipCard.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<ChipCard> (
                     chipcardToUpdate,
-                    "chipcard", // Prefix for form value.
+                    "chipcard ", // Prefix for form value.
                     c => c.Number,
                     c => c.Locked,
                     c => c.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
-                return RedirectToPage ("./Index");
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
+                return RedirectToPage (". / Index ");
             }
             return Page ();
         }

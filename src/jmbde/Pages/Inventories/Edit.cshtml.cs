@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -84,13 +84,13 @@ namespace JMuelbert.BDE.Pages.Inventories {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Inventories/Edit/OnGetAsync");
+            _logger.LogDebug ($"Inventories/Edit/OnGetAsync({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            Inventory = await _context.Inventory.FindAsync (id);
+            Inventory = await _context.Inventory.FindAsync (id).ConfigureAwait (false);
 
             if (Inventory == null) {
                 return NotFound ();
@@ -104,13 +104,13 @@ namespace JMuelbert.BDE.Pages.Inventories {
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Inventories/Edit/OnPostAsync");
+            _logger.LogDebug ($"Inventories/Edit/OnPostAsync({ id })");
 
             if (!ModelState.IsValid) {
                 return Page ();
             }
 
-            var inventoryToUpdate = await _context.Inventory.FindAsync (id);
+            var inventoryToUpdate = await _context.Inventory.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<Inventory> (
                     inventoryToUpdate,
@@ -119,8 +119,8 @@ namespace JMuelbert.BDE.Pages.Inventories {
                     i => i.Description,
                     i => i.Active,
                     i => i.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
 

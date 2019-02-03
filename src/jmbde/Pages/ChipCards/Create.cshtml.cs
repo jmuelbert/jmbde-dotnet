@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -46,8 +46,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCards
-{
+namespace JMuelbert.BDE.Pages.ChipCards {
     /// <summary>
     /// Create model.
     /// </summary>
@@ -63,9 +62,10 @@ namespace JMuelbert.BDE.Pages.ChipCards
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Gets or sets the chip card.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.ChipCard.CreateModel"/> class.
         /// </summary>
-        /// <value>The chip card.</value>
+        /// <param name="logger">Logger.</param>
+        /// <param name="context">Context.</param>
         public CreateModel (ILogger<CreateModel> logger, JMuelbert.BDE.Data.ApplicationDbContext context) {
             _logger = logger;
             _context = context;
@@ -76,6 +76,7 @@ namespace JMuelbert.BDE.Pages.ChipCards
         /// </summary>
         /// <returns>The get.</returns>
         public IActionResult OnGet () {
+            _logger.LogDebug ("ChipCard/Create/OnGet");
             return Page ();
         }
         /// Gets or sets the chip card.
@@ -89,7 +90,7 @@ namespace JMuelbert.BDE.Pages.ChipCards
         /// </summary>
         /// <returns>The post async.</returns>
         public async Task<IActionResult> OnPostAsync () {
-            _logger.LogDebug ("ChipCard/Create/OnPostAsync");
+            _logger.LogDebug ($"ChipCard/Create/OnPostAsync");
             if (!ModelState.IsValid) {
                 return Page ();
             }
@@ -102,9 +103,9 @@ namespace JMuelbert.BDE.Pages.ChipCards
                     c => c.Number,
                     c => c.Locked,
                     c => c.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.ChipCard.Add (emptyChipCard);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
 
                 return RedirectToPage ("./Index");
             }

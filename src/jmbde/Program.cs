@@ -1,6 +1,6 @@
 ﻿/**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -57,7 +57,7 @@ namespace JMuelbert.BDE {
     /// </summary>
     public class Program {
 
-        public static readonly Dictionary<string, string> _switchMappings =
+        public static readonly Dictionary<string, string> switchMappings =
             new Dictionary<string, string> { { "-Help", "Help" }
             };
 
@@ -90,7 +90,7 @@ namespace JMuelbert.BDE {
                 config.AddXmlFile ("config.xml", optional : true, reloadOnChange : false);
 
                 // Call other providers here and call AddCommandLine last.
-                config.AddCommandLine (args, _switchMappings);
+                config.AddCommandLine (args, switchMappings);
 
                 HostingEnvironment = hostingContext.HostingEnvironment;
                 Configuration = config.Build ();

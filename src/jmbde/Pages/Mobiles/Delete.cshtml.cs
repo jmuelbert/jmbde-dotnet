@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -82,7 +82,7 @@ namespace JMuelbert.BDE.Pages.Mobiles {
         /// <summary>
         /// Gets or sets the ErrorMessage.
         /// </summary>
-        /// <value>The ErrorMessage.</value>       
+        /// <value>The ErrorMessage.</value>
         public string ErrorMessage { get; set; }
 
         /// <summary>
@@ -92,14 +92,14 @@ namespace JMuelbert.BDE.Pages.Mobiles {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("Mobiles/Delete/OnGetAsync");
+            _logger.LogDebug ($"Mobiles/Delete/OnGetAsync({ id }, { saveChangesError })");
             if (id == null) {
                 return NotFound ();
             }
 
             Mobile = await _context.Mobile
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.MobileId == id);
+                .FirstOrDefaultAsync (m => m.MobileId == id).ConfigureAwait (false);
 
             if (Mobile == null) {
                 return NotFound ();
@@ -117,7 +117,7 @@ namespace JMuelbert.BDE.Pages.Mobiles {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Mobiles/Delete/OnPostAsync");
+            _logger.LogDebug ($"Mobiles/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -125,7 +125,7 @@ namespace JMuelbert.BDE.Pages.Mobiles {
 
             var mobile = await _context.Mobile
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.MobileId == id);
+                .FirstOrDefaultAsync (m => m.MobileId == id).ConfigureAwait (false);
 
             if (mobile == null) {
                 return NotFound ();
@@ -133,7 +133,7 @@ namespace JMuelbert.BDE.Pages.Mobiles {
 
             try {
                 _context.Mobile.Remove (mobile);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

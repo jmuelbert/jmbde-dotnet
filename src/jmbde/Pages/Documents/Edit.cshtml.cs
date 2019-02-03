@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -61,7 +61,7 @@ namespace JMuelbert.BDE.Pages.Documents {
         /// </summary>
         private readonly ILogger _logger;
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.DeviceNames.EditModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Documents.EditModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -84,13 +84,13 @@ namespace JMuelbert.BDE.Pages.Documents {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Documents/Edit/OnGetAsync");
+            _logger.LogDebug ($"Documents/Edit/OnGetAsync{ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            Document = await _context.Document.FindAsync (id);
+            Document = await _context.Document.FindAsync (id).ConfigureAwait (false);
 
             if (Document == null) {
                 return NotFound ();
@@ -104,13 +104,13 @@ namespace JMuelbert.BDE.Pages.Documents {
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Documents/Edit/OnPostAsync");
+            _logger.LogDebug ($"Documents/Edit/OnPostAsync{ id })");
 
             if (!ModelState.IsValid) {
                 return Page ();
             }
 
-            var documentToUpdate = await _context.Document.FindAsync (id);
+            var documentToUpdate = await _context.Document.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<Document> (
                     documentToUpdate,
@@ -118,8 +118,8 @@ namespace JMuelbert.BDE.Pages.Documents {
                     d => d.Name,
                     d => d.DocumentData,
                     d => d.LastUpdate
-                )) {
-                await _context.SaveChangesAsync ();
+                ).ConfigureAwait (false)) {
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             }
 

@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -75,7 +75,7 @@ namespace JMuelbert.BDE.Pages.Phones {
         /// <summary>
         /// Gets or sets the Phone.
         /// </summary>
-        /// <value>The Phone.</value>   
+        /// <value>The Phone.</value>
         public Phone Phone { get; set; }
 
         /// <summary>
@@ -84,13 +84,13 @@ namespace JMuelbert.BDE.Pages.Phones {
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("JPhones/Details/OnGetAsync");
+            _logger.LogDebug ($"Phones/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            Phone = await _context.Phone.SingleOrDefaultAsync (m => m.PhoneId == id);
+            Phone = await _context.Phone.SingleOrDefaultAsync (m => m.PhoneId == id).ConfigureAwait (false);
 
             if (Phone == null) {
                 return NotFound ();

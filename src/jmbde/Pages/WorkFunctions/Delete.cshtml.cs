@@ -93,7 +93,7 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ($"Functions/Delete/OnGetAsync({id},{saveChangesError})");
+            _logger.LogDebug ($"WorkFunctions/Delete/OnGetAsync({id},{saveChangesError})");
 
             if (id == null) {
                 return NotFound ();
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
 
             WorkFunction = await _context.WorkFunction
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (f => f.FunctionId == id);
+                .FirstOrDefaultAsync (f => f.FunctionId == id).ConfigureAwait (false);
 
             if (WorkFunction == null) {
                 return NotFound ();
@@ -119,7 +119,7 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
         /// <returns>The post async.</returns>
         /// <param name="id ">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ($"Functions / Delete / OnPostAsync({id})");
+            _logger.LogDebug ($"WorkFunctions/Delete/OnPostAsync({id})");
 
             if (id == null) {
                 return NotFound ();
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
 
             var workFunction = await _context.WorkFunction
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (f => f.FunctionId == id);
+                .FirstOrDefaultAsync (f => f.FunctionId == id).ConfigureAwait (false);
 
             if (workFunction == null) {
                 return NotFound ();
@@ -136,12 +136,12 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
             try {
                 _context.WorkFunction.Remove (workFunction);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
-                return RedirectToPage (". / Index ");
+                return RedirectToPage ("./Index ");
             } catch (DbUpdateException ex) {
 
-                _logger.LogError ("Functions / Delete { 0 }", ex.ToString ());
+                _logger.LogError ("Functions/Delete { 0 }", ex.ToString ());
 
-                return RedirectToAction (". / Delete ",
+                return RedirectToAction ("./Delete ",
                     new { id, saveChangesError = true });
             }
         }

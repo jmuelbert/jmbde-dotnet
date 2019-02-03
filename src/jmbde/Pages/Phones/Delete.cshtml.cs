@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -93,14 +93,14 @@ namespace JMuelbert.BDE.Pages.Phones {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("Phones/Delete/OnGetAsync");
+            _logger.LogDebug ($"Phones/Delete/OnGetAsync({ id }, { saveChangesError })");
             if (id == null) {
                 return NotFound ();
             }
 
             Phone = await _context.Phone
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.PhoneId == id);
+                .FirstOrDefaultAsync (p => p.PhoneId == id).ConfigureAwait (false);
 
             if (Phone == null) {
                 return NotFound ();
@@ -118,14 +118,14 @@ namespace JMuelbert.BDE.Pages.Phones {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Phones/Delete/OnPostAsync");
+            _logger.LogDebug ($"Phones/Delete/OnPostAsync ({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
             var phone = await _context.Phone
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.PhoneId == id);
+                .FirstOrDefaultAsync (p => p.PhoneId == id).ConfigureAwait (false);
 
             if (phone == null) {
                 return NotFound ();
@@ -133,7 +133,7 @@ namespace JMuelbert.BDE.Pages.Phones {
 
             try {
                 _context.Phone.Remove (phone);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

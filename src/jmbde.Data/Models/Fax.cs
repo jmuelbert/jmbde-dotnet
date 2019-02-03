@@ -1,6 +1,6 @@
 ﻿/**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -44,8 +44,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace JMuelbert.BDE.Data.Models
-{
+namespace JMuelbert.BDE.Data.Models {
     /// <summary>
     /// Fax.
     /// </summary>
@@ -97,7 +96,7 @@ namespace JMuelbert.BDE.Data.Models
         /// </summary>
         /// <value>The name of the device.</value>
         public DeviceName DeviceName { get; set; }
-       
+
         /// <summary>
         /// Gets or sets the type of the device.
         /// </summary>

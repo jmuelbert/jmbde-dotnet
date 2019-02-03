@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -106,9 +106,9 @@ namespace JMuelbert.BDE.Pages.DeviceNames {
                     "devicename", // Prefix for form value
                     d => d.Name,
                     d => d.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.DeviceName.Add (emptyDeviceName);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
 
                 return RedirectToPage ("./Index");
             }

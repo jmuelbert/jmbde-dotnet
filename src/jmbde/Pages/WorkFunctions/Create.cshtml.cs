@@ -107,7 +107,7 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
                     f => f.Name,
                     f => f.Priority,
                     f => f.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.WorkFunction.Add (emptyFunction);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
 

@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.CityNames {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("CityName/Delete/OnGetAsync");
+            _logger.LogDebug ($"CityName/Delete/OnGetAsync { id } - { saveChangesError }");
 
             if (id == null) {
                 return NotFound ();
@@ -100,7 +100,7 @@ namespace JMuelbert.BDE.Pages.CityNames {
 
             CityName = await _context.CityName
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.CityNameId == id);
+                .FirstOrDefaultAsync (m => m.CityNameId == id).ConfigureAwait (false);
 
             if (CityName == null) {
                 return NotFound ();
@@ -118,7 +118,7 @@ namespace JMuelbert.BDE.Pages.CityNames {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("CityName/Delete/OnPostAsync");
+            _logger.LogDebug ($"CityName/Delete/OnPostAsync { id }");
 
             if (id == null) {
                 return NotFound ();
@@ -126,7 +126,7 @@ namespace JMuelbert.BDE.Pages.CityNames {
 
             var cityname = await _context.CityName
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (c => c.CityNameId == id);
+                .FirstOrDefaultAsync (c => c.CityNameId == id).ConfigureAwait (false);
 
             if (cityname == null) {
                 return NotFound ();
@@ -134,7 +134,7 @@ namespace JMuelbert.BDE.Pages.CityNames {
 
             try {
                 _context.CityName.Remove (cityname);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

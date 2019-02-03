@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -84,13 +84,13 @@ namespace JMuelbert.BDE.Pages.CityNames {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("CityName/Details/OnGetAsync");
+            _logger.LogDebug ($"CityName/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            CityName = await _context.CityName.SingleOrDefaultAsync (m => m.CityNameId == id);
+            CityName = await _context.CityName.SingleOrDefaultAsync (m => m.CityNameId == id).ConfigureAwait (false);
 
             if (CityName == null) {
                 return NotFound ();

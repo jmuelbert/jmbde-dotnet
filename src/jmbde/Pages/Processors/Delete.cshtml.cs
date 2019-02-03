@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -94,14 +94,15 @@ namespace JMuelbert.BDE.Pages.Processors {
         /// <param name="saveChangesError">Save changes error.</param>        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
 
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("Processors/Delete/OnGetAsync");
+            _logger.LogDebug ($"Processors/Delete/OnGetAsync({ id }, { saveChangesError })");
+
             if (id == null) {
                 return NotFound ();
             }
 
             Processor = await _context.Processor
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.ProcessorId == id);
+                .FirstOrDefaultAsync (p => p.ProcessorId == id).ConfigureAwait (false);
 
             if (Processor == null) {
                 return NotFound ();
@@ -119,7 +120,7 @@ namespace JMuelbert.BDE.Pages.Processors {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Processors/Delete/OnPostAsync");
+            _logger.LogDebug ($"Processors/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -127,7 +128,7 @@ namespace JMuelbert.BDE.Pages.Processors {
 
             var processor = await _context.Processor
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.ProcessorId == id);
+                .FirstOrDefaultAsync (p => p.ProcessorId == id).ConfigureAwait (false);
 
             if (processor == null) {
                 return NotFound ();
@@ -135,7 +136,7 @@ namespace JMuelbert.BDE.Pages.Processors {
 
             try {
                 _context.Processor.Remove (processor);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

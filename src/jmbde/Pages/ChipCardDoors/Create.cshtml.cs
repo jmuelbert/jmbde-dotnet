@@ -105,7 +105,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
                     emptyChipCardDoor,
                     "chipcarddoor", // Prefix for form value
                     c => c.Number,
-                    c => c.LastUpdate)) {
+                    c => c.LastUpdate).ConfigureAwait (false)) {
                 _context.ChipCardDoor.Add (emptyChipCardDoor);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");

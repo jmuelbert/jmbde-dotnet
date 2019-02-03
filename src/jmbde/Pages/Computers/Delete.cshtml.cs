@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -63,7 +63,7 @@ namespace JMuelbert.BDE.Pages.Computers {
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.CityNames.DeleteModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Computers.DeleteModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -82,7 +82,7 @@ namespace JMuelbert.BDE.Pages.Computers {
         /// <summary>
         /// Gets or sets the error message.
         /// </summary>
-        /// <value>The error message.</value>        
+        /// <value>The error message.</value>
         public string ErrorMessage { get; set; }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.Computers {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("Computers/Delete/OnGetAsync");
+            _logger.LogDebug ($"Computers/Delete/OnGetAsync { id } - { saveChangesError }");
 
             if (id == null) {
                 return NotFound ();
@@ -100,7 +100,7 @@ namespace JMuelbert.BDE.Pages.Computers {
 
             Computer = await _context.Computer
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (c => c.ComputerId == id);
+                .FirstOrDefaultAsync (c => c.ComputerId == id).ConfigureAwait (false);
 
             if (Computer == null) {
                 return NotFound ();
@@ -118,7 +118,7 @@ namespace JMuelbert.BDE.Pages.Computers {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Computers/Delete/OnPostAsync");
+            _logger.LogDebug ($"Computers/Delete/OnPostAsync { id }");
 
             if (id == null) {
                 return NotFound ();
@@ -126,7 +126,7 @@ namespace JMuelbert.BDE.Pages.Computers {
 
             var computer = await _context.Computer
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (c => c.ComputerId == id);
+                .FirstOrDefaultAsync (c => c.ComputerId == id).ConfigureAwait (false);
 
             if (computer == null) {
                 return NotFound ();
@@ -134,7 +134,7 @@ namespace JMuelbert.BDE.Pages.Computers {
 
             try {
                 _context.Computer.Remove (computer);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

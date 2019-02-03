@@ -70,7 +70,7 @@ namespace JMuelbert.BDE.Filters {
         public async Task OnPageHandlerSelectionAsync (
             PageHandlerSelectedContext context) {
             _logger.LogDebug ("Global OnPageHandlerSelectionAsync called.");
-            await Task.CompletedTask;
+            await Task.CompletedTask.ConfigureAwait (false);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace JMuelbert.BDE.Filters {
             PageHandlerExecutingContext context,
             PageHandlerExecutionDelegate next) {
             _logger.LogDebug ("Global OnPageHandlerExecutionAsync called.");
-            await next.Invoke ();
+            await next.Invoke ().ConfigureAwait (false);
         }
     }
 }

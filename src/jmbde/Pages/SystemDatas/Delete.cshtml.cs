@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -62,7 +62,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas { /// <summary>
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemData.IndexModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemDatas.IndexModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -91,7 +91,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas { /// <summary>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("SystemData/Delete/OnGetAsync");
+            _logger.LogDebug ($"SystemData/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
                 return NotFound ();
@@ -99,7 +99,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas { /// <summary>
 
             SystemData = await _context.SystemData
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (s => s.SystemDataId == id);
+                .FirstOrDefaultAsync (s => s.SystemDataId == id).ConfigureAwait (false);
 
             if (SystemData == null) {
                 return NotFound ();
@@ -117,7 +117,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas { /// <summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("SystemData/Delete/OnPostAsync");
+            _logger.LogDebug ($"SystemData/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -125,7 +125,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas { /// <summary>
 
             var systemdata = await _context.SystemData
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (s => s.SystemDataId == id);
+                .FirstOrDefaultAsync (s => s.SystemDataId == id).ConfigureAwait (false);
 
             if (systemdata == null) {
                 return NotFound ();
@@ -133,7 +133,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas { /// <summary>
 
             try {
                 _context.SystemData.Remove (systemdata);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 

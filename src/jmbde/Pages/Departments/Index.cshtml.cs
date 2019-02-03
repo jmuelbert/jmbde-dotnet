@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -64,7 +64,7 @@ namespace JMuelbert.BDE.Pages.Departments {
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.ChipCardProfiles.IndexModel"/> class.
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Departments.IndexModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
@@ -96,7 +96,7 @@ namespace JMuelbert.BDE.Pages.Departments {
         /// <summary>
         /// Gets or sets the current filter.
         /// </summary>
-        /// <value>The current filter.</value>        
+        /// <value>The current filter.</value> 
         public string CurrentFilter { get; set; }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace JMuelbert.BDE.Pages.Departments {
         /// <summary>
         /// Gets or sets the cityname profile.
         /// </summary>
-        /// <value>The cityname profile.</value>        
+        /// <value>The cityname profile.</value>
         public PaginatedList<Department> Department { get; set; }
 
         /// <summary>
@@ -118,10 +118,10 @@ namespace JMuelbert.BDE.Pages.Departments {
         /// <param name="currentFilter"></param>
         /// <param name="searchString"></param>
         /// <param name="pageIndex"></param>
-        /// <returns></returns>    
+        /// <returns></returns>
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
-            _logger.LogDebug ("Department/Index/OnGetAsync");
+            _logger.LogDebug ($"Department/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
             CurrentSort = sortOrder;
             NameSort = String.IsNullOrEmpty (sortOrder) ? "name_desc" : "";
             PrioritySort = sortOrder == "Priority" ? "priority_desc" : "Priority";
@@ -171,7 +171,7 @@ namespace JMuelbert.BDE.Pages.Departments {
             int pageSize = 10;
             Department = await PaginatedList<Department>.CreateAsync (
                 departmentIQ.AsNoTracking (), pageIndex ?? 1, pageSize
-            );
+            ).ConfigureAwait (false);
         }
     }
 }

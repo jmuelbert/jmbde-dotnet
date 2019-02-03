@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -74,16 +74,16 @@ namespace JMuelbert.BDE.Pages.Mobiles { /// Details model.
         /// <summary>
         /// Gets or sets the Mobile.
         /// </summary>
-        /// <value>The Mobile.</value>  
+        /// <value>The Mobile.</value>
         public Mobile Mobile { get; set; }
 
         public async Task<IActionResult> OnGetAsync (long? id) {
-            _logger.LogDebug ("Mobiles/Details/OnGetAsync");
+            _logger.LogDebug ($"Mobiles/Details/OnGetAsync ({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
-            Mobile = await _context.Mobile.SingleOrDefaultAsync (m => m.MobileId == id);
+            Mobile = await _context.Mobile.SingleOrDefaultAsync (m => m.MobileId == id).ConfigureAwait (false);
 
             if (Mobile == null) {
                 return NotFound ();

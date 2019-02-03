@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -90,7 +90,7 @@ namespace JMuelbert.BDE.Pages.Employees {
         /// <summary>
         /// Ons the get async.
         /// </summary>
-        /// <returns>The get async.</returns> 
+        /// <returns>The get async.</returns>
         public async Task<IActionResult> OnPostAsync () {
             _logger.LogDebug ("Employees/Create/OnGet");
             if (!ModelState.IsValid) {
@@ -120,7 +120,7 @@ namespace JMuelbert.BDE.Pages.Employees {
                     e => e.LastUpdate
                 )) {
                 _context.Employee.Add (emptyEmployee);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
 
                 return RedirectToPage ("./Index");
             }

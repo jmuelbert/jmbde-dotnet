@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -91,9 +91,9 @@ namespace JMuelbert.BDE.Pages.Places {
         /// </summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        /// <param name="saveChangesError">Save changes error.</param>     
+        /// <param name="saveChangesError">Save changes error.</param>
         public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
-            _logger.LogDebug ("Places/Delete/OnGetAsync");
+            _logger.LogDebug ($"Places/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
                 return NotFound ();
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.Places {
 
             Place = await _context.Place
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.PlaceId == id);
+                .FirstOrDefaultAsync (p => p.PlaceId == id).ConfigureAwait (false);
 
             if (Place == null) {
                 return NotFound ();
@@ -119,7 +119,7 @@ namespace JMuelbert.BDE.Pages.Places {
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
         public async Task<IActionResult> OnPostAsync (long? id) {
-            _logger.LogDebug ("Places/Delete/OnPostAsync");
+            _logger.LogDebug ($"Places/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.Places {
 
             var place = await _context.Place
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.PlaceId == id);
+                .FirstOrDefaultAsync (p => p.PlaceId == id).ConfigureAwait (false);
 
             if (place == null) {
                 return NotFound ();
@@ -135,7 +135,7 @@ namespace JMuelbert.BDE.Pages.Places {
 
             try {
                 _context.Place.Remove (place);
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync ().ConfigureAwait (false);
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 
