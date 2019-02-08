@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -63,7 +63,7 @@ namespace jmbde {
                     var context = services.GetRequiredService<JMBDEContext> ();
                 } catch (Exception ex) {
                     var logger = services.GetRequiredService<ILogger<Program>> ();
-                    logger.LogError (ex, "An error occured creating the DB.");
+                    logger.LogError (ex, "An error occurs creating the DB.");
                 }
             }
 
