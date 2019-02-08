@@ -127,7 +127,7 @@ namespace JMuelbert.BDE {
                 os = Environment.GetEnvironmentVariable ("_system_type");
 
                 // Darwin is macOS
-                if (os.Equals ("Darwin")) {
+                if (os.Equals ("Darwin", StringComparison.CurrentCulture)) {
                     homePath = Environment.GetEnvironmentVariable ("HOME");
                     appDataPath = Path.Combine (homePath, "Library/Application Support");
                     appDataPath = Path.Combine (appDataPath, dbPath);

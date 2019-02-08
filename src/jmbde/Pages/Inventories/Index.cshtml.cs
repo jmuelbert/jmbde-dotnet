@@ -145,7 +145,7 @@ namespace JMuelbert.BDE.Pages.Inventories {
             select i;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                inventoryIQ = inventoryIQ.Where (inv => inv.Identifier.Contains (searchString));
+                inventoryIQ = inventoryIQ.Where (inv => inv.Identifier.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

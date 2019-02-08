@@ -148,7 +148,7 @@ namespace JMuelbert.BDE.Pages.Processors {
             select p;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                processorIQ = processorIQ.Where (p => p.Name.Contains (searchString));
+                processorIQ = processorIQ.Where (p => p.Name.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

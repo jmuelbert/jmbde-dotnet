@@ -96,7 +96,8 @@ namespace JMuelbert.BDE.Pages.ChipCards {
 
             ChipCard = await _context.ChipCard
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.ChipCardId == id);
+                .FirstOrDefaultAsync (m => m.ChipCardId == id)
+                .ConfigureAwait (false);
 
             if (ChipCard == null) {
                 return NotFound ();
@@ -122,7 +123,8 @@ namespace JMuelbert.BDE.Pages.ChipCards {
 
             var chipcard = await _context.ChipCard
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (c => c.ChipCardId == id);
+                .FirstOrDefaultAsync (c => c.ChipCardId == id)
+                .ConfigureAwait (false);
 
             if (chipcard == null) {
                 return NotFound ();

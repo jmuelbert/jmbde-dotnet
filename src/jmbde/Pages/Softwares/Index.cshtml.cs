@@ -132,7 +132,7 @@ namespace JMuelbert.BDE.Pages.Softwares {
             select s;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                softwareIQ = softwareIQ.Where (soft => soft.Name.Contains (searchString));
+                softwareIQ = softwareIQ.Where (soft => soft.Name.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

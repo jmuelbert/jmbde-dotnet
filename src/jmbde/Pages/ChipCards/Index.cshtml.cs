@@ -137,7 +137,7 @@ namespace JMuelbert.BDE.Pages.ChipCards {
             select c;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                chipCardIQ = chipCardIQ.Where (cc => cc.Number.Contains (searchString));
+                chipCardIQ = chipCardIQ.Where (cc => cc.Number.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

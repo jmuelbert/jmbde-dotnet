@@ -109,7 +109,7 @@ namespace JMuelbert.BDE.Pages.Softwares {
                     s => s.Revision,
                     s => s.Fix,
                     s => s.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.Software.Add (emptySoftware);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
 

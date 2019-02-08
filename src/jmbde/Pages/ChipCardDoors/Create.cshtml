@@ -1,11 +1,14 @@
 @page
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
 @model JMuelbert.BDE.Pages.ChipCardDoors.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = SharedLocalizer["Create"];
 }
 
-<h2>Create</h2>
+<h2>@ViewData["Title"]</h2>
 
 <h4>ChipCardDoor</h4>
 <hr />
@@ -31,7 +34,7 @@
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">@SharedLocalizer["Back to List"]</a>
 </div>
 
 @section Scripts {

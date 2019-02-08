@@ -118,7 +118,7 @@ namespace JMuelbert.BDE.Pages.Employees {
                     e => e.HireDate,
                     e => e.EndDate,
                     e => e.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.Employee.Add (emptyEmployee);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
 

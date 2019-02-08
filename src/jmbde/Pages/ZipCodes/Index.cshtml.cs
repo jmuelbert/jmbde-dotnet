@@ -125,7 +125,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
             select z;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                zipcodeIQ = zipcodeIQ.Where (zip => zip.Code.Contains (searchString));
+                zipcodeIQ = zipcodeIQ.Where (zip => zip.Code.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

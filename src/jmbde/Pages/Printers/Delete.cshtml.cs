@@ -101,7 +101,8 @@ namespace JMuelbert.BDE.Pages.Printers {
 
             Printer = await _context.Printer
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.PrinterId == id);
+                .FirstOrDefaultAsync (p => p.PrinterId == id)
+                .ConfigureAwait (false);
 
             if (Printer == null) {
                 return NotFound ();

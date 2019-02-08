@@ -126,7 +126,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts {
             select s;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                systemaccountIQ = systemaccountIQ.Where (sys => sys.UserName.Contains (searchString));
+                systemaccountIQ = systemaccountIQ.Where (sys => sys.UserName.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

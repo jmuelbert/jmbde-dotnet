@@ -106,7 +106,7 @@ namespace JMuelbert.BDE.Pages.JobTitles {
                     j => j.Name,
                     j => j.FromDate,
                     j => j.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.JobTitle.Add (emptyJobTitle);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
 

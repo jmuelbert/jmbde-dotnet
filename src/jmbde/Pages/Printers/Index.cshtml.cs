@@ -161,7 +161,7 @@ namespace JMuelbert.BDE.Pages.Printers {
             select p;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                printerIQ = printerIQ.Where (pr => pr.Name.Contains (searchString));
+                printerIQ = printerIQ.Where (pr => pr.Name.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

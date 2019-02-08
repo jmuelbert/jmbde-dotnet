@@ -126,7 +126,8 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles {
 
             var chipcardprofile = await _context.ChipCardProfile
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (c => c.ChipCardProfileId == id);
+                .FirstOrDefaultAsync (c => c.ChipCardProfileId == id)
+                .ConfigureAwait (false);
 
             if (chipcardprofile == null) {
                 return NotFound ();

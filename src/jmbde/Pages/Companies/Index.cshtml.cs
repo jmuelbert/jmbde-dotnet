@@ -145,7 +145,7 @@ namespace JMuelbert.BDE.Pages.Companies {
             select c;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                companyIQ = companyIQ.Where (com => com.Name.Contains (searchString));
+                companyIQ = companyIQ.Where (com => com.Name.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

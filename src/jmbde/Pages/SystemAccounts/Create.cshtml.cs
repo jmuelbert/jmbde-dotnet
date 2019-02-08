@@ -104,7 +104,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts { /// <summary>
                     s => s.UserName,
                     s => s.PassWord,
                     s => s.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.SystemAccount.Add (emptySystemAccount);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
 

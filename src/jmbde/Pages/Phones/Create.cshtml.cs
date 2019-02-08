@@ -110,7 +110,7 @@ namespace JMuelbert.BDE.Pages.Phones { /// <summary>
                     p => p.Active,
                     p => p.Replace,
                     p => p.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.Phone.Add (emptyPhone);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
 

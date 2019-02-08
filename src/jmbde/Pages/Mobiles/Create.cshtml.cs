@@ -111,7 +111,7 @@ namespace JMuelbert.BDE.Pages.Mobiles {
                     m => m.Active,
                     m => m.Replace,
                     m => m.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.Mobile.Add (emptyMobile);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
 

@@ -135,7 +135,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
             select f;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                faxIQ = faxIQ.Where (fax => fax.Number.Contains (searchString));
+                faxIQ = faxIQ.Where (fax => fax.Number.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

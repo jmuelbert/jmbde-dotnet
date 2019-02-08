@@ -146,7 +146,7 @@ namespace JMuelbert.BDE.Pages.Places { /// <summary>
             select p;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                placeIQ = placeIQ.Where (pl => pl.Name.Contains (searchString));
+                placeIQ = placeIQ.Where (pl => pl.Name.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

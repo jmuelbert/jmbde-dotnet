@@ -181,7 +181,7 @@ namespace JMuelbert.BDE.Pages.Employees {
             select e;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                employeeIQ = employeeIQ.Where (e => e.LastName.Contains (searchString));
+                employeeIQ = employeeIQ.Where (e => e.LastName.Contains (searchString, StringComparison.CurrentCulture));
             }
             switch (sortOrder) {
                 case "name_desc":

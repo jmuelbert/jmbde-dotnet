@@ -139,7 +139,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas {
             select s;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                systemdataIQ = systemdataIQ.Where (sys => sys.Name.Contains (searchString));
+                systemdataIQ = systemdataIQ.Where (sys => sys.Name.Contains (searchString, StringComparison.CurrentCulture));
             }
             switch (sortOrder) {
                 case "name_desc":

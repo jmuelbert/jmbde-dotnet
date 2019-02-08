@@ -108,7 +108,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas {
                     s => s.Name,
                     s => s.Local,
                     s => s.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.SystemData.Add (emptySystemData);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
 

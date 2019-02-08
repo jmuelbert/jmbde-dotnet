@@ -430,28 +430,6 @@ namespace jmbde.Migrations
                     b.ToTable("Fax");
                 });
 
-            modelBuilder.Entity("JMuelbert.BDE.Data.Models.Function", b =>
-                {
-                    b.Property<long>("FunctionId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<long?>("EmployeeId");
-
-                    b.Property<DateTime>("LastUpdate");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<long?>("Priority");
-
-                    b.HasKey("FunctionId");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("Function");
-                });
-
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Inventory", b =>
                 {
                     b.Property<long>("InventoryId")
@@ -830,6 +808,28 @@ namespace jmbde.Migrations
                     b.ToTable("SystemData");
                 });
 
+            modelBuilder.Entity("JMuelbert.BDE.Data.Models.WorkFunction", b =>
+                {
+                    b.Property<long>("WorkFunctionId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long?>("EmployeeId");
+
+                    b.Property<DateTime>("LastUpdate");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<long?>("Priority");
+
+                    b.HasKey("WorkFunctionId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("WorkFunction");
+                });
+
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.ZipCode", b =>
                 {
                     b.Property<long>("ZipCodeId")
@@ -1159,13 +1159,6 @@ namespace jmbde.Migrations
                         .HasForeignKey("PlaceId");
                 });
 
-            modelBuilder.Entity("JMuelbert.BDE.Data.Models.Function", b =>
-                {
-                    b.HasOne("JMuelbert.BDE.Data.Models.Employee")
-                        .WithMany("Function")
-                        .HasForeignKey("EmployeeId");
-                });
-
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Manufacturer", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.ZipCode", "ZipCode")
@@ -1281,6 +1274,13 @@ namespace jmbde.Migrations
                     b.HasOne("JMuelbert.BDE.Data.Models.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId");
+                });
+
+            modelBuilder.Entity("JMuelbert.BDE.Data.Models.WorkFunction", b =>
+                {
+                    b.HasOne("JMuelbert.BDE.Data.Models.Employee")
+                        .WithMany("WorkFunction")
+                        .HasForeignKey("EmployeeId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

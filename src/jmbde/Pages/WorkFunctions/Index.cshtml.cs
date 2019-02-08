@@ -132,7 +132,7 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
             select f;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                functionIQ = functionIQ.Where (fun => fun.Name.Contains (searchString));
+                functionIQ = functionIQ.Where (fun => fun.Name.Contains (searchString, StringComparison.CurrentCulture));
             }
             switch (sortOrder) {
                 case "name_desc":

@@ -130,7 +130,7 @@ namespace JMuelbert.BDE.Pages.CityNames {
             select c;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                cityNameIQ = cityNameIQ.Where (cn => cn.Name.Contains (searchString));
+                cityNameIQ = cityNameIQ.Where (cn => cn.Name.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

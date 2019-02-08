@@ -145,7 +145,7 @@ namespace JMuelbert.BDE.Pages.Computers {
             select c;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                computerIQ = computerIQ.Where (comp => comp.Name.Contains (searchString));
+                computerIQ = computerIQ.Where (comp => comp.Name.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

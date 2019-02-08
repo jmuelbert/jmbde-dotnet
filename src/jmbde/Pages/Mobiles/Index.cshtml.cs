@@ -147,7 +147,7 @@ namespace JMuelbert.BDE.Pages.Mobiles { /// <summary>
             select m;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                mobileIQ = mobileIQ.Where (mob => mob.Number.Contains (searchString));
+                mobileIQ = mobileIQ.Where (mob => mob.Number.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

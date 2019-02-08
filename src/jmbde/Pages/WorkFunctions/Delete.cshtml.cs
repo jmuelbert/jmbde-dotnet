@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
 
             WorkFunction = await _context.WorkFunction
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (f => f.FunctionId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (f => f.WorkFunctionId == id).ConfigureAwait (false);
 
             if (WorkFunction == null) {
                 return NotFound ();
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
 
             var workFunction = await _context.WorkFunction
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (f => f.FunctionId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (f => f.WorkFunctionId == id).ConfigureAwait (false);
 
             if (workFunction == null) {
                 return NotFound ();

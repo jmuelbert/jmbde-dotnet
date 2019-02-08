@@ -139,7 +139,7 @@ namespace JMuelbert.BDE.Pages.Documents {
             select d;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                documentIQ = documentIQ.Where (doc => doc.Name.Contains (searchString));
+                documentIQ = documentIQ.Where (doc => doc.Name.Contains (searchString, StringComparison.CurrentCulture));
             }
             switch (sortOrder) {
                 case "name_desc":

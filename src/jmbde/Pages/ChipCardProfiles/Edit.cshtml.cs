@@ -109,7 +109,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles {
                 return Page ();
             }
 
-            var chipcardprofileToUpdate = await _context.ChipCardProfile.FindAsync (id);
+            var chipcardprofileToUpdate = await _context.ChipCardProfile.FindAsync (id).ConfigureAwait (false);
 
             if (await TryUpdateModelAsync<ChipCardProfile> (
                     chipcardprofileToUpdate,

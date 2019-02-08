@@ -138,7 +138,7 @@ namespace JMuelbert.BDE.Pages.Departments {
             select d;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                departmentIQ = departmentIQ.Where (dep => dep.Name.Contains (searchString));
+                departmentIQ = departmentIQ.Where (dep => dep.Name.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

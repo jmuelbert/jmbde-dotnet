@@ -138,7 +138,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers { /// <summary>
             select m;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                manufacturerIQ = manufacturerIQ.Where (man => man.Name.Contains (searchString));
+                manufacturerIQ = manufacturerIQ.Where (man => man.Name.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

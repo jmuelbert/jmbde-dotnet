@@ -725,28 +725,6 @@ namespace jmbde.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Function",
-                columns: table => new
-                {
-                    FunctionId = table.Column<long>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
-                    Priority = table.Column<long>(nullable: true),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    EmployeeId = table.Column<long>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Function", x => x.FunctionId);
-                    table.ForeignKey(
-                        name: "FK_Function_Employee_EmployeeId",
-                        column: x => x.EmployeeId,
-                        principalTable: "Employee",
-                        principalColumn: "EmployeeId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Printer",
                 columns: table => new
                 {
@@ -816,6 +794,28 @@ namespace jmbde.Migrations
                         column: x => x.PlaceId,
                         principalTable: "Place",
                         principalColumn: "PlaceId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WorkFunction",
+                columns: table => new
+                {
+                    WorkFunctionId = table.Column<long>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    Priority = table.Column<long>(nullable: true),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    EmployeeId = table.Column<long>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkFunction", x => x.WorkFunctionId);
+                    table.ForeignKey(
+                        name: "FK_WorkFunction_Employee_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employee",
+                        principalColumn: "EmployeeId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -1171,11 +1171,6 @@ namespace jmbde.Migrations
                 column: "PlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Function_EmployeeId",
-                table: "Function",
-                column: "EmployeeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Manufacturer_ZipCodeId",
                 table: "Manufacturer",
                 column: "ZipCodeId");
@@ -1294,6 +1289,11 @@ namespace jmbde.Migrations
                 name: "IX_SystemData_CompanyId",
                 table: "SystemData",
                 column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WorkFunction_EmployeeId",
+                table: "WorkFunction",
+                column: "EmployeeId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Software_Computer_ComputerId",
@@ -1420,13 +1420,13 @@ namespace jmbde.Migrations
                 name: "Document");
 
             migrationBuilder.DropTable(
-                name: "Function");
-
-            migrationBuilder.DropTable(
                 name: "Printer");
 
             migrationBuilder.DropTable(
                 name: "SystemAccount");
+
+            migrationBuilder.DropTable(
+                name: "WorkFunction");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

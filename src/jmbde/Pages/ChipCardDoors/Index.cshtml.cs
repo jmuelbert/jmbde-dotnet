@@ -130,7 +130,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
             select ccd;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                chipCardDoorIQ = chipCardDoorIQ.Where (cd => cd.Number.Contains (searchString));
+                chipCardDoorIQ = chipCardDoorIQ.Where (cd => cd.Number.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

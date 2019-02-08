@@ -133,7 +133,7 @@ namespace JMuelbert.BDE.Pages.DeviceNames {
             select d;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                deviceNameIQ = deviceNameIQ.Where (dn => dn.Name.Contains (searchString));
+                deviceNameIQ = deviceNameIQ.Where (dn => dn.Name.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

@@ -45,6 +45,7 @@ using JMuelbert.BDE.Data;
 using JMuelbert.BDE.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace JMuelbert.BDE.Pages.ChipCardDoors {
@@ -63,12 +64,29 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
         private readonly ILogger _logger;
 
         /// <summary>
+        /// Localization
+        /// </summary>
+        private readonly IStringLocalizer<CreateModel> _localizer;
+
+        /// <summary>
+        /// Localization
+        /// </summary>
+        private readonly IStringLocalizer<CreateModel> _sharedLocalizer;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.ChipCardDoors.CreateModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
+        /// <param name="localizer">localizer.</param>
+        /// <param name="sharedLocalizer">localizer.</param>
         /// <param name="context">Context.</param>
-        public CreateModel (ILogger<CreateModel> logger, ApplicationDbContext context) {
+        public CreateModel (ILogger<CreateModel> logger,
+            IStringLocalizer<CreateModel> localizer,
+            IStringLocalizer<CreateModel> sharedLocalizer,
+            ApplicationDbContext context) {
             _logger = logger;
+            _localizer = localizer;
+            _sharedLocalizer = sharedLocalizer;
             _context = context;
         }
 

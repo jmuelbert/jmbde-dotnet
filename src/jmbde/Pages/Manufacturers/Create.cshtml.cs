@@ -113,7 +113,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers {
                     m => m.FaxNumber,
                     m => m.HotlineNumber,
                     m => m.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.Manufacturer.Add (emptyManufacturer);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
 

@@ -91,7 +91,7 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
                 return NotFound ();
             }
 
-            WorkFunction = await _context.WorkFunction.SingleOrDefaultAsync (m => m.FunctionId == id).ConfigureAwait (false);
+            WorkFunction = await _context.WorkFunction.SingleOrDefaultAsync (m => m.WorkFunctionId == id).ConfigureAwait (false);
 
             if (WorkFunction == null) {
                 return NotFound ();

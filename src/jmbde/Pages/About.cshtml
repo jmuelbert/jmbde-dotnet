@@ -1,7 +1,10 @@
 @page
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
 @model JMuelbert.BDE.Pages.AboutModel
 @{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = SharedLocalizer["About"];
 }
 
 <div class="jumbotron">

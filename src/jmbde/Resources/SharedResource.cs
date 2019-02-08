@@ -1,4 +1,4 @@
-﻿/**************************************************************************
+/**************************************************************************
  **
  ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
@@ -40,39 +40,8 @@
  **
  **************************************************************************/
 
-using System;
-using System.ComponentModel.DataAnnotations;
+namespace JMuelbert.BDE {
+    public class SharedResource {
 
-namespace JMuelbert.BDE.Data.Models {
-    /// <summary>
-    /// Function.
-    /// </summary>
-    public partial class WorkFunction {
-        /// <summary>
-        /// Gets or sets the workfunction identifier.
-        /// </summary>
-        /// <value>The workfunction identifier.</value>
-        public long WorkFunctionId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        [Required]
-        [StringLength (50, ErrorMessage = "WorkFunction cannot be longer than 50 characters.")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the priority.
-        /// </summary>
-        /// <value>The priority.</value>
-        public long? Priority { get; set; }
-
-        /// <summary>
-        /// Gets or sets the last update.
-        /// </summary>
-        /// <value>The last update.</value>
-        [DataType (DataType.DateTime)]
-        public DateTime LastUpdate { get; set; }
     }
 }

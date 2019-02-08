@@ -140,7 +140,7 @@ namespace JMuelbert.BDE.Pages.JobTitles {
             select j;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                jobTitleIQ = jobTitleIQ.Where (job => job.Name.Contains (searchString));
+                jobTitleIQ = jobTitleIQ.Where (job => job.Name.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {

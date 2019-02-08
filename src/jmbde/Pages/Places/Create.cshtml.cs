@@ -107,7 +107,7 @@ namespace JMuelbert.BDE.Pages.Places {
                     p => p.Room,
                     p => p.Desk,
                     p => p.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.Place.Add (emptyPlace);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
 

@@ -115,7 +115,7 @@ namespace JMuelbert.BDE.Pages.Printers {
                     p => p.Color,
                     p => p.PaperSize,
                     p => p.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.Printer.Add (emptyPrinter);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
 

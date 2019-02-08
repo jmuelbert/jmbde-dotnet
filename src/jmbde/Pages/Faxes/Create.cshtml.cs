@@ -110,7 +110,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
                     f => f.Active,
                     f => f.Replace,
                     f => f.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.Fax.Add (emptyFax);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
 

@@ -99,7 +99,7 @@ namespace JMuelbert.BDE.Pages.Inventories {
                     i => i.Description,
                     i => i.Active,
                     i => i.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.Inventory.Add (emptyInventory);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
 

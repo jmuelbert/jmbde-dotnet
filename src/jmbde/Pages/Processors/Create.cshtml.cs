@@ -108,7 +108,7 @@ namespace JMuelbert.BDE.Pages.Processors { /// <summary>
                     p => p.ClockRate,
                     p => p.Cores,
                     p => p.LastUpdate
-                )) {
+                ).ConfigureAwait (false)) {
                 _context.Processor.Add (emptyProcessor);
                 await _context.SaveChangesAsync ().ConfigureAwait (false);
 
