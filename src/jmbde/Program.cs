@@ -1,4 +1,4 @@
-/**************************************************************************
+﻿/**************************************************************************
  **
  ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
@@ -47,32 +47,67 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection; // CreateScope
-using jmbde.Data;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace jmbde {
+namespace JMuelbert.BDE {
+    /// <summary>
+    /// Program.
+    /// </summary>
     public class Program {
+
+        public static readonly Dictionary<string, string> switchMappings =
+            new Dictionary<string, string> { { "-Help", "Help" }
+            };
+
+        public static readonly Dictionary<string, string> arrayDict =
+            new Dictionary<string, string> { { "-Help", "Help" }
+            };
+
+        public static IHostingEnvironment HostingEnvironment { get; set; }
+        public static IConfiguration Configuration { get; set; }
+
+        /// <summary>
+        /// The entry point of the program, where the program control starts and ends.
+        /// </summary>
+        /// <param name="args">The command-line arguments.</param>
+        /// <summary>
         public static void Main (string[] args) {
-            var host = BuildWebHost (args);
 
-            using (var scope = host.Services.CreateScope ()) {
-                var services = scope.ServiceProvider;
+            CreateWebHostBuilder (args).Build ().Run ();
 
-                try {
-                    var context = services.GetRequiredService<JMBDEContext> ();
-                } catch (Exception ex) {
-                    var logger = services.GetRequiredService<ILogger<Program>> ();
-                    logger.LogError (ex, "An error occurs creating the DB.");
-                }
-            }
-
-            host.Run ();
         }
 
-        public static IWebHost BuildWebHost (string[] args) =>
+        public static IWebHostBuilder CreateWebHostBuilder (string[] args) =>
             WebHost.CreateDefaultBuilder (args)
-            .UseStartup<Startup> ()
-            .Build ();
+            .ConfigureAppConfiguration ((hostingContext, config) => {
+                config.SetBasePath (Directory.GetCurrentDirectory ());
+                config.AddInMemoryCollection (arrayDict);
+                config.AddIniFile ("config.ini", optional : true, reloadOnChange : true);
+                config.AddJsonFile ("json_array.json", optional : true, reloadOnChange : false);
+                config.AddJsonFile ("config.json", optional : true, reloadOnChange : false);
+                config.AddXmlFile ("config.xml", optional : true, reloadOnChange : false);
+
+                // Call other providers here and call AddCommandLine last.
+                config.AddCommandLine (args, switchMappings);
+
+                HostingEnvironment = hostingContext.HostingEnvironment;
+                Configuration = config.Build ();
+            })
+            .Configure (app => {
+                var loggerFactory = app.ApplicationServices
+                    .GetRequiredService<ILoggerFactory> ();
+                var logger = loggerFactory.CreateLogger<Program> ();
+
+                logger.LogInformation ("Logged in Configure");
+            })
+            .ConfigureLogging ((hostingContext, logging) => {
+                logging.AddConfiguration (hostingContext.Configuration.GetSection ("Logging"));
+                logging.AddConsole ();
+                logging.AddDebug ();
+                logging.AddEventSourceLogger ();
+            })
+            .UseStartup<Startup> ();
     }
 }

@@ -1,5 +1,5 @@
 @page "{id:int}"
-@model jmbde.Pages.Mobiles.DeleteModel
+@model JMuelbert.BDE.Pages.Mobiles.DeleteModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -57,7 +57,7 @@
             @Html.DisplayFor(model => model.Mobile.LastUpdate)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="Mobile.MobileId" />
         <input type="submit" value="Delete" class="btn btn-default" /> |

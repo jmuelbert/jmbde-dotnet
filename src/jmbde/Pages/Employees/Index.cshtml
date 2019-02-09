@@ -1,5 +1,5 @@
 @page
-@model jmbde.Pages.Employees.IndexModel
+@model JMuelbert.BDE.Pages.Employees.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -26,13 +26,13 @@
         <tr>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.EmployeeIdentSort"
-                    asp-route-currentFilter="@Model.CurrentFilter"> 
+                   asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Employee[0].EmployeeIdent)
-                </a>    
+                </a>
             </th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.GenderSort"
-                        asp-route-currentFilter="@Model.CurrentFilter"> 
+                   asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Employee[0].Gender)
                 </a>
             </th>
@@ -41,13 +41,13 @@
             </th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
-                    asp-route-currentFilter="@Model.CurrentFilter"> 
+                   asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Employee[0].LastName)
                 </a>
             </th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.BirthDaySort"
-                        asp-route-currentFilter="@Model.CurrentFilter"> 
+                   asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Employee[0].BirthDay)
                 </a>
             </th>
@@ -68,13 +68,13 @@
             </th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.DataCareSort"
-                    asp-route-currentFilter="@Model.CurrentFilter"> 
+                   asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Employee[0].DataCare)
                 </a>
             </th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.ActiveSort"
-                    asp-route-currentFilter="@Model.CurrentFilter">                 
+                   asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Employee[0].Active)
                 </a>
             </th>
@@ -86,19 +86,19 @@
             </th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.HireDateSort"
-                    asp-route-currentFilter="@Model.CurrentFilter">                   
+                   asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Employee[0].HireDate)
                 </a>
             </th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.EndDateSort"
-                    asp-route-currentFilter="@Model.CurrentFilter">   
+                   asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Employee[0].EndDate)
                 </a>
             </th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
-                    asp-route-currentFilter="@Model.CurrentFilter">   
+                   asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Employee[0].LastUpdate)
                 </a>
             </th>
@@ -106,65 +106,66 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Employee) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmployeeIdent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDay)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Street)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HomePhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HomeMobile)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HomeMailAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BusinessMailAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCare)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Photo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HireDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.EmployeeId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.EmployeeId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.EmployeeId">Delete</a>
-            </td>
-        </tr>
+        @foreach (var item in Model.Employee)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmployeeIdent)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Gender)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BirthDay)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Street)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HomePhone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HomeMobile)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HomeMailAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BusinessMailAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DataCare)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Active)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Photo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Notes)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HireDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EndDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastUpdate)
+    </td>
+    <td>
+        <a asp-page="./Edit" asp-route-id="@item.EmployeeId">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.EmployeeId">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.EmployeeId">Delete</a>
+    </td>
+</tr>
 }
     </tbody>
 </table>

@@ -1,5 +1,5 @@
 @page
-@model jmbde.Pages.SystemAccounts.IndexModel
+@model JMuelbert.BDE.Pages.SystemAccounts.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -24,42 +24,43 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.UserNameSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                
-                        @Html.DisplayNameFor(model => model.SystemAccount[0].UserName)
-                    </a>
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SystemAccount[0].PassWord)
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                
-                        @Html.DisplayNameFor(model => model.SystemAccount[0].LastUpdate)
-                    </a>
-                </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.UserNameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.SystemAccount[0].UserName)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SystemAccount[0].PassWord)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.SystemAccount[0].LastUpdate)
+                </a>
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.SystemAccount) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PassWord)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.SystemAccountId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.SystemAccountId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.SystemAccountId">Delete</a>
-            </td>
-        </tr>
+        @foreach (var item in Model.SystemAccount)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PassWord)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastUpdate)
+    </td>
+    <td>
+        <a asp-page="./Edit" asp-route-id="@item.SystemAccountId">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.SystemAccountId">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.SystemAccountId">Delete</a>
+    </td>
+</tr>
 }
     </tbody>
 </table>
@@ -83,4 +84,4 @@
    class="btn btn-default @nextDisabled">
     Next
 </a>
- 
+

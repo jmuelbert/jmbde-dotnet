@@ -1,5 +1,5 @@
 @page "{id:int}"
-@model jmbde.Pages.Places.DeleteModel
+@model JMuelbert.BDE.Pages.Places.DeleteModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -39,7 +39,7 @@
             @Html.DisplayFor(model => model.Place.LastUpdate)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="Place.PlaceId" />
         <input type="submit" value="Delete" class="btn btn-default" /> |

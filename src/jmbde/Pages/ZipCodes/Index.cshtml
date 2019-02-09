@@ -1,5 +1,5 @@
 @page
-@model jmbde.Pages.ZipCodes.IndexModel
+@model JMuelbert.BDE.Pages.ZipCodes.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -24,42 +24,43 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.CodeSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                
-                        @Html.DisplayNameFor(model => model.ZipCode[0].Code)
-                    </a>
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ZipCode[0].Country)
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                                    
-                        @Html.DisplayNameFor(model => model.ZipCode[0].LastUpdate)
-                    </a>
-                </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.CodeSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.ZipCode[0].Code)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZipCode[0].Country)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.ZipCode[0].LastUpdate)
+                </a>
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ZipCode) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ZipCodeId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ZipCodeId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ZipCodeId">Delete</a>
-            </td>
-        </tr>
+        @foreach (var item in Model.ZipCode)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Code)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Country)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastUpdate)
+    </td>
+    <td>
+        <a asp-page="./Edit" asp-route-id="@item.ZipCodeId">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.ZipCodeId">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.ZipCodeId">Delete</a>
+    </td>
+</tr>
 }
     </tbody>
 </table>

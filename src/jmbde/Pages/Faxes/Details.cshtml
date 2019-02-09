@@ -1,5 +1,5 @@
 @page "{id:int}"
-@model jmbde.Pages.Faxes.DetailsModel
+@model JMuelbert.BDE.Pages.Faxes.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
@@ -56,7 +56,7 @@
                     <th>FirstName</th>
                     <th>LastName</th>
                 </tr>
-                @foreach ( var item in Model.Fax.Employee)
+                @foreach (var item in Model.Fax.Employee)
                 {
                     <tr>
                         <td>

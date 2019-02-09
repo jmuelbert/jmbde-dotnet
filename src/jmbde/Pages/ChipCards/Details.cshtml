@@ -1,5 +1,5 @@
 @page "{id:int}"
-@model jmbde.Pages.ChipCards.DetailsModel
+@model JMuelbert.BDE.Pages.ChipCards.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
@@ -38,7 +38,7 @@
                     <th>FirstName</th>
                     <th>LastName</th>
                 </tr>
-                @foreach ( var item in Model.ChipCard.Employee)
+                @foreach (var item in Model.ChipCard.Employee)
                 {
                     <tr>
                         <td>
@@ -59,7 +59,7 @@
                 <tr>
                     <th>Number</th>
                 </tr>
-                @foreach ( var item in Model.ChipCard.ChipCardProfile)
+                @foreach (var item in Model.ChipCard.ChipCardProfile)
                 {
                     <tr>
                         <td>
@@ -77,7 +77,7 @@
                 <tr>
                     <th>Number</th>
                 </tr>
-                @foreach ( var item in Model.ChipCard.ChipCardDoor)
+                @foreach (var item in Model.ChipCard.ChipCardDoor)
                 {
                     <tr>
                         <td>
@@ -86,7 +86,7 @@
                     </tr>
                 }
             </table>
-        </dd>      
+        </dd>
     </dl>
 </div>
 <div>

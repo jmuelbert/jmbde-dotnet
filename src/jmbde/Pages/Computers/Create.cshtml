@@ -1,5 +1,5 @@
 @page
-@model jmbde.Pages.Computers.CreateModel
+@model JMuelbert.BDE.Pages.Computers.CreateModel
 
 @{
     ViewData["Title"] = "Create";
@@ -48,11 +48,11 @@
                 <input asp-for="Computer.NetworkIpAddress" class="form-control" />
                 <span asp-validation-for="Computer.NetworkIpAddress" class="text-danger"></span>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Computer.Active" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Computer.Active" /> 
+                        <input asp-for="Computer.Active" />
                     </label>
                 </div>
                 <span asp-validation-for="Computer.Active" class="text-danger"></span>
@@ -61,7 +61,7 @@
                 <label asp-for="Computer.Replace" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Computer.Replace" /> 
+                        <input asp-for="Computer.Replace" />
                     </label>
                 </div>
                 <span asp-validation-for="Computer.Replace" class="text-danger"></span>

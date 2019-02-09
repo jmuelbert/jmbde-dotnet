@@ -1,5 +1,5 @@
 @page
-@model jmbde.Pages.CityNames.IndexModel
+@model JMuelbert.BDE.Pages.CityNames.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -24,36 +24,37 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">
-                            @Html.DisplayNameFor(model => model.CityName[0].Name)
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">
-                        @Html.DisplayNameFor(model => model.CityName[0].LastUpdate)
-                    </a>
-                </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.CityName[0].Name)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.CityName[0].LastUpdate)
+                </a>
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.CityName) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.CityNameId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.CityNameId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.CityNameId">Delete</a>
-            </td>
-        </tr>
+        @foreach (var item in Model.CityName)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastUpdate)
+    </td>
+    <td>
+        <a asp-page="./Edit" asp-route-id="@item.CityNameId">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.CityNameId">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.CityNameId">Delete</a>
+    </td>
+</tr>
 }
     </tbody>
 </table>

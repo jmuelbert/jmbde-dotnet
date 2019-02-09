@@ -1,5 +1,5 @@
 @page
-@model jmbde.Pages.Processors.DeleteModel
+@model JMuelbert.BDE.Pages.Processors.DeleteModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -39,7 +39,7 @@
             @Html.DisplayFor(model => model.Processor.LastUpdate)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="Processor.ProcessorId" />
         <input type="submit" value="Delete" class="btn btn-default" /> |

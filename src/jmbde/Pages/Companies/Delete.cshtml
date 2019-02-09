@@ -1,5 +1,5 @@
 @page "{id:int}"
-@model jmbde.Pages.Companies.DeleteModel
+@model JMuelbert.BDE.Pages.Companies.DeleteModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -70,7 +70,7 @@
             @Html.DisplayFor(model => model.Company.LastUpdate)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="Company.CompanyId" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
