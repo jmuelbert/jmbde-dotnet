@@ -10,6 +10,7 @@
 *.db3 
 *.sqlite
 *.DS_Store
+.mfractor/
 
 
 # User-specific files (MonoDevelop/Xamarin Studio)
