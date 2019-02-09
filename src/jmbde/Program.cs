@@ -77,6 +77,15 @@ namespace JMuelbert.BDE {
 
             CreateWebHostBuilder (args).Build ().Run ();
 
+                try {
+                    var context = services.GetRequiredService<JMBDEContext> ();
+                } catch (Exception ex) {
+                    var logger = services.GetRequiredService<ILogger<Program>> ();
+                    logger.LogError (ex, "An error occurs creating the DB.");
+                }
+            }
+
+            host.Run ();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder (string[] args) =>
