@@ -1,5 +1,5 @@
 @page "{id:int}"
-@model jmbde.Pages.Faxes.DeleteModel
+@model JMuelbert.BDE.Pages.Faxes.DeleteModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -51,7 +51,7 @@
             @Html.DisplayFor(model => model.Fax.LastUpdate)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="Fax.FaxId" />
         <input type="submit" value="Delete" class="btn btn-default" /> |

@@ -1,5 +1,5 @@
 @page
-@model jmbde.Pages.JobTitles.IndexModel
+@model JMuelbert.BDE.Pages.JobTitles.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -24,45 +24,46 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                   <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                                        
-                        @Html.DisplayNameFor(model => model.JobTitle[0].Name)
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.FromDateSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                    
-                        @Html.DisplayNameFor(model => model.JobTitle[0].FromDate)
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                    
-                     @Html.DisplayNameFor(model => model.JobTitle[0].LastUpdate)
-                    </a>
-                </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.JobTitle[0].Name)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.FromDateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.JobTitle[0].FromDate)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.JobTitle[0].LastUpdate)
+                </a>
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.JobTitle) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FromDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.JobTitleId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.JobTitleId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.JobTitleId">Delete</a>
-            </td>
-        </tr>
+        @foreach (var item in Model.JobTitle)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FromDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastUpdate)
+    </td>
+    <td>
+        <a asp-page="./Edit" asp-route-id="@item.JobTitleId">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.JobTitleId">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.JobTitleId">Delete</a>
+    </td>
+</tr>
 }
     </tbody>
 </table>

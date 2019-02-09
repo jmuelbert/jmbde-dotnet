@@ -1,2 +1,9 @@
 {
+    "cSpell.language": "de,en,en-GB,en-US,de-DE",
+    "cSpell.words": [
+        "datas",
+        "system"
+    ],
+    "shellformat.path": /Users/juergen/anaconda3/bin/shfmt,
+
 }

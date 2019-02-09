@@ -1,5 +1,5 @@
 @page "{id:int}"
-@model jmbde.Pages.ChipCardProfiles.DetailsModel
+@model JMuelbert.BDE.Pages.ChipCardProfiles.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
@@ -23,7 +23,7 @@
         <dd>
             @Html.DisplayFor(model => model.ChipCardProfile.LastUpdate)
         </dd>
-                <dt>
+        <dt>
             @Html.DisplayNameFor(model => model.ChipCardProfile.Employee)
         </dt>
         <dd>
@@ -32,7 +32,7 @@
                     <th>FirstName</th>
                     <th>LastName</th>
                 </tr>
-                @foreach ( var item in Model.ChipCardProfile.Employee)
+                @foreach (var item in Model.ChipCardProfile.Employee)
                 {
                     <tr>
                         <td>

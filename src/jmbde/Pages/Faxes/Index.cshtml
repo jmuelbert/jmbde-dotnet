@@ -1,5 +1,5 @@
 @page
-@model jmbde.Pages.Faxes.IndexModel
+@model JMuelbert.BDE.Pages.Faxes.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -24,66 +24,67 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.NumberSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                
-                        @Html.DisplayNameFor(model => model.Fax[0].Number)
-                    </a>
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Fax[0].SerialNumber)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Fax[0].Pin)
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.ActiveSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                     
-                        @Html.DisplayNameFor(model => model.Fax[0].Active)
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.ReplaceSort"
-                        asp-route-currentFilter="@Model.CurrentFilter"> 
-                        @Html.DisplayNameFor(model => model.Fax[0].Replace)
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
-                        asp-route-currentFilter="@Model.CurrentFilter"> 
-                        @Html.DisplayNameFor(model => model.Fax[0].LastUpdate)
-                    </a>
-                </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NumberSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Fax[0].Number)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fax[0].SerialNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fax[0].Pin)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ActiveSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Fax[0].Active)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ReplaceSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Fax[0].Replace)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Fax[0].LastUpdate)
+                </a>
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Fax) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Number)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SerialNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Replace)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.FaxId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.FaxId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.FaxId">Delete</a>
-            </td>
-        </tr>
+        @foreach (var item in Model.Fax)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Number)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SerialNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pin)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Active)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Replace)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastUpdate)
+    </td>
+    <td>
+        <a asp-page="./Edit" asp-route-id="@item.FaxId">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.FaxId">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.FaxId">Delete</a>
+    </td>
+</tr>
 }
     </tbody>
 </table>

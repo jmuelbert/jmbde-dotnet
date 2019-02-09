@@ -1,5 +1,5 @@
 @page
-@model jmbde.Pages.SystemDatas.IndexModel
+@model JMuelbert.BDE.Pages.SystemDatas.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -24,42 +24,43 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                
-                        @Html.DisplayNameFor(model => model.SystemData[0].Name)
-                    </a>
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SystemData[0].Local)
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
-                        asp-route-currentFilter="@Model.CurrentFilter">                        
-                        @Html.DisplayNameFor(model => model.SystemData[0].LastUpdate)
-                    </a>
-                </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.SystemData[0].Name)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SystemData[0].Local)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastUpdateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.SystemData[0].LastUpdate)
+                </a>
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.SystemData) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Local)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.SystemDataId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.SystemDataId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.SystemDataId">Delete</a>
-            </td>
-        </tr>
+        @foreach (var item in Model.SystemData)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Local)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastUpdate)
+    </td>
+    <td>
+        <a asp-page="./Edit" asp-route-id="@item.SystemDataId">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.SystemDataId">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.SystemDataId">Delete</a>
+    </td>
+</tr>
 }
     </tbody>
 </table>

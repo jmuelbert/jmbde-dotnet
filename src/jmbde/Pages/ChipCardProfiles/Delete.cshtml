@@ -1,5 +1,5 @@
 @page "{id:int}"
-@model jmbde.Pages.ChipCardProfiles.DeleteModel
+@model JMuelbert.BDE.Pages.ChipCardProfiles.DeleteModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -27,7 +27,7 @@
             @Html.DisplayFor(model => model.ChipCardProfile.LastUpdate)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="ChipCardProfile.ChipCardProfileId" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
