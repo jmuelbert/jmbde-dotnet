@@ -2,7 +2,6 @@
 
 [![GitHub license](https://img.shields.io/badge/license-EUPL-blue.svg)](https://joinup.ec.europa.eu/page/eupl-text-11-12)
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/ja8a7j6jscj7k3xa/branch/master?svg=true)](https://ci.appveyor.com/project/jmuelbert/jmbde-aspnet)
-[![Build Status](https://travis-ci.org/jmuelbert/jmbde-aspnet.svg?branch=master)](https://travis-ci.org/jmuelbert/jmbde-aspnet)
 
 jmbde is a program to collect data for the IT. The database contains employees, departments, functions, phones, mobiles, computers, printers, faxes and accounts.
 
@@ -83,6 +82,6 @@ The master branch represents the latest pre-release code.
 
 ## License
 
-EUPL-1.2 © [Jürgen Mülbert](https://github.com/jmuelbert/jmbde-aspnet/blob/master/LICENSE)
+EUPL-1.2 © [Jürgen Mülbert](https://github.com/jmuelbert/jmbde-aspnet/blob/master/LICENSE)
 
 [Return to top](#top)
