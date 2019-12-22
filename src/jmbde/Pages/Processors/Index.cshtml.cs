@@ -126,7 +126,7 @@ namespace JMuelbert.BDE.Pages.Processors {
         /// <param name="currentFilter"></param>
         /// <param name="searchString"></param>
         /// <param name="pageIndex"></param>
-        /// <returns></returns>    
+        /// <returns></returns>
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
             _logger.LogDebug ($"Processors/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");

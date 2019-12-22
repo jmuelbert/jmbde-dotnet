@@ -123,7 +123,7 @@ namespace JMuelbert.BDE.Pages.Companies {
         /// <param name="currentFilter"></param>
         /// <param name="searchString"></param>
         /// <param name="pageIndex"></param>
-        /// <returns></returns>    
+        /// <returns></returns>
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
             _logger.LogDebug ($"Companies/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");

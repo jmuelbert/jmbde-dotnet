@@ -83,7 +83,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
         /// <summary>
         /// Gets or sets the ErrorMessage.
         /// </summary>
-        /// <value>The ErrorMessage.</value> 
+        /// <value>The ErrorMessage.</value>
         public string ErrorMessage { get; set; }
 
         /// <summary>

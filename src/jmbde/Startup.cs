@@ -1,4 +1,4 @@
-﻿/**************************************************************************
+/**************************************************************************
  **
  ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
  **
@@ -41,28 +41,27 @@
  **************************************************************************/
 
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using JMuelbert.BDE.Data;
-using JMuelbert.BDE.Filters;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Localization;
-using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
+using JMuelbert.BDE.Data;
+using JMuelbert.BDE.Filters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Localization;
+using System.Globalization;
 
 namespace JMuelbert.BDE {
     /// <summary>
@@ -76,7 +75,7 @@ namespace JMuelbert.BDE {
         /// <summary>
         /// The _env.
         /// </summary>
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         /// <summary>
         /// The logger.
         /// </summary>
@@ -86,7 +85,7 @@ namespace JMuelbert.BDE {
         /// </summary>
         /// <param name="logger">Logger.</param>
         /// <param name="configuration">Configuration.</param>
-        public Startup (IHostingEnvironment env, IConfiguration configuration,
+        public Startup (IWebHostEnvironment env, IConfiguration configuration,
             ILogger<Startup> logger) {
             _env = env;
             Configuration = configuration;
@@ -101,55 +100,31 @@ namespace JMuelbert.BDE {
 
         /// <summary>
         /// Configures the services.
-        // This method gets called by the runtime. 
+        // This method gets called by the runtime.
         // Use this method to add services to the container
         /// </summary>
         /// <param name="services">Services.</param>
         public void ConfigureServices (IServiceCollection services) {
             // Set the path to the sqlite database
             var appDataPath = "";
-            var homePath = "";
             var dbString = "";
             // Get the settings from appsettings.json
             var dbPath = Configuration.GetSection ("Data").GetSection ("DBPath").Value;
             var dbName = Configuration.GetSection ("Data").GetSection ("DBName").Value;
-            // Get the OS
-            // WINDIR is only available in Windows
-            var os = Environment.GetEnvironmentVariable ("WINDIR");
+            appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            dbString = Path.Combine (appDataPath, dbPath);
+            dbString = Path.Combine (dbString,
+                                     dbName);
 
-            // Check if the os variable is set then the OS is Windows
-            if (os != null) {
-                homePath = System.Environment.GetFolderPath (System.Environment.SpecialFolder.ApplicationData);
-                appDataPath = Path.Combine (homePath, dbPath);
-                dbString = Path.Combine (appDataPath, dbName);
-            } else {
-                // This is available by macOS
-                os = Environment.GetEnvironmentVariable ("_system_type");
-
-                // Darwin is macOS
-                if (os.Equals ("Darwin", StringComparison.CurrentCulture)) {
-                    homePath = Environment.GetEnvironmentVariable ("HOME");
-                    appDataPath = Path.Combine (homePath, "Library/Application Support");
-                    appDataPath = Path.Combine (appDataPath, dbPath);
-                    dbString = Path.Combine (appDataPath, dbName);
-                } else {
-                    // This is for Linux
-                    homePath = Environment.GetEnvironmentVariable ("HOME");
-                    appDataPath = Path.Combine (homePath, "local");
-                    appDataPath = Path.Combine (homePath, dbPath);
-                    dbString = Path.Combine (appDataPath, dbName);
-                }
-            }
-
-            DirectoryInfo di = new DirectoryInfo (appDataPath);
+            DirectoryInfo di = new DirectoryInfo (dbString);
             try {
                 if (di.Exists) {
-                    _logger.LogInformation ($"The Directory { appDataPath} exists", appDataPath);
+                    _logger.LogInformation ($"The Directory { dbString } exists", dbString);
                 } else {
 
                     // Try Create the Directory
                     di.Create ();
-                    _logger.LogInformation ($"The Directory { appDataPath} created", appDataPath);
+                    _logger.LogInformation ($"The Directory { dbString } created", dbString);
                 }
             } catch (Exception e) {
                 _logger.LogInformation ($"The Directory could not created {e}", e);
@@ -158,6 +133,7 @@ namespace JMuelbert.BDE {
 
             // Build the connenction string.
             var connection = "Data Source=" + dbString;
+            _logger.LogInformation ($"The Data Source { connection } ", connection);
 
             if (_env.IsDevelopment ()) {
                 // Development service configuration
@@ -170,43 +146,13 @@ namespace JMuelbert.BDE {
                 _logger.LogInformation ($"Environment: {_env.EnvironmentName}");
             }
 
-            services.Configure<CookiePolicyOptions> (options => {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-
             // Add framework services.
             services.AddDbContext<ApplicationDbContext> (options =>
                 options.UseSqlite (connection));
 
             services.AddDefaultIdentity<IdentityUser> ()
-                .AddDefaultUI (UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<ApplicationDbContext> ();
-
-            #region Localization_Resources
-            services.AddLocalization (options => options.ResourcesPath = "Resources");
-            #endregion
-
-            services.AddMvc (options => {
-                    options.Filters.Add (new AsyncPageFilter (_logger));
-                })
-                .AddViewLocalization (LanguageViewLocationExpanderFormat.Suffix)
-                .AddDataAnnotationsLocalization ()
-                .SetCompatibilityVersion (CompatibilityVersion.Version_2_2);
-
-            #region Localization_Options
-            services.Configure<RequestLocalizationOptions> (options => {
-                var supportedCultures = new List<CultureInfo> {
-                new CultureInfo ("en-US"),
-                new CultureInfo ("de")
-                };
-
-                options.DefaultRequestCulture = new RequestCulture ("en-US");
-                options.SupportedCultures = supportedCultures;
-                options.SupportedUICultures = supportedCultures;
-            });
-            #endregion
+                    .AddEntityFrameworkStores<ApplicationDbContext> ();
+            services.AddRazorPages();
         }
 
         /// <summary>
@@ -215,15 +161,15 @@ namespace JMuelbert.BDE {
         /// </summary>
         /// <param name="app">App.</param>
         /// <param name="env">Env.</param>
-        public void Configure (IApplicationBuilder app, IHostingEnvironment env) {
+        public void Configure (IApplicationBuilder app, IWebHostEnvironment env) {
 
             if (env.IsDevelopment ()) {
                 _logger.LogInformation ("In Development environment");
                 app.UseDeveloperExceptionPage ();
                 app.UseDatabaseErrorPage ();
             }
-
-            if (env.IsProduction () || env.IsStaging ()) {
+            else
+            {
                 app.UseExceptionHandler ("/Error");
                 app.UseHsts ();
 
@@ -255,10 +201,17 @@ namespace JMuelbert.BDE {
 
             app.UseHttpsRedirection ();
             app.UseStaticFiles ();
+
+            app.UseRouting();
+
             app.UseRequestLocalization ();
+
             app.UseCookiePolicy ();
 
-            app.UseMvc ();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+            });
         }
     }
 }

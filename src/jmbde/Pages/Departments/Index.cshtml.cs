@@ -96,7 +96,7 @@ namespace JMuelbert.BDE.Pages.Departments {
         /// <summary>
         /// Gets or sets the current filter.
         /// </summary>
-        /// <value>The current filter.</value> 
+        /// <value>The current filter.</value>
         public string CurrentFilter { get; set; }
 
         /// <summary>

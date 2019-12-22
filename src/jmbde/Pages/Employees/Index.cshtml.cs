@@ -138,7 +138,7 @@ namespace JMuelbert.BDE.Pages.Employees {
         /// <summary>
         /// Gets or sets the current sort.
         /// </summary>
-        /// <value>The current sort.</value>  
+        /// <value>The current sort.</value>
         public string CurrentSort { get; set; }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace JMuelbert.BDE.Pages.Employees {
         /// <param name="currentFilter"></param>
         /// <param name="searchString"></param>
         /// <param name="pageIndex"></param>
-        /// <returns></returns>    
+        /// <returns></returns>
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
             _logger.LogDebug ($"Employees/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
