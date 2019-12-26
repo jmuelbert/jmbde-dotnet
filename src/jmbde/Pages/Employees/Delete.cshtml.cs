@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.Employees {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"Employees/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.Employees {
 
             Employee = await _context.Employee
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (e => e.EmployeeId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (e => e.ID == id).ConfigureAwait (false);
 
             if (Employee == null) {
                 return NotFound ();
@@ -118,7 +118,7 @@ namespace JMuelbert.BDE.Pages.Employees {
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"Employees/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.Employees {
 
             var employee = await _context.Employee
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (e => e.EmployeeId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (e => e.ID == id).ConfigureAwait (false);
 
             if (employee == null) {
                 return NotFound ();

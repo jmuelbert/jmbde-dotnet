@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.Printers {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"Printers/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.Printers {
 
             Printer = await _context.Printer
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.PrinterId == id)
+                .FirstOrDefaultAsync (p => p.ID == id)
                 .ConfigureAwait (false);
 
             if (Printer == null) {
@@ -119,7 +119,7 @@ namespace JMuelbert.BDE.Pages.Printers {
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"Printers/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
@@ -128,7 +128,7 @@ namespace JMuelbert.BDE.Pages.Printers {
 
             var printer = await _context.Printer
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.PrinterId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (p => p.ID == id).ConfigureAwait (false);
 
             if (printer == null) {
                 return NotFound ();

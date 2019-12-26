@@ -107,7 +107,7 @@ namespace JMuelbert.BDE.Pages.ChipCards {
         /// Gets or sets the chip card.
         /// </summary>
         /// <value>The chip card.</value>
-        public PaginatedList<ChipCard> ChipCard { get; set; }
+        public PaginatedCollection<ChipCard> ChipCard { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -163,7 +163,7 @@ namespace JMuelbert.BDE.Pages.ChipCards {
 
             int pageSize = 10;
 
-            ChipCard = await PaginatedList<ChipCard>.CreateAsync (
+            ChipCard = await PaginatedCollection<ChipCard>.CreateAsync (
                 chipCardIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

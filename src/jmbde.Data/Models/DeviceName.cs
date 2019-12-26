@@ -52,7 +52,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the device name identifier.
         /// </summary>
         /// <value>The device name identifier.</value>
-        public long DeviceNameId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the name.

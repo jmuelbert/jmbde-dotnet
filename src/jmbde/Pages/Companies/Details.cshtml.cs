@@ -84,14 +84,15 @@ namespace JMuelbert.BDE.Pages.Companies {
         /// </summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ("Companies/Details/OnGetAsync");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            Company = await _context.Company.SingleOrDefaultAsync (m => m.CompanyId == id).ConfigureAwait (false);
+            Company = await _context.Company.SingleOrDefaultAsync(m => m.ID == id)
+                                            .ConfigureAwait(false);
 
             if (Company == null) {
                 return NotFound ();

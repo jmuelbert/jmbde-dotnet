@@ -84,7 +84,7 @@ namespace JMuelbert.BDE.Pages.Employees {
         /// </summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"Employees/Details/OnGetAsync ({ id })");
 
             if (id == null) {
@@ -98,7 +98,8 @@ namespace JMuelbert.BDE.Pages.Employees {
                 .Include (e => e.SystemAccount)
                 .Include (e => e.Document)
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.EmployeeId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (m => m.ID
+                                           == id).ConfigureAwait (false);
 
             if (Employee == null) {
                 return NotFound ();

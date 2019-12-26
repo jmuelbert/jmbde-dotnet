@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.DeviceNames {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"DeviceName/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.DeviceNames {
 
             DeviceName = await _context.DeviceName
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (d => d.DeviceNameId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (d => d.ID == id).ConfigureAwait (false);
 
             if (DeviceName == null) {
                 return NotFound ();
@@ -118,7 +118,7 @@ namespace JMuelbert.BDE.Pages.DeviceNames {
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"DeviceName/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.DeviceNames {
 
             var devicename = await _context.DeviceName
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (d => d.DeviceNameId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (d => d.ID == id).ConfigureAwait (false);
 
             if (devicename == null) {
                 return NotFound ();

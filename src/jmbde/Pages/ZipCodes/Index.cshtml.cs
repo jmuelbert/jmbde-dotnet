@@ -104,7 +104,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
         /// Gets or sets the ZipCode.
         /// </summary>
         /// <value>The ZipCode.</value>
-        public PaginatedList<ZipCode> ZipCode { get; set; }
+        public PaginatedCollection<ZipCode> ZipCode { get; set; }
 
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
@@ -146,7 +146,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
             }
 
             int pageSize = 10;
-            ZipCode = await PaginatedList<ZipCode>.CreateAsync (
+            ZipCode = await PaginatedCollection<ZipCode>.CreateAsync (
                 zipcodeIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

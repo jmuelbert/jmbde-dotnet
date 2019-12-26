@@ -53,7 +53,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the inventory identifier.
         /// </summary>
         /// <value>The inventory identifier.</value>
-        public long InventoryId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the identifier.

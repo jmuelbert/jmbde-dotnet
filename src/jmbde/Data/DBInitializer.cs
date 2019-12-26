@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2018 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -40,33 +40,24 @@
  **
  **************************************************************************/
 
+using JMuelbert.BDE.Data;
+using JMuelbert.BDE.Data.Models;
 using System;
-using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
-namespace JMuelbert.BDE.Data.Models {
-    /// <summary>
-    /// City name.
-    /// </summary>
-    public partial class CityName {
-        /// <summary>
-        /// Gets or sets the city name identifier.
-        /// </summary>
-        /// <value>The city name identifier.</value>
-        public int ID { get; set; }
+namespace JMuelbert.BDE.Data
+{
+    public static class DbInitializer
+    {
+        public static void Initialize(ApplicationDbContext context)
+        {
+            context.Database.EnsureCreated();
 
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        [Required]
-        [StringLength (50, ErrorMessage = "City Name cannot be longer than 50 characters.")]
-        public string Name { get; set; }
+        }
 
-        /// <summary>
-        /// Gets or sets the last update.
-        /// </summary>
-        /// <value>The last update.</value>
-        [DataType (DataType.DateTime)]
-        public DateTime LastUpdate { get; set; }
+        public static void CreatePathForDB()
+        {
+
+        }
     }
 }

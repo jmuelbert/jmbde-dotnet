@@ -83,7 +83,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles {
         /// </summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"ChipCardProfiles/Details/OnGetAsync ({ id })");
 
             if (id == null) {
@@ -93,7 +93,8 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles {
             ChipCardProfile = await _context.ChipCardProfile
                 .Include (c => c.Employee)
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.ChipCardProfileId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (m => m.ID
+                                           == id).ConfigureAwait (false);
 
             if (ChipCardProfile == null) {
                 return NotFound ();

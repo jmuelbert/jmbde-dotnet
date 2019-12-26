@@ -82,7 +82,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
         /// </summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"ChipCardDoors/Details/OnGetAsync ({ id })");
 
             if (id == null) {
@@ -94,7 +94,8 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
                 .Include (d => d.Department)
                 .Include (p => p.Place)
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.ChipCardDoorId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (m => m.ID
+                == id).ConfigureAwait (false);
 
             if (ChipCardDoor == null) {
                 return NotFound ();

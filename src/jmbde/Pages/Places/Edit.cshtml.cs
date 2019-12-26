@@ -82,7 +82,7 @@ namespace JMuelbert.BDE.Pages.Places { /// <summary>
         /// </summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"Places/Edit/OnGetAsync({ id })");
 
             if (id == null) {
@@ -102,7 +102,7 @@ namespace JMuelbert.BDE.Pages.Places { /// <summary>
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"Places/Edit/OnPostAsync({ id })");
             if (!ModelState.IsValid) {
                 return Page ();

@@ -90,7 +90,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas { /// <summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"SystemData/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
@@ -99,7 +99,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas { /// <summary>
 
             SystemData = await _context.SystemData
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (s => s.SystemDataId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (s => s.ID == id).ConfigureAwait (false);
 
             if (SystemData == null) {
                 return NotFound ();
@@ -116,7 +116,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas { /// <summary>
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"SystemData/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
@@ -125,7 +125,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas { /// <summary>
 
             var systemdata = await _context.SystemData
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (s => s.SystemDataId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (s => s.ID == id).ConfigureAwait (false);
 
             if (systemdata == null) {
                 return NotFound ();

@@ -114,7 +114,7 @@ namespace JMuelbert.BDE.Pages.Companies {
         /// Gets or sets the cityname profile.
         /// </summary>
         /// <value>The cityname profile.</value>
-        public PaginatedList<Company> Company { get; set; }
+        public PaginatedCollection<Company> Company { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -182,7 +182,7 @@ namespace JMuelbert.BDE.Pages.Companies {
             }
 
             int pageSize = 10;
-            Company = await PaginatedList<Company>.CreateAsync (
+            Company = await PaginatedCollection<Company>.CreateAsync (
                 companyIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

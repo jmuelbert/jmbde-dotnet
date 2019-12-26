@@ -93,7 +93,7 @@ namespace JMuelbert.BDE.Pages.Processors { /// <summary>
         /// </summary>
         /// <returns>The get async.</returns>
         public async Task<IActionResult> OnPostAsync () {
-            _logger.LogDebug ("Processors/Create/OnPostAsync");
+            _logger.LogDebug("Processors/Create/OnPostAsync");
 
             if (!ModelState.IsValid) {
                 return Page ();

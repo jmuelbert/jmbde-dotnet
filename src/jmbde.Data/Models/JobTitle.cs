@@ -53,7 +53,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the job title identifier.
         /// </summary>
         /// <value>The job title identifier.</value>
-        public long JobTitleId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the name.

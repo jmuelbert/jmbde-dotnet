@@ -83,13 +83,14 @@ namespace JMuelbert.BDE.Pages.DeviceTypes {
         /// </summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"DeviceTypes/Details/OnGetAsync ({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
-            DeviceType = await _context.DeviceType.SingleOrDefaultAsync (m => m.DeviceTypeId == id).ConfigureAwait (false);
+            DeviceType = await _context.DeviceType.SingleOrDefaultAsync(m => m.ID == id)
+                                                  .ConfigureAwait(false);
 
             if (DeviceType == null) {
                 return NotFound ();

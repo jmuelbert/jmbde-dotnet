@@ -52,7 +52,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the zip code identifier.
         /// </summary>
         /// <value>The zip code identifier.</value>
-        public long ZipCodeId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the code.

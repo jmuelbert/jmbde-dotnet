@@ -145,7 +145,7 @@ namespace JMuelbert.BDE.Pages.Employees {
         /// Gets or sets the Employee.
         /// </summary>
         /// <value>The Employee.</value>
-        public PaginatedList<Employee> Employee { get; set; }
+        public PaginatedCollection<Employee> Employee { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -258,7 +258,7 @@ namespace JMuelbert.BDE.Pages.Employees {
             }
 
             int pageSize = 10;
-            Employee = await PaginatedList<Employee>.CreateAsync (
+            Employee = await PaginatedCollection<Employee>.CreateAsync (
                 employeeIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

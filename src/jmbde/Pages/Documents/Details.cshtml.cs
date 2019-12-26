@@ -84,14 +84,15 @@ namespace JMuelbert.BDE.Pages.Documents {
         /// </summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"Documents/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            Document = await _context.Document.SingleOrDefaultAsync (m => m.DocumentId == id).ConfigureAwait (false);
+            Document = await _context.Document.SingleOrDefaultAsync (m => m.ID
+                                                                          == id).ConfigureAwait (false);
 
             if (Document == null) {
                 return NotFound ();

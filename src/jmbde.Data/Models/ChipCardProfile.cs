@@ -53,7 +53,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the chip card profile identifier.
         /// </summary>
         /// <value>The chip card profile identifier.</value>
-        public long ChipCardProfileId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the number.

@@ -84,14 +84,15 @@ namespace JMuelbert.BDE.Pages.JobTitles {
         /// </summary>
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"JobTitles/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            JobTitle = await _context.JobTitle.SingleOrDefaultAsync (m => m.JobTitleId == id).ConfigureAwait (false);
+            JobTitle = await _context.JobTitle.SingleOrDefaultAsync (m => m.ID
+                                                                          == id).ConfigureAwait (false);
 
             if (JobTitle == null) {
                 return NotFound ();

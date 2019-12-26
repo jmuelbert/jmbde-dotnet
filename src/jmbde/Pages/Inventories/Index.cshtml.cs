@@ -114,7 +114,7 @@ namespace JMuelbert.BDE.Pages.Inventories {
         /// Gets or sets the Inventory.
         /// </summary>
         /// <value>The Inventory.</value>
-        public PaginatedList<Inventory> Inventory { get; set; }
+        public PaginatedCollection<Inventory> Inventory { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -182,7 +182,7 @@ namespace JMuelbert.BDE.Pages.Inventories {
             }
 
             int pageSize = 10;
-            Inventory = await PaginatedList<Inventory>.CreateAsync (
+            Inventory = await PaginatedCollection<Inventory>.CreateAsync (
                 inventoryIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

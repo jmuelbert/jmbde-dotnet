@@ -8,12 +8,19 @@
     </VersionPrefix>
     <AssemblyName>jmbde</AssemblyName>
     <OutputType>Exe</OutputType>
-    <PackageId>jmbde</PackageId>
+    <PackageId>JMuelbert.BDE</PackageId>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/jmuelbert/jmbde-aspnet</RepositoryUrl>
     <ReleaseVersion>0.5.0</ReleaseVersion>
+    <RootNamespace>jmbde</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <LangVersion>latestmajor</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>latestmajor</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />

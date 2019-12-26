@@ -83,7 +83,7 @@ namespace JMuelbert.BDE.Pages.Departments {
         /// </summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"Department/Details/OnGetAsync({ id })");
 
             if (id == null) {
@@ -94,7 +94,8 @@ namespace JMuelbert.BDE.Pages.Departments {
                 .Include (d => d.Printer)
                 .Include (d => d.Fax)
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.DepartmentId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (m => m.ID
+                                           == id).ConfigureAwait (false);
 
             if (Department == null) {
                 return NotFound ();

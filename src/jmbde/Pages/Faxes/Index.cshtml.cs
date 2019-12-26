@@ -112,7 +112,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
         /// Gets or sets the Fax.
         /// </summary>
         /// <value>The Fax.</value>
-        public PaginatedList<Fax> Fax { get; set; }
+        public PaginatedCollection<Fax> Fax { get; set; }
 
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
@@ -172,7 +172,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
             }
 
             int pageSize = 10;
-            Fax = await PaginatedList<Fax>.CreateAsync (
+            Fax = await PaginatedCollection<Fax>.CreateAsync (
                 faxIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

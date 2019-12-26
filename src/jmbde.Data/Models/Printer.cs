@@ -66,7 +66,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the printer identifier.
         /// </summary>
         /// <value>The printer identifier.</value>
-        public long PrinterId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the name.

@@ -90,7 +90,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers { /// Delete model.
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"Manufacturers/Delete/OnGetAsync({ id }, { saveChangesError })");
             if (id == null) {
                 return NotFound ();
@@ -98,7 +98,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers { /// Delete model.
 
             Manufacturer = await _context.Manufacturer
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.ManufacturerId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (m => m.ID == id).ConfigureAwait (false);
 
             if (Manufacturer == null) {
                 return NotFound ();
@@ -115,7 +115,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers { /// Delete model.
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"Manufacturerss/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
@@ -124,7 +124,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers { /// Delete model.
 
             var manufacturer = await _context.Manufacturer
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.ManufacturerId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (m => m.ID == id).ConfigureAwait (false);
 
             if (manufacturer == null) {
                 return NotFound ();

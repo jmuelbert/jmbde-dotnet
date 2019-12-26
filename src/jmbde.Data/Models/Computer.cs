@@ -55,7 +55,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the computer identifier.
         /// </summary>
         /// <value>The computer identifier.</value>
-        public long ComputerId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the name.

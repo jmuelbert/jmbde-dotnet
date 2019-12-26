@@ -52,7 +52,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the place identifier.
         /// </summary>
         /// <value>The place identifier.</value>
-        public long PlaceId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the name.

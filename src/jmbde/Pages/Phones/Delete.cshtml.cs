@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.Phones {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"Phones/Delete/OnGetAsync({ id }, { saveChangesError })");
             if (id == null) {
                 return NotFound ();
@@ -100,7 +100,7 @@ namespace JMuelbert.BDE.Pages.Phones {
 
             Phone = await _context.Phone
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.PhoneId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (p => p.ID == id).ConfigureAwait (false);
 
             if (Phone == null) {
                 return NotFound ();
@@ -117,7 +117,7 @@ namespace JMuelbert.BDE.Pages.Phones {
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"Phones/Delete/OnPostAsync ({ id })");
             if (id == null) {
                 return NotFound ();
@@ -125,7 +125,7 @@ namespace JMuelbert.BDE.Pages.Phones {
 
             var phone = await _context.Phone
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.PhoneId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (p => p.ID == id).ConfigureAwait (false);
 
             if (phone == null) {
                 return NotFound ();

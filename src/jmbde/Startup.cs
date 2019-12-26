@@ -41,29 +41,22 @@
  **************************************************************************/
 
 using System;
+using System.Globalization;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using JMuelbert.BDE.Data;
-using JMuelbert.BDE.Filters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
-using System.Globalization;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.Extensions.Localization;
-using System.Globalization;
 
-namespace JMuelbert.BDE {
+using Microsoft.AspNetCore.Localization;
+
+namespace JMuelbert.BDE
+{
     /// <summary>
     /// Startup.
     /// </summary>
@@ -113,7 +106,7 @@ namespace JMuelbert.BDE {
             var dbName = Configuration.GetSection ("Data").GetSection ("DBName").Value;
             appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             dbString = Path.Combine (appDataPath, dbPath);
-            dbString = Path.Combine (dbString,
+            dbPath = Path.Combine (dbString,
                                      dbName);
 
             DirectoryInfo di = new DirectoryInfo (dbString);
@@ -132,7 +125,7 @@ namespace JMuelbert.BDE {
             }
 
             // Build the connenction string.
-            var connection = "Data Source=" + dbString;
+            var connection = "Data Source=" + dbPath;
             _logger.LogInformation ($"The Data Source { connection } ", connection);
 
             if (_env.IsDevelopment ()) {

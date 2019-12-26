@@ -114,7 +114,7 @@ namespace JMuelbert.BDE.Pages.Computers {
         /// Gets or sets the cityname profile.
         /// </summary>
         /// <value>The cityname profile.</value>
-        public PaginatedList<Computer> Computer { get; set; }
+        public PaginatedCollection<Computer> Computer { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -183,7 +183,7 @@ namespace JMuelbert.BDE.Pages.Computers {
             }
 
             int pageSize = 10;
-            Computer = await PaginatedList<Computer>.CreateAsync (
+            Computer = await PaginatedCollection<Computer>.CreateAsync (
                 computerIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

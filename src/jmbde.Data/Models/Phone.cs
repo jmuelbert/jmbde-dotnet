@@ -52,7 +52,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the phone identifier.
         /// </summary>
         /// <value>The phone identifier.</value>
-        public long PhoneId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the number.

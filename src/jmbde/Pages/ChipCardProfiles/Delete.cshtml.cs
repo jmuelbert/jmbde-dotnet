@@ -91,7 +91,9 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (
+            int? id,
+            bool? saveChangesError = false) {
             _logger.LogDebug ($"ChipCardProfile/Delete/OnGetAsync: Getting item { id } - { saveChangesError }");
 
             if (id == null) {
@@ -100,7 +102,8 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles {
 
             ChipCardProfile = await _context.ChipCardProfile
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.ChipCardProfileId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (m => m.ID
+                                           == id).ConfigureAwait (false);
 
             if (ChipCardProfile == null) {
                 return NotFound ();
@@ -117,7 +120,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles {
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"ChipCardProfile/Delete/OnPostAsync: Getting item { id }");
 
             if (id == null) {
@@ -126,7 +129,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles {
 
             var chipcardprofile = await _context.ChipCardProfile
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (c => c.ChipCardProfileId == id)
+                .FirstOrDefaultAsync (c => c.ID == id)
                 .ConfigureAwait (false);
 
             if (chipcardprofile == null) {

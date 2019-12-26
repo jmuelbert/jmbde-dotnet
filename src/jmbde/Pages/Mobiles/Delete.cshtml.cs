@@ -91,7 +91,7 @@ namespace JMuelbert.BDE.Pages.Mobiles {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"Mobiles/Delete/OnGetAsync({ id }, { saveChangesError })");
             if (id == null) {
                 return NotFound ();
@@ -99,7 +99,7 @@ namespace JMuelbert.BDE.Pages.Mobiles {
 
             Mobile = await _context.Mobile
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.MobileId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (m => m.ID == id).ConfigureAwait (false);
 
             if (Mobile == null) {
                 return NotFound ();
@@ -116,7 +116,7 @@ namespace JMuelbert.BDE.Pages.Mobiles {
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"Mobiles/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
@@ -125,7 +125,7 @@ namespace JMuelbert.BDE.Pages.Mobiles {
 
             var mobile = await _context.Mobile
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.MobileId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (m => m.ID == id).ConfigureAwait (false);
 
             if (mobile == null) {
                 return NotFound ();

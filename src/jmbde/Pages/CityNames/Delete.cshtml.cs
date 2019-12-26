@@ -91,7 +91,7 @@ namespace JMuelbert.BDE.Pages.CityNames {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"CityName/Delete/OnGetAsync { id } - { saveChangesError }");
 
             if (id == null) {
@@ -100,7 +100,8 @@ namespace JMuelbert.BDE.Pages.CityNames {
 
             CityName = await _context.CityName
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.CityNameId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (m => m.ID
+                                           == id).ConfigureAwait (false);
 
             if (CityName == null) {
                 return NotFound ();
@@ -117,7 +118,7 @@ namespace JMuelbert.BDE.Pages.CityNames {
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"CityName/Delete/OnPostAsync { id }");
 
             if (id == null) {
@@ -126,7 +127,7 @@ namespace JMuelbert.BDE.Pages.CityNames {
 
             var cityname = await _context.CityName
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (c => c.CityNameId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (c => c.ID == id).ConfigureAwait (false);
 
             if (cityname == null) {
                 return NotFound ();

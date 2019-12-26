@@ -117,7 +117,7 @@ namespace JMuelbert.BDE.Pages.Processors {
         /// </summary>
         /// <value>The Processor.</value>
 
-        public PaginatedList<Processor> Processor { get; set; }
+        public PaginatedCollection<Processor> Processor { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -185,7 +185,7 @@ namespace JMuelbert.BDE.Pages.Processors {
             }
 
             int pageSize = 10;
-            Processor = await PaginatedList<Processor>.CreateAsync (
+            Processor = await PaginatedCollection<Processor>.CreateAsync (
                 processorIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

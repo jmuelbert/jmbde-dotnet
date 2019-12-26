@@ -83,14 +83,15 @@ namespace JMuelbert.BDE.Pages.CityNames {
         /// </summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"CityName/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            CityName = await _context.CityName.SingleOrDefaultAsync (m => m.CityNameId == id).ConfigureAwait (false);
+            CityName = await _context.CityName.SingleOrDefaultAsync(m => m.ID == id)
+                                              .ConfigureAwait(false);
 
             if (CityName == null) {
                 return NotFound ();

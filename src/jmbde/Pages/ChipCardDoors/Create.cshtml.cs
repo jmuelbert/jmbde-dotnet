@@ -95,7 +95,10 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
         /// </summary>
         /// <returns>The get.</returns>
         public IActionResult OnGet () {
-            _logger.LogDebug ("ChipCardDoors/Create/OnGet");
+            if (_logger != null)
+            {
+                _logger.LogDebug("ChipCardDoors/Create/OnGet");
+            }
             return Page ();
         }
 
@@ -111,7 +114,10 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
         /// </summary>
         /// <returns>The post async.</returns>
         public async Task<IActionResult> OnPostAsync () {
-            _logger.LogDebug ("ChipCardDoors/Create/OnPostAsync");
+            if (_logger != null)
+            {
+                _logger.LogDebug("ChipCardDoors/Create/OnPostAsync");
+            }
 
             if (!ModelState.IsValid) {
                 return Page ();

@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.Places {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"Places/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.Places {
 
             Place = await _context.Place
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.PlaceId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (p => p.ID == id).ConfigureAwait (false);
 
             if (Place == null) {
                 return NotFound ();
@@ -118,7 +118,7 @@ namespace JMuelbert.BDE.Pages.Places {
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"Places/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.Places {
 
             var place = await _context.Place
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.PlaceId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (p => p.ID == id).ConfigureAwait (false);
 
             if (place == null) {
                 return NotFound ();

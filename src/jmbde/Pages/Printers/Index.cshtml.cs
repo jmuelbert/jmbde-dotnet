@@ -128,7 +128,7 @@ namespace JMuelbert.BDE.Pages.Printers {
         /// Gets or sets the Printer.
         /// </summary>
         /// <value>The Printer.</value>
-        public PaginatedList<Printer> Printer { get; set; }
+        public PaginatedCollection<Printer> Printer { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -214,7 +214,7 @@ namespace JMuelbert.BDE.Pages.Printers {
             }
 
             int pageSize = 10;
-            Printer = await PaginatedList<Printer>.CreateAsync (
+            Printer = await PaginatedCollection<Printer>.CreateAsync (
                 printerIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

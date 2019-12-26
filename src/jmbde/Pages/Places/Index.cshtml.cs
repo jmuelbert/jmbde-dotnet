@@ -115,7 +115,7 @@ namespace JMuelbert.BDE.Pages.Places { /// <summary>
         /// Gets or sets the Place.
         /// </summary>
         /// <value>The Place.</value>
-        public PaginatedList<Place> Place { get; set; }
+        public PaginatedCollection<Place> Place { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -183,7 +183,7 @@ namespace JMuelbert.BDE.Pages.Places { /// <summary>
             }
 
             int pageSize = 10;
-            Place = await PaginatedList<Place>.CreateAsync (
+            Place = await PaginatedCollection<Place>.CreateAsync (
                 placeIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

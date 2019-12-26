@@ -91,7 +91,7 @@ namespace JMuelbert.BDE.Pages.Softwares { /// <summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"Software/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
@@ -100,7 +100,7 @@ namespace JMuelbert.BDE.Pages.Softwares { /// <summary>
 
             Software = await _context.Software
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (s => s.SoftwareId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (s => s.ID == id).ConfigureAwait (false);
 
             if (Software == null) {
                 return NotFound ();
@@ -117,7 +117,7 @@ namespace JMuelbert.BDE.Pages.Softwares { /// <summary>
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"Software/Delete/OnPostAsync({ id })");
             if (id == null) {
                 return NotFound ();
@@ -125,7 +125,7 @@ namespace JMuelbert.BDE.Pages.Softwares { /// <summary>
 
             var software = await _context.Software
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (s => s.SoftwareId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (s => s.ID == id).ConfigureAwait (false);
 
             if (software == null) {
                 return NotFound ();

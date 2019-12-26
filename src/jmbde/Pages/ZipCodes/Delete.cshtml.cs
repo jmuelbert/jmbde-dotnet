@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"ZipCodes/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
 
             ZipCode = await _context.ZipCode
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (z => z.ZipCodeId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (z => z.ID == id).ConfigureAwait (false);
 
             if (ZipCode == null) {
                 return NotFound ();
@@ -118,7 +118,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"ZipCodes/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
 
             var zipcode = await _context.ZipCode
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (z => z.ZipCodeId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (z => z.ID == id).ConfigureAwait (false);
 
             if (zipcode == null) {
                 return NotFound ();

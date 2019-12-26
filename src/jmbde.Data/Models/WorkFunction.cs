@@ -52,7 +52,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the workfunction identifier.
         /// </summary>
         /// <value>The workfunction identifier.</value>
-        public long WorkFunctionId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the name.

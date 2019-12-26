@@ -78,7 +78,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts {
         [BindProperty]
         public SystemAccount SystemAccount { get; set; }
 
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"SystemAccount/Edit/OnGetAsync({ id })");
 
             if (id == null) {
@@ -98,7 +98,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts {
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"SystemAccount/Edit/OnPostAsync({ id })");
 
             if (!ModelState.IsValid) {

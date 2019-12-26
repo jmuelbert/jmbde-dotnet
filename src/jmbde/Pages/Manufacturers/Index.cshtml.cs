@@ -109,7 +109,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers { /// <summary>
         /// Gets or sets the Manufacturer.
         /// </summary>
         /// <value>The Manufacturer.</value>
-        public PaginatedList<Manufacturer> Manufacturer { get; set; }
+        public PaginatedCollection<Manufacturer> Manufacturer { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -168,7 +168,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers { /// <summary>
             }
 
             int pageSize = 10;
-            Manufacturer = await PaginatedList<Manufacturer>.CreateAsync (
+            Manufacturer = await PaginatedCollection<Manufacturer>.CreateAsync (
                 manufacturerIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
 

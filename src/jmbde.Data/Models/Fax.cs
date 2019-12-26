@@ -54,7 +54,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the fax identifier.
         /// </summary>
         /// <value>The fax identifier.</value>
-        public long FaxId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the number.

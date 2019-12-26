@@ -84,7 +84,7 @@ namespace JMuelbert.BDE.Pages.Softwares {
         /// </summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"Software/Edit/OnGetAsync({ id })");
             if (id == null) {
                 return NotFound ();
@@ -103,7 +103,7 @@ namespace JMuelbert.BDE.Pages.Softwares {
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"Software/Edit/OnPostAsync({ id })");
             if (!ModelState.IsValid) {
                 return Page ();

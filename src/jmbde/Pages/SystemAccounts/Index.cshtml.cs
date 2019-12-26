@@ -105,7 +105,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts {
         /// </summary>
         /// <value>The SystemAccount.</value>
 
-        public PaginatedList<SystemAccount> SystemAccount { get; set; }
+        public PaginatedCollection<SystemAccount> SystemAccount { get; set; }
 
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
@@ -147,7 +147,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts {
             }
 
             int pageSize = 10;
-            SystemAccount = await PaginatedList<SystemAccount>.CreateAsync (
+            SystemAccount = await PaginatedCollection<SystemAccount>.CreateAsync (
                 systemaccountIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

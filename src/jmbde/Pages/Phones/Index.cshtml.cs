@@ -116,7 +116,7 @@ namespace JMuelbert.BDE.Pages.Phones {
         /// Gets or sets the Phone.
         /// </summary>
         /// <value>The Phone.</value>
-        public PaginatedList<Phone> Phone { get; set; }
+        public PaginatedCollection<Phone> Phone { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -184,7 +184,7 @@ namespace JMuelbert.BDE.Pages.Phones {
             }
 
             int pageSize = 10;
-            Phone = await PaginatedList<Phone>.CreateAsync (
+            Phone = await PaginatedCollection<Phone>.CreateAsync (
                 phoneIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

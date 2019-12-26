@@ -84,14 +84,15 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
         /// </summary>
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"Functions/Details/OnGetAsync({id})");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            WorkFunction = await _context.WorkFunction.SingleOrDefaultAsync (m => m.WorkFunctionId == id).ConfigureAwait (false);
+            WorkFunction = await _context.WorkFunction.SingleOrDefaultAsync (m => m.ID
+                                                                                  == id).ConfigureAwait (false);
 
             if (WorkFunction == null) {
                 return NotFound ();

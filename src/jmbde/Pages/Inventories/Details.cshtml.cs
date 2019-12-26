@@ -84,14 +84,15 @@ namespace JMuelbert.BDE.Pages.Inventories {
         /// </summary>
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"Inventories/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            Inventory = await _context.Inventory.SingleOrDefaultAsync (m => m.InventoryId == id).ConfigureAwait (false);
+            Inventory = await _context.Inventory.SingleOrDefaultAsync (m => m.ID
+                                                                            == id).ConfigureAwait (false);
 
             if (Inventory == null) {
                 return NotFound ();

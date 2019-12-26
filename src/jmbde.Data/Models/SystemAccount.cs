@@ -52,7 +52,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the system account identifier.
         /// </summary>
         /// <value>The system account identifier.</value>
-        public long SystemAccountId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the user.

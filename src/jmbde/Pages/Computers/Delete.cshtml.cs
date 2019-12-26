@@ -91,7 +91,7 @@ namespace JMuelbert.BDE.Pages.Computers {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"Computers/Delete/OnGetAsync { id } - { saveChangesError }");
 
             if (id == null) {
@@ -100,7 +100,7 @@ namespace JMuelbert.BDE.Pages.Computers {
 
             Computer = await _context.Computer
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (c => c.ComputerId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (c => c.ID == id).ConfigureAwait (false);
 
             if (Computer == null) {
                 return NotFound ();
@@ -117,7 +117,7 @@ namespace JMuelbert.BDE.Pages.Computers {
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"Computers/Delete/OnPostAsync { id }");
 
             if (id == null) {
@@ -126,7 +126,7 @@ namespace JMuelbert.BDE.Pages.Computers {
 
             var computer = await _context.Computer
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (c => c.ComputerId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (c => c.ID == id).ConfigureAwait (false);
 
             if (computer == null) {
                 return NotFound ();

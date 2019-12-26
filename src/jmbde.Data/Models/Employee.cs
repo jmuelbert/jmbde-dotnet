@@ -47,24 +47,18 @@ using System.ComponentModel.DataAnnotations;
 // TODO: Change the use of SystemAccount
 
 namespace JMuelbert.BDE.Data.Models {
-    /// <summary>
-    /// Gender.
-    /// </summary>
-    public enum Gender {
-        F,
-        M
-    }
+
 
     /// <summary>
     /// Employee.
     /// </summary>
-    public partial class Employee {
+    public partial class Employee : Person {
 
         /// <summary>
         /// Gets or sets the employee identifier.
         /// </summary>
         /// <value>The employee identifier.</value>
-        public long EmployeeId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the employee ident.
@@ -72,11 +66,6 @@ namespace JMuelbert.BDE.Data.Models {
         /// <value>The employee ident.</value>
         public string EmployeeIdent { get; set; }
 
-        /// <summary>
-        /// Gets or sets the gender.
-        /// </summary>
-        /// <value>The gender.</value>
-        public Gender Gender { get; set; }
 
         /// <summary>
         /// Gets or sets the job title.
@@ -84,65 +73,6 @@ namespace JMuelbert.BDE.Data.Models {
         /// <value>The job title.</value>
         public JobTitle JobTitle { get; set; }
 
-        /// <summary>
-        /// Gets or sets the first name.
-        /// </summary>
-        /// <value>The first name.</value>
-        [StringLength (50, ErrorMessage = "Firstname cannot be longer than 50 characters.")]
-        public string FirstName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the last name.
-        /// </summary>
-        /// <value>The last name.</value>
-        [Required]
-        [StringLength (50, ErrorMessage = "Lastname cannot be longer than 50 characters.")]
-        public string LastName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the birth day.
-        /// </summary>
-        /// <value>The birth day.</value>
-        [DataType (DataType.Date)]
-        public DateTime BirthDay { get; set; }
-
-        /// <summary>
-        /// Gets or sets the street.
-        /// </summary>
-        /// <value>The street.</value>
-        [Required]
-        [StringLength (50, ErrorMessage = "Street cannot be longer than 50 characters.")]
-        public string Street { get; set; }
-
-        /// <summary>
-        /// Gets or sets the zip code.
-        /// </summary>
-        /// <value>The zip code.</value>
-        public ZipCode ZipCode { get; set; }
-
-        /// <summary>
-        /// Gets or sets the home phone.
-        /// </summary>
-        /// <value>The home phone.</value>
-        [StringLength (50, ErrorMessage = "Phone Number cannot be longer than 50 characters.")]
-        [DataType (DataType.PhoneNumber)]
-        public string HomePhone { get; set; }
-
-        /// <summary>
-        /// Gets or sets the home mobile.
-        /// </summary>
-        /// <value>The home mobile.</value>
-        [StringLength (50, ErrorMessage = "Mobile Number cannot be longer than 50 characters.")]
-        [DataType (DataType.PhoneNumber)]
-        public string HomeMobile { get; set; }
-
-        /// <summary>
-        /// Gets or sets the home mail address.
-        /// </summary>
-        /// <value>The home mail address.</value>
-        [StringLength (50, ErrorMessage = "Mail Address cannot be longer than 50 characters.")]
-        [DataType (DataType.EmailAddress)]
-        public string HomeMailAddress { get; set; }
 
         /// <summary>
         /// Gets or sets the business mail address.
@@ -163,12 +93,6 @@ namespace JMuelbert.BDE.Data.Models {
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
         public bool Active { get; set; }
-
-        /// <summary>
-        /// Gets or sets the photo.
-        /// </summary>
-        /// <value>The photo.</value>
-        public byte[] Photo { get; set; }
 
         /// <summary>
         /// Gets or sets the notes.

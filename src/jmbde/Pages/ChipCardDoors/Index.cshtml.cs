@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
         /// Gets or sets the chip card door.
         /// </summary>
         /// <value>The chip card door.</value>
-        public PaginatedList<ChipCardDoor> ChipCardDoor { get; set; }
+        public PaginatedCollection<ChipCardDoor> ChipCardDoor { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -150,7 +150,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
 
             int pageSize = 10;
 
-            ChipCardDoor = await PaginatedList<ChipCardDoor>.CreateAsync (
+            ChipCardDoor = await PaginatedCollection<ChipCardDoor>.CreateAsync (
                 chipCardDoorIQ.AsNoTracking (), pageIndex ?? 1, pageSize).ConfigureAwait (false);
         }
     }

@@ -93,7 +93,7 @@ namespace JMuelbert.BDE.Pages.Processors {
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
 
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"Processors/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
@@ -102,7 +102,7 @@ namespace JMuelbert.BDE.Pages.Processors {
 
             Processor = await _context.Processor
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.ProcessorId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (p => p.ID == id).ConfigureAwait (false);
 
             if (Processor == null) {
                 return NotFound ();
@@ -119,7 +119,7 @@ namespace JMuelbert.BDE.Pages.Processors {
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"Processors/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
@@ -128,7 +128,7 @@ namespace JMuelbert.BDE.Pages.Processors {
 
             var processor = await _context.Processor
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (p => p.ProcessorId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (p => p.ID == id).ConfigureAwait (false);
 
             if (processor == null) {
                 return NotFound ();
@@ -140,7 +140,7 @@ namespace JMuelbert.BDE.Pages.Processors {
                 return RedirectToPage ("./Index");
             } catch (DbUpdateException ex) {
 
-                _logger.LogError ("Processors/Delete {0}", ex.ToString ());
+                _logger.LogError("Processors/Delete {0}", ex.ToString());
 
                 return RedirectToAction ("./Delete",
                     new { id, saveChangesError = true });

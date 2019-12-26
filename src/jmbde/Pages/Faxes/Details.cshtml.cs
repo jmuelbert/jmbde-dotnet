@@ -84,7 +84,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
         /// </summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"Faxes/Details/OnGetAsync ({ id })");
 
             if (id == null) {
@@ -94,7 +94,8 @@ namespace JMuelbert.BDE.Pages.Faxes {
             Fax = await _context.Fax
                 .Include (e => e.Employee)
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (m => m.FaxId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (m => m.ID
+                                           == id).ConfigureAwait (false);
 
             if (Fax == null) {
                 return NotFound ();

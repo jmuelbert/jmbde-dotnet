@@ -43,52 +43,54 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace JMuelbert.BDE.Data.Models {
+namespace JMuelbert.BDE.Data.Models
+{
     /// <summary>
     /// Manufacturer.
     /// </summary>
-    public partial class Manufacturer {
+    public partial class Manufacturer
+    {
 
         /// <summary>
         /// Gets or sets the manufacturer identifier.
         /// </summary>
         /// <value>The manufacturer identifier.</value>
-        public long ManufacturerId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
         /// <value>The name.</value>
         [Required]
-        [StringLength (50, ErrorMessage = "Name cannot be longer than 50 characters.")]
+        [StringLength(50, ErrorMessage = "Name cannot be longer than 50 characters.")]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the name2.
         /// </summary>
         /// <value>The name2.</value>
-        [StringLength (50, ErrorMessage = "Name2 cannot be longer than 50 characters.")]
+        [StringLength(50, ErrorMessage = "Name2 cannot be longer than 50 characters.")]
         public string Name2 { get; set; }
 
         /// <summary>
         /// Gets or sets the supporter.
         /// </summary>
         /// <value>The supporter.</value>
-        [StringLength (50, ErrorMessage = "Supporter cannot be longer than 50 characters.")]
+        [StringLength(50, ErrorMessage = "Supporter cannot be longer than 50 characters.")]
         public string Supporter { get; set; }
 
         /// <summary>
         /// Gets or sets the street.
         /// </summary>
         /// <value>The street.</value>
-        [StringLength (50, ErrorMessage = "Street cannot be longer than 50 characters.")]
+        [StringLength(50, ErrorMessage = "Street cannot be longer than 50 characters.")]
         public string Street { get; set; }
 
         /// <summary>
         /// Gets or sets the street22.
         /// </summary>
         /// <value>The street22.</value>
-        [StringLength (50, ErrorMessage = "Street2 cannot be longer than 50 characters.")]
+        [StringLength(50, ErrorMessage = "Street2 cannot be longer than 50 characters.")]
         public string Street22 { get; set; }
 
         /// <summary>
@@ -101,39 +103,39 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the mail address.
         /// </summary>
         /// <value>The mail address.</value>
-        [StringLength (50, ErrorMessage = "Mail Address cannot be longer than 50 characters.")]
-        [DataType (DataType.EmailAddress)]
+        [StringLength(50, ErrorMessage = "Mail Address cannot be longer than 50 characters.")]
+        [DataType(DataType.EmailAddress)]
         public string MailAddress { get; set; }
 
         /// <summary>
         /// Gets or sets the phone number.
         /// </summary>
         /// <value>The phone number.</value>
-        [StringLength (50, ErrorMessage = "Phone Number cannot be longer than 50 characters.")]
-        [DataType (DataType.PhoneNumber)]
+        [StringLength(50, ErrorMessage = "Phone Number cannot be longer than 50 characters.")]
+        [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the fax number.
         /// </summary>
         /// <value>The fax number.</value>
-        [StringLength (50, ErrorMessage = "Fax Number cannot be longer than 50 characters.")]
-        [DataType (DataType.PhoneNumber)]
+        [StringLength(50, ErrorMessage = "Fax Number cannot be longer than 50 characters.")]
+        [DataType(DataType.PhoneNumber)]
         public string FaxNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the hotline number.
         /// </summary>
         /// <value>The hotline number.</value>
-        [StringLength (50, ErrorMessage = "Hotline Number cannot be longer than 50 characters.")]
-        [DataType (DataType.PhoneNumber)]
+        [StringLength(50, ErrorMessage = "Hotline Number cannot be longer than 50 characters.")]
+        [DataType(DataType.PhoneNumber)]
         public string HotlineNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the last update.
         /// </summary>
         /// <value>The last update.</value>
-        [DataType (DataType.DateTime)]
+        [DataType(DataType.DateTime)]
         public DateTime LastUpdate { get; set; }
     }
 }

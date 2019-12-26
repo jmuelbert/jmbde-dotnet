@@ -52,7 +52,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the system data identifier.
         /// </summary>
         /// <value>The system data identifier.</value>
-        public long SystemDataId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the name.

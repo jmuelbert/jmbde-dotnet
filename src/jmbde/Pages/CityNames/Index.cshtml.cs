@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.CityNames {
         /// Gets or sets the cityname profile.
         /// </summary>
         /// <value>The cityname profile.</value>
-        public PaginatedList<CityName> CityName { get; set; }
+        public PaginatedCollection<CityName> CityName { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -152,7 +152,7 @@ namespace JMuelbert.BDE.Pages.CityNames {
             }
 
             int pageSize = 10;
-            CityName = await PaginatedList<CityName>.CreateAsync (
+            CityName = await PaginatedCollection<CityName>.CreateAsync (
                 cityNameIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

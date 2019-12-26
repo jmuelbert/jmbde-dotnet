@@ -91,7 +91,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts { /// <summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"SystemAccount/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
@@ -100,7 +100,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts { /// <summary>
 
             SystemAccount = await _context.SystemAccount
                 .AsNoTracking ()
-                .SingleOrDefaultAsync (s => s.SystemAccountId == id).ConfigureAwait (false);
+                .SingleOrDefaultAsync (s => s.ID == id).ConfigureAwait (false);
 
             if (SystemAccount == null) {
                 return NotFound ();
@@ -125,7 +125,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts { /// <summary>
 
             var systemaccount = await _context.SystemAccount
                 .AsNoTracking ()
-                .SingleOrDefaultAsync (s => s.SystemAccountId == id).ConfigureAwait (false);
+                .SingleOrDefaultAsync (s => s.ID == id).ConfigureAwait (false);
 
             if (systemaccount == null) {
                 return NotFound ();

@@ -54,7 +54,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the department identifier.
         /// </summary>
         /// <value>The department identifier.</value>
-        public long DepartmentId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the name.

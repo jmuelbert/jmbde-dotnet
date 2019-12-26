@@ -53,7 +53,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the mobile identifier.
         /// </summary>
         /// <value>The mobile identifier.</value>
-        public long MobileId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the number.

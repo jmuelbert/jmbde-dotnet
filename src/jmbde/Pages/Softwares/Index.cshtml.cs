@@ -104,7 +104,7 @@ namespace JMuelbert.BDE.Pages.Softwares {
         /// Gets or sets the Software.
         /// </summary>
         /// <value>The Software.</value>
-        public PaginatedList<Software> Software { get; set; }
+        public PaginatedCollection<Software> Software { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -153,7 +153,7 @@ namespace JMuelbert.BDE.Pages.Softwares {
             }
 
             int pageSize = 10;
-            Software = await PaginatedList<Software>.CreateAsync (
+            Software = await PaginatedCollection<Software>.CreateAsync (
                 softwareIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
 

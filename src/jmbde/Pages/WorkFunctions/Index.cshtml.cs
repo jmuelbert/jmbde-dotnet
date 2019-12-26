@@ -110,7 +110,7 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
         /// Gets or sets the Function.
         /// </summary>
         /// <value>The Function.</value>
-        public PaginatedList<WorkFunction> WorkFunction { get; set; }
+        public PaginatedCollection<WorkFunction> WorkFunction { get; set; }
 
         public async Task OnGetAsync (string sortOrder,
             string currentFilter, string searchString, int? pageIndex) {
@@ -161,7 +161,7 @@ namespace JMuelbert.BDE.Pages.WorkFunctions {
             }
 
             int pageSize = 10;
-            WorkFunction = await PaginatedList<WorkFunction>.CreateAsync (
+            WorkFunction = await PaginatedCollection<WorkFunction>.CreateAsync (
                 functionIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

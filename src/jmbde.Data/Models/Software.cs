@@ -53,7 +53,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the software identifier.
         /// </summary>
         /// <value>The software identifier.</value>
-        public long SoftwareId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the name.

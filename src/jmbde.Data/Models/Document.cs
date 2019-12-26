@@ -53,7 +53,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the document identifier.
         /// </summary>
         /// <value>The document identifier.</value>
-        public long DocumentId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the name.

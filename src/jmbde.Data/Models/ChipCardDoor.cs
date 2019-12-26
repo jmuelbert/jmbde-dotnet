@@ -52,7 +52,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the chip card door identifier.
         /// </summary>
         /// <value>The chip card door identifier.</value>
-        public long ChipCardDoorId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the number.

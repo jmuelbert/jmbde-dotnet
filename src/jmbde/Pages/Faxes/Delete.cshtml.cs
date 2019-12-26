@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"Faxes/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
 
             Fax = await _context.Fax
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (f => f.FaxId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (f => f.ID == id).ConfigureAwait (false);
 
             if (Fax == null) {
                 return NotFound ();
@@ -118,7 +118,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"Faxes/Delete/OnPostAsync({ id })");
 
             if (id == null) {
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.Faxes {
 
             var fax = await _context.Fax
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (f => f.FaxId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (f => f.ID == id).ConfigureAwait (false);
 
             if (fax == null) {
                 return NotFound ();

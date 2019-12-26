@@ -53,7 +53,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the device type identifier.
         /// </summary>
         /// <value>The device type identifier.</value>
-        public long DeviceTypeId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the name.

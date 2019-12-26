@@ -52,7 +52,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the processor identifier.
         /// </summary>
         /// <value>The processor identifier.</value>
-        public long ProcessorId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the name.

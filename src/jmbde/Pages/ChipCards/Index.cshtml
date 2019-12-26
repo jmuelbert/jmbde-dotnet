@@ -59,9 +59,9 @@
         @Html.DisplayFor(modelItem => item.LastUpdate)
     </td>
     <td>
-        <a asp-page="./Edit" asp-route-id="@item.ChipCardId">Edit</a> |
-        <a asp-page="./Details" asp-route-id="@item.ChipCardId">Details</a> |
-        <a asp-page="./Delete" asp-route-id="@item.ChipCardId">Delete</a>
+        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
     </td>
 </tr>
 }

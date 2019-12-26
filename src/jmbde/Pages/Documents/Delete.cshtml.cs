@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.Documents {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"Documents/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.Documents {
 
             Document = await _context.Document
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (d => d.DocumentId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (d => d.ID == id).ConfigureAwait (false);
 
             if (Document == null) {
                 return NotFound ();
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.Documents {
 
             var document = await _context.Document
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (d => d.DocumentId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (d => d.ID == id).ConfigureAwait (false);
 
             if (document == null) {
                 return NotFound ();

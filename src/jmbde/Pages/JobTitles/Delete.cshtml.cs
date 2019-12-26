@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.JobTitles {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ("JobTitles/Delete/OnGetAsync({ id }, { saveChangesError })");
 
             if (id == null) {
@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.JobTitles {
 
             JobTitle = await _context.JobTitle
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (j => j.JobTitleId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (j => j.ID == id).ConfigureAwait (false);
 
             if (JobTitle == null) {
                 return NotFound ();
@@ -118,7 +118,7 @@ namespace JMuelbert.BDE.Pages.JobTitles {
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ("JobTitles/Delete/OnPostAsync ({ id })");
 
             if (id == null) {
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.JobTitles {
 
             var jobtitle = await _context.JobTitle
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (j => j.JobTitleId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (j => j.ID == id).ConfigureAwait (false);
 
             if (jobtitle == null) {
                 return NotFound ();

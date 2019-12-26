@@ -109,7 +109,7 @@ namespace JMuelbert.BDE.Pages.Documents {
         /// Gets or sets the Document profile.
         /// </summary>
         /// <value>The Document profile.</value>
-        public PaginatedList<Document> Document { get; set; }
+        public PaginatedCollection<Document> Document { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -166,7 +166,7 @@ namespace JMuelbert.BDE.Pages.Documents {
             }
 
             int pageSize = 10;
-            Document = await PaginatedList<Document>.CreateAsync (
+            Document = await PaginatedCollection<Document>.CreateAsync (
                 documentIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

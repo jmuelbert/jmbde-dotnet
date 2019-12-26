@@ -50,14 +50,14 @@ namespace JMuelbert.BDE.Pages {
         /// <summary>
         /// The logger.
         /// </summary>
-        private readonly ILogger logger;
+        private readonly ILogger<IndexModel> _logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.IndexModel"/> class.
         /// </summary>
         /// <param name="logger">Logger.</param>
         public IndexModel (ILogger<IndexModel> logger) {
-            this.logger = logger;
+            _logger = logger;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace JMuelbert.BDE.Pages {
         /// Ons the get.
         /// </summary>
         public void OnGet () {
-            this.logger.LogDebug ("IndexModel/OnGet");
+            _logger.LogDebug ("IndexModel/OnGet");
             this.Message = "Your application index page.";
         }
     }

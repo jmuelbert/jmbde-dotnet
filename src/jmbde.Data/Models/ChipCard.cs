@@ -54,7 +54,7 @@ namespace JMuelbert.BDE.Data.Models {
         /// Gets or sets the chip card identifier.
         /// </summary>
         /// <value>The chip card identifier.</value>
-        public long ChipCardId { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Gets or sets the number.

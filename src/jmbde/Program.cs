@@ -49,6 +49,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using JMuelbert.BDE.Data;
 
@@ -56,7 +57,8 @@ namespace JMuelbert.BDE {
     /// <summary>
     /// Program.
     /// </summary>
-    public class Program {
+    public class Program
+    {
 
         public static readonly Dictionary<string, string> switchMappings =
             new Dictionary<string, string> { { "-Help", "Help" }
@@ -76,62 +78,60 @@ namespace JMuelbert.BDE {
         /// <summary>
         public static void Main (string[] args) {
 
-         var host = CreateWebHostBuilder(args).Build();
+            var host = CreateWebHostBuilder(args).Build();
 
-        using (var scope = host.Services.CreateScope())
+            CreateDbIfNotExists(host);
+
+            host.Run();
+        }
+
+        private static void CreateDbIfNotExists(IWebHost host)
         {
-            var services = scope.ServiceProvider;
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
 
-            try
-            {
-                var context = services.GetRequiredService<ApplicationDbContext>();
-                // SeedData.Initialize(services, "not used");
-            }
-            catch (Exception ex)
-            {
-                var logger = services.GetRequiredService<ILogger<Program>>();
-                logger.LogError(ex, "An error occurred seeding the DB.");
+                try
+                {
+                    var context = services.GetRequiredService<ApplicationDbContext>();
+                    context.Database.EnsureCreated();
+                }
+                catch(Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred creating the DB.");
+                }
             }
         }
+        public static IWebHostBuilder CreateWebHostBuilder (string[] args) =>
+            WebHost.CreateDefaultBuilder (args)
+            .ConfigureAppConfiguration ((hostingContext, config) => {
+                config.SetBasePath (Directory.GetCurrentDirectory ());
+                // config.AddInMemoryCollection (arrayDict);
+                config.AddIniFile ("config.ini", optional : true, reloadOnChange : true);
+                config.AddJsonFile ("json_array.json", optional : true, reloadOnChange : false);
+                config.AddJsonFile ("config.json", optional : true, reloadOnChange : false);
+                config.AddXmlFile ("config.xml", optional : true, reloadOnChange : false);
 
-        host.Run();
-        }
+                // Call other providers here and call AddCommandLine last.
+                config.AddCommandLine (args, switchMappings);
 
+                HostingEnvironment = hostingContext.HostingEnvironment;
+                Configuration = config.Build ();
+            })
+            .Configure (app => {
+                var loggerFactory = app.ApplicationServices
+                    .GetRequiredService<ILoggerFactory> ();
+                var logger = loggerFactory.CreateLogger<Program> ();
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                logger.LogInformation ("Logged in Configure");
+            })
+            .ConfigureLogging ((hostingContext, logging) => {
+                logging.AddConfiguration (hostingContext.Configuration.GetSection ("Logging"));
+                logging.AddConsole ();
+                logging.AddDebug ();
+                logging.AddEventSourceLogger ();
+            })
+            .UseStartup<Startup> ();
     }
-
-    //     public static IWebHostBuilder CreateWebHostBuilder (string[] args) =>
-    //         WebHost.CreateDefaultBuilder (args)
-    //         .ConfigureAppConfiguration ((hostingContext, config) => {
-    //             config.SetBasePath (Directory.GetCurrentDirectory ());
-    //             config.AddInMemoryCollection (arrayDict);
-    //             config.AddIniFile ("config.ini", optional : true, reloadOnChange : true);
-    //             config.AddJsonFile ("json_array.json", optional : true, reloadOnChange : false);
-    //             config.AddJsonFile ("config.json", optional : true, reloadOnChange : false);
-    //             config.AddXmlFile ("config.xml", optional : true, reloadOnChange : false);
-
-    //             // Call other providers here and call AddCommandLine last.
-    //             config.AddCommandLine (args, switchMappings);
-
-    //             HostingEnvironment = hostingContext.HostingEnvironment;
-    //             Configuration = config.Build ();
-    //         })
-    //         .Configure (app => {
-    //             var loggerFactory = app.ApplicationServices
-    //                 .GetRequiredService<ILoggerFactory> ();
-    //             var logger = loggerFactory.CreateLogger<Program> ();
-
-    //             logger.LogInformation ("Logged in Configure");
-    //         })
-    //         .ConfigureLogging ((hostingContext, logging) => {
-    //             logging.AddConfiguration (hostingContext.Configuration.GetSection ("Logging"));
-    //             logging.AddConsole ();
-    //             logging.AddDebug ();
-    //             logging.AddEventSourceLogger ();
-    //         })
-    //         .UseStartup<Startup> ();
-    // }
 }

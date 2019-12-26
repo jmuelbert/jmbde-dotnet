@@ -50,7 +50,8 @@ namespace JMuelbert.BDE {
     /// <summary>
     /// Paginated list.
     /// </summary>
-    public class PaginatedList<T> : List<T> {
+    public class PaginatedCollection<T> : List<T>
+    {
 
         /// <summary>
         /// Gets the index of the page.
@@ -65,13 +66,13 @@ namespace JMuelbert.BDE {
         public int TotalPages { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMBde.PaginatedList`1"/> class.
+        /// Initializes a new instance of the <see cref="T:JMBde.PaginatedCollection`1"/> class.
         /// </summary>
         /// <param name="items">Items.</param>
         /// <param name="count">Count.</param>
         /// <param name="pageIndex">Page index.</param>
         /// <param name="pageSize">Page size.</param>
-        public PaginatedList (List<T> items, int count, int pageIndex, int pageSize) {
+        public PaginatedCollection (List<T> items, int count, int pageIndex, int pageSize) {
             PageIndex = pageIndex;
             TotalPages = (int) Math.Ceiling (count / (double) pageSize);
 
@@ -79,7 +80,7 @@ namespace JMuelbert.BDE {
         }
 
         /// <summary>
-        /// Gets a value indicating whether this <see cref="T:JMBde.PaginatedList`1"/> has previous page.
+        /// Gets a value indicating whether this <see cref="T:JMBde.PaginatedCollection`1"/> has previous page.
         /// </summary>
         /// <value><c>true</c> if has previous page; otherwise, <c>false</c>.</value>
         public bool HasPreviousPage {
@@ -89,7 +90,7 @@ namespace JMuelbert.BDE {
         }
 
         /// <summary>
-        /// Gets a value indicating whether this <see cref="T:JMBde.PaginatedList`1"/> has next page.
+        /// Gets a value indicating whether this <see cref="T:JMBde.PaginatedCollection`1"/> has next page.
         /// </summary>
         /// <value><c>true</c> if has next page; otherwise, <c>false</c>.</value>
         public bool HasNextPage {
@@ -105,14 +106,14 @@ namespace JMuelbert.BDE {
         /// <param name="source">Source.</param>
         /// <param name="pageIndex">Page index.</param>
         /// <param name="pageSize">Page size.</param>
-        public static async Task<PaginatedList<T>> CreateAsync (
+        public static async Task<PaginatedCollection<T>> CreateAsync (
             IQueryable<T> source, int pageIndex, int pageSize) {
             var count = await source.CountAsync ().ConfigureAwait (false);
             var items = await source.Skip (
                     (pageIndex - 1) * pageSize)
                 .Take (pageSize).ToListAsync ()
                 .ConfigureAwait (false);
-            return new PaginatedList<T> (items, count, pageIndex, pageSize);
+            return new PaginatedCollection<T> (items, count, pageIndex, pageSize);
         }
     }
 }

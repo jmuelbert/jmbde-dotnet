@@ -84,7 +84,8 @@ namespace JMuelbert.BDE.Pages.SystemAccounts { /// <summary>
                 return NotFound ();
             }
 
-            SystemAccount = await _context.SystemAccount.SingleOrDefaultAsync (m => m.SystemAccountId == id).ConfigureAwait (false);
+            SystemAccount = await _context.SystemAccount.SingleOrDefaultAsync (m => m.ID
+                                                                                    == id).ConfigureAwait (false);
 
             if (SystemAccount == null) {
                 return NotFound ();

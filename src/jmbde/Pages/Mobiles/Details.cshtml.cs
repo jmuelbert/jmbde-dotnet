@@ -77,13 +77,14 @@ namespace JMuelbert.BDE.Pages.Mobiles { /// Details model.
         /// <value>The Mobile.</value>
         public Mobile Mobile { get; set; }
 
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"Mobiles/Details/OnGetAsync ({ id })");
             if (id == null) {
                 return NotFound ();
             }
 
-            Mobile = await _context.Mobile.SingleOrDefaultAsync (m => m.MobileId == id).ConfigureAwait (false);
+            Mobile = await _context.Mobile.SingleOrDefaultAsync (m => m.ID
+                                                                      == id).ConfigureAwait (false);
 
             if (Mobile == null) {
                 return NotFound ();

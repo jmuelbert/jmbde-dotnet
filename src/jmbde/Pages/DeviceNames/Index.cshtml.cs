@@ -104,7 +104,7 @@ namespace JMuelbert.BDE.Pages.DeviceNames {
         /// Gets or sets the DeviceName profile.
         /// </summary>
         /// <value>The DeviceName profile.</value>
-        public PaginatedList<DeviceName> DeviceName { get; set; }
+        public PaginatedCollection<DeviceName> DeviceName { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -154,7 +154,7 @@ namespace JMuelbert.BDE.Pages.DeviceNames {
             }
 
             int pageSize = 10;
-            DeviceName = await PaginatedList<DeviceName>.CreateAsync (
+            DeviceName = await PaginatedCollection<DeviceName>.CreateAsync (
                 deviceNameIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

@@ -110,7 +110,7 @@ namespace JMuelbert.BDE.Pages.JobTitles {
         /// Gets or sets the JobTitle.
         /// </summary>
         /// <value>The JobTitle.</value>
-        public PaginatedList<JobTitle> JobTitle { get; set; }
+        public PaginatedCollection<JobTitle> JobTitle { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -168,7 +168,7 @@ namespace JMuelbert.BDE.Pages.JobTitles {
             }
 
             int pageSize = 10;
-            JobTitle = await PaginatedList<JobTitle>.CreateAsync (
+            JobTitle = await PaginatedCollection<JobTitle>.CreateAsync (
                 jobTitleIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

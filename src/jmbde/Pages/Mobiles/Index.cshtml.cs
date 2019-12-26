@@ -116,7 +116,7 @@ namespace JMuelbert.BDE.Pages.Mobiles { /// <summary>
         /// </summary>
         /// <value>The Mobile.</value>
 
-        public PaginatedList<Mobile> Mobile { get; set; }
+        public PaginatedCollection<Mobile> Mobile { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -184,7 +184,7 @@ namespace JMuelbert.BDE.Pages.Mobiles { /// <summary>
             }
 
             int pageSize = 10;
-            Mobile = await PaginatedList<Mobile>.CreateAsync (
+            Mobile = await PaginatedCollection<Mobile>.CreateAsync (
                 mobileIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);
         }

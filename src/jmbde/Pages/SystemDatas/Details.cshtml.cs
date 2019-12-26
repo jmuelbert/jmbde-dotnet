@@ -84,14 +84,15 @@ namespace JMuelbert.BDE.Pages.SystemDatas {
         /// </summary>
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"SystemData/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            SystemData = await _context.SystemData.SingleOrDefaultAsync (m => m.SystemDataId == id).ConfigureAwait (false);
+            SystemData = await _context.SystemData.SingleOrDefaultAsync (m => m.ID
+                                                                              == id).ConfigureAwait (false);
 
             if (SystemData == null) {
                 return NotFound ();

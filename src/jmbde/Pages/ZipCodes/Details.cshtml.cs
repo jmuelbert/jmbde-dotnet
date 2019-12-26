@@ -84,14 +84,15 @@ namespace JMuelbert.BDE.Pages.ZipCodes {
         /// </summary>
         ///  <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (long? id) {
+        public async Task<IActionResult> OnGetAsync (int? id) {
             _logger.LogDebug ($"ZipCodes/Details/OnGetAsync ({ id })");
 
             if (id == null) {
                 return NotFound ();
             }
 
-            ZipCode = await _context.ZipCode.SingleOrDefaultAsync (m => m.ZipCodeId == id).ConfigureAwait (false);
+            ZipCode = await _context.ZipCode.SingleOrDefaultAsync (m => m.ID
+                                                                        == id).ConfigureAwait (false);
 
             if (ZipCode == null) {
                 return NotFound ();

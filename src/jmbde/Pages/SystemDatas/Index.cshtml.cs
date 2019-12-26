@@ -110,7 +110,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas {
         /// Gets or sets the SystemData.
         /// </summary>
         /// <value>The SystemData.</value>
-        public PaginatedList<SystemData> SystemData { get; set; }
+        public PaginatedCollection<SystemData> SystemData { get; set; }
 
         /// <summary>
         /// Ons the get async.
@@ -159,7 +159,7 @@ namespace JMuelbert.BDE.Pages.SystemDatas {
             }
 
             int pageSize = 10;
-            SystemData = await PaginatedList<SystemData>.CreateAsync (
+            SystemData = await PaginatedCollection<SystemData>.CreateAsync (
                 systemdataIQ.AsNoTracking (), pageIndex ?? 1, pageSize
             ).ConfigureAwait (false);;
         }

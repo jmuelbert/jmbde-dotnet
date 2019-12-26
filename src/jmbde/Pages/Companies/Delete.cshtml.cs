@@ -89,7 +89,7 @@ namespace JMuelbert.BDE.Pages.Companies {
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="saveChangesError">Save changes error.</param>
-        public async Task<IActionResult> OnGetAsync (long? id, bool? saveChangesError = false) {
+        public async Task<IActionResult> OnGetAsync (int? id, bool? saveChangesError = false) {
             _logger.LogDebug ($"Companies/Delete/OnGetAsync{ id } - { saveChangesError }");
 
             if (id == null) {
@@ -98,7 +98,7 @@ namespace JMuelbert.BDE.Pages.Companies {
 
             Company = await _context.Company
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (c => c.CompanyId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (c => c.ID == id).ConfigureAwait (false);
 
             if (Company == null) {
                 return NotFound ();
@@ -115,7 +115,7 @@ namespace JMuelbert.BDE.Pages.Companies {
         /// </summary>
         /// <returns>The post async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnPostAsync (long? id) {
+        public async Task<IActionResult> OnPostAsync (int? id) {
             _logger.LogDebug ($"Companies/Delete/OnPostAsync { id }");
 
             if (id == null) {
@@ -124,7 +124,7 @@ namespace JMuelbert.BDE.Pages.Companies {
 
             var company = await _context.Company
                 .AsNoTracking ()
-                .FirstOrDefaultAsync (c => c.CompanyId == id).ConfigureAwait (false);
+                .FirstOrDefaultAsync (c => c.ID == id).ConfigureAwait (false);
 
             if (company == null) {
                 return NotFound ();
