@@ -154,7 +154,7 @@ for:
       - ps: dotnet publish .\jmbde.sln -c Release -o .\artifacts
 
     test_script:
-      - ps: dotnet test .\test\sjmbde.Tests\jmbde.Tests.csproj
+      - ps: dotnet test .\tests\jmbde.Tests\jmbde.Tests.csproj
 
     artifacts:
       - path: artifacts\**\*.*
