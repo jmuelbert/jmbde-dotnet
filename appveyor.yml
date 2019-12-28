@@ -70,7 +70,7 @@ for:
     #  - dotnet publish ./jmbde.sln -c Release -o ./artifacts
 
     #test_script:
-    #  - dotnet test ./test/jmbde.Tests/jmbde.Tests.csproj
+    #  - dotnet test ./tests/jmbde.Tests/jmbde.Tests.csproj
 
 
   ########## END macOS SPECIFIC CONFIGURATION ##########
@@ -83,24 +83,24 @@ for:
     clone_folder: /home/appveyor/projects/jmbde
 
     # TODO: Activate by available LTS Version 3.1.100
-    #dotnet_csproj:
-    #  patch: true
-    #  file: '**/*.csproj'
-    #  version: "{version}"
-    #  package_version: "{version}"
-    #  assembly_version: "{version}"
-    #  file_version: "{version}"
-    #  informational_version: "{version}"
+    dotnet_csproj:
+      patch: true
+      file: '**/*.csproj'
+      version: "{version}"
+      package_version: "{version}"
+      assembly_version: "{version}"
+      file_version: "{version}"
+      informational_version: "{version}"
 
     build_script:
       - dotnet --info
-    #  - dotnet build ./jmbde.sln -c Release
+      - dotnet build ./jmbde.sln -c Release
 
-    #after_build:
-    #  - dotnet publish ./jmbde.sln -c Release -o ./artifacts
+    after_build:
+      - dotnet publish ./jmbde.sln -c Release -o ./artifacts
 
-    #test_script:
-    #  - dotnet test ./test/jmbde.Tests/jmbde.Tests.csproj
+    test_script:
+      - dotnet test ./tests/jmbde.Tests/jmbde.Tests.csproj
 
 
 
@@ -154,7 +154,7 @@ for:
       - ps: dotnet publish .\jmbde.sln -c Release -o .\artifacts
 
     test_script:
-      - ps: dotnet test .\test\jmbde.Tests\jmbde.Tests.csproj
+      - ps: dotnet test .\test\sjmbde.Tests\jmbde.Tests.csproj
 
     artifacts:
       - path: artifacts\**\*.*

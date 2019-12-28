@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace jmbde.Migrations
@@ -50,7 +50,7 @@ namespace jmbde.Migrations
                 name: "ChipCard",
                 columns: table => new
                 {
-                    ChipCardId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Number = table.Column<string>(maxLength: 25, nullable: false),
                     Locked = table.Column<bool>(nullable: false),
@@ -58,28 +58,28 @@ namespace jmbde.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChipCard", x => x.ChipCardId);
+                    table.PrimaryKey("PK_ChipCard", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "CityName",
                 columns: table => new
                 {
-                    CityNameId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CityName", x => x.CityNameId);
+                    table.PrimaryKey("PK_CityName", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Department",
                 columns: table => new
                 {
-                    DepartmentId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Priority = table.Column<long>(nullable: true),
@@ -87,42 +87,42 @@ namespace jmbde.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Department", x => x.DepartmentId);
+                    table.PrimaryKey("PK_Department", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "DeviceName",
                 columns: table => new
                 {
-                    DeviceNameId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DeviceName", x => x.DeviceNameId);
+                    table.PrimaryKey("PK_DeviceName", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "DeviceType",
                 columns: table => new
                 {
-                    DeviceTypeId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DeviceType", x => x.DeviceTypeId);
+                    table.PrimaryKey("PK_DeviceType", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Inventory",
                 columns: table => new
                 {
-                    InventoryId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Identifier = table.Column<string>(maxLength: 50, nullable: false),
                     Description = table.Column<string>(maxLength: 100, nullable: true),
@@ -131,14 +131,14 @@ namespace jmbde.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Inventory", x => x.InventoryId);
+                    table.PrimaryKey("PK_Inventory", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "JobTitle",
                 columns: table => new
                 {
-                    JobTitleId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     FromDate = table.Column<DateTime>(nullable: false),
@@ -146,14 +146,14 @@ namespace jmbde.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_JobTitle", x => x.JobTitleId);
+                    table.PrimaryKey("PK_JobTitle", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Place",
                 columns: table => new
                 {
-                    PlaceId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Room = table.Column<string>(maxLength: 50, nullable: false),
@@ -162,14 +162,14 @@ namespace jmbde.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Place", x => x.PlaceId);
+                    table.PrimaryKey("PK_Place", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Processor",
                 columns: table => new
                 {
-                    ProcessorId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     ClockRate = table.Column<float>(nullable: false),
@@ -178,14 +178,14 @@ namespace jmbde.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Processor", x => x.ProcessorId);
+                    table.PrimaryKey("PK_Processor", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "ZipCode",
                 columns: table => new
                 {
-                    ZipCodeId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Code = table.Column<string>(maxLength: 20, nullable: false),
                     Country = table.Column<string>(maxLength: 20, nullable: true),
@@ -193,7 +193,7 @@ namespace jmbde.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ZipCode", x => x.ZipCodeId);
+                    table.PrimaryKey("PK_ZipCode", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -306,20 +306,20 @@ namespace jmbde.Migrations
                 name: "ChipCardProfile",
                 columns: table => new
                 {
-                    ChipCardProfileId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Number = table.Column<string>(maxLength: 25, nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
-                    ChipCardId = table.Column<long>(nullable: true)
+                    ChipCardID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChipCardProfile", x => x.ChipCardProfileId);
+                    table.PrimaryKey("PK_ChipCardProfile", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_ChipCardProfile_ChipCard_ChipCardId",
-                        column: x => x.ChipCardId,
+                        name: "FK_ChipCardProfile_ChipCard_ChipCardID",
+                        column: x => x.ChipCardID,
                         principalTable: "ChipCard",
-                        principalColumn: "ChipCardId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -327,14 +327,14 @@ namespace jmbde.Migrations
                 name: "Manufacturer",
                 columns: table => new
                 {
-                    ManufacturerId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Name2 = table.Column<string>(maxLength: 50, nullable: true),
                     Supporter = table.Column<string>(maxLength: 50, nullable: true),
                     Street = table.Column<string>(maxLength: 50, nullable: true),
                     Street22 = table.Column<string>(maxLength: 50, nullable: true),
-                    ZipCodeId = table.Column<long>(nullable: true),
+                    ZipCodeID = table.Column<int>(nullable: true),
                     MailAddress = table.Column<string>(maxLength: 50, nullable: true),
                     PhoneNumber = table.Column<string>(maxLength: 50, nullable: true),
                     FaxNumber = table.Column<string>(maxLength: 50, nullable: true),
@@ -343,12 +343,12 @@ namespace jmbde.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Manufacturer", x => x.ManufacturerId);
+                    table.PrimaryKey("PK_Manufacturer", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Manufacturer_ZipCode_ZipCodeId",
-                        column: x => x.ZipCodeId,
+                        name: "FK_Manufacturer_ZipCode_ZipCodeID",
+                        column: x => x.ZipCodeID,
                         principalTable: "ZipCode",
-                        principalColumn: "ZipCodeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -356,41 +356,41 @@ namespace jmbde.Migrations
                 name: "ChipCardDoor",
                 columns: table => new
                 {
-                    ChipCardDoorId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Number = table.Column<string>(maxLength: 25, nullable: false),
-                    PlaceId = table.Column<long>(nullable: true),
-                    DepartmentId = table.Column<long>(nullable: true),
+                    PlaceID = table.Column<int>(nullable: true),
+                    DepartmentID = table.Column<int>(nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false),
-                    ChipCardId = table.Column<long>(nullable: true),
-                    ChipCardProfileId = table.Column<long>(nullable: true)
+                    ChipCardID = table.Column<int>(nullable: true),
+                    ChipCardProfileID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChipCardDoor", x => x.ChipCardDoorId);
+                    table.PrimaryKey("PK_ChipCardDoor", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_ChipCardDoor_ChipCard_ChipCardId",
-                        column: x => x.ChipCardId,
+                        name: "FK_ChipCardDoor_ChipCard_ChipCardID",
+                        column: x => x.ChipCardID,
                         principalTable: "ChipCard",
-                        principalColumn: "ChipCardId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ChipCardDoor_ChipCardProfile_ChipCardProfileId",
-                        column: x => x.ChipCardProfileId,
+                        name: "FK_ChipCardDoor_ChipCardProfile_ChipCardProfileID",
+                        column: x => x.ChipCardProfileID,
                         principalTable: "ChipCardProfile",
-                        principalColumn: "ChipCardProfileId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ChipCardDoor_Department_DepartmentId",
-                        column: x => x.DepartmentId,
+                        name: "FK_ChipCardDoor_Department_DepartmentID",
+                        column: x => x.DepartmentID,
                         principalTable: "Department",
-                        principalColumn: "DepartmentId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ChipCardDoor_Place_PlaceId",
-                        column: x => x.PlaceId,
+                        name: "FK_ChipCardDoor_Place_PlaceID",
+                        column: x => x.PlaceID,
                         principalTable: "Place",
-                        principalColumn: "PlaceId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -398,59 +398,59 @@ namespace jmbde.Migrations
                 name: "Fax",
                 columns: table => new
                 {
-                    FaxId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Number = table.Column<string>(maxLength: 50, nullable: false),
                     SerialNumber = table.Column<string>(maxLength: 20, nullable: true),
                     Pin = table.Column<string>(maxLength: 10, nullable: true),
                     Active = table.Column<bool>(nullable: false),
                     Replace = table.Column<bool>(nullable: false),
-                    DeviceNameId = table.Column<long>(nullable: true),
-                    DeviceTypeId = table.Column<long>(nullable: true),
-                    PlaceId = table.Column<long>(nullable: true),
-                    DepartmentId = table.Column<long>(nullable: true),
-                    ManufacturerId = table.Column<long>(nullable: true),
-                    InventoryId = table.Column<long>(nullable: true),
+                    DeviceNameID = table.Column<int>(nullable: true),
+                    DeviceTypeID = table.Column<int>(nullable: true),
+                    PlaceID = table.Column<int>(nullable: true),
+                    DepartmentID = table.Column<int>(nullable: true),
+                    ManufacturerID = table.Column<int>(nullable: true),
+                    InventoryID = table.Column<int>(nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Fax", x => x.FaxId);
+                    table.PrimaryKey("PK_Fax", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Fax_Department_DepartmentId",
-                        column: x => x.DepartmentId,
+                        name: "FK_Fax_Department_DepartmentID",
+                        column: x => x.DepartmentID,
                         principalTable: "Department",
-                        principalColumn: "DepartmentId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Fax_DeviceName_DeviceNameId",
-                        column: x => x.DeviceNameId,
+                        name: "FK_Fax_DeviceName_DeviceNameID",
+                        column: x => x.DeviceNameID,
                         principalTable: "DeviceName",
-                        principalColumn: "DeviceNameId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Fax_DeviceType_DeviceTypeId",
-                        column: x => x.DeviceTypeId,
+                        name: "FK_Fax_DeviceType_DeviceTypeID",
+                        column: x => x.DeviceTypeID,
                         principalTable: "DeviceType",
-                        principalColumn: "DeviceTypeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Fax_Inventory_InventoryId",
-                        column: x => x.InventoryId,
+                        name: "FK_Fax_Inventory_InventoryID",
+                        column: x => x.InventoryID,
                         principalTable: "Inventory",
-                        principalColumn: "InventoryId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Fax_Manufacturer_ManufacturerId",
-                        column: x => x.ManufacturerId,
+                        name: "FK_Fax_Manufacturer_ManufacturerID",
+                        column: x => x.ManufacturerID,
                         principalTable: "Manufacturer",
-                        principalColumn: "ManufacturerId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Fax_Place_PlaceId",
-                        column: x => x.PlaceId,
+                        name: "FK_Fax_Place_PlaceID",
+                        column: x => x.PlaceID,
                         principalTable: "Place",
-                        principalColumn: "PlaceId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -458,7 +458,7 @@ namespace jmbde.Migrations
                 name: "Mobile",
                 columns: table => new
                 {
-                    MobileId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Number = table.Column<string>(maxLength: 50, nullable: false),
                     SerialNumber = table.Column<string>(maxLength: 20, nullable: true),
@@ -466,52 +466,52 @@ namespace jmbde.Migrations
                     CardNumber = table.Column<string>(maxLength: 30, nullable: true),
                     Active = table.Column<bool>(nullable: false),
                     Replace = table.Column<bool>(nullable: false),
-                    DeviceNameId = table.Column<long>(nullable: true),
-                    DeviceTypeId = table.Column<long>(nullable: true),
-                    PlaceId = table.Column<long>(nullable: true),
-                    DepartmentId = table.Column<long>(nullable: true),
-                    ManufacturerId = table.Column<long>(nullable: true),
-                    InventoryId = table.Column<long>(nullable: true),
+                    DeviceNameID = table.Column<int>(nullable: true),
+                    DeviceTypeID = table.Column<int>(nullable: true),
+                    PlaceID = table.Column<int>(nullable: true),
+                    DepartmentID = table.Column<int>(nullable: true),
+                    ManufacturerID = table.Column<int>(nullable: true),
+                    InventoryID = table.Column<int>(nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Mobile", x => x.MobileId);
+                    table.PrimaryKey("PK_Mobile", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Mobile_Department_DepartmentId",
-                        column: x => x.DepartmentId,
+                        name: "FK_Mobile_Department_DepartmentID",
+                        column: x => x.DepartmentID,
                         principalTable: "Department",
-                        principalColumn: "DepartmentId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Mobile_DeviceName_DeviceNameId",
-                        column: x => x.DeviceNameId,
+                        name: "FK_Mobile_DeviceName_DeviceNameID",
+                        column: x => x.DeviceNameID,
                         principalTable: "DeviceName",
-                        principalColumn: "DeviceNameId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Mobile_DeviceType_DeviceTypeId",
-                        column: x => x.DeviceTypeId,
+                        name: "FK_Mobile_DeviceType_DeviceTypeID",
+                        column: x => x.DeviceTypeID,
                         principalTable: "DeviceType",
-                        principalColumn: "DeviceTypeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Mobile_Inventory_InventoryId",
-                        column: x => x.InventoryId,
+                        name: "FK_Mobile_Inventory_InventoryID",
+                        column: x => x.InventoryID,
                         principalTable: "Inventory",
-                        principalColumn: "InventoryId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Mobile_Manufacturer_ManufacturerId",
-                        column: x => x.ManufacturerId,
+                        name: "FK_Mobile_Manufacturer_ManufacturerID",
+                        column: x => x.ManufacturerID,
                         principalTable: "Manufacturer",
-                        principalColumn: "ManufacturerId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Mobile_Place_PlaceId",
-                        column: x => x.PlaceId,
+                        name: "FK_Mobile_Place_PlaceID",
+                        column: x => x.PlaceID,
                         principalTable: "Place",
-                        principalColumn: "PlaceId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -519,59 +519,59 @@ namespace jmbde.Migrations
                 name: "Phone",
                 columns: table => new
                 {
-                    PhoneId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Number = table.Column<string>(maxLength: 50, nullable: false),
                     SerialNumber = table.Column<string>(maxLength: 20, nullable: true),
                     Pin = table.Column<string>(maxLength: 10, nullable: true),
                     Active = table.Column<bool>(nullable: false),
                     Replace = table.Column<bool>(nullable: false),
-                    DeviceNameId = table.Column<long>(nullable: true),
-                    DeviceTypeId = table.Column<long>(nullable: true),
-                    PlaceId = table.Column<long>(nullable: true),
-                    DepartmentId = table.Column<long>(nullable: true),
-                    ManufacturerId = table.Column<long>(nullable: true),
-                    InventoryId = table.Column<long>(nullable: true),
+                    DeviceNameID = table.Column<int>(nullable: true),
+                    DeviceTypeID = table.Column<int>(nullable: true),
+                    PlaceID = table.Column<int>(nullable: true),
+                    DepartmentID = table.Column<int>(nullable: true),
+                    ManufacturerID = table.Column<int>(nullable: true),
+                    InventoryID = table.Column<int>(nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Phone", x => x.PhoneId);
+                    table.PrimaryKey("PK_Phone", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Phone_Department_DepartmentId",
-                        column: x => x.DepartmentId,
+                        name: "FK_Phone_Department_DepartmentID",
+                        column: x => x.DepartmentID,
                         principalTable: "Department",
-                        principalColumn: "DepartmentId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Phone_DeviceName_DeviceNameId",
-                        column: x => x.DeviceNameId,
+                        name: "FK_Phone_DeviceName_DeviceNameID",
+                        column: x => x.DeviceNameID,
                         principalTable: "DeviceName",
-                        principalColumn: "DeviceNameId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Phone_DeviceType_DeviceTypeId",
-                        column: x => x.DeviceTypeId,
+                        name: "FK_Phone_DeviceType_DeviceTypeID",
+                        column: x => x.DeviceTypeID,
                         principalTable: "DeviceType",
-                        principalColumn: "DeviceTypeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Phone_Inventory_InventoryId",
-                        column: x => x.InventoryId,
+                        name: "FK_Phone_Inventory_InventoryID",
+                        column: x => x.InventoryID,
                         principalTable: "Inventory",
-                        principalColumn: "InventoryId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Phone_Manufacturer_ManufacturerId",
-                        column: x => x.ManufacturerId,
+                        name: "FK_Phone_Manufacturer_ManufacturerID",
+                        column: x => x.ManufacturerID,
                         principalTable: "Manufacturer",
-                        principalColumn: "ManufacturerId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Phone_Place_PlaceId",
-                        column: x => x.PlaceId,
+                        name: "FK_Phone_Place_PlaceID",
+                        column: x => x.PlaceID,
                         principalTable: "Place",
-                        principalColumn: "PlaceId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -579,91 +579,93 @@ namespace jmbde.Migrations
                 name: "Employee",
                 columns: table => new
                 {
-                    EmployeeId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    EmployeeIdent = table.Column<string>(nullable: true),
+                    PersonID = table.Column<int>(nullable: false),
+                    PersonIdent = table.Column<string>(nullable: true),
                     Gender = table.Column<int>(nullable: false),
-                    JobTitleId = table.Column<long>(nullable: true),
                     FirstName = table.Column<string>(maxLength: 50, nullable: true),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     BirthDay = table.Column<DateTime>(nullable: false),
                     Street = table.Column<string>(maxLength: 50, nullable: false),
-                    ZipCodeId = table.Column<long>(nullable: true),
+                    ZipCodeID = table.Column<int>(nullable: true),
                     HomePhone = table.Column<string>(maxLength: 50, nullable: true),
                     HomeMobile = table.Column<string>(maxLength: 50, nullable: true),
                     HomeMailAddress = table.Column<string>(maxLength: 50, nullable: true),
+                    Photo = table.Column<byte[]>(nullable: true),
+                    EmployeeIdent = table.Column<string>(nullable: true),
+                    JobTitleID = table.Column<int>(nullable: true),
                     BusinessMailAddress = table.Column<string>(maxLength: 50, nullable: true),
                     DataCare = table.Column<bool>(nullable: false),
                     Active = table.Column<bool>(nullable: false),
-                    Photo = table.Column<byte[]>(nullable: true),
                     Notes = table.Column<string>(nullable: true),
                     HireDate = table.Column<DateTime>(nullable: false),
                     EndDate = table.Column<DateTime>(nullable: false),
-                    DepartmentId = table.Column<long>(nullable: true),
-                    PhoneId = table.Column<long>(nullable: true),
-                    MobileId = table.Column<long>(nullable: true),
-                    FaxId = table.Column<long>(nullable: true),
-                    ChipCardId = table.Column<long>(nullable: true),
+                    DepartmentID = table.Column<int>(nullable: true),
+                    PhoneID = table.Column<int>(nullable: true),
+                    MobileID = table.Column<int>(nullable: true),
+                    FaxID = table.Column<int>(nullable: true),
+                    ChipCardID = table.Column<int>(nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false),
-                    ChipCardDoorId = table.Column<long>(nullable: true),
-                    ChipCardProfileId = table.Column<long>(nullable: true)
+                    ChipCardDoorID = table.Column<int>(nullable: true),
+                    ChipCardProfileID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employee", x => x.EmployeeId);
+                    table.PrimaryKey("PK_Employee", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Employee_ChipCardDoor_ChipCardDoorId",
-                        column: x => x.ChipCardDoorId,
+                        name: "FK_Employee_ChipCardDoor_ChipCardDoorID",
+                        column: x => x.ChipCardDoorID,
                         principalTable: "ChipCardDoor",
-                        principalColumn: "ChipCardDoorId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Employee_ChipCard_ChipCardId",
-                        column: x => x.ChipCardId,
+                        name: "FK_Employee_ChipCard_ChipCardID",
+                        column: x => x.ChipCardID,
                         principalTable: "ChipCard",
-                        principalColumn: "ChipCardId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Employee_ChipCardProfile_ChipCardProfileId",
-                        column: x => x.ChipCardProfileId,
+                        name: "FK_Employee_ChipCardProfile_ChipCardProfileID",
+                        column: x => x.ChipCardProfileID,
                         principalTable: "ChipCardProfile",
-                        principalColumn: "ChipCardProfileId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Employee_Department_DepartmentId",
-                        column: x => x.DepartmentId,
+                        name: "FK_Employee_Department_DepartmentID",
+                        column: x => x.DepartmentID,
                         principalTable: "Department",
-                        principalColumn: "DepartmentId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Employee_Fax_FaxId",
-                        column: x => x.FaxId,
+                        name: "FK_Employee_Fax_FaxID",
+                        column: x => x.FaxID,
                         principalTable: "Fax",
-                        principalColumn: "FaxId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Employee_JobTitle_JobTitleId",
-                        column: x => x.JobTitleId,
+                        name: "FK_Employee_JobTitle_JobTitleID",
+                        column: x => x.JobTitleID,
                         principalTable: "JobTitle",
-                        principalColumn: "JobTitleId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Employee_Mobile_MobileId",
-                        column: x => x.MobileId,
+                        name: "FK_Employee_Mobile_MobileID",
+                        column: x => x.MobileID,
                         principalTable: "Mobile",
-                        principalColumn: "MobileId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Employee_Phone_PhoneId",
-                        column: x => x.PhoneId,
+                        name: "FK_Employee_Phone_PhoneID",
+                        column: x => x.PhoneID,
                         principalTable: "Phone",
-                        principalColumn: "PhoneId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Employee_ZipCode_ZipCodeId",
-                        column: x => x.ZipCodeId,
+                        name: "FK_Employee_ZipCode_ZipCodeID",
+                        column: x => x.ZipCodeID,
                         principalTable: "ZipCode",
-                        principalColumn: "ZipCodeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -671,34 +673,34 @@ namespace jmbde.Migrations
                 name: "Company",
                 columns: table => new
                 {
-                    CompanyId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Name2 = table.Column<string>(maxLength: 50, nullable: true),
                     Street = table.Column<string>(maxLength: 50, nullable: true),
-                    ZipCodeId = table.Column<long>(nullable: true),
+                    ZipCodeID = table.Column<int>(nullable: true),
                     PhoneNumber = table.Column<string>(maxLength: 50, nullable: true),
                     FaxNumber = table.Column<string>(maxLength: 50, nullable: true),
                     MobileNumber = table.Column<string>(maxLength: 50, nullable: true),
                     MailAddress = table.Column<string>(maxLength: 50, nullable: true),
                     Active = table.Column<bool>(nullable: false),
-                    EmployeeId = table.Column<long>(nullable: true),
+                    EmployeeID = table.Column<int>(nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Company", x => x.CompanyId);
+                    table.PrimaryKey("PK_Company", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Company_Employee_EmployeeId",
-                        column: x => x.EmployeeId,
+                        name: "FK_Company_Employee_EmployeeID",
+                        column: x => x.EmployeeID,
                         principalTable: "Employee",
-                        principalColumn: "EmployeeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Company_ZipCode_ZipCodeId",
-                        column: x => x.ZipCodeId,
+                        name: "FK_Company_ZipCode_ZipCodeID",
+                        column: x => x.ZipCodeID,
                         principalTable: "ZipCode",
-                        principalColumn: "ZipCodeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -706,21 +708,21 @@ namespace jmbde.Migrations
                 name: "Document",
                 columns: table => new
                 {
-                    DocumentId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     DocumentData = table.Column<byte[]>(nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false),
-                    EmployeeId = table.Column<long>(nullable: true)
+                    EmployeeID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Document", x => x.DocumentId);
+                    table.PrimaryKey("PK_Document", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Document_Employee_EmployeeId",
-                        column: x => x.EmployeeId,
+                        name: "FK_Document_Employee_EmployeeID",
+                        column: x => x.EmployeeID,
                         principalTable: "Employee",
-                        principalColumn: "EmployeeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -728,7 +730,7 @@ namespace jmbde.Migrations
                 name: "Printer",
                 columns: table => new
                 {
-                    PrinterId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     SerialNumber = table.Column<string>(maxLength: 20, nullable: true),
@@ -741,59 +743,59 @@ namespace jmbde.Migrations
                     Resources = table.Column<string>(nullable: true),
                     PaperSize = table.Column<int>(nullable: true),
                     Color = table.Column<bool>(nullable: false),
-                    DeviceNameId = table.Column<long>(nullable: true),
-                    DeviceTypeId = table.Column<long>(nullable: true),
-                    EmployeeId = table.Column<long>(nullable: true),
-                    PlaceId = table.Column<long>(nullable: true),
-                    DepartmentId = table.Column<long>(nullable: true),
-                    ManufacturerId = table.Column<long>(nullable: true),
-                    InventoryId = table.Column<long>(nullable: true),
+                    DeviceNameID = table.Column<int>(nullable: true),
+                    DeviceTypeID = table.Column<int>(nullable: true),
+                    EmployeeID = table.Column<int>(nullable: true),
+                    PlaceID = table.Column<int>(nullable: true),
+                    DepartmentID = table.Column<int>(nullable: true),
+                    ManufacturerID = table.Column<int>(nullable: true),
+                    InventoryID = table.Column<int>(nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Printer", x => x.PrinterId);
+                    table.PrimaryKey("PK_Printer", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Printer_Department_DepartmentId",
-                        column: x => x.DepartmentId,
+                        name: "FK_Printer_Department_DepartmentID",
+                        column: x => x.DepartmentID,
                         principalTable: "Department",
-                        principalColumn: "DepartmentId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Printer_DeviceName_DeviceNameId",
-                        column: x => x.DeviceNameId,
+                        name: "FK_Printer_DeviceName_DeviceNameID",
+                        column: x => x.DeviceNameID,
                         principalTable: "DeviceName",
-                        principalColumn: "DeviceNameId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Printer_DeviceType_DeviceTypeId",
-                        column: x => x.DeviceTypeId,
+                        name: "FK_Printer_DeviceType_DeviceTypeID",
+                        column: x => x.DeviceTypeID,
                         principalTable: "DeviceType",
-                        principalColumn: "DeviceTypeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Printer_Employee_EmployeeId",
-                        column: x => x.EmployeeId,
+                        name: "FK_Printer_Employee_EmployeeID",
+                        column: x => x.EmployeeID,
                         principalTable: "Employee",
-                        principalColumn: "EmployeeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Printer_Inventory_InventoryId",
-                        column: x => x.InventoryId,
+                        name: "FK_Printer_Inventory_InventoryID",
+                        column: x => x.InventoryID,
                         principalTable: "Inventory",
-                        principalColumn: "InventoryId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Printer_Manufacturer_ManufacturerId",
-                        column: x => x.ManufacturerId,
+                        name: "FK_Printer_Manufacturer_ManufacturerID",
+                        column: x => x.ManufacturerID,
                         principalTable: "Manufacturer",
-                        principalColumn: "ManufacturerId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Printer_Place_PlaceId",
-                        column: x => x.PlaceId,
+                        name: "FK_Printer_Place_PlaceID",
+                        column: x => x.PlaceID,
                         principalTable: "Place",
-                        principalColumn: "PlaceId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -801,21 +803,21 @@ namespace jmbde.Migrations
                 name: "WorkFunction",
                 columns: table => new
                 {
-                    WorkFunctionId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Priority = table.Column<long>(nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false),
-                    EmployeeId = table.Column<long>(nullable: true)
+                    EmployeeID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WorkFunction", x => x.WorkFunctionId);
+                    table.PrimaryKey("PK_WorkFunction", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_WorkFunction_Employee_EmployeeId",
-                        column: x => x.EmployeeId,
+                        name: "FK_WorkFunction_Employee_EmployeeID",
+                        column: x => x.EmployeeID,
                         principalTable: "Employee",
-                        principalColumn: "EmployeeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -823,21 +825,21 @@ namespace jmbde.Migrations
                 name: "SystemData",
                 columns: table => new
                 {
-                    SystemDataId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Local = table.Column<bool>(nullable: false),
-                    CompanyId = table.Column<long>(nullable: true),
+                    CompanyID = table.Column<int>(nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SystemData", x => x.SystemDataId);
+                    table.PrimaryKey("PK_SystemData", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_SystemData_Company_CompanyId",
-                        column: x => x.CompanyId,
+                        name: "FK_SystemData_Company_CompanyID",
+                        column: x => x.CompanyID,
                         principalTable: "Company",
-                        principalColumn: "CompanyId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -845,28 +847,28 @@ namespace jmbde.Migrations
                 name: "SystemAccount",
                 columns: table => new
                 {
-                    SystemAccountId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UserName = table.Column<string>(maxLength: 50, nullable: false),
                     PassWord = table.Column<string>(maxLength: 25, nullable: false),
-                    SystemDataId = table.Column<long>(nullable: true),
+                    SystemDataID = table.Column<int>(nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false),
-                    EmployeeId = table.Column<long>(nullable: true)
+                    EmployeeID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SystemAccount", x => x.SystemAccountId);
+                    table.PrimaryKey("PK_SystemAccount", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_SystemAccount_Employee_EmployeeId",
-                        column: x => x.EmployeeId,
+                        name: "FK_SystemAccount_Employee_EmployeeID",
+                        column: x => x.EmployeeID,
                         principalTable: "Employee",
-                        principalColumn: "EmployeeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_SystemAccount_SystemData_SystemDataId",
-                        column: x => x.SystemDataId,
+                        name: "FK_SystemAccount_SystemData_SystemDataID",
+                        column: x => x.SystemDataID,
                         principalTable: "SystemData",
-                        principalColumn: "SystemDataId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -874,25 +876,25 @@ namespace jmbde.Migrations
                 name: "Software",
                 columns: table => new
                 {
-                    SoftwareId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Version = table.Column<string>(maxLength: 25, nullable: true),
                     Revision = table.Column<string>(maxLength: 25, nullable: true),
                     Fix = table.Column<string>(maxLength: 25, nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false),
-                    ComputerId = table.Column<long>(nullable: true)
+                    ComputerID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Software", x => x.SoftwareId);
+                    table.PrimaryKey("PK_Software", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Computer",
                 columns: table => new
                 {
-                    ComputerId = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     SerialNumber = table.Column<string>(maxLength: 20, nullable: true),
@@ -903,73 +905,73 @@ namespace jmbde.Migrations
                     NetworkIpAddress = table.Column<string>(maxLength: 50, nullable: true),
                     Active = table.Column<bool>(nullable: false),
                     Replace = table.Column<bool>(nullable: false),
-                    DeviceNameId = table.Column<long>(nullable: true),
-                    DeviceTypeId = table.Column<long>(nullable: true),
-                    PlaceId = table.Column<long>(nullable: true),
-                    DepartmentId = table.Column<long>(nullable: true),
-                    ManufacturerId = table.Column<long>(nullable: true),
-                    InventoryId = table.Column<long>(nullable: true),
-                    ProcessorId = table.Column<long>(nullable: true),
-                    OSSoftwareId = table.Column<long>(nullable: true),
+                    DeviceNameID = table.Column<int>(nullable: true),
+                    DeviceTypeID = table.Column<int>(nullable: true),
+                    PlaceID = table.Column<int>(nullable: true),
+                    DepartmentID = table.Column<int>(nullable: true),
+                    ManufacturerID = table.Column<int>(nullable: true),
+                    InventoryID = table.Column<int>(nullable: true),
+                    ProcessorID = table.Column<int>(nullable: true),
+                    OSID = table.Column<int>(nullable: true),
                     LastUpdate = table.Column<DateTime>(nullable: false),
-                    EmployeeId = table.Column<long>(nullable: true)
+                    EmployeeID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Computer", x => x.ComputerId);
+                    table.PrimaryKey("PK_Computer", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Computer_Department_DepartmentId",
-                        column: x => x.DepartmentId,
+                        name: "FK_Computer_Department_DepartmentID",
+                        column: x => x.DepartmentID,
                         principalTable: "Department",
-                        principalColumn: "DepartmentId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Computer_DeviceName_DeviceNameId",
-                        column: x => x.DeviceNameId,
+                        name: "FK_Computer_DeviceName_DeviceNameID",
+                        column: x => x.DeviceNameID,
                         principalTable: "DeviceName",
-                        principalColumn: "DeviceNameId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Computer_DeviceType_DeviceTypeId",
-                        column: x => x.DeviceTypeId,
+                        name: "FK_Computer_DeviceType_DeviceTypeID",
+                        column: x => x.DeviceTypeID,
                         principalTable: "DeviceType",
-                        principalColumn: "DeviceTypeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Computer_Employee_EmployeeId",
-                        column: x => x.EmployeeId,
+                        name: "FK_Computer_Employee_EmployeeID",
+                        column: x => x.EmployeeID,
                         principalTable: "Employee",
-                        principalColumn: "EmployeeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Computer_Inventory_InventoryId",
-                        column: x => x.InventoryId,
+                        name: "FK_Computer_Inventory_InventoryID",
+                        column: x => x.InventoryID,
                         principalTable: "Inventory",
-                        principalColumn: "InventoryId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Computer_Manufacturer_ManufacturerId",
-                        column: x => x.ManufacturerId,
+                        name: "FK_Computer_Manufacturer_ManufacturerID",
+                        column: x => x.ManufacturerID,
                         principalTable: "Manufacturer",
-                        principalColumn: "ManufacturerId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Computer_Software_OSSoftwareId",
-                        column: x => x.OSSoftwareId,
+                        name: "FK_Computer_Software_OSID",
+                        column: x => x.OSID,
                         principalTable: "Software",
-                        principalColumn: "SoftwareId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Computer_Place_PlaceId",
-                        column: x => x.PlaceId,
+                        name: "FK_Computer_Place_PlaceID",
+                        column: x => x.PlaceID,
                         principalTable: "Place",
-                        principalColumn: "PlaceId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Computer_Processor_ProcessorId",
-                        column: x => x.ProcessorId,
+                        name: "FK_Computer_Processor_ProcessorID",
+                        column: x => x.ProcessorID,
                         principalTable: "Processor",
-                        principalColumn: "ProcessorId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -1011,391 +1013,391 @@ namespace jmbde.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ChipCardDoor_ChipCardId",
+                name: "IX_ChipCardDoor_ChipCardID",
                 table: "ChipCardDoor",
-                column: "ChipCardId");
+                column: "ChipCardID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ChipCardDoor_ChipCardProfileId",
+                name: "IX_ChipCardDoor_ChipCardProfileID",
                 table: "ChipCardDoor",
-                column: "ChipCardProfileId");
+                column: "ChipCardProfileID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ChipCardDoor_DepartmentId",
+                name: "IX_ChipCardDoor_DepartmentID",
                 table: "ChipCardDoor",
-                column: "DepartmentId");
+                column: "DepartmentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ChipCardDoor_PlaceId",
+                name: "IX_ChipCardDoor_PlaceID",
                 table: "ChipCardDoor",
-                column: "PlaceId");
+                column: "PlaceID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ChipCardProfile_ChipCardId",
+                name: "IX_ChipCardProfile_ChipCardID",
                 table: "ChipCardProfile",
-                column: "ChipCardId");
+                column: "ChipCardID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Company_EmployeeId",
+                name: "IX_Company_EmployeeID",
                 table: "Company",
-                column: "EmployeeId");
+                column: "EmployeeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Company_ZipCodeId",
+                name: "IX_Company_ZipCodeID",
                 table: "Company",
-                column: "ZipCodeId");
+                column: "ZipCodeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Computer_DepartmentId",
+                name: "IX_Computer_DepartmentID",
                 table: "Computer",
-                column: "DepartmentId");
+                column: "DepartmentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Computer_DeviceNameId",
+                name: "IX_Computer_DeviceNameID",
                 table: "Computer",
-                column: "DeviceNameId");
+                column: "DeviceNameID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Computer_DeviceTypeId",
+                name: "IX_Computer_DeviceTypeID",
                 table: "Computer",
-                column: "DeviceTypeId");
+                column: "DeviceTypeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Computer_EmployeeId",
+                name: "IX_Computer_EmployeeID",
                 table: "Computer",
-                column: "EmployeeId");
+                column: "EmployeeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Computer_InventoryId",
+                name: "IX_Computer_InventoryID",
                 table: "Computer",
-                column: "InventoryId");
+                column: "InventoryID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Computer_ManufacturerId",
+                name: "IX_Computer_ManufacturerID",
                 table: "Computer",
-                column: "ManufacturerId");
+                column: "ManufacturerID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Computer_OSSoftwareId",
+                name: "IX_Computer_OSID",
                 table: "Computer",
-                column: "OSSoftwareId");
+                column: "OSID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Computer_PlaceId",
+                name: "IX_Computer_PlaceID",
                 table: "Computer",
-                column: "PlaceId");
+                column: "PlaceID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Computer_ProcessorId",
+                name: "IX_Computer_ProcessorID",
                 table: "Computer",
-                column: "ProcessorId");
+                column: "ProcessorID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Document_EmployeeId",
+                name: "IX_Document_EmployeeID",
                 table: "Document",
-                column: "EmployeeId");
+                column: "EmployeeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_ChipCardDoorId",
+                name: "IX_Employee_ChipCardDoorID",
                 table: "Employee",
-                column: "ChipCardDoorId");
+                column: "ChipCardDoorID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_ChipCardId",
+                name: "IX_Employee_ChipCardID",
                 table: "Employee",
-                column: "ChipCardId");
+                column: "ChipCardID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_ChipCardProfileId",
+                name: "IX_Employee_ChipCardProfileID",
                 table: "Employee",
-                column: "ChipCardProfileId");
+                column: "ChipCardProfileID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_DepartmentId",
+                name: "IX_Employee_DepartmentID",
                 table: "Employee",
-                column: "DepartmentId");
+                column: "DepartmentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_FaxId",
+                name: "IX_Employee_FaxID",
                 table: "Employee",
-                column: "FaxId");
+                column: "FaxID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_JobTitleId",
+                name: "IX_Employee_JobTitleID",
                 table: "Employee",
-                column: "JobTitleId");
+                column: "JobTitleID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_MobileId",
+                name: "IX_Employee_MobileID",
                 table: "Employee",
-                column: "MobileId");
+                column: "MobileID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_PhoneId",
+                name: "IX_Employee_PhoneID",
                 table: "Employee",
-                column: "PhoneId");
+                column: "PhoneID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_ZipCodeId",
+                name: "IX_Employee_ZipCodeID",
                 table: "Employee",
-                column: "ZipCodeId");
+                column: "ZipCodeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fax_DepartmentId",
+                name: "IX_Fax_DepartmentID",
                 table: "Fax",
-                column: "DepartmentId");
+                column: "DepartmentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fax_DeviceNameId",
+                name: "IX_Fax_DeviceNameID",
                 table: "Fax",
-                column: "DeviceNameId");
+                column: "DeviceNameID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fax_DeviceTypeId",
+                name: "IX_Fax_DeviceTypeID",
                 table: "Fax",
-                column: "DeviceTypeId");
+                column: "DeviceTypeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fax_InventoryId",
+                name: "IX_Fax_InventoryID",
                 table: "Fax",
-                column: "InventoryId");
+                column: "InventoryID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fax_ManufacturerId",
+                name: "IX_Fax_ManufacturerID",
                 table: "Fax",
-                column: "ManufacturerId");
+                column: "ManufacturerID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fax_PlaceId",
+                name: "IX_Fax_PlaceID",
                 table: "Fax",
-                column: "PlaceId");
+                column: "PlaceID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Manufacturer_ZipCodeId",
+                name: "IX_Manufacturer_ZipCodeID",
                 table: "Manufacturer",
-                column: "ZipCodeId");
+                column: "ZipCodeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Mobile_DepartmentId",
+                name: "IX_Mobile_DepartmentID",
                 table: "Mobile",
-                column: "DepartmentId");
+                column: "DepartmentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Mobile_DeviceNameId",
+                name: "IX_Mobile_DeviceNameID",
                 table: "Mobile",
-                column: "DeviceNameId");
+                column: "DeviceNameID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Mobile_DeviceTypeId",
+                name: "IX_Mobile_DeviceTypeID",
                 table: "Mobile",
-                column: "DeviceTypeId");
+                column: "DeviceTypeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Mobile_InventoryId",
+                name: "IX_Mobile_InventoryID",
                 table: "Mobile",
-                column: "InventoryId");
+                column: "InventoryID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Mobile_ManufacturerId",
+                name: "IX_Mobile_ManufacturerID",
                 table: "Mobile",
-                column: "ManufacturerId");
+                column: "ManufacturerID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Mobile_PlaceId",
+                name: "IX_Mobile_PlaceID",
                 table: "Mobile",
-                column: "PlaceId");
+                column: "PlaceID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Phone_DepartmentId",
+                name: "IX_Phone_DepartmentID",
                 table: "Phone",
-                column: "DepartmentId");
+                column: "DepartmentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Phone_DeviceNameId",
+                name: "IX_Phone_DeviceNameID",
                 table: "Phone",
-                column: "DeviceNameId");
+                column: "DeviceNameID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Phone_DeviceTypeId",
+                name: "IX_Phone_DeviceTypeID",
                 table: "Phone",
-                column: "DeviceTypeId");
+                column: "DeviceTypeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Phone_InventoryId",
+                name: "IX_Phone_InventoryID",
                 table: "Phone",
-                column: "InventoryId");
+                column: "InventoryID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Phone_ManufacturerId",
+                name: "IX_Phone_ManufacturerID",
                 table: "Phone",
-                column: "ManufacturerId");
+                column: "ManufacturerID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Phone_PlaceId",
+                name: "IX_Phone_PlaceID",
                 table: "Phone",
-                column: "PlaceId");
+                column: "PlaceID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Printer_DepartmentId",
+                name: "IX_Printer_DepartmentID",
                 table: "Printer",
-                column: "DepartmentId");
+                column: "DepartmentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Printer_DeviceNameId",
+                name: "IX_Printer_DeviceNameID",
                 table: "Printer",
-                column: "DeviceNameId");
+                column: "DeviceNameID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Printer_DeviceTypeId",
+                name: "IX_Printer_DeviceTypeID",
                 table: "Printer",
-                column: "DeviceTypeId");
+                column: "DeviceTypeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Printer_EmployeeId",
+                name: "IX_Printer_EmployeeID",
                 table: "Printer",
-                column: "EmployeeId");
+                column: "EmployeeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Printer_InventoryId",
+                name: "IX_Printer_InventoryID",
                 table: "Printer",
-                column: "InventoryId");
+                column: "InventoryID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Printer_ManufacturerId",
+                name: "IX_Printer_ManufacturerID",
                 table: "Printer",
-                column: "ManufacturerId");
+                column: "ManufacturerID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Printer_PlaceId",
+                name: "IX_Printer_PlaceID",
                 table: "Printer",
-                column: "PlaceId");
+                column: "PlaceID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Software_ComputerId",
+                name: "IX_Software_ComputerID",
                 table: "Software",
-                column: "ComputerId");
+                column: "ComputerID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SystemAccount_EmployeeId",
+                name: "IX_SystemAccount_EmployeeID",
                 table: "SystemAccount",
-                column: "EmployeeId");
+                column: "EmployeeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SystemAccount_SystemDataId",
+                name: "IX_SystemAccount_SystemDataID",
                 table: "SystemAccount",
-                column: "SystemDataId");
+                column: "SystemDataID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SystemData_CompanyId",
+                name: "IX_SystemData_CompanyID",
                 table: "SystemData",
-                column: "CompanyId");
+                column: "CompanyID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WorkFunction_EmployeeId",
+                name: "IX_WorkFunction_EmployeeID",
                 table: "WorkFunction",
-                column: "EmployeeId");
+                column: "EmployeeID");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Software_Computer_ComputerId",
+                name: "FK_Software_Computer_ComputerID",
                 table: "Software",
-                column: "ComputerId",
+                column: "ComputerID",
                 principalTable: "Computer",
-                principalColumn: "ComputerId",
+                principalColumn: "ID",
                 onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_ChipCardDoor_ChipCard_ChipCardId",
+                name: "FK_ChipCardDoor_ChipCard_ChipCardID",
                 table: "ChipCardDoor");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ChipCardProfile_ChipCard_ChipCardId",
+                name: "FK_ChipCardProfile_ChipCard_ChipCardID",
                 table: "ChipCardProfile");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Employee_ChipCard_ChipCardId",
+                name: "FK_Employee_ChipCard_ChipCardID",
                 table: "Employee");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ChipCardDoor_ChipCardProfile_ChipCardProfileId",
+                name: "FK_ChipCardDoor_ChipCardProfile_ChipCardProfileID",
                 table: "ChipCardDoor");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Employee_ChipCardProfile_ChipCardProfileId",
+                name: "FK_Employee_ChipCardProfile_ChipCardProfileID",
                 table: "Employee");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ChipCardDoor_Department_DepartmentId",
+                name: "FK_ChipCardDoor_Department_DepartmentID",
                 table: "ChipCardDoor");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Computer_Department_DepartmentId",
+                name: "FK_Computer_Department_DepartmentID",
                 table: "Computer");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Employee_Department_DepartmentId",
+                name: "FK_Employee_Department_DepartmentID",
                 table: "Employee");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Fax_Department_DepartmentId",
+                name: "FK_Fax_Department_DepartmentID",
                 table: "Fax");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Mobile_Department_DepartmentId",
+                name: "FK_Mobile_Department_DepartmentID",
                 table: "Mobile");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Phone_Department_DepartmentId",
+                name: "FK_Phone_Department_DepartmentID",
                 table: "Phone");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ChipCardDoor_Place_PlaceId",
+                name: "FK_ChipCardDoor_Place_PlaceID",
                 table: "ChipCardDoor");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Computer_Place_PlaceId",
+                name: "FK_Computer_Place_PlaceID",
                 table: "Computer");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Fax_Place_PlaceId",
+                name: "FK_Fax_Place_PlaceID",
                 table: "Fax");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Mobile_Place_PlaceId",
+                name: "FK_Mobile_Place_PlaceID",
                 table: "Mobile");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Phone_Place_PlaceId",
+                name: "FK_Phone_Place_PlaceID",
                 table: "Phone");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Computer_Employee_EmployeeId",
+                name: "FK_Computer_Employee_EmployeeID",
                 table: "Computer");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Manufacturer_ZipCode_ZipCodeId",
+                name: "FK_Manufacturer_ZipCode_ZipCodeID",
                 table: "Manufacturer");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Computer_DeviceName_DeviceNameId",
+                name: "FK_Computer_DeviceName_DeviceNameID",
                 table: "Computer");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Computer_DeviceType_DeviceTypeId",
+                name: "FK_Computer_DeviceType_DeviceTypeID",
                 table: "Computer");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Computer_Inventory_InventoryId",
+                name: "FK_Computer_Inventory_InventoryID",
                 table: "Computer");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Computer_Manufacturer_ManufacturerId",
+                name: "FK_Computer_Manufacturer_ManufacturerID",
                 table: "Computer");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Computer_Software_OSSoftwareId",
+                name: "FK_Computer_Software_OSID",
                 table: "Computer");
 
             migrationBuilder.DropTable(

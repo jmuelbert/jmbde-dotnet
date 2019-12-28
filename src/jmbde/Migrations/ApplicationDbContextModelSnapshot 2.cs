@@ -18,7 +18,7 @@ namespace jmbde.Migrations
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.ChipCard", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("ChipCardId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -33,24 +33,24 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(25);
 
-                    b.HasKey("ID");
+                    b.HasKey("ChipCardId");
 
                     b.ToTable("ChipCard");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.ChipCardDoor", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("ChipCardDoorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ChipCardID")
+                    b.Property<long?>("ChipCardId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ChipCardProfileID")
+                    b.Property<long?>("ChipCardProfileId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DepartmentID")
+                    b.Property<long?>("DepartmentId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("LastUpdate")
@@ -61,29 +61,29 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(25);
 
-                    b.Property<int?>("PlaceID")
+                    b.Property<long?>("PlaceId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ID");
+                    b.HasKey("ChipCardDoorId");
 
-                    b.HasIndex("ChipCardID");
+                    b.HasIndex("ChipCardId");
 
-                    b.HasIndex("ChipCardProfileID");
+                    b.HasIndex("ChipCardProfileId");
 
-                    b.HasIndex("DepartmentID");
+                    b.HasIndex("DepartmentId");
 
-                    b.HasIndex("PlaceID");
+                    b.HasIndex("PlaceId");
 
                     b.ToTable("ChipCardDoor");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.ChipCardProfile", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("ChipCardProfileId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ChipCardID")
+                    b.Property<long?>("ChipCardId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("LastUpdate")
@@ -94,16 +94,16 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(25);
 
-                    b.HasKey("ID");
+                    b.HasKey("ChipCardProfileId");
 
-                    b.HasIndex("ChipCardID");
+                    b.HasIndex("ChipCardId");
 
                     b.ToTable("ChipCardProfile");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.CityName", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("CityNameId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -115,21 +115,21 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.HasKey("ID");
+                    b.HasKey("CityNameId");
 
                     b.ToTable("CityName");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Company", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("CompanyId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("Active")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("EmployeeID")
+                    b.Property<long?>("EmployeeId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("FaxNumber")
@@ -164,46 +164,46 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("ZipCodeID")
+                    b.Property<long?>("ZipCodeId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ID");
+                    b.HasKey("CompanyId");
 
-                    b.HasIndex("EmployeeID");
+                    b.HasIndex("EmployeeId");
 
-                    b.HasIndex("ZipCodeID");
+                    b.HasIndex("ZipCodeId");
 
                     b.ToTable("Company");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Computer", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("ComputerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("Active")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DepartmentID")
+                    b.Property<long?>("DepartmentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DeviceNameID")
+                    b.Property<long?>("DeviceNameId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DeviceTypeID")
+                    b.Property<long?>("DeviceTypeId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("EmployeeID")
+                    b.Property<long?>("EmployeeId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("InventoryID")
+                    b.Property<long?>("InventoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("LastUpdate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ManufacturerID")
+                    b.Property<long?>("ManufacturerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<long?>("Memory")
@@ -222,13 +222,13 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("OSID")
+                    b.Property<long?>("OSSoftwareId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("PlaceID")
+                    b.Property<long?>("PlaceId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ProcessorID")
+                    b.Property<long?>("ProcessorId")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("Replace")
@@ -246,32 +246,32 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(20);
 
-                    b.HasKey("ID");
+                    b.HasKey("ComputerId");
 
-                    b.HasIndex("DepartmentID");
+                    b.HasIndex("DepartmentId");
 
-                    b.HasIndex("DeviceNameID");
+                    b.HasIndex("DeviceNameId");
 
-                    b.HasIndex("DeviceTypeID");
+                    b.HasIndex("DeviceTypeId");
 
-                    b.HasIndex("EmployeeID");
+                    b.HasIndex("EmployeeId");
 
-                    b.HasIndex("InventoryID");
+                    b.HasIndex("InventoryId");
 
-                    b.HasIndex("ManufacturerID");
+                    b.HasIndex("ManufacturerId");
 
-                    b.HasIndex("OSID");
+                    b.HasIndex("OSSoftwareId");
 
-                    b.HasIndex("PlaceID");
+                    b.HasIndex("PlaceId");
 
-                    b.HasIndex("ProcessorID");
+                    b.HasIndex("ProcessorId");
 
                     b.ToTable("Computer");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Department", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("DepartmentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -286,14 +286,14 @@ namespace jmbde.Migrations
                     b.Property<long?>("Priority")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ID");
+                    b.HasKey("DepartmentId");
 
                     b.ToTable("Department");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.DeviceName", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("DeviceNameId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -305,14 +305,14 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.HasKey("ID");
+                    b.HasKey("DeviceNameId");
 
                     b.ToTable("DeviceName");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.DeviceType", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("DeviceTypeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -324,21 +324,21 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.HasKey("ID");
+                    b.HasKey("DeviceTypeId");
 
                     b.ToTable("DeviceType");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Document", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("DocumentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("DocumentData")
                         .HasColumnType("BLOB");
 
-                    b.Property<int?>("EmployeeID")
+                    b.Property<long?>("EmployeeId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("LastUpdate")
@@ -349,16 +349,16 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.HasKey("ID");
+                    b.HasKey("DocumentId");
 
-                    b.HasIndex("EmployeeID");
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Document");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Employee", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("EmployeeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -372,19 +372,19 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("ChipCardDoorID")
+                    b.Property<long?>("ChipCardDoorId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ChipCardID")
+                    b.Property<long?>("ChipCardId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ChipCardProfileID")
+                    b.Property<long?>("ChipCardProfileId")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("DataCare")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DepartmentID")
+                    b.Property<long?>("DepartmentId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("EmployeeIdent")
@@ -393,7 +393,7 @@ namespace jmbde.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("FaxID")
+                    b.Property<long?>("FaxId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("FirstName")
@@ -418,7 +418,7 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("JobTitleID")
+                    b.Property<long?>("JobTitleId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("LastName")
@@ -429,19 +429,13 @@ namespace jmbde.Migrations
                     b.Property<DateTime>("LastUpdate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("MobileID")
+                    b.Property<long?>("MobileId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Notes")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PersonID")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("PersonIdent")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("PhoneID")
+                    b.Property<long?>("PhoneId")
                         .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("Photo")
@@ -452,57 +446,57 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("ZipCodeID")
+                    b.Property<long?>("ZipCodeId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ID");
+                    b.HasKey("EmployeeId");
 
-                    b.HasIndex("ChipCardDoorID");
+                    b.HasIndex("ChipCardDoorId");
 
-                    b.HasIndex("ChipCardID");
+                    b.HasIndex("ChipCardId");
 
-                    b.HasIndex("ChipCardProfileID");
+                    b.HasIndex("ChipCardProfileId");
 
-                    b.HasIndex("DepartmentID");
+                    b.HasIndex("DepartmentId");
 
-                    b.HasIndex("FaxID");
+                    b.HasIndex("FaxId");
 
-                    b.HasIndex("JobTitleID");
+                    b.HasIndex("JobTitleId");
 
-                    b.HasIndex("MobileID");
+                    b.HasIndex("MobileId");
 
-                    b.HasIndex("PhoneID");
+                    b.HasIndex("PhoneId");
 
-                    b.HasIndex("ZipCodeID");
+                    b.HasIndex("ZipCodeId");
 
                     b.ToTable("Employee");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Fax", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("FaxId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("Active")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DepartmentID")
+                    b.Property<long?>("DepartmentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DeviceNameID")
+                    b.Property<long?>("DeviceNameId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DeviceTypeID")
+                    b.Property<long?>("DeviceTypeId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("InventoryID")
+                    b.Property<long?>("InventoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("LastUpdate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ManufacturerID")
+                    b.Property<long?>("ManufacturerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Number")
@@ -514,7 +508,7 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(10);
 
-                    b.Property<int?>("PlaceID")
+                    b.Property<long?>("PlaceId")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("Replace")
@@ -524,26 +518,26 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(20);
 
-                    b.HasKey("ID");
+                    b.HasKey("FaxId");
 
-                    b.HasIndex("DepartmentID");
+                    b.HasIndex("DepartmentId");
 
-                    b.HasIndex("DeviceNameID");
+                    b.HasIndex("DeviceNameId");
 
-                    b.HasIndex("DeviceTypeID");
+                    b.HasIndex("DeviceTypeId");
 
-                    b.HasIndex("InventoryID");
+                    b.HasIndex("InventoryId");
 
-                    b.HasIndex("ManufacturerID");
+                    b.HasIndex("ManufacturerId");
 
-                    b.HasIndex("PlaceID");
+                    b.HasIndex("PlaceId");
 
                     b.ToTable("Fax");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Inventory", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("InventoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -562,14 +556,14 @@ namespace jmbde.Migrations
                     b.Property<DateTime>("LastUpdate")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("ID");
+                    b.HasKey("InventoryId");
 
                     b.ToTable("Inventory");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.JobTitle", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("JobTitleId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -584,14 +578,14 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.HasKey("ID");
+                    b.HasKey("JobTitleId");
 
                     b.ToTable("JobTitle");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Manufacturer", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("ManufacturerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -635,19 +629,19 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("ZipCodeID")
+                    b.Property<long?>("ZipCodeId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ID");
+                    b.HasKey("ManufacturerId");
 
-                    b.HasIndex("ZipCodeID");
+                    b.HasIndex("ZipCodeId");
 
                     b.ToTable("Manufacturer");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Mobile", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("MobileId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -658,22 +652,22 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(30);
 
-                    b.Property<int?>("DepartmentID")
+                    b.Property<long?>("DepartmentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DeviceNameID")
+                    b.Property<long?>("DeviceNameId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DeviceTypeID")
+                    b.Property<long?>("DeviceTypeId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("InventoryID")
+                    b.Property<long?>("InventoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("LastUpdate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ManufacturerID")
+                    b.Property<long?>("ManufacturerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Number")
@@ -685,7 +679,7 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(10);
 
-                    b.Property<int?>("PlaceID")
+                    b.Property<long?>("PlaceId")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("Replace")
@@ -695,48 +689,48 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(20);
 
-                    b.HasKey("ID");
+                    b.HasKey("MobileId");
 
-                    b.HasIndex("DepartmentID");
+                    b.HasIndex("DepartmentId");
 
-                    b.HasIndex("DeviceNameID");
+                    b.HasIndex("DeviceNameId");
 
-                    b.HasIndex("DeviceTypeID");
+                    b.HasIndex("DeviceTypeId");
 
-                    b.HasIndex("InventoryID");
+                    b.HasIndex("InventoryId");
 
-                    b.HasIndex("ManufacturerID");
+                    b.HasIndex("ManufacturerId");
 
-                    b.HasIndex("PlaceID");
+                    b.HasIndex("PlaceId");
 
                     b.ToTable("Mobile");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Phone", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("PhoneId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("Active")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DepartmentID")
+                    b.Property<long?>("DepartmentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DeviceNameID")
+                    b.Property<long?>("DeviceNameId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DeviceTypeID")
+                    b.Property<long?>("DeviceTypeId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("InventoryID")
+                    b.Property<long?>("InventoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("LastUpdate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ManufacturerID")
+                    b.Property<long?>("ManufacturerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Number")
@@ -748,7 +742,7 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(10);
 
-                    b.Property<int?>("PlaceID")
+                    b.Property<long?>("PlaceId")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("Replace")
@@ -758,26 +752,26 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(20);
 
-                    b.HasKey("ID");
+                    b.HasKey("PhoneId");
 
-                    b.HasIndex("DepartmentID");
+                    b.HasIndex("DepartmentId");
 
-                    b.HasIndex("DeviceNameID");
+                    b.HasIndex("DeviceNameId");
 
-                    b.HasIndex("DeviceTypeID");
+                    b.HasIndex("DeviceTypeId");
 
-                    b.HasIndex("InventoryID");
+                    b.HasIndex("InventoryId");
 
-                    b.HasIndex("ManufacturerID");
+                    b.HasIndex("ManufacturerId");
 
-                    b.HasIndex("PlaceID");
+                    b.HasIndex("PlaceId");
 
                     b.ToTable("Phone");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Place", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("PlaceId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -799,14 +793,14 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.HasKey("ID");
+                    b.HasKey("PlaceId");
 
                     b.ToTable("Place");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Printer", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("PrinterId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -816,25 +810,25 @@ namespace jmbde.Migrations
                     b.Property<bool>("Color")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DepartmentID")
+                    b.Property<long?>("DepartmentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DeviceNameID")
+                    b.Property<long?>("DeviceNameId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DeviceTypeID")
+                    b.Property<long?>("DeviceTypeId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("EmployeeID")
+                    b.Property<long?>("EmployeeId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("InventoryID")
+                    b.Property<long?>("InventoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("LastUpdate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ManufacturerID")
+                    b.Property<long?>("ManufacturerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -853,7 +847,7 @@ namespace jmbde.Migrations
                     b.Property<int?>("PaperSize")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("PlaceID")
+                    b.Property<long?>("PlaceId")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("Replace")
@@ -874,28 +868,28 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(20);
 
-                    b.HasKey("ID");
+                    b.HasKey("PrinterId");
 
-                    b.HasIndex("DepartmentID");
+                    b.HasIndex("DepartmentId");
 
-                    b.HasIndex("DeviceNameID");
+                    b.HasIndex("DeviceNameId");
 
-                    b.HasIndex("DeviceTypeID");
+                    b.HasIndex("DeviceTypeId");
 
-                    b.HasIndex("EmployeeID");
+                    b.HasIndex("EmployeeId");
 
-                    b.HasIndex("InventoryID");
+                    b.HasIndex("InventoryId");
 
-                    b.HasIndex("ManufacturerID");
+                    b.HasIndex("ManufacturerId");
 
-                    b.HasIndex("PlaceID");
+                    b.HasIndex("PlaceId");
 
                     b.ToTable("Printer");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Processor", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("ProcessorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -913,18 +907,18 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.HasKey("ID");
+                    b.HasKey("ProcessorId");
 
                     b.ToTable("Processor");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Software", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("SoftwareId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ComputerID")
+                    b.Property<long?>("ComputerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Fix")
@@ -947,20 +941,20 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(25);
 
-                    b.HasKey("ID");
+                    b.HasKey("SoftwareId");
 
-                    b.HasIndex("ComputerID");
+                    b.HasIndex("ComputerId");
 
                     b.ToTable("Software");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.SystemAccount", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("SystemAccountId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("EmployeeID")
+                    b.Property<long?>("EmployeeId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("LastUpdate")
@@ -971,7 +965,7 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(25);
 
-                    b.Property<int?>("SystemDataID")
+                    b.Property<long?>("SystemDataId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserName")
@@ -979,22 +973,22 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.HasKey("ID");
+                    b.HasKey("SystemAccountId");
 
-                    b.HasIndex("EmployeeID");
+                    b.HasIndex("EmployeeId");
 
-                    b.HasIndex("SystemDataID");
+                    b.HasIndex("SystemDataId");
 
                     b.ToTable("SystemAccount");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.SystemData", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("SystemDataId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CompanyID")
+                    b.Property<long?>("CompanyId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("LastUpdate")
@@ -1008,20 +1002,20 @@ namespace jmbde.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.HasKey("ID");
+                    b.HasKey("SystemDataId");
 
-                    b.HasIndex("CompanyID");
+                    b.HasIndex("CompanyId");
 
                     b.ToTable("SystemData");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.WorkFunction", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("WorkFunctionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("EmployeeID")
+                    b.Property<long?>("EmployeeId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("LastUpdate")
@@ -1035,16 +1029,16 @@ namespace jmbde.Migrations
                     b.Property<long?>("Priority")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ID");
+                    b.HasKey("WorkFunctionId");
 
-                    b.HasIndex("EmployeeID");
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("WorkFunction");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.ZipCode", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<long>("ZipCodeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -1060,7 +1054,7 @@ namespace jmbde.Migrations
                     b.Property<DateTime>("LastUpdate")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("ID");
+                    b.HasKey("ZipCodeId");
 
                     b.ToTable("ZipCode");
                 });
@@ -1265,273 +1259,273 @@ namespace jmbde.Migrations
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.ChipCard", null)
                         .WithMany("ChipCardDoor")
-                        .HasForeignKey("ChipCardID");
+                        .HasForeignKey("ChipCardId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.ChipCardProfile", null)
                         .WithMany("ChipCardDoor")
-                        .HasForeignKey("ChipCardProfileID");
+                        .HasForeignKey("ChipCardProfileId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Department", "Department")
                         .WithMany()
-                        .HasForeignKey("DepartmentID");
+                        .HasForeignKey("DepartmentId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Place", "Place")
                         .WithMany()
-                        .HasForeignKey("PlaceID");
+                        .HasForeignKey("PlaceId");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.ChipCardProfile", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.ChipCard", null)
                         .WithMany("ChipCardProfile")
-                        .HasForeignKey("ChipCardID");
+                        .HasForeignKey("ChipCardId");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Company", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.Employee", "Employee")
                         .WithMany()
-                        .HasForeignKey("EmployeeID");
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.ZipCode", "ZipCode")
                         .WithMany()
-                        .HasForeignKey("ZipCodeID");
+                        .HasForeignKey("ZipCodeId");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Computer", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.Department", "Department")
                         .WithMany()
-                        .HasForeignKey("DepartmentID");
+                        .HasForeignKey("DepartmentId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.DeviceName", "DeviceName")
                         .WithMany()
-                        .HasForeignKey("DeviceNameID");
+                        .HasForeignKey("DeviceNameId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.DeviceType", "DeviceType")
                         .WithMany()
-                        .HasForeignKey("DeviceTypeID");
+                        .HasForeignKey("DeviceTypeId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Employee", null)
                         .WithMany("Computer")
-                        .HasForeignKey("EmployeeID");
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Inventory", "Inventory")
                         .WithMany()
-                        .HasForeignKey("InventoryID");
+                        .HasForeignKey("InventoryId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Manufacturer", "Manufacturer")
                         .WithMany()
-                        .HasForeignKey("ManufacturerID");
+                        .HasForeignKey("ManufacturerId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Software", "OS")
                         .WithMany()
-                        .HasForeignKey("OSID");
+                        .HasForeignKey("OSSoftwareId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Place", "Place")
                         .WithMany()
-                        .HasForeignKey("PlaceID");
+                        .HasForeignKey("PlaceId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Processor", "Processor")
                         .WithMany()
-                        .HasForeignKey("ProcessorID");
+                        .HasForeignKey("ProcessorId");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Document", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.Employee", null)
                         .WithMany("Document")
-                        .HasForeignKey("EmployeeID");
+                        .HasForeignKey("EmployeeId");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Employee", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.ChipCardDoor", null)
                         .WithMany("Employee")
-                        .HasForeignKey("ChipCardDoorID");
+                        .HasForeignKey("ChipCardDoorId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.ChipCard", "ChipCard")
                         .WithMany("Employee")
-                        .HasForeignKey("ChipCardID");
+                        .HasForeignKey("ChipCardId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.ChipCardProfile", null)
                         .WithMany("Employee")
-                        .HasForeignKey("ChipCardProfileID");
+                        .HasForeignKey("ChipCardProfileId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Department", "Department")
                         .WithMany()
-                        .HasForeignKey("DepartmentID");
+                        .HasForeignKey("DepartmentId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Fax", "Fax")
                         .WithMany("Employee")
-                        .HasForeignKey("FaxID");
+                        .HasForeignKey("FaxId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.JobTitle", "JobTitle")
                         .WithMany()
-                        .HasForeignKey("JobTitleID");
+                        .HasForeignKey("JobTitleId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Mobile", "Mobile")
                         .WithMany()
-                        .HasForeignKey("MobileID");
+                        .HasForeignKey("MobileId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Phone", "Phone")
                         .WithMany()
-                        .HasForeignKey("PhoneID");
+                        .HasForeignKey("PhoneId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.ZipCode", "ZipCode")
                         .WithMany()
-                        .HasForeignKey("ZipCodeID");
+                        .HasForeignKey("ZipCodeId");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Fax", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.Department", "Department")
                         .WithMany("Fax")
-                        .HasForeignKey("DepartmentID");
+                        .HasForeignKey("DepartmentId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.DeviceName", "DeviceName")
                         .WithMany()
-                        .HasForeignKey("DeviceNameID");
+                        .HasForeignKey("DeviceNameId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.DeviceType", "DeviceType")
                         .WithMany()
-                        .HasForeignKey("DeviceTypeID");
+                        .HasForeignKey("DeviceTypeId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Inventory", "Inventory")
                         .WithMany()
-                        .HasForeignKey("InventoryID");
+                        .HasForeignKey("InventoryId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Manufacturer", "Manufacturer")
                         .WithMany()
-                        .HasForeignKey("ManufacturerID");
+                        .HasForeignKey("ManufacturerId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Place", "Place")
                         .WithMany()
-                        .HasForeignKey("PlaceID");
+                        .HasForeignKey("PlaceId");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Manufacturer", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.ZipCode", "ZipCode")
                         .WithMany()
-                        .HasForeignKey("ZipCodeID");
+                        .HasForeignKey("ZipCodeId");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Mobile", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.Department", "Department")
                         .WithMany()
-                        .HasForeignKey("DepartmentID");
+                        .HasForeignKey("DepartmentId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.DeviceName", "DeviceName")
                         .WithMany()
-                        .HasForeignKey("DeviceNameID");
+                        .HasForeignKey("DeviceNameId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.DeviceType", "DeviceType")
                         .WithMany()
-                        .HasForeignKey("DeviceTypeID");
+                        .HasForeignKey("DeviceTypeId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Inventory", "Inventory")
                         .WithMany()
-                        .HasForeignKey("InventoryID");
+                        .HasForeignKey("InventoryId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Manufacturer", "Manufacturer")
                         .WithMany()
-                        .HasForeignKey("ManufacturerID");
+                        .HasForeignKey("ManufacturerId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Place", "Place")
                         .WithMany()
-                        .HasForeignKey("PlaceID");
+                        .HasForeignKey("PlaceId");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Phone", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.Department", "Department")
                         .WithMany()
-                        .HasForeignKey("DepartmentID");
+                        .HasForeignKey("DepartmentId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.DeviceName", "DeviceName")
                         .WithMany()
-                        .HasForeignKey("DeviceNameID");
+                        .HasForeignKey("DeviceNameId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.DeviceType", "DeviceType")
                         .WithMany()
-                        .HasForeignKey("DeviceTypeID");
+                        .HasForeignKey("DeviceTypeId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Inventory", "Inventory")
                         .WithMany()
-                        .HasForeignKey("InventoryID");
+                        .HasForeignKey("InventoryId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Manufacturer", "Manufacturer")
                         .WithMany()
-                        .HasForeignKey("ManufacturerID");
+                        .HasForeignKey("ManufacturerId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Place", "Place")
                         .WithMany()
-                        .HasForeignKey("PlaceID");
+                        .HasForeignKey("PlaceId");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Printer", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.Department", "Department")
                         .WithMany("Printer")
-                        .HasForeignKey("DepartmentID");
+                        .HasForeignKey("DepartmentId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.DeviceName", "DeviceName")
                         .WithMany()
-                        .HasForeignKey("DeviceNameID");
+                        .HasForeignKey("DeviceNameId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.DeviceType", "DeviceType")
                         .WithMany()
-                        .HasForeignKey("DeviceTypeID");
+                        .HasForeignKey("DeviceTypeId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Employee", "Employee")
                         .WithMany("Printer")
-                        .HasForeignKey("EmployeeID");
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Inventory", "Inventory")
                         .WithMany()
-                        .HasForeignKey("InventoryID");
+                        .HasForeignKey("InventoryId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Manufacturer", "Manufacturer")
                         .WithMany()
-                        .HasForeignKey("ManufacturerID");
+                        .HasForeignKey("ManufacturerId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.Place", "Place")
                         .WithMany()
-                        .HasForeignKey("PlaceID");
+                        .HasForeignKey("PlaceId");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.Software", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.Computer", null)
                         .WithMany("Software")
-                        .HasForeignKey("ComputerID");
+                        .HasForeignKey("ComputerId");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.SystemAccount", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.Employee", null)
                         .WithMany("SystemAccount")
-                        .HasForeignKey("EmployeeID");
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("JMuelbert.BDE.Data.Models.SystemData", "SystemData")
                         .WithMany()
-                        .HasForeignKey("SystemDataID");
+                        .HasForeignKey("SystemDataId");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.SystemData", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyID");
+                        .HasForeignKey("CompanyId");
                 });
 
             modelBuilder.Entity("JMuelbert.BDE.Data.Models.WorkFunction", b =>
                 {
                     b.HasOne("JMuelbert.BDE.Data.Models.Employee", null)
                         .WithMany("WorkFunction")
-                        .HasForeignKey("EmployeeID");
+                        .HasForeignKey("EmployeeId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

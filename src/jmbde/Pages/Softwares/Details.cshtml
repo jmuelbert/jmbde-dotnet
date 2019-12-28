@@ -5,37 +5,37 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h1>Details</h1>
 
 <div>
     <h4>Software</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <dl class="row">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Software.Name)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Software.Name)
         </dd>
-        <dt>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Software.Version)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Software.Version)
         </dd>
-        <dt>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Software.Revision)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Software.Revision)
         </dd>
-        <dt>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Software.Fix)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Software.Fix)
         </dd>
-        <dt>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Software.LastUpdate)
         </dt>
         <dd>
