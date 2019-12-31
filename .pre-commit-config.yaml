@@ -7,7 +7,6 @@ repos:
         args: [ --maxkb=560 ]
       - id: check-ast
       - id: check-builtin-literals
-      - id: check-byte-order-marker
       - id: check-case-conflict
       # - id: detect-aws-credentials
       - id: detect-private-key
