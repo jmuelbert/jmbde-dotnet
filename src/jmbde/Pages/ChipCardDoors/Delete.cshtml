@@ -1,11 +1,8 @@
 @page "{id:int}"
-@using Microsoft.AspNetCore.Mvc.Localization
-@inject IViewLocalizer Localizer
-@inject IHtmlLocalizer<SharedResource> SharedLocalizer
 @model JMuelbert.BDE.Pages.ChipCardDoors.DeleteModel
 
 @{
-    ViewData["Title"]  = SharedLocalizer["Delete"];
+    ViewData["Title"]  = "Delete";
 }
 
 <h1>Delete</h1>

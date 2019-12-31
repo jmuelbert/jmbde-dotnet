@@ -9,6 +9,8 @@ SampleData/
 *.db
 *.db3
 *.sqlite
+*.sql
+*.dbml
 
 # User-specific files
 *.rsuser
