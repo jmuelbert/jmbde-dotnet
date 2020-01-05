@@ -160,7 +160,8 @@ namespace JMuelbert.BDE.Pages.Employees {
         /// <param name="pageIndex"></param>
         /// <returns></returns>
         public async Task OnGetAsync (string sortOrder,
-            string currentFilter, string searchString, int? pageIndex) {
+            string currentFilter, string searchString, int? pageIndex) 
+        {
             _logger.LogDebug ($"Employees/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
 
             CurrentSort = sortOrder;
@@ -182,6 +183,7 @@ namespace JMuelbert.BDE.Pages.Employees {
             CurrentFilter = searchString;
 
             IQueryable<Employee> employeeIQ = from e in _context.Employee
+                .Include(e => e.Department)
             select e;
 
             if (!String.IsNullOrEmpty (searchString)) {
@@ -225,11 +227,11 @@ namespace JMuelbert.BDE.Pages.Employees {
                     break;
 
                 case "Active":
-                    employeeIQ = employeeIQ.OrderBy (e => e.Active);
+                    employeeIQ = employeeIQ.OrderBy (e => e.IsActive);
                     break;
 
                 case "active_desc":
-                    employeeIQ = employeeIQ.OrderByDescending (e => e.Active);
+                    employeeIQ = employeeIQ.OrderByDescending (e => e.IsActive);
                     break;
 
                 case "HireDate":

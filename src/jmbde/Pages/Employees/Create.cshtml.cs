@@ -116,7 +116,7 @@ namespace JMuelbert.BDE.Pages.Employees {
                     e => e.HomeMailAddress,
                     e => e.BusinessMailAddress,
                     e => e.DataCare,
-                    e => e.Active,
+                    e => e.IsActive,
                     e => e.Photo,
                     e => e.Notes,
                     e => e.HireDate,

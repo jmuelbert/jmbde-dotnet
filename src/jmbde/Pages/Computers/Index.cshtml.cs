@@ -149,28 +149,28 @@ namespace JMuelbert.BDE.Pages.Computers {
             select c;
 
             if (!String.IsNullOrEmpty (searchString)) {
-                computerIQ = computerIQ.Where (comp => comp.Name.Contains (searchString, StringComparison.CurrentCulture));
+                computerIQ = computerIQ.Where (comp => comp.ComputerID.Contains (searchString, StringComparison.CurrentCulture));
             }
 
             switch (sortOrder) {
                 case "name_desc":
-                    computerIQ = computerIQ.OrderByDescending (c => c.Name);
+                    computerIQ = computerIQ.OrderByDescending (c => c.ComputerID);
                     break;
 
                 case "Active":
-                    computerIQ = computerIQ.OrderBy (c => c.Active);
+                    computerIQ = computerIQ.OrderBy (c => c.IsActive);
                     break;
 
                 case "active_desc":
-                    computerIQ = computerIQ.OrderByDescending (c => c.Active);
+                    computerIQ = computerIQ.OrderByDescending (c => c.IsActive);
                     break;
 
                 case "Replace":
-                    computerIQ = computerIQ.OrderBy (c => c.Replace);
+                    computerIQ = computerIQ.OrderBy (c => c.ShouldReplace);
                     break;
 
                 case "replace_desc":
-                    computerIQ = computerIQ.OrderByDescending (c => c.Replace);
+                    computerIQ = computerIQ.OrderByDescending (c => c.ShouldReplace);
                     break;
 
                 case "LastUpdate":
@@ -182,7 +182,7 @@ namespace JMuelbert.BDE.Pages.Computers {
                     break;
 
                 default:
-                    computerIQ = computerIQ.OrderBy (c => c.Name);
+                    computerIQ = computerIQ.OrderBy (c => c.ComputerID);
                     break;
             }
 

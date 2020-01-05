@@ -48,13 +48,13 @@ using System.ComponentModel.DataAnnotations;
 
 // TODO: Change the use of SystemAccount
 
-namespace JMuelbert.BDE.Shared.Models {
-
-
+namespace JMuelbert.BDE.Shared.Models 
+{
     /// <summary>
     /// Employee.
     /// </summary>
-    public partial class Employee : Person {
+    public partial class Employee : Person 
+    {
 
         /// <summary>
         /// Gets or sets the employee identifier.
@@ -85,16 +85,17 @@ namespace JMuelbert.BDE.Shared.Models {
         public string BusinessMailAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="T:JMuelbert.BDE.Data.Models.Employee"/> data care.
+        /// Gets or sets a value indicating whether this <see cref="T:JMuelbert.BDE.Shared.Models.Employee"/> data care.
         /// </summary>
         /// <value><c>true</c> if data care; otherwise, <c>false</c>.</value>
         public bool DataCare { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="T:JMuelbert.BDE.Data.Models.Employee"/> is active.
+        /// Gets or sets a value indicating whether this <see cref="T:JMuelbert.BDE.Shared.Models.Employee"/> is active.
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
-        public bool Active { get; set; }
+        [Display(Name="Active")]
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// Gets or sets the notes.
@@ -107,14 +108,18 @@ namespace JMuelbert.BDE.Shared.Models {
         /// Gets or sets the hire date.
         /// </summary>
         /// <value>The hire date.</value>
-        [DataType (DataType.Date)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Hire Date")]
         public DateTime HireDate { get; set; }
 
         /// <summary>
         /// Gets or sets the end date.
         /// </summary>
         /// <value>The end date.</value>
-        [DataType (DataType.Date)]
+          [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "End Date")]
         public DateTime EndDate { get; set; }
 
         /// <summary>
@@ -181,15 +186,21 @@ namespace JMuelbert.BDE.Shared.Models {
         /// Gets or sets the last update.
         /// </summary>
         /// <value>The last update.</value>
-        [DataType (DataType.DateTime)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Last Update")]
         public DateTime LastUpdate { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName
+        {
+            get { return LastName + ", " + FirstName; }
+        }
 
         public string DumpAsJson() 
         {
             var jsonString = JsonSerializer.Serialize<Employee>(this);
             return jsonString;
         }
-
-
     }
 }

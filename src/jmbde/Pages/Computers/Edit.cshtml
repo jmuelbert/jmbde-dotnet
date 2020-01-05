@@ -13,11 +13,11 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Computer.ID" />
+            <input type="hidden" asp-for="Computer.ComputerID" />
             <div class="form-group">
-                <label asp-for="Computer.Name" class="control-label"></label>
-                <input asp-for="Computer.Name" class="form-control" />
-                <span asp-validation-for="Computer.Name" class="text-danger"></span>
+                <label asp-for="Computer.ComputerID" class="control-label"></label>
+                <input asp-for="Computer.ComputerID" class="form-control" />
+                <span asp-validation-for="Computer.ComputerID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Computer.SerialNumber" class="control-label"></label>
@@ -50,22 +50,22 @@
                 <span asp-validation-for="Computer.NetworkIpAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Computer.Active" class="control-label"></label>
+                <label asp-for="Computer.IsActive" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Computer.Active" />
+                        <input asp-for="Computer.IsActive" />
                     </label>
                 </div>
-                <span asp-validation-for="Computer.Active" class="text-danger"></span>
+                <span asp-validation-for="Computer.IsActive" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Computer.Replace" class="control-label"></label>
+                <label asp-for="Computer.ShouldReplace" class="control-label"></label>
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Computer.Replace" />
+                        <input asp-for="Computer.ShouldReplace" />
                     </label>
                 </div>
-                <span asp-validation-for="Computer.Replace" class="text-danger"></span>
+                <span asp-validation-for="Computer.ShouldReplace" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Computer.LastUpdate" class="control-label"></label>

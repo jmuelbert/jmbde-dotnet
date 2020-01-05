@@ -52,6 +52,9 @@
                 </a>
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Employee[0].Department)
+            </th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.Employee[0].Street)
             </th>
             <th>
@@ -62,7 +65,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Employee[0].HomeMailAddress)
-            </th>
+            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.Employee[0].BusinessMailAddress)
             </th>
@@ -75,15 +78,15 @@
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.ActiveSort"
                    asp-route-currentFilter="@Model.CurrentFilter">
-                    @Html.DisplayNameFor(model => model.Employee[0].Active)
+                    @Html.DisplayNameFor(model => model.Employee[0].IsActive)
                 </a>
             </th>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.Employee[0].Photo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Employee[0].Notes)
-            </th>
+            </th> *@
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.HireDateSort"
                    asp-route-currentFilter="@Model.CurrentFilter">
@@ -125,6 +128,9 @@
         @Html.DisplayFor(modelItem => item.BirthDay)
     </td>
     <td>
+        @Html.DisplayFor(modelItem => item.Department.Name)
+    </td>
+    @* <td>
         @Html.DisplayFor(modelItem => item.Street)
     </td>
     <td>
@@ -135,7 +141,7 @@
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.HomeMailAddress)
-    </td>
+    </td> *@
     <td>
         @Html.DisplayFor(modelItem => item.BusinessMailAddress)
     </td>
@@ -143,14 +149,14 @@
         @Html.DisplayFor(modelItem => item.DataCare)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Active)
+        @Html.DisplayFor(modelItem => item.IsActive)
     </td>
-    <td>
+    @* <td>
         @Html.DisplayFor(modelItem => item.Photo)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Notes)
-    </td>
+    </td> *@
     <td>
         @Html.DisplayFor(modelItem => item.HireDate)
     </td>

@@ -86,7 +86,7 @@ namespace JMuelbert.BDE.Pages.Computers {
         /// </summary>
         /// <returns>The get async.</returns>
         /// <param name="id">Identifier.</param>
-        public async Task<IActionResult> OnGetAsync (int? id) {
+        public async Task<IActionResult> OnGetAsync (string? id) {
             _logger.LogDebug ($"Computers/Details/OnGetAsync ({ id })");
 
             if (id == null) {
@@ -96,7 +96,7 @@ namespace JMuelbert.BDE.Pages.Computers {
             Computer = await _context.Computer
                 .Include (c => c.Software)
                 .AsNoTracking ()
-                .SingleOrDefaultAsync (m => m.ID
+                .SingleOrDefaultAsync (m => m.ComputerID
                                             == id).ConfigureAwait (false);
 
             if (Computer == null) {

@@ -50,11 +50,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.Computers {
+namespace JMuelbert.BDE.Pages.Computers 
+{
     /// <summary>
     /// Create model.
     /// </summary>
-    public class CreateModel : PageModel {
+    public class CreateModel : PageModel 
+    {
         /// <summary>
         /// The context.
         /// </summary>
@@ -109,15 +111,15 @@ namespace JMuelbert.BDE.Pages.Computers {
             if (await TryUpdateModelAsync<Computer> (
                     emptyComputer,
                     "computer", // Prefix for form value
-                    c => c.Name,
+                    c => c.ComputerID,
                     c => c.SerialNumber,
                     c => c.ServiceTag,
                     c => c.ServiceNumber,
                     c => c.Memory,
                     c => c.Network,
                     c => c.NetworkIpAddress,
-                    c => c.Active,
-                    c => c.Replace,
+                    c => c.IsActive,
+                    c => c.ShouldReplace,
                     c => c.LastUpdate
                 ).ConfigureAwait (false)) {
                 _context.Computer.Add (emptyComputer);

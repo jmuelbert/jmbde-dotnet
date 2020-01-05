@@ -41,29 +41,29 @@
  **************************************************************************/
 
 using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 // TODO: Software cannot be in many Computers
 
-namespace JMuelbert.BDE.Shared.Models {
+namespace JMuelbert.BDE.Shared.Models 
+{
     /// <summary>
     /// Computer.
     /// </summary>
-    public partial class Computer {
+    public partial class Computer 
+    {
         /// <summary>
         /// Gets or sets the computer identifier.
         /// </summary>
         /// <value>The computer identifier.</value>
-        public int ID { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [StringLength (50,  ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 5)]
-        public string Name { get; set; }
+        [Display(Name = "Computer ID")]
+        public string ComputerID { get; set; }
 
         /// <summary>
         /// Gets or sets the serial number.
@@ -110,12 +110,14 @@ namespace JMuelbert.BDE.Shared.Models {
         /// Gets or sets a value indicating whether this <see cref="T:JMuelbert.BDE.Data.Models.Computer"/> is active.
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
-        public bool Active { get; set; }
+        [Display(Name="Active")]
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// </summary>
         /// <value><c>true</c> if replace; otherwise, <c>false</c>.</value>
-        public bool Replace { get; set; }
+        [Display(Name = "Replace")]
+        public bool ShouldReplace { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the device.
@@ -180,7 +182,15 @@ namespace JMuelbert.BDE.Shared.Models {
         /// Gets or sets the last update.
         /// </summary>
         /// <value>The last update.</value>
-        [DataType (DataType.DateTime)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Last Update")]
         public DateTime LastUpdate { get; set; }
+
+        public string DumpAsJson() 
+        {
+            var jsonString = JsonSerializer.Serialize<Computer>(this);
+            return jsonString;
+        } 
     }
 }

@@ -95,11 +95,17 @@ namespace JMuelbert.BDE.Pages.Employees {
             }
 
             Employee = await _context.Employee
-                .Include (e => e.WorkFunction)
-                .Include (e => e.Computer)
-                .Include (e => e.Printer)
-                .Include (e => e.SystemAccount)
-                .Include (e => e.Document)
+                .Include (e => e.JobTitle)
+                .Include (e => e.Department)
+                .Include (e => e.Phone)
+                .Include (e => e.Mobile)
+                .Include (e => e.Fax)
+                .Include (e => e.ChipCard)
+                .Include( e => e.WorkFunction)
+                .Include ( e => e.SystemAccount)
+                .Include ( e => e.Computer)
+                .Include ( e => e.Printer)
+                .Include ( e => e.Document)
                 .AsNoTracking ()
                 .FirstOrDefaultAsync (m => m.ID
                                            == id).ConfigureAwait (false);

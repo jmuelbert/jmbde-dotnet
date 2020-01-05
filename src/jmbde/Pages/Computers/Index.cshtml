@@ -27,7 +27,7 @@
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
                    asp-route-currentFilter="@Model.CurrentFilter">
-                    @Html.DisplayNameFor(model => model.Computer[0].Name)
+                    @Html.DisplayNameFor(model => model.Computer[0].ComputerID)
                 </a>
             </th>
             <th>
@@ -51,13 +51,13 @@
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.ActiveSort"
                    asp-route-currentFilter="@Model.CurrentFilter">
-                    @Html.DisplayNameFor(model => model.Computer[0].Active)
+                    @Html.DisplayNameFor(model => model.Computer[0].IsActive)
                 </a>
             </th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.ReplaceSort"
                    asp-route-currentFilter="@Model.CurrentFilter">
-                    @Html.DisplayNameFor(model => model.Computer[0].Replace)
+                    @Html.DisplayNameFor(model => model.Computer[0].ShouldReplace)
                 </a>
             </th>
             <th>
@@ -74,7 +74,7 @@
         {
 <tr>
     <td>
-        @Html.DisplayFor(modelItem => item.Name)
+        @Html.DisplayFor(modelItem => item.ComputerID)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.SerialNumber)
@@ -95,18 +95,18 @@
         @Html.DisplayFor(modelItem => item.NetworkIpAddress)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Active)
+        @Html.DisplayFor(modelItem => item.IsActive)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Replace)
+        @Html.DisplayFor(modelItem => item.ShouldReplace)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.LastUpdate)
     </td>
     <td>
-        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-        <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+        <a asp-page="./Edit" asp-route-id="@item.ComputerID">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.ComputerID">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.ComputerID">Delete</a>
     </td>
 </tr>
 }

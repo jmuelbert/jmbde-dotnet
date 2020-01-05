@@ -76,9 +76,9 @@ namespace JMuelbert.BDE.Pages.Computers {
         }
 
         /// <summary>
-        /// Gets or sets the cityname.
+        /// Gets or sets the computer.
         /// </summary>
-        /// <value>The cityname.</value>
+        /// <value>The computer.</value>
         [BindProperty]
         public Computer Computer { get; set; }
 
@@ -120,15 +120,15 @@ namespace JMuelbert.BDE.Pages.Computers {
             if (await TryUpdateModelAsync<Computer> (
                     computerToUpdate,
                     "computer", // Prefix for form value
-                    c => c.Name,
+                    c => c.ComputerID,
                     c => c.SerialNumber,
                     c => c.ServiceTag,
                     c => c.ServiceNumber,
                     c => c.Memory,
                     c => c.Network,
                     c => c.NetworkIpAddress,
-                    c => c.Active,
-                    c => c.Replace,
+                    c => c.IsActive,
+                    c => c.ShouldReplace,
                     c => c.LastUpdate
                 ).ConfigureAwait (false)) {
                 await _context.SaveChangesAsync ().ConfigureAwait (false);

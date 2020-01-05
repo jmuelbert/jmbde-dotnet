@@ -71,6 +71,7 @@ namespace JMuelbert.BDE.Shared.Models {
         /// Gets or sets the Person ident.
         /// </summary>
         /// <value>The Person ident.</value>
+        [StringLength (50,  ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 5)]
         public string PersonIdent { get; set; }
 
         /// <summary>
@@ -84,6 +85,7 @@ namespace JMuelbert.BDE.Shared.Models {
         /// Gets or sets the first name.
         /// </summary>
         /// <value>The first name.</value>
+        [Display(Name = "First Name")]
         [StringLength (50,  ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 5)]
         public string FirstName { get; set; }
 
@@ -91,6 +93,7 @@ namespace JMuelbert.BDE.Shared.Models {
         /// Gets or sets the last name.
         /// </summary>
         /// <value>The last name.</value>
+        [Display(Name = "Last Name")]
         [Required]
         [StringLength (50,  ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 5)]
         public string LastName { get; set; }
