@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2020 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -40,11 +40,14 @@
  **
  **************************************************************************/
 
+using System;
 using System.Threading.Tasks;
-using JMuelbert.BDE.Data.Models;
+using JMuelbert.BDE.Shared.Data;
+using JMuelbert.BDE.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace JMuelbert.BDE.Pages.DeviceTypes {
@@ -53,7 +56,7 @@ namespace JMuelbert.BDE.Pages.DeviceTypes {
     /// </summary>
     public class DeleteModel : PageModel { /// The context.
         /// </summary>
-        private readonly JMuelbert.BDE.Data.ApplicationDbContext _context;
+        private readonly BDEContext _context;
 
         /// <summary>
         /// The logger.
@@ -66,7 +69,7 @@ namespace JMuelbert.BDE.Pages.DeviceTypes {
         /// <param name="logger">Logger.</param>
         /// <param name="context">Context.</param>
 
-        public DeleteModel (Logger<DeleteModel> logger, JMuelbert.BDE.Data.ApplicationDbContext context) {
+        public DeleteModel (Logger<DeleteModel> logger, BDEContext context) {
             _logger = logger;
             _context = context;
         }

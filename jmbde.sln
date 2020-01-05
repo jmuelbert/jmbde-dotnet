@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde", "src\jmbde\jmbde.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde.Tests", "tests\jmbde.Tests\jmbde.Tests.csproj", "{A48225A0-70DE-4A27-827D-90906AD26D50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde.Data", "src\jmbde.Data\jmbde.Data.csproj", "{015A8CED-EE09-4730-B7AB-EBA0B81B457E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jmbde.Shared", "src\jmbde.Shared\jmbde.Shared.csproj", "{015A8CED-EE09-4730-B7AB-EBA0B81B457E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

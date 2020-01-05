@@ -1,6 +1,6 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2019 Jürgen Mülbert. All rights reserved.
+ ** Copyright (c) 2016-2020 Jürgen Mülbert. All rights reserved.
  **
  ** This file is part of jmbde
  **
@@ -42,8 +42,8 @@
 
 using System;
 using System.Threading.Tasks;
-using JMuelbert.BDE.Data;
-using JMuelbert.BDE.Data.Models;
+using JMuelbert.BDE.Shared.Data;
+using JMuelbert.BDE.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -58,7 +58,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
         /// <summary>
         /// The context.
         /// </summary>
-        private readonly JMuelbert.BDE.Data.ApplicationDbContext _context;
+        private readonly BDEContext _context;
 
         /// <summary>
         /// The logger.
@@ -84,7 +84,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors {
         public DeleteModel (ILogger<CreateModel> logger,
             IStringLocalizer<CreateModel> localizer,
             IStringLocalizer<CreateModel> sharedLocalizer,
-            ApplicationDbContext context) {
+            BDEContext context) {
             _logger = logger;
             _localizer = localizer;
             _sharedLocalizer = sharedLocalizer;

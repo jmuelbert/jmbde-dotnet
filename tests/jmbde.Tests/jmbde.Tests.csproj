@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\jmbde.Data\jmbde.Data.csproj" />
+    <ProjectReference Include="..\..\src\jmbde.Shared\jmbde.Shared.csproj" />
   </ItemGroup>
 
 </Project>

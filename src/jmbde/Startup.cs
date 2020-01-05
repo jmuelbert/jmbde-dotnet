@@ -47,7 +47,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using JMuelbert.BDE.Data;
+using JMuelbert.BDE.Shared.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -140,11 +140,11 @@ namespace JMuelbert.BDE
             }
 
             // Add framework services.
-            services.AddDbContext<ApplicationDbContext> (options =>
+            services.AddDbContext<BDEContext> (options =>
                 options.UseSqlite (connection));
 
             services.AddDefaultIdentity<IdentityUser> ()
-                    .AddEntityFrameworkStores<ApplicationDbContext> ();
+                    .AddEntityFrameworkStores<BDEContext> ();
             services.AddRazorPages();
         }
 
@@ -172,7 +172,7 @@ namespace JMuelbert.BDE
                 try {
                     using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory> ()
                         .CreateScope ()) {
-                        serviceScope.ServiceProvider.GetService<ApplicationDbContext> ()
+                        serviceScope.ServiceProvider.GetService<BDEContext> ()
                             .Database.Migrate ();
                     }
                 } catch { }

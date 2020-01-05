@@ -51,7 +51,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using JMuelbert.BDE.Data;
+using JMuelbert.BDE.Shared.Data;
 
 namespace JMuelbert.BDE {
     /// <summary>
@@ -80,8 +80,21 @@ namespace JMuelbert.BDE {
 
             var host = CreateWebHostBuilder(args).Build();
 
-            CreateDbIfNotExists(host);
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
 
+                try
+                {
+                    var bdeContext = services.GetRequiredService<BDEContext>();
+                    DataInitializer.Initialize(bdeContext);
+                }
+                catch (System.Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred creating the DB.");
+                }
+            }
             host.Run();
         }
 
@@ -93,7 +106,7 @@ namespace JMuelbert.BDE {
 
                 try
                 {
-                    var context = services.GetRequiredService<ApplicationDbContext>();
+                    var context = services.GetRequiredService<BDEContext>();
                     context.Database.EnsureCreated();
                 }
                 catch(Exception ex)
