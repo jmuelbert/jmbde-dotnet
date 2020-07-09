@@ -1,5 +1,6 @@
 # JMBde Application
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c63d1cf887384176977da4e7ba43495e)](https://app.codacy.com/manual/jmuelbert/jmbde-aspnet?utm_source=github.com&utm_medium=referral&utm_content=jmuelbert/jmbde-aspnet&utm_campaign=Badge_Grade_Dashboard)
 [![GitHub license](https://img.shields.io/badge/license-EUPL-blue.svg)](https://joinup.ec.europa.eu/page/eupl-text-11-12)
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/ja8a7j6jscj7k3xa/branch/master?svg=true)](https://ci.appveyor.com/project/jmuelbert/jmbde-aspnet)
 
