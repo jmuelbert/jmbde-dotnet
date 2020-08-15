@@ -9,6 +9,7 @@
     </VersionPrefix>
     <AssemblyName>jmbde</AssemblyName>
     <OutputType>Exe</OutputType>
+		<IsPackable>true</IsPackable>
     <PackageId>JMuelbert.BDE</PackageId>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/jmuelbert/jmbde-aspnet</RepositoryUrl>
