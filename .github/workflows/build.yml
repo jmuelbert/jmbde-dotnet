@@ -107,10 +107,9 @@ jobs:
           while ($count -lt 3 -and $LastExitCode -ne 0)
           $LastExitCode = 0;
 
-      - name: Publish the release notes
-        uses: release-drafter/release-drafter@v5.11.0
+      - name: ApplicationInspector
+      - uses: microsoft/ApplicationInspector-Action@v1
+      - uses: actions/upload-artifact@v2
         with:
-          publish: "${{ steps.check-version.outputs.tag != '' }}"
-          tag: "${{ steps.check-version.outputs.tag }}"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+            name: AppInspectorResults
+            path: AppInspectorResults.json
