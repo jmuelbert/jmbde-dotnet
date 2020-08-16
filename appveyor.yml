@@ -64,13 +64,13 @@ for:
 
     build_script:
     - dotnet --info
-    #  - dotnet build ./jmbde.sln -c Release
+    - dotnet build ./jmbde.sln -c Release
 
     #after_build:
-    #  - dotnet publish ./jmbde.sln -c Release -o ./artifacts
+    - dotnet publish ./jmbde.sln -c Release -o ./artifacts
 
     #test_script:
-    #  - dotnet test ./tests/jmbde.Tests/jmbde.Tests.csproj
+    - dotnet test ./tests/jmbde.Tests/jmbde.Tests.csproj
 
 
   ########## END macOS SPECIFIC CONFIGURATION ##########
