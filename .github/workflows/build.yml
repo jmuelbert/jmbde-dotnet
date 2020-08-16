@@ -52,6 +52,11 @@ jobs:
     - name: Test solution
       run: dotnet test -c Release --no-build --no-restore --verbosity normal
 
+    - name: Coverage Check
+      uses: codecov/codecov-action@v1
+      with:
+        name: codecov-umbrella # optional
+
     - name: Pack packages
       run: |
         $LastTag =git describe --tags (git rev-list --tags --max-count=1)
