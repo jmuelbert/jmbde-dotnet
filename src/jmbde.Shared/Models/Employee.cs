@@ -48,12 +48,12 @@ using System.ComponentModel.DataAnnotations;
 
 // TODO: Change the use of SystemAccount
 
-namespace JMuelbert.BDE.Shared.Models 
+namespace JMuelbert.BDE.Shared.Models
 {
     /// <summary>
     /// Employee.
     /// </summary>
-    public partial class Employee : Person 
+    public partial class Employee : Person
     {
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace JMuelbert.BDE.Shared.Models
             get { return LastName + ", " + FirstName; }
         }
 
-        public string DumpAsJson() 
+        public string DumpAsJson()
         {
             var jsonString = JsonSerializer.Serialize<Employee>(this);
             return jsonString;

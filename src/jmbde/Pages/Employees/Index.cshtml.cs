@@ -160,7 +160,7 @@ namespace JMuelbert.BDE.Pages.Employees {
         /// <param name="pageIndex"></param>
         /// <returns></returns>
         public async Task OnGetAsync (string sortOrder,
-            string currentFilter, string searchString, int? pageIndex) 
+            string currentFilter, string searchString, int? pageIndex)
         {
             _logger.LogDebug ($"Employees/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
 

@@ -49,12 +49,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 // TODO: Software cannot be in many Computers
 
-namespace JMuelbert.BDE.Shared.Models 
+namespace JMuelbert.BDE.Shared.Models
 {
     /// <summary>
     /// Computer.
     /// </summary>
-    public partial class Computer 
+    public partial class Computer
     {
         /// <summary>
         /// Gets or sets the computer identifier.
@@ -187,10 +187,10 @@ namespace JMuelbert.BDE.Shared.Models
         [Display(Name = "Last Update")]
         public DateTime LastUpdate { get; set; }
 
-        public string DumpAsJson() 
+        public string DumpAsJson()
         {
             var jsonString = JsonSerializer.Serialize<Computer>(this);
             return jsonString;
-        } 
+        }
     }
 }

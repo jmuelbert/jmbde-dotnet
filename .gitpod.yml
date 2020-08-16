@@ -2,7 +2,7 @@ image:
   file: .docker/Dockerfile
 
 tasks:
-  - before: dotnet restore 
+  - before: dotnet restore
   - init: npm install && npm run build compiler
 
 github:

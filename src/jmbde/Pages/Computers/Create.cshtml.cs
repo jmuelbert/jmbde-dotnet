@@ -50,12 +50,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.Computers 
+namespace JMuelbert.BDE.Pages.Computers
 {
     /// <summary>
     /// Create model.
     /// </summary>
-    public class CreateModel : PageModel 
+    public class CreateModel : PageModel
     {
         /// <summary>
         /// The context.
