@@ -10,6 +10,13 @@ jobs:
         steps:
             - name: Checkout sources
               uses: actions/checkout@v1
+
+            - name: build docs
+              run: |
+                cd docs
+                cmake . -Bbuild -DCMAKE_INSTALL_PREFIX:PATH=.
+                cmake --build build
+
             - name: gh-pages
               uses: actions/checkout@master
               with:
@@ -22,7 +29,7 @@ jobs:
                   git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
                   rm -rf d* && rm *.html && rm *.svg && rm *.map && rm *.md5 && rm *.png && rm *.js && rm *.css
                   git add .
-                  cp -rp ./build/docs/manual/html/* . && rm -rf ./build && ls -lah
+                  cp -rp ./build/manual/html/* . && rm -rf ./build && ls -lah
                   git add .
                   git commit -m "Documentation for $GITHUB_SHA" ||  true
                   git push --force || true

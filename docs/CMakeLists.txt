@@ -20,5 +20,10 @@ else()
   cmake_policy(VERSION 3.18)
 endif()
 
+project(docs)
+
+list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake"
+    "${PROJECT_SOURCE_DIR}/cmake/modules")
+
 add_subdirectory(api)
 add_subdirectory(manual)

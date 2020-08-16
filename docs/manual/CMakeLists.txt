@@ -20,6 +20,8 @@ else()
   cmake_policy(VERSION 3.18)
 endif()
 
+include(GnuInstallDirs)
+
 find_package(Sphinx REQUIRED)
 
 #
@@ -59,4 +61,4 @@ add_custom_command(
 add_custom_target(Sphinx ALL DEPENDS ${SPHINX_INDEX_FILE})
 
 # Add an install target to install the docs
-install(DIRECTORY ${SPHINX_BUILD} DESTINATION ${DOC_INSTALL_DIR})
+install(DIRECTORY ${SPHINX_BUILD} DESTINATION ${CMAKE_INSTALL_DOCDIR})
