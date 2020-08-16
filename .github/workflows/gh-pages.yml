@@ -15,6 +15,7 @@ jobs:
               run: |
                 brew install doxygen
                 brew install graphviz
+                brew install sphinx-doc
                 cd docs
                 cmake . -Bbuild -DCMAKE_INSTALL_PREFIX:PATH=.
                 cmake --build build
