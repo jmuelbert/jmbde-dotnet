@@ -5,7 +5,6 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/jmuelbert/jmbde-aspnet.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jmuelbert/jmbde-aspnet/alerts/)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/jmuelbert/jmbde-aspnet.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jmuelbert/jmbde-aspnet/context:javascript)
 [![Language grade: C#](https://img.shields.io/lgtm/grade/csharp/g/jmuelbert/jmbde-aspnet.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jmuelbert/jmbde-aspnet/context:csharp)
-[![codecov](https://codecov.io/gh/jmuelbert/jmbde-aspnet/branch/master/graph/badge.svg)](https://codecov.io/gh/jmuelbert/jmbde-aspnet)
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/ja8a7j6jscj7k3xa/branch/master?svg=true)](https://ci.appveyor.com/project/jmuelbert/jmbde-aspnet)
 ![Build](https://github.com/jmuelbert/jmbde-aspnet/workflows/Build/badge.svg)
 ![Misspell fixer](https://github.com/jmuelbert/jmbde-aspnet/workflows/Misspell%20fixer/badge.svg)
