@@ -14,6 +14,7 @@ jobs:
             - name: build docs
               run: |
                 brew install doxygen
+                brew install graphviz
                 cd docs
                 cmake . -Bbuild -DCMAKE_INSTALL_PREFIX:PATH=.
                 cmake --build build
