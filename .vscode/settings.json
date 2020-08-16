@@ -1,8 +1,5 @@
 {
-  "cSpell.language": "de,en,en-GB,en-US,de-DE",
-  "cSpell.words": [
-    "datas",
-    "system"
-  ],
-  "restructuredtext.confPath": ""
+    "C_Cpp.clang_format_sortIncludes": true,
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.default.intelliSenseMode": "clang-x64"
 }
