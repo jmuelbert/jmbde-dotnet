@@ -107,9 +107,8 @@ jobs:
           while ($count -lt 3 -and $LastExitCode -ne 0)
           $LastExitCode = 0;
 
-      - name: ApplicationInspector
-      - uses: microsoft/ApplicationInspector-Action@v1
-      - uses: actions/upload-artifact@v2
+      - name: Microsoft Application Inspector
+        uses: microsoft/ApplicationInspector-Action@v1
         with:
             name: AppInspectorResults
             path: AppInspectorResults.json
