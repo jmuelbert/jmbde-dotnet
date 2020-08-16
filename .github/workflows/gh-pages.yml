@@ -13,6 +13,7 @@ jobs:
 
             - name: build docs
               run: |
+                brew install doxygen
                 cd docs
                 cmake . -Bbuild -DCMAKE_INSTALL_PREFIX:PATH=.
                 cmake --build build
