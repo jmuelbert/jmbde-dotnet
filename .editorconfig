@@ -1,14 +1,71 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+
+# top-most EditorConfig file
 root = true
 
+# Unix-style newlines with a newline ending every file
+# ------------------
+# Source code
+# ------------------
 [*]
-tab_width = 4
+end_of_line = lf
+indent_style = space
+indent_size = 4
+charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
+
+[CMakeLists.txt,*.cmake{,.in}]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_size = 2
+indent_style = space
+
+# Matches multiple files with brace expansion notation
+# Set default charset
+[*.py]
+indent_size = 4
+
+# Source code files
+[*.{c,cxx,cpp,h,hxx,hpp,java,m,mm,py,swift,xsl}]
+indent_style = space
+indent_size = 2
+
+[*.{swift}]
+indent_size = 4
+
+[*.rst]
+indent_size = 3
+# Indentation override for all JS under lib directory
+
+# Tab indentation (no size specified)
+[Makefile]
+indent_style = tab
+
+[*.{bat,cmd}]
+end_of_line = crlf
+
+[*.js]
+indent_style = space
+indent_size = 2
+
+# Matches the exact files either package.json or .travis.yml
+[{package.json,.travis.yml}]
+indent_style = space
+indent_size = 2
+
+[*.{md,markdown}]
+trim_trailing_whitespace = false
+
+[*.{yaml|yml}]
+indent_size = 2
 
 [{*.xaml, *.xml, *.targets, *.props}]
 indent_style = tab
 
-[{*.cs, *.tt, *.java}]
+[{*.cs, *.tt}]
 indent_style = tab
 
 [{*.ts, *.json}]
@@ -19,19 +76,11 @@ indent_style = tab
 tab_width = 2
 indent_size = 2
 
-[*.js]
-indent_style = space
 
 [*.css]
 indent_style = space
 tab_width = 2
 indent_size = 2
-
-[{*.yml, *.yaml}]
-indent_style = space
-
-[*.md]
-indent_style = space
 
 [*.cs]
 # http://kent-boogaart.com/blog/editorconfig-reference-for-c-developers#csharp_indent_block_contents

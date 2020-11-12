@@ -5,16 +5,38 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/jmuelbert/jmbde-aspnet.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jmuelbert/jmbde-aspnet/alerts/)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/jmuelbert/jmbde-aspnet.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jmuelbert/jmbde-aspnet/context:javascript)
 [![Language grade: C#](https://img.shields.io/lgtm/grade/csharp/g/jmuelbert/jmbde-aspnet.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jmuelbert/jmbde-aspnet/context:csharp)
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/ja8a7j6jscj7k3xa/branch/master?svg=true)](https://ci.appveyor.com/project/jmuelbert/jmbde-aspnet)
-![Build](https://github.com/jmuelbert/jmbde-aspnet/workflows/Build/badge.svg)
-![Misspell fixer](https://github.com/jmuelbert/jmbde-aspnet/workflows/Misspell%20fixer/badge.svg)
+[![GitHub All Releases](https://img.shields.io/github/downloads/jmuelbert/jmbde-aspnet/total?label=downloads%40all)](https://github.com/jmuelbert/jmbde-aspnet/releases)
 [![GitHub license](https://img.shields.io/badge/license-EUPL-blue.svg)](https://joinup.ec.europa.eu/page/eupl-text-11-12)
+[![Build status](https://ci.appveyor.com/api/projects/status/ja8a7j6jscj7k3xa/branch/master?svg=true)](https://ci.appveyor.com/project/jmuelbert/jmbde-aspnet)
+![Misspell fixer](https://github.com/jmuelbert/jmbde-aspnet/workflows/Misspell%20fixer/badge.svg)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+
+[Features](https://github.com/jmuelbert/jmbde-aspnet) | [Documentation](https://jmuelbert.github.io/jmbde-aspnet/) | [Changelog](CHANGELOG.md) | [Contributing](CONTRIBUTING.md) | [FAQ](https://github.com/jmuelbert/jmbde-aspnet/wiki/FAQ) | [deutPsch](README_de-DE.md)
 
 jmbde is a program to collect data for the IT. The database contains employees, departments, functions, phones, mobiles, computers, printers, faxes and accounts.
 
-jmbde is free software; you can redistribute ot and/or modify ir under the terms
-of the [European Public License Version 1.2](https://joinup.ec.europa.eu/page/eupl-text-11-12).
-Please read the [LICENSE](https://github.com/jmuelbert/jmbde-aspnet/blob/master/LICENSE) for additional information.
+|  type  |                           branch                            |                                                                                                        build                                                                                                         |                                                                     downloads                                                                      |
+| :----: | :---------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------: |
+| alpha  | [master](https://github.com/jmuelbert/jmbde-aspnet/tree/master) | [![GitHub Workflow Status](https://github.com/jmuelbert/jmbde-aspnet/workflows/CI:%20Build%20Test/badge.svg?branch=master&event=push)](https://github.com/jmuelbert/jmbde-aspnet/actions?query=event%3Apush+branch%3Amaster) |                                                                         -                                                                          |
+|  beta  | [v0.4.0-alpha](https://github.com/jmuelbert/jmbde-aspnet/tree/v0.4.0-alpha) | [![GitHub Workflow Status](https://github.com/jmuelbert/jmbde-aspnet/workflows/CI:%20Build%20Test/badge.svg?branch=v0.4.0-alpha&event=push)](https://github.com/jmuelbert/jmbde-aspnet/actions?query=event%3Apush+branch%3Av0.4.0-alpha) | [![Downloads](https://img.shields.io/github/downloads/jmuelbert/jmbde-aspnet/v0.4.0-alpha/total)](https://github.com/jmuelbert/jmbde-aspnet/releases/tag/v0.4.0-alpha) |
+| stable | [v0.4.0](https://github.com/jmuelbert/jmbde-aspnet/tree/v0.4.0) | [![GitHub Workflow Status](https://github.com/jmuelbert/jmbde-aspnet/workflows/CI:%20Build%20Test/badge.svg?branch=v0.4.0&event=push)](https://github.com/jmuelbert/jmbde-aspnet/actions?query=event%3Apush+branch%3v0.4.0)  | [![Downloads](https://img.shields.io/github/downloads/jmuelbert/jmbde-aspnet/v0.4.0/total)](https://github.com/jmuelbert/jmbde-aspnet/releases/tag/v0.4.0)
+
+## Setup
+
+## Supported platforms
+
+## Execute
+
+Below are some helpful hints on how to use jmbde on your native
+platform.
+
+### Unix
+
+
+### Windows
+
+### macOS
+
 
 The master branch represents the latest pre-release code.
 
@@ -22,30 +44,41 @@ The master branch represents the latest pre-release code.
 
 - [Milestones](https://github.com/jmuelbert/jmbde-aspnet/milestones)
 
-## Requests and Bug reports
+## Requirements and bug reports
 
 - [GitHub issues (preferred)](https://github.com/jmuelbert/jmbde-aspnet/issues)
 
-## Questions or Comments
+## Code Sources
+
+The master branch contains the latest pre-release code.
+
+- [Releases](https://github.com/jmuelbert/jmbde-aspnet/releases)
+
+- [Milestones](https://github.com/jmuelbert/jmbde-aspnet/milestones)
 
 ## Wiki
 
 - [Main Page](https://github.com/jmuelbert/jmbde-aspnet/wiki)
 - [User Manual](http://jmuelbert.github.io/jmbde-aspnet/)
 
-## Building
+## Create program
 
-### Requirments
+In the following you will find hints for developers how to use jmbde on your
+native system. They are not complete guides, but
+contain information on the necessary measures. libraries,
+compile flags, etc.
 
-#### For Windows
+### Dependencies
+
+#### on Windows
 
 - [.NET Core SDK 3.1 for Windows](https://www.microsoft.com/net/download/windows)
 
-#### For Linux
+#### on Linux
 
 - [.NET Core SDK 3.1 for Linux](https://www.microsoft.com/net/download/linux)
 
-#### For Mac
+#### on macOS
 
 - [.NET Core SDK 3.1 for MacOS](https://www.microsoft.com/net/download/macos)
 

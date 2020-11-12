@@ -1,10 +1,11 @@
-name: Build
+---
+name: Release
 
 on:
     push:
-        branches: [master]
-    pull_request:
-        branches: [master]
+        tags:
+            - '*'
+
 
 env:
     RUN_ID: build.${{ GITHUB.RUN_ID }}
@@ -14,6 +15,19 @@ env:
     GITHUB_TOKEN: ${{ SECRETS.GITHUB_TOKEN }}
 
 jobs:
+    check_commit_msg:
+        outputs:
+            commit_message: ${{ steps.get_message.outputs.message }}
+        name: Check if the workflow has been disabled.
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Get commit message
+              id: get_message
+              run: |
+                  echo "::set-output name=message::$(git log --format=%B -n 1 ${{ github.event.after }})"
+                  echo "::set-env name=message::$(git log --format=%B -n 1 ${{ github.event.after }})"
+
     build:
         runs-on: windows-latest
 
@@ -66,8 +80,19 @@ jobs:
                   name: "drop-ci-packages"
                   path: "./packages"
 
-    release-build-version:
-        runs-on: windows-latest
+    release:
+        needs: check_commit_msg
+        if: ${{ !contains( needs.check_commit_msg.outputs.commit_message, 'NO_MAIN') }}
+        name: release on ${{ matrix.config.os }} with portable ${{ matrix.config.portable-option }}
+        runs-on: ${{ matrix.config.os }}
+
+        strategy:
+            fail-fast: false
+            matrix:
+                config:
+                    - {os: ubuntu-latest }
+                    - {os: windows-latest }
+                    - {os: macos-latest}
         needs: build
         if: github.repository_owner == 'jmuelbert' && github.ref == 'refs/heads/master'
         strategy:
