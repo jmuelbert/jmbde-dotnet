@@ -57,7 +57,10 @@ jobs:
               run: dotnet build -c Release --no-restore
 
             - name: Test solution
-              run: dotnet test -c Release --no-build --no-restore --verbosity normal
+              run: |
+                dotnet tool update --global dotnet-ef
+                dotnet ef database update --project src/jmbde
+                dotnet test -c Release --no-build --no-restore --verbosity normal
 
             - name: Pack packages
               run: |
