@@ -9,10 +9,15 @@ env:
     SHA: ${{ GITHUB.SHA }}
     MYGET_API_TOKEN: ${{ SECRETS.MYGET_API_TOKEN }}
     GITHUB_TOKEN: ${{ SECRETS.GITHUB_TOKEN }}
+    ProjectName: jmbde
 
 jobs:
     build:
         runs-on: windows-latest
+        env:
+            Configuration: Release
+            Net-SDK: 5.0.103
+            NET_TFM: net5.0
 
         steps:
             - name: Checkout
@@ -25,6 +30,11 @@ jobs:
 
             - name: Check tags
               run: git tag -l -n
+
+            - name: Get tag
+              if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/') }}
+              id: tag
+              uses: dawidd6/action-get-tag@v1
 
             - name: Setup dotnet 5.0.x sdk
               uses: actions/setup-dotnet@v1.7.2
@@ -43,17 +53,25 @@ jobs:
             - name: Test solution
               run: dotnet test -c Release --no-build --no-restore --verbosity normal
 
-            - name: Pack packages
+            - name: Package .NET App
+              if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/') }}
+              shell: pwsh
               run: |
-                  $LastTag =git describe --tags (git rev-list --tags --max-count=1)
-                  echo "Last tag is: ${LastTag}"
-                  $Version = ($LastTag).TrimStart('v').TrimEnd("beta").TrimEnd("preview")
-                  echo "Publishing version: ${Version}"
-                  $PackageVersion = ($LastTag).TrimStart('v') + "-" + $env:RUN_NUMBER + "." + $env:SHA.SubString(0, 7)
-                  echo "Publishing package version: ${PackageVersion}"
-                  dotnet pack -c Release -o packages /p:PackageVersion=$PackageVersion /p:Version=$Version --no-build
-            - name: Publish artefacts
-              uses: actions/upload-artifact@v2.2.2
+                New-Item -ItemType Directory -Path C:\builtfiles -Force > $null
+                7z a -mx9 "C:\builtfiles\$env:ProjectName-${{ steps.tag.outputs.tag }}.7z" ".\src\$env:ProjectName\bin\$env:Configuration\$env:NET_TFM\publish"
+                7z rn "C:\builtfiles\$env:ProjectName-${{ steps.tag.outputs.tag }}.7z" publish $env:ProjectName
+                echo "NET_SHA256=$(.\Build\GetSHA256\GetSHA256.ps1 C:\builtfiles\$env:ProjectName-${{ steps.tag.outputs.tag }}.7z)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+            - name: Create a new GitHub Release
+              uses: softprops/action-gh-release@v1
+              if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/') }}
+              env:
+                GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
               with:
-                  name: "drop-ci-packages"
-                  path: "./packages"
+                name: v${{ steps.tag.outputs.tag }}
+                prerelease: true
+                draft: false
+                files: |
+                    C:\builtfiles\${{ env.ProjectName }}-${{ steps.tag.outputs.tag }}.7z
+                # body: |
+                  #  [![](https://img.shields.io/badge/Telegram-Channel-blue)]
