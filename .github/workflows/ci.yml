@@ -60,19 +60,19 @@ jobs:
         run: |
           dotnet tool update --global dotnet-ef
           dotnet ef database update --project src/jmbde
-          dotnet build -p:Configuration= ${{ env:CONFIGURATION }} --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
+          dotnet build  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
 
       - name: Unit & integration test
         run: |
           dotnet tool update --global dotnet-ef
           dotnet ef database update --project src/jmbde
-          dotnet test -p:Configuration= ${{ env:CONFIGURATION }} --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
+          dotnet test  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
 
       - name: Generate nuget package
         run: |
           dotnet tool update --global dotnet-ef
           dotnet ef database update --project src/jmbde
-          dotnet pack --configuration ${{ env:CONFIGURATION }}
+          dotnet pack --configuration=Release
 
       - name: Collect Artifacts
         uses: actions/upload-artifact@v2
