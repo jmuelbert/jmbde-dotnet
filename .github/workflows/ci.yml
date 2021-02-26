@@ -52,18 +52,30 @@ jobs:
       - name: Display the version
         run: |
           echo "Version: ${{ steps.gitversion.outputs.semVer }}"
+
       - name: Build solution
         run: |
-          dotnet build -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
+          dotnet tool update --global dotnet-ef
+          dotnet ef database update --project src/jmbde
+          dotnet build -p:Configuration="$env:CONFIGURATION" --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
 
       - name: Unit & integration test
         run: |
-          dotnet test -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
+          dotnet tool update --global dotnet-ef
+          dotnet ef database update --project src/jmbde
+          dotnet test -p:Configuration="$env:CONFIGURATION" --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
+
+      - name: Generate nuget package
+        run: |
+          dotnet tool update --global dotnet-ef
+          dotnet ef database update --project src/jmbde
+          dotnet pack --configuration "$env:CONFIGURATION"
 
       - name: Collect Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: nuget-packages
           path: "**/*.nupkg"
+
       - name: Publish the package to NuGet.Org
         run: dotnet nuget push "**/*.nupkg" -s https://api.nuget.org/v3/index.json -k ${{ secrets.PUBLISH_NUGET_ORG }} --skip-duplicate
