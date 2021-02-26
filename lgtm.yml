@@ -1,0 +1,11 @@
+extraction:
+  csharp:
+    index:
+      dotnet:
+        version: 5.0.100
+      solution: jmbde.sln
+      msbuild:
+        configuration: release   
+        platform: x64
+      build_command:
+        - dotnet build -p:Configuration=Release
