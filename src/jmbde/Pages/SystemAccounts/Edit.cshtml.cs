@@ -50,81 +50,90 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.SystemAccounts {
-    /// <summary>
-    /// Edit model.
-    /// </summary>
-    public class EditModel : PageModel {
-        /// <summary>
-        /// The context.
-        /// </summary>
-        private readonly BDEContext _context;
+namespace JMuelbert.BDE.Pages.SystemAccounts
+{
+	/// <summary>
+	/// Edit model.
+	/// </summary>
+	public class EditModel : PageModel
+	{
+		/// <summary>
+		/// The context.
+		/// </summary>
+		private readonly BDEContext _context;
 
-        /// <summary>
-        /// The logger.
-        /// </summary>
-        private readonly ILogger _logger;
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemAccounts.EditModel"/> class.
-        /// </summary>
-        /// <param name="logger">Logger.</param>
-        /// <param name="context">Context.</param>
+		/// <summary>
+		/// The logger.
+		/// </summary>
+		private readonly ILogger _logger;
+		/// <summary>
+		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.SystemAccounts.EditModel"/> class.
+		/// </summary>
+		/// <param name="logger">Logger.</param>
+		/// <param name="context">Context.</param>
 
-        public EditModel (ILogger<EditModel> logger, BDEContext context) {
-            _logger = logger;
-            _context = context;
-        }
+		public EditModel(ILogger<EditModel> logger, BDEContext context)
+		{
+			_logger = logger;
+			_context = context;
+		}
 
-        /// <summary>
-        /// Gets or sets the SystemAccount.
-        /// </summary>
-        /// <value>The SystemAccount.</value>
-        [BindProperty]
-        public SystemAccount SystemAccount { get; set; }
+		/// <summary>
+		/// Gets or sets the SystemAccount.
+		/// </summary>
+		/// <value>The SystemAccount.</value>
+		[BindProperty]
+		public SystemAccount SystemAccount { get; set; }
 
-        public async Task<IActionResult> OnGetAsync (int? id) {
-            _logger.LogDebug ($"SystemAccount/Edit/OnGetAsync({ id })");
+		public async Task<IActionResult> OnGetAsync(int? id)
+		{
+			_logger.LogDebug($"SystemAccount/Edit/OnGetAsync({ id })");
 
-            if (id == null) {
-                return NotFound ();
-            }
+			if (id == null)
+			{
+				return NotFound();
+			}
 
-            SystemAccount = await _context.SystemAccount.FindAsync (id).ConfigureAwait (false);
+			SystemAccount = await _context.SystemAccount.FindAsync(id).ConfigureAwait(false);
 
-            if (SystemAccount == null) {
-                return NotFound ();
-            }
-            return Page ();
-        }
+			if (SystemAccount == null)
+			{
+				return NotFound();
+			}
+			return Page();
+		}
 
-        /// <summary>
-        /// OnPostAsync
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public async Task<IActionResult> OnPostAsync (int? id) {
-            _logger.LogDebug ($"SystemAccount/Edit/OnPostAsync({ id })");
+		/// <summary>
+		/// OnPostAsync
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public async Task<IActionResult> OnPostAsync(int? id)
+		{
+			_logger.LogDebug($"SystemAccount/Edit/OnPostAsync({ id })");
 
-            if (!ModelState.IsValid) {
-                return Page ();
-            }
+			if (!ModelState.IsValid)
+			{
+				return Page();
+			}
 
-            var systemaccountToUpdate = await _context.SystemAccount.FindAsync (id).ConfigureAwait (false);
+			var systemaccountToUpdate = await _context.SystemAccount.FindAsync(id).ConfigureAwait(false);
 
-            if (await TryUpdateModelAsync<SystemAccount> (
-                    systemaccountToUpdate,
-                    "systemaccount", // Preset for form value
-                    s => s.UserName,
-                    s => s.PassWord,
-                    s => s.LastUpdate
-                ).ConfigureAwait (false)) {
-                await _context.SaveChangesAsync ().ConfigureAwait (false);
-                return RedirectToPage ("./Index");
-            }
+			if (await TryUpdateModelAsync<SystemAccount>(
+					systemaccountToUpdate,
+					"systemaccount", // Preset for form value
+					s => s.UserName,
+					s => s.PassWord,
+					s => s.LastUpdate
+				).ConfigureAwait(false))
+			{
+				await _context.SaveChangesAsync().ConfigureAwait(false);
+				return RedirectToPage("./Index");
+			}
 
-            return Page ();
+			return Page();
 
-        }
+		}
 
-    }
+	}
 }
