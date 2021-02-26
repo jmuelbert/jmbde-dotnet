@@ -2,7 +2,7 @@ extraction:
   csharp:
     index:
       dotnet:
-        version: 5.0.100
+        version: 5.0.103
       solution: jmbde.sln
       msbuild:
         configuration: release   
