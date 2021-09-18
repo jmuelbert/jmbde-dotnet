@@ -16,7 +16,7 @@ jobs:
 
       - name: Run dotnet format
         id: format
-        uses: jfversluis/dotnet-format@1.0.7
+        uses: jfversluis/dotnet-format@v1.0.8
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           action: "fix"
@@ -30,7 +30,7 @@ jobs:
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -a -m 'Automated dotnet-format update'
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3.10.0
+        uses: peter-evans/create-pull-request@v3.10.1
         with:
           title: '[housekeeping] Automated PR to fix formatting errors'
           body: |
