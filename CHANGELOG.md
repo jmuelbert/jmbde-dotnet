@@ -12,6 +12,10 @@
 
 **Merged pull requests:**
 
+- build\(deps\): bump tomwhross/write-good-action from 1.2 to 1.5 [\#282](https://github.com/jmuelbert/jmbde-aspnet/pull/282)
+- build\(deps\): bump david-a-wheeler/flawfinder from 2.0.19.pre.alpha1 to 2.0.19 [\#281](https://github.com/jmuelbert/jmbde-aspnet/pull/281)
+- build\(deps\): bump Microsoft.AspNetCore.Identity.UI from 5.0.9 to 5.0.10 [\#280](https://github.com/jmuelbert/jmbde-aspnet/pull/280)
+- build\(deps\): bump codacy/codacy-analysis-cli-action from 1.1.0 to 4.0.0 [\#279](https://github.com/jmuelbert/jmbde-aspnet/pull/279)
 - Bump Microsoft.AspNetCore.Identity.UI from 5.0.9 to 5.0.10 [\#275](https://github.com/jmuelbert/jmbde-aspnet/pull/275)
 - Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.9 to 5.0.10 [\#274](https://github.com/jmuelbert/jmbde-aspnet/pull/274)
 - Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.9 to 5.0.10 [\#273](https://github.com/jmuelbert/jmbde-aspnet/pull/273)
@@ -119,11 +123,7 @@
 - Bump peter-evans/create-pull-request from v3.5.1 to v3.8.2 [\#152](https://github.com/jmuelbert/jmbde-aspnet/pull/152)
 - Bump actions/stale from v3.0.14 to v3.0.16 [\#150](https://github.com/jmuelbert/jmbde-aspnet/pull/150)
 - Bump FluentValidation from 9.4.0 to 9.5.0 [\#149](https://github.com/jmuelbert/jmbde-aspnet/pull/149)
-- Bump Microsoft.VisualStudio.Web.CodeGeneration.Utils from 5.0.0 to 5.0.1 [\#141](https://github.com/jmuelbert/jmbde-aspnet/pull/141)
-- Bump Microsoft.AspNetCore.Identity.UI from 5.0.0 to 5.0.2 [\#140](https://github.com/jmuelbert/jmbde-aspnet/pull/140)
 - Bump actions/download-artifact from v2.0.6 to v2.0.8 [\#129](https://github.com/jmuelbert/jmbde-aspnet/pull/129)
-- Bump release-drafter/release-drafter from v5.12.1 to v5.13.0 [\#127](https://github.com/jmuelbert/jmbde-aspnet/pull/127)
-- Bump crazy-max/ghaction-github-labeler from v3.1.0 to v3.1.1 [\#125](https://github.com/jmuelbert/jmbde-aspnet/pull/125)
 
 ## [V0.4.0](https://github.com/jmuelbert/jmbde-aspnet/tree/V0.4.0) (2020-08-15)
 
