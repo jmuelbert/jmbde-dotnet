@@ -123,7 +123,6 @@
 - Bump peter-evans/create-pull-request from v3.5.1 to v3.8.2 [\#152](https://github.com/jmuelbert/jmbde-aspnet/pull/152)
 - Bump actions/stale from v3.0.14 to v3.0.16 [\#150](https://github.com/jmuelbert/jmbde-aspnet/pull/150)
 - Bump FluentValidation from 9.4.0 to 9.5.0 [\#149](https://github.com/jmuelbert/jmbde-aspnet/pull/149)
-- Bump actions/download-artifact from v2.0.6 to v2.0.8 [\#129](https://github.com/jmuelbert/jmbde-aspnet/pull/129)
 
 ## [V0.4.0](https://github.com/jmuelbert/jmbde-aspnet/tree/V0.4.0) (2020-08-15)
 
