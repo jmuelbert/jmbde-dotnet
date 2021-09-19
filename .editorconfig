@@ -137,11 +137,6 @@ csharp_space_between_method_declaration_parameter_list_parentheses = false
 csharp_space_between_parentheses = false
 csharp_space_between_square_brackets = false
 
-# C++ Files
-[*.{cpp,h,in}]
-curly_bracket_next_line = true
-indent_brace_style = Allman
-
 # Xml project files
 [*.{csproj,vcxproj,vcxproj.filters,proj,nativeproj,locproj}]
 indent_size = 2
@@ -154,16 +149,50 @@ indent_size = 2
 [*.{xml,stylecop,resx,ruleset}]
 indent_size = 2
 
-# Xaml files
-[*.{xaml}]
+# Indentation override for all JS under lib directory
+[*.{js,json,vue,scss,rb,haml,yml,yaml,toml}]
 indent_size = 2
 
-# Xml config files
-[*.{props,targets,config,nuspec}]
+[*.{js,json,vue,scss,rb,haml,yml,md}]
+indent_style = space
+charset = utf-8
+
+# Source code files
+[*.{c,cxx,cpp,h,hxx,hpp,java,m,mm,py,swift,xsl}]
+indent_style = space
 indent_size = 2
 
-# Shell scripts
-[*.sh]
-end_of_line = lf
-[*.{cmd, bat}]
+[CMakeLists.txt,*.cmake{,.in}]
+indent_size = 2
+indent_style = space
+
+# Override for Makefile
+[{Makefile, makefile, GNUmakefile}]
+indent_style = tab
+indent_size = 4
+
+# Matches multiple files with brace expansion notation
+# Set default charset
+[*.py]
+indent_size = 4
+max_line_length = 80
+
+[*.rst]
+indent_size = 3
+
+[*.coffee]
+indent_style = space
+indent_size = 4
+
+[*.html]
+indent_style = space
+indent_size = 2
+
+[*.{bat,cmd}]
 end_of_line = crlf
+
+[*.{md,markdown,js.snap}]
+trim_trailing_whitespace = false
+
+[LICENSE]
+insert_final_newline = false

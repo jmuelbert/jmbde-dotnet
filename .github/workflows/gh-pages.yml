@@ -1,56 +1,67 @@
-name: gh-pages
+name: github pages
 
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
 on:
-    push:
-        branches: [master]
+  #push:
+  #  branches-ignore:
+  #    - '**'
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
-    build:
-        runs-on: macos-latest
-        steps:
-            - name: Checkout sources
-              uses: actions/checkout@v2.3.4
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Get the version
+        id: get_version
+        shell: bash
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
 
-            - name: brew update-reset
-              run: brew update-reset
+      - name: Checkout Source code
+        if: github.event_name == 'push'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          #          ref: master
 
-            - name: brew update
-              run: brew update
+      - name: Checkout Source code
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
 
-            - name: Upgrade CMake and ninja
-              run: |
-                  brew upgrade cmake
-                  brew ls | grep wq ninja | brew install ninja
+      - name: brew update-reset
+        run: brew update-reset
 
-            - name: Install dependencies with homebrew
-              run: |
-                  brew install graphviz doxygen
-                  brew ls | grep -wq freetype | brew install freetype
-                  brew ls | grep -wq python | brew install python
-                  pip3 install -r docs/requirements.txt
+      - name: brew update
+        run: brew update
 
-            - name: configure
-              run: |
-                  ls
-                  cmake -G Ninja -S docs -B ./build
-            - name: build
-              run: |
-                  pushd build
-                  ninja Sphinx
-                  popd
-            - name: gh-pages
-              uses: actions/checkout@v2.3.4
-              with:
-                  ref: "gh-pages"
-                  clean: false
-            - name: Move & Commit files
-              run: |
-                  git config --global user.name github-actions
-                  git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com'
-                  git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-                  rm -rf d* && rm *.html && rm *.svg && rm *.map && rm *.md5 && rm *.png && rm *.js && rm *.css
-                  git add .
-                  cp -rp ./build/manual/html/* . && rm -rf ./build && ls -lah
-                  git add .
-                  git commit -m "Documentation for $GITHUB_SHA" ||  true
-                  git push --force || true
+      - name: Install dependencies with homebrew
+        run: |
+          brew install graphviz doxygen
+          brew install sphinx-doc
+          brew install sphinx-sitemap
+          brew install sphinx-rtd-theme
+          brew install pkg-config
+          brew install breathe
+          brew ls | grep -wq freetype | brew install freetype
+          brew ls | grep -wq python | brew install python
+
+      - name: Build manual
+        run: |
+          ls $GITHUB_WORKSPACE/docs/manual
+          cd $GITHUB_WORKSPACE/docs/manual
+          make html
+          cd $GITHUB_WORKSPACE/docs/manual/build/html
+          touch .nojekyll
+
+      - name: Deploy manual
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: docs/manual/build/html # The folder the action should deploy.
