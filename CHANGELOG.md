@@ -12,6 +12,11 @@
 
 **Merged pull requests:**
 
+- build\(deps\): bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.10 to 5.0.11 [\#289](https://github.com/jmuelbert/jmbde-aspnet/pull/289)
+- build\(deps\): bump Microsoft.EntityFrameworkCore.Design from 5.0.9 to 5.0.11 [\#286](https://github.com/jmuelbert/jmbde-aspnet/pull/286)
+- build\(deps\): bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.9 to 5.0.11 [\#285](https://github.com/jmuelbert/jmbde-aspnet/pull/285)
+- build\(deps\): bump actions/checkout from 2.3.4 to 2.3.5 [\#284](https://github.com/jmuelbert/jmbde-aspnet/pull/284)
+- build\(deps\): bump Microsoft.EntityFrameworkCore.Tools from 5.0.10 to 5.0.11 [\#283](https://github.com/jmuelbert/jmbde-aspnet/pull/283)
 - build\(deps\): bump tomwhross/write-good-action from 1.2 to 1.5 [\#282](https://github.com/jmuelbert/jmbde-aspnet/pull/282)
 - build\(deps\): bump david-a-wheeler/flawfinder from 2.0.19.pre.alpha1 to 2.0.19 [\#281](https://github.com/jmuelbert/jmbde-aspnet/pull/281)
 - build\(deps\): bump Microsoft.AspNetCore.Identity.UI from 5.0.9 to 5.0.10 [\#280](https://github.com/jmuelbert/jmbde-aspnet/pull/280)
@@ -115,13 +120,6 @@
 - Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.2 to 5.0.3 [\#160](https://github.com/jmuelbert/jmbde-aspnet/pull/160)
 - Bump Microsoft.EntityFrameworkCore.Tools from 5.0.2 to 5.0.3 [\#159](https://github.com/jmuelbert/jmbde-aspnet/pull/159)
 - Bump AutoMapper.Extensions.Microsoft.DependencyInjection from 8.1.0 to 8.1.1 [\#158](https://github.com/jmuelbert/jmbde-aspnet/pull/158)
-- Bump Microsoft.VisualStudio.Web.CodeGeneration.Utils from 5.0.1 to 5.0.2 [\#157](https://github.com/jmuelbert/jmbde-aspnet/pull/157)
-- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.0 to 5.0.3 [\#156](https://github.com/jmuelbert/jmbde-aspnet/pull/156)
-- Bump Microsoft.EntityFrameworkCore from 5.0.0 to 5.0.3 [\#155](https://github.com/jmuelbert/jmbde-aspnet/pull/155)
-- Bump Microsoft.EntityFrameworkCore.Design from 5.0.0 to 5.0.3 [\#154](https://github.com/jmuelbert/jmbde-aspnet/pull/154)
-- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.0 to 5.0.3 [\#153](https://github.com/jmuelbert/jmbde-aspnet/pull/153)
-- Bump peter-evans/create-pull-request from v3.5.1 to v3.8.2 [\#152](https://github.com/jmuelbert/jmbde-aspnet/pull/152)
-- Bump actions/stale from v3.0.14 to v3.0.16 [\#150](https://github.com/jmuelbert/jmbde-aspnet/pull/150)
 
 ## [V0.4.0](https://github.com/jmuelbert/jmbde-aspnet/tree/V0.4.0) (2020-08-15)
 
