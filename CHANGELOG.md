@@ -122,7 +122,6 @@
 - Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.0 to 5.0.3 [\#153](https://github.com/jmuelbert/jmbde-aspnet/pull/153)
 - Bump peter-evans/create-pull-request from v3.5.1 to v3.8.2 [\#152](https://github.com/jmuelbert/jmbde-aspnet/pull/152)
 - Bump actions/stale from v3.0.14 to v3.0.16 [\#150](https://github.com/jmuelbert/jmbde-aspnet/pull/150)
-- Bump FluentValidation from 9.4.0 to 9.5.0 [\#149](https://github.com/jmuelbert/jmbde-aspnet/pull/149)
 
 ## [V0.4.0](https://github.com/jmuelbert/jmbde-aspnet/tree/V0.4.0) (2020-08-15)
 
