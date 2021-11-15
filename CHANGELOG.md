@@ -119,7 +119,6 @@
 - Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.2 to 5.0.3 [\#161](https://github.com/jmuelbert/jmbde-aspnet/pull/161)
 - Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.2 to 5.0.3 [\#160](https://github.com/jmuelbert/jmbde-aspnet/pull/160)
 - Bump Microsoft.EntityFrameworkCore.Tools from 5.0.2 to 5.0.3 [\#159](https://github.com/jmuelbert/jmbde-aspnet/pull/159)
-- Bump AutoMapper.Extensions.Microsoft.DependencyInjection from 8.1.0 to 8.1.1 [\#158](https://github.com/jmuelbert/jmbde-aspnet/pull/158)
 
 ## [V0.4.0](https://github.com/jmuelbert/jmbde-aspnet/tree/V0.4.0) (2020-08-15)
 
