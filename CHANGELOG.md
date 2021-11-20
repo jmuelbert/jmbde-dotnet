@@ -12,6 +12,8 @@
 
 **Merged pull requests:**
 
+- build\(deps\): bump Roslyn.Diagnostics.Analyzers from 3.3.2 to 3.3.3 [\#292](https://github.com/jmuelbert/jmbde-aspnet/pull/292)
+- build\(deps\): bump Microsoft.CodeAnalysis.Analyzers from 3.3.2 to 3.3.3 [\#291](https://github.com/jmuelbert/jmbde-aspnet/pull/291)
 - build\(deps\): bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.10 to 5.0.11 [\#289](https://github.com/jmuelbert/jmbde-aspnet/pull/289)
 - build\(deps\): bump Microsoft.EntityFrameworkCore.Design from 5.0.9 to 5.0.11 [\#286](https://github.com/jmuelbert/jmbde-aspnet/pull/286)
 - build\(deps\): bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.9 to 5.0.11 [\#285](https://github.com/jmuelbert/jmbde-aspnet/pull/285)
@@ -118,7 +120,6 @@
 - Bump Microsoft.VisualStudio.Web.CodeGeneration.Design from 5.0.1 to 5.0.2 [\#162](https://github.com/jmuelbert/jmbde-aspnet/pull/162)
 - Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.2 to 5.0.3 [\#161](https://github.com/jmuelbert/jmbde-aspnet/pull/161)
 - Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.2 to 5.0.3 [\#160](https://github.com/jmuelbert/jmbde-aspnet/pull/160)
-- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.2 to 5.0.3 [\#159](https://github.com/jmuelbert/jmbde-aspnet/pull/159)
 
 ## [V0.4.0](https://github.com/jmuelbert/jmbde-aspnet/tree/V0.4.0) (2020-08-15)
 
