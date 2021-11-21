@@ -67,13 +67,13 @@ jobs:
         run: |
           dotnet tool update --global dotnet-ef
           dotnet ef database update --project src/jmbde
-          dotnet build  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
+          dotnet build  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }} -o${{runner.workspace}}/dist
 
       - name: Upload package
         uses: 'action/upload-artifact@2.2.4'
         with:
           name: DotnetSolution
-          path: ./bin
+          path: ${{runner.workspace}}/dist
 
   build_GH_Pages:
     name: Build GH Pages
@@ -88,7 +88,7 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           python-version: 3.7 # Python version to build the html sphinx documentation
-          environment-file: ../ghpages/docs_env.yaml # Path to the documentation conda environment
+          environment-file: ${{runner.workspace}}/.github/ghpages/docs_env.yaml # Path to the documentation conda environment
           auto-update-conda: false
           auto-activate-base: false
           show-channel-urls: true
@@ -153,7 +153,7 @@ jobs:
         run: |
           dotnet tool update --global dotnet-ef
           dotnet ef database update --project src/jmbde
-          dotnet test  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
+          dotnet test  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }} -o${{runner.workspace}}/dist
 
   releaseNotes:
     if: startsWith(github.ref, 'refs/tags/')
