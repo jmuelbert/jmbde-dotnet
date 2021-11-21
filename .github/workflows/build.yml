@@ -42,7 +42,8 @@ jobs:
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.11
         with:
-          versionSpec: '5.x'
+          versionSpec: '6.x'
+          includePrerelease: true
 
       - uses: actions/setup-dotnet@v1
         with:
@@ -88,10 +89,11 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           python-version: 3.7 # Python version to build the html sphinx documentation
-          environment-file: ../.github/ghpages/docs_env.yaml # Path to the documentation conda environment
+          environment-file: .github/ghpages/docs_env.yaml # Path to the documentation conda environment
           auto-update-conda: false
           auto-activate-base: false
           show-channel-urls: true
+
       - name: Installing the library
         shell: bash -l {0}
         run: |
@@ -128,7 +130,8 @@ jobs:
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.11
         with:
-          versionSpec: '5.x'
+          versionSpec: '6.x'
+          includePrerelease: true
 
       - uses: actions/setup-dotnet@v1
         with:
