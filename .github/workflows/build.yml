@@ -234,7 +234,13 @@ jobs:
         uses: actions/download-artifact@v2.0.10
         with:
           name: DotnetSolution
-          path: dist/
+          path: dist
+
+      - name: Upload Artifact to Pre-Release
+        uses: actions/upload-artifact@v2
+        with:
+          name: Pre-Release Solution
+          path: dist
 
   deploy:
     name: Deploy Release on nuget

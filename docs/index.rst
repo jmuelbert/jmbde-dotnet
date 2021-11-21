@@ -1,4 +1,4 @@
-Welcome to jmbde-python documentation
+Welcome to jmbde-dotnet documentation
 =====================================
 
 Contents:
@@ -10,8 +10,8 @@ Contents:
    reference
    contributing
    Code of Conduct <codeofconduct>
-   License <gpl-3.0>
-   Changelog <https://github.com/jmuelbert/jmbde-python/releases>
+   License <https://opensource.org/licenses/EUPL-1.2>
+   Changelog <https://github.com/jmuelbert/jmbde-aspnet/releases>
 
 Indices and tables
 ==================
