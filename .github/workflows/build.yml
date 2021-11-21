@@ -97,7 +97,7 @@ jobs:
 
       - name: Running the Sphinx to gh-pages Action
         run: |
-          sphinx-build docs/manual docs/_build
+          sphinx-build docs docs/_build
         # uses: uibcdf/action-sphinx-docs-to-gh-pages@v1.0-beta.2
         # with:
         #   branch: master
