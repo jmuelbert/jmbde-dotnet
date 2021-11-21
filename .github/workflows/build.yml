@@ -96,14 +96,15 @@ jobs:
           show-channel-urls: true
 
       - name: Running the Sphinx to gh-pages Action
-        uses: uibcdf/action-sphinx-docs-to-gh-pages@v1.0-beta.2
-        with:
-          branch: master
-          dir_docs: docs/manual
-          sphinxopts: ''
+        run: |
+          sphinx-build docs/manual docs/_build
+        # uses: uibcdf/action-sphinx-docs-to-gh-pages@v1.0-beta.2
+        # with:
+        #   branch: master
+        #   dir_docs: docs/manual
+        #   sphinxopts: ''
 
       - name: Upload documentation
-        if: matrix.session == 'docs-build'
         uses: actions/upload-artifact@v2.2.4
         with:
           name: docs
