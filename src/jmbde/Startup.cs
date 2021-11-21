@@ -165,6 +165,7 @@ namespace JMuelbert.BDE
 		/// </summary>
 		/// <param name="app">App.</param>
 		/// <param name="env">Env.</param>
+		[Obsolete]
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 

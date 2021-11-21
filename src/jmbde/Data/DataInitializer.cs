@@ -56,7 +56,6 @@ namespace JMuelbert.BDE.Shared.Data
 
 			if (bdeContext.Employee.Count() == 0)
 			{
-				var employeeIds = 0;
 				// Create text data
 				var testEmployees = new Faker<Employee>()
 					.RuleFor(e => e.FirstName, (e, f) => f.FirstName)

@@ -174,7 +174,8 @@ namespace JMuelbert.BDE.Pages.SystemDatas
 			int pageSize = 10;
 			SystemData = await PaginatedCollection<SystemData>.CreateAsync(
 				systemdataIQ.AsNoTracking(), pageIndex ?? 1, pageSize
-			).ConfigureAwait(false); ;
+			).ConfigureAwait(false);
+			;
 		}
 	}
 }

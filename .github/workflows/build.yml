@@ -1,4 +1,5 @@
-name: Building
+---
+name: Build
 
 on:
   push:
@@ -12,14 +13,11 @@ on:
 
   pull_request:
     branches: [master]
-    tags-ignore:
-      - '*'
     paths-ignore:
-      - '*.md'
+      - '**/*.md'
+      - '**/*.txt'
       - '.editorconfig'
       - 'docs/**'
-
-  workflow_dispatch:
 
 env:
   CONFIGURATION: Release
@@ -31,12 +29,15 @@ env:
 
 jobs:
   build:
+    name: Module Build
+    needs: tests
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2.4.0
-      - name: Fetch all history for all tags and branches
-        run: git fetch --prune --unshallow
+      - name: Checkout Repository
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 2
+
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.11
         with:
@@ -62,17 +63,172 @@ jobs:
           dotnet ef database update --project src/jmbde
           dotnet build  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
 
+      - name: Upload package
+        uses: 'action/upload-artifact@2.2.4'
+        with:
+          name: DotnetSolution
+          path: ./bin
+
+  build_GH_Pages:
+    name: Build GH Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2.3.4
+        with:
+          fetch-depth: 0
+
+      - name: Make Conda environtment
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          python-version: 3.7 # Python version to build the html sphinx documentation
+          environment-file: devtools/conda-envs/docs_env.yaml # Path to the documentation conda environment
+          auto-update-conda: false
+          auto-activate-base: false
+          show-channel-urls: true
+      - name: Installing the library
+        shell: bash -l {0}
+        run: |
+          python setup.py install
+
+      - name: Running the Sphinx to gh-pages Action
+        uses: uibcdf/action-sphinx-docs-to-gh-pages@v1.0-beta.2
+        with:
+          branch: main
+          dir_docs: docs
+          sphinxopts: ''
+
+      - name: Upload documentation
+        if: matrix.session == 'docs-build'
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: docs
+          path: docs/_build
+
+  tests:
+    name: ${{ matrix.session }} ${{ matrix.dotnet-version }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { dotnet-version: '6.0.100', os: ubuntu-latest }
+          - { dotnet-version: '6.0.100', os: 'windows-latest' }
+          - { dotnet-version: '6.0.100', os: 'macos-latest' }
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2.3.4
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.11
+        with:
+          versionSpec: '5.x'
+
+      - name: Check dotnet sdk install
+        run: dotnet --info
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Use GitVersion
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.11
+
+      - name: Display the version
+        run: |
+          echo "Version: ${{ steps.gitversion.outputs.semVer }}"
+
       - name: Unit & integration test
         run: |
           dotnet tool update --global dotnet-ef
           dotnet ef database update --project src/jmbde
           dotnet test  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
 
-      - name: Generate nuget package
-        run: |
-          dotnet tool update --global dotnet-ef
-          dotnet ef database update --project src/jmbde
-          dotnet pack --configuration=Release
+  releaseNotes:
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Releasenotes
+        id: github_releasenotes
+        uses: release-drafter/release-drafter@v5.15.0
+        with:
+          publish: "${{ steps.check-version.outputs.tag != '' }}"
+          tag: '${{ steps.check-version.outputs.tag }}'
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+
+  changeLog:
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build ChangeLog
+        id: github_changelog
+        uses: mikepenz/release-changelog-builder-action@v2.7.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          body: ${{ steps.check-version.outputs }}
+        env:
+          GITHUB_TOKEN: $${{ secrets.GITHUB_TOKEN }}
+
+  deployGHPages:
+    runs-on: ubuntu-latest
+    needs: build_GH_Pages
+    steps:
+      - name: Download Artifact with Pages
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: docs
+          path: docs/_build
+
+      - name: Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          email: juergen.muelbert@gmail.com
+          build_dir: docs/_build
+
+  deployPrereleases:
+    name: Deploy Pre-Release
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-20.04
+    environment: PreRelease
+    needs:
+      - build
+      - tests
+      - deployGHPages
+
+    steps:
+      - name: Restore Dotnet Solution
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: DotnetSolution
+          path: dist/
+
+  deploy:
+    name: Deploy Release on nuget
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-20.04
+    environment: Release
+    needs:
+      - build
+      - tests
+      - changeLog
+      - releaseNotes
+      - deployGHPages
+
+    steps:
+      - name: Restore Dotnet Solution
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: DotnetSolution
+          path: dist/
 
       - name: Collect Artifacts
         uses: actions/upload-artifact@v2

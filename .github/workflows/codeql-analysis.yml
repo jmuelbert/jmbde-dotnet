@@ -13,17 +13,20 @@ name: 'CodeQL'
 
 on:
   push:
-    branches: [master]
+    branches: [main, master, protected]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [master]
+    branches: [main, master]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
   schedule:
     - cron: '44 3 * * 2'
 
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, ubuntu-latest]
     permissions:
       actions: read
       contents: read
@@ -32,7 +35,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ['csharp', 'javascript']
+        language: ['csharp', 'javascript', 'python']
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
         # Learn more:
         # https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
@@ -45,6 +48,7 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
         with:
+          config-file: ./.github/codeql/codeql-config.yml
           languages: ${{ matrix.language }}
           # If you wish to specify custom queries, you can do so here or in a config file.
           # By default, queries listed here will override any specified in a config file.
