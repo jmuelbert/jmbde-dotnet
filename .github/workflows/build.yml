@@ -43,6 +43,11 @@ jobs:
         with:
           versionSpec: '5.x'
 
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+          include-prerelease: true
+
       - name: Check dotnet sdk install
         run: dotnet --info
 
@@ -82,7 +87,7 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           python-version: 3.7 # Python version to build the html sphinx documentation
-          environment-file: devtools/conda-envs/docs_env.yaml # Path to the documentation conda environment
+          environment-file: ../ghpages/docs_env.yaml # Path to the documentation conda environment
           auto-update-conda: false
           auto-activate-base: false
           show-channel-urls: true
@@ -123,6 +128,11 @@ jobs:
         uses: gittools/actions/gitversion/setup@v0.9.11
         with:
           versionSpec: '5.x'
+
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+          include-prerelease: true
 
       - name: Check dotnet sdk install
         run: dotnet --info
