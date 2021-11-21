@@ -71,7 +71,7 @@ jobs:
           dotnet build  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }} --output ${{runner.workspace}}/dist
 
       - name: Upload package
-        uses: 'action/upload-artifact@2.2.4'
+        uses: actions/upload-artifact@v2.2.4
         with:
           name: DotnetSolution
           path: ${{runner.workspace}}/dist
@@ -94,11 +94,6 @@ jobs:
           auto-update-conda: false
           auto-activate-base: false
           show-channel-urls: true
-
-      - name: Installing the library
-        shell: bash -l {0}
-        run: |
-          python setup.py install
 
       - name: Running the Sphinx to gh-pages Action
         uses: uibcdf/action-sphinx-docs-to-gh-pages@v1.0-beta.2
