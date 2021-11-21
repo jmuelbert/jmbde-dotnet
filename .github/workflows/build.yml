@@ -86,7 +86,7 @@ jobs:
       - name: Fetch all history for all tags and branches
         run: git fetch --prune --unshallow
 
-      - name: Make Conda environtment
+      - name: Make Conda environment
         uses: conda-incubator/setup-miniconda@v2
         with:
           python-version: 3.7 # Python version to build the html sphinx documentation
