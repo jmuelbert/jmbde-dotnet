@@ -34,16 +34,16 @@ jobs:
     needs: tests
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v2.4.0
         with:
           fetch-depth: 2
+      - name: Fetch all history for all tags and branches
+        run: git fetch --prune --unshallow
 
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.11
         with:
-          versionSpec: '6.x'
-          includePrerelease: true
+          versionSpec: '5.x'
 
       - uses: actions/setup-dotnet@v1
         with:
@@ -80,16 +80,17 @@ jobs:
     name: Build GH Pages
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2.4.0
         with:
-          fetch-depth: 0
+          fetch-depth: 2
+      - name: Fetch all history for all tags and branches
+        run: git fetch --prune --unshallow
 
       - name: Make Conda environtment
         uses: conda-incubator/setup-miniconda@v2
         with:
           python-version: 3.7 # Python version to build the html sphinx documentation
-          environment-file: .github/ghpages/docs_env.yaml # Path to the documentation conda environment
+          environment-file: ./.github/ghpages/docs_env.yaml # Path to the documentation conda environment
           auto-update-conda: false
           auto-activate-base: false
           show-channel-urls: true
@@ -124,14 +125,16 @@ jobs:
           - { dotnet-version: '6.0.100', os: 'windows-latest' }
           - { dotnet-version: '6.0.100', os: 'macos-latest' }
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 2
+      - name: Fetch all history for all tags and branches
+        run: git fetch --prune --unshallow
 
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.11
         with:
-          versionSpec: '6.x'
-          includePrerelease: true
+          versionSpec: '5.x'
 
       - uses: actions/setup-dotnet@v1
         with:
@@ -162,6 +165,12 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 2
+      - name: Fetch all history for all tags and branches
+        run: git fetch --prune --unshallow
+
       - name: Build Releasenotes
         id: github_releasenotes
         uses: release-drafter/release-drafter@v5.15.0
@@ -175,6 +184,12 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 2
+      - name: Fetch all history for all tags and branches
+        run: git fetch --prune --unshallow
+
       - name: Build ChangeLog
         id: github_changelog
         uses: mikepenz/release-changelog-builder-action@v2.7.0
