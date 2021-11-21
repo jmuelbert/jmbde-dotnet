@@ -93,7 +93,7 @@ jobs:
 
       - name: Install sphinx
         run: |
-          pip install --constraint=docs/requirements.txt
+          pip install -r docs/requirements.txt
 
       - name: Running the Sphinx to gh-pages Action
         run: |
