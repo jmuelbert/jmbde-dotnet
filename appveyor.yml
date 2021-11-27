@@ -50,14 +50,14 @@ for:
     clone_folder: /Users/appveyor/projects/jmbde
 
     # TODO: Activate by available LTS Version 3.1.100
-    # dotnet_csproj:
-    #  patch: true
-    #  file: '**/*.csproj'
-    #  version: "{version}"
-    #  package_version: "{version}"
-    #  assembly_version: "{version}"
-    #  file_version: "{version}"
-    #  informational_version: "{version}"
+    dotnet_csproj:
+      patch: true
+      file: '**/*.csproj'
+      version: '{version}'
+      package_version: '{version}'
+      assembly_version: '{version}'
+      file_version: '{version}'
+      informational_version: '{version}'
 
     build_script:
       - dotnet --info
