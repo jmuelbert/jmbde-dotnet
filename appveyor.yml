@@ -14,20 +14,18 @@ platform:
   # Disable x86 builds since we only get one concurrent build on AppVeyor and x86
   # failures will be caught by Jenkins.
   # - x86
-  - x64
+  # - x64
 
 skip_tags: true
 skip_branch_with_pr: true
 skip_commits:
   files:
-    - "**/*.md"
+    - '**/*.md'
     - docs/*
     - LICENSE
     - README
     - CHANGELOG
     - COPYING
-
-
 
 pull_requests:
   do_not_increment_build_number: true
@@ -42,7 +40,6 @@ environment:
     secure: NuyAKQY3nsfYHO6P59pRQCWMFPBYGuShNyCwrBWLuqK7jQ/CmRNZeuWuVRUvy/xU
   APPVEYOR_YML_DISABLE_PS_LINUX: true
   Appveyor: true
-
 
 for:
   ########## macOS SPECIFIC CONFIGURATION ##########
@@ -63,15 +60,14 @@ for:
     #  informational_version: "{version}"
 
     build_script:
-    - dotnet --info
-    - dotnet build ./jmbde.sln -c Release
+      - dotnet --info
+      - dotnet build ./jmbde.sln -c Release
 
-    #after_build:
-    - dotnet publish ./jmbde.sln -c Release -o ./artifacts
+      #after_build:
+      - dotnet publish ./jmbde.sln -c Release -o ./artifacts
 
-    #test_script:
-    - dotnet test ./tests/jmbde.Tests/jmbde.Tests.csproj
-
+      #test_script:
+      - dotnet test ./tests/jmbde.Tests/jmbde.Tests.csproj
 
   ########## END macOS SPECIFIC CONFIGURATION ##########
 
@@ -86,11 +82,11 @@ for:
     dotnet_csproj:
       patch: true
       file: '**/*.csproj'
-      version: "{version}"
-      package_version: "{version}"
-      assembly_version: "{version}"
-      file_version: "{version}"
-      informational_version: "{version}"
+      version: '{version}'
+      package_version: '{version}'
+      assembly_version: '{version}'
+      file_version: '{version}'
+      informational_version: '{version}'
 
     build_script:
       - dotnet --info
@@ -102,10 +98,7 @@ for:
     test_script:
       - dotnet test ./tests/jmbde.Tests/jmbde.Tests.csproj
 
-
-
   ########## END UBUNTU SPECIFIC CONFIGURATION ##########
-
   ########## WINDOWS SPECIFIC CONFIGURATION ##########
   - matrix:
       only:
@@ -113,7 +106,8 @@ for:
       fast_finish: false # set this flag to true to immediately finish build once one of the jobs fails.
 
     cache:
-      - C:\Users\appveyor\clcache -> .appveyor.yml, build_msvc\**, **\Makefile.am, **\*.vcxproj.in
+      - C:\Users\appveyor\clcache -> .appveyor.yml, build_msvc\**, **\Makefile.am,
+        **\*.vcxproj.in
 
     init:
       - git config --global core.autocrlf input
@@ -122,7 +116,9 @@ for:
       - call set ENVIRONMENT_NAME=%%ENVIRONMENT_NAME:PLATFORM=%platform%%%
       - call set ENVIRONMENT_NAME=%%ENVIRONMENT_NAME:CONFIGURATION=%configuration%%%
       - ps: $ENV:PLATFORM="x64"
-      - ps: $ENV:VCVARSALL="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat"
+      - ps:
+          $ENV:VCVARSALL="C:\Program Files (x86)\Microsoft Visual
+          Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat"
 
     clone_folder: c:\projects\jmbde
 
@@ -133,18 +129,19 @@ for:
       - nuget install secure-file -ExcludeVersion
 
     before_build:
-      - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %PLATFORM%
+      - call "C:\Program Files (x86)\Microsoft Visual
+        Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %PLATFORM%
       - cmd: chdir %APPVEYOR_BUILD_FOLDER%
       - appveyor-retry dotnet restore -v Minimal
 
     dotnet_csproj:
       patch: true
       file: '**\*.csproj'
-      version: "{version}"
-      package_version: "{version}"
-      assembly_version: "{version}"
-      file_version: "{version}"
-      informational_version: "{version}"
+      version: '{version}'
+      package_version: '{version}'
+      assembly_version: '{version}'
+      file_version: '{version}'
+      informational_version: '{version}'
 
     build_script:
       - ps: dotnet --info
