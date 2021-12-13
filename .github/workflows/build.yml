@@ -206,7 +206,7 @@ jobs:
     needs: build_GH_Pages
     steps:
       - name: Download Artifact with Pages
-        uses: actions/download-artifact@v2.0.10
+        uses: actions/download-artifact@v2.1.0
         with:
           name: docs
           path: docs/_build
@@ -231,7 +231,7 @@ jobs:
 
     steps:
       - name: Restore Dotnet Solution
-        uses: actions/download-artifact@v2.0.10
+        uses: actions/download-artifact@v2.1.0
         with:
           name: DotnetSolution
           path: dist
@@ -256,7 +256,7 @@ jobs:
 
     steps:
       - name: Restore Dotnet Solution
-        uses: actions/download-artifact@v2.0.10
+        uses: actions/download-artifact@v2.1.0
         with:
           name: DotnetSolution
           path: dist/
