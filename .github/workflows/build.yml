@@ -71,7 +71,7 @@ jobs:
           dotnet build  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }} --output ${{runner.workspace}}/dist
 
       - name: Upload package
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v2.3.0
         with:
           name: DotnetSolution
           path: ${{runner.workspace}}/dist
@@ -105,7 +105,7 @@ jobs:
         #   sphinxopts: ''
 
       - name: Upload documentation
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v2.3.0
         with:
           name: docs
           path: docs/_build
@@ -237,7 +237,7 @@ jobs:
           path: dist
 
       - name: Upload Artifact to Pre-Release
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2.3.0
         with:
           name: Pre-Release Solution
           path: dist
@@ -262,7 +262,7 @@ jobs:
           path: dist/
 
       - name: Collect Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2.3.0
         with:
           name: nuget-packages
           path: '**/*.nupkg'
