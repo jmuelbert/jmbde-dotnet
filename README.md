@@ -14,7 +14,12 @@ erfasst werden. Das sind unter anderem Computer, Drucker und Telefone.
 
 [![Build](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/build.yml/badge.svg)](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/build.yml)
 [![GitHub All Releases](https://img.shields.io/github/downloads/jmuelbert/jmbde-aspnet/total?label=downloads%40all)](https://github.com/jmuelbert/jmbde-aspnet/releases)
-[![License](https://img.shields.io/github/license/jmuelbert/jmbde-aspnet)](https://github.com//jmuelbert/jmbde-aspnet/blob/release/LICENSE)
+[![Codacy Security Scan](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/codacy-analysis.yml/badge.svg)](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/codacy-analysis.yml)
+[![CodeQL](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/codeql-analysis.yml)
+[![DevSkim](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/devskim-analysis.yml/badge.svg)](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/devskim-analysis.yml)
+[![OSSAR](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/ossar-analysis.yml/badge.svg)](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/ossar-analysis.yml)
+[![Sonar Cloud Scan](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/sonarcloud-analysis.yml/badge.svg)](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/sonarcloud-analysis.yml)
+[![License](https://img.shields.io/github/license/jmuelbert/jmbde-aspnet)](https://github.com/jmuelbert/jmbde-aspnet/blob/master/LICENSE)
 [![jmbde-aspnet.github.io][docs-badge]][docs]
 
 [Features](https://github.com/jmuelbert/jmbde-aspnet) | [Documentation](https://jmuelbert.github.io/jmbde-aspnet/) | [Changelog](CHANGELOG.md) | [Contributing](CONTRIBUTING.md) | [FAQ](https://github.com/jmuelbert/jmbde-aspnet/wiki/FAQ) | [english](README_en.md)
