@@ -12,7 +12,7 @@ on:
     
 jobs:
   build:
-    name: Build
+    name: Sonar Cloud Scan
     runs-on: windows-latest
     steps:
       - name: Set up JDK 11
@@ -41,6 +41,11 @@ jobs:
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+          
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.11
+        with:
+          versionSpec: '5.x'
       
       - uses: actions/setup-dotnet@v1
         with:
@@ -52,13 +57,23 @@ jobs:
 
       - name: Install dependencies
         run: dotnet restore
+        
+  
+      - name: Use GitVersion
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.11
+
+      - name: Display the version
+        run: |
+          echo "Version: ${{ steps.gitversion.outputs.semVer }}"
+          
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"jmuelbert_jmbde-aspnet" /o:"jmuelbert" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"jmuelbert_jmbde-dotnet" /o:"jmuelbert" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet tool update --global dotnet-ef
           dotnet ef database update --project src/jmbde
           dotnet build  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }} --output ${{runner.workspace}}/dist
