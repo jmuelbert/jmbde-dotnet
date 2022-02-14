@@ -36,11 +36,11 @@
     />
     <PackageReference
       Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore"
-      Version="6.0.1"
+      Version="6.0.2"
     />
     <PackageReference
       Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore"
-      Version="6.0.1"
+      Version="6.0.2"
     />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.1" />
     <PackageReference
@@ -50,7 +50,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.1" />
     <PackageReference
       Include="Microsoft.EntityFrameworkCore.Sqlserver"
-      Version="6.0.1"
+      Version="6.0.2"
     />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.1">
       <IncludeAssets
