@@ -34,7 +34,7 @@ jobs:
     needs: tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 2
       - name: Fetch all history for all tags and branches
@@ -80,7 +80,7 @@ jobs:
     name: Build GH Pages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 2
       - name: Fetch all history for all tags and branches
@@ -121,7 +121,7 @@ jobs:
           - { dotnet-version: '6.0.100', os: 'windows-latest' }
           - { dotnet-version: '6.0.100', os: 'macos-latest' }
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 2
       - name: Fetch all history for all tags and branches
@@ -161,7 +161,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 2
       - name: Fetch all history for all tags and branches
@@ -180,7 +180,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 2
       - name: Fetch all history for all tags and branches
