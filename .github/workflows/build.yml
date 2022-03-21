@@ -41,7 +41,7 @@ jobs:
         run: git fetch --prune --unshallow
 
       - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v0.9.11
+        uses: gittools/actions/gitversion/setup@v0.9.13
         with:
           versionSpec: '5.x'
 
@@ -58,7 +58,7 @@ jobs:
 
       - name: Use GitVersion
         id: gitversion
-        uses: gittools/actions/gitversion/execute@v0.9.11
+        uses: gittools/actions/gitversion/execute@v0.9.13
 
       - name: Display the version
         run: |
@@ -128,7 +128,7 @@ jobs:
         run: git fetch --prune --unshallow
 
       - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v0.9.11
+        uses: gittools/actions/gitversion/setup@v0.9.13
         with:
           versionSpec: '5.x'
 
@@ -145,7 +145,7 @@ jobs:
 
       - name: Use GitVersion
         id: gitversion
-        uses: gittools/actions/gitversion/execute@v0.9.11
+        uses: gittools/actions/gitversion/execute@v0.9.13
 
       - name: Display the version
         run: |
