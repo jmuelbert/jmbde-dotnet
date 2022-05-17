@@ -42,12 +42,12 @@
       Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore"
       Version="6.0.5"
     />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />
     <PackageReference
       Include="Microsoft.EntityFrameworkCore.InMemory"
       Version="6.0.4"
     />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.5" />
     <PackageReference
       Include="Microsoft.EntityFrameworkCore.Sqlserver"
       Version="6.0.4"
