@@ -59,7 +59,7 @@
     </PackageReference>
     <PackageReference
       Include="Microsoft.VisualStudio.Web.CodeGeneration.Design"
-      Version="6.0.3"
+      Version="6.0.5"
     />
   </ItemGroup>
 
