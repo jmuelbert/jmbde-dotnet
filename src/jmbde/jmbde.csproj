@@ -50,7 +50,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.5" />
     <PackageReference
       Include="Microsoft.EntityFrameworkCore.Sqlserver"
-      Version="6.0.4"
+      Version="6.0.5"
     />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
       <IncludeAssets
