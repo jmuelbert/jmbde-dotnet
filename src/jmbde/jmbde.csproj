@@ -45,7 +45,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />
     <PackageReference
       Include="Microsoft.EntityFrameworkCore.InMemory"
-      Version="6.0.5"
+      Version="6.0.6"
     />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.5" />
     <PackageReference
