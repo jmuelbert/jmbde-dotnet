@@ -47,7 +47,7 @@
       Include="Microsoft.EntityFrameworkCore.InMemory"
       Version="6.0.7"
     />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.7" />
     <PackageReference
       Include="Microsoft.EntityFrameworkCore.Sqlserver"
       Version="6.0.7"
