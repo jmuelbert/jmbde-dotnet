@@ -76,40 +76,6 @@ jobs:
           name: DotnetSolution
           path: ${{runner.workspace}}/dist
 
-  build_GH_Pages:
-    name: Build GH Pages
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
-      - name: Fetch all history for all tags and branches
-        run: git fetch --prune --unshallow
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Install sphinx
-        run: |
-          pip install -r docs/requirements.txt
-
-      - name: Running the Sphinx to gh-pages Action
-        run: |
-          sphinx-build docs docs/_build
-        # uses: uibcdf/action-sphinx-docs-to-gh-pages@v1.0-beta.2
-        # with:
-        #   branch: master
-        #   dir_docs: docs/manual
-        #   sphinxopts: ''
-
-      - name: Upload documentation
-        uses: actions/upload-artifact@v3
-        with:
-          name: docs
-          path: docs/_build
-
   tests:
     name: ${{ matrix.session }} ${{ matrix.dotnet-version }} / ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
@@ -201,25 +167,7 @@ jobs:
         env:
           GITHUB_TOKEN: $${{ secrets.GITHUB_TOKEN }}
 
-  deployGHPages:
-    runs-on: ubuntu-latest
-    needs: build_GH_Pages
-    steps:
-      - name: Download Artifact with Pages
-        uses: actions/download-artifact@v3
-        with:
-          name: docs
-          path: docs/_build
-
-      - name: Deploy to GitHub Pages
-        uses: Cecilapp/GitHub-Pages-deploy@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          email: juergen.muelbert@gmail.com
-          build_dir: docs/_build
-
-  deployPrereleases:
+   deployPrereleases:
     name: Deploy Pre-Release
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-20.04
