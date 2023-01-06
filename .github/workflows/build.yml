@@ -200,7 +200,6 @@ jobs:
       - tests
       - changeLog
       - releaseNotes
-      - deployGHPages
 
     steps:
       - name: Restore Dotnet Solution
