@@ -175,7 +175,6 @@ jobs:
     needs:
       - build
       - tests
-      - deployGHPages
 
     steps:
       - name: Restore Dotnet Solution
