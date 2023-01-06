@@ -167,7 +167,7 @@ jobs:
         env:
           GITHUB_TOKEN: $${{ secrets.GITHUB_TOKEN }}
 
-   deployPrereleases:
+  deployPrereleases:
     name: Deploy Pre-Release
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-20.04
