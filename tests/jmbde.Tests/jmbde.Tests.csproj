@@ -9,7 +9,7 @@
     <PackageId>jmbde-test</PackageId>
     <IsPackable>false</IsPackable>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/jmuelbert/jmbde-aspnet</RepositoryUrl>
+    <RepositoryUrl>https://github.com/jmuelbert/jmbde-dotnet</RepositoryUrl>
     <ReleaseVersion>0.5.0</ReleaseVersion>
   </PropertyGroup>
 
