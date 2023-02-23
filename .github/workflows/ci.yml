@@ -13,15 +13,17 @@ on:
       - src/**
       - global.json
       - jmbde.sln
-      - .github/workflows/build.yml
+      - .github/workflows/ci.yml
 
   pull_request:
-    branches: [master]
-    paths-ignore:
-      - '**/*.md'
-      - '**/*.txt'
-      - '.editorconfig'
-      - 'docs/**'
+    branches: 
+      - master
+      - main
+    paths:
+      - src/**
+      - global.json
+      - jmbde.sln
+      - .github/workflows/ci.yml
 
 env:
   CONFIGURATION: Release
