@@ -71,7 +71,7 @@ jobs:
         run: |
           dotnet tool update --global dotnet-ef
           dotnet ef database update --project src/jmbde
-          dotnet build  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }} --output ${{runner.workspace}}/dist
+          dotnet build  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
 
       - name: Upload package
         uses: actions/upload-artifact@v3
