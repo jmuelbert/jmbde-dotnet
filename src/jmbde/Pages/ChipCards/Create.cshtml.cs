@@ -87,6 +87,7 @@ namespace JMuelbert.BDE.Pages.ChipCards
 			_logger.LogDebug("ChipCard/Create/OnGet");
 			return Page();
 		}
+		/// <summary>
 		/// Gets or sets the chip card.
 		/// </summary>
 		/// <value>The chip card door.</value>
