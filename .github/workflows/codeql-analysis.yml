@@ -1,3 +1,4 @@
+---
 # For most projects, this workflow file will not need changing; you simply need
 # to commit it to your repository.
 #
@@ -16,7 +17,7 @@ on:
     branches: [main, master, protected]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [main, master]
+    branches: [main]
     paths-ignore:
       - '**/*.md'
       - '**/*.txt'
@@ -26,7 +27,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read
@@ -35,11 +36,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ['csharp']
-        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
-        # Learn more:
-        # https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
-
+        language: ['csharp', 'javascript' ]
+        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
+        # Use only 'java' to analyze code written in Java, Kotlin or both
+        # Use only 'javascript' to analyze code written in JavaScript, TypeScript or both
+        # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
+        
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -75,8 +77,9 @@ jobs:
 
       # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
       # If this step fails, then you should remove it and run the build manually (see below)
-      # - name: Autobuild
-      #  uses: github/codeql-action/autobuild@v1
+      - name: Autobuild
+        if: matrix.language != 'csharp'
+        uses: github/codeql-action/autobuild@v1
 
       # ℹ️ Command-line programs to run using the OS shell.
       # 📚 https://git.io/JvXDl
@@ -91,3 +94,5 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:${{matrix.language}}"
