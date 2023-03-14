@@ -59,8 +59,7 @@ jobs:
         if: matrix.language == 'csharp'
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x'
-          include-prerelease: true
+          global-json-file: global.json
 
       - name: Check dotnet sdk install
         if: matrix.language == 'csharp'
