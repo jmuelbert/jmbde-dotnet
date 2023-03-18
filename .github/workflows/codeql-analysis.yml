@@ -10,23 +10,31 @@
 # the `language` matrix defined below to confirm you have the correct set of
 # supported CodeQL languages.
 #
-name: 'CodeQL'
+name: "CodeQL Analysis"
 
 on:
   push:
-    branches: [main, master, protected]
+    branches: [main, develop, protected]
+    paths-ignore:
+      - "**/*.md"
+      - "**/*.txt"
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [main]
-    paths-ignore:
-      - '**/*.md'
-      - '**/*.txt'
+    types: [opened, synchronize, reopened]
+
   schedule:
-    - cron: '44 3 * * 2'
+    - cron: "44 3 * * 2"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
 
 jobs:
-  analyze:
-    name: Analyze
+  codeql-analyze:
+    name: "CodeQL Analyze"
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -36,14 +44,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ['csharp', 'javascript' ]
+        language: ["csharp", "javascript"]
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
         # Use only 'java' to analyze code written in Java, Kotlin or both
         # Use only 'javascript' to analyze code written in JavaScript, TypeScript or both
         # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
-        
+
     steps:
-      - name: Checkout repository
+      - name: "🧰 Checkout"
         uses: actions/checkout@v3
 
       # Initializes the CodeQL tools for scanning.

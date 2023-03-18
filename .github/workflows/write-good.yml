@@ -1,5 +1,9 @@
 ---
-name: 'Write good'
+# SPDX-FileCopyrightText: Tom Ross
+#
+# SPDX-License-Identifier: MIT
+#
+name: "Write good"
 
 on:
   push:

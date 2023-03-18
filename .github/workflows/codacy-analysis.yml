@@ -16,10 +16,14 @@ on:
     # The branches below must be a subset of the branches above
     branches: [main]
   schedule:
-    - cron: '29 12 * * 5'
+    - cron: "29 12 * * 5"
 
 permissions:
   contents: read
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
 
 jobs:
   codacy-security-scan:
