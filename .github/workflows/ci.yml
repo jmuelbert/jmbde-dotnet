@@ -4,11 +4,10 @@ name: CI
 on:
   push:
     branches:
-      - master
-      - main 
-      
+      - main
+
     tags-ignore:
-      - '*'
+      - "*"
     paths:
       - src/**
       - global.json
@@ -16,8 +15,7 @@ on:
       - .github/workflows/ci.yml
 
   pull_request:
-    branches: 
-      - master
+    branches:
       - main
     paths:
       - src/**
@@ -33,53 +31,89 @@ env:
   NET_CORE_VERSION: net7.0
   NET_FRAMEWORK_VERSION: net48
 
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   build:
-    name: Module Build
+    name: "🧊 Module Build"
     needs: tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: "🧰 Checkout Source Code"
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 2
-      - name: Fetch all history for all tags and branches
-        run: git fetch --prune --unshallow
+          fetch-depth: 0
 
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v0.10.2
-        with:
-          versionSpec: '5.x'
-
-      - uses: actions/setup-dotnet@v3
-        with:
-          global-json-file: global.json
-
-
-      - name: Check dotnet sdk install
-        run: dotnet --info
-
-      - name: Install dependencies
-        run: dotnet restore
-
-      - name: Use GitVersion
+      - name: "⚙️ Install GitVersion"
         id: gitversion
         uses: gittools/actions/gitversion/execute@v0.10.2
 
-      - name: Display the version
+      - name: "⚙ Display the version"
         run: |
           echo "Version: ${{ steps.gitversion.outputs.semVer }}"
 
-      - name: Build solution
+      - name: "⚙️ Setup dotnet"
+        uses: actions/setup-dotnet@v3
+        with:
+          global-json-file: global.json
+
+      - name: "⚙️ Check dotnet sdk install"
+        run: dotnet --info
+
+      - name: "⚙️ Install dependencies"
+        run: dotnet restore
+
+      - name: "🚧 Build solution"
         run: |
           dotnet tool update --global dotnet-ef
           dotnet ef database update --project src/jmbde
           dotnet build  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
 
-      - name: Upload package
+      - name: "📤 Upload artifact: Application"
         uses: actions/upload-artifact@v3
         with:
           name: DotnetSolution
           path: ${{runner.workspace}}/dist
+
+  source-archive:
+    name: All Source Files
+    runs-on: ubuntu-latest
+    needs: tests
+
+    steps:
+      - name: "🧰 Checkout Source Code"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Restoring submodules
+        run: git submodule update --init
+
+      - name: Get the version
+        id: get_version
+        shell: bash
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+
+      - name: Checking out sources
+        uses: actions/checkout@v3
+        with:
+          submodules: "recursive"
+
+      - name: Create 7z source-archive
+        uses: DuckSoft/create-7z-action@v1.0
+        with:
+          pathSource: ./
+          pathTarget: ./anniversary-reminder-${{ steps.get_version.outputs.VERSION
+            }}-source-all.7z
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: source-files
+          path: ./anniversary-reminder-${{ steps.get_version.outputs.VERSION
+            }}-source-all.7z
 
   tests:
     name: ${{ matrix.session }} ${{ matrix.dotnet-version }} / ${{ matrix.os }}
@@ -88,39 +122,37 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { dotnet-version: '7.0.101', os: ubuntu-latest }
-          - { dotnet-version: '7.0.101', os: 'windows-latest' }
-          - { dotnet-version: '7.0.101', os: 'macos-latest' }
+          - { dotnet-version: "7.x", os: ubuntu-latest }
+          - { dotnet-version: "7.x", os: windows-latest }
+          - { dotnet-version: "7.x", os: macos-latest }
+          - { dotnet-version: "6.x", os: ubuntu-latest }
+          - { dotnet-version: "6.x", os: windows-latest }
+          - { dotnet-version: "6.x", os: macos-latest }
+
     steps:
-      - uses: actions/checkout@v3
+      - name: "🧰 Checkout Source Code"
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 2
-      - name: Fetch all history for all tags and branches
-        run: git fetch --prune --unshallow
+          fetch-depth: 0
 
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v0.10.2
-        with:
-          versionSpec: '5.x'
-
-      - uses: actions/setup-dotnet@v3
-        with:
-          global-json-file: global.json
-
-
-      - name: Check dotnet sdk install
-        run: dotnet --info
-
-      - name: Install dependencies
-        run: dotnet restore
-
-      - name: Use GitVersion
+      - name: "⚙️ Install GitVersion"
         id: gitversion
         uses: gittools/actions/gitversion/execute@v0.10.2
 
-      - name: Display the version
+      - name: "⚙ Display the version"
         run: |
           echo "Version: ${{ steps.gitversion.outputs.semVer }}"
+
+      - name: "⚙️ Setup dotnet"
+        uses: actions/setup-dotnet@v3
+        with:
+          global-json-file: global.json
+
+      - name: "⚙️ Check dotnet sdk install"
+        run: dotnet --info
+
+      - name: "⚙️ Install dependencies"
+        run: dotnet restore
 
       - name: Unit & integration test
         run: |
@@ -138,6 +170,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 2
+
       - name: Fetch all history for all tags and branches
         run: git fetch --prune --unshallow
 
@@ -146,9 +179,9 @@ jobs:
         uses: release-drafter/release-drafter@v5.23.0
         with:
           publish: "${{ steps.check-version.outputs.tag != '' }}"
-          tag: '${{ steps.check-version.outputs.tag }}'
+          tag: "${{ steps.check-version.outputs.tag }}"
         env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
   changeLog:
     if: startsWith(github.ref, 'refs/tags/')
@@ -219,7 +252,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: nuget-packages
-          path: '**/*.nupkg'
+          path: "**/*.nupkg"
 
       # - name: Publish the package to NuGet.Org
       #  run: dotnet nuget push "**/*.nupkg" -s https://api.nuget.org/v3/index.json -k ${{ secrets.PUBLISH_NUGET_ORG }} --skip-duplicate
