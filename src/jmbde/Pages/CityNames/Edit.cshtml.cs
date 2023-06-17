@@ -1,6 +1,8 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2020 Jürgen Mülbert. All rights reserved.
+ ** SPDX-FileCopyrightText: 2016-2023 Jürgen Mülbert
+ ** Copyright (c) 2016-2023 Jürgen Mülbert. All rights reserved.
+ ** SPDX-License-Identifier: EUPL-1.2
  **
  ** This file is part of jmbde
  **
@@ -111,7 +113,7 @@ namespace JMuelbert.BDE.Pages.CityNames
 		/// OnPostAsync
 		/// </summary>
 		/// <param name="id"></param>
-		/// <returns></returns>
+		/// <returns>Page</returns>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
 			_logger.LogDebug($"CityName/Edit/OnPostAsync{ id })");

@@ -1,6 +1,8 @@
 /**************************************************************************
  **
- ** Copyright (c) 2016-2020 Jürgen Mülbert. All rights reserved.
+ ** SPDX-FileCopyrightText: 2016-2023 Jürgen Mülbert
+ ** Copyright (c) 2016-2023 Jürgen Mülbert. All rights reserved.
+ ** SPDX-License-Identifier: EUPL-1.2
  **
  ** This file is part of jmbde
  **
@@ -100,7 +102,6 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
 		/// Ons the post async.
 		/// </summary>
 		/// <returns>The post async.</returns>
-
 		public async Task<IActionResult> OnPostAsync()
 		{
 			_logger.LogDebug("ChipCardProfiles/Create/OnPostAsync");
