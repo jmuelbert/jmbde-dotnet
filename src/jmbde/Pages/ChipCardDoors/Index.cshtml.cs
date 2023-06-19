@@ -43,12 +43,10 @@
  **************************************************************************/
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using JMuelbert.BDE.Shared.Data;
 using JMuelbert.BDE.Shared.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
@@ -72,13 +70,30 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors
 		private readonly ILogger _logger;
 
 		/// <summary>
+		/// Localization
+		/// </summary>
+		private readonly IStringLocalizer<EditModel> _localizer;
+
+		/// <summary>
+		/// Localization
+		/// </summary>
+		private readonly IStringLocalizer<EditModel> _sharedLocalizer;
+
+		/// <summary>
 		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.ChipCardDoors.IndexModel"/> class.
 		/// </summary>
-		/// <param name="logger">Logger.async</param>
+		/// <param name="logger">Logger.</param>
+		/// <param name="localizer">localizer.</param>
+		/// <param name="sharedLocalizer">localizer.</param>
 		/// <param name="context">Context.</param>
-		public IndexModel(ILogger<IndexModel> logger, BDEContext context)
+		public IndexModel(ILogger<IndexModel> logger,
+			IStringLocalizer<EditModel> localizer,
+			IStringLocalizer<EditModel> sharedLocalizer,
+			BDEContext context)
 		{
 			_logger = logger;
+			_localizer = localizer;
+			_sharedLocalizer = sharedLocalizer;
 			_context = context;
 		}
 

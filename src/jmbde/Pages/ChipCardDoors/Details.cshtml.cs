@@ -42,15 +42,14 @@
  **
  **************************************************************************/
 
-using System;
 using System.Threading.Tasks;
 using JMuelbert.BDE.Shared.Data;
 using JMuelbert.BDE.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Localization;
 
 namespace JMuelbert.BDE.Pages.ChipCardDoors
 {
@@ -70,12 +69,30 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors
 		private readonly ILogger _logger;
 
 		/// <summary>
+		/// Localization
+		/// </summary>
+		private readonly IStringLocalizer<DetailsModel> _localizer;
+
+		///<summary>
+		///Localization
+		///</summary>
+		private readonly IStringLocalizer<DetailsModel> _sharedLocalizer;
+
+		/// <summary>
 		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.ChipCardDoors.DetailsModel"/> class.
 		/// </summary>
+		/// <param name="logger">Logger.</param>
+		/// <param name="localizer">localizer.</param>
+		/// <param name="sharedLocalizer">localizer.</param>
 		/// <param name="context">Context.</param>
-		public DetailsModel(ILogger<DetailsModel> logger, BDEContext context)
+		public DetailsModel(ILogger<DetailsModel> logger,
+				IStringLocalizer<DetailsModel> localizer,
+				IStringLocalizer<DetailsModel> sharedLocalizer,
+				BDEContext context)
 		{
 			_logger = logger;
+			_localizer = localizer;
+			_sharedLocalizer = sharedLocalizer;
 			_context = context;
 		}
 
@@ -92,7 +109,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"ChipCardDoors/Details/OnGetAsync ({ id })");
+			_logger.LogDebug($"ChipCardDoors/Details/OnGetAsync ({id})");
 
 			if (id == null)
 			{

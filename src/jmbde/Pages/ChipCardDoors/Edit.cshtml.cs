@@ -42,7 +42,6 @@
  **
  **************************************************************************/
 
-using System;
 using System.Threading.Tasks;
 using JMuelbert.BDE.Shared.Data;
 using JMuelbert.BDE.Shared.Models;
@@ -71,12 +70,30 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors
 		private readonly ILogger _logger;
 
 		/// <summary>
+		/// Localization
+		/// </summary>
+		private readonly IStringLocalizer<EditModel> _localizer;
+
+		/// <summary>
+		/// Localization
+		/// </summary>
+		private readonly IStringLocalizer<EditModel> _sharedLocalizer;
+
+		/// <summary>
 		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.ChipCardDoors.EditModel"/> class.
 		/// </summary>
+		/// <param name="logger">Logger.</param>
+		/// <param name="localizer">localizer.</param>
+		/// <param name="sharedLocalizer">localizer.</param>
 		/// <param name="context">Context.</param>
-		public EditModel(ILogger<EditModel> logger, BDEContext context)
+		public EditModel(ILogger<EditModel> logger,
+			IStringLocalizer<CreateModel> localizer,
+			IStringLocalizer<CreateModel> sharedLocalizer,
+			BDEContext context)
 		{
 			_logger = logger;
+			_localizer = localizer;
+			_sharedLocalizer = sharedLocalizer;
 			_context = context;
 		}
 
@@ -94,7 +111,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"ChipCardDoors/Edit/OnGetAsync({ id })");
+			_logger.LogDebug($"ChipCardDoors/Edit/OnGetAsync({id})");
 
 			if (id == null)
 			{
@@ -118,7 +135,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors
 		/// <returns></returns>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"ChipCardDoors/Edit/OnPostAsync({ id })");
+			_logger.LogDebug($"ChipCardDoors/Edit/OnPostAsync({id})");
 
 			if (!ModelState.IsValid)
 			{

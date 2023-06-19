@@ -24,7 +24,7 @@
  ** permissions and limitations under the Licence.
  **
  ** Lizenziert unter der EUPL, Version 1.2 oder - sobald
- **  diese von der Europäischen Kommission genehmigt wurden -
+ ** diese von der Europäischen Kommission genehmigt wurden -
  ** Folgeversionen der EUPL ("Lizenz");
  ** Sie dürfen dieses Werk ausschließlich gemäß
  ** dieser Lizenz nutzen.
@@ -42,7 +42,6 @@
  **
  **************************************************************************/
 
-using System;
 using System.Threading.Tasks;
 using JMuelbert.BDE.Shared.Data;
 using JMuelbert.BDE.Shared.Models;
@@ -145,7 +144,6 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors
 				await _context.SaveChangesAsync().ConfigureAwait(false);
 				return RedirectToPage("./Index");
 			}
-
 			return null;
 		}
 	}
