@@ -87,8 +87,8 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors
 		/// <param name="sharedLocalizer">localizer.</param>
 		/// <param name="context">Context.</param>
 		public EditModel(ILogger<EditModel> logger,
-			IStringLocalizer<CreateModel> localizer,
-			IStringLocalizer<CreateModel> sharedLocalizer,
+			IStringLocalizer<EditModel> localizer,
+			IStringLocalizer<EditModel> sharedLocalizer,
 			BDEContext context)
 		{
 			_logger = logger;

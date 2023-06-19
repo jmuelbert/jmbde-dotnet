@@ -6,8 +6,8 @@ APPLY_FIXES: all # all, none, or list of linter keys
 # ENABLE: # If you use ENABLE variable, all other languages/formats/tooling-formats will be disabled by default
 # ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
 # DISABLE:
-  # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
-  # - SPELL # Uncomment to disable checks of spelling mistakes
+# - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
+# - SPELL # Uncomment to disable checks of spelling mistakes
 DISABLE_LINTERS:
   # - JSON_PRETTIER
   # - REPOSITORY_GITLEAKS
@@ -15,10 +15,10 @@ DISABLE_LINTERS:
   - C_CPPLINT
   - CPP_CPPLINT
 # DISABLE_ERRORS_LINTERS:
-  # - PYTHON_BANDIT
-  # - PYTHON_PYRIGHT
-  # - REPOSITORY_DEVSKIM
-  # - REPOSITORY_SEMGREP
+# - PYTHON_BANDIT
+# - PYTHON_PYRIGHT
+# - REPOSITORY_DEVSKIM
+# - REPOSITORY_SEMGREP
 PRINT_ALL_FILES: false
 FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|\.github/workflows|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
 JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(\.vscode/)'
@@ -28,7 +28,7 @@ JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(\.vscode/)'
 # YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.codecov\.yml)'
 YAML_V8R_FILTER_REGEX_EXCLUDE: '(.gitlab-ci.yml)'
 BASH_FILTER_REGEX_EXCLUDE: '(lib)'
-MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md)'
+MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md|LICENSE|LICENSE.EUPL_1_2)'
 # MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
 SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: '(\.automation/generated|docs/descriptors)'
 TYPESCRIPT_FILTER_REGEX_EXCLUDE: '(src/apps/translations)'
