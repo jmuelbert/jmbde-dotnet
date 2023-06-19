@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "astro": "^2.0.14"
+    "astro": "^2.6.4"
   },
   "name": "Documentation",
   "scripts": {
