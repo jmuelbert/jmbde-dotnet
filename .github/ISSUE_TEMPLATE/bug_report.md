@@ -1,11 +1,10 @@
 ---
 name: Bug report
 about: Report that something doesn't work as expected
-title: ""
+title: ''
 labels: bug
-assignees: ""
+assignees: ''
 ---
-
 **Describe the bug**
 
 <!-- A clear and concise description of what the bug is. -->
