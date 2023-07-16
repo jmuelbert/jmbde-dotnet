@@ -3,8 +3,8 @@ Welcome to jmbde-dotnet documentation
 
 Contents:
 
-.. toctree::
-   :maxdepth: 2
+.. contents::
+   :depth: 2
 
    usage
    reference
