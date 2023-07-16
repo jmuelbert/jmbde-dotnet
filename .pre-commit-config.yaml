@@ -2,7 +2,7 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 
-exclude: ^3rd-party|COPYING|.gitmodules|conan|.devcontainer|pages|src/jmbde/wwwroot
+exclude: ^3rd-party|COPYING|.gitmodules|conan|.devcontainer|docs|src/jmbde/wwwroot
 default_language_version:
   python: python3
 fail_fast: true
