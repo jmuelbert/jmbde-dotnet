@@ -2,7 +2,7 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 
-exclude: ^3rd-party|COPYING|.gitmodules|conan|.devcontainer
+exclude: ^3rd-party|COPYING|.gitmodules|conan|.devcontainer|pages|src/wwwroot
 default_language_version:
   python: python3
 fail_fast: true
@@ -120,12 +120,16 @@ repos:
       - id: forbid-tabs
         exclude: >
           (?x)^(
-          .+\.c
+          .+\.cs|
+          .+\.sln|
+          # .+.\.csproj
           )$
       - id: remove-tabs
         exclude: >
           (?x)^(
-          .+\.c
+          .+\.cs|
+          .+.\.sln|
+          .+.\.csproj
           )$
         args: [--whitespaces-count, '2'] # defaults to: 4
       - id: chmod
