@@ -122,14 +122,14 @@ repos:
           (?x)^(
           .+\.cs|
           .+\.sln|
-          +.\.csproj
+          .+\.csproj
           )$
       - id: remove-tabs
         exclude: >
           (?x)^(
           .+\.cs|
-          .+.\.sln|
-          .+.\.csproj
+          .+\.sln|
+          .+\.csproj
           )$
         args: [--whitespaces-count, '2'] # defaults to: 4
       - id: chmod
