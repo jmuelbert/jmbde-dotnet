@@ -56,7 +56,7 @@ namespace JMuelbert.BDE.Pages.DeviceTypes
 	/// Delete model.
 	/// </summary>
 	public class DeleteModel : PageModel
-	{ 
+	{
 		/// <summary>
 		/// The context.
 	    /// </summary>

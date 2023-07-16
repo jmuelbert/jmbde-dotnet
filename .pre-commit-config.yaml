@@ -2,7 +2,7 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 
-exclude: ^3rd-party|COPYING|.gitmodules|conan
+exclude: ^3rd-party|COPYING|.gitmodules|conan|.devcontainer
 default_language_version:
   python: python3
 fail_fast: true
@@ -80,12 +80,12 @@ repos:
       - id: text-unicode-replacement-char
 
   - repo: https://github.com/asottile/add-trailing-comma
-    rev: v2.4.0
+    rev: v3.0.0
     hooks:
       - id: add-trailing-comma
 
   - repo: https://github.com/asottile/blacken-docs
-    rev: 1.13.0
+    rev: 1.15.0
     hooks:
       - id: blacken-docs
         additional_dependencies: [black>=22.1.0]
@@ -161,23 +161,23 @@ repos:
         args: [--groups-position=above]
 
   - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.19.0dev
+    rev: v0.19.1
     hooks:
       - id: gitlint
         stages: [commit-msg]
 
   - repo: https://github.com/psf/black
-    rev: 22.12.0
+    rev: 23.7.0
     hooks:
       - id: black
 
   - repo: https://github.com/IamTheFij/docker-pre-commit
-    rev: v2.1.1
+    rev: v3.0.1
     hooks:
       - id: docker-compose-check
 
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.0-alpha.4
+    rev: v3.0.0
     hooks:
       - id: prettier
         exclude: ^.*(\.ts|\.xib)$
@@ -201,7 +201,7 @@ repos:
         args: ['--regex=PROJ-[0-9]', '--format={ticket} {commit_msg}'] # Optional
 
   - repo: https://github.com/homebysix/pre-commit-macadmin
-    rev: v1.12.3
+    rev: v1.12.4
     hooks:
       - id: check-autopkg-recipe-list
       - id: check-autopkg-recipes
@@ -228,6 +228,6 @@ repos:
       - id: swagger-validation
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.33.0
+    rev: v0.35.0
     hooks:
       - id: markdownlint
