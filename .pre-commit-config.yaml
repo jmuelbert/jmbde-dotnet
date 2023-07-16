@@ -25,8 +25,15 @@ repos:
            ^\.vscode/.*\.json|
            ^\.github/.*\.yml
            )$
-      - id: check-merge-conflict
       - id: check-shebang-scripts-are-executable
+      - id: pretty-format-json
+        exclude: >
+          (?x)(
+            ^\.vscode/.*\.json|
+            ^\.github/.*\.yml
+          )$
+        args: [--autofix]
+      - id: check-merge-conflict
       - id: check-symlinks
       - id: check-toml
       - id: check-vcs-permalinks
@@ -45,18 +52,12 @@ repos:
         exclude: ^.*(\.cbproj|\.groupproj|\.props|\.sln|\.vcxproj|\.vcxproj.filters)$
       - id: fix-encoding-pragma
       - id: forbid-new-submodules
+      - id: forbid-submodules
       - id: mixed-line-ending
         args: [--fix=auto]
       - id: name-tests-test
       - id: no-commit-to-branch
         args: [--branch, gh-pages]
-      - id: pretty-format-json
-        exclude: >
-          (?x)(
-            ^\.vscode/.*\.json|
-            ^\.github/.*\.yml
-          )$
-        args: [--autofix]
       - id: requirements-txt-fixer
       - id: sort-simple-yaml
       - id: trailing-whitespace
@@ -64,20 +65,6 @@ repos:
         stages:
           - commit
           - manual
-
-  - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.10.0 # Use the ref you want to point at
-    hooks:
-      - id: python-check-blanket-noqa
-      - id: python-check-blanket-type-ignore
-      - id: python-check-mock-methods
-      - id: python-no-eval
-      - id: python-no-log-warn
-      - id: python-use-type-annotations
-      - id: rst-backticks
-      - id: rst-directive-colons
-      - id: rst-inline-touching-normal
-      - id: text-unicode-replacement-char
 
   - repo: https://github.com/asottile/add-trailing-comma
     rev: v3.0.0
@@ -231,3 +218,9 @@ repos:
     rev: v0.35.0
     hooks:
       - id: markdownlint
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
+    rev: v0.0.278
+    hooks:
+      - id: ruff
