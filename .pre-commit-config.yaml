@@ -255,8 +255,7 @@ repos:
       - id: editorconfig-checker-system
         alias: ecs
       - id: editorconfig-checker
-        alias: ec
-
+        alias: ecs
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.23.3
     hooks:
