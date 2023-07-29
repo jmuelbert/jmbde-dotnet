@@ -22,38 +22,46 @@ erfasst werden. Das sind unter anderem Computer, Drucker und Telefone.
 [![License](https://img.shields.io/github/license/jmuelbert/jmbde-aspnet)](https://github.com/jmuelbert/jmbde-aspnet/blob/master/LICENSE)
 [![jmbde-aspnet.github.io][docs-badge]][docs]
 
-[Features](https://github.com/jmuelbert/jmbde-aspnet) | [Documentation](https://jmuelbert.github.io/jmbde-aspnet/) | [Changelog](CHANGELOG.md) | [Contributing](CONTRIBUTING.md) | [FAQ](https://github.com/jmuelbert/jmbde-aspnet/wiki/FAQ) | [english](README_en.md)
+[Features](https://github.com/jmuelbert/jmbde-aspnet) |
+[Documentation](https://jmuelbert.github.io/jmbde-aspnet/) | [Changelog](CHANGELOG.md) |
+[Contributing](CONTRIBUTING.md) |
+[FAQ](https://github.com/jmuelbert/jmbde-aspnet/wiki/FAQ) | [english](README_en.md)
 
 <!-- toc -->
 
-- [Setup](#setup)
-- [Unterstützte Plattformen](#unterstutzte-plattformen)
-- [Ausführen](#ausfuhren)
-    * [Unix](#unix)
-    * [Windows](#windows)
-    * [macOS](#macos)
-- [Anforderungen und Fehlerberichte](#anforderungen-und-fehlerberichte)
-- [Fragen und Kommentare](#fragen-und-kommentare)
-- [Wiki](#wiki)
-- [Code-Quellen](#code-quellen)
-- [Programm erstellen](#programm-erstellen)
-    * [Abhängigkeiten](#abhangigkeiten)
-        + [Für die Release-Version](#fur-die-release-version)
-        + [Für die Debug-Version](#fur-die-debug-version)
-- [Installation](#installation)
-- [License](#license)
+-   [Setup](#setup)
+-   [Unterstützte Plattformen](#unterstutzte-plattformen)
+-   [Ausführen](#ausfuhren)
+    -   [Unix](#unix)
+    -   [Windows](#windows)
+    -   [macOS](#macos)
+-   [Anforderungen und Fehlerberichte](#anforderungen-und-fehlerberichte)
+-   [Fragen und Kommentare](#fragen-und-kommentare)
+-   [Wiki](#wiki)
+-   [Code-Quellen](#code-quellen)
+-   [Programm erstellen](#programm-erstellen)
+    -   [Abhängigkeiten](#abhangigkeiten)
+        -   [Für die Release-Version](#fur-die-release-version)
+        -   [Für die Debug-Version](#fur-die-debug-version)
+-   [Installation](#installation)
+-   [License](#license)
 
 <!-- tocstop -->
 
 ## Setup
 
-Das Programm verwendet das Microsoft dotnet Framework und ist somit auf fast allen Plattformen ausführbar. Es wird die aktuelle Version 6.x verwendet. Um das Programm zu compilieren muss das dotnet-sdk-framework installiert werden. Für den Start des gebauten Programms reicht der Download und die Installation der Runtime. Der Download wird von Microsoft [hier](hhttps://dotnet.microsoft.com/download/dotnet/6.0) angeboten
+Das Programm verwendet das Microsoft dotnet Framework und ist somit auf fast allen
+Plattformen ausführbar. Es wird die aktuelle Version 6.x verwendet. Um das Programm zu
+compilieren muss das dotnet-sdk-framework installiert werden. Für den Start des gebauten
+Programms reicht der Download und die Installation der Runtime. Der Download wird von
+Microsoft [hier](hhttps://dotnet.microsoft.com/download/dotnet/6.0) angeboten
 
 ## Unterstützte Plattformen
 
 ## Ausführen
 
-Im Folgenden finden Sie einige hilfreiche Hinweise, wie Sie jmbde auf Ihrer nativen Plattform ausführen können.
+Im Folgenden finden Sie einige hilfreiche Hinweise, wie Sie jmbde auf Ihrer nativen
+Plattform ausführen können.
 
 ### Unix
 
@@ -63,22 +71,22 @@ Im Folgenden finden Sie einige hilfreiche Hinweise, wie Sie jmbde auf Ihrer nati
 
 ## Anforderungen und Fehlerberichte
 
-- [GitHub issues (preferred)](https://github.com/jmuelbert/jmbde-aspnet/issues)
+-   [GitHub issues (preferred)](https://github.com/jmuelbert/jmbde-aspnet/issues)
 
 ## Fragen und Kommentare
 
 ## Wiki
 
-- [Main Page](https://github.com/jmuelbert/jmbde-aspnet/wiki)
-- [User Manual](http://jmuelbert.github.io/jmbde-aspnet/)
+-   [Main Page](https://github.com/jmuelbert/jmbde-aspnet/wiki)
+-   [User Manual](http://jmuelbert.github.io/jmbde-aspnet/)
 
 ## Code-Quellen
 
 In dem master branch befindet sich der aktuellste Pre-Release Code.
 
-- [Releases](https://github.com/jmuelbert/jmbde-aspnet/releases)
+-   [Releases](https://github.com/jmuelbert/jmbde-aspnet/releases)
 
-- [Milestones](https://github.com/jmuelbert/jmbde-aspnet/milestones)
+-   [Milestones](https://github.com/jmuelbert/jmbde-aspnet/milestones)
 
 ## Programm erstellen
 
@@ -88,7 +96,10 @@ den notwendigen Maßnahmen. Bibliotheken, Kompilierungs-Flags, etc.
 
 ### Abhängigkeiten
 
-Zum erstellen des Programms wird das dotnet-sdk in der Version 6.0.100 benötigt. Das Framework ist im Internet bei der Adresse [https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-6.0.100-macos-x64-installer](https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-6.0.100-macos-x64-installer) zu finden. Das Framework muss nach dem Download installiert werden.
+Zum erstellen des Programms wird das dotnet-sdk in der Version 6.0.100 benötigt. Das
+Framework ist im Internet bei der Adresse
+[https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-6.0.100-macos-x64-installer](https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-6.0.100-macos-x64-installer)
+zu finden. Das Framework muss nach dem Download installiert werden.
 
 #### Für die Release-Version
 
@@ -114,7 +125,8 @@ Sie können nun `jmbde` mit dem Befehl `bin/jmbde` aus der Kommandozeile starten
 
 ## License
 
-EUPL-1.2 © [Jürgen Mülbert](https://github.com/jmuelbert/jmbde-aspnet/blob/master/LICENSE)
+EUPL-1.2 ©
+[Jürgen Mülbert](https://github.com/jmuelbert/jmbde-aspnet/blob/master/LICENSE)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

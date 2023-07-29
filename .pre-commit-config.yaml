@@ -119,18 +119,10 @@ repos:
       - id: remove-crlf
       - id: forbid-tabs
         exclude: >
-          (?x)^(
-          .+\.cs|
-          .+\.sln|
-          .+\.csproj
-          )$
+          (?x)^( .+\.cs| .+\.sln| .+\.csproj )$
       - id: remove-tabs
         exclude: >
-          (?x)^(
-          .+\.cs|
-          .+\.sln|
-          .+\.csproj
-          )$
+          (?x)^( .+\.cs| .+\.sln| .+\.csproj )$
         args: [--whitespaces-count, '2'] # defaults to: 4
       - id: chmod
         args: ['644']

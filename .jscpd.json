@@ -12,9 +12,6 @@
     "**/wwwroot/**",
     "**/*.txt"
   ],
-  "reporters": [
-    "html",
-    "markdown"
-  ],
+  "reporters": ["html", "markdown"],
   "threshold": 0
 }
