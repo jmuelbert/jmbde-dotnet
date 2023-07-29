@@ -52,67 +52,61 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCards
-{
-	/// <summary>
-	/// Details model.
-	/// </summary>
-	public class DetailsModel : PageModel
-	{
-		/// <summary>
-		/// The context.
-		/// </summary>
-		private readonly BDEContext _context;
+namespace JMuelbert.BDE.Pages.ChipCards {
+  /// <summary>
+  /// Details model.
+  /// </summary>
+  public class DetailsModel : PageModel {
+    /// <summary>
+    /// The context.
+    /// </summary>
+    private readonly BDEContext _context;
 
-		/// <summary>
-		/// The logger.
-		/// </summary>
-		private readonly ILogger _logger;
+    /// <summary>
+    /// The logger.
+    /// </summary>
+    private readonly ILogger _logger;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.ChipCards.DetailsModel"/> class.
-		/// </summary>
-		/// <param name="logger">Logger.async</param>
-		/// <param name="context">Context.</param>
-		public DetailsModel(ILogger<DetailsModel> logger, BDEContext context)
-		{
-			_logger = logger;
-			_context = context;
-		}
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.ChipCards.DetailsModel"/>
+    /// class.
+    /// </summary>
+    /// <param name="logger">Logger.async</param>
+    /// <param name="context">Context.</param>
+    public DetailsModel(ILogger<DetailsModel> logger, BDEContext context) {
+      _logger = logger;
+      _context = context;
+    }
 
-		/// <summary>
-		/// Gets or sets the chip card.
-		/// </summary>
-		/// <value>The chip card.</value>
-		public ChipCard ChipCard { get; set; }
+    /// <summary>
+    /// Gets or sets the chip card.
+    /// </summary>
+    /// <value>The chip card.</value>
+    public ChipCard ChipCard { get; set; }
 
-		/// <summary>
-		/// Ons the get async.
-		/// </summary>
-		/// <returns>The get async.</returns>
-		/// <param name="id">Identifier.</param>
-		public async Task<IActionResult> OnGetAsync(int? id)
-		{
-			_logger.LogDebug($"ChipCards/Details/OnGetAsync ({ id })");
+    /// <summary>
+    /// Ons the get async.
+    /// </summary>
+    /// <returns>The get async.</returns>
+    /// <param name="id">Identifier.</param>
+    public async Task<IActionResult> OnGetAsync(int? id) {
+      _logger.LogDebug($"ChipCards/Details/OnGetAsync ({ id })");
 
-			if (id == null)
-			{
-				return NotFound();
-			}
+      if (id == null) {
+        return NotFound();
+      }
 
-			ChipCard = await _context.ChipCard
-				.Include(c => c.ChipCardDoor)
-				.Include(c => c.ChipCardProfile)
-				.Include(c => c.Employee)
-				.AsNoTracking()
-				.FirstOrDefaultAsync(m => m.ID
-										  == id).ConfigureAwait(false);
+      ChipCard = await _context.ChipCard.Include(c => c.ChipCardDoor)
+                     .Include(c => c.ChipCardProfile)
+                     .Include(c => c.Employee)
+                     .AsNoTracking()
+                     .FirstOrDefaultAsync(m => m.ID == id)
+                     .ConfigureAwait(false);
 
-			if (ChipCard == null)
-			{
-				return NotFound();
-			}
-			return Page();
-		}
-	}
+      if (ChipCard == null) {
+        return NotFound();
+      }
+      return Page();
+    }
+  }
 }

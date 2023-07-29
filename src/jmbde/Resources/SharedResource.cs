@@ -40,10 +40,6 @@
  **
  **************************************************************************/
 
-namespace JMuelbert.BDE
-{
-	public class SharedResource
-	{
-
-	}
+namespace JMuelbert.BDE {
+  public class SharedResource {}
 }

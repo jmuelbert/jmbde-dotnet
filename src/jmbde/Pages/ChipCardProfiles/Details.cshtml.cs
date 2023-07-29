@@ -52,65 +52,59 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCardProfiles
-{
-	/// <summary>
-	/// Details model.
-	/// </summary>
-	public class DetailsModel : PageModel
-	{
-		/// <summary>
-		/// The context.
-		/// </summary>
-		private readonly BDEContext _context;
+namespace JMuelbert.BDE.Pages.ChipCardProfiles {
+  /// <summary>
+  /// Details model.
+  /// </summary>
+  public class DetailsModel : PageModel {
+    /// <summary>
+    /// The context.
+    /// </summary>
+    private readonly BDEContext _context;
 
-		/// <summary>
-		/// The logger.
-		/// </summary>
-		private readonly ILogger _logger;
+    /// <summary>
+    /// The logger.
+    /// </summary>
+    private readonly ILogger _logger;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.ChipProfiles.DetailsModel"/> class.
-		/// </summary>
-		/// <param name="logger">Logger.</param>
-		/// <param name="context">Context.</param>
-		public DetailsModel(ILogger<DetailsModel> logger, BDEContext context)
-		{
-			_logger = logger;
-			_context = context;
-		}
+    /// <summary>
+    /// Initializes a new instance of the <see
+    /// cref="T:JMuelbert.BDE.Pages.ChipProfiles.DetailsModel"/> class.
+    /// </summary>
+    /// <param name="logger">Logger.</param>
+    /// <param name="context">Context.</param>
+    public DetailsModel(ILogger<DetailsModel> logger, BDEContext context) {
+      _logger = logger;
+      _context = context;
+    }
 
-		/// <summary>
-		/// Gets or sets the chip card profile.
-		/// </summary>
-		/// <value>The chip card profile.</value>
-		public ChipCardProfile ChipCardProfile { get; set; }
+    /// <summary>
+    /// Gets or sets the chip card profile.
+    /// </summary>
+    /// <value>The chip card profile.</value>
+    public ChipCardProfile ChipCardProfile { get; set; }
 
-		/// <summary>
-		/// Ons the get async.
-		/// </summary>
-		/// <returns>The get async.</returns>
-		/// <param name="id">Identifier.</param>
-		public async Task<IActionResult> OnGetAsync(int? id)
-		{
-			_logger.LogDebug($"ChipCardProfiles/Details/OnGetAsync ({ id })");
+    /// <summary>
+    /// Ons the get async.
+    /// </summary>
+    /// <returns>The get async.</returns>
+    /// <param name="id">Identifier.</param>
+    public async Task<IActionResult> OnGetAsync(int? id) {
+      _logger.LogDebug($"ChipCardProfiles/Details/OnGetAsync ({ id })");
 
-			if (id == null)
-			{
-				return NotFound();
-			}
+      if (id == null) {
+        return NotFound();
+      }
 
-			ChipCardProfile = await _context.ChipCardProfile
-				.Include(c => c.Employee)
-				.AsNoTracking()
-				.FirstOrDefaultAsync(m => m.ID
-										  == id).ConfigureAwait(false);
+      ChipCardProfile = await _context.ChipCardProfile.Include(c => c.Employee)
+                            .AsNoTracking()
+                            .FirstOrDefaultAsync(m => m.ID == id)
+                            .ConfigureAwait(false);
 
-			if (ChipCardProfile == null)
-			{
-				return NotFound();
-			}
-			return Page();
-		}
-	}
+      if (ChipCardProfile == null) {
+        return NotFound();
+      }
+      return Page();
+    }
+  }
 }

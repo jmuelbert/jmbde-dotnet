@@ -16,98 +16,82 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.Companies
-{
-	/// <summary>
-	/// Edit model.
-	/// </summary>
-	public class EditModel : PageModel
-	{
-		/// <summary>
-		/// The context.
-		/// </summary>
-		private readonly BDEContext _context;
+namespace JMuelbert.BDE.Pages.Companies {
+  /// <summary>
+  /// Edit model.
+  /// </summary>
+  public class EditModel : PageModel {
+    /// <summary>
+    /// The context.
+    /// </summary>
+    private readonly BDEContext _context;
 
-		/// <summary>
-		/// The logger.
-		/// </summary>
-		private readonly ILogger _logger;
-		/// <summary>
-		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Companies.EditModel"/> class.
-		/// </summary>
-		/// <param name="logger">Logger.</param>
-		/// <param name="context">Context.</param>
-		public EditModel(ILogger<EditModel> logger, BDEContext context)
-		{
-			_logger = logger;
-			_context = context;
-		}
+    /// <summary>
+    /// The logger.
+    /// </summary>
+    private readonly ILogger _logger;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Companies.EditModel"/>
+    /// class.
+    /// </summary>
+    /// <param name="logger">Logger.</param>
+    /// <param name="context">Context.</param>
+    public EditModel(ILogger<EditModel> logger, BDEContext context) {
+      _logger = logger;
+      _context = context;
+    }
 
-		/// <summary>
-		/// Gets or sets the company.
-		/// </summary>
-		/// <value>The company.</value>
-		[BindProperty]
-		public Company Company { get; set; }
+    /// <summary>
+    /// Gets or sets the company.
+    /// </summary>
+    /// <value>The company.</value>
+    [BindProperty]
+    public Company Company { get; set; }
 
-		/// <summary>
-		/// Ons the get async.
-		/// </summary>
-		/// <returns>The get async.</returns>
-		/// <param name="id">Identifier.</param>
-		public async Task<IActionResult> OnGetAsync(int? id)
-		{
-			_logger.LogDebug($"Companies/Edit/OnGetAsync({id})");
+    /// <summary>
+    /// Ons the get async.
+    /// </summary>
+    /// <returns>The get async.</returns>
+    /// <param name="id">Identifier.</param>
+    public async Task<IActionResult> OnGetAsync(int? id) {
+      _logger.LogDebug($"Companies/Edit/OnGetAsync({id})");
 
-			if (id == null)
-			{
-				return NotFound();
-			}
+      if (id == null) {
+        return NotFound();
+      }
 
-			Company = await _context.Company.FindAsync(id).ConfigureAwait(false);
+      Company = await _context.Company.FindAsync(id).ConfigureAwait(false);
 
-			if (Company == null)
-			{
-				return NotFound();
-			}
-			return Page();
-		}
+      if (Company == null) {
+        return NotFound();
+      }
+      return Page();
+    }
 
-		/// <summary>
-		/// OnPostAsync
-		/// </summary>
-		/// <param name="id"></param>
-		/// <returns></returns>
-		public async Task<IActionResult> OnPostAsync(int? id)
-		{
-			_logger.LogDebug($"Companies/Edit/OnPostAsync{id})");
+    /// <summary>
+    /// OnPostAsync
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public async Task<IActionResult> OnPostAsync(int? id) {
+      _logger.LogDebug($"Companies/Edit/OnPostAsync{id})");
 
-			if (!ModelState.IsValid)
-			{
-				return Page();
-			}
+      if (!ModelState.IsValid) {
+        return Page();
+      }
 
-			var companyToUpdate = await _context.Company.FindAsync(id).ConfigureAwait(false);
+      var companyToUpdate = await _context.Company.FindAsync(id).ConfigureAwait(false);
 
-			if (await TryUpdateModelAsync<Company>(
-					companyToUpdate,
-					"company", // Prefix for form value
-					c => c.Name,
-					c => c.Name2,
-					c => c.Street,
-					c => c.PhoneNumber,
-					c => c.FaxNumber,
-					c => c.MobileNumber,
-					c => c.MailAddress,
-					c => c.Active,
-					c => c.LastUpdate
-				).ConfigureAwait(false))
-			{
-				await _context.SaveChangesAsync().ConfigureAwait(false);
-				return RedirectToPage("./Index");
-			}
-			return Page();
-		}
-
-	}
+      if (await TryUpdateModelAsync<Company>(
+              companyToUpdate,
+              "company",  // Prefix for form value
+              c => c.Name, c => c.Name2, c => c.Street, c => c.PhoneNumber, c => c.FaxNumber,
+              c => c.MobileNumber, c => c.MailAddress, c => c.Active, c => c.LastUpdate)
+              .ConfigureAwait(false)) {
+        await _context.SaveChangesAsync().ConfigureAwait(false);
+        return RedirectToPage("./Index");
+      }
+      return Page();
+    }
+  }
 }

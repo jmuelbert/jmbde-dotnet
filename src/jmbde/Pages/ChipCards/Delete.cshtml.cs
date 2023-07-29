@@ -52,113 +52,96 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCards
-{
-	public class DeleteModel : PageModel
-	{
-		/// <summary>
-		/// Delete model.
-		/// </summary>
-		private readonly BDEContext _context;
-		/// <summary>
-		/// The logger.
-		/// </summary>
-		private readonly ILogger _logger;
+namespace JMuelbert.BDE.Pages.ChipCards {
+  public class DeleteModel : PageModel {
+    /// <summary>
+    /// Delete model.
+    /// </summary>
+    private readonly BDEContext _context;
+    /// <summary>
+    /// The logger.
+    /// </summary>
+    private readonly ILogger _logger;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.ChipCards.DeleteModel"/> class.
-		/// </summary>
-		/// <param name="logger">Logger.</param>
-		/// <param name="context">Context.</param>
-		public DeleteModel(ILogger<DeleteModel> logger, BDEContext context)
-		{
-			_logger = logger;
-			_context = context;
-		}
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.ChipCards.DeleteModel"/>
+    /// class.
+    /// </summary>
+    /// <param name="logger">Logger.</param>
+    /// <param name="context">Context.</param>
+    public DeleteModel(ILogger<DeleteModel> logger, BDEContext context) {
+      _logger = logger;
+      _context = context;
+    }
 
-		/// <summary>
-		/// Gets or sets the chip card.
-		/// </summary>
-		/// <value>The chip card.</value>
-		[BindProperty]
-		public ChipCard ChipCard { get; set; }
+    /// <summary>
+    /// Gets or sets the chip card.
+    /// </summary>
+    /// <value>The chip card.</value>
+    [BindProperty]
+    public ChipCard ChipCard { get; set; }
 
-		/// <summary>
-		/// Gets or sets the error message.
-		/// </summary>
-		/// <value>The error message.</value>
-		public string ErrorMessage { get; set; }
+    /// <summary>
+    /// Gets or sets the error message.
+    /// </summary>
+    /// <value>The error message.</value>
+    public string ErrorMessage { get; set; }
 
-		/// <summary>
-		/// Ons the get async.
-		/// </summary>
-		/// <returns>The get async.</returns>
-		/// <param name="id">Identifier.</param>
-		/// <param name="saveChangesError">Save changes error.</param>
-		public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
-		{
-			_logger.LogDebug($"ChipCards/Delete/OnGetAsync { id } - { saveChangesError }");
+    /// <summary>
+    /// Ons the get async.
+    /// </summary>
+    /// <returns>The get async.</returns>
+    /// <param name="id">Identifier.</param>
+    /// <param name="saveChangesError">Save changes error.</param>
+    public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false) {
+      _logger.LogDebug($"ChipCards/Delete/OnGetAsync { id } - { saveChangesError }");
 
-			if (id == null)
-			{
-				return NotFound();
-			}
+      if (id == null) {
+        return NotFound();
+      }
 
-			ChipCard = await _context.ChipCard
-				.AsNoTracking()
-				.FirstOrDefaultAsync(m => m.ID
-				   == id)
-				.ConfigureAwait(false);
+      ChipCard = await _context.ChipCard.AsNoTracking()
+                     .FirstOrDefaultAsync(m => m.ID == id)
+                     .ConfigureAwait(false);
 
-			if (ChipCard == null)
-			{
-				return NotFound();
-			}
+      if (ChipCard == null) {
+        return NotFound();
+      }
 
-			if (saveChangesError.GetValueOrDefault())
-			{
-				ErrorMessage = "Delete failed. Try again";
-			}
-			return Page();
-		}
+      if (saveChangesError.GetValueOrDefault()) {
+        ErrorMessage = "Delete failed. Try again";
+      }
+      return Page();
+    }
 
-		/// <summary>
-		/// Ons the post async.
-		/// </summary>
-		/// <returns>The post async.</returns>
-		/// <param name="id ">Identifier.</param>
-		public async Task<IActionResult> OnPostAsync(int? id)
-		{
-			_logger.LogDebug($"ChipCards/Delete/OnPostAsync  { id }");
+    /// <summary>
+    /// Ons the post async.
+    /// </summary>
+    /// <returns>The post async.</returns>
+    /// <param name="id ">Identifier.</param>
+    public async Task<IActionResult> OnPostAsync(int? id) {
+      _logger.LogDebug($"ChipCards/Delete/OnPostAsync  { id }");
 
-			if (id == null)
-			{
-				return NotFound();
-			}
+      if (id == null) {
+        return NotFound();
+      }
 
-			var chipcard = await _context.ChipCard
-				.AsNoTracking()
-				.FirstOrDefaultAsync(c => c.ID
-										  == id)
-				.ConfigureAwait(false);
+      var chipcard = await _context.ChipCard.AsNoTracking()
+                         .FirstOrDefaultAsync(c => c.ID == id)
+                         .ConfigureAwait(false);
 
-			if (chipcard == null)
-			{
-				return NotFound();
-			}
+      if (chipcard == null) {
+        return NotFound();
+      }
 
-			try
-			{
-				_context.ChipCard.Remove(chipcard);
-				await _context.SaveChangesAsync().ConfigureAwait(false);
-				return RedirectToPage("./Index ");
-			}
-			catch (DbUpdateException ex)
-			{
-				_logger.LogError("ChipCards/Delete { 0 }", ex.ToString());
-				return RedirectToAction("./Delete ",
-					new { id, saveChangesError = true });
-			}
-		}
-	}
+      try {
+        _context.ChipCard.Remove(chipcard);
+        await _context.SaveChangesAsync().ConfigureAwait(false);
+        return RedirectToPage("./Index ");
+      } catch (DbUpdateException ex) {
+        _logger.LogError("ChipCards/Delete { 0 }", ex.ToString());
+        return RedirectToAction("./Delete ", new { id, saveChangesError = true });
+      }
+    }
+  }
 }

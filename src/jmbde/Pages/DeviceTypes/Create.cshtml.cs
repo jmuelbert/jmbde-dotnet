@@ -16,79 +16,71 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.DeviceTypes
-{
-	/// <summary>
-	/// Create model.
-	/// </summary>
-	public class CreateModel : PageModel
-	{
-		/// <summary>
-		/// The context.
-		/// </summary>
-		private readonly BDEContext _context;
+namespace JMuelbert.BDE.Pages.DeviceTypes {
+  /// <summary>
+  /// Create model.
+  /// </summary>
+  public class CreateModel : PageModel {
+    /// <summary>
+    /// The context.
+    /// </summary>
+    private readonly BDEContext _context;
 
-		/// <summary>
-		/// The logger.
-		/// </summary>
-		private readonly ILogger _logger;
+    /// <summary>
+    /// The logger.
+    /// </summary>
+    private readonly ILogger _logger;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.DeviceTypes.IndexModel"/> class.
-		/// </summary>
-		/// <param name="logger">Logger.</param>
-		/// <param name="context">Context.</param>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.DeviceTypes.IndexModel"/>
+    /// class.
+    /// </summary>
+    /// <param name="logger">Logger.</param>
+    /// <param name="context">Context.</param>
 
-		public CreateModel(ILogger<CreateModel> logger, BDEContext context)
-		{
-			_logger = logger;
-			_context = context;
-		}
+    public CreateModel(ILogger<CreateModel> logger, BDEContext context) {
+      _logger = logger;
+      _context = context;
+    }
 
-		/// <summary>
-		/// Ons the get.
-		/// </summary>
-		/// <returns>The get.</returns>
-		public IActionResult OnGet()
-		{
-			_logger.LogDebug("DeviceTypes/Create/OnGet");
-			return Page();
-		}
+    /// <summary>
+    /// Ons the get.
+    /// </summary>
+    /// <returns>The get.</returns>
+    public IActionResult OnGet() {
+      _logger.LogDebug("DeviceTypes/Create/OnGet");
+      return Page();
+    }
 
-		/// <summary>
-		/// Gets or sets the devicename.
-		/// </summary>
-		/// <value>The devicename.</value>
-		[BindProperty]
-		public DeviceType DeviceType { get; set; }
+    /// <summary>
+    /// Gets or sets the devicename.
+    /// </summary>
+    /// <value>The devicename.</value>
+    [BindProperty]
+    public DeviceType DeviceType { get; set; }
 
-		/// <summary>
-		/// Ons the get async.
-		/// </summary>
-		/// <returns>The get async.</returns>
-		public async Task<IActionResult> OnPostAsync()
-		{
-			_logger.LogDebug("DeviceTypes/Create/OnPostAsync");
-			if (!ModelState.IsValid)
-			{
-				return Page();
-			}
+    /// <summary>
+    /// Ons the get async.
+    /// </summary>
+    /// <returns>The get async.</returns>
+    public async Task<IActionResult> OnPostAsync() {
+      _logger.LogDebug("DeviceTypes/Create/OnPostAsync");
+      if (!ModelState.IsValid) {
+        return Page();
+      }
 
-			var emptyDeviceType = new DeviceType();
+      var emptyDeviceType = new DeviceType();
 
-			if (await TryUpdateModelAsync<DeviceType>(
-					emptyDeviceType,
-					"devicetype", // Prefix for form value
-					d => d.Name,
-					d => d.LastUpdate
-				).ConfigureAwait(false))
-			{
-				_context.DeviceType.Add(emptyDeviceType);
-				await _context.SaveChangesAsync().ConfigureAwait(false);
+      if (await TryUpdateModelAsync<DeviceType>(emptyDeviceType,
+                                                "devicetype",  // Prefix for form value
+                                                d => d.Name, d => d.LastUpdate)
+              .ConfigureAwait(false)) {
+        _context.DeviceType.Add(emptyDeviceType);
+        await _context.SaveChangesAsync().ConfigureAwait(false);
 
-				return RedirectToPage("./Index");
-			}
-			return null;
-		}
-	}
+        return RedirectToPage("./Index");
+      }
+      return null;
+    }
+  }
 }

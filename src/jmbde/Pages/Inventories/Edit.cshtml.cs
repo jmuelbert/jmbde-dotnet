@@ -16,95 +16,83 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.Inventories
-{
-	/// <summary>
-	/// Edit model.
-	/// </summary>
-	public class EditModel : PageModel
-	{
-		/// <summary>
-		/// The context.
-		/// </summary>
-		private readonly BDEContext _context;
+namespace JMuelbert.BDE.Pages.Inventories {
+  /// <summary>
+  /// Edit model.
+  /// </summary>
+  public class EditModel : PageModel {
+    /// <summary>
+    /// The context.
+    /// </summary>
+    private readonly BDEContext _context;
 
-		/// <summary>
-		/// The logger.
-		/// </summary>
-		private readonly ILogger _logger;
-		/// <summary>
-		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Inventories.EditModel"/> class.
-		/// </summary>
-		/// <param name="logger">Logger.</param>
-		/// <param name="context">Context.</param>
+    /// <summary>
+    /// The logger.
+    /// </summary>
+    private readonly ILogger _logger;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Inventories.EditModel"/>
+    /// class.
+    /// </summary>
+    /// <param name="logger">Logger.</param>
+    /// <param name="context">Context.</param>
 
-		public EditModel(ILogger<EditModel> logger, BDEContext context)
-		{
-			_logger = logger;
-			_context = context;
-		}
+    public EditModel(ILogger<EditModel> logger, BDEContext context) {
+      _logger = logger;
+      _context = context;
+    }
 
-		/// <summary>
-		/// Gets or sets the Inventory.
-		/// </summary>
-		/// <value>The Inventory.</value>
-		[BindProperty]
-		public Inventory Inventory { get; set; }
+    /// <summary>
+    /// Gets or sets the Inventory.
+    /// </summary>
+    /// <value>The Inventory.</value>
+    [BindProperty]
+    public Inventory Inventory { get; set; }
 
-		/// <summary>
-		/// Ons the get async.
-		/// </summary>
-		/// <returns>The get async.</returns>
-		/// <param name="id">Identifier.</param>
-		public async Task<IActionResult> OnGetAsync(int? id)
-		{
-			_logger.LogDebug($"Inventories/Edit/OnGetAsync({id})");
+    /// <summary>
+    /// Ons the get async.
+    /// </summary>
+    /// <returns>The get async.</returns>
+    /// <param name="id">Identifier.</param>
+    public async Task<IActionResult> OnGetAsync(int? id) {
+      _logger.LogDebug($"Inventories/Edit/OnGetAsync({id})");
 
-			if (id == null)
-			{
-				return NotFound();
-			}
+      if (id == null) {
+        return NotFound();
+      }
 
-			Inventory = await _context.Inventory.FindAsync(id).ConfigureAwait(false);
+      Inventory = await _context.Inventory.FindAsync(id).ConfigureAwait(false);
 
-			if (Inventory == null)
-			{
-				return NotFound();
-			}
-			return Page();
-		}
+      if (Inventory == null) {
+        return NotFound();
+      }
+      return Page();
+    }
 
-		/// <summary>
-		/// OnPostAsync
-		/// </summary>
-		/// <param name="id"></param>
-		/// <returns></returns>
-		public async Task<IActionResult> OnPostAsync(int? id)
-		{
-			_logger.LogDebug($"Inventories/Edit/OnPostAsync({id})");
+    /// <summary>
+    /// OnPostAsync
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public async Task<IActionResult> OnPostAsync(int? id) {
+      _logger.LogDebug($"Inventories/Edit/OnPostAsync({id})");
 
-			if (!ModelState.IsValid)
-			{
-				return Page();
-			}
+      if (!ModelState.IsValid) {
+        return Page();
+      }
 
-			var inventoryToUpdate = await _context.Inventory.FindAsync(id).ConfigureAwait(false);
+      var inventoryToUpdate = await _context.Inventory.FindAsync(id).ConfigureAwait(false);
 
-			if (await TryUpdateModelAsync<Inventory>(
-					inventoryToUpdate,
-					"inventory", // Prefix for form value
-					i => i.Identifier,
-					i => i.Description,
-					i => i.Active,
-					i => i.LastUpdate
-				).ConfigureAwait(false))
-			{
-				await _context.SaveChangesAsync().ConfigureAwait(false);
-				return RedirectToPage("./Index");
-			}
+      if (await TryUpdateModelAsync<Inventory>(inventoryToUpdate,
+                                               "inventory",  // Prefix for form value
+                                               i => i.Identifier, i => i.Description, i => i.Active,
+                                               i => i.LastUpdate)
+              .ConfigureAwait(false)) {
+        await _context.SaveChangesAsync().ConfigureAwait(false);
+        return RedirectToPage("./Index");
+      }
 
-			return Page();
-		}
-
-	}
+      return Page();
+    }
+  }
 }
