@@ -29,22 +29,22 @@ erfasst werden. Das sind unter anderem Computer, Drucker und Telefone.
 
 <!-- toc -->
 
--   [Setup](#setup)
--   [Unterstützte Plattformen](#unterstutzte-plattformen)
--   [Ausführen](#ausfuhren)
-    -   [Unix](#unix)
-    -   [Windows](#windows)
-    -   [macOS](#macos)
--   [Anforderungen und Fehlerberichte](#anforderungen-und-fehlerberichte)
--   [Fragen und Kommentare](#fragen-und-kommentare)
--   [Wiki](#wiki)
--   [Code-Quellen](#code-quellen)
--   [Programm erstellen](#programm-erstellen)
-    -   [Abhängigkeiten](#abhangigkeiten)
-        -   [Für die Release-Version](#fur-die-release-version)
-        -   [Für die Debug-Version](#fur-die-debug-version)
--   [Installation](#installation)
--   [License](#license)
+- [Setup](#setup)
+- [Unterstützte Plattformen](#unterstutzte-plattformen)
+- [Ausführen](#ausfuhren)
+    * [Unix](#unix)
+    * [Windows](#windows)
+    * [macOS](#macos)
+- [Anforderungen und Fehlerberichte](#anforderungen-und-fehlerberichte)
+- [Fragen und Kommentare](#fragen-und-kommentare)
+- [Wiki](#wiki)
+- [Code-Quellen](#code-quellen)
+- [Programm erstellen](#programm-erstellen)
+    * [Abhängigkeiten](#abhangigkeiten)
+        + [Für die Release-Version](#fur-die-release-version)
+        + [Für die Debug-Version](#fur-die-debug-version)
+- [Installation](#installation)
+- [License](#license)
 
 <!-- tocstop -->
 
