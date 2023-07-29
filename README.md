@@ -6,9 +6,9 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # jmbde
 
-jmbde ist ein Programm für das Management von Ressourcen in Unternehmen. Mit diesem
-Programm können die Mitarbeiter und die Ausrüstung, die sie für ihre Arbeit benötigen
-erfasst werden. Das sind unter anderem Computer, Drucker und Telefone.
+jmbde ist ein Programm für das Management von Ressourcen in Unternehmen. Mit diesem Programm können
+die Mitarbeiter und die Ausrüstung, die sie für ihre Arbeit benötigen erfasst werden. Das sind unter
+anderem Computer, Drucker und Telefone.
 
 ---
 
@@ -24,8 +24,8 @@ erfasst werden. Das sind unter anderem Computer, Drucker und Telefone.
 
 [Features](https://github.com/jmuelbert/jmbde-aspnet) |
 [Documentation](https://jmuelbert.github.io/jmbde-aspnet/) | [Changelog](CHANGELOG.md) |
-[Contributing](CONTRIBUTING.md) |
-[FAQ](https://github.com/jmuelbert/jmbde-aspnet/wiki/FAQ) | [english](README_en.md)
+[Contributing](CONTRIBUTING.md) | [FAQ](https://github.com/jmuelbert/jmbde-aspnet/wiki/FAQ) |
+[english](README_en.md)
 
 <!-- toc -->
 
@@ -50,18 +50,18 @@ erfasst werden. Das sind unter anderem Computer, Drucker und Telefone.
 
 ## Setup
 
-Das Programm verwendet das Microsoft dotnet Framework und ist somit auf fast allen
-Plattformen ausführbar. Es wird die aktuelle Version 6.x verwendet. Um das Programm zu
-compilieren muss das dotnet-sdk-framework installiert werden. Für den Start des gebauten
-Programms reicht der Download und die Installation der Runtime. Der Download wird von
-Microsoft [hier](hhttps://dotnet.microsoft.com/download/dotnet/6.0) angeboten
+Das Programm verwendet das Microsoft dotnet Framework und ist somit auf fast allen Plattformen
+ausführbar. Es wird die aktuelle Version 6.x verwendet. Um das Programm zu compilieren muss das
+dotnet-sdk-framework installiert werden. Für den Start des gebauten Programms reicht der Download
+und die Installation der Runtime. Der Download wird von Microsoft
+[hier](hhttps://dotnet.microsoft.com/download/dotnet/6.0) angeboten
 
 ## Unterstützte Plattformen
 
 ## Ausführen
 
-Im Folgenden finden Sie einige hilfreiche Hinweise, wie Sie jmbde auf Ihrer nativen
-Plattform ausführen können.
+Im Folgenden finden Sie einige hilfreiche Hinweise, wie Sie jmbde auf Ihrer nativen Plattform
+ausführen können.
 
 ### Unix
 
@@ -90,14 +90,14 @@ In dem master branch befindet sich der aktuellste Pre-Release Code.
 
 ## Programm erstellen
 
-Im Folgenden finden Sie Hinweise für Entwickler, wie Sie jmbde auf Ihrem nativen System
-aufbauen können. Sie sind keine vollständigen Leitfäden, sondern enthalten Hinweise zu
-den notwendigen Maßnahmen. Bibliotheken, Kompilierungs-Flags, etc.
+Im Folgenden finden Sie Hinweise für Entwickler, wie Sie jmbde auf Ihrem nativen System aufbauen
+können. Sie sind keine vollständigen Leitfäden, sondern enthalten Hinweise zu den notwendigen
+Maßnahmen. Bibliotheken, Kompilierungs-Flags, etc.
 
 ### Abhängigkeiten
 
-Zum erstellen des Programms wird das dotnet-sdk in der Version 6.0.100 benötigt. Das
-Framework ist im Internet bei der Adresse
+Zum erstellen des Programms wird das dotnet-sdk in der Version 6.0.100 benötigt. Das Framework ist
+im Internet bei der Adresse
 [https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-6.0.100-macos-x64-installer](https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-6.0.100-macos-x64-installer)
 zu finden. Das Framework muss nach dem Download installiert werden.
 
@@ -125,8 +125,7 @@ Sie können nun `jmbde` mit dem Befehl `bin/jmbde` aus der Kommandozeile starten
 
 ## License
 
-EUPL-1.2 ©
-[Jürgen Mülbert](https://github.com/jmuelbert/jmbde-aspnet/blob/master/LICENSE)
+EUPL-1.2 © [Jürgen Mülbert](https://github.com/jmuelbert/jmbde-aspnet/blob/master/LICENSE)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

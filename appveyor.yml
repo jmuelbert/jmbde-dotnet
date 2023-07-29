@@ -106,8 +106,7 @@ for:
       fast_finish: false # set this flag to true to immediately finish build once one of the jobs fails.
 
     cache:
-      - C:\Users\appveyor\clcache -> .appveyor.yml, build_msvc\**, **\Makefile.am,
-        **\*.vcxproj.in
+      - C:\Users\appveyor\clcache -> .appveyor.yml, build_msvc\**, **\Makefile.am, **\*.vcxproj.in
 
     init:
       - git config --global core.autocrlf input

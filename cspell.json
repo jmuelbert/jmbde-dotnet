@@ -1,18 +1,12 @@
 {
-  "dictionaries": [
-    "bash",
-    "docker",
-    "project-words"
-  ],
+  "dictionaries": ["bash", "docker", "project-words"],
   "dictionaryDefinitions": [
     {
       "name": "project-words",
       "path": "./project-words.txt"
     }
   ],
-  "flagWords": [
-    "hte"
-  ],
+  "flagWords": ["hte"],
   "ignorePaths": [
     "cspell.json",
     "s**/node_modules/**",
@@ -34,10 +28,5 @@
   ],
   "language": "en-US",
   "version": "0.2",
-  "words": [
-    "fasterer",
-    "Jürgen",
-    "mkdirp",
-    "Muelbert"
-  ]
+  "words": ["fasterer", "Jürgen", "mkdirp", "Muelbert"]
 }

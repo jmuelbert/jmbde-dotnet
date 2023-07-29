@@ -9,8 +9,8 @@ First time contributing to jmbde-aspnet ? Read our
 
 ## Propose a feature
 
-- Open an issue with a detailed description of your proposed feature, the motivation for
-  it and alternatives considered. Please note we may close this issue or ask you to
-  create a pull-request if this is not something we see as sufficiently high priority.
+- Open an issue with a detailed description of your proposed feature, the motivation for it and
+  alternatives considered. Please note we may close this issue or ask you to create a pull-request
+  if this is not something we see as sufficiently high priority.
 
 Thanks!
