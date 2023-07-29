@@ -262,7 +262,6 @@ repos:
     rev: v8.17.0
     hooks:
       - id: gitleaks
-      - id: gitleaks-docker
 
   - repo: https://github.com/pocc/pre-commit-hooks
     rev: v1.3.5
