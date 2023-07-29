@@ -1,4 +1,11 @@
 {
+    "list-marker-space": {
+        "ul_multi": 3,
+        "ul_single": 3
+    },
+    "ul-indent": {
+        "indent": 4
+    },
     "printWidth": 100,
     "singleQuote": true,
     "arrowParens": "always",
