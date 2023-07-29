@@ -1,27 +1,20 @@
 {
-    "list-marker-space": {
-        "ul_multi": 3,
-        "ul_single": 3
+  "printWidth": 100,
+  "singleQuote": true,
+  "arrowParens": "always",
+  "trailingComma": "all",
+  "overrides": [
+    {
+      "files": ".github/**/*.yml",
+      "options": {
+        "singleQuote": false
+      }
     },
-    "ul-indent": {
-        "indent": 4
-    },
-    "printWidth": 100,
-    "singleQuote": true,
-    "arrowParens": "always",
-    "trailingComma": "all",
-    "overrides": [
-        {
-            "files": ".github/**/*.yml",
-            "options": {
-                "singleQuote": false
-            }
-        },
-        {
-            "files": ["*.html", "legacy/**/*.js"],
-            "options": {
-                "tabWidth": 4
-            }
-        }
-    ]
+    {
+      "files": ["*.html", "legacy/**/*.js"],
+      "options": {
+        "tabWidth": 4
+      }
+    }
+  ]
 }
