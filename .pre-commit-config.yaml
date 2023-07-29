@@ -208,7 +208,6 @@ repos:
           - --list-different
           - --ignore-unknown
           - --prose-wrap=always
-          - --print-width=88
 
   - repo: https://github.com/milin/giticket
     rev: v1.4
@@ -237,6 +236,7 @@ repos:
     rev: v1.0.0
     hooks:
       - id: check-poetry
+      - id: check-gitlab-ci
 
   - repo: https://github.com/APIDevTools/swagger-cli
     rev: v4.0.4
@@ -245,6 +245,34 @@ repos:
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.0.278
+    rev: v0.0.280
     hooks:
       - id: ruff
+
+  - repo: https://github.com/jvstein/pre-commit-dotnet-format
+    rev: 'v0.3'
+    hooks:
+      - id: dotnet-format
+
+  - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+    rev: '2.7.2' # pick a git hash / tag to point to
+    hooks:
+      - id: editorconfig-checker-system
+        alias: ecs
+      - id: editorconfig-checker
+        alias: ec
+
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.23.3
+    hooks:
+      - id: check-github-actions
+      - id: check-github-workflows
+      - id: check-gitlab-ci
+      - id: check-dependabot
+      - id: check-readthedocs
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.16.1
+    hooks:
+      - id: gitleaks
+      - id: gitleaks-docker
