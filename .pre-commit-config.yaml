@@ -220,16 +220,11 @@ repos:
     hooks:
       - id: prettier
         exclude: ^.*(\.ts|\.xib)$
-        name: prettier + plugin-xml
-        additional_dependencies:
-          - prettier@2.3.2
-          - '@prettier/plugin-ruby@'
-          - '@prettier/plugin-xml@0.12.0'
+        name: prettier
         args:
           - --write
           - --list-different
           - --ignore-unknown
-          - --plugin=@prettier/plugin-ruby
           - --prose-wrap=always
           - --print-width=88
 
