@@ -249,11 +249,6 @@ repos:
     hooks:
       - id: ruff
 
-  - repo: https://github.com/jvstein/pre-commit-dotnet-format
-    rev: 'v0.3'
-    hooks:
-      - id: dotnet-format
-
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
     rev: '2.7.2' # pick a git hash / tag to point to
     hooks:
