@@ -1,4 +1,3 @@
-// .markdownlint.json
 {
   "extends": "markdownlint/style/prettier"
 }
