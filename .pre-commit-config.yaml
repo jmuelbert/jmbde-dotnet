@@ -249,14 +249,6 @@ repos:
     hooks:
       - id: ruff
 
-  - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-    rev: '2.7.2' # pick a git hash / tag to point to
-    hooks:
-      - id: editorconfig-checker-system
-        alias: ecs
-      - id: editorconfig-checker
-        alias: ecs
-
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.23.3
     hooks:
