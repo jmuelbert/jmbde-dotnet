@@ -25,6 +25,26 @@ erfasst werden. Das sind unter anderem Computer, Drucker und Telefone.
 [Features](https://github.com/jmuelbert/jmbde-aspnet) | [Documentation](https://jmuelbert.github.io/jmbde-aspnet/) | [Changelog](CHANGELOG.md) | [Contributing](CONTRIBUTING.md) | [FAQ](https://github.com/jmuelbert/jmbde-aspnet/wiki/FAQ) | [english](README_en.md)
 
 <!-- toc -->
+
+- [Setup](#setup)
+- [Unterstützte Plattformen](#unterstutzte-plattformen)
+- [Ausführen](#ausfuhren)
+    * [Unix](#unix)
+    * [Windows](#windows)
+    * [macOS](#macos)
+- [Anforderungen und Fehlerberichte](#anforderungen-und-fehlerberichte)
+- [Fragen und Kommentare](#fragen-und-kommentare)
+- [Wiki](#wiki)
+- [Code-Quellen](#code-quellen)
+- [Programm erstellen](#programm-erstellen)
+    * [Abhängigkeiten](#abhangigkeiten)
+        + [Für die Release-Version](#fur-die-release-version)
+        + [Für die Debug-Version](#fur-die-debug-version)
+- [Installation](#installation)
+- [License](#license)
+
+<!-- tocstop -->
+
 ## Setup
 
 Das Programm verwendet das Microsoft dotnet Framework und ist somit auf fast allen Plattformen ausführbar. Es wird die aktuelle Version 6.x verwendet. Um das Programm zu compilieren muss das dotnet-sdk-framework installiert werden. Für den Start des gebauten Programms reicht der Download und die Installation der Runtime. Der Download wird von Microsoft [hier](hhttps://dotnet.microsoft.com/download/dotnet/6.0) angeboten

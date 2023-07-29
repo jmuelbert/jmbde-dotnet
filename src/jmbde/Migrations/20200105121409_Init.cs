@@ -1,3 +1,11 @@
+ /****************************************************************
+  *
+  ** SPDX-FileCopyrightText: 2016-2023 Jürgen Mülbert
+  ** Copyright (c) 2016-2023 Jürgen Mülbert. All rights reserved.
+  ** SPDX-License-Identifier: EUPL-1.2
+  **
+  ******************************************************************/
+
 using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
@@ -12,7 +20,7 @@ namespace jmbde.Migrations
 				columns: table => new
 				{
 					ID = table.Column<int>(nullable: false)
-						.Annotation("Sqlite:Autoincrement", true),
+ 						.Annotation("Sqlite:Autoincrement", true),
 					Number = table.Column<string>(maxLength: 25, nullable: false),
 					Locked = table.Column<bool>(nullable: false),
 					LastUpdate = table.Column<DateTime>(nullable: false)
