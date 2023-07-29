@@ -26,13 +26,6 @@ repos:
            ^\.github/.*\.yml
            )$
       - id: check-shebang-scripts-are-executable
-      - id: pretty-format-json
-        exclude: >
-          (?x)(
-            ^\.vscode/.*\.json|
-            ^\.github/.*\.yml
-          )$
-        args: [--autofix]
       - id: check-merge-conflict
       - id: check-symlinks
       - id: check-toml
