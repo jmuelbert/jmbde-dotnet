@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.Processors
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"Processors/Details/OnGetAsync ({ id })");
+			_logger.LogDebug($"Processors/Details/OnGetAsync ({id})");
 			if (id == null)
 			{
 				return NotFound();

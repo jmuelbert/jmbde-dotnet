@@ -100,7 +100,7 @@ namespace JMuelbert.BDE.Pages.Phones
 		/// <param name="saveChangesError">Save changes error.</param>
 		public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
 		{
-			_logger.LogDebug($"Phones/Delete/OnGetAsync({ id }, { saveChangesError })");
+			_logger.LogDebug($"Phones/Delete/OnGetAsync({id}, {saveChangesError})");
 			if (id == null)
 			{
 				return NotFound();
@@ -129,7 +129,7 @@ namespace JMuelbert.BDE.Pages.Phones
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"Phones/Delete/OnPostAsync ({ id })");
+			_logger.LogDebug($"Phones/Delete/OnPostAsync ({id})");
 			if (id == null)
 			{
 				return NotFound();

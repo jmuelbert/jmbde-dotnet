@@ -116,14 +116,14 @@ namespace JMuelbert.BDE
 			{
 				if (di.Exists)
 				{
-					_logger.LogInformation($"The Directory { dbString } exists", dbString);
+					_logger.LogInformation($"The Directory {dbString} exists", dbString);
 				}
 				else
 				{
 
 					// Try Create the Directory
 					di.Create();
-					_logger.LogInformation($"The Directory { dbString } created", dbString);
+					_logger.LogInformation($"The Directory {dbString} created", dbString);
 				}
 			}
 			catch (Exception e)
@@ -134,7 +134,7 @@ namespace JMuelbert.BDE
 
 			// Build the connenction string.
 			var connection = "Data Source=" + dbPath;
-			_logger.LogInformation($"The Data Source { connection } ", connection);
+			_logger.LogInformation($"The Data Source {connection} ", connection);
 
 			if (_env.IsDevelopment())
 			{

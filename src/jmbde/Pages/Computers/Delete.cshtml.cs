@@ -99,7 +99,7 @@ namespace JMuelbert.BDE.Pages.Computers
 		/// <param name="saveChangesError">Save changes error.</param>
 		public async Task<IActionResult> OnGetAsync(string? id, bool? saveChangesError = false)
 		{
-			_logger.LogDebug($"Computers/Delete/OnGetAsync { id } - { saveChangesError }");
+			_logger.LogDebug($"Computers/Delete/OnGetAsync {id} - {saveChangesError}");
 
 			if (id == null)
 			{
@@ -129,7 +129,7 @@ namespace JMuelbert.BDE.Pages.Computers
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnPostAsync(string? id)
 		{
-			_logger.LogDebug($"Computers/Delete/OnPostAsync { id }");
+			_logger.LogDebug($"Computers/Delete/OnPostAsync {id}");
 
 			if (id == null)
 			{

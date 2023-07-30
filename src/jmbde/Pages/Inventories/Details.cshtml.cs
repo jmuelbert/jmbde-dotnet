@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.Inventories
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"Inventories/Details/OnGetAsync ({ id })");
+			_logger.LogDebug($"Inventories/Details/OnGetAsync ({id})");
 
 			if (id == null)
 			{

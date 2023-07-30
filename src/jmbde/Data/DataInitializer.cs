@@ -54,7 +54,7 @@ namespace JMuelbert.BDE.Shared.Data
 		{
 			Randomizer.Seed = new Random(867530);
 
-			if (bdeContext.Employee.Count() == 0)
+			if (!bdeContext.Employee.Any())
 			{
 				// Create text data
 				var testEmployees = new Faker<Employee>()

@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.Documents
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"Documents/Details/OnGetAsync ({ id })");
+			_logger.LogDebug($"Documents/Details/OnGetAsync ({id})");
 
 			if (id == null)
 			{

@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.JobTitles
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"JobTitles/Details/OnGetAsync ({ id })");
+			_logger.LogDebug($"JobTitles/Details/OnGetAsync ({id})");
 
 			if (id == null)
 			{

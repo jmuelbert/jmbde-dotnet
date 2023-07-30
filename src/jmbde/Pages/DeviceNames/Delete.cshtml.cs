@@ -100,7 +100,7 @@ namespace JMuelbert.BDE.Pages.DeviceNames
 		/// <param name="saveChangesError">Save changes error.</param>
 		public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
 		{
-			_logger.LogDebug($"DeviceName/Delete/OnGetAsync({ id }, { saveChangesError })");
+			_logger.LogDebug($"DeviceName/Delete/OnGetAsync({id}, {saveChangesError})");
 
 			if (id == null)
 			{
@@ -130,7 +130,7 @@ namespace JMuelbert.BDE.Pages.DeviceNames
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"DeviceName/Delete/OnPostAsync ({ id })");
+			_logger.LogDebug($"DeviceName/Delete/OnPostAsync ({id})");
 
 			if (id == null)
 			{

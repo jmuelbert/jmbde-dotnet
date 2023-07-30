@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.ZipCodes
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"ZipCodes/Details/OnGetAsync ({ id })");
+			_logger.LogDebug($"ZipCodes/Details/OnGetAsync ({id})");
 
 			if (id == null)
 			{

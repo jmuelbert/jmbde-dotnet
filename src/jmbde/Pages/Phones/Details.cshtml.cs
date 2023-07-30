@@ -91,7 +91,7 @@ namespace JMuelbert.BDE.Pages.Phones
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"Phones/Details/OnGetAsync ({ id })");
+			_logger.LogDebug($"Phones/Details/OnGetAsync ({id})");
 
 			if (id == null)
 			{

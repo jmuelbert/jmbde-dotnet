@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
 			int? id,
 			bool? saveChangesError = false)
 		{
-			_logger.LogDebug($"ChipCardProfile/Delete/OnGetAsync: Getting item { id } - { saveChangesError }");
+			_logger.LogDebug($"ChipCardProfile/Delete/OnGetAsync: Getting item {id} - {saveChangesError}");
 
 			if (id == null)
 			{
@@ -132,7 +132,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"ChipCardProfile/Delete/OnPostAsync: Getting item { id }");
+			_logger.LogDebug($"ChipCardProfile/Delete/OnPostAsync: Getting item {id}");
 
 			if (id == null)
 			{

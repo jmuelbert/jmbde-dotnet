@@ -91,7 +91,7 @@ namespace JMuelbert.BDE.Pages.CityNames
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"CityName/Edit/OnGetAsync({ id })");
+			_logger.LogDebug($"CityName/Edit/OnGetAsync({id})");
 
 			if (id == null)
 			{
@@ -114,7 +114,7 @@ namespace JMuelbert.BDE.Pages.CityNames
 		/// <returns></returns>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"CityName/Edit/OnPostAsync{ id })");
+			_logger.LogDebug($"CityName/Edit/OnPostAsync{id})");
 
 			if (!ModelState.IsValid)
 			{

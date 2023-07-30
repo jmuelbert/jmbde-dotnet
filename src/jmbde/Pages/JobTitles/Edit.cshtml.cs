@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.JobTitles
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"JobTitles/Edit/OnGetAsync({ id })");
+			_logger.LogDebug($"JobTitles/Edit/OnGetAsync({id})");
 
 			if (id == null)
 			{
@@ -115,7 +115,7 @@ namespace JMuelbert.BDE.Pages.JobTitles
 		/// <returns></returns>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"JobTitles/Edit/OnPostAsync({ id })");
+			_logger.LogDebug($"JobTitles/Edit/OnPostAsync({id})");
 
 			if (!ModelState.IsValid)
 			{

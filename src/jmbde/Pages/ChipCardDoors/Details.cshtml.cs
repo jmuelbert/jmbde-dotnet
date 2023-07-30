@@ -90,7 +90,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"ChipCardDoors/Details/OnGetAsync ({ id })");
+			_logger.LogDebug($"ChipCardDoors/Details/OnGetAsync ({id})");
 
 			if (id == null)
 			{

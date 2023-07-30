@@ -101,7 +101,7 @@ namespace JMuelbert.BDE.Pages.Processors
 
 		public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
 		{
-			_logger.LogDebug($"Processors/Delete/OnGetAsync({ id }, { saveChangesError })");
+			_logger.LogDebug($"Processors/Delete/OnGetAsync({id}, {saveChangesError})");
 
 			if (id == null)
 			{
@@ -131,7 +131,7 @@ namespace JMuelbert.BDE.Pages.Processors
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"Processors/Delete/OnPostAsync ({ id })");
+			_logger.LogDebug($"Processors/Delete/OnPostAsync ({id})");
 
 			if (id == null)
 			{

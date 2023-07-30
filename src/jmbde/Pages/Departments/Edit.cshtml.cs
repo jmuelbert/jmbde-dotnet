@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.Departments
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"Department/Edit/OnGetAsync({ id })");
+			_logger.LogDebug($"Department/Edit/OnGetAsync({id})");
 
 			if (id == null)
 			{
@@ -115,7 +115,7 @@ namespace JMuelbert.BDE.Pages.Departments
 		/// <returns></returns>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"Deparment/Edit/OnPostAsync({ id })");
+			_logger.LogDebug($"Deparment/Edit/OnPostAsync({id})");
 
 			if (!ModelState.IsValid)
 			{

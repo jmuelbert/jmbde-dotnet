@@ -58,7 +58,7 @@ namespace JMuelbert.BDE
 	/// <summary>
 	/// Program.
 	/// </summary>
-	public class Program
+	public static class Program
 	{
 
 		public static readonly Dictionary<string, string> switchMappings =

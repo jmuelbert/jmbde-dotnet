@@ -86,7 +86,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts
 
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"SystemAccount/Details/OnGetAsync ({ id })");
+			_logger.LogDebug($"SystemAccount/Details/OnGetAsync ({id})");
 			if (id == null)
 			{
 				return NotFound();

@@ -56,10 +56,10 @@ namespace JMuelbert.BDE.Pages.DeviceTypes
 	/// Delete model.
 	/// </summary>
 	public class DeleteModel : PageModel
-	{ 
+	{
 		/// <summary>
 		/// The context.
-	    /// </summary>
+		/// </summary>
 		private readonly BDEContext _context;
 
 		/// <summary>
@@ -100,7 +100,7 @@ namespace JMuelbert.BDE.Pages.DeviceTypes
 		/// <param name="saveChangesError">Save changes error.</param>
 		public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
 		{
-			_logger.LogDebug($"DeviceTypes/Delete/OnGetAsync({ id }, { saveChangesError })");
+			_logger.LogDebug($"DeviceTypes/Delete/OnGetAsync({id}, {saveChangesError})");
 			if (id == null)
 			{
 				return NotFound();
@@ -129,7 +129,7 @@ namespace JMuelbert.BDE.Pages.DeviceTypes
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"DeviceTypes/Delete/OnPostAsync ({ id })");
+			_logger.LogDebug($"DeviceTypes/Delete/OnPostAsync ({id})");
 			if (id == null)
 			{
 				return NotFound();

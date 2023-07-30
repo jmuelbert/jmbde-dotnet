@@ -91,7 +91,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(long? id)
 		{
-			_logger.LogDebug($"ChipCardProfile/Edit/OnGetAsync({ id })");
+			_logger.LogDebug($"ChipCardProfile/Edit/OnGetAsync({id})");
 
 			if (id == null)
 			{
@@ -114,7 +114,7 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
 		/// <returns></returns>
 		public async Task<IActionResult> OnPostAsync(long? id)
 		{
-			_logger.LogDebug($"ChipCardProfile/Edit/OnPostAsync{ id })");
+			_logger.LogDebug($"ChipCardProfile/Edit/OnPostAsync{id})");
 
 			if (!ModelState.IsValid)
 			{

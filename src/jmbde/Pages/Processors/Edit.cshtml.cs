@@ -92,7 +92,7 @@ namespace JMuelbert.BDE.Pages.Processors
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"Processors/Edit/OnGetAsync({ id })");
+			_logger.LogDebug($"Processors/Edit/OnGetAsync({id})");
 
 			if (id == null)
 			{
@@ -116,7 +116,7 @@ namespace JMuelbert.BDE.Pages.Processors
 
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"Processors/Edit/OnPostAsync({ id })");
+			_logger.LogDebug($"Processors/Edit/OnPostAsync({id})");
 
 			if (!ModelState.IsValid)
 			{

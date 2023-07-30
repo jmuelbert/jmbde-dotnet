@@ -91,7 +91,7 @@ namespace JMuelbert.BDE.Pages.Computers
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(string? id)
 		{
-			_logger.LogDebug($"Computers/Details/OnGetAsync ({ id })");
+			_logger.LogDebug($"Computers/Details/OnGetAsync ({id})");
 
 			if (id == null)
 			{

@@ -91,7 +91,7 @@ namespace JMuelbert.BDE.Pages.Mobiles
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"Mobiles/Edit/OnGetAsync ({ id })");
+			_logger.LogDebug($"Mobiles/Edit/OnGetAsync ({id})");
 			if (id == null)
 			{
 				return NotFound();
@@ -113,7 +113,7 @@ namespace JMuelbert.BDE.Pages.Mobiles
 		/// <returns></returns>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"Mobiles/Edit/OnGetAsync({ id })");
+			_logger.LogDebug($"Mobiles/Edit/OnGetAsync({id})");
 			if (!ModelState.IsValid)
 			{
 				return Page();

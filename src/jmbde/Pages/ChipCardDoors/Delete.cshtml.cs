@@ -117,7 +117,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors
 			int? id,
 			bool? saveChangesError = false)
 		{
-			_logger.LogDebug($"ChipCardDoors/Delete/OnGetAsync({ id }, { saveChangesError })");
+			_logger.LogDebug($"ChipCardDoors/Delete/OnGetAsync({id}, {saveChangesError})");
 
 			if (id == null)
 			{
@@ -149,7 +149,7 @@ namespace JMuelbert.BDE.Pages.ChipCardDoors
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"ChipCardDoors/Delete/OnPostAsync ({ id })");
+			_logger.LogDebug($"ChipCardDoors/Delete/OnPostAsync ({id})");
 
 			if (id == null)
 			{

@@ -98,7 +98,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers
 		/// <param name="saveChangesError">Save changes error.</param>
 		public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
 		{
-			_logger.LogDebug($"Manufacturers/Delete/OnGetAsync({ id }, { saveChangesError })");
+			_logger.LogDebug($"Manufacturers/Delete/OnGetAsync({id}, {saveChangesError})");
 			if (id == null)
 			{
 				return NotFound();
@@ -127,7 +127,7 @@ namespace JMuelbert.BDE.Pages.Manufacturers
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"Manufacturerss/Delete/OnPostAsync ({ id })");
+			_logger.LogDebug($"Manufacturerss/Delete/OnPostAsync ({id})");
 
 			if (id == null)
 			{

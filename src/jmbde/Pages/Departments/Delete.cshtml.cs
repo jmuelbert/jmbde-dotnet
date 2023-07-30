@@ -99,7 +99,7 @@ namespace JMuelbert.BDE.Pages.Departments
 		/// <param name="saveChangesError">Save changes error.</param>
 		public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
 		{
-			_logger.LogDebug($"Department/Delete/OnGetAsync({ id }, { saveChangesError })");
+			_logger.LogDebug($"Department/Delete/OnGetAsync({id}, {saveChangesError})");
 
 			if (id == null)
 			{

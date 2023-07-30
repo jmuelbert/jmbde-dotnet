@@ -87,7 +87,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts
 
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"SystemAccount/Edit/OnGetAsync({ id })");
+			_logger.LogDebug($"SystemAccount/Edit/OnGetAsync({id})");
 
 			if (id == null)
 			{
@@ -110,7 +110,7 @@ namespace JMuelbert.BDE.Pages.SystemAccounts
 		/// <returns></returns>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"SystemAccount/Edit/OnPostAsync({ id })");
+			_logger.LogDebug($"SystemAccount/Edit/OnPostAsync({id})");
 
 			if (!ModelState.IsValid)
 			{

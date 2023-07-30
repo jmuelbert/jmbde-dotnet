@@ -114,7 +114,7 @@ namespace JMuelbert.BDE.Pages.Phones
 		/// <returns></returns>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"Phones/Edit/OnPostAsync({ id })");
+			_logger.LogDebug($"Phones/Edit/OnPostAsync({id})");
 
 			if (!ModelState.IsValid)
 			{
