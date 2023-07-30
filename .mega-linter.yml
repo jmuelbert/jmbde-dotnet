@@ -9,27 +9,18 @@ APPLY_FIXES: all # all, none, or list of linter keys
 # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
 # - SPELL # Uncomment to disable checks of spelling mistakes
 DISABLE_LINTERS:
-  # - JSON_PRETTIER
-  # - REPOSITORY_GITLEAKS
-  # - SPELL_PROSELINT
   - C_CPPLINT
   - CPP_CPPLINT
-# DISABLE_ERRORS_LINTERS:
-# - PYTHON_BANDIT
-# - PYTHON_PYRIGHT
-# - REPOSITORY_DEVSKIM
-# - REPOSITORY_SEMGREP
 PRINT_ALL_FILES: false
 FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|\.github/workflows|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
 JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(\.vscode/)'
-
-# YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml)'
+CSS_STYLELINT_FILTER_REGEX_EXCLUDE: '(src/jmbde/wwwroot)'
+YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml)'
 # YAML_PRETTIER_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml|mkdocs\.yml)'
 # YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.codecov\.yml)'
 YAML_V8R_FILTER_REGEX_EXCLUDE: '(.gitlab-ci.yml)'
 BASH_FILTER_REGEX_EXCLUDE: '(lib)'
-MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md|LICENSE|LICENSE.EUPL_1_2)'
-# MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
+MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md|LICENSE)'
 SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: '(\.automation/generated|docs/descriptors)'
 TYPESCRIPT_FILTER_REGEX_EXCLUDE: '(src/apps/translations)'
 DOCKERFILE_HADOLINT_ARGUMENTS:
