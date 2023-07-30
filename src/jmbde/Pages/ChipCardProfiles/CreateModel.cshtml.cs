@@ -16,10 +16,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.SystemAccounts
-{  /// <summary>
-   /// Create model.
-   /// </summary>
+namespace JMuelbert.BDE.Pages.ChipCardProfiles
+{
+	/// <summary>
+	/// CreateModel
+	/// </summary>
 	public class CreateModel : PageModel
 	{
 		/// <summary>
@@ -33,12 +34,18 @@ namespace JMuelbert.BDE.Pages.SystemAccounts
 		private readonly ILogger _logger;
 
 		/// <summary>
-		/// Initializes a new instance of the <see
-		/// cref="T:JMuelbert.BDE.Pages.SystemAccounts.IndexModel"/> class.
+		/// Gets or sets the chip card profile.
 		/// </summary>
-		/// <param name="logger">Logger.</param>
-		/// <param name="context">Context.</param>
+		/// <value>The chip card profile.</value>
+		[BindProperty]
+		public ChipCardProfile ChipCardProfile { get; set; }
 
+		/// <summary>
+		/// Initializes a new instance of the <see
+		/// cref="T:JMuelbert.BDE.Pages.ChipCardProfiles.CreateModel"/> class.
+		/// </summary>
+		/// <param name="logger"></param>
+		/// <param name="context"></param>
 		public CreateModel(ILogger<CreateModel> logger, BDEContext context)
 		{
 			_logger = logger;
@@ -51,41 +58,36 @@ namespace JMuelbert.BDE.Pages.SystemAccounts
 		/// <returns>The get.</returns>
 		public IActionResult OnGet()
 		{
-			_logger.LogDebug("SystemAccount/Create/OnGet");
+			_logger.LogDebug("ChipCardProfiles/Create/OnGet");
+
 			return Page();
 		}
 
 		/// <summary>
-		/// Gets or sets the JobTitle.
+		/// Ons the post async.
 		/// </summary>
-		[BindProperty]
-		public SystemAccount SystemAccount { get; set; }
-
-		/// <summary>
-		/// Ons the get async.
-		/// </summary>
-		/// <returns>The get async.</returns>
+		/// <returns>The post async.</returns>
 		public async Task<IActionResult> OnPostAsync()
 		{
-			_logger.LogDebug("SystemAccount/Create/OnPostAsync");
+			_logger.LogDebug("ChipCardProfiles/Create/OnPostAsync");
+
 			if (!ModelState.IsValid)
 			{
 				return Page();
 			}
 
-			var emptySystemAccount = new SystemAccount();
+			var emptyChipCardProfile = new ChipCardProfile();
 
-			if (await TryUpdateModelAsync<SystemAccount>(emptySystemAccount,
-														 "systemaccount",  // Preset for form value
-														 s => s.UserName, s => s.PassWord,
-														 s => s.LastUpdate)
+			if (await TryUpdateModelAsync<ChipCardProfile>(emptyChipCardProfile,
+														   "chipcardprofile",  // Prefix for form value
+														   c => c.Number, c => c.LastUpdate)
 					.ConfigureAwait(false))
 			{
-				_context.SystemAccount.Add(emptySystemAccount);
+				_context.ChipCardProfile.Add(emptyChipCardProfile);
 				await _context.SaveChangesAsync().ConfigureAwait(false);
-
 				return RedirectToPage("./Index");
 			}
+
 			return null;
 		}
 	}

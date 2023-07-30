@@ -1,10 +1,10 @@
 ﻿/**************************************************************************
  **
- ** SPDX-FileCopyrightText: © 2016-2023 Jürgen Mülbert
- **
+ ** SPDX-FileCopyrightText: 2016-2023 Jürgen Mülbert
+ ** Copyright (c) 2016-2023 Jürgen Mülbert. All rights reserved.
  ** SPDX-License-Identifier: EUPL-1.2
  **
- *************************************************************************/
+ **************************************************************************/
 
 using System;
 using System.Threading.Tasks;
@@ -16,7 +16,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.DeviceNames
+namespace JMuelbert.BDE.Pages.JobTitles
 {
 	/// <summary>
 	/// Delete model.
@@ -34,7 +34,7 @@ namespace JMuelbert.BDE.Pages.DeviceNames
 		private readonly ILogger _logger;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.DeviceNames.IndexModel"/>
+		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.JobTitles.IndexModel"/>
 		/// class.
 		/// </summary>
 		/// <param name="logger">Logger.</param>
@@ -47,11 +47,11 @@ namespace JMuelbert.BDE.Pages.DeviceNames
 		}
 
 		/// <summary>
-		/// Gets or sets the DeviceName.
+		/// Gets or sets the JobTitle.
 		/// </summary>
-		/// <value>The DeviceName.</value>
+		/// <value>The JobTitle.</value>
 		[BindProperty]
-		public DeviceName DeviceName { get; set; }
+		public JobTitle JobTitle { get; set; }
 
 		/// <summary>
 		/// Gets or sets the ErrorMessage.
@@ -67,18 +67,18 @@ namespace JMuelbert.BDE.Pages.DeviceNames
 		/// <param name="saveChangesError">Save changes error.</param>
 		public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
 		{
-			_logger.LogDebug($"DeviceName/Delete/OnGetAsync({id}, {saveChangesError})");
+			_logger.LogDebug("JobTitles/Delete/OnGetAsync({ id }, { saveChangesError })");
 
 			if (id == null)
 			{
 				return NotFound();
 			}
 
-			DeviceName = await _context.DeviceName.AsNoTracking()
-							 .FirstOrDefaultAsync(d => d.ID == id)
-							 .ConfigureAwait(false);
+			JobTitle = await _context.JobTitle.AsNoTracking()
+						   .FirstOrDefaultAsync(j => j.ID == id)
+						   .ConfigureAwait(false);
 
-			if (DeviceName == null)
+			if (JobTitle == null)
 			{
 				return NotFound();
 			}
@@ -97,31 +97,31 @@ namespace JMuelbert.BDE.Pages.DeviceNames
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"DeviceName/Delete/OnPostAsync ({id})");
+			_logger.LogDebug("JobTitles/Delete/OnPostAsync ({ id })");
 
 			if (id == null)
 			{
 				return NotFound();
 			}
 
-			var devicename = await _context.DeviceName.AsNoTracking()
-								 .FirstOrDefaultAsync(d => d.ID == id)
-								 .ConfigureAwait(false);
+			var jobtitle = await _context.JobTitle.AsNoTracking()
+							   .FirstOrDefaultAsync(j => j.ID == id)
+							   .ConfigureAwait(false);
 
-			if (devicename == null)
+			if (jobtitle == null)
 			{
 				return NotFound();
 			}
 
 			try
 			{
-				_context.DeviceName.Remove(devicename);
+				_context.JobTitle.Remove(jobtitle);
 				await _context.SaveChangesAsync().ConfigureAwait(false);
 				return RedirectToPage("./Index");
 			}
 			catch (DbUpdateException ex)
 			{
-				_logger.LogError("DeviceName/Delete {0}", ex.ToString());
+				_logger.LogError("JobTitles/Delete {0}", ex.ToString());
 
 				return RedirectToAction("./Delete", new { id, saveChangesError = true });
 			}

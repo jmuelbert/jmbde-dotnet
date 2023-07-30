@@ -6,17 +6,14 @@
  **
  **************************************************************************/
 
-using System;
 using System.Threading.Tasks;
 using JMuelbert.BDE.Shared.Data;
 using JMuelbert.BDE.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.SystemAccounts
+namespace JMuelbert.BDE.Pages.ChipCardProfiles
 {
 	/// <summary>
 	/// Edit model.
@@ -34,11 +31,10 @@ namespace JMuelbert.BDE.Pages.SystemAccounts
 		private readonly ILogger _logger;
 		/// <summary>
 		/// Initializes a new instance of the <see
-		/// cref="T:JMuelbert.BDE.Pages.SystemAccounts.EditModel"/> class.
+		/// cref="T:JMuelbert.BDE.Pages.ChipCardProfiles.EditModel"/> class.
 		/// </summary>
 		/// <param name="logger">Logger.</param>
 		/// <param name="context">Context.</param>
-
 		public EditModel(ILogger<EditModel> logger, BDEContext context)
 		{
 			_logger = logger;
@@ -46,24 +42,29 @@ namespace JMuelbert.BDE.Pages.SystemAccounts
 		}
 
 		/// <summary>
-		/// Gets or sets the SystemAccount.
+		/// Gets or sets the chip card profile.
 		/// </summary>
-		/// <value>The SystemAccount.</value>
+		/// <value>The chip card profile.</value>
 		[BindProperty]
-		public SystemAccount SystemAccount { get; set; }
+		public ChipCardProfile ChipCardProfile { get; set; }
 
-		public async Task<IActionResult> OnGetAsync(int? id)
+		/// <summary>
+		/// Ons the get async.
+		/// </summary>
+		/// <returns>The get async.</returns>
+		/// <param name="id">Identifier.</param>
+		public async Task<IActionResult> OnGetAsync(long? id)
 		{
-			_logger.LogDebug($"SystemAccount/Edit/OnGetAsync({id})");
+			_logger.LogDebug($"ChipCardProfile/Edit/OnGetAsync({id})");
 
 			if (id == null)
 			{
 				return NotFound();
 			}
 
-			SystemAccount = await _context.SystemAccount.FindAsync(id).ConfigureAwait(false);
+			ChipCardProfile = await _context.ChipCardProfile.FindAsync(id).ConfigureAwait(false);
 
-			if (SystemAccount == null)
+			if (ChipCardProfile == null)
 			{
 				return NotFound();
 			}
@@ -75,27 +76,26 @@ namespace JMuelbert.BDE.Pages.SystemAccounts
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		public async Task<IActionResult> OnPostAsync(int? id)
+		public async Task<IActionResult> OnPostAsync(long? id)
 		{
-			_logger.LogDebug($"SystemAccount/Edit/OnPostAsync({id})");
+			_logger.LogDebug($"ChipCardProfile/Edit/OnPostAsync{id})");
 
 			if (!ModelState.IsValid)
 			{
 				return Page();
 			}
 
-			var systemaccountToUpdate = await _context.SystemAccount.FindAsync(id).ConfigureAwait(false);
+			var chipcardprofileToUpdate =
+				await _context.ChipCardProfile.FindAsync(id).ConfigureAwait(false);
 
-			if (await TryUpdateModelAsync<SystemAccount>(systemaccountToUpdate,
-														 "systemaccount",  // Preset for form value
-														 s => s.UserName, s => s.PassWord,
-														 s => s.LastUpdate)
+			if (await TryUpdateModelAsync<ChipCardProfile>(chipcardprofileToUpdate,
+														   "chipcardprofile",  // Prefix for form value
+														   c => c.Number, c => c.LastUpdate)
 					.ConfigureAwait(false))
 			{
 				await _context.SaveChangesAsync().ConfigureAwait(false);
 				return RedirectToPage("./Index");
 			}
-
 			return Page();
 		}
 	}

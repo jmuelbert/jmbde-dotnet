@@ -35,10 +35,18 @@
   "language": "en-US",
   "version": "0.2",
   "words": [
+    "codecov",
+    "CPPLINT",
     "fasterer",
+    "HADOLINT",
+    "javascripts",
+    "JSONLINT",
     "Jürgen",
+    "kondo",
     "Licence",
     "mkdirp",
-    "Muelbert"
+    "Muelbert",
+    "STYLELINT",
+    "TRIVY"
   ]
 }

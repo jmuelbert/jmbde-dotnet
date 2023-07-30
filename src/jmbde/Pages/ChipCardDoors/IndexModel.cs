@@ -7,18 +7,16 @@
  **************************************************************************/
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using JMuelbert.BDE.Shared.Data;
 using JMuelbert.BDE.Shared.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCardProfiles
+namespace JMuelbert.BDE.Pages.ChipCardDoors
 {
 	/// <summary>
 	/// Index model.
@@ -36,14 +34,29 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
 		private readonly ILogger _logger;
 
 		/// <summary>
+		/// Localization
+		/// </summary>
+		private readonly IStringLocalizer<EditModel> _localizer;
+
+		/// <summary>
+		/// Localization
+		/// </summary>
+		private readonly IStringLocalizer<EditModel> _sharedLocalizer;
+
+		/// <summary>
 		/// Initializes a new instance of the <see
-		/// cref="T:JMuelbert.BDE.Pages.ChipCardProfiles.IndexModel"/> class.
+		/// cref="T:JMuelbert.BDE.Pages.ChipCardDoors.IndexModel"/> class.
 		/// </summary>
 		/// <param name="logger">Logger.</param>
+		/// <param name="localizer">localizer.</param>
+		/// <param name="sharedLocalizer">localizer.</param>
 		/// <param name="context">Context.</param>
-		public IndexModel(ILogger<IndexModel> logger, BDEContext context)
+		public IndexModel(ILogger<IndexModel> logger, IStringLocalizer<EditModel> localizer,
+						  IStringLocalizer<EditModel> sharedLocalizer, BDEContext context)
 		{
 			_logger = logger;
+			_localizer = localizer;
+			_sharedLocalizer = sharedLocalizer;
 			_context = context;
 		}
 
@@ -72,10 +85,10 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
 		public string CurrentSort { get; set; }
 
 		/// <summary>
-		/// Gets or sets the chip card profile.
+		/// Gets or sets the chip card door.
 		/// </summary>
-		/// <value>The chip card profile.</value>
-		public PaginatedCollection<ChipCardProfile> ChipCardProfile { get; set; }
+		/// <value>The chip card door.</value>
+		public PaginatedCollection<ChipCardDoor> ChipCardDoor { get; set; }
 
 		/// <summary>
 		/// Ons the get async.
@@ -89,13 +102,11 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
 									 int? pageIndex)
 		{
 			_logger.LogDebug(
-				$"ChipCardProfile/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
+				$"ChipCardDoors/Index/OnGetAsync({currentFilter},{searchString},{pageIndex})");
 
-			CurrentSort = sortOrder;
+			CurrentFilter = sortOrder;
 			NumberSort = String.IsNullOrEmpty(sortOrder) ? "number_desc" : "";
 			DateSort = sortOrder == "Date" ? "date_desc" : "Date";
-			CurrentFilter = searchString;
-
 			if (searchString != null)
 			{
 				pageIndex = 1;
@@ -107,34 +118,34 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
 
 			CurrentFilter = searchString;
 
-			IQueryable<ChipCardProfile> chipCardProfileIQ = from c in _context.ChipCardProfile select c;
+			IQueryable<ChipCardDoor> chipCardDoorIQ = from ccd in _context.ChipCardDoor select ccd;
 
 			if (!String.IsNullOrEmpty(searchString))
 			{
-				chipCardProfileIQ = chipCardProfileIQ.Where(
-					cp => cp.Number.Contains(searchString, StringComparison.CurrentCulture));
+				chipCardDoorIQ = chipCardDoorIQ.Where(
+					cd => cd.Number.Contains(searchString, StringComparison.CurrentCulture));
 			}
 
 			switch (sortOrder)
 			{
 				case "number_desc":
-					chipCardProfileIQ = chipCardProfileIQ.OrderByDescending(cp => cp.Number);
+					chipCardDoorIQ = chipCardDoorIQ.OrderByDescending(c => c.Number);
 					break;
 				case "Date":
-					chipCardProfileIQ = chipCardProfileIQ.OrderBy(cp => cp.LastUpdate);
+					chipCardDoorIQ = chipCardDoorIQ.OrderBy(c => c.LastUpdate);
 					break;
 				case "date_desc":
-					chipCardProfileIQ = chipCardProfileIQ.OrderByDescending(cp => cp.LastUpdate);
+					chipCardDoorIQ = chipCardDoorIQ.OrderByDescending(c => c.LastUpdate);
 					break;
 				default:
-					chipCardProfileIQ = chipCardProfileIQ.OrderBy(cp => cp.Number);
+					chipCardDoorIQ = chipCardDoorIQ.OrderBy(c => c.Number);
 					break;
 			}
 
 			int pageSize = 10;
-			ChipCardProfile = await PaginatedCollection<ChipCardProfile>.CreateAsync(
-					  chipCardProfileIQ.AsNoTracking(), pageIndex ?? 1, pageSize
-				  ).ConfigureAwait(false);
+
+			ChipCardDoor = await PaginatedCollection<ChipCardDoor>.CreateAsync(
+					  chipCardDoorIQ.AsNoTracking(), pageIndex ?? 1, pageSize).ConfigureAwait(false);
 		}
 	}
 }

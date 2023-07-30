@@ -1,4 +1,4 @@
-/**************************************************************************
+﻿/**************************************************************************
  **
  ** SPDX-FileCopyrightText: 2016-2023 Jürgen Mülbert
  ** Copyright (c) 2016-2023 Jürgen Mülbert. All rights reserved.
@@ -16,58 +16,64 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.DeviceNames {
-  /// <summary>
-  /// Details model.
-  /// </summary>
-  public class DetailsModel : PageModel {
-    /// <summary>
-    /// The context.
-    /// </summary>
-    private readonly BDEContext _context;
+namespace JMuelbert.BDE.Pages.DeviceNames
+{
+	/// <summary>
+	/// Details model.
+	/// </summary>
+	public class DetailsModel : PageModel
+	{
+		/// <summary>
+		/// The context.
+		/// </summary>
+		private readonly BDEContext _context;
 
-    /// <summary>
-    /// The logger.
-    /// </summary>
-    private readonly ILogger _logger;
+		/// <summary>
+		/// The logger.
+		/// </summary>
+		private readonly ILogger _logger;
 
-    /// <summary>
-    /// Initializes a new instance of the <see
-    /// cref="T:JMuelbert.BDE.Pages.DeviceNames.DetailsModel"/> class.
-    /// </summary>
-    /// <param name="logger"></param>
-    /// <param name="context"></param>
+		/// <summary>
+		/// Initializes a new instance of the <see
+		/// cref="T:JMuelbert.BDE.Pages.DeviceNames.DetailsModel"/> class.
+		/// </summary>
+		/// <param name="logger"></param>
+		/// <param name="context"></param>
 
-    public DetailsModel(ILogger<DetailsModel> logger, BDEContext context) {
-      _logger = logger;
-      _context = context;
-    }
+		public DetailsModel(ILogger<DetailsModel> logger, BDEContext context)
+		{
+			_logger = logger;
+			_context = context;
+		}
 
-    /// <summary>
-    /// Gets or sets the DeviceName.
-    /// </summary>
-    /// <value>The DeviceName.</value>
-    public DeviceName DeviceName { get; set; }
+		/// <summary>
+		/// Gets or sets the DeviceName.
+		/// </summary>
+		/// <value>The DeviceName.</value>
+		public DeviceName DeviceName { get; set; }
 
-    /// <summary>
-    /// Ons the get async.
-    /// </summary>
-    ///  <returns>The get async.</returns>
-    /// <param name="id">Identifier.</param>
-    public async Task<IActionResult> OnGetAsync(int? id) {
-      _logger.LogDebug("DeviceName/Details/OnGetAsync({ id })");
+		/// <summary>
+		/// Ons the get async.
+		/// </summary>
+		///  <returns>The get async.</returns>
+		/// <param name="id">Identifier.</param>
+		public async Task<IActionResult> OnGetAsync(int? id)
+		{
+			_logger.LogDebug("DeviceName/Details/OnGetAsync({ id })");
 
-      if (id == null) {
-        return NotFound();
-      }
+			if (id == null)
+			{
+				return NotFound();
+			}
 
-      DeviceName =
-          await _context.DeviceName.SingleOrDefaultAsync(m => m.ID == id).ConfigureAwait(false);
+			DeviceName =
+				await _context.DeviceName.SingleOrDefaultAsync(m => m.ID == id).ConfigureAwait(false);
 
-      if (DeviceName == null) {
-        return NotFound();
-      }
-      return Page();
-    }
-  }
+			if (DeviceName == null)
+			{
+				return NotFound();
+			}
+			return Page();
+		}
+	}
 }

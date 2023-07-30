@@ -6,7 +6,6 @@
  **
  **************************************************************************/
 
-using System;
 using System.Threading.Tasks;
 using JMuelbert.BDE.Shared.Data;
 using JMuelbert.BDE.Shared.Models;
@@ -16,8 +15,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.SystemAccounts
+namespace JMuelbert.BDE.Pages.ChipCardDoors
 {
+
 	/// <summary>
 	/// Edit model.
 	/// </summary>
@@ -32,41 +32,62 @@ namespace JMuelbert.BDE.Pages.SystemAccounts
 		/// The logger.
 		/// </summary>
 		private readonly ILogger _logger;
+
+		/// <summary>
+		/// Localization
+		/// </summary>
+		private readonly IStringLocalizer<EditModel> _localizer;
+
+		/// <summary>
+		/// Localization
+		/// </summary>
+		private readonly IStringLocalizer<EditModel> _sharedLocalizer;
+
 		/// <summary>
 		/// Initializes a new instance of the <see
-		/// cref="T:JMuelbert.BDE.Pages.SystemAccounts.EditModel"/> class.
+		/// cref="T:JMuelbert.BDE.Pages.ChipCardDoors.EditModel"/> class.
 		/// </summary>
 		/// <param name="logger">Logger.</param>
+		/// <param name="localizer">localizer.</param>
+		/// <param name="sharedLocalizer">localizer.</param>
 		/// <param name="context">Context.</param>
-
-		public EditModel(ILogger<EditModel> logger, BDEContext context)
+		public EditModel(ILogger<EditModel> logger, IStringLocalizer<EditModel> localizer,
+						 IStringLocalizer<EditModel> sharedLocalizer, BDEContext context)
 		{
 			_logger = logger;
+			_localizer = localizer;
+			_sharedLocalizer = sharedLocalizer;
 			_context = context;
 		}
 
 		/// <summary>
-		/// Gets or sets the SystemAccount.
+		/// Gets or sets the chip card door.
 		/// </summary>
-		/// <value>The SystemAccount.</value>
+		/// <value>The chip card door.</value>
 		[BindProperty]
-		public SystemAccount SystemAccount { get; set; }
+		public ChipCardDoor ChipCardDoor { get; set; }
 
+		/// <summary>
+		/// Ons the get async.
+		/// </summary>
+		/// <returns>The get async.</returns>
+		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"SystemAccount/Edit/OnGetAsync({id})");
+			_logger.LogDebug($"ChipCardDoors/Edit/OnGetAsync({id})");
 
 			if (id == null)
 			{
 				return NotFound();
 			}
 
-			SystemAccount = await _context.SystemAccount.FindAsync(id).ConfigureAwait(false);
+			ChipCardDoor = await _context.ChipCardDoor.FindAsync(id).ConfigureAwait(false);
 
-			if (SystemAccount == null)
+			if (ChipCardDoor == null)
 			{
 				return NotFound();
 			}
+
 			return Page();
 		}
 
@@ -77,19 +98,17 @@ namespace JMuelbert.BDE.Pages.SystemAccounts
 		/// <returns></returns>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"SystemAccount/Edit/OnPostAsync({id})");
+			_logger.LogDebug($"ChipCardDoors/Edit/OnPostAsync({id})");
 
 			if (!ModelState.IsValid)
 			{
 				return Page();
 			}
 
-			var systemaccountToUpdate = await _context.SystemAccount.FindAsync(id).ConfigureAwait(false);
+			var chipcarddoorToUpdate = await _context.ChipCardDoor.FindAsync(id).ConfigureAwait(false);
 
-			if (await TryUpdateModelAsync<SystemAccount>(systemaccountToUpdate,
-														 "systemaccount",  // Preset for form value
-														 s => s.UserName, s => s.PassWord,
-														 s => s.LastUpdate)
+			if (await TryUpdateModelAsync<ChipCardDoor>(chipcarddoorToUpdate, "chipcarddoor",
+														c => c.Number, c => c.Place, c => c.LastUpdate)
 					.ConfigureAwait(false))
 			{
 				await _context.SaveChangesAsync().ConfigureAwait(false);

@@ -6,7 +6,6 @@
  **
  **************************************************************************/
 
-using System;
 using System.Threading.Tasks;
 using JMuelbert.BDE.Shared.Data;
 using JMuelbert.BDE.Shared.Models;
@@ -16,12 +15,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.Inventories
+namespace JMuelbert.BDE.Pages.ChipCardDoors
 {
 	/// <summary>
-	/// Edit model.
+	/// Details model.
 	/// </summary>
-	public class EditModel : PageModel
+	public class DetailsModel : PageModel
 	{
 		/// <summary>
 		/// The context.
@@ -32,25 +31,39 @@ namespace JMuelbert.BDE.Pages.Inventories
 		/// The logger.
 		/// </summary>
 		private readonly ILogger _logger;
+
 		/// <summary>
-		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Inventories.EditModel"/>
-		/// class.
+		/// Localization
+		/// </summary>
+		private readonly IStringLocalizer<DetailsModel> _localizer;
+
+		///< summary>
+		/// Localization
+		///</summary>
+		private readonly IStringLocalizer<DetailsModel> _sharedLocalizer;
+
+		/// <summary>
+		/// Initializes a new instance of the <see
+		/// cref="T:JMuelbert.BDE.Pages.ChipCardDoors.DetailsModel"/> class.
 		/// </summary>
 		/// <param name="logger">Logger.</param>
+		/// <param name="localizer">localizer.</param>
+		/// <param name="sharedLocalizer">localizer.</param>
 		/// <param name="context">Context.</param>
-
-		public EditModel(ILogger<EditModel> logger, BDEContext context)
+		public DetailsModel(ILogger<DetailsModel> logger, IStringLocalizer<DetailsModel> localizer,
+							IStringLocalizer<DetailsModel> sharedLocalizer, BDEContext context)
 		{
 			_logger = logger;
+			_localizer = localizer;
+			_sharedLocalizer = sharedLocalizer;
 			_context = context;
 		}
 
 		/// <summary>
-		/// Gets or sets the Inventory.
+		/// Gets or sets the chip card door.
 		/// </summary>
-		/// <value>The Inventory.</value>
-		[BindProperty]
-		public Inventory Inventory { get; set; }
+		/// <value>The chip card door.</value>
+		public ChipCardDoor ChipCardDoor { get; set; }
 
 		/// <summary>
 		/// Ons the get async.
@@ -59,46 +72,23 @@ namespace JMuelbert.BDE.Pages.Inventories
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnGetAsync(int? id)
 		{
-			_logger.LogDebug($"Inventories/Edit/OnGetAsync({id})");
+			_logger.LogDebug($"ChipCardDoors/Details/OnGetAsync ({id})");
 
 			if (id == null)
 			{
 				return NotFound();
 			}
 
-			Inventory = await _context.Inventory.FindAsync(id).ConfigureAwait(false);
+			ChipCardDoor = await _context.ChipCardDoor.Include(c => c.Employee)
+							   .Include(d => d.Department)
+							   .Include(p => p.Place)
+							   .AsNoTracking()
+							   .FirstOrDefaultAsync(m => m.ID == id)
+							   .ConfigureAwait(false);
 
-			if (Inventory == null)
+			if (ChipCardDoor == null)
 			{
 				return NotFound();
-			}
-			return Page();
-		}
-
-		/// <summary>
-		/// OnPostAsync
-		/// </summary>
-		/// <param name="id"></param>
-		/// <returns></returns>
-		public async Task<IActionResult> OnPostAsync(int? id)
-		{
-			_logger.LogDebug($"Inventories/Edit/OnPostAsync({id})");
-
-			if (!ModelState.IsValid)
-			{
-				return Page();
-			}
-
-			var inventoryToUpdate = await _context.Inventory.FindAsync(id).ConfigureAwait(false);
-
-			if (await TryUpdateModelAsync<Inventory>(inventoryToUpdate,
-													 "inventory",  // Prefix for form value
-													 i => i.Identifier, i => i.Description, i => i.Active,
-													 i => i.LastUpdate)
-					.ConfigureAwait(false))
-			{
-				await _context.SaveChangesAsync().ConfigureAwait(false);
-				return RedirectToPage("./Index");
 			}
 
 			return Page();

@@ -3,6 +3,5 @@
     "bin": true,
     "obj": true
   },
-  "python.pythonPath": "/usr/local/Caskroom/miniconda/base/envs/develop310/bin/python",
   "dotnet.defaultSolution": "jmbde.sln"
 }

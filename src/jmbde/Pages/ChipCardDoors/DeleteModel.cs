@@ -1,4 +1,4 @@
-/**************************************************************************
+﻿/**************************************************************************
  **
  ** SPDX-FileCopyrightText:  © 2016-2023 Jürgen Mülbert
  **
@@ -6,7 +6,6 @@
  **
  *************************************************************************/
 
-using System;
 using System.Threading.Tasks;
 using JMuelbert.BDE.Shared.Data;
 using JMuelbert.BDE.Shared.Models;
@@ -16,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace JMuelbert.BDE.Pages.ChipCardProfiles
+namespace JMuelbert.BDE.Pages.ChipCardDoors
 {
 	/// <summary>
 	/// Delete model.
@@ -34,23 +33,37 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
 		private readonly ILogger _logger;
 
 		/// <summary>
+		/// Localization
+		/// </summary>
+		private readonly IStringLocalizer<CreateModel> _localizer;
+
+		/// <summary>
+		/// Localization
+		/// </summary>
+		private readonly IStringLocalizer<CreateModel> _sharedLocalizer;
+		/// <summary>
 		/// Initializes a new instance of the <see
-		/// cref="T:JMuelbert.BDE.Pages.ChipCardProfiles.DeleteModel"/> class.
+		/// cref="T:JMuelbert.BDE.Pages.ChipCardDoors.DeleteModel"/> class.
 		/// </summary>
 		/// <param name="logger">Logger.</param>
+		/// <param name="localizer">localizer.</param>
+		/// <param name="sharedLocalizer">localizer.</param>
 		/// <param name="context">Context.</param>
-		public DeleteModel(ILogger<DeleteModel> logger, BDEContext context)
+		public DeleteModel(ILogger<CreateModel> logger, IStringLocalizer<CreateModel> localizer,
+						   IStringLocalizer<CreateModel> sharedLocalizer, BDEContext context)
 		{
 			_logger = logger;
+			_localizer = localizer;
+			_sharedLocalizer = sharedLocalizer;
 			_context = context;
 		}
 
 		/// <summary>
-		/// Gets or sets the chip card profile.
+		/// Gets or sets the chip card door.
 		/// </summary>
-		/// <value>The chip card profile.</value>
+		/// <value>The chip card door.</value>
 		[BindProperty]
-		public ChipCardProfile ChipCardProfile { get; set; }
+		public ChipCardDoor ChipCardDoor { get; set; }
 
 		/// <summary>
 		/// Gets or sets the error message.
@@ -66,27 +79,27 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
 		/// <param name="saveChangesError">Save changes error.</param>
 		public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
 		{
-			_logger.LogDebug(
-				$"ChipCardProfile/Delete/OnGetAsync: Getting item {id} - {saveChangesError}");
+			_logger.LogDebug($"ChipCardDoors/Delete/OnGetAsync({id}, {saveChangesError})");
 
 			if (id == null)
 			{
 				return NotFound();
 			}
 
-			ChipCardProfile = await _context.ChipCardProfile.AsNoTracking()
-								  .FirstOrDefaultAsync(m => m.ID == id)
-								  .ConfigureAwait(false);
+			ChipCardDoor = await _context.ChipCardDoor.AsNoTracking()
+							   .FirstOrDefaultAsync(m => m.ID == id)
+							   .ConfigureAwait(false);
 
-			if (ChipCardProfile == null)
+			if (ChipCardDoor == null)
 			{
 				return NotFound();
 			}
 
 			if (saveChangesError.GetValueOrDefault())
 			{
-				ErrorMessage = "Delete failed. Try again";
+				this.ErrorMessage = "Delete failed. Try again";
 			}
+
 			return Page();
 		}
 
@@ -97,25 +110,25 @@ namespace JMuelbert.BDE.Pages.ChipCardProfiles
 		/// <param name="id">Identifier.</param>
 		public async Task<IActionResult> OnPostAsync(int? id)
 		{
-			_logger.LogDebug($"ChipCardProfile/Delete/OnPostAsync: Getting item {id}");
+			_logger.LogDebug($"ChipCardDoors/Delete/OnPostAsync ({id})");
 
 			if (id == null)
 			{
 				return NotFound();
 			}
 
-			var chipcardprofile = await _context.ChipCardProfile.AsNoTracking()
-									  .FirstOrDefaultAsync(c => c.ID == id)
-									  .ConfigureAwait(false);
+			var chipcarddoor = await _context.ChipCardDoor.AsNoTracking()
+								   .FirstOrDefaultAsync(m => m.ID == id)
+								   .ConfigureAwait(false);
 
-			if (chipcardprofile == null)
+			if (chipcarddoor == null)
 			{
 				return NotFound();
 			}
 
 			try
 			{
-				_context.ChipCardProfile.Remove(chipcardprofile);
+				_context.ChipCardDoor.Remove(chipcarddoor);
 				await _context.SaveChangesAsync().ConfigureAwait(false);
 				return RedirectToPage("./Index");
 			}

@@ -15,9 +15,11 @@ Hsts
 jmbde
 jobtitle
 lastupdate
+mkdocs
 Mülbert
 OSID
 papersize
 systemaccount
 systemdata
+wwwroot
 zipcode
