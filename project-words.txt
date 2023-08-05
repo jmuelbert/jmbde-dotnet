@@ -1,4 +1,5 @@
 appsettings
+astro
 Autoincrement
 chipcard
 chipcarddoor

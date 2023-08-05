@@ -22,7 +22,7 @@ namespace JMuelbert.BDE
     /// <summary>
     /// Program.
     /// </summary>
-    public static class Program
+    public class Program
     {
         public static readonly Dictionary<string, string> switchMappings =
             new Dictionary<string, string> { { "-Help", "Help" } };
