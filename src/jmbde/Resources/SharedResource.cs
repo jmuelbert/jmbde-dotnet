@@ -1,4 +1,4 @@
-﻿/**************************************************************************
+/**************************************************************************
  **
  ** SPDX-FileCopyrightText: © 2016-2023 Jürgen Mülbert
  **
@@ -8,5 +8,5 @@
 
 namespace JMuelbert.BDE
 {
-	public class SharedResource { }
+    public class SharedResource { }
 }

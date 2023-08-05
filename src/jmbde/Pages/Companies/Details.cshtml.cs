@@ -1,4 +1,4 @@
-﻿/**************************************************************************
+/**************************************************************************
  **
  ** SPDX-FileCopyrightText: 2016-2023 Jürgen Mülbert
  ** Copyright (c) 2016-2023 Jürgen Mülbert. All rights reserved.
@@ -18,60 +18,60 @@ using Microsoft.Extensions.Logging;
 
 namespace JMuelbert.BDE.Pages.Companies
 {
-	/// <summary>
-	/// Details model.
-	/// </summary>
-	public class DetailsModel : PageModel
-	{
-		/// <summary>
-		/// The context.
-		/// </summary>
-		private readonly BDEContext _context;
+    /// <summary>
+    /// Details model.
+    /// </summary>
+    public class DetailsModel : PageModel
+    {
+        /// <summary>
+        /// The context.
+        /// </summary>
+        private readonly BDEContext _context;
 
-		/// <summary>
-		/// The logger.
-		/// </summary>
-		private readonly ILogger _logger;
+        /// <summary>
+        /// The logger.
+        /// </summary>
+        private readonly ILogger _logger;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Companies.DetailsModel"/>
-		/// class.
-		/// </summary>
-		/// <param name="logger"></param>
-		/// <param name="context"></param>
-		public DetailsModel(ILogger<DetailsModel> logger, BDEContext context)
-		{
-			_logger = logger;
-			_context = context;
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Companies.DetailsModel"/>
+        /// class.
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="context"></param>
+        public DetailsModel(ILogger<DetailsModel> logger, BDEContext context)
+        {
+            _logger = logger;
+            _context = context;
+        }
 
-		/// <summary>
-		/// Gets or sets the company.
-		/// </summary>
-		/// <value>The company.</value>
-		public Company Company { get; set; }
+        /// <summary>
+        /// Gets or sets the company.
+        /// </summary>
+        /// <value>The company.</value>
+        public Company Company { get; set; }
 
-		/// <summary>
-		/// Ons the get async.
-		/// </summary>
-		/// <returns>The get async.</returns>
-		/// <param name="id">Identifier.</param>
-		public async Task<IActionResult> OnGetAsync(int? id)
-		{
-			_logger.LogDebug("Companies/Details/OnGetAsync");
+        /// <summary>
+        /// Ons the get async.
+        /// </summary>
+        /// <returns>The get async.</returns>
+        /// <param name="id">Identifier.</param>
+        public async Task<IActionResult> OnGetAsync(int? id)
+        {
+            _logger.LogDebug("Companies/Details/OnGetAsync");
 
-			if (id == null)
-			{
-				return NotFound();
-			}
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-			Company = await _context.Company.SingleOrDefaultAsync(m => m.ID == id).ConfigureAwait(false);
+            Company = await _context.Company.SingleOrDefaultAsync(m => m.ID == id).ConfigureAwait(false);
 
-			if (Company == null)
-			{
-				return NotFound();
-			}
-			return Page();
-		}
-	}
+            if (Company == null)
+            {
+                return NotFound();
+            }
+            return Page();
+        }
+    }
 }

@@ -1,4 +1,4 @@
-﻿/**************************************************************************
+/**************************************************************************
  **
  ** SPDX-FileCopyrightText: 2016-2023 Jürgen Mülbert
  ** Copyright (c) 2016-2023 Jürgen Mülbert. All rights reserved.
@@ -18,113 +18,113 @@ using Microsoft.Extensions.Logging;
 
 namespace JMuelbert.BDE.Pages.Places
 {
-	/// <summary>
-	/// Delete model.
-	/// </summary>
-	public class DeleteModel : PageModel
-	{
-		/// <summary>
-		/// The context.
-		/// </summary>
-		private readonly BDEContext _context;
+    /// <summary>
+    /// Delete model.
+    /// </summary>
+    public class DeleteModel : PageModel
+    {
+        /// <summary>
+        /// The context.
+        /// </summary>
+        private readonly BDEContext _context;
 
-		/// <summary>
-		/// The logger.
-		/// </summary>
-		private readonly ILogger _logger;
+        /// <summary>
+        /// The logger.
+        /// </summary>
+        private readonly ILogger _logger;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Places.IndexModel"/>
-		/// class.
-		/// </summary>
-		/// <param name="logger">Logger.</param>
-		/// <param name="context">Context.</param>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:JMuelbert.BDE.Pages.Places.IndexModel"/>
+        /// class.
+        /// </summary>
+        /// <param name="logger">Logger.</param>
+        /// <param name="context">Context.</param>
 
-		public DeleteModel(ILogger<DeleteModel> logger, BDEContext context)
-		{
-			_logger = logger;
-			_context = context;
-		}
+        public DeleteModel(ILogger<DeleteModel> logger, BDEContext context)
+        {
+            _logger = logger;
+            _context = context;
+        }
 
-		/// <summary>
-		/// Gets or sets the Place.
-		/// </summary>
-		/// <value>The Place.</value>
-		[BindProperty]
-		public Place Place { get; set; }
+        /// <summary>
+        /// Gets or sets the Place.
+        /// </summary>
+        /// <value>The Place.</value>
+        [BindProperty]
+        public Place Place { get; set; }
 
-		/// <summary>
-		/// Gets or sets the ErrorMessage.
-		/// </summary>
-		/// <value>The ErrorMessage.</value>
-		public string ErrorMessage { get; set; }
+        /// <summary>
+        /// Gets or sets the ErrorMessage.
+        /// </summary>
+        /// <value>The ErrorMessage.</value>
+        public string ErrorMessage { get; set; }
 
-		/// <summary>
-		/// Ons the get async.
-		/// </summary>
-		/// <returns>The get async.</returns>
-		/// <param name="id">Identifier.</param>
-		/// <param name="saveChangesError">Save changes error.</param>
-		public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
-		{
-			_logger.LogDebug($"Places/Delete/OnGetAsync({id}, {saveChangesError})");
+        /// <summary>
+        /// Ons the get async.
+        /// </summary>
+        /// <returns>The get async.</returns>
+        /// <param name="id">Identifier.</param>
+        /// <param name="saveChangesError">Save changes error.</param>
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
+        {
+            _logger.LogDebug($"Places/Delete/OnGetAsync({id}, {saveChangesError})");
 
-			if (id == null)
-			{
-				return NotFound();
-			}
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-			Place = await _context.Place.AsNoTracking()
-						.FirstOrDefaultAsync(p => p.ID == id)
-						.ConfigureAwait(false);
+            Place = await _context.Place.AsNoTracking()
+                        .FirstOrDefaultAsync(p => p.ID == id)
+                        .ConfigureAwait(false);
 
-			if (Place == null)
-			{
-				return NotFound();
-			}
+            if (Place == null)
+            {
+                return NotFound();
+            }
 
-			if (saveChangesError.GetValueOrDefault())
-			{
-				ErrorMessage = "Delete failed. Try again";
-			}
-			return Page();
-		}
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
+            }
+            return Page();
+        }
 
-		/// <summary>
-		/// Ons the post async.
-		/// </summary>
-		/// <returns>The post async.</returns>
-		/// <param name="id">Identifier.</param>
-		public async Task<IActionResult> OnPostAsync(int? id)
-		{
-			_logger.LogDebug($"Places/Delete/OnPostAsync ({id})");
+        /// <summary>
+        /// Ons the post async.
+        /// </summary>
+        /// <returns>The post async.</returns>
+        /// <param name="id">Identifier.</param>
+        public async Task<IActionResult> OnPostAsync(int? id)
+        {
+            _logger.LogDebug($"Places/Delete/OnPostAsync ({id})");
 
-			if (id == null)
-			{
-				return NotFound();
-			}
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-			var place = await _context.Place.AsNoTracking()
-							.FirstOrDefaultAsync(p => p.ID == id)
-							.ConfigureAwait(false);
+            var place = await _context.Place.AsNoTracking()
+                            .FirstOrDefaultAsync(p => p.ID == id)
+                            .ConfigureAwait(false);
 
-			if (place == null)
-			{
-				return NotFound();
-			}
+            if (place == null)
+            {
+                return NotFound();
+            }
 
-			try
-			{
-				_context.Place.Remove(place);
-				await _context.SaveChangesAsync().ConfigureAwait(false);
-				return RedirectToPage("./Index");
-			}
-			catch (DbUpdateException ex)
-			{
-				_logger.LogError("Places/Delete {0}", ex.ToString());
+            try
+            {
+                _context.Place.Remove(place);
+                await _context.SaveChangesAsync().ConfigureAwait(false);
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError("Places/Delete {0}", ex.ToString());
 
-				return RedirectToAction("./Delete", new { id, saveChangesError = true });
-			}
-		}
-	}
+                return RedirectToAction("./Delete", new { id, saveChangesError = true });
+            }
+        }
+    }
 }
