@@ -30,7 +30,7 @@ on:
 
 permissions:
   contents: read
-      
+
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
@@ -42,10 +42,6 @@ env:
   DOTNET_SDK_VERSION: 7.0.x
   NET_CORE_VERSION: net7.0
   NET_FRAMEWORK_VERSION: net48
-
-concurrency:
-  group: ${{ github.ref }}-${{ github.workflow }}
-  cancel-in-progress: true
 
 jobs:
   build:
