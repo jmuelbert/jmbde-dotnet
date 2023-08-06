@@ -30,9 +30,9 @@
 - [ ] If there are changes of the text displayed in the UI, they are wrapped in `tr()` or
       `QCoreApplication::translate()`.
 - [ ] If needed, I have opened a pull request or an issue to update the
-      [documentation](http://jmuelbert.github.io/jmbde-aspnet/).
+      [documentation](http://jmuelbert.github.io/jmbde-dotnet/).
 - [ ] If these changes are notable, they are documented in
-      [CHANGELOG.md](https://github.com/jmuelbert/jmbde-aspnet/blob/master/CHANGELOG.md).
+      [CHANGELOG.md](https://github.com/jmuelbert/jmbde-dotnet/blob/master/CHANGELOG.md).
 
 ## Additional text
 

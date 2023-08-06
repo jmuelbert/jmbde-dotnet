@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2021 Jürgen Mülbert <juergen.muelbert@gmail.com>
+SPDX-FileCopyrightText: 2021-2023 Jürgen Mülbert <juergen.muelbert@gmail.com>
 
 SPDX-License-Identifier: CC-BY-4.0
 -->
@@ -12,41 +12,18 @@ anderem Computer, Drucker und Telefone.
 
 ---
 
-[![Build](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/build.yml/badge.svg)](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/build.yml)
-[![GitHub All Releases](https://img.shields.io/github/downloads/jmuelbert/jmbde-aspnet/total?label=downloads%40all)](https://github.com/jmuelbert/jmbde-aspnet/releases)
-[![Codacy Security Scan](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/codacy-analysis.yml/badge.svg)](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/codacy-analysis.yml)
-[![CodeQL](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/codeql-analysis.yml)
-[![DevSkim](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/devskim-analysis.yml/badge.svg)](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/devskim-analysis.yml)
-[![OSSAR](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/ossar-analysis.yml/badge.svg)](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/ossar-analysis.yml)
-[![Sonar Cloud Scan](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/sonarcloud-analysis.yml/badge.svg)](https://github.com/jmuelbert/jmbde-aspnet/actions/workflows/sonarcloud-analysis.yml)
-[![License](https://img.shields.io/github/license/jmuelbert/jmbde-aspnet)](https://github.com/jmuelbert/jmbde-aspnet/blob/master/LICENSE)
-[![jmbde-aspnet.github.io][docs-badge]][docs]
+[![Build][ci-badge]][ci-url]
+[![GitHub All Releases](https://img.shields.io/github/downloads/jmuelbert/jmbde-dotnet/total?label=downloads%40all)](https://github.com/jmuelbert/jmbde-dotnet/releases)
+[![Codacy Security Scan](https://github.com/jmuelbert/jmbde-dotnet/actions/workflows/codacy-analysis.yml/badge.svg)](https://github.com/jmuelbert/jmbde-dotnet/actions/workflows/codacy-analysis.yml)
+[![CodeQL](https://github.com/jmuelbert/jmbde-dotnet/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/jmuelbert/jmbde-dotnet/actions/workflows/codeql-analysis.yml)
+[![DevSkim](https://github.com/jmuelbert/jmbde-dotnet/actions/workflows/devskim-analysis.yml/badge.svg)](https://github.com/jmuelbert/jmbde-dotnet/actions/workflows/devskim-analysis.yml)
+[![OSSAR](https://github.com/jmuelbert/jmbde-dotnet/actions/workflows/ossar-analysis.yml/badge.svg)](https://github.com/jmuelbert/jmbde-dotnet/actions/workflows/ossar-analysis.yml)
+[![License](https://img.shields.io/github/license/jmuelbert/jmbde-dotnet)](https://github.com/jmuelbert/jmbde-dotnet/blob/master/LICENSE)
+[![jmbde-dotnet.github.io][docs-badge]][docs]
 
 [Features](https://github.com/jmuelbert/jmbde-aspnet) |
-[Documentation](https://jmuelbert.github.io/jmbde-aspnet/) | [Changelog](CHANGELOG.md) |
-[Contributing](CONTRIBUTING.md) | [FAQ](https://github.com/jmuelbert/jmbde-aspnet/wiki/FAQ) |
-[english](README_en.md)
-
-<!-- toc -->
-
-- [Setup](#setup)
-- [Unterstützte Plattformen](#unterstutzte-plattformen)
-- [Ausführen](#ausfuhren)
-  - [Unix](#unix)
-  - [Windows](#windows)
-  - [macOS](#macos)
-- [Anforderungen und Fehlerberichte](#anforderungen-und-fehlerberichte)
-- [Fragen und Kommentare](#fragen-und-kommentare)
-- [Wiki](#wiki)
-- [Code-Quellen](#code-quellen)
-- [Programm erstellen](#programm-erstellen)
-  - [Abhängigkeiten](#abhangigkeiten)
-    - [Für die Release-Version](#fur-die-release-version)
-    - [Für die Debug-Version](#fur-die-debug-version)
-- [Installation](#installation)
-- [License](#license)
-
-<!-- tocstop -->
+[Documentation](https://jmuelbert.github.io/jmbde-dotnet/) | [Changelog](CHANGELOG.md) |
+[Contributing](CONTRIBUTING.md) | [FAQ](https://github.com/jmuelbert/jmbde-dotnet/wiki/FAQ) 
 
 ## Setup
 
@@ -71,22 +48,22 @@ ausführen können.
 
 ## Anforderungen und Fehlerberichte
 
-- [GitHub issues (preferred)](https://github.com/jmuelbert/jmbde-aspnet/issues)
+- [GitHub issues (preferred)](https://github.com/jmuelbert/jmbde-dotnet/issues)
 
 ## Fragen und Kommentare
 
 ## Wiki
 
-- [Main Page](https://github.com/jmuelbert/jmbde-aspnet/wiki)
-- [User Manual](http://jmuelbert.github.io/jmbde-aspnet/)
+- [Main Page](https://github.com/jmuelbert/jmbde-dotnet/wiki)
+- [User Manual](http://jmuelbert.github.io/jmbde-dotnet/)
 
 ## Code-Quellen
 
 In dem master branch befindet sich der aktuellste Pre-Release Code.
 
-- [Releases](https://github.com/jmuelbert/jmbde-aspnet/releases)
+- [Releases](https://github.com/jmuelbert/jmbde-dotnet/releases)
 
-- [Milestones](https://github.com/jmuelbert/jmbde-aspnet/milestones)
+- [Milestones](https://github.com/jmuelbert/jmbde-dotnet/milestones)
 
 ## Programm erstellen
 
@@ -125,10 +102,12 @@ Sie können nun `jmbde` mit dem Befehl `bin/jmbde` aus der Kommandozeile starten
 
 ## License
 
-EUPL-1.2 © [Jürgen Mülbert](https://github.com/jmuelbert/jmbde-aspnet/blob/master/LICENSE)
+EUPL-1.2 © [Jürgen Mülbert](https://github.com/jmuelbert/jmbde-dotnet/blob/master/LICENSE)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [docs-badge]: https://img.shields.io/badge/Docs-github.io-blue
 [docs]: https://jmuelbert.github.io/jmbde-QT/
+[ci-badge]: https://github.com/jmuelbert/jmbde-dotnet/actions/workflows/ci.yml/badge.svg
+[ci-url]: https://github.com/jmuelbert/jmbde-dotnet/actions/workflows/ci.yml
