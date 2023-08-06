@@ -1,294 +1,778 @@
 # Changelog
 
-## [Unreleased](https://github.com/jmuelbert/jmbde-aspnet/tree/HEAD)
+## [Unreleased](https://github.com/jmuelbert/jmbde-dotnet/tree/HEAD)
 
-[Full Changelog](https://github.com/jmuelbert/jmbde-aspnet/compare/V0.4.0...HEAD)
+[Full Changelog](https://github.com/jmuelbert/jmbde-dotnet/compare/V0.4.0...HEAD)
 
 **Implemented enhancements:**
 
-- pr: Update workflows [\#278](https://github.com/jmuelbert/jmbde-aspnet/pull/278) ([jmuelbert](https://github.com/jmuelbert))
+- pr: Update workflows [\#278](https://github.com/jmuelbert/jmbde-dotnet/pull/278)
+  ([jmuelbert](https://github.com/jmuelbert))
 
 **Closed issues:**
 
-- Initial Update [\#3](https://github.com/jmuelbert/jmbde-aspnet/issues/3)
+- Initial Update [\#3](https://github.com/jmuelbert/jmbde-dotnet/issues/3)
 
 **Merged pull requests:**
 
-- build\(deps\): bump FluentValidation from 10.3.3 to 10.3.4 [\#309](https://github.com/jmuelbert/jmbde-aspnet/pull/309) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.NET.Test.Sdk from 16.11.0 to 17.0.0 [\#307](https://github.com/jmuelbert/jmbde-aspnet/pull/307) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.AspNetCore.Identity.UI from 5.0.10 to 6.0.0 [\#306](https://github.com/jmuelbert/jmbde-aspnet/pull/306) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.VisualStudio.Web.CodeGeneration.Design from 5.0.2 to 6.0.0 [\#305](https://github.com/jmuelbert/jmbde-aspnet/pull/305) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.EntityFrameworkCore.Tools from 5.0.10 to 6.0.0 [\#304](https://github.com/jmuelbert/jmbde-aspnet/pull/304) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.VisualStudio.Web.CodeGeneration.Utils from 5.0.2 to 6.0.0 [\#303](https://github.com/jmuelbert/jmbde-aspnet/pull/303) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.11 to 6.0.0 [\#302](https://github.com/jmuelbert/jmbde-aspnet/pull/302) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.EntityFrameworkCore.Design from 5.0.11 to 6.0.0 [\#301](https://github.com/jmuelbert/jmbde-aspnet/pull/301) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.11 to 6.0.0 [\#300](https://github.com/jmuelbert/jmbde-aspnet/pull/300) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump gittools/actions from 0.9.10 to 0.9.11 [\#299](https://github.com/jmuelbert/jmbde-aspnet/pull/299) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.10 to 6.0.0 [\#298](https://github.com/jmuelbert/jmbde-aspnet/pull/298) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.EntityFrameworkCore.InMemory from 5.0.10 to 6.0.0 [\#297](https://github.com/jmuelbert/jmbde-aspnet/pull/297) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.10 to 6.0.0 [\#296](https://github.com/jmuelbert/jmbde-aspnet/pull/296) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump actions/checkout from 2.3.5 to 2.4.0 [\#295](https://github.com/jmuelbert/jmbde-aspnet/pull/295) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump peter-evans/create-pull-request from 3.10.1 to 3.11.0 [\#294](https://github.com/jmuelbert/jmbde-aspnet/pull/294) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump heinrichreimer/github-changelog-generator-action from 2.2 to 2.3 [\#293](https://github.com/jmuelbert/jmbde-aspnet/pull/293) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Roslyn.Diagnostics.Analyzers from 3.3.2 to 3.3.3 [\#292](https://github.com/jmuelbert/jmbde-aspnet/pull/292) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.CodeAnalysis.Analyzers from 3.3.2 to 3.3.3 [\#291](https://github.com/jmuelbert/jmbde-aspnet/pull/291) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.10 to 5.0.11 [\#289](https://github.com/jmuelbert/jmbde-aspnet/pull/289) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.EntityFrameworkCore.Design from 5.0.9 to 5.0.11 [\#286](https://github.com/jmuelbert/jmbde-aspnet/pull/286) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.9 to 5.0.11 [\#285](https://github.com/jmuelbert/jmbde-aspnet/pull/285) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump actions/checkout from 2.3.4 to 2.3.5 [\#284](https://github.com/jmuelbert/jmbde-aspnet/pull/284) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.EntityFrameworkCore.Tools from 5.0.10 to 5.0.11 [\#283](https://github.com/jmuelbert/jmbde-aspnet/pull/283) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump tomwhross/write-good-action from 1.2 to 1.5 [\#282](https://github.com/jmuelbert/jmbde-aspnet/pull/282) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump david-a-wheeler/flawfinder from 2.0.19.pre.alpha1 to 2.0.19 [\#281](https://github.com/jmuelbert/jmbde-aspnet/pull/281) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump Microsoft.AspNetCore.Identity.UI from 5.0.9 to 5.0.10 [\#280](https://github.com/jmuelbert/jmbde-aspnet/pull/280) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump codacy/codacy-analysis-cli-action from 1.1.0 to 4.0.0 [\#279](https://github.com/jmuelbert/jmbde-aspnet/pull/279) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.UI from 5.0.9 to 5.0.10 [\#275](https://github.com/jmuelbert/jmbde-aspnet/pull/275) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.9 to 5.0.10 [\#274](https://github.com/jmuelbert/jmbde-aspnet/pull/274) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.9 to 5.0.10 [\#273](https://github.com/jmuelbert/jmbde-aspnet/pull/273) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.9 to 5.0.10 [\#272](https://github.com/jmuelbert/jmbde-aspnet/pull/272) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.7 to 5.0.10 [\#271](https://github.com/jmuelbert/jmbde-aspnet/pull/271) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.9 to 5.0.10 [\#270](https://github.com/jmuelbert/jmbde-aspnet/pull/270) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore from 5.0.9 to 5.0.10 [\#268](https://github.com/jmuelbert/jmbde-aspnet/pull/268) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/setup-dotnet from 1.8.1 to 1.8.2 [\#267](https://github.com/jmuelbert/jmbde-aspnet/pull/267) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump jfversluis/dotnet-format from 1.0.7 to 1.0.8 [\#266](https://github.com/jmuelbert/jmbde-aspnet/pull/266) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Bogus from 33.0.2 to 33.1.1 [\#265](https://github.com/jmuelbert/jmbde-aspnet/pull/265) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump FluentValidation from 10.3.1 to 10.3.3 [\#264](https://github.com/jmuelbert/jmbde-aspnet/pull/264) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump peter-evans/create-pull-request from 3.10.0 to 3.10.1 [\#263](https://github.com/jmuelbert/jmbde-aspnet/pull/263) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump FluentValidation from 10.3.0 to 10.3.1 [\#262](https://github.com/jmuelbert/jmbde-aspnet/pull/262) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore from 5.0.8 to 5.0.9 [\#261](https://github.com/jmuelbert/jmbde-aspnet/pull/261) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.8 to 5.0.9 [\#260](https://github.com/jmuelbert/jmbde-aspnet/pull/260) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.NET.Test.Sdk from 16.10.0 to 16.11.0 [\#259](https://github.com/jmuelbert/jmbde-aspnet/pull/259) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.8 to 5.0.9 [\#258](https://github.com/jmuelbert/jmbde-aspnet/pull/258) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore from 5.0.8 to 5.0.9 [\#257](https://github.com/jmuelbert/jmbde-aspnet/pull/257) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.8 to 5.0.9 [\#256](https://github.com/jmuelbert/jmbde-aspnet/pull/256) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.8 to 5.0.9 [\#255](https://github.com/jmuelbert/jmbde-aspnet/pull/255) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Design from 5.0.8 to 5.0.9 [\#254](https://github.com/jmuelbert/jmbde-aspnet/pull/254) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.8 to 5.0.9 [\#252](https://github.com/jmuelbert/jmbde-aspnet/pull/252) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.UI from 5.0.8 to 5.0.9 [\#251](https://github.com/jmuelbert/jmbde-aspnet/pull/251) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Design from 5.0.7 to 5.0.8 [\#250](https://github.com/jmuelbert/jmbde-aspnet/pull/250) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump coverlet.collector from 3.0.3 to 3.1.0 [\#249](https://github.com/jmuelbert/jmbde-aspnet/pull/249) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.7 to 5.0.8 [\#248](https://github.com/jmuelbert/jmbde-aspnet/pull/248) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.7 to 5.0.8 [\#247](https://github.com/jmuelbert/jmbde-aspnet/pull/247) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.7 to 5.0.8 [\#246](https://github.com/jmuelbert/jmbde-aspnet/pull/246) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.7 to 5.0.8 [\#245](https://github.com/jmuelbert/jmbde-aspnet/pull/245) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/stale from 3.0.19 to 4 [\#244](https://github.com/jmuelbert/jmbde-aspnet/pull/244) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.6 to 5.0.8 [\#243](https://github.com/jmuelbert/jmbde-aspnet/pull/243) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.UI from 5.0.6 to 5.0.8 [\#242](https://github.com/jmuelbert/jmbde-aspnet/pull/242) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Design from 5.0.7 to 5.0.8 [\#241](https://github.com/jmuelbert/jmbde-aspnet/pull/241) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore from 5.0.7 to 5.0.8 [\#240](https://github.com/jmuelbert/jmbde-aspnet/pull/240) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.7 to 5.0.8 [\#239](https://github.com/jmuelbert/jmbde-aspnet/pull/239) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump FluentValidation from 10.2.3 to 10.3.0 [\#238](https://github.com/jmuelbert/jmbde-aspnet/pull/238) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump gittools/actions from 0.9.9 to 0.9.10 [\#237](https://github.com/jmuelbert/jmbde-aspnet/pull/237) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/setup-dotnet from 1.7.2 to 1.8.1 [\#236](https://github.com/jmuelbert/jmbde-aspnet/pull/236) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump jfversluis/dotnet-format from 1.0.6 to 1.0.7 [\#235](https://github.com/jmuelbert/jmbde-aspnet/pull/235) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore from 5.0.6 to 5.0.7 [\#234](https://github.com/jmuelbert/jmbde-aspnet/pull/234) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.6 to 5.0.7 [\#233](https://github.com/jmuelbert/jmbde-aspnet/pull/233) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.6 to 5.0.7 [\#232](https://github.com/jmuelbert/jmbde-aspnet/pull/232) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.6 to 5.0.7 [\#230](https://github.com/jmuelbert/jmbde-aspnet/pull/230) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.6 to 5.0.7 [\#229](https://github.com/jmuelbert/jmbde-aspnet/pull/229) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Design from 5.0.6 to 5.0.7 [\#227](https://github.com/jmuelbert/jmbde-aspnet/pull/227) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.6 to 5.0.7 [\#226](https://github.com/jmuelbert/jmbde-aspnet/pull/226) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.6 to 5.0.7 [\#225](https://github.com/jmuelbert/jmbde-aspnet/pull/225) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore from 5.0.6 to 5.0.7 [\#224](https://github.com/jmuelbert/jmbde-aspnet/pull/224) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump FluentValidation from 10.1.0 to 10.2.3 [\#223](https://github.com/jmuelbert/jmbde-aspnet/pull/223) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.NET.Test.Sdk from 16.9.4 to 16.10.0 [\#220](https://github.com/jmuelbert/jmbde-aspnet/pull/220) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump peter-evans/create-pull-request from 3.9.2 to 3.10.0 [\#219](https://github.com/jmuelbert/jmbde-aspnet/pull/219) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump peter-evans/create-pull-request from 3.9.1 to 3.9.2 [\#218](https://github.com/jmuelbert/jmbde-aspnet/pull/218) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.UI from 5.0.4 to 5.0.6 [\#217](https://github.com/jmuelbert/jmbde-aspnet/pull/217) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.4 to 5.0.6 [\#216](https://github.com/jmuelbert/jmbde-aspnet/pull/216) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.4 to 5.0.6 [\#215](https://github.com/jmuelbert/jmbde-aspnet/pull/215) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore from 5.0.4 to 5.0.6 [\#214](https://github.com/jmuelbert/jmbde-aspnet/pull/214) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.4 to 5.0.6 [\#213](https://github.com/jmuelbert/jmbde-aspnet/pull/213) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/stale from 3.0.18 to 3.0.19 [\#212](https://github.com/jmuelbert/jmbde-aspnet/pull/212) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.4 to 5.0.6 [\#211](https://github.com/jmuelbert/jmbde-aspnet/pull/211) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.4 to 5.0.6 [\#210](https://github.com/jmuelbert/jmbde-aspnet/pull/210) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump jfversluis/dotnet-format from 1.0.5 to 1.0.6 [\#209](https://github.com/jmuelbert/jmbde-aspnet/pull/209) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.UI from 5.0.4 to 5.0.6 [\#208](https://github.com/jmuelbert/jmbde-aspnet/pull/208) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.4 to 5.0.6 [\#207](https://github.com/jmuelbert/jmbde-aspnet/pull/207) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/checkout from 2 to 2.3.4 [\#206](https://github.com/jmuelbert/jmbde-aspnet/pull/206) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Design from 5.0.4 to 5.0.6 [\#205](https://github.com/jmuelbert/jmbde-aspnet/pull/205) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump peter-evans/create-pull-request from 3 to 3.9.1 [\#203](https://github.com/jmuelbert/jmbde-aspnet/pull/203) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump release-drafter/release-drafter from 5.14.0 to 5.15.0 [\#202](https://github.com/jmuelbert/jmbde-aspnet/pull/202) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump FluentValidation from 9.5.3 to 10.1.0 [\#200](https://github.com/jmuelbert/jmbde-aspnet/pull/200) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.NET.Test.Sdk from 16.9.1 to 16.9.4 [\#190](https://github.com/jmuelbert/jmbde-aspnet/pull/190) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump FluentValidation from 9.5.2 to 9.5.3 [\#188](https://github.com/jmuelbert/jmbde-aspnet/pull/188) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.3 to 5.0.4 [\#187](https://github.com/jmuelbert/jmbde-aspnet/pull/187) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.3 to 5.0.4 [\#186](https://github.com/jmuelbert/jmbde-aspnet/pull/186) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore from 5.0.3 to 5.0.4 [\#185](https://github.com/jmuelbert/jmbde-aspnet/pull/185) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.3 to 5.0.4 [\#184](https://github.com/jmuelbert/jmbde-aspnet/pull/184) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.UI from 5.0.3 to 5.0.4 [\#183](https://github.com/jmuelbert/jmbde-aspnet/pull/183) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.3 to 5.0.4 [\#182](https://github.com/jmuelbert/jmbde-aspnet/pull/182) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.3 to 5.0.4 [\#181](https://github.com/jmuelbert/jmbde-aspnet/pull/181) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.3 to 5.0.4 [\#180](https://github.com/jmuelbert/jmbde-aspnet/pull/180) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Design from 5.0.3 to 5.0.4 [\#179](https://github.com/jmuelbert/jmbde-aspnet/pull/179) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.3 to 5.0.4 [\#178](https://github.com/jmuelbert/jmbde-aspnet/pull/178) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump FluentValidation from 9.5.1 to 9.5.2 [\#177](https://github.com/jmuelbert/jmbde-aspnet/pull/177) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/stale from v3.0.17 to v3.0.18 [\#176](https://github.com/jmuelbert/jmbde-aspnet/pull/176) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump gittools/actions from v0.9.7 to v0.9.9 [\#175](https://github.com/jmuelbert/jmbde-aspnet/pull/175) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.NET.Test.Sdk from 16.8.3 to 16.9.1 [\#174](https://github.com/jmuelbert/jmbde-aspnet/pull/174) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump coverlet.collector from 1.3.0 to 3.0.3 [\#173](https://github.com/jmuelbert/jmbde-aspnet/pull/173) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/stale from v3.0.16 to v3.0.17 [\#171](https://github.com/jmuelbert/jmbde-aspnet/pull/171) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump release-drafter/release-drafter from v5.13.0 to v5.14.0 [\#170](https://github.com/jmuelbert/jmbde-aspnet/pull/170) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore from 5.0.0 to 5.0.3 [\#169](https://github.com/jmuelbert/jmbde-aspnet/pull/169) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Bogus from 32.0.2 to 33.0.1 [\#168](https://github.com/jmuelbert/jmbde-aspnet/pull/168) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump AutoMapper.Extensions.Microsoft.DependencyInjection from 8.1.0 to 8.1.1 [\#167](https://github.com/jmuelbert/jmbde-aspnet/pull/167) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump FluentValidation from 9.5.0 to 9.5.1 [\#166](https://github.com/jmuelbert/jmbde-aspnet/pull/166) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.2 to 5.0.3 [\#165](https://github.com/jmuelbert/jmbde-aspnet/pull/165) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.UI from 5.0.2 to 5.0.3 [\#164](https://github.com/jmuelbert/jmbde-aspnet/pull/164) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Bogus from 32.0.2 to 33.0.1 [\#163](https://github.com/jmuelbert/jmbde-aspnet/pull/163) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.VisualStudio.Web.CodeGeneration.Design from 5.0.1 to 5.0.2 [\#162](https://github.com/jmuelbert/jmbde-aspnet/pull/162) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.2 to 5.0.3 [\#161](https://github.com/jmuelbert/jmbde-aspnet/pull/161) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.2 to 5.0.3 [\#160](https://github.com/jmuelbert/jmbde-aspnet/pull/160) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.2 to 5.0.3 [\#159](https://github.com/jmuelbert/jmbde-aspnet/pull/159) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump AutoMapper.Extensions.Microsoft.DependencyInjection from 8.1.0 to 8.1.1 [\#158](https://github.com/jmuelbert/jmbde-aspnet/pull/158) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.VisualStudio.Web.CodeGeneration.Utils from 5.0.1 to 5.0.2 [\#157](https://github.com/jmuelbert/jmbde-aspnet/pull/157) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.0 to 5.0.3 [\#156](https://github.com/jmuelbert/jmbde-aspnet/pull/156) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore from 5.0.0 to 5.0.3 [\#155](https://github.com/jmuelbert/jmbde-aspnet/pull/155) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Design from 5.0.0 to 5.0.3 [\#154](https://github.com/jmuelbert/jmbde-aspnet/pull/154) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.0 to 5.0.3 [\#153](https://github.com/jmuelbert/jmbde-aspnet/pull/153) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump peter-evans/create-pull-request from v3.5.1 to v3.8.2 [\#152](https://github.com/jmuelbert/jmbde-aspnet/pull/152) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/stale from v3.0.14 to v3.0.16 [\#150](https://github.com/jmuelbert/jmbde-aspnet/pull/150) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump FluentValidation from 9.4.0 to 9.5.0 [\#149](https://github.com/jmuelbert/jmbde-aspnet/pull/149) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.VisualStudio.Web.CodeGeneration.Utils from 5.0.0 to 5.0.1 [\#141](https://github.com/jmuelbert/jmbde-aspnet/pull/141) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.UI from 5.0.0 to 5.0.2 [\#140](https://github.com/jmuelbert/jmbde-aspnet/pull/140) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.CodeQuality.Analyzers from 3.3.1 to 3.3.2 [\#139](https://github.com/jmuelbert/jmbde-aspnet/pull/139) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.0 to 5.0.2 [\#138](https://github.com/jmuelbert/jmbde-aspnet/pull/138) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.CodeAnalysis.Analyzers from 3.3.1 to 3.3.2 [\#137](https://github.com/jmuelbert/jmbde-aspnet/pull/137) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.0 to 5.0.2 [\#136](https://github.com/jmuelbert/jmbde-aspnet/pull/136) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.0 to 5.0.2 [\#135](https://github.com/jmuelbert/jmbde-aspnet/pull/135) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.VisualStudio.Web.CodeGeneration.Design from 5.0.0 to 5.0.1 [\#134](https://github.com/jmuelbert/jmbde-aspnet/pull/134) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.NetFramework.Analyzers from 3.3.1 to 3.3.2 [\#133](https://github.com/jmuelbert/jmbde-aspnet/pull/133) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.0 to 5.0.2 [\#132](https://github.com/jmuelbert/jmbde-aspnet/pull/132) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.CodeAnalysis.FxCopAnalyzers from 3.3.1 to 3.3.2 [\#131](https://github.com/jmuelbert/jmbde-aspnet/pull/131) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump FluentValidation from 9.2.2 to 9.4.0 [\#130](https://github.com/jmuelbert/jmbde-aspnet/pull/130) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/download-artifact from v2.0.6 to v2.0.8 [\#129](https://github.com/jmuelbert/jmbde-aspnet/pull/129) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/upload-artifact from v2.2.1 to v2.2.2 [\#128](https://github.com/jmuelbert/jmbde-aspnet/pull/128) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump release-drafter/release-drafter from v5.12.1 to v5.13.0 [\#127](https://github.com/jmuelbert/jmbde-aspnet/pull/127) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump crazy-max/ghaction-github-labeler from v3.1.0 to v3.1.1 [\#125](https://github.com/jmuelbert/jmbde-aspnet/pull/125) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Bogus from 31.0.3 to 32.0.2 [\#123](https://github.com/jmuelbert/jmbde-aspnet/pull/123) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.NetCore.Analyzers from 3.3.1 to 3.3.2 [\#121](https://github.com/jmuelbert/jmbde-aspnet/pull/121) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Roslyn.Diagnostics.Analyzers from 3.3.1 to 3.3.2 [\#120](https://github.com/jmuelbert/jmbde-aspnet/pull/120) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.NET.Test.Sdk from 16.8.0 to 16.8.3 [\#119](https://github.com/jmuelbert/jmbde-aspnet/pull/119) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump peter-evans/create-pull-request from v2 to v3.5.1 [\#116](https://github.com/jmuelbert/jmbde-aspnet/pull/116) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/stale from v3.0.13 to v3.0.14 [\#115](https://github.com/jmuelbert/jmbde-aspnet/pull/115) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/upload-artifact from v2.2.0 to v2.2.1 [\#113](https://github.com/jmuelbert/jmbde-aspnet/pull/113) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/download-artifact from v2.0.5 to v2.0.6 [\#112](https://github.com/jmuelbert/jmbde-aspnet/pull/112) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.NET.Test.Sdk from 16.7.1 to 16.8.0 [\#111](https://github.com/jmuelbert/jmbde-aspnet/pull/111) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Design from 3.1.7 to 5.0.0 [\#110](https://github.com/jmuelbert/jmbde-aspnet/pull/110) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 3.1.7 to 5.0.0 [\#109](https://github.com/jmuelbert/jmbde-aspnet/pull/109) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.CodeAnalysis.FxCopAnalyzers from 3.3.0 to 3.3.1 [\#108](https://github.com/jmuelbert/jmbde-aspnet/pull/108) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.UI from 3.1.9 to 5.0.0 [\#107](https://github.com/jmuelbert/jmbde-aspnet/pull/107) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 3.1.7 to 5.0.0 [\#106](https://github.com/jmuelbert/jmbde-aspnet/pull/106) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlserver from 3.1.9 to 5.0.0 [\#105](https://github.com/jmuelbert/jmbde-aspnet/pull/105) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.NetFramework.Analyzers from 3.3.0 to 3.3.1 [\#104](https://github.com/jmuelbert/jmbde-aspnet/pull/104) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.CodeQuality.Analyzers from 3.3.0 to 3.3.1 [\#103](https://github.com/jmuelbert/jmbde-aspnet/pull/103) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Tools from 3.1.9 to 5.0.0 [\#102](https://github.com/jmuelbert/jmbde-aspnet/pull/102) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Roslyn.Diagnostics.Analyzers from 3.3.0 to 3.3.1 [\#101](https://github.com/jmuelbert/jmbde-aspnet/pull/101) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlite from 3.1.9 to 5.0.0 [\#100](https://github.com/jmuelbert/jmbde-aspnet/pull/100) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlserver from 3.1.9 to 5.0.0 [\#99](https://github.com/jmuelbert/jmbde-aspnet/pull/99) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.VisualStudio.Web.CodeGeneration.Utils from 3.1.4 to 5.0.0 [\#98](https://github.com/jmuelbert/jmbde-aspnet/pull/98) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.VisualStudio.Web.CodeGeneration.Design from 3.1.4 to 5.0.0 [\#97](https://github.com/jmuelbert/jmbde-aspnet/pull/97) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore from 3.1.7 to 5.0.0 [\#96](https://github.com/jmuelbert/jmbde-aspnet/pull/96) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.InMemory from 3.1.7 to 5.0.0 [\#95](https://github.com/jmuelbert/jmbde-aspnet/pull/95) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Bogus from 30.0.4 to 31.0.3 [\#93](https://github.com/jmuelbert/jmbde-aspnet/pull/93) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.NetCore.Analyzers from 3.3.0 to 3.3.1 [\#92](https://github.com/jmuelbert/jmbde-aspnet/pull/92) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.CodeAnalysis.Analyzers from 3.3.0 to 3.3.1 [\#91](https://github.com/jmuelbert/jmbde-aspnet/pull/91) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlite from 3.1.7 to 3.1.9 [\#89](https://github.com/jmuelbert/jmbde-aspnet/pull/89) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump AutoMapper from 10.0.0 to 10.1.1 [\#88](https://github.com/jmuelbert/jmbde-aspnet/pull/88) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump FluentValidation from 9.2.0 to 9.2.2 [\#87](https://github.com/jmuelbert/jmbde-aspnet/pull/87) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore from 3.1.7 to 3.1.9 [\#86](https://github.com/jmuelbert/jmbde-aspnet/pull/86) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump AutoMapper.Extensions.Microsoft.DependencyInjection from 8.0.1 to 8.1.0 [\#85](https://github.com/jmuelbert/jmbde-aspnet/pull/85) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/setup-dotnet from v1.7.0 to v1.7.2 [\#84](https://github.com/jmuelbert/jmbde-aspnet/pull/84) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump release-drafter/release-drafter from v5.11.0 to v5.12.1 [\#83](https://github.com/jmuelbert/jmbde-aspnet/pull/83) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Tools from 3.1.7 to 3.1.9 [\#81](https://github.com/jmuelbert/jmbde-aspnet/pull/81) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlserver from 3.1.7 to 3.1.9 [\#79](https://github.com/jmuelbert/jmbde-aspnet/pull/79) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.UI from 3.1.7 to 3.1.9 [\#78](https://github.com/jmuelbert/jmbde-aspnet/pull/78) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.InMemory from 3.1.7 to 3.1.9 [\#77](https://github.com/jmuelbert/jmbde-aspnet/pull/77) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/upload-artifact from v2.1.4 to v2.2.0 [\#76](https://github.com/jmuelbert/jmbde-aspnet/pull/76) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/setup-dotnet from v1 to v1.7.0 [\#75](https://github.com/jmuelbert/jmbde-aspnet/pull/75) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump FluentValidation from 9.1.3 to 9.2.0 [\#69](https://github.com/jmuelbert/jmbde-aspnet/pull/69) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.NET.Test.Sdk from 16.7.0 to 16.7.1 [\#68](https://github.com/jmuelbert/jmbde-aspnet/pull/68) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump FluentValidation from 9.1.2 to 9.1.3 [\#67](https://github.com/jmuelbert/jmbde-aspnet/pull/67) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 3.1.6 to 3.1.7 [\#66](https://github.com/jmuelbert/jmbde-aspnet/pull/66) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Design from 3.1.6 to 3.1.7 [\#65](https://github.com/jmuelbert/jmbde-aspnet/pull/65) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Tools from 3.1.6 to 3.1.7 [\#64](https://github.com/jmuelbert/jmbde-aspnet/pull/64) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Bogus from 30.0.2 to 30.0.4 [\#63](https://github.com/jmuelbert/jmbde-aspnet/pull/63) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.InMemory from 3.1.6 to 3.1.7 [\#62](https://github.com/jmuelbert/jmbde-aspnet/pull/62) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore from 3.1.6 to 3.1.7 [\#61](https://github.com/jmuelbert/jmbde-aspnet/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Identity.UI from 3.1.6 to 3.1.7 [\#60](https://github.com/jmuelbert/jmbde-aspnet/pull/60) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 3.1.6 to 3.1.7 [\#59](https://github.com/jmuelbert/jmbde-aspnet/pull/59) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Microsoft.EntityFrameworkCore.Sqlite from 3.1.6 to 3.1.7 [\#58](https://github.com/jmuelbert/jmbde-aspnet/pull/58) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/upload-artifact from v1.0.0 to v2.1.4 [\#57](https://github.com/jmuelbert/jmbde-aspnet/pull/57) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump actions/download-artifact from v1 to v2.0.5 [\#56](https://github.com/jmuelbert/jmbde-aspnet/pull/56) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump FluentValidation from 10.3.3 to 10.3.4
+  [\#309](https://github.com/jmuelbert/jmbde-dotnet/pull/309)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.NET.Test.Sdk from 16.11.0 to 17.0.0
+  [\#307](https://github.com/jmuelbert/jmbde-dotnet/pull/307)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.AspNetCore.Identity.UI from 5.0.10 to 6.0.0
+  [\#306](https://github.com/jmuelbert/jmbde-dotnet/pull/306)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.VisualStudio.Web.CodeGeneration.Design from 5.0.2 to 6.0.0
+  [\#305](https://github.com/jmuelbert/jmbde-dotnet/pull/305)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.EntityFrameworkCore.Tools from 5.0.10 to 6.0.0
+  [\#304](https://github.com/jmuelbert/jmbde-dotnet/pull/304)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.VisualStudio.Web.CodeGeneration.Utils from 5.0.2 to 6.0.0
+  [\#303](https://github.com/jmuelbert/jmbde-dotnet/pull/303)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.11 to 6.0.0
+  [\#302](https://github.com/jmuelbert/jmbde-dotnet/pull/302)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.EntityFrameworkCore.Design from 5.0.11 to 6.0.0
+  [\#301](https://github.com/jmuelbert/jmbde-dotnet/pull/301)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.11 to 6.0.0
+  [\#300](https://github.com/jmuelbert/jmbde-dotnet/pull/300)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump gittools/actions from 0.9.10 to 0.9.11
+  [\#299](https://github.com/jmuelbert/jmbde-dotnet/pull/299)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.10 to 6.0.0
+  [\#298](https://github.com/jmuelbert/jmbde-dotnet/pull/298)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.EntityFrameworkCore.InMemory from 5.0.10 to 6.0.0
+  [\#297](https://github.com/jmuelbert/jmbde-dotnet/pull/297)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.10 to 6.0.0
+  [\#296](https://github.com/jmuelbert/jmbde-dotnet/pull/296)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/checkout from 2.3.5 to 2.4.0
+  [\#295](https://github.com/jmuelbert/jmbde-dotnet/pull/295)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump peter-evans/create-pull-request from 3.10.1 to 3.11.0
+  [\#294](https://github.com/jmuelbert/jmbde-dotnet/pull/294)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump heinrichreimer/github-changelog-generator-action from 2.2 to 2.3
+  [\#293](https://github.com/jmuelbert/jmbde-dotnet/pull/293)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Roslyn.Diagnostics.Analyzers from 3.3.2 to 3.3.3
+  [\#292](https://github.com/jmuelbert/jmbde-dotnet/pull/292)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.CodeAnalysis.Analyzers from 3.3.2 to 3.3.3
+  [\#291](https://github.com/jmuelbert/jmbde-dotnet/pull/291)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.10 to 5.0.11
+  [\#289](https://github.com/jmuelbert/jmbde-dotnet/pull/289)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.EntityFrameworkCore.Design from 5.0.9 to 5.0.11
+  [\#286](https://github.com/jmuelbert/jmbde-dotnet/pull/286)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.9 to 5.0.11
+  [\#285](https://github.com/jmuelbert/jmbde-dotnet/pull/285)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/checkout from 2.3.4 to 2.3.5
+  [\#284](https://github.com/jmuelbert/jmbde-dotnet/pull/284)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.EntityFrameworkCore.Tools from 5.0.10 to 5.0.11
+  [\#283](https://github.com/jmuelbert/jmbde-dotnet/pull/283)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump tomwhross/write-good-action from 1.2 to 1.5
+  [\#282](https://github.com/jmuelbert/jmbde-dotnet/pull/282)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump david-a-wheeler/flawfinder from 2.0.19.pre.alpha1 to 2.0.19
+  [\#281](https://github.com/jmuelbert/jmbde-dotnet/pull/281)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump Microsoft.AspNetCore.Identity.UI from 5.0.9 to 5.0.10
+  [\#280](https://github.com/jmuelbert/jmbde-dotnet/pull/280)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump codacy/codacy-analysis-cli-action from 1.1.0 to 4.0.0
+  [\#279](https://github.com/jmuelbert/jmbde-dotnet/pull/279)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.UI from 5.0.9 to 5.0.10
+  [\#275](https://github.com/jmuelbert/jmbde-dotnet/pull/275)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.9 to 5.0.10
+  [\#274](https://github.com/jmuelbert/jmbde-dotnet/pull/274)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.9 to 5.0.10
+  [\#273](https://github.com/jmuelbert/jmbde-dotnet/pull/273)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.9 to 5.0.10
+  [\#272](https://github.com/jmuelbert/jmbde-dotnet/pull/272)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.7 to 5.0.10
+  [\#271](https://github.com/jmuelbert/jmbde-dotnet/pull/271)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.9 to 5.0.10
+  [\#270](https://github.com/jmuelbert/jmbde-dotnet/pull/270)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore from 5.0.9 to 5.0.10
+  [\#268](https://github.com/jmuelbert/jmbde-dotnet/pull/268)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/setup-dotnet from 1.8.1 to 1.8.2
+  [\#267](https://github.com/jmuelbert/jmbde-dotnet/pull/267)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump jfversluis/dotnet-format from 1.0.7 to 1.0.8
+  [\#266](https://github.com/jmuelbert/jmbde-dotnet/pull/266)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Bogus from 33.0.2 to 33.1.1 [\#265](https://github.com/jmuelbert/jmbde-dotnet/pull/265)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump FluentValidation from 10.3.1 to 10.3.3
+  [\#264](https://github.com/jmuelbert/jmbde-dotnet/pull/264)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump peter-evans/create-pull-request from 3.10.0 to 3.10.1
+  [\#263](https://github.com/jmuelbert/jmbde-dotnet/pull/263)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump FluentValidation from 10.3.0 to 10.3.1
+  [\#262](https://github.com/jmuelbert/jmbde-dotnet/pull/262)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore from 5.0.8 to 5.0.9
+  [\#261](https://github.com/jmuelbert/jmbde-dotnet/pull/261)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.8 to 5.0.9
+  [\#260](https://github.com/jmuelbert/jmbde-dotnet/pull/260)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NET.Test.Sdk from 16.10.0 to 16.11.0
+  [\#259](https://github.com/jmuelbert/jmbde-dotnet/pull/259)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.8 to 5.0.9
+  [\#258](https://github.com/jmuelbert/jmbde-dotnet/pull/258)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore from 5.0.8 to 5.0.9
+  [\#257](https://github.com/jmuelbert/jmbde-dotnet/pull/257)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.8 to 5.0.9
+  [\#256](https://github.com/jmuelbert/jmbde-dotnet/pull/256)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.8 to 5.0.9
+  [\#255](https://github.com/jmuelbert/jmbde-dotnet/pull/255)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Design from 5.0.8 to 5.0.9
+  [\#254](https://github.com/jmuelbert/jmbde-dotnet/pull/254)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.8 to 5.0.9
+  [\#252](https://github.com/jmuelbert/jmbde-dotnet/pull/252)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.UI from 5.0.8 to 5.0.9
+  [\#251](https://github.com/jmuelbert/jmbde-dotnet/pull/251)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Design from 5.0.7 to 5.0.8
+  [\#250](https://github.com/jmuelbert/jmbde-dotnet/pull/250)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump coverlet.collector from 3.0.3 to 3.1.0
+  [\#249](https://github.com/jmuelbert/jmbde-dotnet/pull/249)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.7 to 5.0.8
+  [\#248](https://github.com/jmuelbert/jmbde-dotnet/pull/248)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.7 to 5.0.8
+  [\#247](https://github.com/jmuelbert/jmbde-dotnet/pull/247)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.7 to 5.0.8
+  [\#246](https://github.com/jmuelbert/jmbde-dotnet/pull/246)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.7 to 5.0.8
+  [\#245](https://github.com/jmuelbert/jmbde-dotnet/pull/245)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/stale from 3.0.19 to 4 [\#244](https://github.com/jmuelbert/jmbde-dotnet/pull/244)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.6 to 5.0.8
+  [\#243](https://github.com/jmuelbert/jmbde-dotnet/pull/243)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.UI from 5.0.6 to 5.0.8
+  [\#242](https://github.com/jmuelbert/jmbde-dotnet/pull/242)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Design from 5.0.7 to 5.0.8
+  [\#241](https://github.com/jmuelbert/jmbde-dotnet/pull/241)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore from 5.0.7 to 5.0.8
+  [\#240](https://github.com/jmuelbert/jmbde-dotnet/pull/240)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.7 to 5.0.8
+  [\#239](https://github.com/jmuelbert/jmbde-dotnet/pull/239)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump FluentValidation from 10.2.3 to 10.3.0
+  [\#238](https://github.com/jmuelbert/jmbde-dotnet/pull/238)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump gittools/actions from 0.9.9 to 0.9.10
+  [\#237](https://github.com/jmuelbert/jmbde-dotnet/pull/237)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/setup-dotnet from 1.7.2 to 1.8.1
+  [\#236](https://github.com/jmuelbert/jmbde-dotnet/pull/236)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump jfversluis/dotnet-format from 1.0.6 to 1.0.7
+  [\#235](https://github.com/jmuelbert/jmbde-dotnet/pull/235)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore from 5.0.6 to 5.0.7
+  [\#234](https://github.com/jmuelbert/jmbde-dotnet/pull/234)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.6 to 5.0.7
+  [\#233](https://github.com/jmuelbert/jmbde-dotnet/pull/233)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.6 to 5.0.7
+  [\#232](https://github.com/jmuelbert/jmbde-dotnet/pull/232)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.6 to 5.0.7
+  [\#230](https://github.com/jmuelbert/jmbde-dotnet/pull/230)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.6 to 5.0.7
+  [\#229](https://github.com/jmuelbert/jmbde-dotnet/pull/229)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Design from 5.0.6 to 5.0.7
+  [\#227](https://github.com/jmuelbert/jmbde-dotnet/pull/227)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.6 to 5.0.7
+  [\#226](https://github.com/jmuelbert/jmbde-dotnet/pull/226)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.6 to 5.0.7
+  [\#225](https://github.com/jmuelbert/jmbde-dotnet/pull/225)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore from 5.0.6 to 5.0.7
+  [\#224](https://github.com/jmuelbert/jmbde-dotnet/pull/224)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump FluentValidation from 10.1.0 to 10.2.3
+  [\#223](https://github.com/jmuelbert/jmbde-dotnet/pull/223)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NET.Test.Sdk from 16.9.4 to 16.10.0
+  [\#220](https://github.com/jmuelbert/jmbde-dotnet/pull/220)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump peter-evans/create-pull-request from 3.9.2 to 3.10.0
+  [\#219](https://github.com/jmuelbert/jmbde-dotnet/pull/219)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump peter-evans/create-pull-request from 3.9.1 to 3.9.2
+  [\#218](https://github.com/jmuelbert/jmbde-dotnet/pull/218)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.UI from 5.0.4 to 5.0.6
+  [\#217](https://github.com/jmuelbert/jmbde-dotnet/pull/217)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.4 to 5.0.6
+  [\#216](https://github.com/jmuelbert/jmbde-dotnet/pull/216)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.4 to 5.0.6
+  [\#215](https://github.com/jmuelbert/jmbde-dotnet/pull/215)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore from 5.0.4 to 5.0.6
+  [\#214](https://github.com/jmuelbert/jmbde-dotnet/pull/214)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.4 to 5.0.6
+  [\#213](https://github.com/jmuelbert/jmbde-dotnet/pull/213)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/stale from 3.0.18 to 3.0.19
+  [\#212](https://github.com/jmuelbert/jmbde-dotnet/pull/212)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.4 to 5.0.6
+  [\#211](https://github.com/jmuelbert/jmbde-dotnet/pull/211)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.4 to 5.0.6
+  [\#210](https://github.com/jmuelbert/jmbde-dotnet/pull/210)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump jfversluis/dotnet-format from 1.0.5 to 1.0.6
+  [\#209](https://github.com/jmuelbert/jmbde-dotnet/pull/209)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.UI from 5.0.4 to 5.0.6
+  [\#208](https://github.com/jmuelbert/jmbde-dotnet/pull/208)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.4 to 5.0.6
+  [\#207](https://github.com/jmuelbert/jmbde-dotnet/pull/207)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/checkout from 2 to 2.3.4 [\#206](https://github.com/jmuelbert/jmbde-dotnet/pull/206)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Design from 5.0.4 to 5.0.6
+  [\#205](https://github.com/jmuelbert/jmbde-dotnet/pull/205)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump peter-evans/create-pull-request from 3 to 3.9.1
+  [\#203](https://github.com/jmuelbert/jmbde-dotnet/pull/203)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump release-drafter/release-drafter from 5.14.0 to 5.15.0
+  [\#202](https://github.com/jmuelbert/jmbde-dotnet/pull/202)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump FluentValidation from 9.5.3 to 10.1.0
+  [\#200](https://github.com/jmuelbert/jmbde-dotnet/pull/200)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NET.Test.Sdk from 16.9.1 to 16.9.4
+  [\#190](https://github.com/jmuelbert/jmbde-dotnet/pull/190)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump FluentValidation from 9.5.2 to 9.5.3
+  [\#188](https://github.com/jmuelbert/jmbde-dotnet/pull/188)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.3 to 5.0.4
+  [\#187](https://github.com/jmuelbert/jmbde-dotnet/pull/187)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.3 to 5.0.4
+  [\#186](https://github.com/jmuelbert/jmbde-dotnet/pull/186)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore from 5.0.3 to 5.0.4
+  [\#185](https://github.com/jmuelbert/jmbde-dotnet/pull/185)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.3 to 5.0.4
+  [\#184](https://github.com/jmuelbert/jmbde-dotnet/pull/184)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.UI from 5.0.3 to 5.0.4
+  [\#183](https://github.com/jmuelbert/jmbde-dotnet/pull/183)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.3 to 5.0.4
+  [\#182](https://github.com/jmuelbert/jmbde-dotnet/pull/182)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.3 to 5.0.4
+  [\#181](https://github.com/jmuelbert/jmbde-dotnet/pull/181)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.3 to 5.0.4
+  [\#180](https://github.com/jmuelbert/jmbde-dotnet/pull/180)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Design from 5.0.3 to 5.0.4
+  [\#179](https://github.com/jmuelbert/jmbde-dotnet/pull/179)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.3 to 5.0.4
+  [\#178](https://github.com/jmuelbert/jmbde-dotnet/pull/178)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump FluentValidation from 9.5.1 to 9.5.2
+  [\#177](https://github.com/jmuelbert/jmbde-dotnet/pull/177)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/stale from v3.0.17 to v3.0.18
+  [\#176](https://github.com/jmuelbert/jmbde-dotnet/pull/176)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump gittools/actions from v0.9.7 to v0.9.9
+  [\#175](https://github.com/jmuelbert/jmbde-dotnet/pull/175)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NET.Test.Sdk from 16.8.3 to 16.9.1
+  [\#174](https://github.com/jmuelbert/jmbde-dotnet/pull/174)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump coverlet.collector from 1.3.0 to 3.0.3
+  [\#173](https://github.com/jmuelbert/jmbde-dotnet/pull/173)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/stale from v3.0.16 to v3.0.17
+  [\#171](https://github.com/jmuelbert/jmbde-dotnet/pull/171)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump release-drafter/release-drafter from v5.13.0 to v5.14.0
+  [\#170](https://github.com/jmuelbert/jmbde-dotnet/pull/170)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore from 5.0.0 to 5.0.3
+  [\#169](https://github.com/jmuelbert/jmbde-dotnet/pull/169)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Bogus from 32.0.2 to 33.0.1 [\#168](https://github.com/jmuelbert/jmbde-dotnet/pull/168)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump AutoMapper.Extensions.Microsoft.DependencyInjection from 8.1.0 to 8.1.1
+  [\#167](https://github.com/jmuelbert/jmbde-dotnet/pull/167)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump FluentValidation from 9.5.0 to 9.5.1
+  [\#166](https://github.com/jmuelbert/jmbde-dotnet/pull/166)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.2 to 5.0.3
+  [\#165](https://github.com/jmuelbert/jmbde-dotnet/pull/165)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.UI from 5.0.2 to 5.0.3
+  [\#164](https://github.com/jmuelbert/jmbde-dotnet/pull/164)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Bogus from 32.0.2 to 33.0.1 [\#163](https://github.com/jmuelbert/jmbde-dotnet/pull/163)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.VisualStudio.Web.CodeGeneration.Design from 5.0.1 to 5.0.2
+  [\#162](https://github.com/jmuelbert/jmbde-dotnet/pull/162)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.2 to 5.0.3
+  [\#161](https://github.com/jmuelbert/jmbde-dotnet/pull/161)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.2 to 5.0.3
+  [\#160](https://github.com/jmuelbert/jmbde-dotnet/pull/160)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.2 to 5.0.3
+  [\#159](https://github.com/jmuelbert/jmbde-dotnet/pull/159)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump AutoMapper.Extensions.Microsoft.DependencyInjection from 8.1.0 to 8.1.1
+  [\#158](https://github.com/jmuelbert/jmbde-dotnet/pull/158)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.VisualStudio.Web.CodeGeneration.Utils from 5.0.1 to 5.0.2
+  [\#157](https://github.com/jmuelbert/jmbde-dotnet/pull/157)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.InMemory from 5.0.0 to 5.0.3
+  [\#156](https://github.com/jmuelbert/jmbde-dotnet/pull/156)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore from 5.0.0 to 5.0.3
+  [\#155](https://github.com/jmuelbert/jmbde-dotnet/pull/155)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Design from 5.0.0 to 5.0.3
+  [\#154](https://github.com/jmuelbert/jmbde-dotnet/pull/154)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.0 to 5.0.3
+  [\#153](https://github.com/jmuelbert/jmbde-dotnet/pull/153)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump peter-evans/create-pull-request from v3.5.1 to v3.8.2
+  [\#152](https://github.com/jmuelbert/jmbde-dotnet/pull/152)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/stale from v3.0.14 to v3.0.16
+  [\#150](https://github.com/jmuelbert/jmbde-dotnet/pull/150)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump FluentValidation from 9.4.0 to 9.5.0
+  [\#149](https://github.com/jmuelbert/jmbde-dotnet/pull/149)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.VisualStudio.Web.CodeGeneration.Utils from 5.0.0 to 5.0.1
+  [\#141](https://github.com/jmuelbert/jmbde-dotnet/pull/141)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.UI from 5.0.0 to 5.0.2
+  [\#140](https://github.com/jmuelbert/jmbde-dotnet/pull/140)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.CodeQuality.Analyzers from 3.3.1 to 3.3.2
+  [\#139](https://github.com/jmuelbert/jmbde-dotnet/pull/139)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlserver from 5.0.0 to 5.0.2
+  [\#138](https://github.com/jmuelbert/jmbde-dotnet/pull/138)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.CodeAnalysis.Analyzers from 3.3.1 to 3.3.2
+  [\#137](https://github.com/jmuelbert/jmbde-dotnet/pull/137)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Tools from 5.0.0 to 5.0.2
+  [\#136](https://github.com/jmuelbert/jmbde-dotnet/pull/136)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlite from 5.0.0 to 5.0.2
+  [\#135](https://github.com/jmuelbert/jmbde-dotnet/pull/135)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.VisualStudio.Web.CodeGeneration.Design from 5.0.0 to 5.0.1
+  [\#134](https://github.com/jmuelbert/jmbde-dotnet/pull/134)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NetFramework.Analyzers from 3.3.1 to 3.3.2
+  [\#133](https://github.com/jmuelbert/jmbde-dotnet/pull/133)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 5.0.0 to 5.0.2
+  [\#132](https://github.com/jmuelbert/jmbde-dotnet/pull/132)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.CodeAnalysis.FxCopAnalyzers from 3.3.1 to 3.3.2
+  [\#131](https://github.com/jmuelbert/jmbde-dotnet/pull/131)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump FluentValidation from 9.2.2 to 9.4.0
+  [\#130](https://github.com/jmuelbert/jmbde-dotnet/pull/130)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/download-artifact from v2.0.6 to v2.0.8
+  [\#129](https://github.com/jmuelbert/jmbde-dotnet/pull/129)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/upload-artifact from v2.2.1 to v2.2.2
+  [\#128](https://github.com/jmuelbert/jmbde-dotnet/pull/128)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump release-drafter/release-drafter from v5.12.1 to v5.13.0
+  [\#127](https://github.com/jmuelbert/jmbde-dotnet/pull/127)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump crazy-max/ghaction-github-labeler from v3.1.0 to v3.1.1
+  [\#125](https://github.com/jmuelbert/jmbde-dotnet/pull/125)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Bogus from 31.0.3 to 32.0.2 [\#123](https://github.com/jmuelbert/jmbde-dotnet/pull/123)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NetCore.Analyzers from 3.3.1 to 3.3.2
+  [\#121](https://github.com/jmuelbert/jmbde-dotnet/pull/121)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Roslyn.Diagnostics.Analyzers from 3.3.1 to 3.3.2
+  [\#120](https://github.com/jmuelbert/jmbde-dotnet/pull/120)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NET.Test.Sdk from 16.8.0 to 16.8.3
+  [\#119](https://github.com/jmuelbert/jmbde-dotnet/pull/119)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump peter-evans/create-pull-request from v2 to v3.5.1
+  [\#116](https://github.com/jmuelbert/jmbde-dotnet/pull/116)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/stale from v3.0.13 to v3.0.14
+  [\#115](https://github.com/jmuelbert/jmbde-dotnet/pull/115)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/upload-artifact from v2.2.0 to v2.2.1
+  [\#113](https://github.com/jmuelbert/jmbde-dotnet/pull/113)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/download-artifact from v2.0.5 to v2.0.6
+  [\#112](https://github.com/jmuelbert/jmbde-dotnet/pull/112)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NET.Test.Sdk from 16.7.1 to 16.8.0
+  [\#111](https://github.com/jmuelbert/jmbde-dotnet/pull/111)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Design from 3.1.7 to 5.0.0
+  [\#110](https://github.com/jmuelbert/jmbde-dotnet/pull/110)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 3.1.7 to 5.0.0
+  [\#109](https://github.com/jmuelbert/jmbde-dotnet/pull/109)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.CodeAnalysis.FxCopAnalyzers from 3.3.0 to 3.3.1
+  [\#108](https://github.com/jmuelbert/jmbde-dotnet/pull/108)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.UI from 3.1.9 to 5.0.0
+  [\#107](https://github.com/jmuelbert/jmbde-dotnet/pull/107)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 3.1.7 to 5.0.0
+  [\#106](https://github.com/jmuelbert/jmbde-dotnet/pull/106)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlserver from 3.1.9 to 5.0.0
+  [\#105](https://github.com/jmuelbert/jmbde-dotnet/pull/105)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NetFramework.Analyzers from 3.3.0 to 3.3.1
+  [\#104](https://github.com/jmuelbert/jmbde-dotnet/pull/104)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.CodeQuality.Analyzers from 3.3.0 to 3.3.1
+  [\#103](https://github.com/jmuelbert/jmbde-dotnet/pull/103)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Tools from 3.1.9 to 5.0.0
+  [\#102](https://github.com/jmuelbert/jmbde-dotnet/pull/102)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Roslyn.Diagnostics.Analyzers from 3.3.0 to 3.3.1
+  [\#101](https://github.com/jmuelbert/jmbde-dotnet/pull/101)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlite from 3.1.9 to 5.0.0
+  [\#100](https://github.com/jmuelbert/jmbde-dotnet/pull/100)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlserver from 3.1.9 to 5.0.0
+  [\#99](https://github.com/jmuelbert/jmbde-dotnet/pull/99)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.VisualStudio.Web.CodeGeneration.Utils from 3.1.4 to 5.0.0
+  [\#98](https://github.com/jmuelbert/jmbde-dotnet/pull/98)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.VisualStudio.Web.CodeGeneration.Design from 3.1.4 to 5.0.0
+  [\#97](https://github.com/jmuelbert/jmbde-dotnet/pull/97)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore from 3.1.7 to 5.0.0
+  [\#96](https://github.com/jmuelbert/jmbde-dotnet/pull/96)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.InMemory from 3.1.7 to 5.0.0
+  [\#95](https://github.com/jmuelbert/jmbde-dotnet/pull/95)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Bogus from 30.0.4 to 31.0.3 [\#93](https://github.com/jmuelbert/jmbde-dotnet/pull/93)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NetCore.Analyzers from 3.3.0 to 3.3.1
+  [\#92](https://github.com/jmuelbert/jmbde-dotnet/pull/92)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.CodeAnalysis.Analyzers from 3.3.0 to 3.3.1
+  [\#91](https://github.com/jmuelbert/jmbde-dotnet/pull/91)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlite from 3.1.7 to 3.1.9
+  [\#89](https://github.com/jmuelbert/jmbde-dotnet/pull/89)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump AutoMapper from 10.0.0 to 10.1.1 [\#88](https://github.com/jmuelbert/jmbde-dotnet/pull/88)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump FluentValidation from 9.2.0 to 9.2.2
+  [\#87](https://github.com/jmuelbert/jmbde-dotnet/pull/87)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore from 3.1.7 to 3.1.9
+  [\#86](https://github.com/jmuelbert/jmbde-dotnet/pull/86)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump AutoMapper.Extensions.Microsoft.DependencyInjection from 8.0.1 to 8.1.0
+  [\#85](https://github.com/jmuelbert/jmbde-dotnet/pull/85)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/setup-dotnet from v1.7.0 to v1.7.2
+  [\#84](https://github.com/jmuelbert/jmbde-dotnet/pull/84)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump release-drafter/release-drafter from v5.11.0 to v5.12.1
+  [\#83](https://github.com/jmuelbert/jmbde-dotnet/pull/83)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Tools from 3.1.7 to 3.1.9
+  [\#81](https://github.com/jmuelbert/jmbde-dotnet/pull/81)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlserver from 3.1.7 to 3.1.9
+  [\#79](https://github.com/jmuelbert/jmbde-dotnet/pull/79)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.UI from 3.1.7 to 3.1.9
+  [\#78](https://github.com/jmuelbert/jmbde-dotnet/pull/78)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.InMemory from 3.1.7 to 3.1.9
+  [\#77](https://github.com/jmuelbert/jmbde-dotnet/pull/77)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/upload-artifact from v2.1.4 to v2.2.0
+  [\#76](https://github.com/jmuelbert/jmbde-dotnet/pull/76)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/setup-dotnet from v1 to v1.7.0
+  [\#75](https://github.com/jmuelbert/jmbde-dotnet/pull/75)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump FluentValidation from 9.1.3 to 9.2.0
+  [\#69](https://github.com/jmuelbert/jmbde-dotnet/pull/69)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NET.Test.Sdk from 16.7.0 to 16.7.1
+  [\#68](https://github.com/jmuelbert/jmbde-dotnet/pull/68)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump FluentValidation from 9.1.2 to 9.1.3
+  [\#67](https://github.com/jmuelbert/jmbde-dotnet/pull/67)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 3.1.6 to 3.1.7
+  [\#66](https://github.com/jmuelbert/jmbde-dotnet/pull/66)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Design from 3.1.6 to 3.1.7
+  [\#65](https://github.com/jmuelbert/jmbde-dotnet/pull/65)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Tools from 3.1.6 to 3.1.7
+  [\#64](https://github.com/jmuelbert/jmbde-dotnet/pull/64)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Bogus from 30.0.2 to 30.0.4 [\#63](https://github.com/jmuelbert/jmbde-dotnet/pull/63)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.InMemory from 3.1.6 to 3.1.7
+  [\#62](https://github.com/jmuelbert/jmbde-dotnet/pull/62)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore from 3.1.6 to 3.1.7
+  [\#61](https://github.com/jmuelbert/jmbde-dotnet/pull/61)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Identity.UI from 3.1.6 to 3.1.7
+  [\#60](https://github.com/jmuelbert/jmbde-dotnet/pull/60)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 3.1.6 to 3.1.7
+  [\#59](https://github.com/jmuelbert/jmbde-dotnet/pull/59)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.EntityFrameworkCore.Sqlite from 3.1.6 to 3.1.7
+  [\#58](https://github.com/jmuelbert/jmbde-dotnet/pull/58)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/upload-artifact from v1.0.0 to v2.1.4
+  [\#57](https://github.com/jmuelbert/jmbde-dotnet/pull/57)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/download-artifact from v1 to v2.0.5
+  [\#56](https://github.com/jmuelbert/jmbde-dotnet/pull/56)
+  ([dependabot[bot]](https://github.com/apps/dependabot))
 
-## [V0.4.0](https://github.com/jmuelbert/jmbde-aspnet/tree/V0.4.0) (2020-08-15)
+## [V0.4.0](https://github.com/jmuelbert/jmbde-dotnet/tree/V0.4.0) (2020-08-15)
 
-[Full Changelog](https://github.com/jmuelbert/jmbde-aspnet/compare/V0.4.0-alpha...V0.4.0)
+[Full Changelog](https://github.com/jmuelbert/jmbde-dotnet/compare/V0.4.0-alpha...V0.4.0)
 
 **Merged pull requests:**
 
-- Fix typos by misspell-fixer for refs/heads/master [\#55](https://github.com/jmuelbert/jmbde-aspnet/pull/55) ([github-actions[bot]](https://github.com/apps/github-actions))
-- Bump FluentValidation from 9.0.0 to 9.1.2 [\#54](https://github.com/jmuelbert/jmbde-aspnet/pull/54) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.EntityFrameworkCore.Sqlserver from 3.1.6 to 3.1.7 [\#53](https://github.com/jmuelbert/jmbde-aspnet/pull/53) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.CodeAnalysis.Analyzers from 3.0.0 to 3.3.0 [\#52](https://github.com/jmuelbert/jmbde-aspnet/pull/52) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.NetFramework.Analyzers from 3.0.0 to 3.3.0 [\#51](https://github.com/jmuelbert/jmbde-aspnet/pull/51) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.NetCore.Analyzers from 3.0.0 to 3.3.0 [\#50](https://github.com/jmuelbert/jmbde-aspnet/pull/50) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.CodeAnalysis.FxCopAnalyzers from 3.0.0 to 3.3.0 [\#49](https://github.com/jmuelbert/jmbde-aspnet/pull/49) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Roslyn.Diagnostics.Analyzers from 3.0.0 to 3.3.0 [\#48](https://github.com/jmuelbert/jmbde-aspnet/pull/48) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.CodeQuality.Analyzers from 3.0.0 to 3.3.0 [\#47](https://github.com/jmuelbert/jmbde-aspnet/pull/47) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.VisualStudio.Web.CodeGeneration.Design from 3.1.3 to 3.1.4 [\#45](https://github.com/jmuelbert/jmbde-aspnet/pull/45) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.NET.Test.Sdk from 16.6.1 to 16.7.0 [\#44](https://github.com/jmuelbert/jmbde-aspnet/pull/44) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Bogus from 28.4.4 to 30.0.2 [\#43](https://github.com/jmuelbert/jmbde-aspnet/pull/43) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.VisualStudio.Web.CodeGeneration.Utils from 3.1.0 to 3.1.4 [\#42](https://github.com/jmuelbert/jmbde-aspnet/pull/42) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump xunit.runner.visualstudio from 2.4.2 to 2.4.3 [\#41](https://github.com/jmuelbert/jmbde-aspnet/pull/41) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump FluentValidation from 9.0.0 to 9.0.1 [\#40](https://github.com/jmuelbert/jmbde-aspnet/pull/40) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.EntityFrameworkCore.Sqlite from 3.1.5 to 3.1.6 [\#39](https://github.com/jmuelbert/jmbde-aspnet/pull/39) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 3.1.0 to 3.1.6 [\#38](https://github.com/jmuelbert/jmbde-aspnet/pull/38) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump AutoMapper.Extensions.Microsoft.DependencyInjection from 7.0.0 to 8.0.1 [\#36](https://github.com/jmuelbert/jmbde-aspnet/pull/36) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.EntityFrameworkCore from 3.1.5 to 3.1.6 [\#35](https://github.com/jmuelbert/jmbde-aspnet/pull/35) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.EntityFrameworkCore.Tools from 3.1.0 to 3.1.6 [\#34](https://github.com/jmuelbert/jmbde-aspnet/pull/34) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.EntityFrameworkCore.Design from 3.1.5 to 3.1.6 [\#33](https://github.com/jmuelbert/jmbde-aspnet/pull/33) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump AutoMapper.Extensions.Microsoft.DependencyInjection from 7.0.0 to 8.0.1 [\#31](https://github.com/jmuelbert/jmbde-aspnet/pull/31) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 3.1.0 to 3.1.6 [\#30](https://github.com/jmuelbert/jmbde-aspnet/pull/30) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 3.1.0 to 3.1.6 [\#29](https://github.com/jmuelbert/jmbde-aspnet/pull/29) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.EntityFrameworkCore.InMemory from 3.1.0 to 3.1.6 [\#28](https://github.com/jmuelbert/jmbde-aspnet/pull/28) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.AspNetCore.Identity.UI from 3.1.0 to 3.1.6 [\#27](https://github.com/jmuelbert/jmbde-aspnet/pull/27) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.EntityFrameworkCore.Sqlserver from 3.1.0 to 3.1.6 [\#26](https://github.com/jmuelbert/jmbde-aspnet/pull/26) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.CodeAnalysis.FxCopAnalyzers from 2.9.8 to 3.0.0 [\#24](https://github.com/jmuelbert/jmbde-aspnet/pull/24) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump xunit.runner.visualstudio from 2.4.1 to 2.4.2 [\#21](https://github.com/jmuelbert/jmbde-aspnet/pull/21) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump AutoMapper from 9.0.0 to 10.0.0 [\#20](https://github.com/jmuelbert/jmbde-aspnet/pull/20) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Roslyn.Diagnostics.Analyzers from 2.9.8 to 3.0.0 [\#19](https://github.com/jmuelbert/jmbde-aspnet/pull/19) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Add a Codacy badge to README.md [\#15](https://github.com/jmuelbert/jmbde-aspnet/pull/15) ([codacy-badger](https://github.com/codacy-badger))
-- Bump FluentValidation from 8.6.1 to 9.0.0 [\#14](https://github.com/jmuelbert/jmbde-aspnet/pull/14) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.NET.Test.Sdk from 16.5.0-preview-20191216-02 to 16.6.1 [\#13](https://github.com/jmuelbert/jmbde-aspnet/pull/13) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.EntityFrameworkCore from 3.1.0 to 3.1.5 [\#12](https://github.com/jmuelbert/jmbde-aspnet/pull/12) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.NetCore.Analyzers from 2.9.8 to 3.0.0 [\#10](https://github.com/jmuelbert/jmbde-aspnet/pull/10) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.CodeAnalysis.Analyzers from 2.9.8 to 3.0.0 [\#9](https://github.com/jmuelbert/jmbde-aspnet/pull/9) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.EntityFrameworkCore.Sqlite from 3.1.0 to 3.1.5 [\#8](https://github.com/jmuelbert/jmbde-aspnet/pull/8) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.CodeQuality.Analyzers from 2.9.8 to 3.0.0 [\#7](https://github.com/jmuelbert/jmbde-aspnet/pull/7) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.VisualStudio.Web.CodeGeneration.Design from 3.1.0 to 3.1.3 [\#6](https://github.com/jmuelbert/jmbde-aspnet/pull/6) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.NetFramework.Analyzers from 2.9.8 to 3.0.0 [\#5](https://github.com/jmuelbert/jmbde-aspnet/pull/5) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Bump Microsoft.EntityFrameworkCore.Design from 3.1.0 to 3.1.5 [\#4](https://github.com/jmuelbert/jmbde-aspnet/pull/4) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Fix typos by misspell-fixer for refs/heads/master
+  [\#55](https://github.com/jmuelbert/jmbde-dotnet/pull/55)
+  ([github-actions[bot]](https://github.com/apps/github-actions))
+- Bump FluentValidation from 9.0.0 to 9.1.2
+  [\#54](https://github.com/jmuelbert/jmbde-dotnet/pull/54)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.EntityFrameworkCore.Sqlserver from 3.1.6 to 3.1.7
+  [\#53](https://github.com/jmuelbert/jmbde-dotnet/pull/53)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.CodeAnalysis.Analyzers from 3.0.0 to 3.3.0
+  [\#52](https://github.com/jmuelbert/jmbde-dotnet/pull/52)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.NetFramework.Analyzers from 3.0.0 to 3.3.0
+  [\#51](https://github.com/jmuelbert/jmbde-dotnet/pull/51)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.NetCore.Analyzers from 3.0.0 to 3.3.0
+  [\#50](https://github.com/jmuelbert/jmbde-dotnet/pull/50)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.CodeAnalysis.FxCopAnalyzers from 3.0.0 to 3.3.0
+  [\#49](https://github.com/jmuelbert/jmbde-dotnet/pull/49)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Roslyn.Diagnostics.Analyzers from 3.0.0 to 3.3.0
+  [\#48](https://github.com/jmuelbert/jmbde-dotnet/pull/48)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.CodeQuality.Analyzers from 3.0.0 to 3.3.0
+  [\#47](https://github.com/jmuelbert/jmbde-dotnet/pull/47)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.VisualStudio.Web.CodeGeneration.Design from 3.1.3 to 3.1.4
+  [\#45](https://github.com/jmuelbert/jmbde-dotnet/pull/45)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.NET.Test.Sdk from 16.6.1 to 16.7.0
+  [\#44](https://github.com/jmuelbert/jmbde-dotnet/pull/44)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Bogus from 28.4.4 to 30.0.2 [\#43](https://github.com/jmuelbert/jmbde-dotnet/pull/43)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.VisualStudio.Web.CodeGeneration.Utils from 3.1.0 to 3.1.4
+  [\#42](https://github.com/jmuelbert/jmbde-dotnet/pull/42)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump xunit.runner.visualstudio from 2.4.2 to 2.4.3
+  [\#41](https://github.com/jmuelbert/jmbde-dotnet/pull/41)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump FluentValidation from 9.0.0 to 9.0.1
+  [\#40](https://github.com/jmuelbert/jmbde-dotnet/pull/40)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.EntityFrameworkCore.Sqlite from 3.1.5 to 3.1.6
+  [\#39](https://github.com/jmuelbert/jmbde-dotnet/pull/39)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 3.1.0 to 3.1.6
+  [\#38](https://github.com/jmuelbert/jmbde-dotnet/pull/38)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump AutoMapper.Extensions.Microsoft.DependencyInjection from 7.0.0 to 8.0.1
+  [\#36](https://github.com/jmuelbert/jmbde-dotnet/pull/36)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.EntityFrameworkCore from 3.1.5 to 3.1.6
+  [\#35](https://github.com/jmuelbert/jmbde-dotnet/pull/35)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.EntityFrameworkCore.Tools from 3.1.0 to 3.1.6
+  [\#34](https://github.com/jmuelbert/jmbde-dotnet/pull/34)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.EntityFrameworkCore.Design from 3.1.5 to 3.1.6
+  [\#33](https://github.com/jmuelbert/jmbde-dotnet/pull/33)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump AutoMapper.Extensions.Microsoft.DependencyInjection from 7.0.0 to 8.0.1
+  [\#31](https://github.com/jmuelbert/jmbde-dotnet/pull/31)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore from 3.1.0 to 3.1.6
+  [\#30](https://github.com/jmuelbert/jmbde-dotnet/pull/30)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 3.1.0 to 3.1.6
+  [\#29](https://github.com/jmuelbert/jmbde-dotnet/pull/29)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.EntityFrameworkCore.InMemory from 3.1.0 to 3.1.6
+  [\#28](https://github.com/jmuelbert/jmbde-dotnet/pull/28)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.AspNetCore.Identity.UI from 3.1.0 to 3.1.6
+  [\#27](https://github.com/jmuelbert/jmbde-dotnet/pull/27)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.EntityFrameworkCore.Sqlserver from 3.1.0 to 3.1.6
+  [\#26](https://github.com/jmuelbert/jmbde-dotnet/pull/26)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.CodeAnalysis.FxCopAnalyzers from 2.9.8 to 3.0.0
+  [\#24](https://github.com/jmuelbert/jmbde-dotnet/pull/24)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump xunit.runner.visualstudio from 2.4.1 to 2.4.2
+  [\#21](https://github.com/jmuelbert/jmbde-dotnet/pull/21)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump AutoMapper from 9.0.0 to 10.0.0 [\#20](https://github.com/jmuelbert/jmbde-dotnet/pull/20)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Roslyn.Diagnostics.Analyzers from 2.9.8 to 3.0.0
+  [\#19](https://github.com/jmuelbert/jmbde-dotnet/pull/19)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Add a Codacy badge to README.md [\#15](https://github.com/jmuelbert/jmbde-dotnet/pull/15)
+  ([codacy-badger](https://github.com/codacy-badger))
+- Bump FluentValidation from 8.6.1 to 9.0.0
+  [\#14](https://github.com/jmuelbert/jmbde-dotnet/pull/14)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.NET.Test.Sdk from 16.5.0-preview-20191216-02 to 16.6.1
+  [\#13](https://github.com/jmuelbert/jmbde-dotnet/pull/13)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.EntityFrameworkCore from 3.1.0 to 3.1.5
+  [\#12](https://github.com/jmuelbert/jmbde-dotnet/pull/12)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.NetCore.Analyzers from 2.9.8 to 3.0.0
+  [\#10](https://github.com/jmuelbert/jmbde-dotnet/pull/10)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.CodeAnalysis.Analyzers from 2.9.8 to 3.0.0
+  [\#9](https://github.com/jmuelbert/jmbde-dotnet/pull/9)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.EntityFrameworkCore.Sqlite from 3.1.0 to 3.1.5
+  [\#8](https://github.com/jmuelbert/jmbde-dotnet/pull/8)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.CodeQuality.Analyzers from 2.9.8 to 3.0.0
+  [\#7](https://github.com/jmuelbert/jmbde-dotnet/pull/7)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.VisualStudio.Web.CodeGeneration.Design from 3.1.0 to 3.1.3
+  [\#6](https://github.com/jmuelbert/jmbde-dotnet/pull/6)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.NetFramework.Analyzers from 2.9.8 to 3.0.0
+  [\#5](https://github.com/jmuelbert/jmbde-dotnet/pull/5)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.EntityFrameworkCore.Design from 3.1.0 to 3.1.5
+  [\#4](https://github.com/jmuelbert/jmbde-dotnet/pull/4)
+  ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 
-## [V0.4.0-alpha](https://github.com/jmuelbert/jmbde-aspnet/tree/V0.4.0-alpha) (2018-08-19)
+## [V0.4.0-alpha](https://github.com/jmuelbert/jmbde-dotnet/tree/V0.4.0-alpha) (2018-08-19)
 
-[Full Changelog](https://github.com/jmuelbert/jmbde-aspnet/compare/V0.0.4...V0.4.0-alpha)
+[Full Changelog](https://github.com/jmuelbert/jmbde-dotnet/compare/V0.0.4...V0.4.0-alpha)
 
 **Fixed bugs:**
 
-- Input for Boolean does not work. This throw a exception [\#2](https://github.com/jmuelbert/jmbde-aspnet/issues/2)
+- Input for Boolean does not work. This throw a exception
+  [\#2](https://github.com/jmuelbert/jmbde-dotnet/issues/2)
 
-## [V0.0.4](https://github.com/jmuelbert/jmbde-aspnet/tree/V0.0.4) (2016-08-31)
+## [V0.0.4](https://github.com/jmuelbert/jmbde-dotnet/tree/V0.0.4) (2016-08-31)
 
-[Full Changelog](https://github.com/jmuelbert/jmbde-aspnet/compare/V0.0.3...V0.0.4)
+[Full Changelog](https://github.com/jmuelbert/jmbde-dotnet/compare/V0.0.3...V0.0.4)
 
 **Merged pull requests:**
 
-- Improve README.md [\#1](https://github.com/jmuelbert/jmbde-aspnet/pull/1) ([jmuelbert](https://github.com/jmuelbert))
+- Improve README.md [\#1](https://github.com/jmuelbert/jmbde-dotnet/pull/1)
+  ([jmuelbert](https://github.com/jmuelbert))
 
-## [V0.0.3](https://github.com/jmuelbert/jmbde-aspnet/tree/V0.0.3) (2016-06-18)
+## [V0.0.3](https://github.com/jmuelbert/jmbde-dotnet/tree/V0.0.3) (2016-06-18)
 
-[Full Changelog](https://github.com/jmuelbert/jmbde-aspnet/compare/abd0d6988ccd121001dad23426878b774002c398...V0.0.3)
+[Full Changelog](https://github.com/jmuelbert/jmbde-dotnet/compare/abd0d6988ccd121001dad23426878b774002c398...V0.0.3)
 
-
-
-\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*
+\* _This Changelog was automatically generated by
+[github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)_
