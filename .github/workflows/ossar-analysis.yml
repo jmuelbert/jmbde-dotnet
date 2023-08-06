@@ -17,6 +17,13 @@ on:
   schedule:
     - cron: "16 20 * * 3"
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   OSSAR-Scan:
     # OSSAR runs on windows-latest.

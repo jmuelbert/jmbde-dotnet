@@ -16,6 +16,9 @@ on:
   # yamllint enable
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   label:
     runs-on: ubuntu-latest

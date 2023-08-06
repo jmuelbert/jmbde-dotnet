@@ -3,9 +3,15 @@ name: Mark stale issues and pull requests
 on:
   schedule:
     - cron: 0 0 * * *
+
+permissions:
+  contents: read
+
 jobs:
   stale:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/stale@v8
         with:

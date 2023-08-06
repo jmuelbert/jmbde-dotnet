@@ -19,6 +19,14 @@ on:
       - jmbde.sln
       - .github/workflows/ci.yml
 
+permissions:
+  contents: read
+      
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+
   pull_request:
     branches:
       - main
@@ -130,12 +138,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { dotnet-version: "7.x", os: ubuntu-latest }
+          # - { dotnet-version: "7.x", os: ubuntu-latest }
           - { dotnet-version: "7.x", os: windows-latest }
-          - { dotnet-version: "7.x", os: macos-latest }
-          - { dotnet-version: "6.x", os: ubuntu-latest }
+          # - { dotnet-version: "7.x", os: macos-latest }
+          # - { dotnet-version: "6.x", os: ubuntu-latest }
           - { dotnet-version: "6.x", os: windows-latest }
-          - { dotnet-version: "6.x", os: macos-latest }
+          # - { dotnet-version: "6.x", os: macos-latest }
 
     steps:
       - name: "🧰 Checkout Source Code"

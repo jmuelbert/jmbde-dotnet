@@ -8,7 +8,10 @@ on:
   issues:
     types: [opened]
 
-jobs:
+permissions:
+      contents: read        
+
+      jobs:
   fastlane-env:
     name: fastlane env reminder
     runs-on: ubuntu-latest
