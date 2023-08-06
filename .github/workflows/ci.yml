@@ -19,14 +19,6 @@ on:
       - jmbde.sln
       - .github/workflows/ci.yml
 
-permissions:
-  contents: read
-      
-concurrency:
-  group: ${{ github.ref }}-${{ github.workflow }}
-  cancel-in-progress: true
-
-
   pull_request:
     branches:
       - main
@@ -35,6 +27,13 @@ concurrency:
       - global.json
       - jmbde.sln
       - .github/workflows/ci.yml
+
+permissions:
+  contents: read
+      
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
 
 env:
   CONFIGURATION: Release
