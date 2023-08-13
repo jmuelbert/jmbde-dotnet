@@ -8,6 +8,7 @@ root = true
 [*]
 indent_style = space
 charset = utf-8
+end_of_line = lf
 # (Please don't specify an indent_size here; that has too many unintended consequences.)
 
 # Code files
@@ -37,7 +38,6 @@ indent_size = 4
 tab_width = 4
 
 # New line preferences
-end_of_line = crlf
 insert_final_newline = false
 
 #### .NET Coding Conventions ####
