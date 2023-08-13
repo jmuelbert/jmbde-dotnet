@@ -43,11 +43,11 @@ jobs:
           days-before-stale: 21
           days-before-close: 7
           stale-issue-message: >
-            This issue has been automatically marked as stale because it has not had
-            recent activity. It will be closed if no further activity occurs.
+            This issue has been automatically marked as stale because it has not had recent
+            activity. It will be closed if no further activity occurs.
           stale-pr-message: >
-            This pull request has been automatically marked as stale because it has not had
-            recent activity. It will be closed if no further activity occurs.
+            This pull request has been automatically marked as stale because it has not had recent
+            activity. It will be closed if no further activity occurs.
           exempt-issue-labels: "gsoc-outreachy,help wanted,in progress"
           exempt-pr-labels: "gsoc-outreachy,help wanted,in progress"
 
@@ -68,9 +68,9 @@ jobs:
           days-before-stale: 2
           days-before-close: 1
           stale-pr-message: >
-            This pull request has been automatically marked as stale because it has not had
-            recent activity. It will be closed if no further activity occurs. To keep this
-            pull request open, add a `help wanted` or `in progress` label.
+            This pull request has been automatically marked as stale because it has not had recent
+            activity. It will be closed if no further activity occurs. To keep this pull request
+            open, add a `help wanted` or `in progress` label.
           exempt-pr-labels: "help wanted,in progress"
           any-of-labels: "bump-formula-pr,bump-cask-pr"
 
