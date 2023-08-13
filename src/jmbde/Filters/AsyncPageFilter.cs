@@ -1,4 +1,4 @@
-/**************************************************************************
+﻿/**************************************************************************
  **
  ** SPDX-FileCopyrightText: © 2016-2023 Jürgen Mülbert
  **
@@ -7,6 +7,7 @@
  *************************************************************************/
 
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 

@@ -1,4 +1,4 @@
-/**************************************************************************
+﻿/**************************************************************************
  **
  ** SPDX-FileCopyrightText: © 2016-2023 Jürgen Mülbert
  **
@@ -9,7 +9,9 @@
 using System;
 using System.Globalization;
 using System.IO;
+
 using JMuelbert.BDE.Shared.Data;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;

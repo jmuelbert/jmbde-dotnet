@@ -23,7 +23,7 @@ anderem Computer, Drucker und Telefone.
 
 [Features](https://github.com/jmuelbert/jmbde-aspnet) |
 [Documentation](https://jmuelbert.github.io/jmbde-dotnet/) | [Changelog](CHANGELOG.md) |
-[Contributing](CONTRIBUTING.md) | [FAQ](https://github.com/jmuelbert/jmbde-dotnet/wiki/FAQ) 
+[Contributing](CONTRIBUTING.md) | [FAQ](https://github.com/jmuelbert/jmbde-dotnet/wiki/FAQ)
 
 ## Setup
 

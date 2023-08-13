@@ -1,4 +1,4 @@
-/**************************************************************************
+﻿/**************************************************************************
  **
  ** SPDX-FileCopyrightText: 2016-2023 Jürgen Mülbert
  ** Copyright (c) 2016-2023 Jürgen Mülbert. All rights reserved.
@@ -7,8 +7,10 @@
  **************************************************************************/
 
 using System.Threading.Tasks;
+
 using JMuelbert.BDE.Shared.Data;
 using JMuelbert.BDE.Shared.Models;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;

@@ -51,8 +51,9 @@
   </ItemGroup>
 
   <PropertyGroup>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
-    <AnalysisMode>All</AnalysisMode>
+    <AnalysisMode>Recommended</AnalysisMode>
     <AnalysisLevelSecurity>preview-recommended</AnalysisLevelSecurity>
   </PropertyGroup>
 

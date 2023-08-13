@@ -1,4 +1,4 @@
-/**************************************************************************
+﻿/**************************************************************************
  **
  ** SPDX-FileCopyrightText:  © 2016-2023 Jürgen Mülbert
  **
@@ -9,7 +9,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+
 using JMuelbert.BDE.Shared.Data;
+
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,7 +24,7 @@ namespace JMuelbert.BDE
     /// <summary>
     /// Program.
     /// </summary>
-    public class Program
+    public static class Program
     {
         public static readonly Dictionary<string, string> switchMappings =
             new Dictionary<string, string> { { "-Help", "Help" } };

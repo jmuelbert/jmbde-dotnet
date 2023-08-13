@@ -14,7 +14,7 @@ repos:
         args: [--maxkb=150]
       - id: check-ast
       - id: check-byte-order-marker
-        exclude: ^.*(\.cs|\.cbproj|\.groupproj|\.props|\.sln|\.vcxproj|\.vcxproj.filters)$
+        exclude: ^.*(\.cs|\.vb|\.cbproj|\.groupproj|\.props|\.sln|\.vcxproj|\.vcxproj.filters)$
       - id: check-builtin-literals
       - id: check-case-conflict
       - id: check-docstring-first
@@ -33,16 +33,14 @@ repos:
       - id: check-xml
       - id: check-yaml
         args: [--allow-multiple-documents]
+      - id: end-of-file-fixer
+        exclude: ^.*(\.cs|\.vb|\.cbproj|\.groupproj|\.props|\.sln|\.vcxproj|\.vcxproj.filters)$
       - id: debug-statements
       - id: destroyed-symlinks
       - id: detect-private-key
-      - id: end-of-file-fixer
-        stages:
-          - commit
-          - manual
       - id: file-contents-sorter
       - id: fix-byte-order-marker
-        exclude: ^.*(\.cbproj|\.groupproj|\.props|\.sln|\.vcxproj|\.vcxproj.filters)$
+        exclude: ^.*(\.cs|\.vb\\.cbproj|\.groupproj|\.props|\.sln|\.vcxproj|\.vcxproj.filters)$
       - id: fix-encoding-pragma
       - id: forbid-new-submodules
       - id: forbid-submodules
@@ -54,11 +52,11 @@ repos:
       - id: requirements-txt-fixer
       - id: sort-simple-yaml
       - id: trailing-whitespace
+        exclude: ^.*(\.cs|\.vb\\.cbproj|\.groupproj|\.props|\.sln|\.vcxproj|\.vcxproj.filters)$
         args: [--markdown-linebreak-ext=md]
         stages:
           - commit
           - manual
-
   - repo: https://github.com/asottile/add-trailing-comma
     rev: v3.0.0
     hooks:
