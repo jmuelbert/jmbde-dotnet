@@ -38,7 +38,7 @@ jobs:
       - uses: returntocorp/semgrep-action@8689a93eca50c91f8e8cfa61e3c4fb7e96d12bf2
         with:
           publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
-          publishDeployment: ${{ secrets.SEMGREP_DEPLOYMENT_ID }}
+          # publishDeployment: ${{ secrets.SEMGREP_DEPLOYMENT_ID }}
           generateSarif: "1"
 
       # Upload SARIF file generated in previous step
