@@ -42,6 +42,9 @@ jobs:
     # currently only windows latest is supported
     runs-on: windows-latest
 
+    # Skip any PR created by dependabot to avoid permission issues:
+    if: (github.actor != 'dependabot[bot]')
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-dotnet@v3

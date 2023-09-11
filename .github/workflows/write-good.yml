@@ -24,6 +24,10 @@ jobs:
   write_good_job:
     runs-on: ubuntu-latest
     name: A job to lint Markdown files
+
+    # Skip any PR created by dependabot to avoid permission issues:
+    if: (github.actor != 'dependabot[bot]')
+
     steps:
       - uses: actions/checkout@v3
       - name: write-good action step

@@ -30,6 +30,9 @@ jobs:
     # ubuntu-latest and macos-latest support coming soon
     runs-on: windows-latest
 
+    # Skip any PR created by dependabot to avoid permission issues:
+    if: (github.actor != 'dependabot[bot]')
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3

@@ -36,6 +36,10 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
+
+    # Skip any PR created by dependabot to avoid permission issues:
+    if: (github.actor != 'dependabot[bot]')
+
     steps:
       # Git Checkout
       - name: "🧰 Checkout"

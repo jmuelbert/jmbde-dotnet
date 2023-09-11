@@ -15,6 +15,10 @@ permissions:
 jobs:
   automate-project-columns:
     runs-on: ubuntu-latest
+
+    # Skip any PR created by dependabot to avoid permission issues:
+    if: (github.actor != 'dependabot[bot]')
+
     steps:
       - uses: alex-page/github-project-automation-plus@v0.8.3
         with:
