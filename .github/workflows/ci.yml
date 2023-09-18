@@ -14,10 +14,10 @@ on:
     tags-ignore:
       - "*"
     paths:
+      - ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && github.event_path }}
       - src/**
       - global.json
       - jmbde.sln
-      - .github/workflows/ci.yml
 
   pull_request:
     branches:
@@ -26,7 +26,6 @@ on:
       - src/**
       - global.json
       - jmbde.sln
-      - .github/workflows/ci.yml
 
 permissions:
   contents: read
@@ -49,7 +48,7 @@ jobs:
     needs: tests
     runs-on: ubuntu-latest
     steps:
-      - name: "🧰 Checkout Source Code"
+      - name: "🧰 Check out code"
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -96,7 +95,7 @@ jobs:
     needs: tests
 
     steps:
-      - name: "🧰 Checkout Source Code"
+      - name: "🧰 Check out code"
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -118,30 +117,29 @@ jobs:
         uses: DuckSoft/create-7z-action@v1.0
         with:
           pathSource: ./
-          pathTarget: ./anniversary-reminder-${{ steps.get_version.outputs.VERSION }}-source-all.7z
+          pathTarget: ./jmbde-dotnet-${{ steps.get_version.outputs.VERSION }}-source-all.7z
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: source-files
-          path: ./anniversary-reminder-${{ steps.get_version.outputs.VERSION }}-source-all.7z
+          path: ./jmbde-dotnet-${{ steps.get_version.outputs.VERSION }}-source-all.7z
 
   tests:
     name: ${{ matrix.session }} ${{ matrix.dotnet-version }} / ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
       matrix:
-        include:
-          # - { dotnet-version: "7.x", os: ubuntu-latest }
-          - { dotnet-version: "7.x", os: windows-latest }
-          # - { dotnet-version: "7.x", os: macos-latest }
-          # - { dotnet-version: "6.x", os: ubuntu-latest }
-          - { dotnet-version: "6.x", os: windows-latest }
-          # - { dotnet-version: "6.x", os: macos-latest }
+       dotnet-version:
+         - "7.x"
+         - "6.x"
+       os:
+         - windows-latest
+         - ubuntu-latest
+         - macos-latest
 
     steps:
-      - name: "🧰 Checkout Source Code"
+      - name: "🧰 Check out code"
         uses: actions/checkout@v3
         with:
           fetch-depth: 0

@@ -29,8 +29,8 @@ assignees: ''
 <!-- Your environment is usually important for finding the cause of the bug. -->
 <!-- You can get the jmbde-dotnet version by clicking `Help`->`Build Info` in the GUI. -->
 
-- OS: [e.g. macOS 10.15 / Windows 10 / Ubuntu 18.04]
-- jmbde-dotnet Version: [e.g. 6.0.2]
+- OS: e.g. macOS 10.15 / Windows 10 / Ubuntu 18.04
+- jmbde-dotnet Version: e.g. 6.0.2
 
 **Additional context**
 

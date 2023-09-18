@@ -46,16 +46,18 @@ jobs:
     if: (github.actor != 'dependabot[bot]')
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
+      - name: "🧰 Check out code"
+        uses: actions/checkout@v3
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: |
-            5.0.x
-            6.0.x
-            7.0.x
+          dotnet-version: "7.0.x" # Aktualisiere auf die gewünschte .NET-Version
+
       - name: Run Microsoft Security DevOps
         uses: microsoft/security-devops-action@v1.6.0
         id: msdo
+        
       - name: Upload results to Security tab
         uses: github/codeql-action/upload-sarif@v2
         with:

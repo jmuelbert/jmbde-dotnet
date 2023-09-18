@@ -11,9 +11,7 @@
 # https://github.com/actions/labeler
 
 name: Labeler
-# yamllint disable
 on:
-  # yamllint enable
   pull_request:
 
 permissions:
@@ -27,7 +25,8 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: actions/labeler@v4
+      - name: Use PR Labeler Action
+        uses: actions/labeler@v4
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           configuration-path: .github/pr-labeler.yml

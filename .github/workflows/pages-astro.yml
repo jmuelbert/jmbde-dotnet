@@ -13,12 +13,11 @@ permissions:
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   pull_request:
-    # The branches below must be a subset of the branches above
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches:
+      - main
   workflow_dispatch:
 
 # Allow one concurrent deployment
@@ -30,9 +29,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
+      - name: "🧰 Checkout"
         uses: actions/checkout@v3
-      - name: Install, build, and upload your site
+
+      - name: Build and Upload Site
         uses: withastro/action@v0
         with:
           path:

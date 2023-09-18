@@ -8,6 +8,10 @@ name: Move assigned pull requests into To do
 on:
   pull_request:
     types: [assigned]
+    branches:
+      - "*"
+    paths-ignore:
+      - ".github/workflows/assigned-pulls-todo.yml"
 
 permissions:
   contents: read
@@ -16,11 +20,12 @@ jobs:
   automate-project-columns:
     runs-on: ubuntu-latest
 
-    # Skip any PR created by dependabot to avoid permission issues:
-    if: (github.actor != 'dependabot[bot]')
-
     steps:
-      - uses: alex-page/github-project-automation-plus@v0.8.3
+      - name: "🧰 Check out code"
+        uses: actions/checkout@v3
+
+      - name: Run Project Automation
+        uses: alex-page/github-project-automation-plus@v0.8.3
         with:
           project: test-connections
           column: To do

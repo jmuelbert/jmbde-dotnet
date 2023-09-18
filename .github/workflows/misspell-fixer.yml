@@ -3,10 +3,13 @@ name: Misspell fixer
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    # The branches below must be a subset of the branches above
-    types: [opened, synchronize, reopened]
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 permissions:
   contents: read
@@ -25,15 +28,15 @@ jobs:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
 
-      - name: "Missspell fixer"
+      - name: Run Misspell Fixer
         uses: sobolevn/misspell-fixer-action@master
 
-      - name: "Check diff"
+      - name: Check for changes
         run: git diff --exit-code ${{ github.sha }}
 
-      - name: "Pull Request"
-        uses: peter-evans/create-pull-request@v5
+      - name: Create Pull Request for typos
         if: failure()
+        uses: peter-evans/create-pull-request@v5
         with:
           commit-message: "Fix typos by misspell-fixer"
           title: "Fix typos by misspell-fixer for ${{ github.ref }}"

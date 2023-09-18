@@ -16,8 +16,9 @@ jobs:
   automate-project-columns:
     runs-on: ubuntu-latest
     steps:
-      - uses: alex-page/github-project-automation-plus@v0.8.3
+      - name: Move Issue to Triage Column
+        uses: alex-page/github-project-automation-plus@v0.8.3
         with:
-          project: test-connections
+          project: jmbde-dotnet
           column: Triage
           repo-token: ${{ secrets.GITHUB_TOKEN }}
