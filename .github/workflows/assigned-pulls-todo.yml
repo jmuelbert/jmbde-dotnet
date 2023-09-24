@@ -27,6 +27,6 @@ jobs:
       - name: Run Project Automation
         uses: alex-page/github-project-automation-plus@v0.8.3
         with:
-          project: test-connections
+          project: jmbde-dotnet
           column: To do
           repo-token: ${{ secrets.GITHUB_TOKEN }}
