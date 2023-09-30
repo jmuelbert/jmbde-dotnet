@@ -10,11 +10,7 @@ on:
   push:
     branches:
       - main
-
-    tags-ignore:
-      - "*"
     paths:
-      - ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && github.event_path }}
       - src/**
       - global.json
       - jmbde.sln
@@ -22,10 +18,6 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - src/**
-      - global.json
-      - jmbde.sln
 
 permissions:
   contents: read
@@ -53,11 +45,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: "⚙️ Install GitVersion"
-        uses: gittools/actions/gitversion/setup@v0.10.2
-        with:
-          versionSpec: "5.x"
-
       - name: "⚙️ Execute GitVersion"
         id: gitversion
         uses: gittools/actions/gitversion/execute@v0.10.2
@@ -70,6 +57,14 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           global-json-file: global.json
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
 
       - name: "⚙️ Check dotnet sdk install"
         run: dotnet --info
@@ -89,65 +84,24 @@ jobs:
           name: DotnetSolution
           path: ${{runner.workspace}}/dist
 
-  source-archive:
-    name: All Source Files
-    runs-on: ubuntu-latest
-    needs: tests
-
-    steps:
-      - name: "🧰 Check out code"
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Restoring submodules
-        run: git submodule update --init
-
-      - name: Get the version
-        id: get_version
-        shell: bash
-        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
-
-      - name: Checking out sources
-        uses: actions/checkout@v3
-        with:
-          submodules: "recursive"
-
-      - name: Create 7z source-archive
-        uses: DuckSoft/create-7z-action@v1.0
-        with:
-          pathSource: ./
-          pathTarget: ./jmbde-dotnet-${{ steps.get_version.outputs.VERSION }}-source-all.7z
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: source-files
-          path: ./jmbde-dotnet-${{ steps.get_version.outputs.VERSION }}-source-all.7z
-
   tests:
     name: ${{ matrix.session }} ${{ matrix.dotnet-version }} / ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-       dotnet-version:
-         - "7.x"
-         - "6.x"
-       os:
-         - windows-latest
-         - ubuntu-latest
-         - macos-latest
+        dotnet-version:
+          - "7.x"
+          - "6.x"
+        os:
+          - windows-latest
+          - ubuntu-latest
+          - macos-latest
 
     steps:
       - name: "🧰 Check out code"
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
-      - name: "⚙️ Install GitVersion"
-        uses: gittools/actions/gitversion/setup@v0.10.2
-        with:
-          versionSpec: "5.x"
 
       - name: "⚙️ Execute GitVersion"
         id: gitversion
@@ -177,50 +131,27 @@ jobs:
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
 
-  releaseNotes:
-    if: startsWith(github.ref, 'refs/tags/')
+  update_release_draft:
+    if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
+    permissions:
+      # write permission is required to create a github release
+      contents: write
+      # write permission is required for autolabeler
+      # otherwise, read permission is required at least
+      pull-requests: write
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 2
 
-      - name: Fetch all history for all tags and branches
-        run: git fetch --prune --unshallow
-
-      - name: Build Releasenotes
-        id: github_releasenotes
-        uses: release-drafter/release-drafter@v5.24.0
+      - name: Create Release Notes and Pre-Release
+        id: release_gh
+        uses: softprops/action-gh-release@v1
         with:
-          publish: "${{ steps.check-version.outputs.tag != '' }}"
-          tag: "${{ steps.check-version.outputs.tag }}"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-
-  changeLog:
-    if: startsWith(github.ref, 'refs/tags/')
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
-      - name: Fetch all history for all tags and branches
-        run: git fetch --prune --unshallow
-
-      - name: Build ChangeLog
-        id: github_changelog
-        uses: mikepenz/release-changelog-builder-action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create Release
-        uses: actions/create-release@v1
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-          body: ${{ steps.check-version.outputs }}
-        env:
-          GITHUB_TOKEN: $${{ secrets.GITHUB_TOKEN }}
+          draft: true # create a draft (unpublished) release
+          prerelease: true # identify the release as a prerelease
+          body_path: ./CHANGELOG.md # use the contents of this file as the body of the release notes
 
   deployPrereleases:
     name: Deploy Pre-Release
@@ -230,6 +161,7 @@ jobs:
     needs:
       - build
       - tests
+      - update_release_draft
 
     steps:
       - name: Restore Dotnet Solution
@@ -252,8 +184,7 @@ jobs:
     needs:
       - build
       - tests
-      - changeLog
-      - releaseNotes
+      - update_release_draft
 
     steps:
       - name: Restore Dotnet Solution
