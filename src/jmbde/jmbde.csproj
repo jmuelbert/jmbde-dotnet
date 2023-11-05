@@ -42,7 +42,7 @@
       Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore"
       Version="7.0.12"
     />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.13" />
     <PackageReference
       Include="Microsoft.EntityFrameworkCore.InMemory"
       Version="7.0.13"
@@ -59,7 +59,7 @@
     </PackageReference>
     <PackageReference
       Include="Microsoft.VisualStudio.Web.CodeGeneration.Design"
-      Version="7.0.10"
+      Version="7.0.11"
     />
   </ItemGroup>
 
