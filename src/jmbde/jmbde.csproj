@@ -40,7 +40,7 @@
     />
     <PackageReference
       Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore"
-      Version="7.0.12"
+      Version="7.0.13"
     />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.13" />
     <PackageReference
