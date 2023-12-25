@@ -60,7 +60,7 @@ jobs:
           echo "Version: ${{ steps.gitversion.outputs.semVer }}"
 
       - name: "⚙️ Setup dotnet"
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           global-json-file: global.json
 
@@ -154,7 +154,7 @@ jobs:
           echo "Version: ${{ steps.gitversion.outputs.semVer }}"
 
       - name: "⚙️ Setup dotnet"
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           global-json-file: global.json
 
