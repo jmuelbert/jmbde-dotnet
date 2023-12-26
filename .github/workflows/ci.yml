@@ -77,7 +77,7 @@ jobs:
           dotnet build  -p:Configuration=Release --no-restore -p:version=${{ steps.gitversion.outputs.semVer }}
 
       - name: "📤 Upload artifact: Application"
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: DotnetSolution
           path: ${{runner.workspace}}/dist
@@ -114,7 +114,7 @@ jobs:
             }}-source-all.7z
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: source-files
           path: ./anniversary-reminder-${{ steps.get_version.outputs.VERSION
@@ -229,13 +229,13 @@ jobs:
 
     steps:
       - name: Restore Dotnet Solution
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: DotnetSolution
           path: dist
 
       - name: Upload Artifact to Pre-Release
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Pre-Release Solution
           path: dist
@@ -253,13 +253,13 @@ jobs:
 
     steps:
       - name: Restore Dotnet Solution
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: DotnetSolution
           path: dist/
 
       - name: Collect Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: nuget-packages
           path: "**/*.nupkg"
