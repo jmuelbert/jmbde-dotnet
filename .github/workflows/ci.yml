@@ -229,7 +229,7 @@ jobs:
 
     steps:
       - name: Restore Dotnet Solution
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: DotnetSolution
           path: dist
@@ -253,7 +253,7 @@ jobs:
 
     steps:
       - name: Restore Dotnet Solution
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: DotnetSolution
           path: dist/
