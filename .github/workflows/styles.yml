@@ -3,8 +3,8 @@ name: Style
 
 on:
   push:
-    branches:
-      - 'master'
+    branches: [main, develop, release, improve_build-workflow]
+
     paths-ignore:
       - 'docs/**'
       - '.github/ISSUE_TEMPLATE/**'
@@ -21,9 +21,8 @@ on:
       - 'Docker/**'
       - 'report/**'
       - 'resources/**'
+      
   pull_request:
-    branches:
-      - 'master'
     types: [opened, reopened]
     paths-ignore:
       - 'docs/**'
@@ -178,14 +177,14 @@ jobs:
           source: './src'
           clangFormatVersion: 12
           inplace: True
-          
+
       - uses: EndBug/add-and-commit@v9
         with:
           author_name: Clang Robot
           author_email: robot@example.com
           message: 'Committing clang-format changes'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}          
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: PMD Code Analyzer Action
       #   uses: billyan2018/setup-pmd@PMDAnalyzer1.0
