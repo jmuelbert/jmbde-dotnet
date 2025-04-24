@@ -1,28 +1,145 @@
 ---
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+# SPDX-FileCopyrightText: GitHub, Inc.
+# SPDX-License-Identifier: MIT
+
+# Dependabot Configuration
+# Documentation: https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
+
 updates:
-  # Maintain dependencies for GitHub Actions
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  # GitHub Actions Dependencies
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
-      interval: "daily"
+      interval: weekly
+    groups:
+      github-actions:
+        patterns:
+          - '*'
+    labels:
+      - dependencies
+      - github-actions
+      - security
     commit-message:
-      prefix: ":rocket: gha"
-  
-  # Enable version updates for Docker
-  - package-ecosystem: "docker"
-    # Look for a `Dockerfile` in the `root` directory
-    directory: "/"
-    # Check for updates once a week
+      prefix: chore(deps)
+      prefix-development: chore(deps-dev)
+      include: scope
+    open-pull-requests-limit: 10
+    pull-request-branch-name:
+      separator: /
+    rebase-strategy: auto
+    reviewers:
+      - jmuelbert
+    target-branch: develop
+    versioning-strategy: lockfile-only
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major'] # yamlint disable-line
+
+  # Python Dependencies
+  - package-ecosystem: pip
+    directory: /
     schedule:
-      interval: "daily"
+      interval: weekly
+    groups:
+      production-dependencies:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+      development-dependencies:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+    labels:
+      - dependencies
+      - python
     commit-message:
-      prefix: ":rocket: docker"
+      prefix: chore(deps)
+      prefix-development: chore(deps-dev)
+      include: scope
+    open-pull-requests-limit: 15
+    pull-request-branch-name:
+      separator: /
+    rebase-strategy: auto
+    reviewers:
+      - jmuelbert
+    allow:
+      - dependency-type: direct
+      - dependency-type: indirect
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major'] # yamlint disable-line
+    versioning-strategy: lockfile-only
+
+  # Python Workflow Dependencies
+  - package-ecosystem: pip
+    directory: /.github/workflows
+    schedule:
+      interval: weekly
+    groups:
+      workflow-dependencies:
+        patterns:
+          - '*'
+    labels:
+      - dependencies
+      - python
+    commit-message:
+      prefix: chore(deps)
+      prefix-development: chore(deps-dev)
+      include: scope
+    open-pull-requests-limit: 5
+    pull-request-branch-name:
+      separator: /
+    rebase-strategy: auto
+    reviewers:
+      - jmuelbert
+    versioning-strategy: lockfile-only
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+
+  # Docker Dependencies
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+      - docker
+    commit-message:
+      prefix: chore(deps)
+      include: scope
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+
+  # NPM Dependencies for Documentation
+  - package-ecosystem: npm
+    directory: /pages
+    schedule:
+      interval: monthly
+    groups:
+      documentation-dependencies:
+        patterns:
+          - '*'
+    labels:
+      - dependencies
+      - documentation
+      - javascript
+    commit-message:
+      prefix: chore(docs)
+      include: scope
+    open-pull-requests-limit: 5
+    pull-request-branch-name:
+      separator: /
+    rebase-strategy: auto
+    versioning-strategy: increase
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major'] # yamlint disable-line
 
   # Maintain dependencies for nuget
   - package-ecosystem: "nuget" # See documentation for possible values
@@ -32,11 +149,4 @@ updates:
     commit-message:
       prefix: ":rocket: nuget"
 
-  # Maintain dependencies for pip
-  - package-ecosystem: "pip" # See documentation for possible values
-    directory: "/" # Location of package manifests
-    schedule:
-      interval: "daily"
-    commit-message:
-      prefix: ":rocket: pip"
 
